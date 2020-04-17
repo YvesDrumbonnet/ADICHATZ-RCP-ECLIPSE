@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/EntitySetMM" superEntityURI="adi://org.adichatz.studio/model/FieldMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/QueryReferenceMM" id="queryReference"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/EntityElementsMM" id="entityElements"/>
+    <propertyField mandatory="true" id="entityURI">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+    <propertyField id="lazyFetches">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField mandatory="true" id="mappedBy">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+    <propertyField mandatory="true" id="parentClause">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+</entityTree>

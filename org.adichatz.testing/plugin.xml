@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<!-- ***************** -->
+	<!-- *   T H E M E   * -->
+	<!-- ***************** -->
+	<extension point="org.adichatz.css.theme">
+		<theme basestylesheeturi="resources/css/blue-win.css" id="org.adichatz.css.theme.blue.win" os="win32"/>
+		<theme basestylesheeturi="resources/css/dark-win.css" id="org.adichatz.css.theme.dark.win" os="win32"/>
+	</extension>
+</plugin>

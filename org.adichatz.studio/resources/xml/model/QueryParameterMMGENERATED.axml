@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/QueryParameterMM" superEntityURI="adi://org.adichatz.studio/model/ElementMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="prompt">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="property">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="entityURI">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField mandatory="true" id="suffix">
+        <controlField xsi:type="cComboType" mandatory="true"/>
+    </propertyField>
+    <propertyField id="valid">
+        <controlField xsi:type="radioGroupType"/>
+    </propertyField>
+    <propertyField id="style">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="permanent">
+        <controlField xsi:type="checkBoxType"/>
+    </propertyField>
+    <propertyField id="visible">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="columnText">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="binaryExpression">
+        <controlField xsi:type="textType">
+            <convertModelToTarget>return org.adichatz.common.encoding.Base64.decode(#FV());</convertModelToTarget>
+            <convertTargetToModel>return org.adichatz.common.encoding.Base64.encode(#FV());</convertTargetToModel>
+        </controlField>
+    </propertyField>
+    <propertyField id="expression">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="operator">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="secondColumnText">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="binarySecondExpression">
+        <controlField xsi:type="textType">
+            <convertModelToTarget>return org.adichatz.common.encoding.Base64.decode(#FV());</convertModelToTarget>
+            <convertTargetToModel>return org.adichatz.common.encoding.Base64.encode(#FV());</convertTargetToModel>
+        </controlField>
+    </propertyField>
+    <propertyField id="secondExpression">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="expressionMethodURI">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="expressionClassName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

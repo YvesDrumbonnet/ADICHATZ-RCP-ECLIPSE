@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="containerTreeWrapper$$0" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <group text="#MSG(adichatzStudio, scenario.applicationServer.group)" font="#FONT(JFaceResources.BANNER_FONT)" layoutData="h 0:n:n, w 0:n:n" background="#COLOR(IFormColors.H_GRADIENT_START)" id="applicationServerGroup">
+        <layout layoutConstraints="wrap 2" columnConstraints="[]15[grow,fill]" rowConstraints="[]2[]"/>
+        <label text="#MSG(adichatzStudio, scenario.applicationServer.name)" background="#COLOR(IFormColors.H_GRADIENT_START)" id="nameLBL"/>
+        <text mandatory="true" enabled="false" id="name">
+            <accessibilities>
+                <accessibility type="ENABLED" id="name$$ENABLEDFilter">
+                    <accept>return false;</accept>
+                </accessibility>
+            </accessibilities>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(adichatzStudio, scenario.datasource.description)" background="#COLOR(IFormColors.H_GRADIENT_START)" id="descriptionLBL"/>
+        <text id="description"/>
+    </group>
+    <group text="#MSG(adichatzStudio, scenario.as.SERVER)" entityURI="adi://org.adichatz.studio/model/ApplicationServerMM" font="#FONT(JFaceResources.BANNER_FONT)" layoutData="h 0:n:n, w 0:n:n" id="serverGroup">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[]15[grow,fill]" rowConstraints="[]2[]2[]"/>
+        <label text="#MSG(adichatzStudio, scenario.as.home)" id="asHomeLBL">
+            <pluginEntity/>
+        </label>
+        <fileText forceBinding="true" mandatory="true" layoutData="wmin 400" style="SWT.BORDER | AdiSWT.DIRECTORY | SWT.NONE" toolTipText="#MSG(adichatzStudio, scenario.applicationServer.dir.sample)" id="application.server.home">
+            <pluginEntity/>
+            <validators>
+                <validator key="invalidDeployDir" errorMessage="#MSG(adichatzStudio, scenario.applicationServer.invalid.deploymentDir)">
+                    <errorWhen>import java.io.File;&#13;
+return null == getValue() || !(new File((String) getValue()).exists());</errorWhen>
+                </validator>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </fileText>
+        <label text="#MSG(adichatzStudio, scenario.as.deploymentDir)" id="asDeploymentDirLBL">
+            <pluginEntity/>
+        </label>
+        <text forceBinding="true" mandatory="true" id="ejb.deployment.dir">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(adichatzStudio, scenario.as.modulesDir)" id="as.modules.directoryLBL">
+            <pluginEntity/>
+        </label>
+        <text forceBinding="true" mandatory="false" id="as.modules.directory">
+            <pluginEntity/>
+        </text>
+        <validators>
+            <validator key="invalidInstallation" hostingControllerIds="ejb.deployment.dir" errorMessage="#MSG(adichatzStudio, studio.fullProject.applicationServer)">
+                <errorWhen>import java.io.File;&#13;
+String serverHome = (String) #CONTROLLER(application.server.home).getValue(); 
+String deployDir = (String) #CONTROLLER(ejb.deployment.dir).getValue(); 
+if (null == serverHome || null == deployDir)
+   return true;
+return !(new File(serverHome.concat("/").concat(deployDir)).exists());</errorWhen>
+            </validator>
+            <validator key="invalidModulesDirectory" hostingControllerIds="as.modules.directory" errorMessage="#MSG(adichatzStudio, studio.invalid.modules.directory)">
+                <errorWhen>import java.io.File;&#13;
+String serverHome = (String) #CONTROLLER(application.server.home).getValue(); 
+String modulesDirectory = (String) #CONTROLLER(as.modules.directory).getValue(); 
+if (null == serverHome || null == modulesDirectory)
+   return true;
+return !(new File(serverHome.concat("/").concat(modulesDirectory)).exists());</errorWhen>
+            </validator>
+        </validators>
+    </group>
+    <group text="#MSG(adichatzStudio, scenario.as.CONTEXT)" font="#FONT(JFaceResources.BANNER_FONT)" layoutData="h 0:n:n, w 0:n:n" id="contextGroup">
+        <layout layoutConstraints="wrap 2" columnConstraints="[]15[grow,fill]" rowConstraints="[]2[]2[]"/>
+        <label text="java.naming.factory.url.pkgs:" id="urlPkgsLBL"/>
+        <text id="java.naming.factory.url.pkgs"/>
+        <label text="java.naming.factory.initial:" id="namingLBL"/>
+        <text id="java.naming.factory.initial"/>
+        <label text="java.naming.provider.url:" id="providerUrlLBL"/>
+        <text id="java.naming.provider.url"/>
+    </group>
+    <group text="#MSG(adichatzStudio, scenario.as.REMOTE)" font="#FONT(JFaceResources.BANNER_FONT)" layoutData="h 0:n:n, w 0:n:n" id="remoteGroup">
+        <layout layoutConstraints="wrap 2" columnConstraints="[]15[grow,fill]" rowConstraints="[]2[]"/>
+        <label text="remote.connection.default.host:" id="hostLBL"/>
+        <text id="remote.connection.default.host"/>
+        <label text="remote.connection.default.port:" id="portLBL"/>
+        <text id="remote.connection.default.port"/>
+    </group>
+</containerTree>

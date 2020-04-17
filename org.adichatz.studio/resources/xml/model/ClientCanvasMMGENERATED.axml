@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ClientCanvasMM" superEntityURI="adi://org.adichatz.studio/model/DirtyContainerMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="expanded">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField mandatory="true" id="text">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+    <propertyField id="clientBackground">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="clientBackgroundImage">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="clientBounds">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="clientCapture">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="clientFocus">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="clientFont">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="clientForeground">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="clientLayoutData">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="clientLocation">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="clientMenu">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="clientRedraw">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="clientSize">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="clientStyle">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

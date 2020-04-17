@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/LabelProviderMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(labelProvider, backgroundCode).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="backgroundCode$1"/>
+        <text property="backgroundCode" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(labelProvider, backgroundCode).concat(&quot;:&quot;)" linkedControl="backgroundCode$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="backgroundCode">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(labelProvider, foregroundCode).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="foregroundCode$1"/>
+        <text property="foregroundCode" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(labelProvider, foregroundCode).concat(&quot;:&quot;)" linkedControl="foregroundCode$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="foregroundCode">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(labelProvider, imageCode).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="imageCode$1"/>
+        <text property="imageCode" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(labelProvider, imageCode).concat(&quot;:&quot;)" linkedControl="imageCode$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="imageCode">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(labelProvider, textCode).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="textCode$1"/>
+        <text property="textCode" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(labelProvider, textCode).concat(&quot;:&quot;)" linkedControl="textCode$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="textCode">
+            <pluginEntity/>
+        </text>
+    </scrolledComposite>
+</containerTree>

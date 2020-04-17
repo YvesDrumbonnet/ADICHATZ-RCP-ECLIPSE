@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<includeTree coreClassName="org.adichatz.jpa.extra.ATabularContextMenuCore" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="false">
+    <headerMenuManager id="headertMenu">
+        <action controllerClassName="org.adichatz.engine.tabular.HideColumnActionController" id="hideColumnAction"/>
+		<menu controllerClassName="org.adichatz.engine.tabular.ShowColumnMenuManagerController"  id="showColumns"/>
+        <action controllerClassName="org.adichatz.engine.tabular.RefreshColumnSizeActionController" id="refreshColumnSize"/>
+		<separator/>
+        <action controllerClassName="org.adichatz.jpa.action.AddColumnFilterActionController" id="addColumnFilterAction" valid="isColumnFilterable()"/>
+        <action controllerClassName="org.adichatz.engine.tabular.RemoveColumnFilterActionController" id="RemoveColumnFilterAction" valid="hasFilterOnColumn()"/>
+    </headerMenuManager>
+   	<menuManager id="contextMenu">
+        <action controllerClassName="org.adichatz.engine.tabular.FilterByValueActionController" id="filterByValueAction" valid="isFilterable()"/>
+        <action controllerClassName="org.adichatz.jpa.tabular.DisableAllFiltersActionController" id="disableAllFiltersAction" valid="hasEnabledFilter()"/>
+        <action controllerClassName="org.adichatz.jpa.tabular.EnableAllFiltersActionController" id="enableAllFiltersAction" valid="hasDisabledFilter()"/>
+        <action controllerClassName="org.adichatz.jpa.tabular.RemoveAllFiltersActionController" id="removeAllFiltersAction" valid="hasFilter()"/>
+		<separator/>
+		<action actionClassName="org.adichatz.engine.tabular.CopyTableToClipboardAction" id="copyTableToClipboardAction">
+        	<params>
+               	<param value="#CONTROLLER(contextMenu).getMenuContainer()" id="TABULAR_CONTROLLER"/>
+        	</params>
+		</action>
+		<separator/>
+        <action actionClassName="org.adichatz.jpa.action.EditEntityPopupAction" id="editNewEntityAction">
+        	<params>
+        	    <param id="DETAIL_RESOURCE_URI" value="#PARAM(DETAIL_RESOURCE_URI)"/>
+               	<param value="#CONTROLLER(contextMenu).getMenuContainer()" id="TABULAR_CONTROLLER"/>
+                <param id="NEW_RECORD" value="TRUE"/>
+        	</params>
+        </action>
+    </menuManager>
+</includeTree>

@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/PShelfItemMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity>
+        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+    </pluginEntity>
+    <pshelf delayed="true" selection="0" id="detailPShelf">
+        <pluginEntity>
+            <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+        </pluginEntity>
+        <pshelfItem text="#MSG(adichatzStudio, studio.xjcEditor.basicItem)" id="basicItem">
+            <pluginEntity>
+                <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+            </pluginEntity>
+            <scrolledComposite dirtyManagement="false" id="basicItemSC">
+                <pluginEntity>
+                    <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                </pluginEntity>
+                <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+                <label text="#MSG(element, id).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="id$1"/>
+                <text property="id" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(element, id).concat(&quot;:&quot;)" linkedControl="id$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.IdTextController" id="id">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(collection, background).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="background$1"/>
+                <text property="background" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, background).concat(&quot;:&quot;)" linkedControl="background$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ColorController" valid="null != #FV()" id="background">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="background$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(fieldContainer, backgroundImage).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="backgroundImage$1"/>
+                <text property="backgroundImage" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, backgroundImage).concat(&quot;:&quot;)" linkedControl="backgroundImage$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="backgroundImage">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="backgroundImage$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(fieldContainer, bounds).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="bounds$1"/>
+                <text property="bounds" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, bounds).concat(&quot;:&quot;)" linkedControl="bounds$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="bounds">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="bounds$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(fieldContainer, capture).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="capture$1"/>
+                <text property="capture" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, capture).concat(&quot;:&quot;)" linkedControl="capture$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="capture">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="capture$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <hyperlink text="#MSG(collection, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNamePShelfItemPART$1">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </hyperlink>
+                <text property="controllerClassName" labelText="#MSG(collection, controllerClassName).concat(&quot;:&quot;)" linkedControl="controllerClassNamePShelfItemPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" valid="null != #FV()" id="controllerClassName">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="controllerClassName$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(collection, enabled).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="enabled$1"/>
+                <text property="enabled" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, enabled).concat(&quot;:&quot;)" linkedControl="enabled$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" valid="null != #FV()" id="enabled">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="enabled$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(collection, enableRoles).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="enableRoles$1"/>
+                <text property="enableRoles" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, enableRoles).concat(&quot;:&quot;)" linkedControl="enableRoles$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="enableRoles">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="enableRoles$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(fieldContainer, entity).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="entity$1"/>
+                <text property="entity" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, entity).concat(&quot;:&quot;)" linkedControl="entity$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="entity">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="entity$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <hyperlink text="#MSG(fieldContainer, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIPShelfItemPART$1">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </hyperlink>
+                <text property="entityURI" labelText="#MSG(fieldContainer, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIPShelfItemPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" valid="null != #FV()" id="entityURI">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="entityURI$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(fieldContainer, focus).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="focus$1"/>
+                <text property="focus" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, focus).concat(&quot;:&quot;)" linkedControl="focus$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="focus">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="focus$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(fieldContainer, font).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="font$1"/>
+                <text property="font" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, font).concat(&quot;:&quot;)" linkedControl="font$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.FontController" valid="null != #FV()" id="font">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="font$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(collection, foreground).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="foreground$1"/>
+                <text property="foreground" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, foreground).concat(&quot;:&quot;)" linkedControl="foreground$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ColorController" valid="null != #FV()" id="foreground">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="foreground$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(pShelfItem, image).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="image$1"/>
+                <text property="image" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(pShelfItem, image).concat(&quot;:&quot;)" linkedControl="image$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="image">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="image$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(lazyFetchContainer, layoutData).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="layoutData$1"/>
+                <text property="layoutData" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(lazyFetchContainer, layoutData).concat(&quot;:&quot;)" linkedControl="layoutData$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" valid="null != #FV()" id="layoutData">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="layoutData$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(lazyFetchContainer, lazyFetches).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="lazyFetches$1"/>
+                <text property="lazyFetches" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(lazyFetchContainer, lazyFetches).concat(&quot;:&quot;)" linkedControl="lazyFetches$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="lazyFetches">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="lazyFetches$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(fieldContainer, location).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="location$1"/>
+                <text property="location" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, location).concat(&quot;:&quot;)" linkedControl="location$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="location">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="location$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(fieldContainer, menu).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="menu$1"/>
+                <text property="menu" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, menu).concat(&quot;:&quot;)" linkedControl="menu$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="menu">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="menu$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(fieldContainer, redraw).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="redraw$1"/>
+                <text property="redraw" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, redraw).concat(&quot;:&quot;)" linkedControl="redraw$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="redraw">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="redraw$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(validElement, ref).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="ref$1"/>
+                <text property="ref" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validElement, ref).concat(&quot;:&quot;)" linkedControl="ref$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="ref">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="ref$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(fieldContainer, size).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="size$1"/>
+                <text property="size" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, size).concat(&quot;:&quot;)" linkedControl="size$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="size">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="size$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(collection, style).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="style$1"/>
+                <text property="style" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, style).concat(&quot;:&quot;)" linkedControl="style$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="style">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="style$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(pShelfItem, text).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="text$1"/>
+                <text property="text" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(pShelfItem, text).concat(&quot;:&quot;)" linkedControl="text$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="text">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="text$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(pShelfItem, toolTipText).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="toolTipText$1"/>
+                <text property="toolTipText" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(pShelfItem, toolTipText).concat(&quot;:&quot;)" linkedControl="toolTipText$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="toolTipText">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="toolTipText$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(validElement, valid).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="valid$1"/>
+                <text property="valid" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validElement, valid).concat(&quot;:&quot;)" linkedControl="valid$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="valid">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(collection, validRoles).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="validRoles$1"/>
+                <text property="validRoles" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, validRoles).concat(&quot;:&quot;)" linkedControl="validRoles$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="validRoles">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="validRoles$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(collection, visible).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="visible$1"/>
+                <text property="visible" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, visible).concat(&quot;:&quot;)" linkedControl="visible$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" valid="null != #FV()" id="visible">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="visible$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(collection, visibleRoles).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="visibleRoles$1"/>
+                <text property="visibleRoles" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, visibleRoles).concat(&quot;:&quot;)" linkedControl="visibleRoles$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="visibleRoles">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="visibleRoles$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(collection, additionalCode).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="additionalCode$1"/>
+                <text property="additionalCode" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, additionalCode).concat(&quot;:&quot;)" linkedControl="additionalCode$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" valid="null != #FV()" id="additionalCode">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="additionalCode$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+            </scrolledComposite>
+        </pshelfItem>
+        <pshelfItem text="#MSG(adichatzStudio, studio.xjcEditor.lifeCycleItem)" id="lifeCycleItem">
+            <pluginEntity>
+                <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+            </pluginEntity>
+            <scrolledComposite dirtyManagement="false" id="lifeCycleItemSC">
+                <pluginEntity>
+                    <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                </pluginEntity>
+                <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+                <hyperlink text="#MSG(collection, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNamePShelfItemPART$1">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </hyperlink>
+                <text property="controllerClassName" labelText="#MSG(collection, controllerClassName).concat(&quot;:&quot;)" linkedControl="controllerClassNamePShelfItemPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="controllerClassName">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(collection, enableRoles).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="enableRoles$1"/>
+                <text property="enableRoles" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, enableRoles).concat(&quot;:&quot;)" linkedControl="enableRoles$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="enableRoles">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(fieldContainer, entity).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="entity$1"/>
+                <text property="entity" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, entity).concat(&quot;:&quot;)" linkedControl="entity$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="entity">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <hyperlink text="#MSG(fieldContainer, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIPShelfItemPART$1">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </hyperlink>
+                <text property="entityURI" labelText="#MSG(fieldContainer, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIPShelfItemPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="entityURI">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(lazyFetchContainer, lazyFetches).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="lazyFetches$1"/>
+                <text property="lazyFetches" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(lazyFetchContainer, lazyFetches).concat(&quot;:&quot;)" linkedControl="lazyFetches$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="lazyFetches">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(validElement, ref).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="ref$1"/>
+                <text property="ref" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validElement, ref).concat(&quot;:&quot;)" linkedControl="ref$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="ref">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(collection, validRoles).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="validRoles$1"/>
+                <text property="validRoles" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, validRoles).concat(&quot;:&quot;)" linkedControl="validRoles$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="validRoles">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(collection, visibleRoles).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="visibleRoles$1"/>
+                <text property="visibleRoles" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, visibleRoles).concat(&quot;:&quot;)" linkedControl="visibleRoles$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="visibleRoles">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(collection, additionalCode).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="additionalCode$1"/>
+                <text property="additionalCode" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, additionalCode).concat(&quot;:&quot;)" linkedControl="additionalCode$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="additionalCode">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+            </scrolledComposite>
+        </pshelfItem>
+        <pshelfItem text="#MSG(adichatzStudio, studio.xjcEditor.controlItem)" id="controlItem">
+            <pluginEntity>
+                <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+            </pluginEntity>
+            <scrolledComposite dirtyManagement="false" id="controlItemSC">
+                <pluginEntity>
+                    <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                </pluginEntity>
+                <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+                <label text="#MSG(collection, background).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="background$1"/>
+                <text property="background" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, background).concat(&quot;:&quot;)" linkedControl="background$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ColorController" id="background">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(fieldContainer, backgroundImage).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="backgroundImage$1"/>
+                <text property="backgroundImage" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, backgroundImage).concat(&quot;:&quot;)" linkedControl="backgroundImage$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="backgroundImage">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(fieldContainer, bounds).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="bounds$1"/>
+                <text property="bounds" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, bounds).concat(&quot;:&quot;)" linkedControl="bounds$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="bounds">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(fieldContainer, capture).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="capture$1"/>
+                <text property="capture" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, capture).concat(&quot;:&quot;)" linkedControl="capture$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="capture">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(collection, enabled).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="enabled$1"/>
+                <text property="enabled" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, enabled).concat(&quot;:&quot;)" linkedControl="enabled$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="enabled">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(fieldContainer, focus).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="focus$1"/>
+                <text property="focus" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, focus).concat(&quot;:&quot;)" linkedControl="focus$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="focus">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(fieldContainer, font).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="font$1"/>
+                <text property="font" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, font).concat(&quot;:&quot;)" linkedControl="font$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.FontController" id="font">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(collection, foreground).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="foreground$1"/>
+                <text property="foreground" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, foreground).concat(&quot;:&quot;)" linkedControl="foreground$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ColorController" id="foreground">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(pShelfItem, image).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="image$1"/>
+                <text property="image" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(pShelfItem, image).concat(&quot;:&quot;)" linkedControl="image$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="image">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(lazyFetchContainer, layoutData).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="layoutData$1"/>
+                <text property="layoutData" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(lazyFetchContainer, layoutData).concat(&quot;:&quot;)" linkedControl="layoutData$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="layoutData">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(fieldContainer, location).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="location$1"/>
+                <text property="location" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, location).concat(&quot;:&quot;)" linkedControl="location$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="location">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(fieldContainer, menu).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="menu$1"/>
+                <text property="menu" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, menu).concat(&quot;:&quot;)" linkedControl="menu$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="menu">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(fieldContainer, redraw).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="redraw$1"/>
+                <text property="redraw" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, redraw).concat(&quot;:&quot;)" linkedControl="redraw$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="redraw">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(fieldContainer, size).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="size$1"/>
+                <text property="size" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, size).concat(&quot;:&quot;)" linkedControl="size$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="size">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(collection, style).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="style$1"/>
+                <text property="style" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, style).concat(&quot;:&quot;)" linkedControl="style$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="style">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(pShelfItem, text).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="text$1"/>
+                <text property="text" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(pShelfItem, text).concat(&quot;:&quot;)" linkedControl="text$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="text">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(pShelfItem, toolTipText).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="toolTipText$1"/>
+                <text property="toolTipText" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(pShelfItem, toolTipText).concat(&quot;:&quot;)" linkedControl="toolTipText$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="toolTipText">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(collection, visible).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="visible$1"/>
+                <text property="visible" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, visible).concat(&quot;:&quot;)" linkedControl="visible$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="visible">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/FieldContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+            </scrolledComposite>
+        </pshelfItem>
+    </pshelf>
+</containerTree>

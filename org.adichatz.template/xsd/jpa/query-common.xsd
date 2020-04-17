@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+ 	<xs:include schemaLocation="../common/base-common.xsd"/>
+ 	
+    <!-- ****************************************** -->
+    <!--		Q U E R Y - P R E F E R E N C E		-->
+    <!-- ****************************************** -->
+	<xs:complexType name="queryPreferenceType">
+		<xs:complexContent>
+			<xs:extension base="paramType">
+		        <xs:sequence>
+					<xs:element name="pagination" type="queryPaginationType"/>
+					<xs:element name="parameter" type="queryParameterType"  minOccurs="1" maxOccurs="unbounded"/>
+					<xs:element name="openClause" type="queryOpenClauseType"  minOccurs="1" maxOccurs="unbounded"/>
+		   		</xs:sequence>
+				<xs:attribute name="fullTextClause" type="xs:string"/>
+				<xs:attribute name="orderByClause" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="queryPaginationType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:attribute name="firstResult" type="xs:int"/>
+				<xs:attribute name="maxResults" type="xs:int"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+    <!-- ************** -->
+    <!-- queryParameter -->
+    <!-- ************** -->
+	<xs:complexType name="queryParameterType">
+		<xs:complexContent>
+			<xs:extension base="elementType">
+				<xs:attribute name="prompt" type="xs:string"/>
+				<xs:attribute name="property" type="xs:NCName"/>
+				<xs:attribute name="entityURI" type="xs:string"/>
+				<xs:attribute name="suffix" type="xs:NCName" use="required"/>
+				<xs:attribute name="valid" type="xs:boolean"/>
+                <xs:attribute name="style" type="xs:string"/>
+                <!-- Aspect attributes -->
+                <xs:attribute name="permanent" type="xs:boolean" default="false"/>
+                <xs:attribute name="visible" type="xs:boolean" default="true"/>                
+				<!-- Expression -->
+				<xs:attribute name="columnText" type="xs:string"/>
+				<xs:attribute name="binaryExpression" type="xs:base64Binary"/>
+				<xs:attribute name="expression" type="xs:string"/>
+				<xs:attribute name="operator" type="xs:NCName"/>
+				<xs:attribute name="secondColumnText" type="xs:string"/>		
+				<xs:attribute name="binarySecondExpression" type="xs:base64Binary"/>		
+				<xs:attribute name="secondExpression" type="xs:string"/>		
+				<!--  Field Controller -->				
+				<xs:attribute name="expressionMethodURI"/>
+				<!-- used in org.adichatz.jpa.xjc -->
+				<xs:attribute name="expressionClassName" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+    <!-- *************** -->
+    <!-- queryOpenClause -->
+    <!-- *************** -->
+	<xs:complexType name="queryOpenClauseType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:choice>
+					<xs:element name="parameter" type="queryParameterType" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:choice>
+				<xs:attribute name="title" type="xs:string"/>
+				<xs:attribute name="clause" type="xs:string"/>
+				<xs:attribute name="valid" type="xs:boolean" default="true"/>
+                <!-- Aspect attributes -->
+                <xs:attribute name="permanent" type="xs:boolean" default="false"/>
+                <xs:attribute name="visible" type="xs:boolean" default="true"/>                
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+    <!-- ********* -->
+    <!-- queryPart -->
+    <!-- ********* -->
+    <xs:complexType name="queryPartType">
+		<xs:complexContent>
+			<xs:extension base="elementType">
+				<xs:attribute name="entityURI" type="xs:NCName"/>
+				<xs:attribute name="suffix" type="xs:NCName" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ******** -->
+    <!-- jointure -->
+    <!-- ******** -->
+    <xs:complexType name="jointureType">
+		<xs:complexContent>
+			<xs:extension base="queryPartType">
+				<xs:choice>
+					<xs:element name="jointure" type="jointureType" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:choice>
+				<xs:attribute name="fieldName" type="xs:NCName" use="required"/>
+				<xs:attribute name="jointureType" type="jointureTypeEnum" use="required"/>
+			</xs:extension>
+		</xs:complexContent>	
+    </xs:complexType>
+	
+    <!-- ********************* -->
+    <!-- JointureType Enumeration -->
+    <!-- ********************* -->
+    <xs:simpleType name="jointureTypeEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="LEFT JOIN FETCH"/>
+            <xs:enumeration value="JOIN FETCH"/>
+            <xs:enumeration value="JOIN"/>
+            <xs:enumeration value="LEFT JOIN"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- *************** -->
+    <!-- jointureAliases -->
+    <!-- *************** -->
+    <xs:complexType name="jointureAliasesType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:sequence>
+					<xs:element name="jointureAlias" type="jointureAliasType"  minOccurs="1" maxOccurs="unbounded"/>
+		        </xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+    <!-- ************* -->
+    <!-- jointureAlias -->
+    <!-- ************* -->
+   <xs:complexType  name="jointureAliasType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:attribute name="alias" type="xs:NCName"/>
+				<xs:attribute name="path" type="xs:NCName"/>
+			</xs:extension>
+		</xs:complexContent>
+   </xs:complexType>
+
+    <!-- *********************** -->
+    <!-- E N T I T Y - P A R A M -->
+    <!-- *********************** -->
+   <xs:complexType  name="entityParamType">
+        <xs:complexContent>
+            <xs:extension base="paramType">
+                <xs:attribute name="entityURI" type="xs:NCName"/>       
+                <xs:attribute name="idvalue" type="xs:string"/>
+                <xs:attribute name="binaryIdvalue" type="xs:base64Binary"/>
+                <xs:attribute name="lazyFetches" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+   </xs:complexType>
+   
+    <!-- *************************************************	-->
+    <!--			C O N T E N T - P R O V I D E R S			-->
+    <!-- *************************************************	-->
+    <!-- ********************** -->
+    <!-- query content provider -->
+    <!-- ********************** -->
+   <xs:complexType  name="queryContentProviderType">
+		<xs:complexContent>
+			<xs:extension base="contentProviderType">
+				<xs:attribute name="adiResourceURI" type="xs:string"/>
+				<xs:attribute name="pluginKey" type="xs:Name"/><!-- set the UI plugin when marshalling content provider -->
+                <xs:attribute name="preferenceURI" type="xs:string"/>
+                <xs:attribute name="comparatorClassName" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+   </xs:complexType>
+
+    <!-- ******************************** -->
+    <!-- list detail set content provider -->
+    <!-- ******************************** -->
+   <xs:complexType  name="listDetailContentProviderType">
+		<xs:complexContent>
+			<xs:extension base="queryContentProviderType">
+				<xs:attribute name="fieldName" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+   </xs:complexType>
+
+    <!-- *************************** -->
+    <!-- entity set content provider -->
+    <!-- *************************** -->
+   <xs:complexType  name="entitySetContentProviderType">
+		<xs:complexContent>
+			<xs:extension base="listDetailContentProviderType">
+				<xs:attribute name="parentEntityURI" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+   </xs:complexType>
+
+    <!-- ************************************************* -->
+    <!-- C U S T O M I Z A T I O N - C L A S S - P A R A M -->
+    <!-- ************************************************* -->
+    <xs:complexType  name="customizationClassParamType">
+       <xs:complexContent>
+           <xs:extension base="paramType">
+               <xs:attribute name="customizationClassName" type="xs:string"/>
+               <xs:attribute name="pluginKey" type="xs:Name"/>
+           </xs:extension>
+       </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

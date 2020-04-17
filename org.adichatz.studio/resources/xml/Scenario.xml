@@ -1,0 +1,1280 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<scenarioTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/scenarioTree.xsd">
+    <params>
+        <param value="C:/ADICHATZ/ECLIPSE/workspaces/4.9/workspace/adichatz/org.adichatz.studio" id="plugin.home"/>
+        <param value="org.adichatz.studio" id="plugin.name"/>
+        <param value="org.adichatz.studio" id="plugin.package"/>
+        <param value="org.adichatz.generator.xjc" id="model.package.name"/>
+        <param value="org.adichatz.studio.xjc.data.XjcPluginResources" id="plugin.resources.className"/>
+        <param value="E:/ADICHATZ/ECLIPSE/eclipse.4.9" id="devl.eclipse.directory"/>
+        <param value="C:/ADICHATZ/ECLIPSE/workspaces/4.9/workspace/adichatz" id="devl.workspace.directory"/>
+        <param value="true" id="devl.create.xml.trace"/>
+        <param value="######" id="devl.default.integer.pattern"/>
+        <param value="2" id="devl.default.integer.scale"/>
+        <param value="false" id="devl.format.generated.classes"/>
+    </params>
+    <generators>
+        <generator treeClassName="org.adichatz.generator.wrapper.PluginEntityTreeWrapper" generatorClassName="org.adichatz.studio.xjc.scenario.XjcPluginEntityTreeGenerator"/>
+        <generator treeClassName="org.adichatz.generator.wrapper.EntityTreeWrapper" generatorClassName="org.adichatz.studio.xjc.scenario.XjcEntityMetaModelGenerator"/>
+        <generator treeClassName="org.adichatz.generator.wrapper.PartTreeWrapper" generatorClassName="org.adichatz.generator.PartTreeGenerator"/>
+        <generator treeClassName="org.adichatz.generator.wrapper.ExtendTreeWrapper" generatorClassName="org.adichatz.generator.ExtendTreeGenerator"/>
+        <generator treeClassName="org.adichatz.generator.wrapper.IncludeTreeWrapper" generatorClassName="org.adichatz.generator.IncludeTreeGenerator"/>
+        <generator treeClassName="org.adichatz.generator.wrapper.ContainerTreeWrapper" generatorClassName="org.adichatz.generator.ContainerTreeGenerator"/>
+        <generator treeClassName="#CONTROLGENERATOR()" generatorClassName="org.adichatz.studio.xjc.scenario.XjcControlGenerator"/>
+        <generator treeClassName="org.adichatz.generator.wrapper.TreeManagerTreeWrapper" generatorClassName="org.adichatz.generator.TreeManagerGenerator"/>
+        <generator treeClassName="org.adichatz.generator.wrapper.TableWrapper" generatorClassName="org.adichatz.generator.TableGenerator"/>
+        <generator treeClassName="org.adichatz.generator.wrapper.GridWrapper" generatorClassName="org.adichatz.generator.GridGenerator"/>
+    </generators>
+    <pathElements>
+        <pathElement type="PLUGIN" location="org.eclipse.swt.win32.win32.x86" additionalResourcePath="true"/>
+        <pathElement type="PLUGIN" location="org.eclipse.swt.win32.win32.x86_64" additionalResourcePath="true"/>
+        <pathElement type="PLUGIN" location="org.eclipse.jface"/>
+        <pathElement type="PLUGIN" location="org.eclipse.ui.forms"/>
+        <pathElement type="PLUGIN" location="org.eclipse.ui.views"/>
+        <pathElement type="PLUGIN" location="org.eclipse.core.commands" additionalResourcePath="true"/>
+        <pathElement type="PLUGIN" location="org.eclipse.core.resources"/>
+        <pathElement type="PLUGIN" location="org.eclipse.core.jobs" additionalResourcePath="true"/>
+        <pathElement type="PLUGIN" location="org.eclipse.ui.workbench" additionalResourcePath="true"/>
+        <pathElement type="PLUGIN" location="org.eclipse.equinox.common" additionalResourcePath="true"/>
+        <pathElement type="PLUGIN" location="org.eclipse.equinox.registry" additionalResourcePath="true"/>
+        <pathElement type="PLUGIN" location="org.adichatz.common"/>
+        <pathElement type="PLUGIN" location="org.adichatz.engine"/>
+        <pathElement type="PLUGIN" location="org.adichatz.jpa"/>
+        <pathElement type="PLUGIN" location="org.adichatz.source.resources" additionalResourcePath="true"/>
+        <pathElement type="PLUGIN" location="org.adichatz.generator"/>
+        <pathElement type="PLUGIN" location="org.adichatz.tool" additionalResourcePath="true"/>
+        <pathElement type="DIRECTORY" location="#PLUGINHOME()/bin" additionalResourcePath="true"/>
+        <pathElement type="DIRECTORY" location="#PLUGINHOME()/resources/gencode/bin" additionalResourcePath="true"/>
+    </pathElements>
+    <scenarios>
+        <scenario type="PLUGIN_ENTITY" scenarioClassName="org.adichatz.studio.xjc.scenario.XjcPluginEntityScenario"/>
+        <scenario type="ENTITY" scenarioClassName="org.adichatz.studio.xjc.scenario.XjcEntityScenario"/>
+        <scenario type="DETAIL" scenarioClassName="org.adichatz.studio.xjc.scenario.XjcDetailPartScenario"/>
+        <scenario type="MESSAGE_BUNDLE" scenarioClassName="org.adichatz.studio.xjc.scenario.XjcMessageBundleScenario"/>
+    </scenarios>
+    <controllers>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.ActionWrapper" controllerClassName="org.adichatz.engine.controller.action.ActionController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.ButtonBarWrapper" controllerClassName="org.adichatz.engine.controller.collection.ButtonBarController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.ButtonWrapper" controllerClassName="org.adichatz.engine.controller.action.ButtonController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.CheckBoxWrapper" controllerClassName="org.adichatz.engine.controller.field.CheckBoxController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.CComboWrapper" controllerClassName="org.adichatz.engine.controller.field.CComboController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.ComboWrapper" controllerClassName="org.adichatz.engine.controller.field.ComboController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.CompositeWrapper" controllerClassName="org.adichatz.engine.controller.collection.CompositeController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.CTabFolderWrapper" controllerClassName="org.adichatz.engine.controller.collection.CTabFolderController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.CTabItemWrapper" controllerClassName="org.adichatz.engine.controller.collection.CTabItemController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.DateTextWrapper" controllerClassName="org.adichatz.engine.controller.field.DateTextController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.DetailPartWrapper" controllerClassName="org.adichatz.engine.controller.collection.DetailPageController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.EncryptedTextWrapper" controllerClassName="org.adichatz.engine.controller.field.EncryptedTextController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.ExtraTextWrapper" controllerClassName="org.adichatz.engine.controller.field.ExtraTextController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.FileTextWrapper" controllerClassName="org.adichatz.engine.controller.field.FileTextController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.FormPageWrapper" controllerClassName="org.adichatz.engine.indigo.controller.LegacyFormPageController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.GroupWrapper" controllerClassName="org.adichatz.engine.controller.collection.GroupController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.HelpButtonWrapper" controllerClassName="org.adichatz.engine.controller.action.HelpButtonController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.HyperlinkWrapper" controllerClassName="org.adichatz.engine.controller.field.HyperlinkController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.ImageViewerWrapper" controllerClassName="org.adichatz.engine.controller.field.ImageViewerController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.IncludeWrapper" controllerClassName="org.adichatz.engine.controller.collection.IncludeController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.LabelWrapper" controllerClassName="org.adichatz.engine.controller.field.LabelController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.ManagedToolBarWrapper" controllerClassName="org.adichatz.engine.controller.collection.ManagedToolBarController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.MasterDetailPageWrapper" controllerClassName="org.adichatz.engine.controller.collection.MasterDetailPageController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.MenuActionWrapper" controllerClassName="org.adichatz.engine.controller.action.MenuActionController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.MenuItemWrapper" controllerClassName="org.adichatz.engine.controller.action.MenuItemController"/>
+        <controller wrapperClassName="org.adichatz.generator.xjc.MenuManagerType" controllerClassName="org.adichatz.engine.controller.collection.MenuManagerController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.MultiChoiceWrapper" controllerClassName="org.adichatz.engine.controller.field.MultiChoiceController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.NumericTextWrapper" controllerClassName="org.adichatz.engine.controller.field.NumericTextController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.RadioGroupWrapper" controllerClassName="org.adichatz.engine.controller.field.RadioGroupController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.RefRadioGroupWrapper" controllerClassName="org.adichatz.engine.controller.field.RefRadioGroupController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.RefTextWrapper" controllerClassName="org.adichatz.jpa.controller.RefTextController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.RgbTextWrapper" controllerClassName="org.adichatz.engine.controller.field.RGBTextController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.RichTextWrapper" controllerClassName="org.adichatz.engine.controller.nebula.RichTextController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.SashFormWrapper" controllerClassName="org.adichatz.engine.controller.collection.SashFormController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.ScrolledCompositeWrapper" controllerClassName="org.adichatz.engine.controller.collection.ScrolledCompositeController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.ScrolledFormWrapper" controllerClassName="org.adichatz.engine.controller.collection.ScrolledFormController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.SectionWrapper" controllerClassName="org.adichatz.engine.controller.collection.SectionController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.SeparatorWrapper" controllerClassName="org.adichatz.engine.controller.action.SeparatorController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.ManagedActionWrapper" controllerClassName="org.adichatz.engine.controller.action.ActionController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.TableColumnWrapper" controllerClassName="org.adichatz.engine.controller.field.TableColumnController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.TableWrapper" controllerClassName="org.adichatz.engine.controller.collection.TableController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.TextWrapper" controllerClassName="org.adichatz.engine.controller.field.TextController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.ToolBarWrapper" controllerClassName="org.adichatz.engine.controller.collection.ToolBarController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.ToolItemWrapper" controllerClassName="org.adichatz.engine.controller.action.ToolItemController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.TreeWrapper" controllerClassName="org.adichatz.engine.controller.collection.TreeController"/>
+        <controller wrapperClassName="#CONTROLGENERATOR()" controllerClassName="org.adichatz.studio.xjc.scenario.XjcControlGenerator"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.PGroupWrapper" controllerClassName="org.adichatz.engine.controller.nebula.PGroupController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.PShelfWrapper" controllerClassName="org.adichatz.engine.controller.nebula.PShelfController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.ArgPShelfrapper" controllerClassName="org.adichatz.engine.controller.nebula.ArgPShelfController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.PShelfItemWrapper" controllerClassName="org.adichatz.engine.controller.nebula.PShelfItemController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.GridWrapper" controllerClassName="org.adichatz.engine.controller.nebula.GridController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.GridColumnWrapper" controllerClassName="org.adichatz.engine.controller.nebula.GridColumnController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.GridColumnGroupWrapper" controllerClassName="org.adichatz.engine.controller.nebula.GridColumnGroupController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.PGroupToolItemWrapper" controllerClassName="org.adichatz.engine.controller.nebula.PGroupToolItemController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.PGroupMenuWrapper" controllerClassName="org.adichatz.engine.controller.nebula.PGroupMenuController"/>
+    </controllers>
+    <generationScenario>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.AccessibilitiesType" entityURI="adi://org.adichatz.studio/model/AccessibilitiesMM">
+            <generationUnit adiResourceURI="adi://model/AccessibilitiesMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./accessibilities" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/AccessibilitiesPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.AccessibilityType" entityURI="adi://org.adichatz.studio/model/AccessibilityMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/accessibility.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/AccessibilityMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./accessibility" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/AccessibilityPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ActionResourcesType" entityURI="adi://org.adichatz.studio/model/ActionResourcesMM">
+            <generationUnit adiResourceURI="adi://model/ActionResourcesMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./actionResources" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ActionResourcesPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ActionType" entityURI="adi://org.adichatz.studio/model/ActionMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/action.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ActionMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./action" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ActionPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ApplicationServersType" entityURI="adi://org.adichatz.studio/model/ApplicationServersMM">
+            <generationUnit adiResourceURI="adi://model/ApplicationServersMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./applicationServers" type="MESSAGE_BUNDLE"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ApplicationServerType" entityURI="adi://org.adichatz.studio/model/ApplicationServerMM">
+            <generationUnit adiResourceURI="adi://model/ApplicationServerMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./applicationServer" type="MESSAGE_BUNDLE"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ArgPShelfType" entityURI="adi://org.adichatz.studio/model/ArgPShelfMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/argPShelf.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ArgPShelfMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./argPShelf" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ArgPShelfPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ArgTabFolderType" entityURI="adi://org.adichatz.studio/model/ArgTabFolderMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/argTabFolder.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ArgTabFolderMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./argTabFolder" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ArgTabFolderPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ButtonBarType" entityURI="adi://org.adichatz.studio/model/ButtonBarMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/buttonBar.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ButtonBarMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./buttonBar" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ButtonBarPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ButtonType" entityURI="adi://org.adichatz.studio/model/ButtonMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/button.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ButtonMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./button" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ButtonPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.CComboType" entityURI="adi://org.adichatz.studio/model/CComboMM">
+            <generationUnit adiResourceURI="adi://model/CComboMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./cCombo" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/CComboPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.CheckBoxType" entityURI="adi://org.adichatz.studio/model/CheckBoxMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/checkBox.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/CheckBoxMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./checkBox" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/CheckBoxPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ClientCanvasType" entityURI="adi://org.adichatz.studio/model/ClientCanvasMM">
+            <generationUnit adiResourceURI="adi://model/ClientCanvasMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./clientCanvas" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ClientCanvasPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.CollectionType" entityURI="adi://org.adichatz.studio/model/CollectionMM">
+            <generationUnit adiResourceURI="adi://model/CollectionMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./collection" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/CollectionPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ColumnFieldType" entityURI="adi://org.adichatz.studio/model/ColumnFieldMM">
+            <generationUnit adiResourceURI="adi://model/ColumnFieldMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./columnField" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ColumnFieldPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ColumnPreferencesType" entityURI="adi://org.adichatz.studio/model/ColumnPreferencesMM">
+            <generationUnit adiResourceURI="adi://model/ColumnPreferencesMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./columnPreferences" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ColumnPreferencesPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ColumnPreferenceType" entityURI="adi://org.adichatz.studio/model/ColumnPreferenceMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/columnPreference.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ColumnPreferenceMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./columnPreference" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ColumnPreferencePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ComboType" entityURI="adi://org.adichatz.studio/model/ComboMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/combo.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ComboMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./combo" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ComboPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.CompositeBagType" entityURI="adi://org.adichatz.studio/model/CompositeBagMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/compositeBag.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/CompositeBagMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./compositeBag" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/CompositeBagPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.CompositeSeparatorType" entityURI="adi://org.adichatz.studio/model/CompositeSeparatorMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/compositeSeparator.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/CompositeSeparatorMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./compositeSeparator" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/CompositeSeparatorPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.CompositeType" entityURI="adi://org.adichatz.studio/model/CompositeMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/composite.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/CompositeMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./composite" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/CompositePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ConfigType" entityURI="adi://org.adichatz.studio/model/ConfigMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/config.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ConfigMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./config" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ConfigPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ConnectorTree" entityURI="adi://org.adichatz.studio/model/ConnectorTreeMM">
+            <generationUnit adiResourceURI="adi://model/ConnectorTreeMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./connectorTree" type="MESSAGE_BUNDLE"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ContainerTree" entityURI="adi://org.adichatz.studio/model/ContainerTreeMM">
+            <generationUnit adiResourceURI="adi://model/ContainerTreeMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./containerTree" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ContainerTreePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ContainerType" entityURI="adi://org.adichatz.studio/model/ContainerMM">
+            <generationUnit adiResourceURI="adi://model/ContainerMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./container" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ContainerPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ContentProviderType" entityURI="adi://org.adichatz.studio/model/ContentProviderMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/contentProvider.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ContentProviderMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./contentProvider" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ContentProviderPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ContributionItemType" entityURI="adi://org.adichatz.studio/model/ContributionItemMM">
+            <generationUnit adiResourceURI="adi://model/ContributionItemMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./contributionItem" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ContributionItemPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ControlFieldType" entityURI="adi://org.adichatz.studio/model/ControlFieldMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/controlField.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ControlFieldMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./controlField" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ControlFieldPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ControllerPreferenceType" entityURI="adi://org.adichatz.studio/model/ControllerPreferenceMM">
+            <generationUnit adiResourceURI="adi://model/ControllerPreferenceMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./controllerPreference" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ControllerPreferencePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ControllersType" entityURI="adi://org.adichatz.studio/model/ControllersMM">
+            <generationUnit adiResourceURI="adi://model/ControllersMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./controllers" type="MESSAGE_BUNDLE"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ControllerType" entityURI="adi://org.adichatz.studio/model/ControllerMM">
+            <generationUnit adiResourceURI="adi://model/ControllerMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./controller" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ControllerPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ControlType" entityURI="adi://org.adichatz.studio/model/ControlMM">
+            <generationUnit adiResourceURI="adi://model/ControlMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./control" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ControlPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.CopyResourceType" entityURI="adi://org.adichatz.studio/model/CopyResourceMM">
+            <icons>
+                <icon type="ENTITY" image="IMG_COPY.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/CopyResourceMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./copyResource" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/CopyResourcePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.CrossReferencesType" entityURI="adi://org.adichatz.studio/model/CrossReferencesMM">
+            <generationUnit adiResourceURI="adi://model/CrossReferencesMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./crossReferences" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/CrossReferencesPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.CrossReferenceType" entityURI="adi://org.adichatz.studio/model/CrossReferenceMM">
+            <generationUnit adiResourceURI="adi://model/CrossReferenceMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./crossReference" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/CrossReferencePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.CTabFolderType" entityURI="adi://org.adichatz.studio/model/CTabFolderMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/cTabFolder.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/CTabFolderMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./cTabFolder" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/CTabFolderPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.CTabItemType" entityURI="adi://org.adichatz.studio/model/CTabItemMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/cTabItem.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/CTabItemMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./cTabItem" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/CTabItemPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.CustomGenerationUnitType" entityURI="adi://org.adichatz.studio/model/CustomGenerationUnitMM">
+            <generationUnit adiResourceURI="adi://model/CustomGenerationUnitMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./customGenerationUnit" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/CustomGenerationUnitPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.CustomizationClassParamType" entityURI="adi://org.adichatz.studio/model/CustomizationClassParamMM">
+            <generationUnit adiResourceURI="adi://model/CustomizationClassParamMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./customizationClassParam" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/CustomizationClassParamPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.CustomizationsType" entityURI="adi://org.adichatz.studio/model/CustomizationsMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/customizations.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/CustomizationsMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./customizations" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/CustomizationsPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.CustomizedPreferenceType" entityURI="adi://org.adichatz.studio/model/CustomizedPreferenceMM">
+            <generationUnit adiResourceURI="adi://model/CustomizedPreferenceMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./customizedPreference" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/CustomizedPreferencePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.CustomizedScenariosType" entityURI="adi://org.adichatz.studio/model/CustomizedScenariosMM">
+            <generationUnit adiResourceURI="adi://model/CustomizedScenariosMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./customizedScenarios" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/CustomizedScenariosPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.CustomizedScenarioType" entityURI="adi://org.adichatz.studio/model/CustomizedScenarioMM">
+            <generationUnit adiResourceURI="adi://model/CustomizedScenarioMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./customizedScenario" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/CustomizedScenarioPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.CustomPostActionType" entityURI="adi://org.adichatz.studio/model/CustomPostActionMM">
+            <generationUnit adiResourceURI="adi://model/CustomPostActionMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./customPostAction" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/CustomPostActionPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.DatasourcesType" entityURI="adi://org.adichatz.studio/model/DatasourcesMM">
+            <generationUnit adiResourceURI="adi://model/DatasourcesMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./datasources" type="MESSAGE_BUNDLE"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.DatasourceType" entityURI="adi://org.adichatz.studio/model/DatasourceMM">
+            <generationUnit adiResourceURI="adi://model/DatasourceMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./datasource" type="MESSAGE_BUNDLE"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.DateTextType" entityURI="adi://org.adichatz.studio/model/DateTextMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/dateText.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/DateTextMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./dateText" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/DateTextPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.DateTimeType" entityURI="adi://org.adichatz.studio/model/DateTimeMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/dateTime.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/DateTimeMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./dateTime" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/DateTimePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.DirtyContainerType" entityURI="adi://org.adichatz.studio/model/DirtyContainerMM">
+            <generationUnit adiResourceURI="adi://model/DirtyContainerMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./dirtyContainer" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/DirtyContainerPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.DynamicClauseType" entityURI="adi://org.adichatz.studio/model/DynamicClauseMM">
+            <generationUnit adiResourceURI="adi://model/DynamicClauseMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./dynamicClause" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/DynamicClausePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.EditableFormTextType" entityURI="adi://org.adichatz.studio/model/EditableFormTextMM">
+            <generationUnit adiResourceURI="adi://model/EditableFormTextMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./editableFormText" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/EditableFormTextPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ElementType" entityURI="adi://org.adichatz.studio/model/ElementMM">
+            <generationUnit adiResourceURI="adi://model/ElementMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./element" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ElementPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.EmbeddedFieldType" entityURI="adi://org.adichatz.studio/model/EmbeddedFieldMM">
+            <generationUnit adiResourceURI="adi://model/EmbeddedFieldMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./embeddedField" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/EmbeddedFieldPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.EmbeddedIdFieldType" entityURI="adi://org.adichatz.studio/model/EmbeddedIdFieldMM">
+            <generationUnit adiResourceURI="adi://model/EmbeddedIdFieldMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./embeddedIdField" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/EmbeddedIdFieldPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.EncryptedTextType" entityURI="adi://org.adichatz.studio/model/EncryptedTextMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/encryptedText.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/EncryptedTextMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./encryptedText" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/EncryptedTextPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.EntityElementsType" entityURI="adi://org.adichatz.studio/model/EntityElementsMM">
+            <generationUnit adiResourceURI="adi://model/EntityElementsMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./entityElements" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/EntityElementsPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.EntityElementType" entityURI="adi://org.adichatz.studio/model/EntityElementMM">
+            <generationUnit adiResourceURI="adi://model/EntityElementMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./entityElement" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/EntityElementPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.EntityParamType" entityURI="adi://org.adichatz.studio/model/EntityParamMM">
+            <generationUnit adiResourceURI="adi://model/EntityParamMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./entityParam" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/EntityParamPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.EntitySetContentProviderType" entityURI="adi://org.adichatz.studio/model/EntitySetContentProviderMM">
+            <generationUnit adiResourceURI="adi://model/EntitySetContentProviderMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./entitySetContentProvider" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/EntitySetContentProviderPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.EntitySetType" entityURI="adi://org.adichatz.studio/model/EntitySetMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/entitySet.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/EntitySetMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./entitySet" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/EntitySetPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.EntityTree" entityURI="adi://org.adichatz.studio/model/EntityTreeMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/entity.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/EntityTreeMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./entityTree" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/EntityTreePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ExtendTree" entityURI="adi://org.adichatz.studio/model/ExtendTreeMM">
+            <generationUnit adiResourceURI="adi://model/ExtendTreeMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./extendTree" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ExtendTreePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ExtraTextType" entityURI="adi://org.adichatz.studio/model/ExtraTextMM">
+            <generationUnit adiResourceURI="adi://model/ExtraTextMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./extraText" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ExtraTextPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.FieldContainerType" entityURI="adi://org.adichatz.studio/model/FieldContainerMM">
+            <generationUnit adiResourceURI="adi://model/FieldContainerMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./fieldContainer" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/FieldContainerPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.FieldType" entityURI="adi://org.adichatz.studio/model/FieldMM">
+            <generationUnit adiResourceURI="adi://model/FieldMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./field" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/FieldPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.FileTextType" entityURI="adi://org.adichatz.studio/model/FileTextMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/fileText.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/FileTextMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./fileText" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/FileTextPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.FiltersType" entityURI="adi://org.adichatz.studio/model/FiltersMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/filters.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/FiltersMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./filters" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/FiltersPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.FilterType" entityURI="adi://org.adichatz.studio/model/FilterMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/filter.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/FilterMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./filter" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/FilterPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.FontTextType" entityURI="adi://org.adichatz.studio/model/FontTextMM">
+            <generationUnit adiResourceURI="adi://model/FontTextMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./fontText" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/FontTextPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.FormattedTextType" entityURI="adi://org.adichatz.studio/model/FormattedTextMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/formattedText.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/FormattedTextMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./formattedText" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/FormattedTextPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.FormPageType" entityURI="adi://org.adichatz.studio/model/FormPageMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/formPage.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/FormPageMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./formPage" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/FormPagePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.GenerationScenarioType" entityURI="adi://org.adichatz.studio/model/GenerationScenarioMM">
+            <generationUnit adiResourceURI="adi://model/GenerationScenarioMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./generationScenario" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/GenerationScenarioPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.GenerationUnitType" entityURI="adi://org.adichatz.studio/model/GenerationUnitMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/generationUnit.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/GenerationUnitMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./generationUnit" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/GenerationUnitPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.GeneratorsType" entityURI="adi://org.adichatz.studio/model/GeneratorsMM">
+            <generationUnit adiResourceURI="adi://model/GeneratorsMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./generators" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/GeneratorsPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.GeneratorType" entityURI="adi://org.adichatz.studio/model/GeneratorMM">
+            <generationUnit adiResourceURI="adi://model/GeneratorMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./generator" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/GeneratorPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.GenericFieldType" entityURI="adi://org.adichatz.studio/model/GenericFieldMM">
+            <generationUnit adiResourceURI="adi://model/GenericFieldMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./genericField" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/GenericFieldPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.GMapType" entityURI="adi://org.adichatz.studio/model/GMapMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/gMap.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/GMapMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./gMap" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/GMapPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.GridColumnGroupType" entityURI="adi://org.adichatz.studio/model/GridColumnGroupMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/gridColumnGroup.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/GridColumnGroupMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./gridColumnGroup" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/GridColumnGroupPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.GridColumnType" entityURI="adi://org.adichatz.studio/model/GridColumnMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/gridColumn.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/GridColumnMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./gridColumn" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/GridColumnPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.GridType" entityURI="adi://org.adichatz.studio/model/GridMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/grid.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/GridMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./grid" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/GridPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.GroupType" entityURI="adi://org.adichatz.studio/model/GroupMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/group.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/GroupMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./group" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/GroupPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.HeaderMenuManagerType" entityURI="adi://org.adichatz.studio/model/HeaderMenuManagerMM">
+            <generationUnit adiResourceURI="adi://model/HeaderMenuManagerMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./headerMenuManager" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/HeaderMenuManagerPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.HelpButtonType" entityURI="adi://org.adichatz.studio/model/HelpButtonMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/helpButton.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/HelpButtonMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./helpButton" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/HelpButtonPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.HyperlinkType" entityURI="adi://org.adichatz.studio/model/HyperlinkMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/hyperlink.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/HyperlinkMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./hyperlink" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/HyperlinkPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.IconsType" entityURI="adi://org.adichatz.studio/model/IconsMM">
+            <generationUnit adiResourceURI="adi://model/IconsMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./icons" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/IconsPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.IconType" entityURI="adi://org.adichatz.studio/model/IconMM">
+            <generationUnit adiResourceURI="adi://model/IconMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./icon" type="MESSAGE_BUNDLE"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ImageViewerType" entityURI="adi://org.adichatz.studio/model/ImageViewerMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/imageViewer.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ImageViewerMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./imageViewer" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ImageViewerPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.IncludeTree" entityURI="adi://org.adichatz.studio/model/IncludeTreeMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/include.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/IncludeTreeMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./includeTree" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/IncludeTreePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.IncludeType" entityURI="adi://org.adichatz.studio/model/IncludeMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/include.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/IncludeMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./include" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/IncludePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ItemType" entityURI="adi://org.adichatz.studio/model/ItemMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/item.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ItemMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./item" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ItemPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.JointureAliasesType" entityURI="adi://org.adichatz.studio/model/JointureAliasesMM">
+            <generationUnit adiResourceURI="adi://model/JointureAliasesMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./jointureAliases" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/JointureAliasesPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.JointureAliasType" entityURI="adi://org.adichatz.studio/model/JointureAliasMM">
+            <generationUnit adiResourceURI="adi://model/JointureAliasMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./jointureAlias" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/JointureAliasPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.JointureType" entityURI="adi://org.adichatz.studio/model/JointureMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/jointure.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/JointureMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./jointure" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/JointurePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.LabelProviderType" entityURI="adi://org.adichatz.studio/model/LabelProviderMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/labelProvider.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/LabelProviderMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./labelProvider" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/LabelProviderPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.LabelType" entityURI="adi://org.adichatz.studio/model/LabelMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/label.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/LabelMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./label" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/LabelPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.LayoutType" entityURI="adi://org.adichatz.studio/model/LayoutMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/layout.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/LayoutMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./layout" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/LayoutPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.LazyFetchContainerType" entityURI="adi://org.adichatz.studio/model/LazyFetchContainerMM">
+            <generationUnit adiResourceURI="adi://model/LazyFetchContainerMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./lazyFetchContainer" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/LazyFetchContainerPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ListDetailContentProviderType" entityURI="adi://org.adichatz.studio/model/ListDetailContentProviderMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/listDetailContentProvider.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ListDetailContentProviderMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./listDetailContentProvider" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ListDetailContentProviderPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ListenersType" entityURI="adi://org.adichatz.studio/model/ListenersMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/listeners.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ListenersMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./listeners" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ListenersPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ListenerType" entityURI="adi://org.adichatz.studio/model/ListenerMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/listener.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ListenerMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./listener" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ListenerPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ManagedToolBarType" entityURI="adi://org.adichatz.studio/model/ManagedToolBarMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/managedToolBar.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ManagedToolBarMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./managedToolBar" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ManagedToolBarPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ManyToManyType" entityURI="adi://org.adichatz.studio/model/ManyToManyMM">
+            <generationUnit adiResourceURI="adi://model/ManyToManyMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./manyToMany" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ManyToManyPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.MenuActionType" entityURI="adi://org.adichatz.studio/model/MenuActionMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/menuAction.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/MenuActionMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./menuAction" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/MenuActionPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.MenuItemType" entityURI="adi://org.adichatz.studio/model/MenuItemMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/menuItem.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/MenuItemMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./menuItem" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/MenuItemPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.MenuManagerType" entityURI="adi://org.adichatz.studio/model/MenuManagerMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/menuManager.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/MenuManagerMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./menuManager" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/MenuManagerPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.MenuType" entityURI="adi://org.adichatz.studio/model/MenuMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/menu.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/MenuMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./menu" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/MenuPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.MessagesType" entityURI="adi://org.adichatz.studio/model/MessagesMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/messages.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/MessagesMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./messages" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/MessagesPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.MessageType" entityURI="adi://org.adichatz.studio/model/MessageMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/message.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/MessageMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./message" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/MessagePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ModelPartType" entityURI="adi://org.adichatz.studio/model/ModelPartMM">
+            <generationUnit adiResourceURI="adi://model/ModelPartMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./modelPart" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ModelPartPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.MultiChoiceType" entityURI="adi://org.adichatz.studio/model/MultiChoiceMM">
+            <generationUnit adiResourceURI="adi://model/MultiChoiceMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./multiChoice" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/MultiChoicePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.NativeContentProviderType" entityURI="adi://org.adichatz.studio/model/NativeContentProviderMM">
+            <generationUnit adiResourceURI="adi://model/NativeContentProviderMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./nativeContentProvider" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/NativeContentProviderPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.NavigationPathsType" entityURI="adi://org.adichatz.studio/model/NavigationPathsMM">
+            <generationUnit adiResourceURI="adi://model/NavigationPathsMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./navigationPaths" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/NavigationPathsPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.NavigationPathType" entityURI="adi://org.adichatz.studio/model/NavigationPathMM">
+            <generationUnit adiResourceURI="adi://model/NavigationPathMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./navigationPath" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/NavigationPathPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.NavigatorTree" entityURI="adi://org.adichatz.studio/model/NavigatorTreeMM">
+            <generationUnit adiResourceURI="adi://model/NavigatorTreeMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./navigatorTree" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/NavigatorTreePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.NodeType" entityURI="adi://org.adichatz.studio/model/NodeMM">
+            <generationUnit adiResourceURI="adi://model/NodeMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./node" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/NodePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.NumericTextType" entityURI="adi://org.adichatz.studio/model/NumericTextMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/numericText.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/NumericTextMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./numericText" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/NumericTextPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.OneToManyType" entityURI="adi://org.adichatz.studio/model/OneToManyMM">
+            <generationUnit adiResourceURI="adi://model/OneToManyMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./oneToMany" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/OneToManyPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.OneToOneType" entityURI="adi://org.adichatz.studio/model/OneToOneMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/oneToOne.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/OneToOneMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./oneToOne" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/OneToOnePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ParamsType" entityURI="adi://org.adichatz.studio/model/ParamsMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/params.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ParamsMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./params" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ParamsPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ParamType" entityURI="adi://org.adichatz.studio/model/ParamMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/param.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ParamMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./param" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ParamPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.PartTree" entityURI="adi://org.adichatz.studio/model/PartTreeMM">
+            <generationUnit adiResourceURI="adi://model/PartTreeMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./partTree" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/PartTreePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.PathElementsType" entityURI="adi://org.adichatz.studio/model/PathElementsMM">
+            <generationUnit adiResourceURI="adi://model/PathElementsMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./pathElements" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/PathElementsPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.PathElementType" entityURI="adi://org.adichatz.studio/model/PathElementMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/pathElement.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/PathElementMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./pathElement" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/PathElementPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.PGroupMenuType" entityURI="adi://org.adichatz.studio/model/PGroupMenuMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/pGroupMenu.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/PGroupMenuMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./pGroupMenu" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/PGroupMenuPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.PGroupToolItemType" entityURI="adi://org.adichatz.studio/model/PGroupToolItemMM">
+            <generationUnit adiResourceURI="adi://model/PGroupToolItemMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./pGroupToolItem" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/PGroupToolItemPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.PGroupType" entityURI="adi://org.adichatz.studio/model/PGroupMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/pGroup.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/PGroupMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./pGroup" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/PGroupPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.PluginEntityType" entityURI="adi://org.adichatz.studio/model/PluginEntityMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/pluginEntity.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/PluginEntityMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./pluginEntity" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/PluginEntityPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.PojoRewritersType" entityURI="adi://org.adichatz.studio/model/PojoRewritersMM">
+            <generationUnit adiResourceURI="adi://model/PojoRewritersMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./pojoRewriters" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/PojoRewritersPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.PojoRewriterType" entityURI="adi://org.adichatz.studio/model/PojoRewriterMM">
+            <generationUnit adiResourceURI="adi://model/PojoRewriterMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./pojoRewriter" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/PojoRewriterPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.PojoSuperClassType" entityURI="adi://org.adichatz.studio/model/PojoSuperClassMM">
+            <generationUnit adiResourceURI="adi://model/PojoSuperClassMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./pojoSuperClass" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/PojoSuperClassPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.PreferenceType" entityURI="adi://org.adichatz.studio/model/PreferenceMM">
+            <generationUnit adiResourceURI="adi://model/PreferenceMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./preference" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/PreferencePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.PropertyFieldType" entityURI="adi://org.adichatz.studio/model/PropertyFieldMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/propertyField.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/PropertyFieldMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./propertyField" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/PropertyFieldPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.PShelfItemType" entityURI="adi://org.adichatz.studio/model/PShelfItemMM">
+            <generationUnit adiResourceURI="adi://model/PShelfItemMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./pShelfItem" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/PShelfItemPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.PShelfType" entityURI="adi://org.adichatz.studio/model/PShelfMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/pShelf.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/PShelfMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./pShelf" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/PShelfPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.QueryBuilderType" entityURI="adi://org.adichatz.studio/model/QueryBuilderMM">
+            <generationUnit adiResourceURI="adi://model/QueryBuilderMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./queryBuilder" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/QueryBuilderPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.QueryContentProviderType" entityURI="adi://org.adichatz.studio/model/QueryContentProviderMM">
+            <generationUnit adiResourceURI="adi://model/QueryContentProviderMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./queryContentProvider" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/QueryContentProviderPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.QueryOpenClauseType" entityURI="adi://org.adichatz.studio/model/QueryOpenClauseMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/queryOpenClause.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/QueryOpenClauseMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./queryOpenClause" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/QueryOpenClausePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.QueryPaginationType" entityURI="adi://org.adichatz.studio/model/QueryPaginationMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/queryPagination.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/QueryPaginationMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./queryPagination" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/QueryPaginationPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.QueryParameterType" entityURI="adi://org.adichatz.studio/model/QueryParameterMM">
+            <generationUnit adiResourceURI="adi://model/QueryParameterMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./queryParameter" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/QueryParameterPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.QueryPartType" entityURI="adi://org.adichatz.studio/model/QueryPartMM">
+            <generationUnit adiResourceURI="adi://model/QueryPartMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./queryPart" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/QueryPartPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.QueryPreferenceType" entityURI="adi://org.adichatz.studio/model/QueryPreferenceMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/queryPreference.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/QueryPreferenceMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./queryPreference" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/QueryPreferencePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.QueryReferenceType" entityURI="adi://org.adichatz.studio/model/QueryReferenceMM">
+            <generationUnit adiResourceURI="adi://model/QueryReferenceMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./queryReference" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/QueryReferencePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.QueryTree" entityURI="adi://org.adichatz.studio/model/QueryTreeMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/query.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/QueryTreeMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./queryTree" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/QueryTreePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.RadioGroupType" entityURI="adi://org.adichatz.studio/model/RadioGroupMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/radioGroup.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/RadioGroupMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./radioGroup" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/RadioGroupPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.RcpPartType" entityURI="adi://org.adichatz.studio/model/RcpPartMM">
+            <generationUnit adiResourceURI="adi://model/RcpPartMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./rcpPart" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/RcpPartPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.RefControlType" entityURI="adi://org.adichatz.studio/model/RefControlMM">
+            <generationUnit adiResourceURI="adi://model/RefControlMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./refControl" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/RefControlPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.RefFieldType" entityURI="adi://org.adichatz.studio/model/RefFieldMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/refField.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/RefFieldMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./refField" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/RefFieldPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.RefTextType" entityURI="adi://org.adichatz.studio/model/RefTextMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/refText.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/RefTextMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./refText" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/RefTextPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.RemoveResourceType" entityURI="adi://org.adichatz.studio/model/RemoveResourceMM">
+            <icons>
+                <icon type="ENTITY" image="IMG_DELETE.gif"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/RemoveResourceMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./removeResource" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/RemoveResourcePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ReplacementType" entityURI="adi://org.adichatz.studio/model/ReplacementMM">
+            <generationUnit adiResourceURI="adi://model/ReplacementMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./replacement" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ReplacementPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ResourceBundlesType" entityURI="adi://org.adichatz.studio/model/ResourceBundlesMM">
+            <generationUnit adiResourceURI="adi://model/ResourceBundlesMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./resourceBundles" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ResourceBundlesPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ResourceBundleType" entityURI="adi://org.adichatz.studio/model/ResourceBundleMM">
+            <generationUnit adiResourceURI="adi://model/ResourceBundleMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./resourceBundle" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ResourceBundlePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.RgbTextType" entityURI="adi://org.adichatz.studio/model/RgbTextMM">
+            <generationUnit adiResourceURI="adi://model/RgbTextMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./rgbText" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/RgbTextPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.RichTextType" entityURI="adi://org.adichatz.studio/model/RichTextMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/richText.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/RichTextMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./richText" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/RichTextPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.SashFormType" entityURI="adi://org.adichatz.studio/model/SashFormMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/sashForm.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/SashFormMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./sashForm" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/SashFormPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ScenariosType" entityURI="adi://org.adichatz.studio/model/ScenariosMM">
+            <generationUnit adiResourceURI="adi://model/ScenariosMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./scenarios" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ScenariosPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ScenarioTree" entityURI="adi://org.adichatz.studio/model/ScenarioTreeMM">
+            <generationUnit adiResourceURI="adi://model/ScenarioTreeMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./scenarioTree" type="MESSAGE_BUNDLE"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ScenarioType" entityURI="adi://org.adichatz.studio/model/ScenarioMM">
+            <generationUnit adiResourceURI="adi://model/ScenarioMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./scenario" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ScenarioPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ScrolledCompositeType" entityURI="adi://org.adichatz.studio/model/ScrolledCompositeMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/scrolledComposite.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ScrolledCompositeMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./scrolledComposite" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ScrolledCompositePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ScrolledFormType" entityURI="adi://org.adichatz.studio/model/ScrolledFormMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/scrolledForm.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ScrolledFormMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./scrolledForm" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ScrolledFormPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.SectionType" entityURI="adi://org.adichatz.studio/model/SectionMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/section.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/SectionMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./section" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/SectionPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.SeparatorType" entityURI="adi://org.adichatz.studio/model/SeparatorMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/separator.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/SeparatorMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./separator" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/SeparatorPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.SetType" entityURI="adi://org.adichatz.studio/model/SetMM">
+            <generationUnit adiResourceURI="adi://model/SetMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./set" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/SetPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.StarRatingType" entityURI="adi://org.adichatz.studio/model/StarRatingMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/starRating.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/StarRatingMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./starRating" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/StarRatingPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.TableColumnType" entityURI="adi://org.adichatz.studio/model/TableColumnMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/tableColumn.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/TableColumnMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./tableColumn" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/TableColumnPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.TableType" entityURI="adi://org.adichatz.studio/model/TableMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/table.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/TableMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./table" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/TablePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.TabularType" entityURI="adi://org.adichatz.studio/model/TabularMM">
+            <generationUnit adiResourceURI="adi://model/TabularMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./tabular" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/TabularPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.TextColorType" entityURI="adi://org.adichatz.studio/model/TextColorMM">
+            <generationUnit adiResourceURI="adi://model/TextColorMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./textColor" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/TextColorPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.TextFontType" entityURI="adi://org.adichatz.studio/model/TextFontMM">
+            <generationUnit adiResourceURI="adi://model/TextFontMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./textFont" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/TextFontPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.TextImageType" entityURI="adi://org.adichatz.studio/model/TextImageMM">
+            <generationUnit adiResourceURI="adi://model/TextImageMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./textImage" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/TextImagePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.TextType" entityURI="adi://org.adichatz.studio/model/TextMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/text.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/TextMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./text" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/TextPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ToolBarType" entityURI="adi://org.adichatz.studio/model/ToolBarMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/toolBar.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ToolBarMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./toolBar" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ToolBarPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ToolItemType" entityURI="adi://org.adichatz.studio/model/ToolItemMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/toolItem.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ToolItemMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./toolItem" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ToolItemPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.TreeElementType" entityURI="adi://org.adichatz.studio/model/TreeElementMM">
+            <generationUnit adiResourceURI="adi://model/TreeElementMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./treeElement" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/TreeElementPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.TreeManagerTree" entityURI="adi://org.adichatz.studio/model/TreeManagerTreeMM">
+            <generationUnit adiResourceURI="adi://model/TreeManagerTreeMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./treeManagerTree" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/TreeManagerTreePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.TreeNodeType" entityURI="adi://org.adichatz.studio/model/TreeNodeMM">
+            <generationUnit adiResourceURI="adi://model/TreeNodeMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./treeNode" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/TreeNodePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.TreeType" entityURI="adi://org.adichatz.studio/model/TreeMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/tree.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/TreeMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./tree" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/TreePART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ValidableContainerType" entityURI="adi://org.adichatz.studio/model/ValidableContainerMM">
+            <generationUnit adiResourceURI="adi://model/ValidableContainerMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./validableContainer" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ValidableContainerPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ValidatorsType" entityURI="adi://org.adichatz.studio/model/ValidatorsMM">
+            <generationUnit adiResourceURI="adi://model/ValidatorsMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./validators" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ValidatorsPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ValidatorType" entityURI="adi://org.adichatz.studio/model/ValidatorMM">
+            <icons>
+                <icon type="ENTITY" image="xjc/validator.png"/>
+            </icons>
+            <generationUnit adiResourceURI="adi://model/ValidatorMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./validator" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ValidatorPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.ValidElementType" entityURI="adi://org.adichatz.studio/model/ValidElementMM">
+            <generationUnit adiResourceURI="adi://model/ValidElementMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./validElement" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/ValidElementPART" type="DETAIL"/>
+        </pluginEntity>
+        <pluginEntity beanClassName="org.adichatz.generator.xjc.WidgetType" entityURI="adi://org.adichatz.studio/model/WidgetMM">
+            <generationUnit adiResourceURI="adi://model/WidgetMM" type="ENTITY"/>
+            <generationUnit adiResourceURI="adi://./widget" type="MESSAGE_BUNDLE"/>
+            <generationUnit adiResourceURI="adi://detail/WidgetPART" type="DETAIL"/>
+        </pluginEntity>
+        <generationUnit scenarioClassName="org.adichatz.studio.xjc.scenario.XjcEntityScenario" type="ENTITY"/>
+        <generationUnit scenarioClassName="org.adichatz.studio.xjc.scenario.XjcDetailPartScenario" type="DETAIL"/>
+        <generationUnit scenarioClassName="org.adichatz.studio.xjc.scenario.XjcMessageBundleScenario" type="MESSAGE_BUNDLE"/>
+    </generationScenario>
+</scenarioTree>

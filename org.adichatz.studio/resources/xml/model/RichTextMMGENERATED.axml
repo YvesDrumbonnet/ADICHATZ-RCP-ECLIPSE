@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/RichTextMM" superEntityURI="adi://org.adichatz.studio/model/ControlFieldMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="editable">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="orientation">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="tabs">
+        <controlField xsi:type="numericTextType" pattern="######" layoutData="width min:100:150, growx"/>
+    </propertyField>
+    <propertyField id="text">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="textLimit">
+        <controlField xsi:type="numericTextType" pattern="######" layoutData="width min:100:150, growx"/>
+    </propertyField>
+    <propertyField id="containerBackground">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="containerBackgroundImage">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="containerBounds">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="containerCapture">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="containerFocus">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="containerFont">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="containerForeground">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="containerLayoutData">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="containerLocation">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="containerMenu">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="containerRedraw">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="containerSize">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="containerStyle">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

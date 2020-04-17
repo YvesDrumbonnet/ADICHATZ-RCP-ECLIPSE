@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ControllerPreferenceMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(element, id).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="id$1"/>
+        <text property="id" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(element, id).concat(&quot;:&quot;)" linkedControl="id$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="id">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(controllerPreference, columnOrder).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="columnOrder$1"/>
+        <text property="columnOrder" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(controllerPreference, columnOrder).concat(&quot;:&quot;)" linkedControl="columnOrder$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="columnOrder">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(param, optional).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="optional$1"/>
+        <radioGroup property="optional" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(param, optional).concat(&quot;:&quot;)" linkedControl="optional$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.BooleanRadioGroupController" id="optional">
+            <pluginEntity/>
+        </radioGroup>
+        <label text="#MSG(controllerPreference, statusBarKey).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="statusBarKey$1"/>
+        <text property="statusBarKey" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(controllerPreference, statusBarKey).concat(&quot;:&quot;)" linkedControl="statusBarKey$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="statusBarKey">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(controllerPreference, tableRendererKey).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="tableRendererKey$1"/>
+        <text property="tableRendererKey" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(controllerPreference, tableRendererKey).concat(&quot;:&quot;)" linkedControl="tableRendererKey$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="tableRendererKey">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(param, type).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="type$1"/>
+        <text property="type" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(param, type).concat(&quot;:&quot;)" linkedControl="type$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="type">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(param, value).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="value$1"/>
+        <text property="value" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(param, value).concat(&quot;:&quot;)" linkedControl="value$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="value">
+            <pluginEntity/>
+        </text>
+    </scrolledComposite>
+</containerTree>

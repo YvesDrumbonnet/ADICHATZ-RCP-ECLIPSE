@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/PGroupToolItemMM" superEntityURI="adi://org.adichatz.studio/model/WidgetMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/ParamsMM" id="params"/>
+    <propertyField id="itemCode">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField id="actionClassName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="itemClassName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="image">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="rank">
+        <controlField xsi:type="numericTextType" pattern="######" layoutData="width min:100:150, growx"/>
+    </propertyField>
+    <propertyField id="text">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

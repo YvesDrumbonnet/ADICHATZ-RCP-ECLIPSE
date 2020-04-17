@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<includeTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" coreClassName="org.adichatz.jpa.extra.ATabularContextMenuCore" id="includeTreeWrapper$$0" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/includeTree.xsd">
+    <pluginEntity/>
+    <additionalCode>import org.adichatz.jpa.query.IQueryOutlinePage;
+import org.adichatz.engine.e4.part.PartCore;
+import org.adichatz.jpa.query.QueryToolInput;
+private QueryToolInput getQueryToolInput() {
+    return ((IQueryOutlinePage) ((PartCore) getContext().getRootCore()).getOutlinePage()).getQueryToolInput();
+}
+</additionalCode>
+    <headerMenuManager id="headerMenu">
+        <pluginEntity/>
+        <action controllerClassName="org.adichatz.engine.tabular.HideColumnActionController" id="hideColumnAction">
+            <pluginEntity/>
+        </action>
+        <menu controllerClassName="org.adichatz.engine.tabular.ShowColumnMenuManagerController" id="showColumns">
+            <pluginEntity/>
+        </menu>
+        <action controllerClassName="org.adichatz.engine.tabular.RefreshColumnSizeActionController" id="refreshColumnSize">
+            <pluginEntity/>
+        </action>
+        <separator id="separatorWrapper$$1">
+            <pluginEntity/>
+        </separator>
+        <action controllerClassName="org.adichatz.jpa.action.AddColumnFilterActionController" valid="isColumnFilterable()" id="addColumnFilterAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="addColumnFilterAction$$VALIDFilter">
+                    <accept>return isColumnFilterable();</accept>
+                </accessibility>
+            </accessibilities>
+        </action>
+        <action controllerClassName="org.adichatz.engine.tabular.RemoveColumnFilterActionController" valid="hasFilterOnColumn()" id="RemoveColumnFilterAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="RemoveColumnFilterAction$$VALIDFilter">
+                    <accept>return hasFilterOnColumn();</accept>
+                </accessibility>
+            </accessibilities>
+        </action>
+    </headerMenuManager>
+    <menuManager id="contextMenu">
+        <pluginEntity/>
+        <action actionClassName="org.adichatz.jpa.query.action.LaunchQueryAction" enabled="!org.adichatz.engine.e4.part.OutlinePart.getInstance().getCurrentPage().hasError()" id="launchQueryAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="ENABLED" id="launchQueryAction$$ENABLEDFilter">
+                    <accept>return !org.adichatz.engine.e4.part.OutlinePart.getInstance().getCurrentPage().hasError();</accept>
+                </accessibility>
+            </accessibilities>
+            <params>
+                <param value="#CONTROLLER(contextMenu).getMenuContainer()" id="TABULAR_CONTROLLER"/>
+            </params>
+        </action>
+        <separator id="separatorWrapper$$2">
+            <pluginEntity/>
+        </separator>
+        <action controllerClassName="org.adichatz.engine.tabular.FilterByValueActionController" valid="isFilterable()" id="filterByValueAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="filterByValueAction$$VALIDFilter">
+                    <accept>return isFilterable();</accept>
+                </accessibility>
+            </accessibilities>
+        </action>
+        <action controllerClassName="org.adichatz.jpa.tabular.DisableAllFiltersActionController" valid="hasEnabledFilter()" id="disableAllFiltersAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="disableAllFiltersAction$$VALIDFilter">
+                    <accept>return hasEnabledFilter();</accept>
+                </accessibility>
+            </accessibilities>
+        </action>
+        <action controllerClassName="org.adichatz.jpa.tabular.EnableAllFiltersActionController" valid="hasDisabledFilter()" id="enableAllFiltersAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="enableAllFiltersAction$$VALIDFilter">
+                    <accept>return hasDisabledFilter();</accept>
+                </accessibility>
+            </accessibilities>
+        </action>
+        <action controllerClassName="org.adichatz.jpa.tabular.RemoveAllFiltersActionController" valid="hasFilter()" id="removeAllFiltersAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="removeAllFiltersAction$$VALIDFilter">
+                    <accept>return hasFilter();</accept>
+                </accessibility>
+            </accessibilities>
+        </action>
+        <separator id="separatorWrapper$$3">
+            <pluginEntity/>
+        </separator>
+        <action actionClassName="org.adichatz.engine.tabular.CopyTableToClipboardAction" id="copyTableToClipboardAction">
+            <pluginEntity/>
+            <params>
+                <param value="#CONTROLLER(contextMenu).getMenuContainer()" id="TABULAR_CONTROLLER"/>
+            </params>
+        </action>
+        <separator id="separatorWrapper$$4">
+            <pluginEntity/>
+        </separator>
+        <menu imageDescriptor="#IMGDESC(IMG_CROSS_REFERENCE)" text="#MSG(adichatzJpa, table.crossReferences)" valid="hasReferenceCode()" id="crossReference">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="crossReference$$VALIDFilter">
+                    <accept>return hasReferenceCode();</accept>
+                </accessibility>
+            </accessibilities>
+            <contributionItem controllerClassName="org.adichatz.jpa.query.action.CrossReferenceMenuActions" id="contributionItemWrapper$$5">
+                <pluginEntity/>
+            </contributionItem>
+        </menu>
+        <menu imageDescriptor="#IMGDESC(IMG_PREFERENCE)" text="#MSG(adichatzJpa, table.preferences)" valid="!getPreferenceTitle().isEmpty()" id="preferenceMenu">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="preferenceMenu$$VALIDFilter">
+                    <accept>return !getPreferenceTitle().isEmpty();</accept>
+                </accessibility>
+            </accessibilities>
+            <contributionItem imageDescriptor="#IMGDESC(IMG_PREFERENCE_NEW.png)" text="#MSG(adichatzJpa, table.preference.save.as)" id="preferenceSaveNew">
+                <pluginEntity/>
+                <itemCode>getQueryToolInput().savePreferenceAs();</itemCode>
+            </contributionItem>
+            <contributionItem imageDescriptor="#IMGDESC(IMG_PREFERENCE_SAVE.png)" text="#MSG(adichatzJpa, table.preference.save.current, getPreferenceTitle())" id="preferenceSaveCurrent">
+                <pluginEntity/>
+                <itemCode>getQueryToolInput().saveCurrentPreference();</itemCode>
+            </contributionItem>
+            <separator id="separatorWrapper$$6">
+                <pluginEntity/>
+            </separator>
+            <contributionItem imageDescriptor="#IMGDESC(IMG_REMOVE_PREFERENCE.png)" text="#MSG(adichatzJpa, table.preference.reset)" valid="getQueryToolInput().isCurrentPreferenceLinked()" id="resetPreference">
+                <pluginEntity/>
+                <accessibilities>
+                    <accessibility type="VALID" id="resetPreference$$VALIDFilter">
+                        <accept>return getQueryToolInput().isCurrentPreferenceLinked();</accept>
+                    </accessibility>
+                </accessibilities>
+                <itemCode>getQueryToolInput().cancelPreference();</itemCode>
+            </contributionItem>
+            <contributionItem imageDescriptor="#IMGDESC(IMG_LINK_PREFERENCE.png)" text="#MSG(adichatzJpa, table.preference.link.current)" valid="!getQueryToolInput().isCurrentPreferenceLinked()" id="preferenceLinkCurrent">
+                <pluginEntity/>
+                <accessibilities>
+                    <accessibility type="VALID" id="preferenceLinkCurrent$$VALIDFilter">
+                        <accept>return !getQueryToolInput().isCurrentPreferenceLinked();</accept>
+                    </accessibility>
+                </accessibilities>
+                <itemCode>getQueryToolInput().linkCurrentPreference();</itemCode>
+            </contributionItem>
+        </menu>
+        <action imageDescriptor="#IMGDESC(IMG_PREFERENCE_NEW.png)" text="#MSG(adichatzJpa, table.preference.save.as)" valid="getPreferenceTitle().isEmpty()" id="saveNewPreferenceMenu">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="saveNewPreferenceMenu$$VALIDFilter">
+                    <accept>return getPreferenceTitle().isEmpty();</accept>
+                </accessibility>
+            </accessibilities>
+            <actionCode>getQueryToolInput().savePreferenceAs();</actionCode>
+        </action>
+        <separator id="separatorWrapper$$7">
+            <pluginEntity/>
+        </separator>
+        <action actionClassName="org.adichatz.jpa.action.EditNewEntityAction" valid="!hasParentEntity()" id="editNewEntityAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="editNewEntityAction$$VALIDFilter">
+                    <accept>return !hasParentEntity();</accept>
+                </accessibility>
+            </accessibilities>
+            <params>
+                <param value="#CONTROLLER(contextMenu).getMenuContainer()" id="TABULAR_CONTROLLER"/>
+            </params>
+        </action>
+        <action actionClassName="org.adichatz.jpa.action.AddEntityAction" valid="hasParentEntity() &amp;&amp;  #AUTHORIZATION(IEntityConstants.PERSIST)" id="addEntityAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="addEntityAction$$VALIDFilter">
+                    <accept>return hasParentEntity() &amp;&amp;  #AUTHORIZATION(IEntityConstants.PERSIST);</accept>
+                </accessibility>
+            </accessibilities>
+            <params>
+                <param value="#CONTROLLER(contextMenu).getMenuContainer()" id="TABULAR_CONTROLLER"/>
+            </params>
+        </action>
+        <action actionClassName="org.adichatz.jpa.action.EditEntityAction" enabled="null != #ROW()" id="editEntityAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="ENABLED" id="editEntityAction$$ENABLEDFilter">
+                    <accept>return null != #ROW();</accept>
+                </accessibility>
+            </accessibilities>
+            <params>
+                <param value="#CONTROLLER(contextMenu).getMenuContainer()" id="TABULAR_CONTROLLER"/>
+            </params>
+        </action>
+    </menuManager>
+</includeTree>

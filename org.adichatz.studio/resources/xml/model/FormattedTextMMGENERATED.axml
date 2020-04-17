@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/FormattedTextMM" superEntityURI="adi://org.adichatz.studio/model/ControlFieldMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="editable">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="locale">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="displayPattern">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="editPattern">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="format">
+        <controlField xsi:type="cComboType" layoutData="grow 0" style="SWT.BORDER | SWT.READ_ONLY">
+            <labelProvider>
+                <textCode>return ((FormatEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.FormatEnum
+import java.util.Arrays
+return Arrays.asList(FormatEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+</entityTree>

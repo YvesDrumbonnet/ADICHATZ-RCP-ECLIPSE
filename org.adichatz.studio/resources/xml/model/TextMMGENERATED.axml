@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/TextMM" superEntityURI="adi://org.adichatz.studio/model/ControlFieldMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="editable">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="orientation">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="proposals">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="tabs">
+        <controlField xsi:type="numericTextType" layoutData="width min:100:150, growx"/>
+    </propertyField>
+    <propertyField id="text">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="textLimit">
+        <controlField xsi:type="numericTextType" layoutData="width min:100:150, growx"/>
+    </propertyField>
+</entityTree>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/OneToOneMM" superEntityURI="adi://org.adichatz.studio/model/FieldMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField mandatory="true" id="entityURI">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+    <propertyField id="mappedBy">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField mandatory="true" id="oneToOneType">
+        <controlField xsi:type="radioGroupType" mandatory="true">
+            <labelProvider>
+                <textCode>return ((OneToOneTypeEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.OneToOneTypeEnum
+import java.util.Arrays
+return Arrays.asList(OneToOneTypeEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+</entityTree>

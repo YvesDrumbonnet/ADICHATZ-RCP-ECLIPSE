@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/QueryPartMM" superEntityURI="adi://org.adichatz.studio/model/ElementMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="entityURI">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField mandatory="true" id="suffix">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+</entityTree>

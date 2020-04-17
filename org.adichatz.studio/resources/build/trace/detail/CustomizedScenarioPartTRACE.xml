@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/CustomizedScenarioMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(customizedScenario, mergeDate).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="mergeDate$1"/>
+        <dateText property="mergeDate" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(customizedScenario, mergeDate).concat(&quot;:&quot;)" linkedControl="mergeDate$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XMLGregorianCalendarTextController" id="mergeDate">
+            <pluginEntity/>
+        </dateText>
+        <label text="#MSG(customizedScenario, scenarioFile).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="scenarioFile$1"/>
+        <text property="scenarioFile" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(customizedScenario, scenarioFile).concat(&quot;:&quot;)" linkedControl="scenarioFile$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="scenarioFile">
+            <pluginEntity/>
+        </text>
+    </scrolledComposite>
+</containerTree>

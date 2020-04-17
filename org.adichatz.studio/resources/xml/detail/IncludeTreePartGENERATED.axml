@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/IncludeTreeMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <text property="id" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(element, id).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="id"/>
+        <text property="coreClassName" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(container, coreClassName).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="coreClassName"/>
+        <hyperlink text="#MSG(container, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIIncludeTreePART$1"/>
+        <text property="entityURI" labelText="#MSG(container, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIIncludeTreePART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="entityURI"/>
+        <text property="additionalCode" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(container, additionalCode).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="additionalCode"/>
+    </scrolledComposite>
+</containerTree>

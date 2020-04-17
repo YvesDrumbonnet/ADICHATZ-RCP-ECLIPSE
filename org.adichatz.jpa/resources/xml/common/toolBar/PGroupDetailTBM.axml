@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<includeTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="false">
+	<pgroup ref="coreController.getParentController()" id="masterPGroup">
+		<pgroupToolItem actionClassName="org.adichatz.jpa.action.RefreshEntityAction" id="refreshEntityItem" controllerClassName="org.adichatz.engine.controller.nebula.ActionPGroupToolItemController">
+        	<params>
+        		<param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+        	</params>
+        </pgroupToolItem>
+        <pgroupToolItem actionClassName="org.adichatz.jpa.action.DeleteEntityAndCloseAction" id="deleteEntityAndCloseItem" controllerClassName="org.adichatz.engine.controller.nebula.ActionPGroupToolItemController" valid="&quot;DETAIL&quot;.equals(#PARAM(TOOL_BAR_TYPE))">
+        	<params>
+        		<param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+        		<param value="#PARAM(TOOL_BAR_TYPE)" id="TOOL_BAR_TYPE"/>
+        	</params>
+    	</pgroupToolItem>
+        <pgroupToolItem actionClassName="org.adichatz.jpa.action.DeleteEntityAction" id="deleteEntityItem" valid="#AUTHORIZATION(IEntityConstants.REMOVE) &amp;&amp; &quot;CHILD&quot;.equals(#PARAM(TOOL_BAR_TYPE))" controllerClassName="org.adichatz.engine.controller.nebula.ActionPGroupToolItemController">
+        	<params>
+        		<param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+        		<param value="#PARAM(TOOL_BAR_TYPE)" id="TOOL_BAR_TYPE"/>
+        	</params>
+    	</pgroupToolItem>
+	</pgroup>
+</includeTree>

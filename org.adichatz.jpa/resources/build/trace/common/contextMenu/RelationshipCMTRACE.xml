@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<includeTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" coreClassName="org.adichatz.jpa.extra.ATabularContextMenuCore" id="includeTreeWrapper$$0" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/includeTree.xsd">
+    <pluginEntity/>
+    <headerMenuManager id="headerMenuManagerWrapper$$1">
+        <pluginEntity/>
+        <action controllerClassName="org.adichatz.engine.tabular.HideColumnActionController" id="hideColumnAction">
+            <pluginEntity/>
+        </action>
+        <menu controllerClassName="org.adichatz.engine.tabular.ShowColumnMenuManagerController" id="showColumns">
+            <pluginEntity/>
+        </menu>
+        <action controllerClassName="org.adichatz.engine.tabular.RefreshColumnSizeActionController" id="refreshColumnSize">
+            <pluginEntity/>
+        </action>
+        <separator id="separatorWrapper$$2">
+            <pluginEntity/>
+        </separator>
+        <action controllerClassName="org.adichatz.jpa.action.AddColumnFilterActionController" valid="isColumnFilterable()" id="addColumnFilterAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="addColumnFilterAction$$VALIDFilter">
+                    <accept>return isColumnFilterable();</accept>
+                </accessibility>
+            </accessibilities>
+        </action>
+        <action controllerClassName="org.adichatz.engine.tabular.RemoveColumnFilterActionController" valid="hasFilterOnColumn()" id="RemoveColumnFilterAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="RemoveColumnFilterAction$$VALIDFilter">
+                    <accept>return hasFilterOnColumn();</accept>
+                </accessibility>
+            </accessibilities>
+        </action>
+    </headerMenuManager>
+    <menuManager id="contextMenu">
+        <pluginEntity/>
+        <action actionClassName="org.adichatz.jpa.action.RefreshTableAction" id="refreshTableAction">
+            <pluginEntity/>
+            <params>
+                <param value="#CONTROLLER(contextMenu).getMenuContainer()" id="TABULAR_CONTROLLER"/>
+            </params>
+        </action>
+        <separator id="separatorWrapper$$3">
+            <pluginEntity/>
+        </separator>
+        <action controllerClassName="org.adichatz.engine.tabular.FilterByValueActionController" valid="isFilterable()" id="filterByValueAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="filterByValueAction$$VALIDFilter">
+                    <accept>return isFilterable();</accept>
+                </accessibility>
+            </accessibilities>
+        </action>
+        <action controllerClassName="org.adichatz.jpa.tabular.DisableAllFiltersActionController" valid="hasEnabledFilter()" id="disableAllFiltersAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="disableAllFiltersAction$$VALIDFilter">
+                    <accept>return hasEnabledFilter();</accept>
+                </accessibility>
+            </accessibilities>
+        </action>
+        <action controllerClassName="org.adichatz.jpa.tabular.EnableAllFiltersActionController" valid="hasDisabledFilter()" id="enableAllFiltersAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="enableAllFiltersAction$$VALIDFilter">
+                    <accept>return hasDisabledFilter();</accept>
+                </accessibility>
+            </accessibilities>
+        </action>
+        <action controllerClassName="org.adichatz.jpa.tabular.RemoveAllFiltersActionController" valid="hasFilter()" id="removeAllFiltersAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="removeAllFiltersAction$$VALIDFilter">
+                    <accept>return hasFilter();</accept>
+                </accessibility>
+            </accessibilities>
+        </action>
+        <separator id="separatorWrapper$$4">
+            <pluginEntity/>
+        </separator>
+        <action actionClassName="org.adichatz.engine.tabular.CopyTableToClipboardAction" id="copyTableToClipboardAction">
+            <pluginEntity/>
+            <params>
+                <param value="#CONTROLLER(contextMenu).getMenuContainer()" id="TABULAR_CONTROLLER"/>
+            </params>
+        </action>
+        <separator id="separatorWrapper$$5">
+            <pluginEntity/>
+        </separator>
+        <action actionClassName="org.adichatz.jpa.action.AddRelationshipAction" id="addRelationshipAction">
+            <pluginEntity/>
+            <params>
+                <param value="#CONTROLLER(contextMenu).getMenuContainer()" id="TABULAR_CONTROLLER"/>
+            </params>
+        </action>
+        <action actionClassName="org.adichatz.jpa.action.DeleteRelationshipAction" valid="null != #ROW()" id="deleteRelationshipAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="deleteRelationshipAction$$VALIDFilter">
+                    <accept>return null != #ROW();</accept>
+                </accessibility>
+            </accessibilities>
+            <params>
+                <param value="#CONTROLLER(contextMenu).getMenuContainer()" id="TABULAR_CONTROLLER"/>
+            </params>
+        </action>
+    </menuManager>
+</includeTree>

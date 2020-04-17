@@ -1,0 +1,4 @@
+Specific parts:
+	GenerationUnit: Add method isPluginEntityGU(): Concern a generation unit linked to plugin entity
+	Listener: Validator: classOrCodeMandatory, use ListenerTypeController for file 'ListenerType'
+	PluginEntity: Add a group for roles

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/TextFontMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(textFont, font).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="font$1"/>
+        <text property="font" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(textFont, font).concat(&quot;:&quot;)" linkedControl="font$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.FontController" id="font">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(textFont, key).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="key$1"/>
+        <text property="key" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(textFont, key).concat(&quot;:&quot;)" linkedControl="key$1" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="key">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+    </scrolledComposite>
+</containerTree>

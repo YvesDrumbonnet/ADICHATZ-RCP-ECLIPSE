@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <!-- ********************* -->
+   <!-- *   S T A R T U P   * -->
+   <!-- ********************* -->
+   <extension point="org.eclipse.ui.startup" id="org.adichatz.studio.broadcast.StartupBroadcast" name="Startup Broadcast">
+      <startup class="org.adichatz.studio.broadcast.StartupBroadcast"/>
+   </extension>
+
+	<!-- ******************* -->
+	<!-- *   N A T U R E   * -->
+	<!-- ******************* -->
+	<extension	id="org.adichatz.nature" name="Adichatz Nature" point="org.eclipse.core.resources.natures">
+	    <runtime>
+    	   <run class="org.adichatz.studio.util.AdichatzNature"/>
+    	</runtime>
+	</extension>
+	
+	<!-- ***************************************** -->
+	<!-- *   E L E M E N T - F A C T O R I E S   * -->
+	<!-- ***************************************** -->
+	<extension point="org.eclipse.ui.elementFactories">
+		<factory id="org.adichatz.studio.xjc.editor.ExternalResourceInputFactory" class="org.adichatz.studio.xjc.editor.ExternalResourceInputFactory"/>
+	</extension>
+
+	<!-- ******************* -->
+	<!-- *   E D I T O R   * -->
+	<!-- ******************* -->
+	<extension point="org.eclipse.ui.editors">
+		<editor class="org.adichatz.studio.xjc.editor.XjcTreeFormEditor" icon="resources/icons/IMG_XJC_EDITOR.png" id="org.adichatz.studio.xjc.editor.XjcTreeFormEditor" name="%adichatzAXmlEditorAdichatz">
+			<contentTypeBinding contentTypeId="org.adichatz.axml.file" />
+		</editor>
+		<editor class="org.adichatz.studio.xjc.editor.ScenarioFormEditor" icon="resources/icons/IMG_EDIT_SCENARIO.png" id="org.adichatz.studio.xjc.editor.ScenarioFormEditor" name="%adichatzScenarioEditor">
+			<contentTypeBinding contentTypeId="org.adichatz.scenario.xml.file" />
+		</editor>
+		<editor class="org.adichatz.studio.xjc.editor.InternalTreeFormEditor" icon="resources/icons/IMG_XJC_EDITOR.png" id="org.adichatz.studio.xjc.editor.InternalTreeFormEditor" name="%adichatzAXmlEditorAdichatz"/>
+		<editor class="org.adichatz.studio.xjc.editor.ExternalResourcesFormEditor" icon="resources/icons/IMG_EXTERNAL_RESOURCES.png" id="org.adichatz.studio.xjc.editor.ExternalResourcesFormEditor" name="%extenalResourcesEditor"/>
+	</extension>
+
+  	<!-- ******************************* -->
+	<!-- *   C O N T E N T - T Y P E   * -->
+	<!-- ******************************* -->
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type base-type="org.eclipse.core.runtime.xml" file-extensions="axml" id="org.adichatz.axml.file" name="Adichatz XML Content Type" priority="high"/>
+  		<content-type base-type="org.eclipse.core.runtime.xml" file-names="Scenario.xml" id="org.adichatz.scenario.xml.file" name="Adichatz Scenario XML File" priority="high"/>
+	</extension>
+
+  	<!-- ***************************** -->
+	<!-- *   P R E F E R E N C E S   * -->
+	<!-- ***************************** -->
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer class="org.adichatz.studio.PreferenceInitializer"/>
+   </extension>
+	<extension point="org.eclipse.ui.preferencePages">
+ 		<page id="org.adichatz.studio.StudioPreferences" name="%adichatz.studio.preference" class="org.adichatz.studio.StudioPreferences"/>
+ 		<page id="org.adichatz.studio.StudioLogPreferences" name="%log.preference" category="org.adichatz.studio.StudioPreferences" class="org.adichatz.studio.StudioLogPreferences"/>
+ 		<page id="org.adichatz.studio.StudioErrorWarningPreferences" name="%error_warning.preference" category="org.adichatz.studio.StudioPreferences" class="org.adichatz.studio.StudioErrorWarningPreferences"/>
+ 		<page id="org.adichatz.studio.StudioEditorPreferences" name="%editor.preference" category="org.adichatz.studio.StudioPreferences" class="org.adichatz.studio.StudioEditorPreferences"/>
+ 		<page id="org.adichatz.studio.IDECommunicationPreferences" name="%ideCommunication.preference" category="org.adichatz.studio.StudioPreferences" class="org.adichatz.studio.broadcast.BroadcastPreferences"/>
+	</extension>
+
+	<!-- *************** -->
+	<!-- *   V I E W   * -->
+	<!-- *************** -->
+	<extension point="org.eclipse.ui.views">
+		<view name="%fieldViewPart" id="org.adichatz.studio.xjc.editor.XjcFieldViewPart" class="org.adichatz.studio.xjc.editor.XjcFieldViewPart"/>
+	</extension>
+
+	<!-- ************************************* -->
+	<!-- *   P R O P E R T Y   T E S T E R   * -->
+	<!-- ************************************* -->
+	<extension point="org.eclipse.core.expressions.propertyTesters">
+		<propertyTester class="org.adichatz.scenario.util.AdiPropertyTester" id="org.adichatz.scenario.propertyTester.isActiveFile" namespace="org.adichatz.scenario.propertyTester" properties="isActiveFile" type="org.eclipse.core.resources.IResource"/>
+		<propertyTester class="org.adichatz.scenario.util.AdiPropertyTester" id="org.adichatz.scenario.propertyTester.isComparable" namespace="org.adichatz.scenario.propertyTester" properties="isComparable" type="org.eclipse.core.resources.IFile"/>
+		<propertyTester class="org.adichatz.scenario.util.AdiPropertyTester" id="org.adichatz.scenario.propertyTester.isSwitchable" namespace="org.adichatz.scenario.propertyTester" properties="isSwitchable" type="org.eclipse.core.resources.IFile"/>
+		<propertyTester class="org.adichatz.scenario.util.AdiPropertyTester" id="org.adichatz.scenario.propertyTester.isScenarioFile" namespace="org.adichatz.scenario.propertyTester" properties="isScenarioFile" type="org.eclipse.core.resources.IFile"/>
+		<propertyTester class="org.adichatz.scenario.util.AdiPropertyTester" id="org.adichatz.scenario.propertyTester.isXmlFile" namespace="org.adichatz.scenario.propertyTester" properties="isXmlFile" type="org.eclipse.core.resources.IFile"/>
+		<propertyTester class="org.adichatz.scenario.util.AdiPropertyTester" id="org.adichatz.scenario.propertyTester.isGeneratedJavaFile" namespace="org.adichatz.scenario.propertyTester" properties="isGeneratedJavaFile" type="org.eclipse.core.resources.IFile"/>
+		<propertyTester class="org.adichatz.scenario.util.AdiPropertyTester" id="org.adichatz.scenario.propertyTester.isBundleFile" namespace="org.adichatz.scenario.propertyTester" properties="isBundleFile" type="org.eclipse.core.resources.IFile"/>
+		<propertyTester class="org.adichatz.scenario.util.AdiPropertyTester" id="org.adichatz.scenario.propertyTester.isApplication" namespace="org.adichatz.scenario.propertyTester" properties="isApplication" type="org.eclipse.core.resources.IResource"/>
+		<propertyTester class="org.adichatz.scenario.util.AdiPropertyTester" id="org.adichatz.scenario.propertyTester.hasScenarioFile" namespace="org.adichatz.scenario.propertyTester" properties="hasScenarioFile" type="org.eclipse.core.resources.IResource"/>
+		<propertyTester class="org.adichatz.scenario.util.AdiPropertyTester" id="org.adichatz.scenario.propertyTester.isOpenAdichatzProject" namespace="org.adichatz.scenario.propertyTester" properties="isOpenAdichatzProject" type="org.eclipse.core.resources.IProject"/>
+	</extension>
+
+	<extension point="org.eclipse.ui.activitySupport">
+    	<triggerPoint id="org.eclipse.ui.newWizards">
+        	<hint id="interactive" value="true"/>
+    	</triggerPoint>
+	</extension>
+      
+	<!-- ************************ -->
+	<!-- *   C O M M A N D S    * -->
+	<!-- ************************ -->
+	<extension point="org.eclipse.ui.commands">
+		<command id="org.adichatz.studio.editScenarioFile" name="%editScenarioFile.name" description="%editScenarioFile.description" defaultHandler="org.adichatz.studio.command.EditScenarioFileHandler"/>
+		<command id="org.adichatz.studio.generateJavaFiles" name="%generateJavaFiles.name" description="%generateJavaFiles.description" defaultHandler="org.adichatz.studio.command.GenerateJavaFilesHandler"/>
+		<command id="org.adichatz.studio.openAXMLFile" name="%openAXMLFile.name" description="%openAXMLFile.description" defaultHandler="org.adichatz.studio.command.OpenAXMLFileHandler"/>
+		<command id="org.adichatz.studio.generateBundleFile" name="%generateBundleFile.name" description="%generateBundleFile.description" defaultHandler="org.adichatz.studio.command.GenerateBundleFileHandler"/>
+		<command id="org.adichatz.studio.CompareCustomGeneratedVersion" name="%compareCustomizedGeneratedVersion.name" description="%compareCustomizedGeneratedVersion.description" defaultHandler="org.adichatz.studio.command.CompareCustomGeneratedVersionHandler"/>
+		<command id="org.adichatz.studio.SwitchToActiveFile" name="%switchToCustomizeFile.name" description="%switchToCustomizeFile.description" defaultHandler="org.adichatz.studio.command.SwitchToActiveFileHandler"/>
+		<command id="org.adichatz.studio.refreshScenario" name="%refreshScenario.name" description="%refreshScenario.description" defaultHandler="org.adichatz.studio.command.RefreshScenarioActionHandler"/>
+		<command id="org.adichatz.studio.openExternalResourcesEditor" name="%openExternalResourcesEditor.name" description="%openExternalResourcesEditor.description" defaultHandler="org.adichatz.studio.command.OpenExternalResourcesEditorHandler"/>
+		<command id="org.adichatz.studio.cleanProject" name="%cleanProject.name" description="%cleanProject.description" defaultHandler="org.adichatz.studio.command.CleanProjectActionHandler"/>
+		<command id="org.adichatz.studio.open.connector" name="%openConnectorFile.name" description="%openConnectorFile.description" defaultHandler="org.adichatz.studio.command.OpenConnectorsFileActionHandler"/>
+		<command id="org.adichatz.studio.search.internal.axml.files" name="%searchInternalAXMLFile.name" description="%searchInternalAXMLFile.description" defaultHandler="org.adichatz.studio.command.SearchInternalAXMLFileActionHandler"/>
+		<command id="org.adichatz.studio.exportProduct" name="%exportProduct.name" description="%exportProduct.description" defaultHandler="org.adichatz.studio.command.ExportProductHandler"/>
+		<command id="org.adichatz.studio.runProduct" name="%runProduct.name" description="%runProduct.description" defaultHandler="org.adichatz.studio.command.RunDebugProductHandler">
+         	<commandParameter id="org.adichatz.studio.mode" name="org.adichatz.studio.mode" optional="false"/>
+		</command>
+		<command id="org.adichatz.studio.debugProduct" name="%debugProduct.name" description="%debugProduct.description" defaultHandler="org.adichatz.studio.command.RunDebugProductHandler">
+         	<commandParameter id="org.adichatz.studio.mode" name="org.adichatz.studio.mode" optional="false"/>
+		</command>
+    </extension>
+
+	<!-- ******************************************* -->
+	<!-- *   M E N U - C O N T R I B U T I O N S   * -->
+	<!-- ******************************************* -->
+	<extension point="org.eclipse.ui.menus">	
+		<menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+			<menu id="org.adichatz.studio.popup.menu" label="%adichatz.label" icon="resources/icons/IMG_ADI_MENU.png">
+            	<separator name="additions" visible="true"/>
+				<!-- Generate AXML File -->
+				<command commandId="org.adichatz.studio.generateJavaFiles" icon="resources/icons/IMG_GENERATE_JAVA_FILES.png" style="push">
+	        		<visibleWhen>
+            			<with variable="activeMenuSelection">
+	           				<iterate ifEmpty="false" operator="and">
+								<adapt type="org.eclipse.core.resources.IFile">
+									<test property="org.adichatz.scenario.propertyTester.isActiveFile" forcePluginActivation="true"/>
+									<test property="org.adichatz.scenario.propertyTester.isXmlFile" forcePluginActivation="true"/>
+								</adapt>
+	           				</iterate>
+						</with>
+        			</visibleWhen>
+				</command>
+				<!-- Generated JAVA File: open corresponding AXML file -->
+				<command commandId="org.adichatz.studio.openAXMLFile" icon="resources/icons/IMG_XJC_EDITOR.png" style="push">
+	        		<visibleWhen>
+            			<with variable="activeMenuSelection">
+	           				<iterate ifEmpty="false" operator="and">
+								<adapt type="org.eclipse.core.resources.IResource">
+									<test property="org.adichatz.scenario.propertyTester.isGeneratedJavaFile" forcePluginActivation="true"/>
+								</adapt>
+	           				</iterate>
+						</with>
+        			</visibleWhen>
+				</command>
+				<!-- Generate bundleFile -->
+				<command commandId="org.adichatz.studio.generateBundleFile" icon="resources/icons/IMG_GENERATE_BUNDLE.png" style="push">
+	        		<visibleWhen>
+            			<with variable="activeMenuSelection">
+	           				<iterate ifEmpty="false" operator="and">
+								<adapt type="org.eclipse.core.resources.IFile">
+									<test property="org.adichatz.scenario.propertyTester.isActiveFile" forcePluginActivation="true"/>
+									<test property="org.adichatz.scenario.propertyTester.isBundleFile" forcePluginActivation="true"/>
+								</adapt>
+	           				</iterate>
+						</with>
+        			</visibleWhen>
+				</command>
+				<!-- Compare customized and generated version -->
+				<command commandId="org.adichatz.studio.CompareCustomGeneratedVersion" icon="resources/icons/IMG_COMPARE.png" style="push">
+	        		<visibleWhen>
+            			<with variable="activeMenuSelection">
+	           				<iterate ifEmpty="false" operator="and">
+								<adapt type="org.eclipse.core.resources.IFile">
+									<test property="org.adichatz.scenario.propertyTester.isComparable" forcePluginActivation="true"/>
+								</adapt>
+	           				</iterate>
+						 	<count value="1"/>
+						</with>
+        			</visibleWhen>
+				</command>
+				<!-- Swith to Active File -->
+				<command commandId="org.adichatz.studio.SwitchToActiveFile" icon="resources/icons/IMG_SWITCH.png" style="push">
+	        		<visibleWhen>
+            			<with variable="activeMenuSelection">
+	           				<iterate ifEmpty="false" operator="and">
+								<adapt type="org.eclipse.core.resources.IFile">
+									<test property="org.adichatz.scenario.propertyTester.isSwitchable" forcePluginActivation="true"/>
+								</adapt>
+	           				</iterate>
+						</with>
+        			</visibleWhen>
+				</command>
+				<!-- Edit scenario file -->
+				<command commandId="org.adichatz.studio.editScenarioFile" icon="resources/icons/IMG_EDIT_SCENARIO.png" style="push"	>
+	        		<visibleWhen>
+						<with variable="activeMenuSelection">
+							<count value="1"/>
+	           				<iterate ifEmpty="false" operator="and">
+								<adapt type="org.eclipse.core.resources.IResource">
+									<test property="org.adichatz.scenario.propertyTester.hasScenarioFile" forcePluginActivation="true"/>
+								</adapt>
+	           				</iterate>
+						</with>             
+        			</visibleWhen>
+				</command>
+				<!-- Refresh scenario for adichatz project -->
+				<command commandId="org.adichatz.studio.refreshScenario" icon="resources/icons/IMG_REFRESH_SCENARIO.png" style="push">
+	        		<visibleWhen>
+            			<with variable="activeMenuSelection">
+							<count value="1"/>
+	           				<iterate ifEmpty="false" operator="and">
+								<adapt type="org.eclipse.core.resources.IProject">
+									<test property="org.adichatz.scenario.propertyTester.isOpenAdichatzProject" forcePluginActivation="true"/>
+								</adapt>
+	           				</iterate>
+						</with>
+        			</visibleWhen>
+				</command>
+				<command commandId="org.adichatz.studio.openExternalResourcesEditor" icon="resources/icons/IMG_EXTERNAL_RESOURCES.png" style="push">
+	        		<visibleWhen>
+						<with variable="activeMenuSelection">
+							<count value="1"/>
+	           				<iterate ifEmpty="false" operator="and">
+								<adapt type="org.eclipse.core.resources.IResource">
+									<test property="org.adichatz.scenario.propertyTester.hasScenarioFile" forcePluginActivation="true"/>
+								</adapt>
+	           				</iterate>
+						</with>             
+        			</visibleWhen>
+				</command>
+				<separator name="org.adichatz.studio.popup.menu.separator1" visible="true"/>
+				<!-- Open Connectors.xml file -->
+				<command commandId="org.adichatz.studio.open.connector" icon="resources/icons/IMG_CONNECT.png" style="push"/>
+				<!-- Search for AXML files contained in plugins -->
+				<command commandId="org.adichatz.studio.search.internal.axml.files" icon="resources/icons/IMG_AXML.png" style="push"/>
+				<separator name="org.adichatz.studio.popup.menu.separator2" visible="true"/>
+				<!-- Clean adichatz project from obsolete resources -->
+				<command commandId="org.adichatz.studio.cleanProject" icon="resources/icons/IMG_CLEAN.png" style="push">
+	        		<visibleWhen>
+            			<with variable="activeMenuSelection">
+							<count value="1"/>
+	           				<iterate ifEmpty="false" operator="and">
+								<adapt type="org.eclipse.core.resources.IProject">
+									<test property="org.adichatz.scenario.propertyTester.isApplication" forcePluginActivation="true"/>
+								</adapt>
+	           				</iterate>
+						</with>
+        			</visibleWhen>
+				</command>
+				<!-- Export adichatz project -->
+				<command commandId="org.adichatz.studio.exportProduct" icon="resources/icons/IMG_ADI_EXPORT.png" style="push">
+	        		<visibleWhen>
+						<with variable="activeMenuSelection">
+							<count value="1"/>
+	           				<iterate ifEmpty="false" operator="and">
+								<adapt type="org.eclipse.core.resources.IProject">
+									<test property="org.adichatz.scenario.propertyTester.isApplication" forcePluginActivation="true"/>
+								</adapt>
+	           				</iterate>
+						</with>             
+        			</visibleWhen>
+				</command>
+				<separator name="org.adichatz.studio.popup.menu.separator3" visible="true"/>
+				<!-- Run product -->
+				<command commandId="org.adichatz.studio.runProduct" icon="resources/icons/IMG_RUN.png" style="push" label="%runProduct.name">
+	        		<visibleWhen>
+						<with variable="activeMenuSelection">
+							<count value="1"/>
+	           				<iterate ifEmpty="false" operator="and">
+								<adapt type="org.eclipse.core.resources.IResource">
+									<test property="org.adichatz.scenario.propertyTester.isApplication" forcePluginActivation="true"/>
+								</adapt>
+	           				</iterate>
+						</with>             
+        			</visibleWhen>
+        			<parameter name="org.adichatz.studio.mode" value="run"/>
+				</command>
+				<!-- debug product -->
+				<command commandId="org.adichatz.studio.debugProduct" icon="resources/icons/IMG_DEBUG.png" style="push"	label="%debugProduct.name">
+	        		<visibleWhen>
+						<with variable="activeMenuSelection">
+							<count value="1"/>
+	           				<iterate ifEmpty="false" operator="and">
+								<adapt type="org.eclipse.core.resources.IResource">
+									<test property="org.adichatz.scenario.propertyTester.isApplication" forcePluginActivation="true"/>
+								</adapt>
+	           				</iterate>
+						</with>             
+        			</visibleWhen>
+        			<parameter name="org.adichatz.studio.mode" value="debug"/>
+				</command>
+			</menu>
+		</menuContribution>
+	</extension>
+
+   	<!-- ********************* -->
+   	<!-- *   W I Z A R D S   * -->
+   	<!-- ********************* -->
+   	<extension point="org.eclipse.ui.newWizards">
+      	<category name="Adichatz Project" id="org.adichatz.studio.creation.category"/>
+      	<wizard category="org.adichatz.studio.creation.category" class="org.adichatz.studio.wizard.FullProjectWizard" icon="resources/icons/IMG_NEW_FULL_PLUGIN.png" id="org.adichatz.studio.wizard.FullProjectWizard" name="%addFullAdichatzProject.name" project="true"/>
+      	<wizard category="org.adichatz.studio.creation.category" class="org.adichatz.studio.wizard.EmptyProjectWizard" icon="resources/icons/IMG_NEW_SCENARIO.png" id="org.adichatz.studio.wizard.EmptyProjectWizard" name="%addEmptyAdichatzProject.name" project="true"/>
+   	</extension>
+</plugin>

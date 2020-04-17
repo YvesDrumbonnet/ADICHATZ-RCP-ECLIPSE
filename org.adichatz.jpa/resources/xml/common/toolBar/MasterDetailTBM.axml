@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<extendTree adiResourceURI="adi://org.adichatz.jpa/common.toolBar/MasterDetailStubTBM">
+	<managedToolBar id="managedToolBar">
+		<action id="expandDetailAction" toolTipText="#MSG(adi://org.adichatz.engine/./adichatzEngine, expandDetail)" imageDescriptor="#IMGDESC(IMG_VERTICAL_EXPAND_DETAIL)">
+			<actionCode>expand(#CONTROL(), getDetailControl());</actionCode>
+		</action>
+		<action id="expandHeaderAction" toolTipText="#MSG(adi://org.adichatz.engine/./adichatzEngine, expandHeader)" imageDescriptor="#IMGDESC(IMG_VERTICAL_EXPAND_HEADER)">
+			<actionCode>expand(#CONTROL(), getMasterControl());</actionCode>
+		</action>
+		<separator/>
+		<action id="changeOrientationAction" toolTipText="#MSG(adi://org.adichatz.engine/./adichatzEngine, horizontalOrientation)" imageDescriptor="#IMGDESC(IMG_HORIZONTAL)">
+			<actionCode>import org.eclipse.swt.SWT;
+changeOrientation(getControl());</actionCode>
+		</action>
+        <additionalCode>import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.custom.SashForm;
+protected void expand(AAction action, Control control) {
+    SashForm sashForm = getSashForm();
+    if (!control.equals(sashForm.getMaximizedControl())) {
+        sashForm.setMaximizedControl(control);
+        setImages();
+        if(SWT.HORIZONTAL == sashForm.getOrientation())
+           action.setImageDescriptor(#IMGDESC(IMG_HORIZONTAL));     			
+        else
+            action.setImageDescriptor(#IMGDESC(IMG_VERTICAL));     			
+    } else {
+        sashForm.setMaximizedControl(null);
+        setImages();
+    }
+}
+protected void changeOrientation(AAction action) {
+    getSashForm().setMaximizedControl(null);
+    getSashForm().setOrientation(SWT.HORIZONTAL == getSashForm().getOrientation() ? SWT.VERTICAL : SWT.HORIZONTAL); 
+	setImages();
+}
+protected void setImages() {
+   if(SWT.HORIZONTAL == getSashForm().getOrientation()) {
+		#CONTROL(changeOrientationAction).setImageDescriptor(#IMGDESC(IMG_VERTICAL));
+		#CONTROL(changeOrientationAction).setToolTipText(#MSG(adi://org.adichatz.engine/./adichatzEngine, horizontalOrientation));
+		#CONTROL(expandHeaderAction).setImageDescriptor(#IMGDESC(IMG_HORIZONTAL_EXPAND_HEADER));
+		#CONTROL(expandDetailAction).setImageDescriptor(#IMGDESC(IMG_HORIZONTAL_EXPAND_DETAIL));
+   } else {
+		#CONTROL(changeOrientationAction).setImageDescriptor(#IMGDESC(IMG_HORIZONTAL));
+		#CONTROL(changeOrientationAction).setToolTipText(#MSG(adi://org.adichatz.engine/./adichatzEngine, verticalOrientation));
+		#CONTROL(expandHeaderAction).setImageDescriptor(#IMGDESC(IMG_VERTICAL_EXPAND_HEADER));
+		#CONTROL(expandDetailAction).setImageDescriptor(#IMGDESC(IMG_VERTICAL_EXPAND_DETAIL));
+   }
+}
+</additionalCode>
+		<listeners>
+			<listener listenerTypes="AFTER_END_LIFE_CYCLE">
+				<code>setImages();</code>
+			</listener>
+		</listeners>
+    </managedToolBar>
+</extendTree>

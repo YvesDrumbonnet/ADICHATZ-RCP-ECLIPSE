@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/tree/containerTree.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <config>
+        <customizations>
+            <tabular id="table:table" refreshAtStart="true" layoutData="width 0:300:n, height 0:200:n">
+                <include adiResourceURI="#PARAM(CONTEXT_MENU)" id="tableCM"/>
+            </tabular>
+    	</customizations>
+    </config>
+    <layout rowConstraints="grow,fill" columnConstraints="grow,fill" layoutConstraints="wrap, ins 0"/>
+	<include adiResourceURI="#PARAM(TABLE_RESOURCE_URI)" id="table">
+		<params>
+            <param value="#PARAM(CONTENT_PROVIDER)" id="CONTENT_PROVIDER"/>
+        </params>
+    </include>	
+</containerTree>

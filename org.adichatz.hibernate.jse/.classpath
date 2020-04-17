@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-12"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.adichatz.common"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/org.adichatz.hibernate4.jboss/bin" sourcepath="/org.adichatz.hibernate4.jboss"/>
+	<classpathentry kind="lib" path="/org.adichatz.resources" sourcepath="/org.adichatz.resources"/>
+	<classpathentry kind="lib" path="/org.adichatz.template/template/lib/lib-jse/hibernate-core-5.3.13.Final.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

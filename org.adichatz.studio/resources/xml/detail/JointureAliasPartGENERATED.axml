@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/JointureAliasMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <text property="alias" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(jointureAlias, alias).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="alias"/>
+        <text property="path" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(jointureAlias, path).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="path"/>
+    </scrolledComposite>
+</containerTree>

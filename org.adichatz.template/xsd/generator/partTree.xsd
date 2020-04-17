@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:include schemaLocation="common/control.xsd"/>
+
+    <xs:element name="partTree">
+        <xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="basicType">
+					<xs:sequence>
+						<xs:element name="config" type="configType"/>
+						<xs:choice maxOccurs="unbounded" minOccurs="0">
+							<xs:element name="formPage" type="formPageType"/>
+							<xs:element name="include" type="includeType"/>
+						</xs:choice>
+						<xs:element name="additionalCode" type="xs:string"/>
+					</xs:sequence>
+					<xs:attribute name="bindingServiceClassName" type="xs:NCName"/>
+					<xs:attribute name="coreClassName" type="xs:NCName"/>
+					<xs:attribute name="entityURI" type="xs:string"/>
+					<xs:attribute name="image" type="xs:string"/>
+					<xs:attribute name="outlinePageClassName" type="xs:string"/>
+					<xs:attribute name="title" type="xs:string"/>
+					<xs:attribute name="toolTipText" type="xs:string"/>
+				</xs:extension>
+			</xs:complexContent>
+        </xs:complexType>
+	</xs:element>
+</xs:schema>

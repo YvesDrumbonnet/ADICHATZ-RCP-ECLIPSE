@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<partTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bindingServiceClassName="org.adichatz.engine.e4.resource.PartBindingService" image="#PARAM(IMAGE)" outlinePageClassName="org.adichatz.jpa.query.ListDetailOutlinePage" title="#PARAM(TITLE)" toolTipText="#PARAM(TOOL_TIP_TEXT)" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/partTree.xsd">
+    <config>
+        <resourceBundles>
+            <resourceBundle basename="#PARAM(MESSAGE_BUNDLE)" var="queryBundle"/>
+        </resourceBundles>
+        <customizations id="customizationsWrapper$$1">
+            <tabular tableRendererKey="#LITERAL(getTableRendererKey((ATabularController&lt;?&gt;) controller))" id="tableInclude:table">
+                <listeners>
+                    <listener id="onDoubleClick" listenerTypes="DOUBLE_CLICK">
+                        <code>org.adichatz.jpa.extra.JPAUtil.openForm(getFromRegister("tableInclude:table"));</code>
+                    </listener>
+                    <listener listenerTypes="SELECTION_CHANGED">
+                        <code>#CONTROLLER(DependenciesCompositeBag).showChildController(#CONTROLLER(), #CONTROLLER(detailInclude:detailContainer,org.adichatz.engine.controller.AEntityManagerController));</code>
+                    </listener>
+                </listeners>
+                <include adiResourceURI="adi://org.adichatz.jpa/common.contextMenu/QueryFormCM" id="tableCM"/>
+            </tabular>
+        </customizations>
+    </config>
+    <formPage formText="#LITERAL(getFormPageText())" entity="coreController.getParentController().getEntity()" id="Page1">
+        <additionalCode>private String getFormPageText() {
+String formText = #PARAM(FORM_TEXT);
+if (null == formText)
+	formText = #MSG(queryBundle,listDetailFormText);
+return formText;
+	}</additionalCode>
+        <layout layoutConstraints="wrap, ins 0" columnConstraints="[grow,fill]" rowConstraints="[grow,fill]"/>
+        <include adiResourceURI="#PARAM(FULLTEXT_RESOURCE_URI)" id="fullTextInclude"/>
+        <include adiResourceURI="adi://org.adichatz.jpa/common.toolBar/MasterDetailTBM" id="masterDetailTBM"/>
+        <sashForm weights="1,1" id="ListDetailSashForm">
+            <include adiResourceURI="#PARAM(TABLE_RESOURCE_URI)" id="tableInclude">
+                <params>
+                    <param value="#PARAM(CONTENT_PROVIDER)" id="CONTENT_PROVIDER"/>
+                </params>
+            </include>
+            <compositeBag id="DependenciesCompositeBag">
+                <include adiResourceURI="#PARAM(DETAIL_RESOURCE_URI)" id="detailInclude">
+                    <params>
+                        <param value="adi://org.adichatz.jpa/common.toolBar/SectionDetailTBM" id="TOOL_BAR"/>
+                        <param value="CHILD" id="TOOL_BAR_TYPE"/>
+                    </params>
+                </include>
+            </compositeBag>
+        </sashForm>
+    </formPage>
+    <additionalCode>import org.adichatz.engine.controller.collection.ATabularController;
+import org.adichatz.jpa.wrapper.ControllerPreferenceWrapper;
+import org.adichatz.jpa.tabular.JPAControllerPreferenceManager;
+private String getTableRendererKey(ATabularController&lt;?&gt; tabularController) {
+    ControllerPreferenceWrapper&lt;?&gt; controllerPreference = ((JPAControllerPreferenceManager) tabularController.getControllerPreferenceManager()).getControllerPreference();
+	if (null != controllerPreference &amp;&amp; null != controllerPreference.getTableRendererKey())
+	   return controllerPreference.getTableRendererKey();
+    return "Binding";
+}</additionalCode>
+</partTree>

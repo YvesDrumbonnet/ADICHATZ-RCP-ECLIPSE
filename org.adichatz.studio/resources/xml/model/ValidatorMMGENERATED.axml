@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ValidatorMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="errorWhen">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField id="warningWhen">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField mandatory="true" id="key">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+    <propertyField id="validatorClassName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="hostingControllerIds">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="errorMessage">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="warningMessage">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

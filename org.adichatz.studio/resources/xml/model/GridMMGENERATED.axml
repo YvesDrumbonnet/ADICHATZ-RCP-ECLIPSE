@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/GridMM" superEntityURI="adi://org.adichatz.studio/model/TabularMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="rowHeaderVisible">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="columnScrolling">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="selectionEnabled">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="cellSelectionEnabled">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/ValidElementMM" id="gridColumnOrGridColumnGroup">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/GridColumnMM" name="gridColumn"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/GridColumnGroupMM" name="gridColumnGroup"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ListenerMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+	<scrolledComposite id="itemComposite">
+    	<validators>
+	    	<validator key="classOrCodeMandatory"  hostingControllerId="listenerClassName, code" errorMessage="#MSG(adichatzStudio,studio.listener.classOrCodeMandatory)">
+				<errorWhen>return null == #FV(listenerClassName) &amp;&amp; (null == #BEAN().getCode() || #BEAN().getCode().trim().isEmpty());</errorWhen>
+			</validator>
+       	</validators>
+        <layout columnConstraints="[align right]10[fill,grow]" layoutConstraints="wrap 2"/>
+        <hyperlink runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" text="#MSG(adi://org.adichatz.studio/./listener, listenerClassName)" id="listenerClassNameListenerPart$1"/>
+        <text noLabel="true" linkedControl="listenerClassNameListenerPart$1" property="listenerClassName" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="listenerClassName"/>
+        <genericField labelForeground="#COLOR(IFormColors.TITLE)" mandatory="true" property="listenerTypes" id="listenerTypes" controllerClassName="org.adichatz.studio.xjc.controller.ListenerTypeController"/>
+        <text property="code" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(listener, code).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="code"/>
+    </scrolledComposite>
+</containerTree>

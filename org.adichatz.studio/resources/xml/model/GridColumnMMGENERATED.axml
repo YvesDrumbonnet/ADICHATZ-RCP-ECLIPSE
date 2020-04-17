@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/GridColumnMM" superEntityURI="adi://org.adichatz.studio/model/ColumnFieldMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="controllerClassName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="minimumWidth">
+        <controlField xsi:type="numericTextType" pattern="######" layoutData="width min:100:150, growx"/>
+    </propertyField>
+    <propertyField id="cellSelectionEnabled">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="summary">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="wordWrap">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="headerFont">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="headerWordWrap">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

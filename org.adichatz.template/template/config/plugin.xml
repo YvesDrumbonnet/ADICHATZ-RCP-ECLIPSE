@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension id="product" point="org.eclipse.core.runtime.products">
+		<product application="org.eclipse.e4.ui.workbench.swt.E4Application" name="#{adichatz.project.name}">
+			<property name="appName" value="#{adichatz.project.name}"/>
+			<property name="applicationXMI" value="#{adichatz.project.name}/Application.e4xmi"/>
+			<property name="lifeCycleURI" value="bundleclass://#{adichatz.project.name}/#{adichatz.package.name}.StartupLifeCycleHandler"/>
+   			<property name="startupProgressRect" value="5,275,445,15"/>
+		</product>
+	</extension>
+</plugin>

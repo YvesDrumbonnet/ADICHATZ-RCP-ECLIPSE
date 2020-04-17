@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree id="queryTool" entityURI="adi://org.adichatz.jpa/query.model/QueryToolInputMM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <managedToolBar>
+	    <action id="refreshQueryAction" actionClassName="org.adichatz.jpa.query.action.RefreshQueryAction"/>
+	    <action id="launchManagedQueryAction" actionClassName="org.adichatz.jpa.query.action.LaunchManagedQueryAction"/>
+	</managedToolBar>
+	<pshelf id="customizationFolder" selection="0">
+		<listeners>
+       		<listener listenerTypes="WIDGET_SELECTED">
+       			<code>import org.eclipse.nebula.widgets.pshelf.PShelfItem
+import org.adichatz.jpa.query.QueryToolInput
+if (((PShelfItem) event.item).getText().equals("J P Q L"))
+    #CONTROLLER(jpqlOrder).getControl().setText(((QueryToolInput) getEntity().getBean()).getQueryFormText());
+				</code>
+       		</listener>
+			<listener listenerTypes="BEFORE_END_LIFE_CYCLE">
+				<code>import org.adichatz.engine.tabular.TabularUtil
+if (null == #CONTROLLER(statusBarKey).getValue())
+    #CONTROLLER(statusBarKey).setValue(TabularUtil.getInstance().getStatusBar(#BEAN(queryTool).getControllerPreference().getStatusBarKey()));</code>
+       		</listener>
+       	</listeners>
+		<pshelfItem id="paginationItem" text="#MSG(adichatzJpa, query.pagination)" image="#IMG(IMG_PAGINATION.png)">
+	        <layout columnConstraints="[grow,fill]" layoutConstraints="wrap 1, ins 0"/>
+       		<composite id="paginationCmp" entity="#ENTITY(#BEAN(queryTool).getQueryPreference().getPagination())" entityURI="adi://org.adichatz.jpa/query.model/PaginationMM">
+		        <layout columnConstraints="[right]15[][]" layoutConstraints="wrap 3"/>
+				<listeners>
+       				<listener listenerTypes="AFTER_PROPERTY_CHANGE">
+	    				<code>#BEAN(queryTool).setChanged(true);</code>
+       				</listener>
+		       	</listeners>
+   				<validators>
+           			<validator key="positiveValue" 
+           				errorMessage="#MSG(pagination, positiveValue,#FV(maxResults))" hostingControllerId="maxResults">
+           				<errorWhen>return null != #FV(maxResults) &amp;&amp; 0  &gt;= #FV(maxResults).intValue();</errorWhen>
+           			</validator>
+           			<validator key="greaterThan10"
+           				warningMessage="#MSG(pagination, greaterThan10,#FV(maxResults))" hostingControllerId="maxResults">
+           				<warningWhen>return null != #FV(maxResults) &amp;&amp; 10 &gt; #FV(maxResults).intValue();</warningWhen>
+           			</validator>
+				</validators>
+       			<label id="totalQueryCountLBL" text="#MSG(pagination, totalQueryCount)"/>
+       			<numericText id="totalQueryCount" enabled="false" noLabel="true" layoutData="sg pgGroup"/> 
+   	    		<numericText id="maxResults" property="maxResults" labelLayoutData="skip 1" layoutData="sg pgGroup" labelText="#MSG(adi://org.adichatz.jpa/./adichatzJpa,queryPreference.maxResults)"/>
+       			<helpButton id="maxResultsHlp" helpLabel="#MSG(pagination, maxResults.specify)" helpSpecify="#MSG(pagination, maxResults.specify)" helpMessage="#MSG(pagination, maxResults.message)"/>
+       		</composite>
+       		<composite id="statusCmp" entity="#ENTITY(#BEAN(queryTool).getControllerPreference())" entityURI="adi://org.adichatz.jpa/query.model/ControllerPreferenceMM">
+		        <layout columnConstraints="[right]15[grow,fill]" layoutConstraints="wrap 2"/>
+       			<radioGroup property="statusBarKey" id="statusBarKey" labelText="#MSG(adi://org.adichatz.jpa/./adichatzJpa,table.statusBarKey)">
+       				<layout layoutConstraints="wrap 1" />
+            		<labelProvider>
+                		<textCode>return ((org.adichatz.engine.xjc.TableComponentType) element).getText();</textCode>
+            		</labelProvider>
+            		<initValues>return org.adichatz.engine.tabular.TabularUtil.getInstance().getStatusBars();</initValues>
+		            <convertTargetToModel>return  null == value ? null : ((org.adichatz.engine.xjc.TableComponentType) value).getId();</convertTargetToModel>
+		            <convertModelToTarget>return  org.adichatz.engine.tabular.TabularUtil.getInstance().getTableComponentMap().get(value);</convertModelToTarget>
+        		</radioGroup>   			
+       			<radioGroup property="tableRendererKey" id="tableRendererKey" labelText="#MSG(adi://org.adichatz.jpa/./adichatzJpa,table.tableRendererKey)">
+       				<layout layoutConstraints="wrap 1" />
+            		<labelProvider>
+                		<textCode>return ((org.adichatz.engine.xjc.TableComponentType) element).getText();</textCode>
+            		</labelProvider>
+            		<initValues>return org.adichatz.engine.tabular.TabularUtil.getInstance().getTabularRenderers(#BEAN(queryTool).getTabularController(), false);</initValues>
+		            <convertTargetToModel>return  ((org.adichatz.engine.xjc.TableComponentType) value).getId();</convertTargetToModel>
+		            <convertModelToTarget>return  org.adichatz.engine.tabular.TabularUtil.getInstance().getTableRenderer(#BEAN(queryTool).getTabularController(), (String) value);</convertModelToTarget>
+        		</radioGroup>
+       		</composite>
+		</pshelfItem>
+		<pshelfItem id="columnParameterItem" text="#MSG(adichatzJpa, query.parameters)" image="#IMG(IMG_PARAMETER.png)" valid="!#BEAN().getQueryPreference().getParameter().isEmpty()">
+	        <layout layoutConstraints="wrap 1, ins 0" rowConstraints="[grow, fill]" columnConstraints="[grow, fill]"/>
+	        <composite id="columnParameterCmp" entity="#ENTITY(#BEAN(queryTool).getQueryPreference())">
+				<layout layoutConstraints="wrap 1, ins 0" rowConstraints="[grow, fill][]" columnConstraints="grow, fill"/>
+		 		<table id="parameterTable" entityURI="adi://org.adichatz.jpa/query.model/ParameterMM" layoutData="height 200:200:n, w 200:200:n"
+		 			controllerClassName="org.adichatz.jpa.query.custom.ColumnParameterTableController">
+                    <contentProvider xsi:type="nativeContentProviderType" fieldName="parameter"/>
+			        <tableColumn sorted="true" id="validTC" text="#MSG(parameter,valid)">
+			        	<columnImage>return row.getValidImage();</columnImage>
+			        </tableColumn>
+       	 			<tableColumn sorted="true" property="prompt" id="promptTC"/>
+				    <tableColumn sorted="true" property="property" id="propertyTC">
+				    	<columnText>return row.getSuffix() + &quot;.&quot; + row.getProperty();</columnText>
+				    </tableColumn>
+   	     			<tableColumn sorted="true" property="operator" id="operatorTC" />
+			        <tableColumn property="expression" id="expressionTC" text="expression">
+				    	<columnText>return row.getColumnText();</columnText>
+				    </tableColumn>
+       	 			<tableColumn sorted="true" property="secondExpression" id="secondExpressionTC" text="secondExpression">
+				    	<columnText>return row.getSecondColumnText();</columnText>
+				    </tableColumn>
+	    		</table>
+    	     	<pgroup id="columnParameterGroup" text="#MSG(adichatzJpa, query.column.parameter.detailGroup)" visible="null != #CONTROLLER(parameterTable).getSelectedObject()" entityURI="adi://org.adichatz.jpa/query.model/ParameterMM"
+    	     		 controllerClassName="org.adichatz.engine.controller.nebula.ScrolledPGroupController"
+    	     		 valid="null != #CONTROLLER(parameterTable).getSelectedObject()"
+    	     		 entity="null">
+       				<pgroupToolItem id="refreshParameterItem" controllerClassName="org.adichatz.jpa.query.action.RefreshParameterItemController"/>
+       				<pgroupToolItem id="deleteParameterItem" controllerClassName="org.adichatz.jpa.query.action.DeleteParameterItemController"/>
+       				<pgroupToolItem id="validateParameterItem" controllerClassName="org.adichatz.jpa.query.action.ValidateParameterItemController"/>
+					<layout layoutConstraints="wrap 1" columnConstraints="[grow, fill]" rowConstraints="align top"/>					
+    	     		<composite id="bufferComposite" layoutData="h 45!">
+	         			<layout layoutConstraints="wrap 1, ins 0" columnConstraints="grow, fill" rowConstraints="grow, fill"/>
+	    	     		<composite id="columnParameterDetail">
+		         			<layout layoutConstraints="wrap 2, ins 0" columnConstraints="[]10[grow, fill]" rowConstraints="[grow, fill, align top][]"/>
+		   	     			<composite id="columnAndOperator">
+				         		<layout layoutConstraints="wrap 1, ins 0" columnConstraints="[]" rowConstraints="[][]"/>
+		       					<combo id="operator" property="operator" noLabel="true" values="#LITERAL((List) getViewer().getInput())" style="SWT.BORDER | SWT.READ_ONLY"/>
+		   	    				<label id="and" text="and" layoutData="right" visible="false"/>
+		       				</composite>
+		    	     		<composite id="columnDynamicExpressions">
+				         		<layout layoutConstraints="wrap 1, ins 0" columnConstraints="[grow,fill]" rowConstraints="[align top][align top]"/>
+		   	     			</composite>
+						</composite>
+					</composite>
+	         	</pgroup>
+	    	</composite>
+    	</pshelfItem>
+		<pshelfItem id="openClauseItem" text="#MSG(adichatzJpa, query.tabItem.openClauses)" image="#IMG(IMG_OPEN_CLAUSE.png)"
+			  valid="#BEAN(queryTool).getQueryPreference().isOpenClauseVisible()"
+			  entity="#ENTITY(#BEAN(queryTool).getQueryPreference())" entityURI="adi://org.adichatz.jpa/query.model/QueryPreferenceMM">
+	        <layout layoutConstraints="wrap 1" rowConstraints="[grow, fill]" columnConstraints="[grow, fill]"/>
+			<argTabFolder id="openClauseFolder" selection="0" values="#BEAN(openClauseItem).getVisibleOpenClause()" entityURI="adi://org.adichatz.jpa/query.model/OpenClauseMM">
+				<listeners>
+       				<listener listenerTypes="WIDGET_SELECTED">
+       					<code>// Bypass a bug on PGroup or elsewhere!?
+import org.adichatz.jpa.extra.JPAUtil
+import org.adichatz.engine.controller.nebula.PGroupController
+// Use JPAUtil.getChildController because register points to the last CTabItemController and not the selected one
+PGroupController groupController = (PGroupController) JPAUtil.getChildController(getSelectedItemController(),0);
+groupController.getControl().redraw();
+</code>
+       				</listener>
+       			</listeners>
+				<labelProvider>
+					<textCode>import org.adichatz.engine.common.EngineConstants
+import static org.adichatz.jpa.extra.JPAUtil.getFromJpaBundle;
+if (EngineConstants.PARENT_BEAN_PARAM.equals(#ELEMENT().getTitle()))
+    return getFromJpaBundle("query.parent.child.relationship");
+return #ELEMENT().getTitle();</textCode>
+                    <imageCode>import org.adichatz.jpa.wrapper.QueryOpenClauseWrapper;
+QueryOpenClauseWrapper openClause = (QueryOpenClauseWrapper) #ELEMENT();                   
+return openClause.getImage();</imageCode>
+				</labelProvider>
+				<layout layoutConstraints="wrap 1, ins 0" rowConstraints="[grow, fill]" columnConstraints="[grow, fill]"/>
+ 	  	    	<pgroup id="openParameterGroup">
+					<layout layoutConstraints="wrap 1, ins 0" rowConstraints="[grow, fill][grow, fill][]" columnConstraints="[grow, fill]"/>
+	   				
+	   				<pgroupToolItem id="refreshOpenClauseItem" controllerClassName="org.adichatz.jpa.query.action.RefreshOpenClauseItemController"/>
+			        <pgroupToolItem id="deleteOpenClauseItem" controllerClassName="org.adichatz.jpa.query.action.DeleteOpenClauseItemController"/>
+	   				<pgroupToolItem id="validateOpenClauseItem" controllerClassName="org.adichatz.jpa.query.action.ValidateOpenClauseItemController"/>
+	   				
+					<text id="clause" property="clause" noLabel="true" style="SWT.WRAP | SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL" layoutData="h n:100:n" editable="false"/>
+			 		<table id="openParameterTable" entityURI="adi://org.adichatz.jpa/query.model/ParameterMM" layoutData="h n:100:n, w 300:300:n"
+			 			refreshAtStart="true"
+			 			controllerClassName="org.adichatz.jpa.query.custom.OpenClauseParameterTableController">
+	                    <contentProvider xsi:type="nativeContentProviderType" fieldName="parameter"/>
+		      	 		<tableColumn sorted="true" property="prompt" id="prompt"/>
+					    <tableColumn property="expression" id="expression">
+					    	<columnText>return row.getColumnText();</columnText>
+					    </tableColumn>
+		    		</table>
+		     		<composite id="openParameterCMP" layoutData="h 40!" entity="null">
+		      			<layout layoutConstraints="wrap 1, ins 5" columnConstraints="grow, fill" rowConstraints="align top"/>
+			     		<composite id="openParameterDetail" entityURI="adi://org.adichatz.jpa/query.model/ParameterMM" valid="false" entity="null">
+			      			<layout layoutConstraints="wrap 2, ins 0" columnConstraints="[]10[grow, fill]" rowConstraints="align top"/>
+			     			<label id="prompt"/>
+			     		</composite>
+		     		</composite>
+				</pgroup>
+			</argTabFolder>		
+    	</pshelfItem>
+       	<pshelfItem id="filterItem" text="#MSG(viewerFilter, filters)" image="#IMG(IMG_FILTER)">
+      		<layout layoutConstraints="ins 0, wrap 1" columnConstraints="grow, fill" rowConstraints="[grow, fill]"/>
+	 		<table id="filterTable" entityURI="adi://org.adichatz.jpa/query.model/ViewerFilterMM" controllerClassName="org.adichatz.jpa.query.custom.FilterTableController">
+                <layout layoutConstraints="ins 0, wrap 1" columnConstraints="grow, fill" rowConstraints="[grow, fill]"/>
+		        <tableColumn id="textTC" property="text"/>
+	 		</table>
+    	</pshelfItem>       	
+       	<pshelfItem visible="!#CONTROLLER(crossReferenceButtonBar).isEmpty()" id="crossReferences" text="#MSG(adichatzJpa, table.crossReferences)" image="#IMG(IMG_CROSS_REFERENCE)">
+      		<layout layoutConstraints="ins 0, wrap 1" columnConstraints="grow, fill"/>
+       		<composite id="crossReferenceButtonBar" controllerClassName="org.adichatz.jpa.query.custom.CrossReferenceBarController"/>
+    	</pshelfItem>       	
+        <pshelfItem id="preferenceItem" text="#MSG(adichatzJpa, table.preferences)" image="#IMG(IMG_PREFERENCE)">
+            <layout layoutConstraints="ins 0, wrap 1" columnConstraints="grow, fill" rowConstraints="grow,fill"/>
+            <sashForm orientation="SWT.VERTICAL" weights="1,5" id="secondSashForm">
+                <layout layoutConstraints="wrap 1, ins 0" columnConstraints="grow,fill" rowConstraints="grow,fill"/>
+                <composite id="preferenceGridCmp">
+                    <layout layoutConstraints="ins 0, wrap 1" columnConstraints="grow, fill" rowConstraints="[grow,fill][]"/>
+        	 		<grid id="preferenceGrid" entityURI="adi://org.adichatz.jpa/query.model/RecentPreferenceMM" layoutData="h 0:200:n, w 0:20:n" refreshAtStart="true"
+                            background="#COLOR(SWT.COLOR_TITLE_BACKGROUND_GRADIENT)" rowHeaderVisible="true">
+                        <contentProvider xsi:type="nativeContentProviderType" fieldName="recentPreferences"/>
+                        <listeners>
+                            <listener id="preferenceGridSCLsnr" listenerTypes="SELECTION_CHANGED">
+                                <code>import org.adichatz.jpa.wrapper.RecentPreferenceWrapper;
+RecentPreferenceWrapper recentPreference = getSelectedObject();
+if (null != recentPreference) {
+    if (recentPreference.check(#BEAN(queryTool).getContentProvider().getQueryURI()))
+        #CONTROLLER(preferenceGrid).refresh();
+}
+#CONTROLLER(preferenceCompositeBag).showChildController(#CONTROLLER(), #CONTROLLER(recentPreferenceDetail));</code>
+                            </listener>
+                            <listener id="preferenceGridDCLsnr" listenerTypes="DOUBLE_CLICK">
+                                <code>#BEAN(queryTool).chooseRecentPreference(#BEAN(recentPreferenceDetail));</code>
+                            </listener>
+                        </listeners>
+                        <menuManager id="preferenceContextMenu">
+                            <action imageDescriptor="#IMGDESC(IMG_ACCEPT)" text="#MSG(adichatzJpa, queryPreference.choosePreference)" enabled="null != #ROW() &amp;&amp; !#BEAN(queryTool).isActivePreference(#ROW())" id="choosePreferencePreference">
+                                <actionCode>#BEAN(queryTool).chooseRecentPreference(#BEAN(recentPreferenceDetail));</actionCode>
+                            </action>
+                            <separator/>
+                            <action imageDescriptor="#IMGDESC(IMG_DELETE)" text="#MSG(adichatzJpa, queryPreference.deletePreference)" id="deletePreference" enabled="null != #ROW() &amp;&amp; !#BEAN(queryTool).isActivePreference(#ROW())">
+                                <actionCode>import org.adichatz.jpa.wrapper.RecentOpenEditorTreeWrapper;
+RecentOpenEditorTreeWrapper.getInstance().removeRecentPreference(#BEAN(queryTool).getContentProvider().getQueryURI(), #BEAN(recentPreferenceDetail));
+#CONTROLLER(preferenceGrid).refresh();</actionCode>
+                            </action>
+                            <separator/>
+                            <action actionClassName="org.adichatz.jpa.query.action.CopyFileNameAction" id="copyFileName" enabled="null != #ROW() &amp;&amp; null != #ROW().getPreferenceFile()"/>
+                            <separator/>
+                            <action imageDescriptor="#IMGDESC(IMG_REFRESH)" text="#MSG(adichatzJpa, queryPreference.refreshPreferences)"  id="refreshPreferences">
+                                <actionCode>#CONTROLLER(preferenceGrid).refresh();</actionCode>
+                            </action>
+                        </menuManager>
+                        <gridColumn sorted="true" id="titleTC">
+                            <columnFont>return #BEAN(queryTool).isActivePreference(row) ? #BOLD() : super.getColumnFont(row);</columnFont>
+                            <columnImage>return #BEAN(queryTool).getImage(row);</columnImage>
+                            <columnText>return #ROW().getPreferenceTree().getTitle();</columnText>
+                        </gridColumn>
+                        <gridColumn sorted="true" property="preferenceURI" id="preferenceURITC">
+                            <columnFont>return #BEAN(queryTool).isActivePreference(row) ? #BOLD() : super.getColumnFont(row);</columnFont>
+                        </gridColumn>
+        	    	</grid>
+	            </composite>
+                <compositeBag id="preferenceCompositeBag">
+                    <composite entityURI="adi://org.adichatz.jpa/query.model/RecentPreferenceMM" id="recentPreferenceDetail">
+                        <layout layoutConstraints="wrap 1" columnConstraints="grow,fill" rowConstraints="grow,fill"/>
+                        <group id="preferenceDetail" text="#MSG(adichatzJpa,queryPreference.detail)" font="#BOLD()">
+                            <layout layoutConstraints="wrap 1, ins 0" columnConstraints="grow,fill" rowConstraints="[][grow,fill]"/>
+                            <composite id="titleCmp">       
+                                <layout layoutConstraints="wrap 2, ins 0" columnConstraints="[fill,align right]15[fill,grow]"/>
+                                <label id="titleLabel" text="#MSG(adi://org.adichatz.jpa/./adichatzJpa,preference.title)"/>
+                                <text id="title" mandatory="true" editable="false">
+                                	<initialValue>return #BEAN().getPreferenceTree().getTitle();</initialValue>
+                                </text>
+                            </composite>
+                            <composite id="preferencePaginationCmp">
+                                <layout layoutConstraints="wrap 1, ins 0" columnConstraints="fill,grow" rowConstraints="grow,fill"/>
+                                <pgroup id="paginationGroup" text="#MSG(adichatzJpa,query.pagination)" image="#IMG(IMG_PAGINATION.png)" dirtyManagement="false" toggleRenderer="None">
+	                                <layout layoutConstraints="wrap 2, ins 0" columnConstraints="[][fill,grow]" rowConstraints="grow,fill"/>
+	                                <label id="paginationLabel" text="#MSG(adichatzJpa,preference.pagination)"/>
+                                    <text id="pagination" editable="false" style="SWT.WRAP | SWT.MULTI">
+                                        <initialValue>return #BEAN().getPaginationString(#BEAN(queryTool).getTabularController());</initialValue>
+                                    </text>
+                                </pgroup>       
+                                <pgroup id="preferenceParameterGroup" text="#MSG(adichatzJpa, query.additional.clauses)" image="#IMG(IMG_ADDITIONAL_CLAUSES.png)" dirtyManagement="false">      
+                                    <layout layoutConstraints="wrap 1, ins 0" columnConstraints="grow,fill" rowConstraints="grow,fill"/>
+                                    <tree id="parameterTree" controllerClassName="org.adichatz.jpa.query.custom.AdditionalClausesTreeController" headerVisible="false" expand="all" layoutData="h 100:n:n">
+                                        <menuManager id="additionalClauseContextMenu">
+                                            <action actionClassName="org.adichatz.jpa.query.action.CopyTextAction" id="copyTextName" enabled="null != #ROW()"/>
+                                        </menuManager>          
+                                    </tree>
+                                </pgroup>       
+                                <pgroup id="preferenceFilterGroup" text="#MSG(viewerFilter, filters)" image="#IMG(IMG_FILTER)" dirtyManagement="false">
+                                    <layout layoutConstraints="wrap 1, ins 0" columnConstraints="grow,fill" rowConstraints="grow,fill"/>
+                                    <table id="filterPrefTable" entityURI="adi://org.adichatz.jpa/query.model/ViewerFilterMM" refreshAtStart="true" headerVisible="false" layoutData="h 100:n:n">
+                                        <contentProvider xsi:type="nativeContentProviderType" fieldName="viewerFilters"/>
+                                        <menuManager id="filterContextMenu">
+                                            <action actionClassName="org.adichatz.jpa.query.action.CopyTextAction" id="copyTextName" enabled="null != #ROW()"/>
+                                        </menuManager>          
+                                        <tableColumn id="textTC" property="text"/>
+                                    </table>
+                                </pgroup>       
+                                <pgroup id="preferenceOrderByGroup" text="#MSG(adichatzJpa,query.orderBy)" image="#IMG(IMG_ORDER_BY.png)" dirtyManagement="false">
+                                    <layout layoutConstraints="wrap 2, ins 0" columnConstraints="[][fill,grow]" rowConstraints="grow,fill"/>
+	                                <label id="orderByClauseLabel" text="#MSG(adichatzJpa,preference.orderByClause)"/>
+                                    <text id="orderByClause" editable="false" style="SWT.WRAP | SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL">
+                                        <initialValue>return #BEAN().getOrderByClause();</initialValue>
+                                    </text>
+                                </pgroup>       
+                                <pgroup id="preferenceColumnOrderGroup" text="#MSG(adichatzJpa,queryPreference.columnOrder)" image="#IMG(IMG_COLUMN_ORDER.png)" dirtyManagement="false">
+                                    <layout layoutConstraints="wrap 2, ins 0" columnConstraints="[][fill,grow]" rowConstraints="grow,fill"/>
+	                                <label id="columnOrderLabel" text="#MSG(adichatzJpa,preference.columns.order)"/>
+                                    <text id="columnOrder" editable="false" style="SWT.WRAP | SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL">
+                                        <initialValue>return #BEAN().getColumnOrderString(#BEAN(queryTool).getTabularController());</initialValue>
+                                    </text>
+                                </pgroup>
+                                <pgroup id="preferenceColumnPreferencesGroup" text="#MSG(adichatzJpa,queryPreference.column.preference)" image="#IMG(IMG_COLUMN_PREFERENCE.png)" dirtyManagement="false">
+                                    <layout layoutConstraints="wrap 1, ins 0" columnConstraints="fill,grow" rowConstraints="grow,fill"/>
+                                    <table id="columnPreferenceTable" layoutData="h 100!" refreshAtStart="true" entityURI="adi://org.adichatz.jpa/query.model/ColumnPreferenceMM">
+                                        <contentProvider xsi:type="nativeContentProviderType" fieldName="columnPrefs"/>
+                                        <tableColumn sorted="true" pattern="CHECK_ONLY" property="visible" id="visibleTC"/>
+                                        <tableColumn sorted="true"  id="columnTitleTC" text="#MSG(adichatzJpa,preference.column)">
+                                        	<columnText>import org.adichatz.engine.controller.field.AColumnController
+AColumnController columnController =  (AColumnController) #BEAN(queryTool).getTabularController().getColumnMap().get(#ROW().getId());
+return null == columnController ? "" : columnController.getText();</columnText>
+                                        </tableColumn>
+                                        <tableColumn sorted="true" pattern="######" property="width" id="widthTC"/>
+                                    </table>
+                                </pgroup>       
+                            </composite>
+                        </group>
+                    </composite>
+                </compositeBag>
+            </sashForm>
+        </pshelfItem>           
+       	<pshelfItem id="jpqlItem" entityURI="adi://org.adichatz.jpa/query.model/QueryManagerMM" entity="#ENTITY(#BEAN(queryTool).getQueryManager())"
+       			 image="#IMG(IMG_JPQL.png)" text="J P Q L"><!-- string "J P Q L" in use in listener -->
+      		<layout layoutConstraints="ins 0, wrap 1" columnConstraints="grow, fill" rowConstraints="[grow, fill][]"/>
+      		<editableFormText id="jpqlOrder" whitespaceNormalized="false" style="AdiSWT.EXPANDABLE | SWT.BORDER" noLabel="true"
+      				  value="#BEAN(queryTool).getQueryFormText()">
+		    	<textFont key="suffix" font="#FONT(JFaceResources.HEADER_FONT)"/> 
+		    	<textFont key="normal" font="#FONT(JFaceResources.BANNER_FONT)"/> 
+		       	<textColor key="jpql" color="IFormColors.TB_TOGGLE_HOVER"/>
+		       	<textColor key="suffix" color="#COLOR(IFormColors.TB_TOGGLE)"/>
+		    	<textColor key="name" color="#COLOR(IFormColors.H_BOTTOM_KEYLINE2)"/>
+				<listeners>
+       				<listener listenerTypes="AFTER_CREATE_CONTROL">
+       					<code>import org.adichatz.engine.listener.AControlListener;
+import org.adichatz.engine.listener.IEventType;
+import org.adichatz.engine.listener.AdiEvent;
+#BEAN(queryTool).getTabularController().addListener(new AControlListener("#POST_REFRESH_TABULAR#", IEventType.REFRESH) {
+    @Override
+    public void handleEvent(AdiEvent event) {
+	    #CONTROLLER(jpqlOrder).getControl().setText(#BEAN(queryTool).getQueryFormText());
+   }
+});</code>
+       				</listener>
+		       	</listeners>
+			</editableFormText>
+			<composite id="orderByCMP" entity="#ENTITY(#BEAN(queryTool).getQueryPreference())" entityURI="adi://org.adichatz.jpa/query.model/QueryPreferenceMM">
+				<listeners>
+       				<listener listenerTypes="AFTER_PROPERTY_CHANGE">
+       					<code>#CONTROLLER(jpqlOrder).getControl().setText(#BEAN(queryTool).getQueryFormText());</code>
+       				</listener>
+		       	</listeners>
+	      		<layout layoutConstraints="ins 10 5 5 5, wrap 2" columnConstraints="[]15[grow, fill]"/>
+                <label id="orderByClauseLbl" text="#MSG(adichatzJpa,preference.orderByClause)"/>
+				<text id="orderByClause" property="orderByClause" noLabel="true" style="SWT.WRAP | SWT.MULTI | SWT.V_SCROLL" layoutData="w 20:20:n, h 40:40:n"/>				
+			</composite>
+    	</pshelfItem>		
+	</pshelf>		
+</containerTree>

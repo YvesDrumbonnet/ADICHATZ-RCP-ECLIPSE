@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/PGroupMenuMM" superEntityURI="adi://org.adichatz.studio/model/CollectionMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="image">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="text">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="toolTipText">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/MenuItemMM" id="menuItem">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/MenuItemMM" name="menuItem"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

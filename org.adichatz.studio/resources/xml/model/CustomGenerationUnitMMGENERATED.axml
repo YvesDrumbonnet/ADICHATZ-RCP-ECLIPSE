@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/CustomGenerationUnitMM" superEntityURI="adi://org.adichatz.studio/model/GenerationUnitMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="entityRegex">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="propertyRegex">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

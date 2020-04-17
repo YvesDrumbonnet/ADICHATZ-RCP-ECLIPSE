@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ReplacementMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(replacement, token).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="token$1"/>
+        <text property="token" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(replacement, token).concat(&quot;:&quot;)" linkedControl="token$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="token">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(replacement, value).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="value$1"/>
+        <text property="value" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(replacement, value).concat(&quot;:&quot;)" linkedControl="value$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="value">
+            <pluginEntity/>
+        </text>
+    </scrolledComposite>
+</containerTree>

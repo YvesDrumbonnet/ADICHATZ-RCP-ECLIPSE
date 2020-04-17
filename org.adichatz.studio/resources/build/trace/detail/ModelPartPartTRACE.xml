@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ModelPartMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(modelPart, connectorASVersion).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="connectorASVersion$1"/>
+        <text property="connectorASVersion" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(modelPart, connectorASVersion).concat(&quot;:&quot;)" linkedControl="connectorASVersion$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="connectorASVersion">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(modelPart, connectorDataSource).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="connectorDataSource$1"/>
+        <text property="connectorDataSource" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(modelPart, connectorDataSource).concat(&quot;:&quot;)" linkedControl="connectorDataSource$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="connectorDataSource">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(modelPart, dataSourceFileName).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="dataSourceFileName$1"/>
+        <text property="dataSourceFileName" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(modelPart, dataSourceFileName).concat(&quot;:&quot;)" linkedControl="dataSourceFileName$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="dataSourceFileName">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(modelPart, dataSourceUnit).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="dataSourceUnit$1"/>
+        <text property="dataSourceUnit" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(modelPart, dataSourceUnit).concat(&quot;:&quot;)" linkedControl="dataSourceUnit$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="dataSourceUnit">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(modelPart, ejbFileName).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="ejbFileName$1"/>
+        <text property="ejbFileName" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(modelPart, ejbFileName).concat(&quot;:&quot;)" linkedControl="ejbFileName$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="ejbFileName">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(modelPart, jndi).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="jndi$1"/>
+        <text property="jndi" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(modelPart, jndi).concat(&quot;:&quot;)" linkedControl="jndi$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="jndi">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(modelPart, lockManagerClassName).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="lockManagerClassName$1"/>
+        <text property="lockManagerClassName" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(modelPart, lockManagerClassName).concat(&quot;:&quot;)" linkedControl="lockManagerClassName$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="lockManagerClassName">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(modelPart, modelPackageName).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="modelPackageName$1"/>
+        <text property="modelPackageName" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(modelPart, modelPackageName).concat(&quot;:&quot;)" linkedControl="modelPackageName$1" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="modelPackageName">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(modelPart, modelProcurement).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="modelProcurement$1"/>
+        <radioGroup property="modelProcurement" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(modelPart, modelProcurement).concat(&quot;:&quot;)" linkedControl="modelProcurement$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="modelProcurement">
+            <pluginEntity/>
+            <labelProvider>
+                <textCode>return ((ModelProcurementEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.ModelProcurementEnum
+import java.util.Arrays
+return Arrays.asList(ModelProcurementEnum.class.getEnumConstants());</initValues>
+        </radioGroup>
+        <label text="#MSG(modelPart, modelProcurementFolder).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="modelProcurementFolder$1"/>
+        <text property="modelProcurementFolder" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(modelPart, modelProcurementFolder).concat(&quot;:&quot;)" linkedControl="modelProcurementFolder$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="modelProcurementFolder">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(modelPart, persistenceManagerClassName).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="persistenceManagerClassName$1"/>
+        <text property="persistenceManagerClassName" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(modelPart, persistenceManagerClassName).concat(&quot;:&quot;)" linkedControl="persistenceManagerClassName$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="persistenceManagerClassName">
+            <pluginEntity/>
+        </text>
+    </scrolledComposite>
+</containerTree>

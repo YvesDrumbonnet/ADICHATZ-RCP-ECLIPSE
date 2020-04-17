@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ControllerPreferenceMM" superEntityURI="adi://org.adichatz.studio/model/ParamMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/ColumnPreferencesMM" id="columnPreferences"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/FiltersMM" id="filters"/>
+    <propertyField id="columnOrder">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="statusBarKey">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="tableRendererKey">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

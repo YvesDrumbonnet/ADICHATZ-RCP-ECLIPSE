@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:include schemaLocation="common/control.xsd"/>
+
+    <xs:element name="containerTree">
+		<xs:complexType>
+			<xs:complexContent>
+                <xs:extension base="containerType">
+                    <xs:choice>
+                        <xs:element name="layout" type="layoutType"/>
+                        <xs:element name="managedToolBar" type="managedToolBarType"/>
+                    </xs:choice>
+                    <xs:attribute name="bindingServiceClassName" type="xs:NCName"/>
+                    <xs:attribute name="dirtyManagement" type="xs:string"/>
+                </xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

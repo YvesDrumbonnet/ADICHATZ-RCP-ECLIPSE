@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ScenarioMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField mandatory="true" id="type">
+        <controlField xsi:type="cComboType" mandatory="true" layoutData="grow 0" style="SWT.BORDER | SWT.READ_ONLY">
+            <labelProvider>
+                <textCode>return ((GenerationEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.GenerationEnum
+import java.util.Arrays
+return Arrays.asList(GenerationEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+    <propertyField mandatory="true" id="scenarioClassName">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+</entityTree>

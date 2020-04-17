@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/QueryOpenClauseMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="title">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="clause">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="valid">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="permanent">
+        <controlField xsi:type="checkBoxType"/>
+    </propertyField>
+    <propertyField id="visible">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/QueryParameterMM" id="parameter">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/QueryParameterMM" name="parameter"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

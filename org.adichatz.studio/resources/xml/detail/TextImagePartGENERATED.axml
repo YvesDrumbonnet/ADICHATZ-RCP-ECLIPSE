@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/TextImageMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <text property="image" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(textImage, image).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="image"/>
+        <text property="key" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(textImage, key).concat(&quot;:&quot;)" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="key"/>
+    </scrolledComposite>
+</containerTree>

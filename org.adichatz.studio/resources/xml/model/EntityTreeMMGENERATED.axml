@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/EntityTreeMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="entityURI">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="superEntityURI">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="idFieldName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="callbackClassNames">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="callforeClassNames">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="compositeKeyStrategyFactoryClassName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/PropertyFieldMM" id="propertyField">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/PropertyFieldMM" name="propertyField"/>
+        </entityElements>
+    </oneToMany>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/OneToManyMM" id="oneToMany">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/OneToManyMM" name="oneToMany"/>
+        </entityElements>
+    </oneToMany>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/ManyToManyMM" id="manyToMany">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ManyToManyMM" name="manyToMany"/>
+        </entityElements>
+    </oneToMany>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/OneToOneMM" id="oneToOne">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/OneToOneMM" name="oneToOne"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

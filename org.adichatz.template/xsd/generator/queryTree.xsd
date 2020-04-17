@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  	<xs:include schemaLocation="common/control.xsd"/>
+  	<xs:include schemaLocation="../common/preference-common.xsd"/>
+  	<xs:include schemaLocation="../jpa/query-common.xsd"/>
+ 
+    <!-- **************************************	-->
+    <!--			Q U E R Y   T R E E			-->
+    <!-- **************************************	-->
+    <!-- ********* -->
+    <!-- queryTree -->
+    <!-- ********* -->
+    <xs:element name="queryTree">    
+        <xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="queryPartType">
+					<xs:choice>
+				 		<!-- JQL -->
+						<xs:element name="jointure" type="jointureType" minOccurs="0" maxOccurs="unbounded"/>
+				 		<!-- SQL -->
+                        <xs:element name="whereClause" type="xs:string"/>
+						<xs:element name="sqlClause" type="xs:string"/>
+						<xs:element name="jointureAliases" type="jointureAliasesType"/>
+						<xs:element name="queryPreference" type="queryPreferenceType"/>
+                        <xs:element name="customizedPreferences" type="customizedPreferenceType"/>
+                        <xs:element name="queryBuilder" type="queryBuilderType"/>
+					</xs:choice>
+                    <xs:attribute name="parentQueryManagerURI" type="xs:string"/>
+					<xs:attribute name="lazyFetches" type="xs:string"/>
+			 		<xs:attribute name="queryType" type="queryTypeEnum"/>
+	                <xs:attribute name="valid" type="xs:string"/>
+				</xs:extension>
+			</xs:complexContent>
+	    </xs:complexType>
+	</xs:element>
+
+	<xs:simpleType name="queryTypeEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="JQL"/>
+            <xs:enumeration value="SQL"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ****************************************************************** -->
+    <!--        C U S T O M I Z E D - Q U E R Y - P R E F E R E N C E S     -->
+    <!-- ****************************************************************** -->
+    <xs:complexType name="customizedPreferenceType">
+        <xs:choice>
+            <xs:element name="preference" type="preferenceType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:choice>
+    </xs:complexType>
+
+	<xs:complexType name="preferenceType">
+           <xs:sequence minOccurs="0">
+               <xs:choice>
+                   <xs:element name="queryPreference" type="queryPreferenceType"/>
+                    <xs:element name="controllerPreference" type="controllerPreferenceType"/>
+               </xs:choice>
+           </xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+	</xs:complexType>
+</xs:schema>

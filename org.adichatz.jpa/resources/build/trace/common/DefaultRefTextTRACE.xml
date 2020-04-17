@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="containerTreeWrapper$$0" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <config>
+        <pluginEntity/>
+        <customizations id="customizationsWrapper$$2">
+            <pluginEntity/>
+            <tabular refreshAtStart="true" layoutData="width 0:300:n, height 0:200:n" id="table:table">
+                <pluginEntity/>
+                <include adiResourceURI="#PARAM(CONTEXT_MENU)" id="tableCM">
+                    <pluginEntity/>
+                </include>
+            </tabular>
+        </customizations>
+    </config>
+    <include adiResourceURI="#PARAM(TABLE_RESOURCE_URI)" id="table">
+        <pluginEntity/>
+        <params>
+            <param value="#PARAM(CONTENT_PROVIDER)" id="CONTENT_PROVIDER"/>
+        </params>
+    </include>
+    <layout layoutConstraints="wrap, ins 0" columnConstraints="grow,fill" rowConstraints="grow,fill"/>
+</containerTree>

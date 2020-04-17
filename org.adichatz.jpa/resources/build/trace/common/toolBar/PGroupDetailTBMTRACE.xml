@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<includeTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="includeTreeWrapper$$0" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/includeTree.xsd">
+    <pluginEntity/>
+    <pgroup ref="coreController.getParentController()" id="masterPGroup">
+        <pluginEntity/>
+        <pgroupToolItem actionClassName="org.adichatz.jpa.action.RefreshEntityAction" controllerClassName="org.adichatz.engine.controller.nebula.ActionPGroupToolItemController" id="refreshEntityItem">
+            <pluginEntity/>
+            <params>
+                <param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+            </params>
+        </pgroupToolItem>
+        <pgroupToolItem actionClassName="org.adichatz.jpa.action.DeleteEntityAndCloseAction" controllerClassName="org.adichatz.engine.controller.nebula.ActionPGroupToolItemController" valid="&quot;DETAIL&quot;.equals(#PARAM(TOOL_BAR_TYPE))" id="deleteEntityAndCloseItem">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="deleteEntityAndCloseItem$$VALIDFilter">
+                    <accept>return "DETAIL".equals(#PARAM(TOOL_BAR_TYPE));</accept>
+                </accessibility>
+            </accessibilities>
+            <params>
+                <param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+                <param value="#PARAM(TOOL_BAR_TYPE)" id="TOOL_BAR_TYPE"/>
+            </params>
+        </pgroupToolItem>
+        <pgroupToolItem actionClassName="org.adichatz.jpa.action.DeleteEntityAction" controllerClassName="org.adichatz.engine.controller.nebula.ActionPGroupToolItemController" valid="#AUTHORIZATION(IEntityConstants.REMOVE) &amp;&amp; &quot;CHILD&quot;.equals(#PARAM(TOOL_BAR_TYPE))" id="deleteEntityItem">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="deleteEntityItem$$VALIDFilter">
+                    <accept>return #AUTHORIZATION(IEntityConstants.REMOVE) &amp;&amp; "CHILD".equals(#PARAM(TOOL_BAR_TYPE));</accept>
+                </accessibility>
+            </accessibilities>
+            <params>
+                <param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+                <param value="#PARAM(TOOL_BAR_TYPE)" id="TOOL_BAR_TYPE"/>
+            </params>
+        </pgroupToolItem>
+    </pgroup>
+</includeTree>

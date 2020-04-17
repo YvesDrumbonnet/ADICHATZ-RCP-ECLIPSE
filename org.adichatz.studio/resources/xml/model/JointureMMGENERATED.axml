@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/JointureMM" superEntityURI="adi://org.adichatz.studio/model/QueryPartMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField mandatory="true" id="fieldName">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+    <propertyField mandatory="true" id="jointureType">
+        <controlField xsi:type="cComboType" mandatory="true" layoutData="grow 0" style="SWT.BORDER | SWT.READ_ONLY">
+            <labelProvider>
+                <textCode>return ((JointureTypeEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.JointureTypeEnum
+import java.util.Arrays
+return Arrays.asList(JointureTypeEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/JointureMM" id="jointure">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/JointureMM" name="jointure"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

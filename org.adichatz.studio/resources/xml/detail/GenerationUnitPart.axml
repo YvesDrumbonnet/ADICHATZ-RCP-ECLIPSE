@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/GenerationUnitMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/engine/containerTree.xsd">
+    <scrolledComposite id="itemComposite">
+    	<additionalCode>import org.adichatz.studio.xjc.data.XjcEntity&#xD;
+import org.adichatz.generator.xjc.PluginEntityType&#xD;
+// Concern a generation unit linked to plugin entity"&#xD;
+private boolean isPluginEntityGU() {&#xD;
+    XjcEntity entity = ((XjcEntity) coreController.getEntity());&#xD;
+    return entity.getTreeElement().getParentElement().getEntity().getBean() instanceof PluginEntityType;&#xD;
+}</additionalCode>
+        <layout columnConstraints="[align right]10[fill,grow]" layoutConstraints="wrap 2" />
+        <hyperlink id="scenarioClassNameHL" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" text="#MSG(adi://org.adichatz.studio/./generationUnit, scenarioClassName)"/>
+        <text id="scenarioClassName" noLabel="true" linkedControl="scenarioClassNameHL" property="scenarioClassName" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController"/>
+        <combo property="type" id="type" style="SWT.READ_ONLY" layoutData="grow 0" labelForeground="#COLOR(IFormColors.TITLE)">
+            <labelProvider>
+            	<textCode>return ((GenerationEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.GenerationEnum&#xD;
+import java.util.Arrays&#xD;
+return Arrays.asList(GenerationEnum.class.getEnumConstants());
+			</initValues>
+        </combo>
+        <hyperlink id="adiResourceURIHL" valid="GenerationEnum.NAVIGATOR == #BEAN().getType()" text="#MSG(generationUnit, adiResourceURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable"/>
+        <text id="adiResourceURI4Navigator" mandatory="true" valid="GenerationEnum.NAVIGATOR == #BEAN().getType()" linkedControl="adiResourceURIHL" noLabel="true" labelForeground="#COLOR(IFormColors.TITLE)" property="adiResourceURI" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController"/>
+        <text mandatory="true" valid="isPluginEntityGU()" labelForeground="#COLOR(IFormColors.TITLE)" property="adiResourceURI" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="adiResourceURI"/>        
+    </scrolledComposite>
+</containerTree>

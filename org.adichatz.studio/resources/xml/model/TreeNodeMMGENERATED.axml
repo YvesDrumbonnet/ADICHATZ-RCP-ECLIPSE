@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/TreeNodeMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField mandatory="true" id="propertyId">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+    <propertyField mandatory="true" id="nodeType">
+        <controlField xsi:type="radioGroupType" mandatory="true">
+            <labelProvider>
+                <textCode>return ((NodeTypeEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.NodeTypeEnum
+import java.util.Arrays
+return Arrays.asList(NodeTypeEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+</entityTree>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_5O_XMPRQEeG4tPl1YZ6QJA">
+  <imports xsi:type="commands:BindingTable" xmi:id="_VleYwI7NEea1O-pnXkM4WA" elementId="org.adichatz.dialogAndWindow.bindingTable"/>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="adichatz.application.import" featurename="commands" parentElementId="adichatz.application">
+    <elements xsi:type="commands:Command" xmi:id="_4XGBMPWVEeGJFoU2Y7wmPQ" elementId="adichatz.perspective.reset.command" commandName="adichatz.perspective.reset"/>
+    <elements xsi:type="commands:Command" xmi:id="_-gzxcPWVEeGJFoU2Y7wmPQ" elementId="adichatz.open.editor.command" commandName="open.editor"/>
+    <elements xsi:type="commands:Command" xmi:id="_7euGsHDqEeKU6tdwQzsoVA" elementId="adichatz.editor.save.command" commandName="adichatz.editor.save" description=""/>
+    <elements xsi:type="commands:Command" xmi:id="_fyafcHExEeKU6tdwQzsoVA" elementId="adichatz.editor.refresh.command" commandName="adichatz.editor.refresh"/>
+    <elements xsi:type="commands:Command" xmi:id="_jjouUHExEeKU6tdwQzsoVA" elementId="adichatz.editor.error.command" commandName="adichatz.editor.error"/>
+    <elements xsi:type="commands:Command" xmi:id="_KxPEEJ3FEeKzgfdN9MG6bg" elementId="adichatz.preference.command" commandName="adichatz.preferences" description=""/>
+    <elements xsi:type="commands:Command" xmi:id="_seRa4J3PEeK1RaObEgqrAA" elementId="adichatz.switch.editor.command" commandName="adichatz.switch.editor"/>
+    <elements xsi:type="commands:Command" xmi:id="_2Vi-8KElEeKQkIim8JgppA" elementId="adichatz.application.cloneMenu.command" commandName="adichatz.application.cloneMenu"/>
+    <elements xsi:type="commands:Command" xmi:id="_llxe4KE5EeKYT6Re4TGmqQ" elementId="adichatz.application.pooledQuery.command" commandName="adichatz.application.pooledQuery"/>
+    <elements xsi:type="commands:Command" xmi:id="_E4QaoNdaEeOIWOfK6NfkaQ" elementId="adichatz.introduction" commandName="adichatz.introduction"/>
+    <elements xsi:type="commands:Command" xmi:id="_i-sZkNg-EeSzM_B49PfWmg" elementId="adichatz.perspective.switch.command" commandName="adichatz.perspective.switch"/>
+    <elements xsi:type="commands:Command" xmi:id="_nqMC8I7vEeasO9PanKzLeg" elementId="adichatz.editor.close.command" commandName="adichatz.editor.close"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_FTSK0PWWEeGJFoU2Y7wmPQ" featurename="handlers" parentElementId="adichatz.application">
+    <elements xsi:type="commands:Handler" xmi:id="_WR8rYPWWEeGJFoU2Y7wmPQ" elementId="adichatz.open.editor.handler" contributionURI="bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.handler.OpenAdiEditor" command="_-gzxcPWVEeGJFoU2Y7wmPQ"/>
+    <elements xsi:type="commands:Handler" xmi:id="_C99fcHDrEeKU6tdwQzsoVA" elementId="adichatz.editor.save.handler" contributionURI="bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.handler.SaveEditorHandler" command="_7euGsHDqEeKU6tdwQzsoVA"/>
+    <elements xsi:type="commands:Handler" xmi:id="_uUC84HExEeKU6tdwQzsoVA" elementId="adichatz.editor.refresh.handler" contributionURI="bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.handler.RefreshEditorHandler" command="_fyafcHExEeKU6tdwQzsoVA"/>
+    <elements xsi:type="commands:Handler" xmi:id="_5EH0QHExEeKU6tdwQzsoVA" elementId="adichatz.editor.error.handler" contributionURI="bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.handler.ErrorEditorHandler" command="_jjouUHExEeKU6tdwQzsoVA"/>
+    <elements xsi:type="commands:Handler" xmi:id="_TbF10J3FEeKzgfdN9MG6bg" elementId="adichatz.preference.handler" contributionURI="bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.preference.PreferenceDialogHandler" command="_KxPEEJ3FEeKzgfdN9MG6bg"/>
+    <elements xsi:type="commands:Handler" xmi:id="_04eAAJ3PEeK1RaObEgqrAA" elementId="adichatz.switch.editor.handler" contributionURI="bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.handler.SwitchEditorHandler" command="_seRa4J3PEeK1RaObEgqrAA"/>
+    <elements xsi:type="commands:Handler" xmi:id="_umcWgKErEeKQkIim8JgppA" elementId="adichatz.cloneMenu.handler" contributionURI="bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.handler.CloneMenuHandler" command="_2Vi-8KElEeKQkIim8JgppA"/>
+    <elements xsi:type="commands:Handler" xmi:id="_i7cKIKE6EeKYT6Re4TGmqQ" elementId="adichatz.pooledQuery.handler" contributionURI="bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.handler.PooledQueryDialogHandler" command="_llxe4KE5EeKYT6Re4TGmqQ"/>
+    <elements xsi:type="commands:Handler" xmi:id="_NJmlwNdaEeOIWOfK6NfkaQ" elementId="adichatz.introduction.handler" contributionURI="bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.handler.IntroductionHandler" command="_E4QaoNdaEeOIWOfK6NfkaQ"/>
+    <elements xsi:type="commands:Handler" xmi:id="_xckMENLSEeSqfJSq7Yhysg" elementId="adichatz.perspective.reset.handler" contributionURI="bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.handler.PerspectiveResetHandler" command="_4XGBMPWVEeGJFoU2Y7wmPQ"/>
+    <elements xsi:type="commands:Handler" xmi:id="_TNk28NhOEeSzM_B49PfWmg" elementId="adichatz.perspective.switch.handler" contributionURI="bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.handler.PerspectiveSwitchHandler" command="_i-sZkNg-EeSzM_B49PfWmg"/>
+    <elements xsi:type="commands:Handler" xmi:id="_QOSjwI7wEeasO9PanKzLeg" elementId="adichatz.editor.close.handler" contributionURI="bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.handler.CloseEditorHandler" command="_nqMC8I7vEeasO9PanKzLeg"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="__8Dy8HBhEeKeGbMYI2kvjw" featurename="addons" parentElementId="adichatz.application">
+    <elements xsi:type="application:Addon" xmi:id="_DU-PgHBiEeKeGbMYI2kvjw" elementId="PartToBeRenderedAddOn" contributionURI="bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.resource.PartToBeRenderedAddOn"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_b2dfgHDqEeKU6tdwQzsoVA" featurename="children" parentElementId="adichatz.editor.toolbar" positionInList="">
+    <elements xsi:type="menu:HandledToolItem" xmi:id="_VQD90HDrEeKU6tdwQzsoVA" elementId="adichatz.editor.save.toolItem" label="%adichatz.save.editor" iconURI="platform:/plugin/org.adichatz.engine/resources/icons/IMG_SAVE.png" command="_7euGsHDqEeKU6tdwQzsoVA"/>
+    <elements xsi:type="menu:HandledToolItem" xmi:id="_1e_j0HE1EeKU6tdwQzsoVA" elementId="adichatz.editor.error.toolItem" label="%adichatz.error.editor" iconURI="platform:/plugin/org.adichatz.engine.e4/resources/icons/IMG_ERROR.png" command="_jjouUHExEeKU6tdwQzsoVA"/>
+    <elements xsi:type="menu:HandledToolItem" xmi:id="_rIV5EHE1EeKU6tdwQzsoVA" elementId="adichatz.editor.refresh.toolItem" label="%adichatz.refresh.editor" iconURI="platform:/plugin/org.adichatz.engine/resources/icons/IMG_REFRESH_DB.png" command="_fyafcHExEeKU6tdwQzsoVA"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_SAlcQKEeEeKQkIim8JgppA" featurename="children" parentElementId="adichatz.application.trimmedwindow.top" positionInList="">
+    <elements xsi:type="menu:ToolBar" xmi:id="_EN1zMKEgEeKQkIim8JgppA" elementId="adichatz.application.right.toolbar">
+      <children xsi:type="menu:HandledToolItem" xmi:id="_mkcocNdaEeOIWOfK6NfkaQ" elementId="adichatz.introduction.toolItem" label="%adichatz.introduction" iconURI="platform:/plugin/org.adichatz.engine.e4/resources/icons/IMG_INTRO.png" tooltip="%adichatz.introduction" command="_E4QaoNdaEeOIWOfK6NfkaQ"/>
+      <children xsi:type="menu:HandledToolItem" xmi:id="_CT8DkKEmEeKQkIim8JgppA" elementId="adichatz.tool.toolItem" label="%adichatz.tool" iconURI="platform:/plugin/org.adichatz.engine.e4/resources/icons/IMG_TOOL.png" tooltip="%adichatz.tool" command="_2Vi-8KElEeKQkIim8JgppA">
+        <menu xmi:id="_5hFGmpFxEeK4XstRrxKYEA" elementId="adichatz.application.tool.menu" label="%adichatz.tool" iconURI="platform:/plugin/org.adichatz.engine.e4/resources/icons/IMG_TOOL.png" tooltip="%adichatz.application.tool">
+          <children xsi:type="menu:HandledMenuItem" xmi:id="_5hFGm5FxEeK4XstRrxKYEA" elementId="adichatz.application.preference.menuItem" label="%adichatz.preference" iconURI="platform:/plugin/org.adichatz.engine/resources/icons/IMG_PREFERENCE.png" command="_KxPEEJ3FEeKzgfdN9MG6bg"/>
+          <children xsi:type="menu:HandledMenuItem" xmi:id="_LOchIKJ-EeKJO9NHw6iaSQ" elementId="adichatz.application.switch.editor.menuItem" label="%adichatz.switch.editor" iconURI="platform:/plugin/org.adichatz.engine.e4/resources/icons/IMG_SWITCH_EDITORS.png" command="_seRa4J3PEeK1RaObEgqrAA"/>
+          <children xsi:type="menu:HandledMenuItem" xmi:id="_5hFGnJFxEeK4XstRrxKYEA" elementId="adichatz.application.pooledQuery.menuItem" label="%adichatz.pooled.query" iconURI="platform:/plugin/org.adichatz.engine.e4/resources/icons/IMG_QUERY_MANAGER.png" command="_llxe4KE5EeKYT6Re4TGmqQ"/>
+          <children xsi:type="menu:MenuSeparator" xmi:id="_iViUkNhOEeSzM_B49PfWmg" elementId="org.adichatz.engine.e4.menuseparator.0"/>
+          <children xsi:type="menu:HandledMenuItem" xmi:id="_jd0yUNhOEeSzM_B49PfWmg" elementId="adichatz.perspective.reset.toolItem" label="%adichatz.perspective.reset" iconURI="platform:/plugin/org.adichatz.engine.e4/resources/icons/IMG_PERSPECTIVE_RESET.png" command="_4XGBMPWVEeGJFoU2Y7wmPQ"/>
+          <children xsi:type="menu:HandledMenuItem" xmi:id="_90p8INhOEeSzM_B49PfWmg" elementId="adichatz.perspective.switch.toolItem" label="%adichatz.perspective.switch" iconURI="platform:/plugin/org.adichatz.engine.e4/resources/icons/IMG_PERSPECTIVE_SWITCHER.png" command="_i-sZkNg-EeSzM_B49PfWmg"/>
+        </menu>
+      </children>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_fcKKAI7NEea1O-pnXkM4WA" featurename="bindings" parentElementId="org.adichatz.dialogAndWindow.bindingTable">
+    <elements xsi:type="commands:KeyBinding" xmi:id="_yD6IQI7NEea1O-pnXkM4WA" elementId="adichatz.editor.close.key" keySequence="M1+W" command="_nqMC8I7vEeasO9PanKzLeg"/>
+    <elements xsi:type="commands:KeyBinding" xmi:id="_9EC9cI7kEea1O-pnXkM4WA" elementId="adichatz.editor.save.key" keySequence="M1+S" command="_7euGsHDqEeKU6tdwQzsoVA"/>
+  </fragments>
+</fragment:ModelFragments>

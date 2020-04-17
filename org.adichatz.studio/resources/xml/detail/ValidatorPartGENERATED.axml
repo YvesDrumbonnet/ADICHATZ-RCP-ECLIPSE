@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ValidatorMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <text property="key" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validator, key).concat(&quot;:&quot;)" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="key"/>
+        <hyperlink text="#MSG(validator, validatorClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="validatorClassNameValidatorPART$1"/>
+        <text property="validatorClassName" labelText="#MSG(validator, validatorClassName).concat(&quot;:&quot;)" linkedControl="validatorClassNameValidatorPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="validatorClassName"/>
+        <text property="hostingControllerIds" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validator, hostingControllerIds).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="hostingControllerIds"/>
+        <text property="errorMessage" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validator, errorMessage).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="errorMessage"/>
+        <text property="errorWhen" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validator, errorWhen).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="errorWhen"/>
+        <text property="warningMessage" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validator, warningMessage).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="warningMessage"/>
+        <text property="warningWhen" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validator, warningWhen).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="warningWhen"/>
+    </scrolledComposite>
+</containerTree>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<includeTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="includeTreeWrapper$$0" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/includeTree.xsd">
+    <pluginEntity/>
+    <pgroup ref="coreController" id="masterPGroup">
+        <pluginEntity/>
+        <pgroupToolItem actionClassName="org.adichatz.jpa.action.RefreshOTOEntityAction" controllerClassName="org.adichatz.engine.controller.nebula.ActionPGroupToolItemController" id="refreshOTOEntityItem">
+            <pluginEntity/>
+            <params>
+                <param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+            </params>
+        </pgroupToolItem>
+        <pgroupToolItem actionClassName="org.adichatz.jpa.action.AddOTOEntityAction" controllerClassName="org.adichatz.engine.controller.nebula.ActionPGroupToolItemController" id="addOTOEntityItem">
+            <pluginEntity/>
+            <params>
+                <param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+            </params>
+        </pgroupToolItem>
+        <pgroupToolItem actionClassName="org.adichatz.jpa.action.DeleteOTOEntityAction" controllerClassName="org.adichatz.engine.controller.nebula.ActionPGroupToolItemController" id="deleteOTOEntityItem">
+            <pluginEntity/>
+            <params>
+                <param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+            </params>
+        </pgroupToolItem>
+    </pgroup>
+</includeTree>

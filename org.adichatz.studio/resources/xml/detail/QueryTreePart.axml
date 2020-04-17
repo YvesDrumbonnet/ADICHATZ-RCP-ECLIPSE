@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/QueryTreeMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <listeners>
+            <listener listenerTypes="AFTER_SYNCHRONIZE | AFTER_PROPERTY_CHANGE | POST_REFRESH">
+                <code>displaySQLorWhereClause();</code>
+            </listener>
+        </listeners>
+        <additionalCode>import org.adichatz.engine.cache.IEntity;
+import org.adichatz.generator.wrapper.QueryTreeWrapper;
+private boolean doit = true;
+private void displaySQLorWhereClause() {
+    if (doit) {
+        doit = false;
+        QueryTreeWrapper queryTree = ((IEntity&lt;QueryTreeWrapper&gt;) getEntity()).getBean();
+        TextController sqlClause = #CONTROLLER(sqlClause);
+        TextController whereClause = #CONTROLLER(whereClause);
+        switch (queryTree.getQueryType()) {
+        case JQL:
+            sqlClause.getControl().setVisible(false);
+            sqlClause.getLinkedController().getControl().setVisible(false);
+            whereClause.getControl().setVisible(true);
+            whereClause.getLinkedController().getControl().setVisible(true);
+            break;
+        case SQL:
+            sqlClause.getControl().setVisible(true);
+            sqlClause.getLinkedController().getControl().setVisible(true);
+            whereClause.getControl().setVisible(false);
+            whereClause.getLinkedController().getControl().setVisible(false);
+            break;
+        }
+        sqlClause.getParentController().getComposite().layout();
+        doit = true;
+    }
+}</additionalCode>
+        <layout layoutConstraints="wrap 2, hidemode 3" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <hyperlink text="#MSG(queryPart, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIQueryTreePART$1"/>
+        <text property="entityURI" labelText="#MSG(queryPart, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIQueryTreePART$1" noLabel="true" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="entityURI"/>
+        <text property="suffix" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryPart, suffix).concat(&quot;:&quot;)" mandatory="true" controllerClassName="org.adichatz.studio.xjc.controller.SuffixIdTextController" id="suffix"/>
+        <radioGroup property="queryType" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryTree, queryType).concat(&quot;:&quot;)" id="queryType">
+            <labelProvider>
+                <textCode>return ((QueryTypeEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.QueryTypeEnum
+import java.util.Arrays
+return Arrays.asList(QueryTypeEnum.class.getEnumConstants());</initValues>
+        </radioGroup>
+        <text property="sqlClause" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryTree, sqlClause).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="sqlClause"/>
+        <text property="whereClause" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryTree, whereClause).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="whereClause"/>
+        <text property="lazyFetches" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryTree, lazyFetches).concat(&quot;:&quot;)" id="lazyFetches"/>
+        <text property="valid" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validElement, valid).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="valid"/>
+    </scrolledComposite>
+</containerTree>

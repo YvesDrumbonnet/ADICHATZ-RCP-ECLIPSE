@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ButtonBarMM" superEntityURI="adi://org.adichatz.studio/model/CollectionMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="separator">
+        <controlField xsi:type="radioGroupType" controllerClassName="org.adichatz.studio.xjc.controller.BooleanRadioGroupController"/>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/WidgetMM" id="buttonOrSeparator">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ButtonMM" name="button"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/SeparatorMM" name="separator"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	
+    <xs:include schemaLocation="common/control.xsd"/>
+
+	<xs:element name="navigatorTree">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="menuType">
+					<xs:sequence>
+						<xs:element name="config" type="configType"/>
+						<xs:element name="additionalCode" type="xs:string"/>
+					</xs:sequence>
+	        	</xs:extension>
+	        </xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="nodeType">
+		<xs:complexContent>
+			<xs:extension base="elementType">
+				<xs:choice>
+					<xs:element name="accessibilities" type="accessibilitiesType"/>
+				</xs:choice>
+                <xs:attribute name="controllerClassName" type="xs:NCName"/>
+                <xs:attribute name="image" type="xs:string"/>
+				<xs:attribute name="label" type="xs:string" use="required"/>
+                <xs:attribute name="toolTipText" type="xs:string"/>
+				<xs:attribute name="valid" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="menuType">
+		<xs:complexContent>
+			<xs:extension base="nodeType">
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="menu" type="menuType" minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="item" type="itemType" minOccurs="0" maxOccurs="unbounded" />
+				</xs:choice>
+				<xs:attribute name="expanded" type="xs:boolean" default="false"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="itemType">
+		<xs:complexContent>
+			<xs:extension base="nodeType">
+				<xs:sequence>
+					<xs:element name="params" type="paramsType"/>
+					<xs:element name="customizations" type="customizationsType"/>
+				</xs:sequence>
+				<xs:attribute name="type" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

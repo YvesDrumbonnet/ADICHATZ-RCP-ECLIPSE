@@ -1,0 +1,1720 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+ 	<xs:include schemaLocation="base-generator.xsd"/>
+ 	<xs:include schemaLocation="../../common/base-common.xsd"/>
+ 	<xs:include schemaLocation="../../common/control-common.xsd"/>
+ 
+    <!-- ****************************************** -->
+    <!--		Q U E R Y - R E F E R E N C E 		-->
+    <!-- ****************************************** -->	
+    <!-- ****************** -->
+    <!-- queryReferenceType -->
+    <!-- ****************** -->
+    <xs:complexType name="queryReferenceType">
+  		<xs:complexContent>
+			<xs:extension base="elementType">
+				<xs:attribute name="adiQueryURI" type="xs:string" use="required"/>
+				<xs:attribute name="preferenceURI" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+     </xs:complexType>
+
+    <!-- ****************************	-->
+    <!--			Q U E R Y			-->
+    <!-- ****************************	-->
+    <!-- ********************** -->
+    <!-- native content provider -->
+    <!-- ********************** -->
+   <xs:complexType  name="nativeContentProviderType">
+		<xs:complexContent>
+			<xs:extension base="contentProviderType">
+				<xs:attribute name="fieldName" type="xs:string"/>	
+			</xs:extension>
+		</xs:complexContent>
+   </xs:complexType>
+
+    <!-- ******************************	-->
+    <!--			W I D G E T			-->
+    <!-- ******************************	-->
+	<xs:complexType name="widgetType">
+		<xs:complexContent>
+			<xs:extension base="validElementType">
+				<xs:sequence minOccurs="0">
+					<xs:choice>
+						<xs:element name="listeners" type="listenersType"/>
+						<xs:element name="accessibilities" type="accessibilitiesType"/>
+					</xs:choice>
+				</xs:sequence>
+				<xs:attribute name="controllerClassName" type="xs:NCName"/>
+				<!-- SWT attributes -->	        
+	            <xs:attribute name="enabled" type="xs:string"/>
+				<xs:attribute name="style" type="xs:string"/>
+				<xs:attribute name="toolTipText" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+    <!-- *******************************	-->
+    <!--			C O N T R O L			-->
+    <!-- *******************************	-->
+	<xs:complexType name="controlType">
+		<xs:complexContent>
+			<xs:extension base="widgetType">
+				<xs:attribute name="background" type="xs:string"/>
+				<xs:attribute name="backgroundImage" type="xs:string"/>
+				<xs:attribute name="bounds" type="xs:string"/>
+				<xs:attribute name="capture" type="xs:string"/>
+				<xs:attribute name="foreground" type="xs:string"/>
+				<xs:attribute name="focus" type="xs:string"/>
+				<xs:attribute name="font" type="xs:string"/>
+				<xs:attribute name="layoutData" type="xs:string"/>
+				<xs:attribute name="location" type="xs:string"/>
+				<xs:attribute name="menu" type="xs:string"/>
+				<xs:attribute name="redraw" type="xs:string"/>
+				<xs:attribute name="size" type="xs:string"/>
+				<xs:attribute name="visible" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+    <!-- *******************************************	-->
+    <!--			H E L P - B U T T O N				-->
+    <!-- *******************************************	-->
+	<xs:complexType name="helpButtonType">
+		<xs:complexContent>
+			<xs:extension base="controlType">
+        		<xs:attribute name="image" type="xs:string"/>
+        		<xs:attribute name="helpLabel" type="xs:string" use="required"/>
+        		<xs:attribute name="helpSpecify" type="xs:string" use="required"/>
+        		<xs:attribute name="helpMessage" type="xs:string" use="required"/>
+ 			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+    <!-- ***********************************************	-->
+    <!--			C O N T R O L -  F I E L D				-->
+    <!-- ***********************************************	-->
+	<xs:complexType name="controlFieldType">
+		<xs:complexContent>
+			<xs:extension base="controlType">
+				<xs:choice>
+					<xs:element name="validators" type="validatorsType"/>
+					<xs:element name="initialValue" type="xs:string"/>
+					<xs:element name="convertModelToTarget" type="xs:string"/>
+					<xs:element name="convertTargetToModel" type="xs:string"/>
+					<xs:element name="menuManager" type="menuManagerType"/>
+				</xs:choice>
+				<xs:attribute name="property" type="xs:NCName"/>
+				<xs:attribute name="controlValueType" type="xs:NCName"/><!-- For specifying a type for the value -->
+				<xs:attribute name="forceBinding" type="xs:NCName"/><!-- Force binding service even if property is null ==> fire validators -->
+            	<xs:attribute name="labelBackground" type="xs:string"/>
+            	<xs:attribute name="labelFont" type="xs:string"/>
+            	<xs:attribute name="labelForeground" type="xs:string"/>
+            	<xs:attribute name="labelLayoutData" type="xs:string"/>
+            	<xs:attribute name="labelText" type="xs:string"/>
+				<xs:attribute name="lazyFetches" type="xs:string"/>
+            	<xs:attribute name="linkedControl" type="xs:string"/>
+            	<xs:attribute name="mandatory" type="xs:boolean"/>
+            	<xs:attribute name="noLabel" type="xs:boolean"/>
+				<xs:attribute name="fieldBindManagerClassName" type="xs:NCName"/>
+ 			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+    <!-- *******************************************************	-->
+    <!--			A C T I O N S   C O N T A I N E R				-->
+    <!-- *******************************************************	-->
+    <!-- ************** -->
+    <!-- managedToolBar -->
+    <!-- ************** -->
+    <xs:complexType name="managedToolBarType">
+		<xs:complexContent>
+			<xs:extension base="collectionType">
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="action" type="actionType"/>
+					<xs:element name="menuAction" type="menuActionType"/>
+					<xs:element name="separator" type="separatorType"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>	
+
+    <!-- ******* -->
+    <!-- toolBar -->
+    <!-- ******* -->
+    <xs:complexType name="toolBarType">
+		<xs:complexContent>
+			<xs:extension base="collectionType">
+				<xs:sequence>
+					<xs:element name="layout" type="layoutType"/>
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="toolItem" type="toolItemType"/>
+						<xs:element name="separator" type="separatorType"/>
+					</xs:choice>
+				</xs:sequence>
+				<xs:attribute name="layoutData" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+    <!-- ********* -->
+    <!-- buttonBar -->
+    <!-- ********* -->
+    <xs:complexType name="buttonBarType">
+		<xs:complexContent>
+			<xs:extension base="collectionType">
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="button" type="buttonType"/>
+					<xs:element name="separator" type="separatorType"/>
+				</xs:choice>
+	    	    <xs:attribute name="separator" type="xs:boolean"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+    <!-- **********************************	-->
+    <!--			C O N T R O L S			-->
+    <!-- **********************************	-->
+    <!-- ****** -->
+    <!-- action -->
+    <!-- ****** -->
+    <xs:complexType name="actionType">
+ 		<xs:complexContent>
+			<xs:extension base="widgetType">
+				<xs:sequence>
+					<xs:element name="params" type="paramsType"/>
+					<xs:element name="actionCode" type="xs:string"/>
+				</xs:sequence>
+				<xs:attribute name="actionClassName" type="xs:string"/>
+				<xs:attribute name="imageDescriptor" type="xs:string"/>
+				<xs:attribute name="rank" type="xs:int"/>
+				<xs:attribute name="text" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+    <!-- ********** -->
+    <!-- MenuAction -->
+    <!-- ********** -->
+    <xs:complexType name="menuActionType">
+ 		<xs:complexContent>
+			<xs:extension base="widgetType">
+				<xs:sequence>
+					<xs:element name="params" type="paramsType"/>
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="action" type="actionType"/>
+						<xs:element name="menuAction" type="menuActionType"/>
+						<xs:element name="separator" type="separatorType"/>
+					</xs:choice>
+				</xs:sequence>
+				<xs:attribute name="imageDescriptor" type="xs:string"/>
+            	<xs:attribute name="reflow" type="xs:boolean"/>
+				<xs:attribute name="text" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+    <!-- ********* -->
+    <!-- separator -->
+    <!-- ********* -->
+   <xs:complexType  name="separatorType">
+ 		<xs:complexContent>
+			<xs:extension base="widgetType">
+				<xs:attribute name="rank" type="xs:int"/>
+			</xs:extension>
+		</xs:complexContent>
+   </xs:complexType>
+
+    <!-- ***************** -->
+    <!-- contribution item -->
+    <!-- ***************** -->
+   <xs:complexType  name="contributionItemType">
+ 		<xs:complexContent>
+			<xs:extension base="widgetType">
+                <xs:sequence>
+                    <xs:element name="itemCode" type="xs:string"/>
+                </xs:sequence>
+                <xs:attribute name="imageDescriptor" type="xs:NCName"/>
+				<xs:attribute name="rank" type="xs:int"/>
+                <xs:attribute name="text" type="xs:string"/>
+            </xs:extension>
+		</xs:complexContent>
+   </xs:complexType>
+
+    <!-- *********** -->
+    <!-- menuManager -->
+    <!-- *********** -->
+    <xs:complexType name="menuManagerType">
+		<xs:complexContent>
+			<xs:extension base="collectionType">
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="action" type="actionType"/>
+					<xs:element name="menu" type="menuManagerType"/>
+					<xs:element name="separator" type="separatorType"/>
+					<xs:element name="contributionItem" type="contributionItemType"/>
+				</xs:choice>
+				<xs:attribute name="rank" type="xs:int"/>
+				<xs:attribute name="imageDescriptor" type="xs:NCName"/>
+	            <xs:attribute name="text" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+    
+    <!-- ***************** -->
+    <!-- headerMenuManager -->
+    <!-- ***************** -->
+    <xs:complexType name="headerMenuManagerType">
+		<xs:complexContent>
+			<xs:extension base="menuManagerType"/>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ************************ -->
+    <!-- compositeSeparatorType   -->
+    <!-- ************************ -->
+    <xs:complexType name="compositeSeparatorType">
+ 		<xs:complexContent>
+			<xs:extension base="controlType">
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- *********** -->
+    <!-- labelType   -->
+    <!-- *********** -->
+    <xs:complexType name="labelType">
+ 		<xs:complexContent>
+			<xs:extension base="controlType">
+	            <xs:attribute name="text" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- **************** -->
+    <!-- genericFieldType -->
+    <!-- **************** -->
+    <xs:complexType name="genericFieldType">
+ 		<xs:complexContent>
+			<xs:extension base="controlFieldType"/>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ******** -->
+    <!-- textType -->
+    <!-- ******** -->
+    <xs:complexType name="textType">
+ 		<xs:complexContent>
+			<xs:extension base="controlFieldType">
+        		<xs:attribute name="editable" type="xs:string"/>
+            	<xs:attribute name="orientation" type="xs:string"/>
+            	<xs:attribute name="proposals" type="xs:string"/>
+            	<xs:attribute name="tabs" type="xs:int"/>
+	            <xs:attribute name="text" type="xs:string"/>
+            	<xs:attribute name="textLimit" type="xs:int"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ***************** -->
+    <!-- encryptedTextType -->
+    <!-- ***************** -->
+    <xs:complexType name="encryptedTextType">
+        <xs:complexContent>
+            <xs:extension base="textType">
+                <xs:attribute name="encryptedKey"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- ************ -->
+    <!-- dateTextType -->
+    <!-- ************ -->
+    <xs:complexType name="dateTextType">
+ 		<xs:complexContent>
+			<xs:extension base="controlFieldType"/>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ************ -->
+    <!-- dateTimeType -->
+    <!-- ************ -->
+    <xs:complexType name="dateTimeType">
+ 		<xs:complexContent>
+			<xs:extension base="controlFieldType"/>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ************ -->
+    <!-- extraTextType -->
+    <!-- ************ -->
+    <xs:complexType name="extraTextType">
+ 		<xs:complexContent>
+			<xs:extension base="controlFieldType">
+            	<xs:attribute name="addRefreshItem" type="xs:string"/>
+        		<xs:attribute name="editable" type="xs:string"/>
+            	<xs:attribute name="orientation" type="xs:string"/>
+            	<xs:attribute name="tabs" type="xs:int"/>
+                <xs:attribute name="text" type="xs:string"/>
+            	<xs:attribute name="textLimit" type="xs:int"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>	
+		
+    <!-- ************ -->
+    <!-- richTextType -->
+    <!-- ************ -->
+    <xs:complexType name="richTextType">
+        <xs:complexContent>
+            <xs:extension base="controlFieldType">
+                <xs:attribute name="editable" type="xs:string"/>
+                <xs:attribute name="orientation" type="xs:string"/>
+                <xs:attribute name="tabs" type="xs:int"/>
+                <xs:attribute name="text" type="xs:string"/>
+                <xs:attribute name="textLimit" type="xs:int"/>
+                    <!-- Enclosed control -->
+                <xs:attribute name="containerBackground" type="xs:string"/>
+                <xs:attribute name="containerBackgroundImage" type="xs:string"/>
+                <xs:attribute name="containerBounds" type="xs:string"/>
+                <xs:attribute name="containerCapture" type="xs:string"/>
+                <xs:attribute name="containerFocus" type="xs:string"/>
+                <xs:attribute name="containerFont" type="xs:string"/>
+                <xs:attribute name="containerForeground" type="xs:string"/>
+                <xs:attribute name="containerLayoutData" type="xs:string"/>
+                <xs:attribute name="containerLocation" type="xs:string"/>
+                <xs:attribute name="containerMenu" type="xs:string"/>
+                <xs:attribute name="containerRedraw" type="xs:string"/>
+                <xs:attribute name="containerSize" type="xs:string"/>
+                <xs:attribute name="containerStyle" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>   
+        
+    <!-- ************ -->
+    <!-- fileTextType -->
+    <!-- ************ -->
+    <xs:complexType name="fileTextType">
+ 		<xs:complexContent>
+			<xs:extension base="controlFieldType">
+	            <xs:attribute name="filterExtension" type="xs:string"/>
+	            <xs:attribute name="filterPath" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ************ -->
+    <!-- rgbTextType -->
+    <!-- ************ -->
+    <xs:complexType name="rgbTextType">
+ 		<xs:complexContent>
+			<xs:extension base="controlFieldType">
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ************ -->
+    <!-- fontTextType -->
+    <!-- ************ -->
+    <xs:complexType name="fontTextType">
+ 		<xs:complexContent>
+			<xs:extension base="controlFieldType">
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- *************** -->
+    <!-- gMapType -->
+    <!-- *************** -->
+    <xs:complexType name="gMapType">
+ 		<xs:complexContent>
+			<xs:extension base="controlFieldType">
+        		<xs:attribute name="addMarker" type="xs:string"/>
+        		<xs:attribute name="changeCoordinates" type="xs:string"/> <!-- when bound changes, locationText value changes -->
+        		<xs:attribute name="delayMillisLoading" type="xs:string"/> <!-- Delay in millis for loading gmap -->
+        		<xs:attribute name="editable" type="xs:string"/>
+	            <xs:attribute name="coordPattern" type="xs:string"/>
+	            <xs:attribute name="locale" type="xs:string"/>
+	            <xs:attribute name="mapTypeControl" type="xs:string"/> <!--  Add map type chooser -->
+	            <xs:attribute name="mapDataType" type="mapDataTypeEnum" use="required"/>  <!--  COORDINATES, ADDRESS -->
+	            <xs:attribute name="mapTypeId" type="mapTypeIdEnum"/> <!--  roadmap, satellite... -->
+	            <xs:attribute name="toolBarStyle" type="xs:string"/>
+	            <xs:attribute name="zoom" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ********************* -->
+    <!-- MapDataType Enumeration -->
+    <!-- ********************* -->
+	<xs:simpleType name="mapDataTypeEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="COORDINATES"/>
+            <xs:enumeration value="ADDRESS"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ********************* -->
+    <!-- mapTypeId Enumeration -->
+    <!-- ********************* -->
+	<xs:simpleType name="mapTypeIdEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="roadmap"/>
+            <xs:enumeration value="satellite"/>
+            <xs:enumeration value="hybrid"/>
+            <xs:enumeration value="terrain"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- *************** -->
+    <!-- imageViewerType -->
+    <!-- *************** -->
+    <xs:complexType name="imageViewerType">
+ 		<xs:complexContent>
+			<xs:extension base="controlFieldType">
+	            <xs:attribute name="imageStyle" type="xs:string"/>
+	            <xs:attribute name="toolBarStyle" type="xs:string"/>
+	            <xs:attribute name="fitCanvas" type="xs:string"/>
+				<xs:attribute name="imageType" type="imageTypeEnum" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ********************* -->
+    <!-- ImageType Enumeration -->
+    <!-- ********************* -->
+	<xs:simpleType name="imageTypeEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="File"/>
+            <xs:enumeration value="Url"/>
+            <xs:enumeration value="Data"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ************ -->
+    <!-- textFontType -->
+    <!-- ************ -->
+    <xs:complexType name="textFontType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:attribute name="key" type="xs:NCName" use="required"/>
+				<xs:attribute name="font" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>			
+    </xs:complexType>
+    
+    <!-- ************* -->
+    <!-- textColorType -->
+    <!-- ************* -->
+    <xs:complexType name="textColorType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:attribute name="key" type="xs:NCName" use="required"/>
+				<xs:attribute name="color" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ************* -->
+    <!-- textImageType -->
+    <!-- ************* -->
+    <xs:complexType name="textImageType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:attribute name="key" type="xs:NCName" use="required"/>
+				<xs:attribute name="image" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ******************** -->
+    <!-- editableFormTextType -->
+    <!-- ******************** -->
+    <xs:complexType name="editableFormTextType">
+ 		<xs:complexContent>
+			<xs:extension base="controlFieldType">
+				<xs:choice>
+					<xs:element name="textFont" type="textFontType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="textColor" type="textColorType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="textImage" type="textImageType" minOccurs="0" maxOccurs="unbounded"/>
+	            </xs:choice>
+				<xs:attribute name="parseTags" type="xs:string"/>
+				<xs:attribute name="expandURLs" type="xs:string"/>
+				<xs:attribute name="paragraphsSeparated" type="xs:string"/>
+				<xs:attribute name="whitespaceNormalized" type="xs:string"/>
+	            <xs:attribute name="text" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>	
+		
+    <!-- **************** -->
+    <!-- formattedTextType -->
+    <!-- **************** -->
+    <xs:complexType name="formattedTextType">
+ 		<xs:complexContent>
+			<xs:extension base="controlFieldType">
+        		<xs:attribute name="editable" type="xs:string"/>
+	            <xs:attribute name="locale" type="xs:string"/>
+	            <xs:attribute name="displayPattern" type="xs:string"/>
+	            <xs:attribute name="editPattern" type="xs:string"/>
+	            <xs:attribute name="format" type="formatEnum" default="Integer"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+    <!-- **************** -->
+    <!-- format Enumeration -->
+    <!-- **************** -->
+	<xs:simpleType name="formatEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Byte"/>
+            <xs:enumeration value="Double"/>
+            <xs:enumeration value="Float"/>
+            <xs:enumeration value="Integer"/>
+            <xs:enumeration value="Long"/>
+            <xs:enumeration value="Percent"/>
+            <xs:enumeration value="Short"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <!-- *************** -->
+    <!-- numericTextType -->
+    <!-- *************** -->
+    <xs:complexType name="numericTextType">
+ 		<xs:complexContent>
+			<xs:extension base="controlFieldType">
+        		<xs:attribute name="editable" type="xs:string"/>
+	            <xs:attribute name="locale" type="xs:string"/>
+	            <xs:attribute name="pattern" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ************ -->
+    <!-- checkBoxType -->
+    <!-- ************ -->
+    <xs:complexType name="checkBoxType">
+ 		<xs:complexContent>
+			<xs:extension base="controlFieldType">
+		        <xs:attribute name="text" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ********** -->
+    <!-- buttonType -->
+    <!-- ********** -->
+    <xs:complexType name="buttonType">
+ 		<xs:complexContent>
+			<xs:extension base="controlType">
+        		<xs:attribute name="image" type="xs:string"/>
+            	<xs:attribute name="reflow" type="xs:boolean"/>
+		        <xs:attribute name="text" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ************** -->
+    <!-- refControlType -->
+    <!-- ************** --> 
+    <xs:complexType name="refControlType">
+ 		<xs:complexContent>
+			<xs:extension base="controlFieldType">
+				<xs:sequence>
+					<xs:element name="labelProvider" type="labelProviderType"/>					
+					<xs:element name="initValues" type="xs:string"/>					
+					<xs:element name="queryReference" type="queryReferenceType"/>					
+				</xs:sequence>
+				<xs:attribute name="poolQueryResult" type="xs:string"/>
+				<xs:attribute name="values" type="xs:string"/>
+				<xs:attribute name="displayedValues" type="xs:string"/>
+				<xs:attribute name="labelProviderClassName" type="xs:string" />
+				<xs:attribute name="preferenceURI" type="xs:string" />
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ************** -->
+    <!-- radioGroupType -->
+    <!-- ************** -->
+    <xs:complexType name="radioGroupType">
+ 		<xs:complexContent>
+			<xs:extension base="refControlType">
+	            <xs:sequence minOccurs="0">
+    	            <xs:choice>
+						<xs:element name="layout" type="layoutType"/>
+	                </xs:choice>
+    	        </xs:sequence>
+				<xs:attribute name="defaultSelection" type="xs:string" />
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ********** -->
+    <!-- cComboType -->
+    <!-- ********** -->
+    <xs:complexType name="cComboType">
+ 		<xs:complexContent>
+			<xs:extension base="refControlType">
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ********* -->
+    <!-- ComboType -->
+    <!-- ********* -->
+    <xs:complexType name="comboType">
+ 		<xs:complexContent>
+			<xs:extension base="refControlType">
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ***************** -->
+    <!-- labelProviderType -->
+    <!-- ***************** --> 
+    <xs:complexType name="labelProviderType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+	            <xs:sequence>
+					<xs:element name="textCode" type="xs:string"/>
+					<xs:element name="imageCode" type="xs:string"/>
+					<xs:element name="backgroundCode" type="xs:string"/>
+					<xs:element name="foregroundCode" type="xs:string"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+	
+    <!-- *********** -->
+    <!-- refTextType -->
+    <!-- *********** -->
+    <xs:complexType name="refTextType">
+ 		<xs:complexContent>
+			<xs:extension base="refControlType">
+				<xs:choice>
+					<xs:element name="params" type="paramsType"/>
+				</xs:choice>
+            	<xs:attribute name="orientation" type="xs:string"/>
+            	<xs:attribute name="textLayoutData" type="xs:string"/>
+            	<xs:attribute name="tabs" type="xs:int"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ************ -->
+    <!-- toolItemType -->
+    <!-- ************ -->
+    <xs:complexType name="toolItemType">
+ 		<xs:complexContent>
+			<xs:extension base="widgetType">
+				<xs:choice>
+					<xs:element name="action" type="actionType"/>
+					<xs:element name="menuAction" type="menuActionType"/>						
+				</xs:choice>
+		        <xs:attribute name="text" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ************* -->
+    <!-- hyperLinkType -->
+    <!-- ************* -->
+    <xs:complexType name="hyperlinkType">
+ 		<xs:complexContent>
+			<xs:extension base="controlFieldType">
+				<xs:sequence>
+					<xs:element name="runnableCode" type="xs:string"/>
+				</xs:sequence>
+	            <xs:attribute name="text" type="xs:string"/>
+				<xs:attribute name="runnableClassName" type="xs:NCName"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- *************** -->
+    <!-- multiChoiceType -->
+    <!-- *************** -->
+    <xs:complexType name="multiChoiceType">
+        <xs:complexContent>
+            <xs:extension base="refControlType">
+                <xs:attribute name="numberOfColumns" type="xs:string"/>
+                <xs:attribute name="popupToolbar" type="xs:string"/>
+                <xs:attribute name="popupTitle" type="xs:string"/>
+                <xs:attribute name="popupMaxWidth" type="xs:string"/>
+                <xs:attribute name="popupMaxHeight" type="xs:string"/>
+				<xs:attribute name="multiChoiceType" type="multiChoiceTypeEnum" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- *************************** -->
+    <!-- MultiChoiceType Enumeration -->
+    <!-- *************************** -->
+	<xs:simpleType name="multiChoiceTypeEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Array"/>
+            <xs:enumeration value="String"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- *************** -->
+    <!-- starRatingType -->
+    <!-- *************** -->
+    <xs:complexType name="starRatingType">
+        <xs:complexContent>
+            <xs:extension base="controlFieldType">
+                <xs:attribute name="maxNumberOfStars" type="xs:string"/>
+                <xs:attribute name="numericPattern" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- *************** -->
+    <!-- columnFieldType -->
+    <!-- *************** -->
+    <xs:complexType name="columnFieldType">
+ 		<xs:complexContent>
+			<xs:extension base="validElementType">
+				<xs:choice>
+					<xs:element name="columnImage" type="xs:string"/>
+					<xs:element name="columnText" type="xs:string"/>
+					<xs:element name="columnValue" type="xs:string"/>
+					<xs:element name="columnBackground" type="xs:string"/>
+					<xs:element name="columnForeground" type="xs:string"/>
+					<xs:element name="columnFont" type="xs:string"/>
+					<xs:element name="accessibilities" type="accessibilitiesType"/>
+					<xs:element name="listeners" type="listenersType"/>
+				</xs:choice>
+		        <xs:attribute name="property" type="xs:NCName"/>
+        		<xs:attribute name="image" type="xs:string"/>
+				<xs:attribute name="lazyFetches" type="xs:string"/>
+	            <xs:attribute name="locale" type="xs:string"/>
+        		<xs:attribute name="pack" type="xs:boolean"/>
+        		<xs:attribute name="pattern" type="xs:string"/>
+				<xs:attribute name="sorted" type="xs:boolean" default="false"/>
+		        <xs:attribute name="columnValueType" type="xs:NCName"/>
+				<!-- TableColumn SWT Attributes -->
+        		<xs:attribute name="alignment" type="xs:int"/>
+		        <xs:attribute name="moveable" type="xs:string"/>
+		        <xs:attribute name="resizeable" type="xs:string"/>
+        		<xs:attribute name="sortDirection" type="sortEnum" default="ASC"/>
+				<xs:attribute name="style" type="xs:string"/>
+        		<xs:attribute name="text" type="xs:string"/>
+		        <xs:attribute name="toolTipText" type="xs:string"/>
+        		<xs:attribute name="width" type="xs:int"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- *************** -->
+    <!-- tableColumnType -->
+    <!-- *************** -->
+    <xs:complexType name="tableColumnType">
+ 		<xs:complexContent>
+			<xs:extension base="columnFieldType">
+				<xs:attribute name="controllerClassName" type="xs:NCName"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- **********************************************************	-->
+    <!--			C O L L E C T I O N    C O N T R O L S 			-->
+    <!-- **********************************************************	-->
+    <!-- ********** -->
+    <!-- collection -->
+    <!-- ********** -->
+	<xs:complexType name="collectionType">
+		<xs:complexContent>
+			<xs:extension base="validElementType">
+				<xs:choice>
+					<xs:element name="accessibilities" type="accessibilitiesType"/>
+					<xs:element name="listeners" type="listenersType"/>
+					<xs:element name="additionalCode" type="xs:string"/>
+				</xs:choice>
+				<xs:attribute name="controllerClassName" type="xs:NCName"/>
+	            <!-- SWT attributes -->
+		        <xs:attribute name="background" type="xs:string"/>
+        		<xs:attribute name="enabled" type="xs:string"/>
+        		<xs:attribute name="foreground" type="xs:string"/>
+        		<xs:attribute name="style" type="xs:string"/>
+				<xs:attribute name="visible" type="xs:string"/>
+				<!--  roles -->
+				<xs:attribute name="enableRoles" type="xs:string"/>
+				<xs:attribute name="validRoles" type="xs:string"/>
+				<xs:attribute name="visibleRoles" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+    
+    
+    <!-- ****************** -->
+    <!-- lazyFetchContainer -->
+    <!-- ****************** -->
+	<xs:complexType name="lazyFetchContainerType">
+		<xs:complexContent>
+			<xs:extension base="collectionType">
+				<xs:attribute name="layoutData" type="xs:string"/>
+				<xs:attribute name="lazyFetches" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+    <!-- ************** -->
+    <!-- fieldContainer -->
+    <!-- ************** -->
+	<xs:complexType name="fieldContainerType">
+		<xs:complexContent>
+			<xs:extension base="lazyFetchContainerType">
+				<xs:choice>
+					<xs:element name="layout" type="layoutType"/>
+					<xs:choice maxOccurs="unbounded" minOccurs="0">
+						<!-- collections -->
+						<xs:element name="scrolledForm" type="scrolledFormType"/>
+						<xs:element name="section" type="sectionType"/>
+						<xs:element name="composite" type="compositeType"/>
+						<xs:element name="compositeBag" type="compositeBagType"/>
+						<xs:element name="group" type="groupType"/>
+						<xs:element name="pgroup" type="pGroupType"/>
+						<xs:element name="sashForm" type="sashFormType"/>
+						<xs:element name="scrolledComposite" type="scrolledCompositeType"/>
+						<xs:element name="table" type="tableType"/>
+						<xs:element name="grid" type="gridType"/>
+						<xs:element name="tree" type="treeType"/>
+						<xs:element name="cTabFolder" type="cTabFolderType"/>
+						<xs:element name="argTabFolder" type="argTabFolderType"/>
+						<xs:element name="pshelf" type="pShelfType"/>
+						<xs:element name="argPShelf" type="argPShelfType"/>
+						<xs:element name="include" type="includeType"/>
+	            		<xs:element name="buttonBar" type="buttonBarType"/>
+	            		<xs:element name="toolBar" type="toolBarType"/>
+						<xs:element name="menuManager" type="menuManagerType"/>
+						<!-- controlField -->
+						<xs:element name="controlField" type="controlFieldType"/>
+						<xs:element name="genericField" type="genericFieldType"/>
+						<!-- controls -->
+						<xs:element name="label" type="labelType"/>
+						<xs:element name="button" type="buttonType"/>
+						<xs:element name="ccombo" type="cComboType"/>
+						<xs:element name="checkBox" type="checkBoxType"/>
+						<xs:element name="combo" type="comboType"/>
+						<xs:element name="compositeSeparator" type="compositeSeparatorType"/>
+						<xs:element name="dateText" type="dateTextType"/>
+						<xs:element name="dateTime" type="dateTimeType"/>
+                        <xs:element name="encryptedText" type="encryptedTextType"/>
+						<xs:element name="editableFormText" type="editableFormTextType"/>
+                        <xs:element name="extraText" type="extraTextType"/>
+						<xs:element name="fileText" type="fileTextType"/>
+						<xs:element name="fontText" type="fontTextType"/>
+						<xs:element name="formattedText" type="formattedTextType"/>
+						<xs:element name="gMap" type="gMapType"/>
+						<xs:element name="helpButton" type="helpButtonType"/>
+						<xs:element name="hyperlink" type="hyperlinkType"/>
+						<xs:element name="imageViewer" type="imageViewerType"/>
+                        <xs:element name="multiChoice" type="multiChoiceType"/>
+						<xs:element name="numericText" type="numericTextType"/>
+						<xs:element name="radioGroup" type="radioGroupType"/>
+						<xs:element name="refText" type="refTextType"/>
+						<xs:element name="rgbText" type="rgbTextType"/>
+						<xs:element name="richText" type="richTextType"/>
+                        <xs:element name="starRating" type="starRatingType"/>
+						<xs:element name="text" type="textType"/>
+					</xs:choice>
+				</xs:choice>
+   				<xs:attribute name="entity" type="xs:string"/>
+		        <xs:attribute name="entityURI" type="xs:string"/>
+		        <!-- Control attributes-->
+				<xs:attribute name="backgroundImage" type="xs:string"/>
+				<xs:attribute name="bounds" type="xs:string"/>
+				<xs:attribute name="capture" type="xs:string"/>
+				<xs:attribute name="focus" type="xs:string"/>
+				<xs:attribute name="font" type="xs:string"/>
+				<xs:attribute name="location" type="xs:string"/>
+				<xs:attribute name="menu" type="xs:string"/>
+				<xs:attribute name="redraw" type="xs:string"/>
+				<xs:attribute name="size" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+    <!-- ****************** -->
+    <!-- validableContainer -->
+    <!-- ****************** -->
+    <xs:complexType name="validableContainerType">
+ 		<xs:complexContent>
+			<xs:extension base="fieldContainerType">
+				<xs:choice>
+					<xs:element name="validators" type="validatorsType"/>
+					<xs:element name="dynamicClause" type="dynamicClauseType"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="dynamicClauseType">
+		<xs:choice>
+			<xs:element name="conditionCode" type="xs:string"/>
+			<xs:element name="postCode" type="xs:string"/>
+		</xs:choice>    
+		<xs:attribute name="listenedContainerId" type="xs:string"/>
+		<xs:attribute name="listenedFieldId" type="xs:string"/>
+    </xs:complexType>
+    
+    <!-- ************** -->
+    <!-- dirtyContainer -->
+    <!-- ************** -->
+    <xs:complexType name="dirtyContainerType">
+ 		<xs:complexContent>
+			<xs:extension base="validableContainerType">
+				<xs:attribute name="dirtyManagement" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ******** -->
+    <!-- FormPage -->
+    <!-- ******** -->
+    <xs:complexType name="formPageType">
+ 		<xs:complexContent>
+			<xs:extension base="validableContainerType">
+				<xs:choice>
+					<xs:element name="managedToolBar" type="managedToolBarType"/>
+				</xs:choice>
+				<xs:attribute name="bindingServiceClassName" type="xs:NCName"/>
+				<xs:attribute name="formMessageManager" type="xs:boolean"/>
+		        <xs:attribute name="formText" type="xs:string"/>
+        		<xs:attribute name="image" type="xs:string"/>
+        		<xs:attribute name="title" type="xs:string" use="required"/>
+        		<xs:attribute name="validStatus" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>        		
+	</xs:complexType>
+
+    <!-- ********* -->
+    <!-- composite -->
+    <!-- ********* -->
+    <xs:complexType name="compositeType">
+ 		<xs:complexContent>
+			<xs:extension base="validableContainerType">
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ************ -->
+    <!-- compositeBag -->
+    <!-- ************ -->
+    <xs:complexType name="compositeBagType">
+ 		<xs:complexContent>
+			<xs:extension base="collectionType">
+				<xs:choice maxOccurs="unbounded" minOccurs="0">
+					<xs:element name="scrolledForm" type="scrolledFormType"/>
+					<xs:element name="section" type="sectionType"/>
+					<xs:element name="composite" type="compositeType"/>
+					<xs:element name="group" type="groupType"/>
+					<xs:element name="pgroup" type="pGroupType"/>
+					<xs:element name="sashForm" type="sashFormType"/>
+					<xs:element name="scrolledComposite" type="scrolledCompositeType"/>
+					<xs:element name="cTabFolder" type="cTabFolderType"/>
+					<xs:element name="argTabFolder" type="argTabFolderType"/>
+					<xs:element name="pshelf" type="pShelfType"/>
+					<xs:element name="argPShelf" type="argPShelfType"/>
+					<xs:element name="include" type="includeType"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ***************** -->
+    <!-- scrolledComposite -->
+    <!-- ***************** -->
+    <xs:complexType name="scrolledCompositeType">
+ 		<xs:complexContent>
+			<xs:extension base="clientCanvasType"/>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ***** -->
+    <!-- group -->
+    <!-- ***** -->
+    <xs:complexType name="groupType">
+ 		<xs:complexContent>
+			<xs:extension base="dirtyContainerType">
+        		<xs:attribute name="text" type="xs:string" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ******** -->
+    <!-- sahsForm -->
+    <!-- ******** -->
+    <xs:complexType name="sashFormType">
+ 		<xs:complexContent>
+			<xs:extension base="validableContainerType">
+            	<xs:attribute name="maximizedChild" type="xs:string"/>
+            	<xs:attribute name="orientation" type="xs:string"/>
+        		<xs:attribute name="weights" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ************ -->
+    <!-- scrolledForm -->
+    <!-- ************ -->
+    <xs:complexType name="scrolledFormType">
+ 		<xs:complexContent>
+			<xs:extension base="validableContainerType">
+				<xs:sequence>
+					<!-- Action are attached to scrolledForm.getForm().getMenuManager() -->
+					<xs:element name="action" type="actionType" minOccurs="0" maxOccurs="unbounded"/>
+					<!-- managedToolBar -->
+        		    <xs:element name="managedToolBar" type="managedToolBarType"/>
+            	</xs:sequence>
+				<xs:attribute name="bindingServiceClassName" type="xs:NCName"/>
+				<xs:attribute name="formMessageManager" type="xs:boolean"/>
+				<xs:attribute name="text" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ******* -->
+    <!-- section -->
+    <!-- ******* -->
+    <xs:complexType name="clientCanvasType">
+ 		<xs:complexContent>
+			<xs:extension base="dirtyContainerType">
+		        <xs:attribute name="expanded" type="xs:string"/>
+        		<xs:attribute name="text" type="xs:string" use="required"/>
+        		<!-- Canvas section -->
+        		<xs:attribute name="clientBackground" type="xs:string"/>
+				<xs:attribute name="clientBackgroundImage" type="xs:string"/>
+				<xs:attribute name="clientBounds" type="xs:string"/>
+				<xs:attribute name="clientCapture" type="xs:string"/>
+				<xs:attribute name="clientFocus" type="xs:string"/>
+				<xs:attribute name="clientFont" type="xs:string"/>
+        		<xs:attribute name="clientForeground" type="xs:string"/>
+        		<xs:attribute name="clientLayoutData" type="xs:string"/>
+				<xs:attribute name="clientLocation" type="xs:string"/>
+				<xs:attribute name="clientMenu" type="xs:string"/>
+				<xs:attribute name="clientRedraw" type="xs:string"/>
+				<xs:attribute name="clientSize" type="xs:string"/>
+        		<xs:attribute name="clientStyle" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ******* -->
+    <!-- section -->
+    <!-- ******* -->
+    <xs:complexType name="sectionType">
+ 		<xs:complexContent>
+			<xs:extension base="clientCanvasType">
+				<xs:sequence>
+					<!-- managedToolBar -->
+        		    <xs:element name="managedToolBar" type="managedToolBarType"/>
+            	</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- *** -->
+    <!-- set -->
+    <!-- *** -->
+    <xs:complexType name="setType">
+ 		<xs:complexContent>
+			<xs:extension base="lazyFetchContainerType">
+				<xs:sequence>
+					<!-- Action are attached to the context menu -->
+					<xs:element name="headerMenuManager" type="headerMenuManagerType"/>
+					<xs:element name="menuManager" type="menuManagerType"/>
+					<xs:element name="include" type="includeType" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute name="entityURI" type="xs:NCName"/>
+	       		<xs:attribute name="headerVisible" type="xs:string"/>
+	       		<xs:attribute name="linesVisible" type="xs:string"/>
+        		<xs:attribute name="refreshAtStart" type="xs:string"/>
+        		<!-- Enclosed control -->
+        		<xs:attribute name="containerBackground" type="xs:string"/>
+				<xs:attribute name="containerBackgroundImage" type="xs:string"/>
+				<xs:attribute name="containerBounds" type="xs:string"/>
+				<xs:attribute name="containerCapture" type="xs:string"/>
+				<xs:attribute name="containerFocus" type="xs:string"/>
+				<xs:attribute name="containerFont" type="xs:string"/>
+        		<xs:attribute name="containerForeground" type="xs:string"/>
+        		<xs:attribute name="containerLayoutData" type="xs:string"/>
+				<xs:attribute name="containerLocation" type="xs:string"/>
+				<xs:attribute name="containerMenu" type="xs:string"/>
+				<xs:attribute name="containerRedraw" type="xs:string"/>
+				<xs:attribute name="containerSize" type="xs:string"/>
+        		<xs:attribute name="containerStyle" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ******* -->
+    <!-- tabular -->
+    <!-- ******* -->
+    <xs:complexType name="tabularType">
+ 		<xs:complexContent>
+			<xs:extension base="setType">
+				<xs:sequence>
+					<xs:element name="layout" type="layoutType"/>
+ 		       		<xs:element name="contentProvider" type="contentProviderType" minOccurs="0" maxOccurs="1"/>
+ 		       		<xs:element name="labelProvider" type="labelProviderType" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="crossReferences" type="crossReferencesType"/>
+					<xs:element name="columnPreferences" type="columnPreferencesType"/>
+			 		<xs:element name="filters" type="filtersType"/>
+				</xs:sequence>
+        		<xs:attribute name="sortedColumn" type="xs:string"/>
+        		<!-- The following items could be managed in controller preference type  -->
+				<xs:attribute name="columnOrder" type="xs:string"/>
+        		<xs:attribute name="statusBarKey" type="xs:string"/>
+        		<xs:attribute name="tableRendererKey" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ***** -->
+    <!-- table -->
+    <!-- ***** -->
+    <xs:complexType name="tableType">
+ 		<xs:complexContent>
+			<xs:extension base="tabularType">
+				<xs:sequence>
+					<xs:choice minOccurs="1" maxOccurs="unbounded">
+						<xs:element name="tableColumn" type="tableColumnType"/>
+					</xs:choice>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- **************************************************	-->
+    <!--			C R O S S - R E F E R E N C E S			-->
+    <!-- **************************************************	-->
+    <!-- *************** -->
+    <!-- crossReferences -->
+    <!-- *************** -->
+    <xs:complexType name="crossReferencesType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:sequence>
+					<xs:element name="crossReference" type="crossReferenceType"  minOccurs="1" maxOccurs="unbounded"/>
+		        </xs:sequence>
+      		</xs:extension>
+      	</xs:complexContent>
+    </xs:complexType>
+    <!-- ************** -->
+    <!-- crossReference -->
+    <!-- ************** -->
+    <xs:complexType name="crossReferenceType">
+		<xs:attribute name="entitySetId" type="xs:string"/>
+		<xs:attribute name="description" type="xs:string"/>		
+		<xs:attribute name="axmlDetailURI" type="xs:string"/>
+		<xs:attribute name="axmlTableURI" type="xs:string"/>
+		<xs:attribute name="axmlQueryURI" type="xs:string"/>
+		<xs:attribute name="preferenceURI" type="xs:string"/>
+    </xs:complexType>
+
+    <!-- ****************************** -->
+    <!--			T R E E 			-->
+    <!-- ****************************** -->
+    <!-- **** -->
+    <!-- tree -->
+    <!-- **** -->
+    <xs:complexType name="treeType">
+ 		<xs:complexContent>
+			<xs:extension base="setType">
+        		<xs:attribute name="showRoot" type="xs:string"/>
+        		<xs:attribute name="treeManager" type="xs:string"/>
+				<xs:attribute name="expand" type="xs:string"/>
+				<xs:attribute name="rootElement" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ********** -->
+    <!-- cTabFolder -->
+    <!-- ********** -->
+   <xs:complexType name="cTabFolderType">
+ 		<xs:complexContent>
+			<xs:extension base="collectionType">
+				<xs:choice>
+					<xs:choice>
+						<xs:element name="cTabItem" type="cTabItemType" minOccurs="1" maxOccurs="unbounded"/>
+						<xs:element name="include" type="includeType" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:choice>
+				</xs:choice>
+	    	    <xs:attribute name="delayed" type="xs:string"/>
+        		<xs:attribute name="layoutData" type="xs:string"/>
+        		<xs:attribute name="selection" type="xs:string"/>
+        	</xs:extension>
+        </xs:complexContent>
+   </xs:complexType>
+
+    <!-- ************ -->
+    <!-- cTabItemType -->
+    <!-- ************ -->
+    <xs:complexType name="cTabItemType">
+ 		<xs:complexContent>
+			<xs:extension base="fieldContainerType">
+        		<xs:attribute name="image" type="xs:string"/>
+		        <xs:attribute name="text" type="xs:string"/>
+        		<xs:attribute name="toolTipText" type="xs:string"/>
+        	</xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- ************ -->
+    <!-- argTabFolder -->
+    <!-- ************ -->
+   <xs:complexType name="argTabFolderType">
+ 		<xs:complexContent>
+			<xs:extension base="fieldContainerType">
+	 			<xs:sequence>
+					<xs:element name="labelProvider" type="labelProviderType"/>					
+					<xs:element name="initValues" type="xs:string"/>
+				</xs:sequence>					
+        		<xs:attribute name="selection" type="xs:string"/>
+				<xs:attribute name="displayedValues" type="xs:string"/>
+				<xs:attribute name="values" type="xs:string" use="required"/>
+				<xs:attribute name="labelProviderClassName" type="xs:string" />
+        	</xs:extension>
+        </xs:complexContent>
+   </xs:complexType>
+
+    <!-- **************** -->
+    <!-- Sort Enumeration -->
+    <!-- **************** -->
+	<xs:simpleType name="sortEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="ASC"/>
+            <xs:enumeration value="NONE"/>
+            <xs:enumeration value="DESC"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ************************************************* -->
+    <!-- Configuration parameters for Part or Include Tree -->
+    <!-- ************************************************* -->
+    <xs:complexType name="configType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:sequence>
+					<xs:element name="resourceBundles" type="resourceBundlesType"/>
+					<xs:element name="customizations" type="customizationsType"/>
+					<xs:element name="navigationPaths" type="navigationPathsType"/>
+					<xs:element name="params" type="paramsType"/>
+				</xs:sequence>
+        	</xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="customizationsType">
+		<xs:complexContent>
+			<xs:extension base="paramType">
+                <xs:choice>
+                    <!-- additional code -->
+                    <xs:element name="additionalCode" type="xs:string"/>
+                    <xs:element name="params" type="paramsType"/>
+    				<xs:choice minOccurs="0"  maxOccurs="unbounded">
+    					<!-- collections -->
+    					<xs:element name="scrolledForm" type="scrolledFormType"/>
+    					<xs:element name="clientCanvas" type="clientCanvasType"/>
+    					<xs:element name="section" type="sectionType"/>
+    					<xs:element name="composite" type="compositeType"/>
+    					<xs:element name="compositeBag" type="compositeBagType"/>
+    					<xs:element name="group" type="groupType"/>
+    					<xs:element name="pgroup" type="pGroupType"/>
+    					<xs:element name="sashForm" type="sashFormType"/>
+    					<xs:element name="scrolledComposite" type="scrolledCompositeType"/>
+    					<xs:element name="table" type="tableType"/>
+    					<xs:element name="tabular" type="tabularType"/>
+    					<xs:element name="grid" type="gridType"/>
+    					<xs:element name="tree" type="treeType"/>
+    					<xs:element name="cTabFolder" type="cTabFolderType"/>
+    					<xs:element name="argTabFolder" type="argTabFolderType"/>
+    					<xs:element name="pshelf" type="pShelfType"/>
+    					<xs:element name="argPShelf" type="argPShelfType"/>
+    					<xs:element name="include" type="includeType"/>
+    					<!-- controlField -->
+    					<xs:element name="controlField" type="controlFieldType"/>
+    					<xs:element name="genericField" type="genericFieldType"/>
+    					<!-- controls -->
+    					<xs:element name="label" type="labelType"/>
+    					<xs:element name="button" type="buttonType"/>
+    					<xs:element name="ccombo" type="cComboType"/>
+    					<xs:element name="checkBox" type="checkBoxType"/>
+    					<xs:element name="combo" type="comboType"/>
+    					<xs:element name="compositeSeparator" type="compositeSeparatorType"/>
+    					<xs:element name="dateText" type="dateTextType"/>
+						<xs:element name="dateTime" type="dateTimeType"/>
+						<xs:element name="editableFormText" type="editableFormTextType"/>
+                        <xs:element name="encryptedText" type="encryptedTextType"/>
+                        <xs:element name="extraText" type="extraTextType"/>
+    					<xs:element name="fileText" type="fileTextType"/>
+						<xs:element name="fontText" type="fontTextType"/>
+    					<xs:element name="formattedText" type="formattedTextType"/>
+    					<xs:element name="gMap" type="gMapType"/>
+    					<xs:element name="helpButton" type="helpButtonType"/>
+    					<xs:element name="hyperlink" type="hyperlinkType"/>
+    					<xs:element name="imageViewer" type="imageViewerType"/>
+                        <xs:element name="multiChoice" type="multiChoiceType"/>
+    					<xs:element name="numericText" type="numericTextType"/>
+    					<xs:element name="radioGroup" type="radioGroupType"/>
+    					<xs:element name="refText" type="refTextType"/>
+						<xs:element name="rgbText" type="rgbTextType"/>
+    					<xs:element name="richText" type="richTextType"/>
+                        <xs:element name="starRating" type="starRatingType"/>
+    					<xs:element name="text" type="textType"/>
+    					<!-- tableColumn -->
+    					<xs:element name="columnField" type="columnFieldType"/>
+    					<xs:element name="gridColumn" type="gridColumnType"/>
+    					<xs:element name="tableColumn" type="tableColumnType"/>
+    					<!-- action -->
+    					<xs:element name="managedToolBar" type="managedToolBarType"/>
+    					<xs:element name="action" type="actionType"/>
+    					<xs:element name="buttonBar" type="buttonBarType"/>
+    					<xs:element name="toolBarBar" type="toolBarType"/>
+    					<xs:element name="toolItem" type="toolItemType"/>
+						<xs:element name="pgroupToolItem" type="pGroupToolItemType"/>
+        			</xs:choice>
+                </xs:choice>
+			</xs:extension>
+        </xs:complexContent>
+     </xs:complexType>
+
+    <!-- ***********************************	-->
+    <!--			N A V I G A T I O N			-->
+    <!-- ***********************************	-->
+    <!-- *********** -->
+    <!-- navigations -->
+    <!-- *********** -->
+    <xs:complexType name="navigationPathsType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:sequence>
+					<xs:element name="navigationPath" type="navigationPathType"  minOccurs="1" maxOccurs="unbounded"/>
+		        </xs:sequence>
+      		</xs:extension>
+      	</xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="navigationPathType">
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="path" type="xs:string" use="required"/>
+    </xs:complexType>
+    
+    
+    <!-- ********************************** -->
+    <!--			I N C L U D E			-->
+    <!-- ********************************** -->	
+    <!-- *********** -->
+    <!-- includeType -->
+    <!-- *********** -->
+    <xs:complexType name="includeType">
+  		<xs:complexContent>
+			<xs:extension base="widgetType">
+		        <xs:choice>
+					<xs:element name="params" type="paramsType"/>
+					<xs:element name="customizations" type="customizationsType"/>
+		        </xs:choice>
+				<xs:attribute name="adiResourceURI" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+     </xs:complexType>
+    
+    
+    <!-- ******** -->
+    <!-- menuItem -->
+    <!-- ******** -->
+    <xs:complexType name="menuItemType">
+ 		<xs:complexContent>
+			<xs:extension base="widgetType">
+				<xs:attribute name="image" type="xs:string"/>
+				<xs:attribute name="text" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+     
+    <!--	*****************************************  	-->
+    <!--	                                         	-->
+    <!--	N   N   EEEE   BBBB   U  U   L       AA  	-->
+    <!--	NN  N   E      B  B   U  U   L      A  A	-->
+    <!--	N N N   EEEE   BBBB   U  U   L      AAAA	-->
+    <!--	N  NN   E      B  B   U  U   L      A  A	-->
+    <!--	N   N   EEEE   BBBB   UUUU   LLLL   A  A	-->
+    <!--	                                         	-->
+    <!--	*****************************************  	-->
+    
+    <!-- ****************************** -->
+    <!--			P G R O U P			-->
+    <!-- ****************************** -->	
+
+    <!-- ********** -->
+    <!-- pGroupType -->
+    <!-- ********** -->
+    <xs:complexType name="pGroupType">
+ 		<xs:complexContent>
+			<xs:extension base="clientCanvasType">
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="pgroupToolItem" type="pGroupToolItemType"/>
+						<xs:element name="pgroupMenu" type="pGroupMenuType"/>
+				</xs:choice>
+				<xs:attribute name="toggleRenderer" type="toggleRendererEnum"/>
+				<xs:attribute name="toolItemRenderer" type="toolItemRendererEnum"/>
+        		<xs:attribute name="image" type="xs:string"/>
+        		<xs:attribute name="togglePosition" type="xs:string"/>
+        		<xs:attribute name="imagePosition" type="xs:string"/>
+        		<xs:attribute name="linePosition" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+    <!-- **** -->
+    <!-- menu -->
+    <!-- **** -->
+    <xs:complexType name="pGroupMenuType">
+		<xs:complexContent>
+			<xs:extension base="collectionType">
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="menuItem" type="menuItemType"/>
+				</xs:choice>
+				<xs:attribute name="image" type="xs:string"/>
+				<xs:attribute name="text" type="xs:string"/>
+				<xs:attribute name="toolTipText" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>	
+
+    <!-- *************** -->
+    <!-- pgGroupToolItem -->
+    <!-- *************** -->
+    <xs:complexType name="pGroupToolItemType">
+ 		<xs:complexContent>
+			<xs:extension base="widgetType">
+				<xs:sequence>
+					<xs:element name="params" type="paramsType"/>
+					<xs:element name="itemCode" type="xs:string"/>
+				</xs:sequence>
+				<xs:attribute name="actionClassName" type="xs:NCName"/>
+				<xs:attribute name="itemClassName" type="xs:NCName"/>
+				<xs:attribute name="image" type="xs:string"/>
+				<xs:attribute name="rank" type="xs:int"/>
+				<xs:attribute name="text" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+    <!-- *************************** -->
+    <!-- Toggle Renderer Enumeration -->
+    <!-- *************************** -->
+	<xs:simpleType name="toggleRendererEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Chevrons"/>
+            <xs:enumeration value="MinMax"/>
+            <xs:enumeration value="None"/>
+            <xs:enumeration value="Tree"/>
+            <xs:enumeration value="Twiste"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- ***************************** -->
+    <!-- Tool Item Renderer Enumeration -->
+    <!-- ***************************** -->
+	<xs:simpleType name="toolItemRendererEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="None"/>
+            <xs:enumeration value="Simple"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ****************************** -->
+    <!--			P S H E L F			-->
+    <!-- ****************************** -->	
+
+    <!-- ********** -->
+    <!-- pShelfType -->
+    <!-- ********** -->
+   <xs:complexType name="pShelfType">
+ 		<xs:complexContent>
+			<xs:extension base="collectionType">
+				<xs:choice>
+					<xs:choice>
+						<xs:element name="pshelfItem" type="pShelfItemType" minOccurs="1" maxOccurs="unbounded"/>
+						<xs:element name="include" type="includeType" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:choice>
+				</xs:choice>
+	    	    <xs:attribute name="delayed" type="xs:string"/>
+        		<xs:attribute name="layoutData" type="xs:string"/>
+        		<xs:attribute name="selection" type="xs:string"/>
+        		<xs:attribute name="shelfRenderer" type="shelfRendererEnum"/>
+        	</xs:extension>
+        </xs:complexContent>
+   </xs:complexType>
+
+    <!-- ************** -->
+    <!-- pShelfItemType -->
+    <!-- ************** -->
+    <xs:complexType name="pShelfItemType">
+ 		<xs:complexContent>
+			<xs:extension base="fieldContainerType">
+        		<xs:attribute name="image" type="xs:string"/>
+		        <xs:attribute name="text" type="xs:string"/>
+        		<xs:attribute name="toolTipText" type="xs:string"/>
+        	</xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- ********* -->
+    <!-- argPshelf -->
+    <!-- ********* -->
+   <xs:complexType name="argPShelfType">
+ 		<xs:complexContent>
+			<xs:extension base="fieldContainerType">
+	 			<xs:sequence>
+					<xs:element name="labelProvider" type="labelProviderType"/>					
+					<xs:element name="initValues" type="xs:string"/>
+				</xs:sequence>					
+        		<xs:attribute name="selection" type="xs:string"/>
+				<xs:attribute name="displayedValues" type="xs:string"/>
+				<xs:attribute name="values" type="xs:string" use="required"/>
+				<xs:attribute name="labelProviderClassName" type="xs:string" />
+        		<xs:attribute name="shelfRenderer" type="shelfRendererEnum" default="Redmond"/>
+        	</xs:extension>
+        </xs:complexContent>
+   </xs:complexType>
+    <!-- *************************** -->
+    <!-- Shelf Renderer Enumeration -->
+    <!-- *************************** -->
+	<xs:simpleType name="shelfRendererEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Palette"/>
+            <xs:enumeration value="Redmond"/>
+            <xs:enumeration value="Adichatz"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ************************** -->
+    <!--			G R I D			-->
+    <!-- ************************** -->	
+
+    <!-- ******** -->
+    <!-- gridType -->
+    <!-- ******** -->
+    <xs:complexType name="gridType">
+ 		<xs:complexContent>
+			<xs:extension base="tabularType">
+				<xs:sequence>
+					<xs:choice minOccurs="1" maxOccurs="unbounded">
+						<xs:element name="gridColumn" type="gridColumnType"/>
+						<xs:element name="gridColumnGroup" type="gridColumnGroupType"/>
+					</xs:choice>
+				</xs:sequence>
+				<xs:attribute name="rowHeaderVisible" type="xs:string"/>
+				<xs:attribute name="columnScrolling" type="xs:string"/>
+				<xs:attribute name="selectionEnabled" type="xs:string"/>
+				<xs:attribute name="cellSelectionEnabled" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+    <!-- *************** -->
+    <!-- gridColumnType -->
+    <!-- *************** -->
+    <xs:complexType name="gridColumnGroupType">
+ 		<xs:complexContent>
+			<xs:extension base="collectionType">
+				<xs:choice>
+					<xs:element name="gridColumn" type="gridColumnType" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:choice>
+				<xs:attribute name="text" type="xs:string"/>
+        		<xs:attribute name="image" type="xs:string"/>
+		        <xs:attribute name="expanded" type="xs:string"/>
+		        <xs:attribute name="headerFont" type="xs:string"/>
+				<xs:attribute name="headerWordWrap" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+    <!-- *************** -->
+    <!-- gridColumnType -->
+    <!-- *************** -->
+    <xs:complexType name="gridColumnType">
+ 		<xs:complexContent>
+			<xs:extension base="columnFieldType">
+				<xs:attribute name="controllerClassName" type="xs:NCName"/>
+        		<xs:attribute name="minimumWidth" type="xs:int"/>
+				<xs:attribute name="cellSelectionEnabled" type="xs:string"/>
+				<xs:attribute name="summary" type="xs:string"/>
+				<xs:attribute name="wordWrap" type="xs:string"/>
+                <xs:attribute name="headerFont" type="xs:string"/>
+                <xs:attribute name="headerWordWrap" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ************************************* --> 
+    <!--            C O N T A I N E R          -->
+    <!-- ************************************* --> 
+    <xs:complexType name="containerType">
+        <xs:complexContent>
+            <xs:extension base="elementType">
+                <xs:choice>
+                    <xs:element name="config" type="configType"/>
+                    <xs:element name="additionalCode" type="xs:string"/>
+                    <xs:choice maxOccurs="unbounded" minOccurs="0">
+                        <!-- collections -->
+                        <xs:element name="formPage" type="formPageType"/>
+                        <xs:element name="scrolledForm" type="scrolledFormType"/>
+                        <xs:element name="section" type="sectionType"/>
+                        <xs:element name="composite" type="compositeType"/>
+                        <xs:element name="compositeBag" type="compositeBagType"/>
+                        <xs:element name="group" type="groupType"/>
+                        <xs:element name="pgroup" type="pGroupType"/>
+                        <xs:element name="sashForm" type="sashFormType"/>
+                        <xs:element name="scrolledComposite" type="scrolledCompositeType"/>
+                        <xs:element name="table" type="tableType"/>
+                        <xs:element name="grid" type="gridType"/>
+                        <xs:element name="cTabFolder" type="cTabFolderType"/>
+                        <xs:element name="argTabFolder" type="argTabFolderType"/>
+                        <xs:element name="pshelf" type="pShelfType"/>
+                        <xs:element name="argPShelf" type="argPShelfType"/>
+                        <xs:element name="include" type="includeType"/>
+                        <xs:element name="headerMenuManager" type="headerMenuManagerType"/>
+                        <xs:element name="menuManager" type="menuManagerType"/>
+                        <xs:element name="managedToolBar" type="managedToolBarType"/>
+	                        <!-- controlField -->
+                        <xs:element name="controlField" type="controlFieldType"/>
+                        <xs:element name="genericField" type="genericFieldType"/>
+                        <!-- controls -->
+                        <xs:element name="label" type="labelType"/>
+                        <xs:element name="button" type="buttonType"/>
+                        <xs:element name="ccombo" type="cComboType"/>
+                        <xs:element name="checkBox" type="checkBoxType"/>
+                        <xs:element name="combo" type="comboType"/>
+                        <xs:element name="compositeSeparator" type="compositeSeparatorType"/>
+                        <xs:element name="dateText" type="dateTextType"/>
+						<xs:element name="dateTime" type="dateTimeType"/>
+                        <xs:element name="encryptedText" type="encryptedTextType"/>
+						<xs:element name="editableFormText" type="editableFormTextType"/>
+                        <xs:element name="extraText" type="extraTextType"/>
+                        <xs:element name="fileText" type="fileTextType"/>
+						<xs:element name="fontText" type="fontTextType"/>
+                        <xs:element name="formattedText" type="formattedTextType"/>
+                        <xs:element name="gMap" type="gMapType"/>
+                        <xs:element name="hyperlink" type="hyperlinkType"/>
+                        <xs:element name="helpButton" type="helpButtonType"/>
+                        <xs:element name="imageViewer" type="imageViewerType"/>
+                        <xs:element name="multiChoice" type="multiChoiceType"/>
+                        <xs:element name="numericText" type="numericTextType"/>
+                        <xs:element name="radioGroup" type="radioGroupType"/>
+                        <xs:element name="refText" type="refTextType"/>
+						<xs:element name="rgbText" type="rgbTextType"/>
+                        <xs:element name="richText" type="richTextType"/>
+                        <xs:element name="starRating" type="starRatingType"/>
+                        <xs:element name="tableColumn" type="tableColumnType"/>
+                        <xs:element name="text" type="textType"/>
+                    </xs:choice>
+                </xs:choice>
+                <xs:attribute name="coreClassName" type="xs:NCName"/>
+                <xs:attribute name="entityURI" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    	
+</xs:schema>

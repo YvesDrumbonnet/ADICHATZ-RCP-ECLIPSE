@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ModelPartMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/ParamsMM" id="params"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/PojoRewritersMM" id="pojoRewriters"/>
+    <propertyField id="connectorDataSource">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="connectorASVersion">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField mandatory="true" id="modelPackageName">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+    <propertyField id="modelProcurement">
+        <controlField xsi:type="radioGroupType">
+            <labelProvider>
+                <textCode>return ((ModelProcurementEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.ModelProcurementEnum
+import java.util.Arrays
+return Arrays.asList(ModelProcurementEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+    <propertyField id="modelProcurementFolder">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="dataSourceUnit">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="persistenceManagerClassName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="lockManagerClassName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="ejbFileName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="dataSourceFileName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="jndi">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

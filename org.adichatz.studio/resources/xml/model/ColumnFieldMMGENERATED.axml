@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ColumnFieldMM" superEntityURI="adi://org.adichatz.studio/model/ValidElementMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="columnImage">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField id="columnText">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField id="columnValue">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField id="columnBackground">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField id="columnForeground">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField id="columnFont">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/AccessibilitiesMM" id="accessibilities"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/ListenersMM" id="listeners"/>
+    <propertyField id="property">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="image">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="lazyFetches">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="locale">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="pack">
+        <controlField xsi:type="radioGroupType" controllerClassName="org.adichatz.studio.xjc.controller.BooleanRadioGroupController"/>
+    </propertyField>
+    <propertyField id="pattern">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="sorted">
+        <controlField xsi:type="checkBoxType"/>
+    </propertyField>
+    <propertyField id="columnValueType">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="alignment">
+        <controlField xsi:type="numericTextType" layoutData="width min:100:150, growx"/>
+    </propertyField>
+    <propertyField id="moveable">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="resizeable">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="sortDirection">
+        <controlField xsi:type="radioGroupType">
+            <labelProvider>
+                <textCode>return ((SortEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.SortEnum
+import java.util.Arrays
+return Arrays.asList(SortEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+    <propertyField id="style">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="text">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="toolTipText">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="width">
+        <controlField xsi:type="numericTextType" layoutData="width min:100:150, growx"/>
+    </propertyField>
+</entityTree>

@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:include schemaLocation="common/base-generator.xsd"/>
+    <xs:include schemaLocation="common/entity.xsd"/>
+	
+    <!-- ************************** -->
+    <!--			R O O T			-->
+    <!-- ************************** -->	
+	<xs:element name="scenarioTree">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="params" type="paramsType"/>
+				<xs:element name="actionResources" type="actionResourcesType" minOccurs="1"/>
+				<xs:element name="generators" type="generatorsType"/>
+				<xs:element name="pathElements" type="pathElementsType"/>
+				<xs:element name="scenarios" type="scenariosType"/>
+				<xs:element name="controllers" type="controllersType"/>
+				<xs:element name="generationScenario" type="generationScenarioType" minOccurs="1"/>
+				<xs:element name="customizedScenarios" type="customizedScenariosType"/>
+				<xs:element name="customPostAction" type="customPostActionType" minOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+    <!-- ****************************************** -->
+    <!--			P A T H - E L E M E N T			-->
+    <!-- ****************************************** -->
+    <!-- ************ -->
+    <!-- pathElements -->
+    <!-- ************ -->    
+	<xs:complexType name="pathElementsType">
+		<xs:sequence>
+			<xs:element name="pathElement" type="pathElementType"  minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+    <!-- *********** -->
+    <!-- pathElement -->
+    <!-- *********** -->    
+	<xs:complexType name="pathElementType">
+		<xs:sequence>
+			<xs:element name="condition" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="type" type="pathElementEnum" use="required"/>		
+		<xs:attribute name="location" type="xs:string"/>
+		<xs:attribute name="addWhen" type="addWhenEnum" default="ALL"/>
+		<xs:attribute name="additionalResourcePath" type="xs:boolean" default="false"/><!-- Added when exploring resource hierarchy (e.g. ClassTextController) -->
+		<xs:attribute name="addToManifestFile" type="xs:boolean" default="false"/>
+		<xs:attribute name="addToClassPath" type="xs:boolean" default="false"/>
+	</xs:complexType>
+    <!-- ************************ -->
+    <!-- pathElement Enumeration -->
+    <!-- ************************ -->
+	<xs:simpleType name="pathElementEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="PLUGIN"/>
+            <xs:enumeration value="LIBRARY"/>
+            <xs:enumeration value="PROJECT"/>
+            <xs:enumeration value="DIRECTORY"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ************************ -->
+    <!-- pathElement Enumeration -->
+    <!-- ************************ -->
+	<xs:simpleType name="addWhenEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="UI"/>
+            <xs:enumeration value="MODEL"/>
+            <xs:enumeration value="ALL"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ************************************** -->
+    <!--			G E N E R A T O R 			-->
+    <!-- ************************************** -->
+    <!-- ********** -->
+    <!-- generators -->
+    <!-- ********** -->    
+	<xs:complexType name="generatorsType">
+		<xs:choice  minOccurs="1" maxOccurs="unbounded">
+			<xs:element name="generator" type="generatorType"/>
+		</xs:choice>
+	</xs:complexType>
+    <!-- ********* -->
+    <!-- generator -->
+    <!-- ********* -->    
+	<xs:complexType name="generatorType">
+		<xs:attribute name="treeClassName" type="xs:NCName" use="required"/>
+		<xs:attribute name="generatorClassName" type="xs:NCName" use="required"/>
+	</xs:complexType>
+
+    <!-- ****************************************** -->
+    <!--			C O N T R O L L E R S 			-->
+    <!-- ******************************************* -->
+    <!-- *********** -->
+    <!-- controllers -->
+    <!-- *********** -->    
+	<xs:complexType name="controllersType">
+		<xs:choice  minOccurs="1" maxOccurs="unbounded">
+			<xs:element name="controller" type="controllerType"/>
+		</xs:choice>
+	</xs:complexType>
+    <!-- ********** -->
+    <!-- controller -->
+    <!-- ********** -->    
+	<xs:complexType name="controllerType">
+		<xs:attribute name="wrapperClassName" type="xs:NCName" use="required"/>
+		<xs:attribute name="controllerClassName" type="xs:NCName" use="required"/>
+	</xs:complexType>
+
+    <!-- ********************************************************** -->
+    <!--			G E N E R A T I O N - S C E N A R I O			-->
+    <!-- ********************************************************** -->
+    <!-- ****************** -->
+    <!-- generationScenario -->
+    <!-- ****************** -->    
+	<xs:complexType name="generationScenarioType">
+		<xs:sequence>
+			<xs:element name="pluginEntity" type="pluginEntityType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="modelPart" type="modelPartType"/>
+			<xs:element name="rcpPart" type="rcpPartType"/>
+			<xs:element name="generationUnit" type="generationUnitType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="propertyField" type="propertyFieldType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+    <!-- **************** -->
+    <!-- pluginEntityType -->
+    <!-- **************** -->
+    <xs:complexType name="pluginEntityType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:sequence>
+					<xs:element name="icons" type="iconsType"/>
+                    <xs:element name="messages" type="messagesType"/>
+					<xs:element name="params" type="paramsType"/>
+					<xs:element name="generationUnit" type="generationUnitType" minOccurs="0" maxOccurs="unbounded"/>				
+                    <xs:element name="propertyField" type="propertyFieldType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="pojoRewriters" type="pojoRewritersType"/> <!-- List of rewriter classes executed after pojo generation with filter-->
+                    <xs:element name="queryBuilder" type="queryBuilderType"/>
+				</xs:sequence>
+				<xs:attribute name="beanClassName" type="xs:NCName"/>
+				<xs:attribute name="uiBeanClassName" type="xs:NCName"/>
+				<xs:attribute name="entityURI" type="xs:string" use="required"/>
+		        <xs:attribute name="protectPojo" type="xs:boolean" default="false"/> <!--  Pojo generation process do not affect the current pojo -->
+		        <!-- roles -->
+		   	    <xs:attribute name="retrieveRoles" type="xs:string" />
+		       	<xs:attribute name="mergeRoles" type="xs:string" />
+		        <xs:attribute name="persistRoles" type="xs:string" />
+		   	    <xs:attribute name="removeRoles" type="xs:string" />
+			</xs:extension>
+		</xs:complexContent>		        
+	</xs:complexType>	
+
+    <!-- ****************************************** -->
+    <!--			M O D E L - P A R T 			-->
+    <!-- ****************************************** -->
+	<xs:complexType name="modelPartType">
+		<xs:sequence>
+			<xs:element name="params" type="paramsType"/>
+			<xs:element name="pojoRewriters" type="pojoRewritersType"/> <!-- List of rewriter classes executed after pojo generation with filter-->
+		</xs:sequence>
+		<xs:attribute name="connectorDataSource" type="xs:NCName"/>
+		<xs:attribute name="connectorASVersion" type="xs:NCName"/>
+		<xs:attribute name="modelPackageName" type="xs:string" use="required"/>
+		<xs:attribute name="modelProcurement" type="modelProcurementEnum"/>
+		<xs:attribute name="modelProcurementFolder" type="xs:string"/>
+		<!--  EJB attributes -->
+		<xs:attribute name="dataSourceUnit" type="xs:NCName"/>
+		<xs:attribute name="persistenceManagerClassName" type="xs:NCName"/>
+		<xs:attribute name="lockManagerClassName" type="xs:NCName"/>
+		<!--  AS attributes -->
+		<xs:attribute name="ejbFileName" type="xs:NCName"/>
+		<xs:attribute name="dataSourceFileName" type="xs:NCName"/>
+		<xs:attribute name="jndi" type="xs:NCName"/>
+	</xs:complexType>
+
+    <!-- ********************************************** -->
+    <!--			P O J O - R E W R I T E R S			-->
+    <!-- ********************************************** -->
+    <!-- ************* -->
+    <!-- pojoRewriters -->
+    <!-- ************* -->
+	<xs:complexType name="pojoRewritersType">
+		<xs:sequence>
+			<xs:element name="pojoRewriter" type="pojoRewriterType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+    <!-- ************ -->
+    <!-- pojoRewriter -->
+    <!-- ************ -->
+	<xs:complexType name="pojoRewriterType">
+		<xs:sequence>
+			<xs:element name="params" type="paramsType"/>
+		</xs:sequence>
+		<xs:attribute name="rewriterClassName" type="xs:string"/>
+		<xs:attribute name="entityRegex" type="xs:string"/>
+		<xs:attribute name="propertyRegex" type="xs:string"/>
+		<xs:attribute name="priority" type="xs:int"/> <!--  Priority 0 is max priority, 99 is min -->
+	</xs:complexType>
+    <!-- ************** -->
+    <!-- pojoSuperClass -->
+    <!-- ************** -->
+	<xs:complexType name="pojoSuperClassType">
+		<xs:attribute name="superClassURI" type="xs:string"/>
+		<xs:attribute name="sourceURI" type="xs:string"/>
+	</xs:complexType>
+
+
+    <!-- ************************************** -->
+    <!--			R C P - P A R T 			-->
+    <!-- ************************************** -->
+	<xs:complexType name="rcpPartType">
+		<xs:attribute name="application" type="xs:boolean"/>
+		<xs:attribute name="navigator" type="xs:boolean"/>
+	</xs:complexType>
+	
+    <!-- *************************** -->
+    <!-- object Type Enumeration -->
+    <!-- *************************** -->
+	<xs:simpleType name="modelProcurementEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="HIBERNATE"/>
+            <xs:enumeration value="FOLDER"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ************************** -->
+    <!--			I C O N			-->
+    <!-- ************************** -->
+    <!-- ***** -->
+    <!-- icons -->
+    <!-- ***** -->    
+	<xs:complexType name="iconsType">
+		<xs:sequence>
+			<xs:element name="icon" type="iconType"  minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+    <!-- **** -->
+    <!-- icon -->
+    <!-- **** -->
+	<xs:complexType name="iconType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:attribute name="type" type="partImageTypeEnum" use="required"/>
+		        <xs:attribute name="image" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>		        
+	</xs:complexType>
+
+    <!-- ********************************** -->
+    <!--			M E S S A G E			-->
+    <!-- ********************************* -->
+    <!-- ******** -->
+    <!-- messages -->
+    <!-- ******** -->    
+	<xs:complexType name="messagesType">
+		<xs:sequence>
+			<xs:element name="message" type="messageType"  minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+    <!-- ******* -->
+    <!-- message -->
+    <!-- ******* -->
+	<xs:complexType name="messageType">
+		<xs:attribute name="key" type="xs:string" use="required"/>
+		<xs:attribute name="value" type="xs:string" use="required"/>
+		<xs:attribute name="language" type="xs:string"/>
+	</xs:complexType>
+
+    <!-- *************************** -->
+    <!-- Part Image Type Enumeration -->
+    <!-- *************************** -->
+	<xs:simpleType name="partImageTypeEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="EDITOR"/>
+            <xs:enumeration value="CREATION_ITEM"/>
+            <xs:enumeration value="QUERY_ITEM"/>
+            <xs:enumeration value="MENU"/>
+            <xs:enumeration value="ENTITY"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <!-- ********************************** -->
+    <!--			S C E N A R I O			-->
+    <!-- ********************************** -->
+
+    <!-- ********* -->
+    <!-- scenarios -->
+    <!-- ********* -->
+	<xs:complexType name="scenariosType">
+		<xs:choice  minOccurs="1" maxOccurs="unbounded">
+			<xs:element name="scenario" type="scenarioType"/>
+		</xs:choice>
+	</xs:complexType>
+    <!-- ******** -->
+    <!-- scenario -->
+    <!-- ******** -->
+	<xs:complexType name="scenarioType">
+		<xs:attribute name="type" type="generationEnum" use="required"/>
+		<xs:attribute name="scenarioClassName" type="xs:NCName" use="required"/>
+	</xs:complexType>
+    <!-- ************************************************** -->
+    <!--			G E N E R A T I O N - U N I T			-->
+    <!-- ************************************************** -->
+
+    <!-- ************** -->
+    <!-- generationUnit -->
+    <!-- ************** -->
+	<xs:complexType name="generationUnitType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:sequence>
+					<xs:element name="generators" type="generatorsType"/>
+				</xs:sequence>
+		        <xs:attribute name="scenarioClassName" type="xs:NCName"/>
+				<xs:attribute name="adiResourceURI" type="xs:string"/>		        
+				<xs:attribute name="type" type="generationEnum" use="required"/>
+			</xs:extension>
+		</xs:complexContent>		        
+	</xs:complexType>
+
+    <!-- ****************************************** -->
+    <!--			C O P Y - R E S O U R C E S		-->
+    <!-- ****************************************** -->
+    <!-- *************** -->
+    <!-- actionResources -->
+    <!-- *************** -->    
+	<xs:complexType name="actionResourcesType">
+		<xs:sequence>
+            <xs:element name="copyResource" type="copyResourceType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="removeResource" type="removeResourceType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+    <!-- ************ -->
+    <!-- removeResource -->
+    <!-- ************ -->
+	<xs:complexType name="removeResourceType">
+		<xs:sequence>
+			<xs:element name="condition" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="targetURI" type="xs:string" use="required"/>
+		<xs:attribute name="actionWhen" type="actionWhenTypeEnum" default="WHEN_BUILDING_MODEL"/>
+		<xs:attribute name="relative" type="xs:boolean" default="false"/>
+		<xs:attribute name="throwError" type="xs:boolean" default="false"/>
+	</xs:complexType>
+
+    <!-- ************ -->
+    <!-- copyResource -->
+    <!-- ************ -->
+	<xs:complexType name="copyResourceType">
+		<xs:complexContent>
+			<xs:extension base="removeResourceType">
+				<xs:sequence>
+					<xs:element name="replacement" type="replacementType" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute name="sourceURI" type="xs:string" use="required"/>
+				<xs:attribute name="force" type="xs:boolean" default="false"/>
+			</xs:extension>
+		</xs:complexContent>		        
+	</xs:complexType>
+
+	<xs:complexType name="replacementType">
+		<xs:attribute name="token" type="xs:string"/>
+		<xs:attribute name="value" type="xs:string"/>
+	</xs:complexType>
+
+    <!-- **************************** -->
+    <!-- Action When Type Enumeration -->
+    <!-- **************************** -->
+	<xs:simpleType name="actionWhenTypeEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="WHEN_BUILDING_EJB_JAR"/>
+            <xs:enumeration value="WHEN_BUILDING_MODEL"/>
+            <xs:enumeration value="WHEN_BUILDING_UI"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <!-- ****************************************************** -->
+    <!--			C U S T O M - P O S T - A C T I O N			-->
+    <!-- ****************************************************** -->
+    <!-- **************** -->
+    <!-- customPostAction -->
+    <!-- **************** -->    
+	<xs:complexType name="customPostActionType">
+		<xs:sequence>
+            <xs:element name="customGenerationUnit" type="customGenerationUnitType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<!--  Scenario ClassName for PluginEntity implements IPluginEntityScenario -->
+        <xs:attribute name="rewritePojos" type="xs:boolean" default="true"/>
+        <xs:attribute name="generateEJB" type="xs:boolean" default="true"/>
+        <xs:attribute name="generatePersistenceXml" type="xs:boolean" default="true"/>
+        <xs:attribute name="deployEJB" type="xs:boolean" default="true"/>
+	</xs:complexType>
+
+    <!-- ******************** -->
+    <!-- customGenerationUnit -->
+    <!-- ******************** -->
+	<xs:complexType name="customGenerationUnitType">
+		<xs:complexContent>
+			<xs:extension base="generationUnitType">
+				<xs:attribute name="entityRegex" type="xs:string"/>
+				<xs:attribute name="propertyRegex" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>		        
+	</xs:complexType>
+
+    <!-- ********************************************************** -->
+    <!--			C U S T O M I Z E D - S C E N A R I O			-->
+    <!-- ********************************************************** -->
+
+    <!-- ******************* -->
+    <!-- customizedScenarios -->
+    <!-- ******************* -->
+	<xs:complexType name="customizedScenariosType">
+		<xs:choice minOccurs="1" maxOccurs="unbounded">
+			<xs:element name="customizedScenario" type="customizedScenarioType"/>
+		</xs:choice>
+	</xs:complexType>
+    <!-- ****************** -->
+    <!-- customizedScenario -->
+    <!-- ****************** -->
+	<xs:complexType name="customizedScenarioType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+		        <xs:attribute name="scenarioFile" type="xs:string"/>
+				<xs:attribute name="mergeDate" type="xs:dateTime"/>
+			</xs:extension>
+		</xs:complexContent>		        
+	</xs:complexType>
+</xs:schema>

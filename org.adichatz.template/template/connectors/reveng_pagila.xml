@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering SYSTEM "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+
+<hibernate-reverse-engineering>
+	<!-- Exclude Geometry and raster metadata tables -->    
+	<table-filter match-name="geography_columns" exclude="true"/>
+	<table-filter match-name="geometry_columns" exclude="true"/>
+	<table-filter match-name="spatial_ref_sys" exclude="true"/>
+	<table-filter match-name="raster_columns" exclude="true"/>
+	<table-filter match-name="raster_overviews" exclude="true"/>
+</hibernate-reverse-engineering>

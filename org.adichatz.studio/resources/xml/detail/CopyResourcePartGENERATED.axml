@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/CopyResourceMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <radioGroup property="actionWhen" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(removeResource, actionWhen).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="actionWhen">
+            <labelProvider>
+                <textCode>return ((ActionWhenTypeEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.ActionWhenTypeEnum
+import java.util.Arrays
+return Arrays.asList(ActionWhenTypeEnum.class.getEnumConstants());</initValues>
+        </radioGroup>
+        <checkBox property="force" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(copyResource, force).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="force"/>
+        <checkBox property="relative" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(removeResource, relative).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="relative"/>
+        <text property="sourceURI" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(copyResource, sourceURI).concat(&quot;:&quot;)" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="sourceURI"/>
+        <text property="targetURI" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(removeResource, targetURI).concat(&quot;:&quot;)" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="targetURI"/>
+        <checkBox property="throwError" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(removeResource, throwError).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="throwError"/>
+        <text property="condition" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(removeResource, condition).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="condition"/>
+    </scrolledComposite>
+</containerTree>

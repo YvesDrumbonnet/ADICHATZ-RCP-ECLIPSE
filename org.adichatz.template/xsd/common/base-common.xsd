@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <!-- ****************************   -->
+    <!--            B A S I C           -->
+    <!-- ****************************   -->
+    <!-- ***** -->
+    <!-- basic -->
+    <!-- ***** -->
+	<xs:complexType  name="basicType"/>
+
+    <!-- ******* -->
+    <!-- element -->
+    <!-- ******* -->
+    <xs:complexType name="elementType">
+        <xs:complexContent>
+            <xs:extension base="basicType">
+                <xs:attribute name="id" type="xs:string"/>
+                <xs:attribute name="parentIndex" type="xs:int"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- ************************************	-->
+    <!--			P A R A M E T E R			-->
+    <!-- ************************************	-->
+    <!-- ****** -->
+    <!-- params -->
+    <!-- ****** -->
+    <xs:complexType name="paramsType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:sequence>
+					<xs:element name="param" type="paramType"  minOccurs="1" maxOccurs="unbounded"/>
+		        </xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+    <!-- ***** -->
+    <!-- param  -->
+    <!-- ***** -->
+	<xs:complexType name="paramType">
+		<xs:complexContent>
+			<xs:extension base="elementType">
+		        <xs:attribute name="type" type="xs:NCName"/>
+		        <xs:attribute name="optional" type="xs:boolean"/>
+		        <xs:attribute name="value" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+    
+    <!-- ***********************************************	-->
+    <!--			C O N T E N T - P R O V I D E R			-->
+    <!-- ***********************************************	-->
+    <!-- **************** -->
+    <!-- content provider -->
+    <!-- **************** -->
+	<xs:complexType  name="contentProviderType">
+		<xs:complexContent>
+			<xs:extension base="paramType"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+
+</xs:schema>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<includeTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="false">
+	<managedToolBar id="managedToolBar">
+        <additionalCode>import org.adichatz.engine.controller.collection.FormPageController;
+import org.adichatz.engine.action.AAction;
+import org.adichatz.engine.controller.collection.SashFormController;
+import org.adichatz.engine.controller.AWidgetController;
+import org.eclipse.swt.custom.SashForm;
+import org.eclipse.swt.widgets.Control;
+private SashForm sashForm;
+protected FormPageController getMasterDetailPageController() {
+    return (FormPageController) coreController.getParentController();
+}
+protected Control getMasterControl() {
+    return getSashForm().getChildren()[0];
+}
+protected Control getDetailControl() {
+    return getSashForm().getChildren()[1];
+}
+protected SashForm getSashForm() {
+	if (null == sashForm)
+    	for (AWidgetController controller : getMasterDetailPageController().getChildControllers())
+        	if (controller instanceof SashFormController)
+            	sashForm = ((SashFormController) controller).getControl();
+    return sashForm;
+}
+protected void expand(AAction action, Control control) {
+}
+protected void setImages(SashForm sashForm) {
+}
+</additionalCode>
+    </managedToolBar>
+</includeTree>

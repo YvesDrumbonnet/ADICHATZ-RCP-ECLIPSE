@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/MenuMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(element, id).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="id$1"/>
+        <text property="id" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(element, id).concat(&quot;:&quot;)" linkedControl="id$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.IdTextController" id="id">
+            <pluginEntity/>
+        </text>
+        <hyperlink text="#MSG(node, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameMenuPART$1">
+            <pluginEntity/>
+        </hyperlink>
+        <text property="controllerClassName" labelText="#MSG(node, controllerClassName).concat(&quot;:&quot;)" linkedControl="controllerClassNameMenuPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="controllerClassName">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(menu, expanded).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="expanded$1"/>
+        <text property="expanded" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(menu, expanded).concat(&quot;:&quot;)" linkedControl="expanded$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="expanded">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(node, image).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="image$1"/>
+        <text property="image" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(node, image).concat(&quot;:&quot;)" linkedControl="image$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="image">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(node, label).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="label$1"/>
+        <text property="label" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(node, label).concat(&quot;:&quot;)" linkedControl="label$1" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="label">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(node, toolTipText).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="toolTipText$1"/>
+        <text property="toolTipText" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(node, toolTipText).concat(&quot;:&quot;)" linkedControl="toolTipText$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="toolTipText">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(node, valid).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="valid$1"/>
+        <text property="valid" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(node, valid).concat(&quot;:&quot;)" linkedControl="valid$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="valid">
+            <pluginEntity/>
+        </text>
+    </scrolledComposite>
+</containerTree>

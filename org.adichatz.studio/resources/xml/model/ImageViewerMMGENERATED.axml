@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ImageViewerMM" superEntityURI="adi://org.adichatz.studio/model/ControlFieldMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="imageStyle">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="toolBarStyle">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="fitCanvas">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField mandatory="true" id="imageType">
+        <controlField xsi:type="radioGroupType" mandatory="true">
+            <labelProvider>
+                <textCode>return ((ImageTypeEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.ImageTypeEnum
+import java.util.Arrays
+return Arrays.asList(ImageTypeEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+</entityTree>

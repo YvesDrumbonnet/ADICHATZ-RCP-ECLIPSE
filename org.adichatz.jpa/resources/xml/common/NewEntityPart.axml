@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/tree/containerTree.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <layout rowConstraints="grow,fill" columnConstraints="grow,fill" layoutConstraints="wrap, ins 0"/>
+    <managedToolBar>
+		<action imageDescriptor="#IMGDESC(IMG_ACCEPT)" text="#MSG(adichatzJpa, save.new.entity)" id="saveNewEntity">
+			<actionCode>import org.adichatz.engine.controller.collection.ATabularController;
+import org.adichatz.engine.controller.collection.ContainerController;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.adichatz.common.ejb.QueryResult;
+ATabularController tabularController = ((ATabularController) context.getParam("TABULAR_CONTROLLER"));
+tabularController.getQueryManager().getEntityMM().getDataAccess().saveEntities(getBindingService(), getEntity());
+QueryResult queryResult = tabularController.getQueryManager().getQueryResult();
+queryResult.getQueryResultList().add(getEntity().getBean());
+queryResult.setQueryCount(queryResult.getQueryCount() + 1);
+tabularController.getViewer().refresh();
+tabularController.getViewer().setSelection(new StructuredSelection(getEntity().getBean()));
+tabularController.invokeControlMethod(ATabularController.METHOD_NAME.setTopIndex);
+getBindingService().close();
+((ContainerController) getGenCode().getContext().getRootCore().getController()).getFormInput().getWindow().close();</actionCode>
+        </action>
+    </managedToolBar>
+    <composite id="detailCMP">
+        <listeners>
+            <listener listenerTypes="POST_MESSAGE" id="postMessage">
+                <code>#CONTROLLER(saveNewEntity).setEnabled(bindingService.getErrorMessageMap().isEmpty());</code>
+            </listener>
+        </listeners>
+        <layout rowConstraints="grow,fill" columnConstraints="grow,fill" layoutConstraints="wrap, ins 0"/>
+        <include adiResourceURI="#PARAM(DETAIL_RESOURCE_URI)" id="detailINC"/>
+    </composite>
+</containerTree>

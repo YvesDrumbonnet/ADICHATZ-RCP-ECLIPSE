@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/RefTextMM" superEntityURI="adi://org.adichatz.studio/model/RefControlMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/ParamsMM" id="params"/>
+    <propertyField id="orientation">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="textLayoutData">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="tabs">
+        <controlField xsi:type="numericTextType" layoutData="width min:100:150, growx"/>
+    </propertyField>
+</entityTree>

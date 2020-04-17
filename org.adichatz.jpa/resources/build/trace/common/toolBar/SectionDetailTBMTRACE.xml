@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<includeTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="includeTreeWrapper$$0" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/includeTree.xsd">
+    <pluginEntity/>
+    <managedToolBar id="managedToolBar">
+        <pluginEntity/>
+        <action actionClassName="org.adichatz.jpa.action.RefreshEntityAction" id="refreshEntityAction">
+            <pluginEntity/>
+            <params>
+                <param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+            </params>
+        </action>
+        <action actionClassName="org.adichatz.jpa.action.DeleteEntityAndCloseAction" valid="&quot;DETAIL&quot;.equals(#PARAM(TOOL_BAR_TYPE))" id="deleteEntityAndCloseAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="deleteEntityAndCloseAction$$VALIDFilter">
+                    <accept>return "DETAIL".equals(#PARAM(TOOL_BAR_TYPE));</accept>
+                </accessibility>
+            </accessibilities>
+            <params>
+                <param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+                <param value="#PARAM(TOOL_BAR_TYPE)" id="TOOL_BAR_TYPE"/>
+            </params>
+        </action>
+        <action actionClassName="org.adichatz.jpa.action.DeleteEntityAction" valid="#AUTHORIZATION(IEntityConstants.REMOVE) &amp;&amp; &quot;CHILD&quot;.equals(#PARAM(TOOL_BAR_TYPE))" id="deleteEntityAction">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="deleteEntityAction$$VALIDFilter">
+                    <accept>return #AUTHORIZATION(IEntityConstants.REMOVE) &amp;&amp; "CHILD".equals(#PARAM(TOOL_BAR_TYPE));</accept>
+                </accessibility>
+            </accessibilities>
+            <params>
+                <param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+                <param value="#PARAM(TOOL_BAR_TYPE)" id="TOOL_BAR_TYPE"/>
+            </params>
+        </action>
+    </managedToolBar>
+</includeTree>

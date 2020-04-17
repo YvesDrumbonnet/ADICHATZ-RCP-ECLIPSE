@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/MenuMM" superEntityURI="adi://org.adichatz.studio/model/NodeMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="expanded">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/NodeMM" id="menuOrItem">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/MenuMM" name="menu"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ItemMM" name="item"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

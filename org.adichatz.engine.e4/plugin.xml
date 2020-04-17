@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<!-- ************************ -->
+	<!-- *   W O R K B E N C H  * -->
+	<!-- ************************ -->
+    <extension id="org.adichatz.engine.e4.model.extension" point="org.eclipse.e4.workbench.model">
+		<fragment uri="resources/xml/fragment.e4xmi"/>
+		<processor beforefragment="false" class="org.adichatz.engine.e4.resource.PerspectiveProcessor"/>
+    </extension>
+</plugin>

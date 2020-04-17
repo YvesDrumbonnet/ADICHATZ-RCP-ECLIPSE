@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<partTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bindingServiceClassName="org.adichatz.studio.xjc.data.XjcBindingService" image="#IMG(IMG_XJC_EDITOR.png)" title="#PARAM(TITLE)" toolTipText="#PARAM(TOOL_TIP_TEXT)" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/partTree.xsd">
+    <formPage formText="#PARAM(TITLE)" title="#MSG(adichatzStudio,studio.editor.treeForm)" id="treeForm">
+        <additionalCode>import org.adichatz.studio.xjc.editor.AStudioFormEditor;
+boolean isEditable() {
+    return ((AStudioFormEditor) context.getXmlTreeGenCode().getController()).isEditable(); 
+}</additionalCode>
+        <layout layoutConstraints="wrap" columnConstraints="[grow,fill]" rowConstraints="[grow,fill]"/>
+        <tree showRoot="true" expand="3" headerVisible="false" controllerClassName="org.adichatz.studio.xjc.controller.XjcTreeController" style="SWT.MULTI" id="xjcTree">
+            <additionalCode>import org.adichatz.studio.xjc.editor.AStudioFormEditor;
+boolean isEditable() {
+    return ((AStudioFormEditor) context.getXmlTreeGenCode().getController()).isEditable(); 
+}</additionalCode>
+            <menuManager id="contextMenu">
+                <menu imageDescriptor="#IMGDESC(IMG_ADD_ELEMENT.png)" text="#MSG(adichatzStudio, studio.editor.addElement)" valid="null != #ROW() &amp;&amp; isEditable()" id="addXjcElement">
+                    <accessibilities>
+                        <accessibility type="VALID" id="addXjcElement$$VALIDFilter">
+                            <accept>return null != #ROW() &amp;&amp; isEditable();</accept>
+                        </accessibility>
+                    </accessibilities>
+                    <contributionItem controllerClassName="org.adichatz.studio.xjc.editor.action.AddXjcElement" id="contributionItemWrapper$$2"/>
+                </menu>
+                <separator id="separatorWrapper$$3"/>
+                <action actionClassName="org.adichatz.studio.xjc.editor.action.CutXjcElementAction" valid="null != #ROW() &amp;&amp; isEditable()" id="CutXjcElementAction">
+                    <accessibilities>
+                        <accessibility type="VALID" id="CutXjcElementAction$$VALIDFilter">
+                            <accept>return null != #ROW() &amp;&amp; isEditable();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </action>
+                <action actionClassName="org.adichatz.studio.xjc.editor.action.CopyXjcElementAction" valid="null != #ROW() &amp;&amp; isEditable()" id="copyXjcElementAction">
+                    <accessibilities>
+                        <accessibility type="VALID" id="copyXjcElementAction$$VALIDFilter">
+                            <accept>return null != #ROW() &amp;&amp; isEditable();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </action>
+                <action actionClassName="org.adichatz.studio.xjc.editor.action.PasteXjcElementAction" valid="null != #ROW() &amp;&amp; isEditable()" id="pasteXjcElementAction">
+                    <accessibilities>
+                        <accessibility type="VALID" id="pasteXjcElementAction$$VALIDFilter">
+                            <accept>return null != #ROW() &amp;&amp; isEditable();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </action>
+                <separator id="separatorWrapper$$4"/>
+                <action actionClassName="org.adichatz.studio.xjc.editor.action.ShowOutlineViewAction" valid="org.adichatz.studio.xjc.editor.action.ShowOutlineViewAction.isHidden()" id="showOutlineViewAction">
+                    <accessibilities>
+                        <accessibility type="VALID" id="showOutlineViewAction$$VALIDFilter">
+                            <accept>return org.adichatz.studio.xjc.editor.action.ShowOutlineViewAction.isHidden();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </action>
+                <action actionClassName="org.adichatz.studio.xjc.editor.action.ShowXjcFieldViewAction" valid="org.adichatz.studio.xjc.editor.action.ShowXjcFieldViewAction.isHidden()" id="showXjcFieldViewAction">
+                    <accessibilities>
+                        <accessibility type="VALID" id="showXjcFieldViewAction$$VALIDFilter">
+                            <accept>return org.adichatz.studio.xjc.editor.action.ShowXjcFieldViewAction.isHidden();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </action>
+            </menuManager>
+        </tree>
+        <managedToolBar id="pageToolBar">
+            <action actionClassName="org.adichatz.studio.xjc.editor.action.ExpandTreeAction" imageDescriptor="#IMGDESC(IMG_DEVELOP)" toolTipText="#MSG(adichatzStudio, studio.editor.expandTree)" id="expandTreeAction"/>
+            <action actionClassName="org.adichatz.studio.xjc.editor.action.CollapseTreeAction" imageDescriptor="#IMGDESC(IMG_COLLAPSE.gif)" toolTipText="#MSG(adichatzStudio, studio.editor.collapseTree)" id="collapseTreeAction"/>
+            <separator style="SWT.NONE" id="separatorWrapper$$0"/>
+            <action imageDescriptor="#IMGDESC(IMG_SWITCH.png)" controllerClassName="org.adichatz.studio.xjc.editor.action.SwitchToActiveFileActionController" toolTipText="#MSG(adichatzStudio, studio.xjcEditor.switchToActiveFile)" valid="isEditable()" id="switchToActiveFileAction">
+                <accessibilities>
+                    <accessibility type="VALID" id="switchToActiveFileAction$$VALIDFilter">
+                        <accept>return isEditable();</accept>
+                    </accessibility>
+                </accessibilities>
+            </action>
+            <action imageDescriptor="#IMGDESC(IMG_COMPARE.png)" controllerClassName="org.adichatz.studio.xjc.editor.action.CompareFilesActionController" toolTipText="#MSG(adichatzStudio, studio.xjcEditor.compareCustomizedAndGeneratedFiles)" valid="isEditable()" id="compareFilesAction">
+                <accessibilities>
+                    <accessibility type="VALID" id="compareFilesAction$$VALIDFilter">
+                        <accept>return isEditable();</accept>
+                    </accessibility>
+                </accessibilities>
+            </action>
+            <menuAction imageDescriptor="#IMGDESC(IMG_GENERATE_JAVA_FILES.png)" controllerClassName="org.adichatz.studio.xjc.editor.action.OpenJavaFileMAController" valid="isEditable()" id="openJavaFileMenuAction">
+                <accessibilities>
+                    <accessibility type="VALID" id="openJavaFileMenuAction$$VALIDFilter">
+                        <accept>return isEditable();</accept>
+                    </accessibility>
+                </accessibilities>
+            </menuAction>
+            <separator style="SWT.NONE" id="separatorWrapper$$1"/>
+            <action imageDescriptor="#IMGDESC(IMG_REFRESH)" toolTipText="#MSG(adichatzStudio, studio.editor.refreshFormPage)" valid="isEditable()" id="refreshFromXmlFileAction">
+                <accessibilities>
+                    <accessibility type="VALID" id="refreshFromXmlFileAction$$VALIDFilter">
+                        <accept>return isEditable();</accept>
+                    </accessibility>
+                </accessibilities>
+                <actionCode>import org.adichatz.studio.xjc.data.XjcBindingService;
+import org.eclipse.jface.viewers.TreeSelection;
+((XjcBindingService) getBindingService()).getEditor().fileChanged();
+#CONTROLLER(xjcTree).getViewer().setSelection(TreeSelection.EMPTY);</actionCode>
+            </action>
+            <action imageDescriptor="#IMGDESC(IMG_SAVE)" enabled="false" toolTipText="#MSG(adichatzStudio, studio.editor.save)" valid="isEditable()" id="savePageAction">
+                <accessibilities>
+                    <accessibility type="VALID" id="savePageAction$$VALIDFilter">
+                        <accept>return isEditable();</accept>
+                    </accessibility>
+                    <accessibility type="ENABLED" id="savePageAction$$ENABLEDFilter">
+                        <accept>return false;</accept>
+                    </accessibility>
+                </accessibilities>
+                <actionCode>import org.adichatz.studio.xjc.editor.AStudioFormEditor&#13;
+((AStudioFormEditor) genCode.getContext().getRootCore().getController()).doSave();</actionCode>
+            </action>
+            <action actionClassName="org.adichatz.studio.xjc.editor.action.ErrorStudioAction" enabled="false" toolTipText="#MSG(adi://org.adichatz.engine/./adichatzEngine, error)" valid="isEditable()" id="errorStudioAction">
+                <accessibilities>
+                    <accessibility type="VALID" id="errorStudioAction$$VALIDFilter">
+                        <accept>return isEditable();</accept>
+                    </accessibility>
+                    <accessibility type="ENABLED" id="errorStudioAction$$ENABLEDFilter">
+                        <accept>return false;</accept>
+                    </accessibility>
+                </accessibilities>
+            </action>
+        </managedToolBar>
+    </formPage>
+</partTree>

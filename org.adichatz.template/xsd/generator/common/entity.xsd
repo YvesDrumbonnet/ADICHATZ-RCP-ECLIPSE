@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+ 	<xs:include schemaLocation="base-generator.xsd"/>
+    <xs:include schemaLocation="control.xsd"/>
+ 	<xs:include schemaLocation="../../common/base-common.xsd"/>
+ 
+    <!-- ***** -->
+    <!-- field -->
+    <!-- ***** -->
+    <xs:complexType name="fieldType">
+        <xs:complexContent>
+            <xs:extension base="basicType">
+                <xs:attribute name="id" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <!-- ************* -->
+    <!-- propertyField -->
+    <!-- ************* -->
+    <xs:complexType name="propertyFieldType">
+        <xs:complexContent>
+            <xs:extension base="fieldType">
+                <xs:sequence>
+                    <xs:element name="controlField" type="controlFieldType"/>
+                    <xs:element name="columnField" type="columnFieldType"/>
+                </xs:sequence>
+                <xs:attribute name="mandatory" type="xs:boolean"/>
+                <xs:attribute name="pojoType" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- ******** -->
+    <!-- refField -->
+    <!-- ******** -->
+    <xs:complexType name="refFieldType">
+        <xs:complexContent>
+            <xs:extension base="propertyFieldType">
+                <xs:attribute name="entityURI" type="xs:NCName" use="required"/>
+                <xs:attribute name="lazyFetchMember" type="xs:string"/>
+                <xs:attribute name="parentMappedBy" type="xs:NCName"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    	
+</xs:schema>

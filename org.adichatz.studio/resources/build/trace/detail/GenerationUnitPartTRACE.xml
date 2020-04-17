@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/GenerationUnitMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite id="itemComposite">
+        <pluginEntity/>
+        <additionalCode>import org.adichatz.studio.xjc.data.XjcEntity&#13;
+import org.adichatz.generator.xjc.PluginEntityType&#13;
+// Concern a generation unit linked to plugin entity"&#13;
+private boolean isPluginEntityGU() {&#13;
+    XjcEntity entity = ((XjcEntity) coreController.getEntity());&#13;
+    return entity.getTreeElement().getParentElement().getEntity().getBean() instanceof PluginEntityType;&#13;
+}</additionalCode>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]"/>
+        <hyperlink text="#MSG(adi://org.adichatz.studio/./generationUnit, scenarioClassName)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="scenarioClassNameHL">
+            <pluginEntity/>
+        </hyperlink>
+        <text property="scenarioClassName" linkedControl="scenarioClassNameHL" noLabel="true" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="scenarioClassName">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(generationUnit, type).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="type$1"/>
+        <combo property="type" labelForeground="#COLOR(IFormColors.TITLE)" linkedControl="type$1" layoutData="grow 0" style="SWT.READ_ONLY" id="type">
+            <pluginEntity/>
+            <labelProvider>
+                <textCode>return ((GenerationEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.GenerationEnum&#13;
+import java.util.Arrays&#13;
+return Arrays.asList(GenerationEnum.class.getEnumConstants());
+			</initValues>
+        </combo>
+        <hyperlink text="#MSG(generationUnit, adiResourceURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" valid="GenerationEnum.NAVIGATOR == #BEAN().getType()" id="adiResourceURIHL">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="adiResourceURIHL$$VALIDFilter">
+                    <accept>return GenerationEnum.NAVIGATOR == #BEAN().getType();</accept>
+                </accessibility>
+            </accessibilities>
+        </hyperlink>
+        <text property="adiResourceURI" labelForeground="#COLOR(IFormColors.TITLE)" linkedControl="adiResourceURIHL" mandatory="true" noLabel="true" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" valid="GenerationEnum.NAVIGATOR == #BEAN().getType()" id="adiResourceURI4Navigator">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="adiResourceURI4Navigator$$VALIDFilter">
+                    <accept>return GenerationEnum.NAVIGATOR == #BEAN().getType();</accept>
+                </accessibility>
+            </accessibilities>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(generationUnit, adiResourceURI).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="adiResourceURI$1"/>
+        <text property="adiResourceURI" labelForeground="#COLOR(IFormColors.TITLE)" linkedControl="adiResourceURI$1" mandatory="true" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" valid="isPluginEntityGU()" id="adiResourceURI">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="adiResourceURI$$VALIDFilter">
+                    <accept>return isPluginEntityGU();</accept>
+                </accessibility>
+            </accessibilities>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+    </scrolledComposite>
+</containerTree>

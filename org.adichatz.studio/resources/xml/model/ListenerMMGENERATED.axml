@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ListenerMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="code">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField id="id">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="listenerTypes">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="listenerClassName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

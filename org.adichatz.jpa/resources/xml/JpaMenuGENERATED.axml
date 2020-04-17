@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<navigatorTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" label="#MSG(adichatzGroupNavigator,root.menu)" id="JpaMenu" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/navigatorTree.xsd">
+    <menu expanded="true" image="#IMG(adi://org.adichatz.jpa/./IMG_QUERIES.png)" label="#MSG(adi://org.adichatz.jpa/./adichatzJpa, query.queries)" id="queriesMenu">
+        <item image="#IMG(IMG_QUERY)" label="#MSG(adichatzGroupNavigator,editorOutlineInputQUERY)" id="editorOutlineInputQUERY">
+            <params>
+                <param id="ICON_URI" value="platform:/plugin/org.adichatz.engine/resources/icons/IMG_QUERY.png"/>
+                <param id="MESSAGE_BUNDLE" value="adi://org.adichatz.jpa/./editorOutlineInput"/>
+                <param xsi:type="queryContentProviderType" adiResourceURI="adi://org.adichatz.jpa/jpa/EditorOutlineInputQUERY" id="CONTENT_PROVIDER"/>
+                <param id="ADI_RESOURCE_URI" value="adi://org.adichatz.jpa/query/QueryForm"/>
+                <param id="TABLE_RESOURCE_URI" value="adi://org.adichatz.jpa/jpa/EditorOutlineInputTI"/>
+                <param id="DUPLICATE_EDITOR" value="true"/>
+                <param id="TITLE" value="#MSG(adichatzGroupNavigator,editorOutlineInputQueryEditorTitle)"/>
+                <param id="TOOL_TIP_TEXT" value="#MSG(adichatzGroupNavigator,editorOutlineInputQueryEditorToolTipText)"/>
+            </params>
+        </item>
+        <item image="#IMG(IMG_QUERY)" label="#MSG(adichatzGroupNavigator,entityQUERY)" id="entityQUERY">
+            <params>
+                <param id="ICON_URI" value="platform:/plugin/org.adichatz.engine/resources/icons/IMG_QUERY.png"/>
+                <param id="MESSAGE_BUNDLE" value="adi://org.adichatz.jpa/./entity"/>
+                <param xsi:type="queryContentProviderType" adiResourceURI="adi://org.adichatz.jpa/jpa/EntityQUERY" id="CONTENT_PROVIDER"/>
+                <param id="ADI_RESOURCE_URI" value="adi://org.adichatz.jpa/query/QueryForm"/>
+                <param id="TABLE_RESOURCE_URI" value="adi://org.adichatz.jpa/jpa/EntityTI"/>
+                <param id="DUPLICATE_EDITOR" value="true"/>
+                <param id="TITLE" value="#MSG(adichatzGroupNavigator,entityQueryEditorTitle)"/>
+                <param id="TOOL_TIP_TEXT" value="#MSG(adichatzGroupNavigator,entityQueryEditorToolTipText)"/>
+            </params>
+        </item>
+        <item image="#IMG(IMG_QUERY)" label="#MSG(adichatzGroupNavigator,errorPathQUERY)" id="errorPathQUERY">
+            <params>
+                <param id="ICON_URI" value="platform:/plugin/org.adichatz.engine/resources/icons/IMG_QUERY.png"/>
+                <param id="MESSAGE_BUNDLE" value="adi://org.adichatz.jpa/./errorPath"/>
+                <param xsi:type="queryContentProviderType" adiResourceURI="adi://org.adichatz.jpa/jpa/ErrorPathQUERY" id="CONTENT_PROVIDER"/>
+                <param id="ADI_RESOURCE_URI" value="adi://org.adichatz.jpa/query/QueryForm"/>
+                <param id="TABLE_RESOURCE_URI" value="adi://org.adichatz.jpa/jpa/ErrorPathTI"/>
+                <param id="DUPLICATE_EDITOR" value="true"/>
+                <param id="TITLE" value="#MSG(adichatzGroupNavigator,errorPathQueryEditorTitle)"/>
+                <param id="TOOL_TIP_TEXT" value="#MSG(adichatzGroupNavigator,errorPathQueryEditorToolTipText)"/>
+            </params>
+        </item>
+        <item image="#IMG(IMG_QUERY)" label="#MSG(adichatzGroupNavigator,columnPreferenceQUERY)" id="columnPreferenceQUERY">
+            <params>
+                <param id="ICON_URI" value="platform:/plugin/org.adichatz.engine/resources/icons/IMG_QUERY.png"/>
+                <param id="MESSAGE_BUNDLE" value="adi://org.adichatz.jpa/./columnPreference"/>
+                <param xsi:type="queryContentProviderType" adiResourceURI="adi://org.adichatz.jpa/query.model/ColumnPreferenceQUERY" id="CONTENT_PROVIDER"/>
+                <param id="ADI_RESOURCE_URI" value="adi://org.adichatz.jpa/query/QueryForm"/>
+                <param id="TABLE_RESOURCE_URI" value="adi://org.adichatz.jpa/query.model/ColumnPreferenceTI"/>
+                <param id="DUPLICATE_EDITOR" value="true"/>
+                <param id="TITLE" value="#MSG(adichatzGroupNavigator,columnPreferenceQueryEditorTitle)"/>
+                <param id="TOOL_TIP_TEXT" value="#MSG(adichatzGroupNavigator,columnPreferenceQueryEditorToolTipText)"/>
+            </params>
+        </item>
+        <item image="#IMG(IMG_QUERY)" label="#MSG(adichatzGroupNavigator,openClauseQUERY)" id="openClauseQUERY">
+            <params>
+                <param id="ICON_URI" value="platform:/plugin/org.adichatz.engine/resources/icons/IMG_QUERY.png"/>
+                <param id="MESSAGE_BUNDLE" value="adi://org.adichatz.jpa/./openClause"/>
+                <param xsi:type="queryContentProviderType" adiResourceURI="adi://org.adichatz.jpa/query.model/OpenClauseQUERY" id="CONTENT_PROVIDER"/>
+                <param id="ADI_RESOURCE_URI" value="adi://org.adichatz.jpa/query/QueryForm"/>
+                <param id="TABLE_RESOURCE_URI" value="adi://org.adichatz.jpa/query.model/OpenClauseTI"/>
+                <param id="DUPLICATE_EDITOR" value="true"/>
+                <param id="TITLE" value="#MSG(adichatzGroupNavigator,openClauseQueryEditorTitle)"/>
+                <param id="TOOL_TIP_TEXT" value="#MSG(adichatzGroupNavigator,openClauseQueryEditorToolTipText)"/>
+            </params>
+        </item>
+        <item image="#IMG(IMG_QUERY)" label="#MSG(adichatzGroupNavigator,paginationQUERY)" id="paginationQUERY">
+            <params>
+                <param id="ICON_URI" value="platform:/plugin/org.adichatz.engine/resources/icons/IMG_QUERY.png"/>
+                <param id="MESSAGE_BUNDLE" value="adi://org.adichatz.jpa/./pagination"/>
+                <param xsi:type="queryContentProviderType" adiResourceURI="adi://org.adichatz.jpa/query.model/PaginationQUERY" id="CONTENT_PROVIDER"/>
+                <param id="ADI_RESOURCE_URI" value="adi://org.adichatz.jpa/query/QueryForm"/>
+                <param id="TABLE_RESOURCE_URI" value="adi://org.adichatz.jpa/query.model/PaginationTI"/>
+                <param id="DUPLICATE_EDITOR" value="true"/>
+                <param id="TITLE" value="#MSG(adichatzGroupNavigator,paginationQueryEditorTitle)"/>
+                <param id="TOOL_TIP_TEXT" value="#MSG(adichatzGroupNavigator,paginationQueryEditorToolTipText)"/>
+            </params>
+        </item>
+        <item image="#IMG(IMG_QUERY)" label="#MSG(adichatzGroupNavigator,parameterQUERY)" id="parameterQUERY">
+            <params>
+                <param id="ICON_URI" value="platform:/plugin/org.adichatz.engine/resources/icons/IMG_QUERY.png"/>
+                <param id="MESSAGE_BUNDLE" value="adi://org.adichatz.jpa/./parameter"/>
+                <param xsi:type="queryContentProviderType" adiResourceURI="adi://org.adichatz.jpa/query.model/ParameterQUERY" id="CONTENT_PROVIDER"/>
+                <param id="ADI_RESOURCE_URI" value="adi://org.adichatz.jpa/query/QueryForm"/>
+                <param id="TABLE_RESOURCE_URI" value="adi://org.adichatz.jpa/query.model/ParameterTI"/>
+                <param id="DUPLICATE_EDITOR" value="true"/>
+                <param id="TITLE" value="#MSG(adichatzGroupNavigator,parameterQueryEditorTitle)"/>
+                <param id="TOOL_TIP_TEXT" value="#MSG(adichatzGroupNavigator,parameterQueryEditorToolTipText)"/>
+            </params>
+        </item>
+        <item image="#IMG(IMG_QUERY)" label="#MSG(adichatzGroupNavigator,queryManagerQUERY)" id="queryManagerQUERY">
+            <params>
+                <param id="ICON_URI" value="platform:/plugin/org.adichatz.engine/resources/icons/IMG_QUERY.png"/>
+                <param id="MESSAGE_BUNDLE" value="adi://org.adichatz.jpa/./queryManager"/>
+                <param xsi:type="queryContentProviderType" adiResourceURI="adi://org.adichatz.jpa/query.model/QueryManagerQUERY" id="CONTENT_PROVIDER"/>
+                <param id="ADI_RESOURCE_URI" value="adi://org.adichatz.jpa/query/QueryForm"/>
+                <param id="TABLE_RESOURCE_URI" value="adi://org.adichatz.jpa/query.model/QueryManagerTI"/>
+                <param id="DUPLICATE_EDITOR" value="true"/>
+                <param id="TITLE" value="#MSG(adichatzGroupNavigator,queryManagerQueryEditorTitle)"/>
+                <param id="TOOL_TIP_TEXT" value="#MSG(adichatzGroupNavigator,queryManagerQueryEditorToolTipText)"/>
+            </params>
+        </item>
+        <item image="#IMG(IMG_QUERY)" label="#MSG(adichatzGroupNavigator,queryPreferenceQUERY)" id="queryPreferenceQUERY">
+            <params>
+                <param id="ICON_URI" value="platform:/plugin/org.adichatz.engine/resources/icons/IMG_QUERY.png"/>
+                <param id="MESSAGE_BUNDLE" value="adi://org.adichatz.jpa/./queryPreference"/>
+                <param xsi:type="queryContentProviderType" adiResourceURI="adi://org.adichatz.jpa/query.model/QueryPreferenceQUERY" id="CONTENT_PROVIDER"/>
+                <param id="ADI_RESOURCE_URI" value="adi://org.adichatz.jpa/query/QueryForm"/>
+                <param id="TABLE_RESOURCE_URI" value="adi://org.adichatz.jpa/query.model/QueryPreferenceTI"/>
+                <param id="DUPLICATE_EDITOR" value="true"/>
+                <param id="TITLE" value="#MSG(adichatzGroupNavigator,queryPreferenceQueryEditorTitle)"/>
+                <param id="TOOL_TIP_TEXT" value="#MSG(adichatzGroupNavigator,queryPreferenceQueryEditorToolTipText)"/>
+            </params>
+        </item>
+        <item image="#IMG(IMG_QUERY)" label="#MSG(adichatzGroupNavigator,queryToolInputQUERY)" id="queryToolInputQUERY">
+            <params>
+                <param id="ICON_URI" value="platform:/plugin/org.adichatz.engine/resources/icons/IMG_QUERY.png"/>
+                <param id="MESSAGE_BUNDLE" value="adi://org.adichatz.jpa/./queryToolInput"/>
+                <param xsi:type="queryContentProviderType" adiResourceURI="adi://org.adichatz.jpa/query.model/QueryToolInputQUERY" id="CONTENT_PROVIDER"/>
+                <param id="ADI_RESOURCE_URI" value="adi://org.adichatz.jpa/query/QueryForm"/>
+                <param id="TABLE_RESOURCE_URI" value="adi://org.adichatz.jpa/query.model/QueryToolInputTI"/>
+                <param id="DUPLICATE_EDITOR" value="true"/>
+                <param id="TITLE" value="#MSG(adichatzGroupNavigator,queryToolInputQueryEditorTitle)"/>
+                <param id="TOOL_TIP_TEXT" value="#MSG(adichatzGroupNavigator,queryToolInputQueryEditorToolTipText)"/>
+            </params>
+        </item>
+        <item image="#IMG(IMG_QUERY)" label="#MSG(adichatzGroupNavigator,recentPreferenceQUERY)" id="recentPreferenceQUERY">
+            <params>
+                <param id="ICON_URI" value="platform:/plugin/org.adichatz.engine/resources/icons/IMG_QUERY.png"/>
+                <param id="MESSAGE_BUNDLE" value="adi://org.adichatz.jpa/./recentPreference"/>
+                <param xsi:type="queryContentProviderType" adiResourceURI="adi://org.adichatz.jpa/query.model/RecentPreferenceQUERY" id="CONTENT_PROVIDER"/>
+                <param id="ADI_RESOURCE_URI" value="adi://org.adichatz.jpa/query/QueryForm"/>
+                <param id="TABLE_RESOURCE_URI" value="adi://org.adichatz.jpa/query.model/RecentPreferenceTI"/>
+                <param id="DUPLICATE_EDITOR" value="true"/>
+                <param id="TITLE" value="#MSG(adichatzGroupNavigator,recentPreferenceQueryEditorTitle)"/>
+                <param id="TOOL_TIP_TEXT" value="#MSG(adichatzGroupNavigator,recentPreferenceQueryEditorToolTipText)"/>
+            </params>
+        </item>
+        <item image="#IMG(IMG_QUERY)" label="#MSG(adichatzGroupNavigator,viewerFilterQUERY)" id="viewerFilterQUERY">
+            <params>
+                <param id="ICON_URI" value="platform:/plugin/org.adichatz.engine/resources/icons/IMG_QUERY.png"/>
+                <param id="MESSAGE_BUNDLE" value="adi://org.adichatz.jpa/./viewerFilter"/>
+                <param xsi:type="queryContentProviderType" adiResourceURI="adi://org.adichatz.jpa/query.model/ViewerFilterQUERY" id="CONTENT_PROVIDER"/>
+                <param id="ADI_RESOURCE_URI" value="adi://org.adichatz.jpa/query/QueryForm"/>
+                <param id="TABLE_RESOURCE_URI" value="adi://org.adichatz.jpa/query.model/ViewerFilterTI"/>
+                <param id="DUPLICATE_EDITOR" value="true"/>
+                <param id="TITLE" value="#MSG(adichatzGroupNavigator,viewerFilterQueryEditorTitle)"/>
+                <param id="TOOL_TIP_TEXT" value="#MSG(adichatzGroupNavigator,viewerFilterQueryEditorToolTipText)"/>
+            </params>
+        </item>
+    </menu>
+</navigatorTree>

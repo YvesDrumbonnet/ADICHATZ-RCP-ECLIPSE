@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/CopyResourceMM" superEntityURI="adi://org.adichatz.studio/model/RemoveResourceMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField mandatory="true" id="sourceURI">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+    <propertyField id="force">
+        <controlField xsi:type="checkBoxType"/>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/ReplacementMM" id="replacement">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ReplacementMM" name="replacement"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

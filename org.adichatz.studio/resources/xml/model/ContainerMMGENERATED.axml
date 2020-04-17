@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ContainerMM" superEntityURI="adi://org.adichatz.studio/model/ElementMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/ConfigMM" id="config"/>
+    <propertyField id="additionalCode">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField id="coreClassName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="entityURI">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/ValidElementMM" id="formPageOrScrolledFormOrSection">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/FormPageMM" name="formPage"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ScrolledFormMM" name="scrolledForm"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/SectionMM" name="section"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/CompositeMM" name="composite"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/CompositeBagMM" name="compositeBag"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/GroupMM" name="group"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/PGroupMM" name="pgroup"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/SashFormMM" name="sashForm"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ScrolledCompositeMM" name="scrolledComposite"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/TableMM" name="table"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/GridMM" name="grid"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/CTabFolderMM" name="cTabFolder"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ArgTabFolderMM" name="argTabFolder"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/PShelfMM" name="pshelf"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ArgPShelfMM" name="argPShelf"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/IncludeMM" name="include"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/HeaderMenuManagerMM" name="headerMenuManager"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/MenuManagerMM" name="menuManager"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ManagedToolBarMM" name="managedToolBar"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ControlFieldMM" name="controlField"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/GenericFieldMM" name="genericField"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/LabelMM" name="label"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ButtonMM" name="button"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/CComboMM" name="ccombo"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/CheckBoxMM" name="checkBox"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ComboMM" name="combo"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/CompositeSeparatorMM" name="compositeSeparator"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/DateTextMM" name="dateText"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/DateTimeMM" name="dateTime"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/EncryptedTextMM" name="encryptedText"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/EditableFormTextMM" name="editableFormText"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ExtraTextMM" name="extraText"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/FileTextMM" name="fileText"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/FontTextMM" name="fontText"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/FormattedTextMM" name="formattedText"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/GMapMM" name="gMap"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/HyperlinkMM" name="hyperlink"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/HelpButtonMM" name="helpButton"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ImageViewerMM" name="imageViewer"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/MultiChoiceMM" name="multiChoice"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/NumericTextMM" name="numericText"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/RadioGroupMM" name="radioGroup"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/RefTextMM" name="refText"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/RgbTextMM" name="rgbText"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/RichTextMM" name="richText"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/StarRatingMM" name="starRating"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/TableColumnMM" name="tableColumn"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/TextMM" name="text"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

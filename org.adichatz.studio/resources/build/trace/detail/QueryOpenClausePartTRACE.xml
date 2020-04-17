@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/QueryOpenClauseMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(queryOpenClause, clause).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="clause$1"/>
+        <text property="clause" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryOpenClause, clause).concat(&quot;:&quot;)" linkedControl="clause$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="clause">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(queryOpenClause, permanent).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="permanent$1"/>
+        <checkBox property="permanent" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryOpenClause, permanent).concat(&quot;:&quot;)" linkedControl="permanent$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="permanent">
+            <pluginEntity/>
+        </checkBox>
+        <label text="#MSG(queryOpenClause, title).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="title$1"/>
+        <text property="title" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryOpenClause, title).concat(&quot;:&quot;)" linkedControl="title$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="title">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(queryOpenClause, valid).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="valid$1"/>
+        <text property="valid" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryOpenClause, valid).concat(&quot;:&quot;)" linkedControl="valid$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="valid">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(queryOpenClause, visible).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="visible$1"/>
+        <text property="visible" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryOpenClause, visible).concat(&quot;:&quot;)" linkedControl="visible$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="visible">
+            <pluginEntity/>
+        </text>
+    </scrolledComposite>
+</containerTree>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/NavigationPathMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(navigationPath, name).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="name$1"/>
+        <text property="name" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(navigationPath, name).concat(&quot;:&quot;)" linkedControl="name$1" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="name">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(navigationPath, path).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="path$1"/>
+        <text property="path" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(navigationPath, path).concat(&quot;:&quot;)" linkedControl="path$1" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="path">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+    </scrolledComposite>
+</containerTree>

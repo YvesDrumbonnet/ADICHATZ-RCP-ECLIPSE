@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:include schemaLocation="common/entity.xsd"/>
+ 
+    <!-- ********** -->
+    <!-- entityTree -->
+    <!-- ********** -->
+	<xs:element name="entityTree">
+	    <xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="basicType">
+					<xs:sequence>
+						<xs:element name="propertyField" type="propertyFieldType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="oneToMany" type="oneToManyType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="manyToMany" type="manyToManyType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="oneToOne" type="oneToOneType" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+		    	    <xs:attribute name="entityURI" type="xs:NCName"/>
+		    	    <xs:attribute name="superEntityURI" type="xs:NCName"/>
+		        	<xs:attribute name="idFieldName" type="xs:NCName"/>
+					<xs:attribute name="callbackClassNames" type="xs:NCName"/>
+					<xs:attribute name="callforeClassNames" type="xs:NCName"/>
+					<xs:attribute name="compositeKeyStrategyFactoryClassName" type="xs:NCName"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+    <!-- ************* -->
+    <!-- embeddedField -->
+    <!-- ************* -->
+	<xs:complexType name="embeddedFieldType">
+		<xs:complexContent>
+			<xs:extension base="propertyFieldType">
+		        <xs:attribute name="property" type="xs:NCName"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+    <!-- *************** -->
+    <!-- embeddedIdField -->
+    <!-- *************** -->
+	<xs:complexType name="embeddedIdFieldType">
+		<xs:complexContent>
+			<xs:extension base="propertyFieldType">
+        		<xs:sequence>
+					<xs:element name="embeddedField" type="embeddedFieldType" minOccurs="0" maxOccurs="unbounded"/>
+        		</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+    <!-- ****************************************************************** -->
+    <!--			E N T I T Y   &   F I E L D    E L E M E N T S 			-->
+    <!-- ****************************************************************** -->
+    <!-- ********* -->
+    <!-- entitySet -->
+    <!-- ********* -->
+	<xs:complexType name="entitySetType">
+		<xs:complexContent>
+			<xs:extension base="fieldType">
+				<xs:choice>
+					<xs:element name="queryReference" type="queryReferenceType"/>
+					<xs:element name="entityElements" type="entityElementsType"/>
+				</xs:choice>
+        		<xs:attribute name="entityURI" type="xs:NCName" use="required"/>
+				<xs:attribute name="lazyFetches" type="xs:string"/>
+		        <xs:attribute name="mappedBy" type="xs:NCName" use="required"/>
+				<xs:attribute name="parentClause" type="xs:string" use="required"/>				
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+    <!-- ********* -->
+    <!-- oneToMany -->
+    <!-- ********* -->
+	<xs:complexType name="oneToManyType">
+		<xs:complexContent>
+			<xs:extension base="entitySetType">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+			
+    <!-- ********* -->
+    <!-- manyToMany -->
+    <!-- ********* -->
+	<xs:complexType name="manyToManyType">
+		<xs:complexContent>
+			<xs:extension base="entitySetType">
+				<xs:choice>
+					<xs:element name="params" type="paramsType"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+			
+    <!-- ************** -->
+    <!-- entityElements -->
+    <!-- ************** -->
+    <xs:complexType name="entityElementsType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="entityElement" type="entityElementType"  minOccurs="1" maxOccurs="unbounded"/>
+		        </xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ******** -->
+    <!-- oneToOne -->
+    <!-- ******** -->
+	<xs:complexType name="oneToOneType">
+		<xs:complexContent>
+			<xs:extension base="fieldType">
+		        <xs:attribute name="entityURI" type="xs:NCName" use="required"/>
+		        <xs:attribute name="mappedBy" type="xs:NCName"/>
+		        <xs:attribute name="oneToOneType" type="oneToOneTypeEnum" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+    <!-- ************************* -->
+    <!-- OneToOne Type Enumeration -->
+    <!-- ************************* -->
+	<xs:simpleType name="oneToOneTypeEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="MASTER"/>
+            <xs:enumeration value="SLAVE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ************* -->
+    <!-- entityElement -->
+    <!-- ************* -->
+	<xs:complexType name="entityElementType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+		        <xs:attribute name="entityURI" type="xs:NCName" use="required"/>
+		        <xs:attribute name="name" type="xs:NCName" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+</xs:schema>

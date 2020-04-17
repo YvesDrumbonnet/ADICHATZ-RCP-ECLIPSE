@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_5O_XMPRQEeG4tPl1YZ6QJA">
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_kCUg4HQPEeK7k6nlG7piZA" featurename="commands" parentElementId="adichatz.application">
+    <elements xsi:type="commands:Command" xmi:id="_qtAQMHQPEeK7k6nlG7piZA" elementId="adichatz.tool.navigator.command" commandName="adichatz.tool.navigator.command"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_7sqPQHQPEeK7k6nlG7piZA" featurename="handlers" parentElementId="adichatz.application">
+    <elements xsi:type="commands:Handler" xmi:id="_DYFp4HQQEeK7k6nlG7piZA" elementId="adichatz.tool.navigator.handler" contributionURI="bundleclass://org.adichatz.tool/org.adichatz.tool.MenuHandler" command="_qtAQMHQPEeK7k6nlG7piZA"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_Xfv7sHQQEeK7k6nlG7piZA" featurename="children" parentElementId="adichatz.application.trimmedwindow.top" positionInList="">
+    <elements xsi:type="menu:ToolBar" xmi:id="_hWJZYKEQEeK3WNwZYjU-ag" elementId="org.adichatz.tool.toolbar">
+      <children xsi:type="menu:HandledToolItem" xmi:id="_eB4zAHQQEeK7k6nlG7piZA" elementId="adichatz.tool.navigator.toolItem" label="" iconURI="platform:/plugin/org.adichatz.tool/resources/icons/IMG_COMMUNICATION.png" tooltip="%development.tools" command="_qtAQMHQPEeK7k6nlG7piZA"/>
+    </elements>
+  </fragments>
+</fragment:ModelFragments>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/QueryTreeMM" superEntityURI="adi://org.adichatz.studio/model/QueryPartMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="whereClause">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField id="sqlClause">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/JointureAliasesMM" id="jointureAliases"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/QueryPreferenceMM" id="queryPreference"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/CustomizedPreferenceMM" id="customizedPreferences"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/QueryBuilderMM" id="queryBuilder"/>
+    <propertyField id="parentQueryManagerURI">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="lazyFetches">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="queryType">
+        <controlField xsi:type="radioGroupType">
+            <labelProvider>
+                <textCode>return ((QueryTypeEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.QueryTypeEnum
+import java.util.Arrays
+return Arrays.asList(QueryTypeEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+    <propertyField id="valid">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/JointureMM" id="jointure">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/JointureMM" name="jointure"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

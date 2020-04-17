@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ActionMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(element, id).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="id$1"/>
+        <text property="id" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(element, id).concat(&quot;:&quot;)" linkedControl="id$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.IdTextController" id="id">
+            <pluginEntity/>
+        </text>
+        <hyperlink text="#MSG(action, actionClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="actionClassNameActionPART$1">
+            <pluginEntity/>
+        </hyperlink>
+        <text property="actionClassName" labelText="#MSG(action, actionClassName).concat(&quot;:&quot;)" linkedControl="actionClassNameActionPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="actionClassName">
+            <pluginEntity/>
+        </text>
+        <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameActionPART$1">
+            <pluginEntity/>
+        </hyperlink>
+        <text property="controllerClassName" labelText="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" linkedControl="controllerClassNameActionPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="controllerClassName">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(widget, enabled).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="enabled$1"/>
+        <text property="enabled" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(widget, enabled).concat(&quot;:&quot;)" linkedControl="enabled$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="enabled">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(action, imageDescriptor).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="imageDescriptor$1"/>
+        <text property="imageDescriptor" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(action, imageDescriptor).concat(&quot;:&quot;)" linkedControl="imageDescriptor$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="imageDescriptor">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(action, rank).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="rank$1"/>
+        <numericText pattern="######" property="rank" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(action, rank).concat(&quot;:&quot;)" linkedControl="rank$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" layoutData="width min:100:150, growx" id="rank">
+            <pluginEntity/>
+        </numericText>
+        <label text="#MSG(validElement, ref).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="ref$1"/>
+        <text property="ref" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validElement, ref).concat(&quot;:&quot;)" linkedControl="ref$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="ref">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(widget, style).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="style$1"/>
+        <text property="style" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(widget, style).concat(&quot;:&quot;)" linkedControl="style$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="style">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(action, text).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="text$1"/>
+        <text property="text" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(action, text).concat(&quot;:&quot;)" linkedControl="text$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="text">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(widget, toolTipText).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="toolTipText$1"/>
+        <text property="toolTipText" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(widget, toolTipText).concat(&quot;:&quot;)" linkedControl="toolTipText$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="toolTipText">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(validElement, valid).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="valid$1"/>
+        <text property="valid" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validElement, valid).concat(&quot;:&quot;)" linkedControl="valid$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="valid">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(action, actionCode).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="actionCode$1"/>
+        <text property="actionCode" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(action, actionCode).concat(&quot;:&quot;)" linkedControl="actionCode$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="actionCode">
+            <pluginEntity/>
+        </text>
+    </scrolledComposite>
+</containerTree>

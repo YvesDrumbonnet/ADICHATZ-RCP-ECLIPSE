@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/CrossReferenceMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="entitySetId">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="description">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="axmlDetailURI">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="axmlTableURI">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="axmlQueryURI">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="preferenceURI">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

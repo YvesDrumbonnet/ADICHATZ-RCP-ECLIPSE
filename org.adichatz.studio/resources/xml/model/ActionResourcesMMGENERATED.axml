@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ActionResourcesMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <oneToMany entityURI="adi://org.adichatz.studio/model/CopyResourceMM" id="copyResource">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/CopyResourceMM" name="copyResource"/>
+        </entityElements>
+    </oneToMany>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/RemoveResourceMM" id="removeResource">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/RemoveResourceMM" name="removeResource"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

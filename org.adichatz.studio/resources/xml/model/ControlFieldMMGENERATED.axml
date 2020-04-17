@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ControlFieldMM" superEntityURI="adi://org.adichatz.studio/model/ControlMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/ValidatorsMM" id="validators"/>
+    <propertyField id="initialValue">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField id="convertModelToTarget">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField id="convertTargetToModel">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/MenuManagerMM" id="menuManager"/>
+    <propertyField id="property">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="controlValueType">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="forceBinding">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="labelBackground">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="labelFont">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="labelForeground">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="labelLayoutData">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="labelText">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="lazyFetches">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="linkedControl">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="mandatory">
+        <controlField xsi:type="radioGroupType" controllerClassName="org.adichatz.studio.xjc.controller.BooleanRadioGroupController"/>
+    </propertyField>
+    <propertyField id="noLabel">
+        <controlField xsi:type="radioGroupType" controllerClassName="org.adichatz.studio.xjc.controller.BooleanRadioGroupController"/>
+    </propertyField>
+    <propertyField id="fieldBindManagerClassName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

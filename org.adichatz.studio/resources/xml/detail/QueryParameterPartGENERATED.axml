@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/QueryParameterMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <text property="id" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(element, id).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.IdTextController" id="id"/>
+        <text property="binaryExpression" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, binaryExpression).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="binaryExpression">
+            <convertModelToTarget>return org.adichatz.common.encoding.Base64.decode(#FV());</convertModelToTarget>
+            <convertTargetToModel>return org.adichatz.common.encoding.Base64.encode(#FV());</convertTargetToModel>
+        </text>
+        <text property="binarySecondExpression" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, binarySecondExpression).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="binarySecondExpression">
+            <convertModelToTarget>return org.adichatz.common.encoding.Base64.decode(#FV());</convertModelToTarget>
+            <convertTargetToModel>return org.adichatz.common.encoding.Base64.encode(#FV());</convertTargetToModel>
+        </text>
+        <text property="columnText" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, columnText).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="columnText"/>
+        <hyperlink text="#MSG(queryParameter, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIQueryParameterPART$1"/>
+        <text property="entityURI" labelText="#MSG(queryParameter, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIQueryParameterPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="entityURI"/>
+        <text property="expression" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, expression).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="expression"/>
+        <text property="expressionClassName" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, expressionClassName).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="expressionClassName"/>
+        <text property="expressionMethodURI" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, expressionMethodURI).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="expressionMethodURI"/>
+        <text property="operator" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, operator).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="operator"/>
+        <checkBox property="permanent" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, permanent).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="permanent"/>
+        <text property="prompt" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, prompt).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="prompt"/>
+        <text property="property" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, property).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.PropertyTextController" id="property"/>
+        <text property="secondColumnText" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, secondColumnText).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="secondColumnText"/>
+        <text property="secondExpression" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, secondExpression).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="secondExpression"/>
+        <text property="style" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, style).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="style"/>
+        <ccombo property="suffix" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, suffix).concat(&quot;:&quot;)" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.SuffixCComboController" id="suffix"/>
+        <radioGroup property="valid" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, valid).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.BooleanRadioGroupController" id="valid"/>
+        <text property="visible" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, visible).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="visible"/>
+    </scrolledComposite>
+</containerTree>

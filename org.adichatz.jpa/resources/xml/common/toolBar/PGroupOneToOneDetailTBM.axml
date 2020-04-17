@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<includeTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="false">
+	<pgroup ref="coreController" id="masterPGroup">
+		<pgroupToolItem actionClassName="org.adichatz.jpa.action.RefreshOTOEntityAction" id="refreshOTOEntityItem" controllerClassName="org.adichatz.engine.controller.nebula.ActionPGroupToolItemController">
+        	<params>
+        		<param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+        	</params>
+        </pgroupToolItem>
+		<pgroupToolItem actionClassName="org.adichatz.jpa.action.AddOTOEntityAction" id="addOTOEntityItem" controllerClassName="org.adichatz.engine.controller.nebula.ActionPGroupToolItemController">
+        	<params>
+        		<param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+        	</params>
+        </pgroupToolItem>
+		<pgroupToolItem actionClassName="org.adichatz.jpa.action.DeleteOTOEntityAction" id="deleteOTOEntityItem" controllerClassName="org.adichatz.engine.controller.nebula.ActionPGroupToolItemController">
+        	<params>
+        		<param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+        	</params>
+        </pgroupToolItem>
+    </pgroup>
+</includeTree>

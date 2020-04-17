@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/QueryParameterMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <additionalCode>import org.adichatz.studio.xjc.data.XjcEntity;
+import org.adichatz.generator.wrapper.QueryPreferenceWrapper;
+import org.adichatz.engine.controller.AFieldController;
+private boolean isPreferenceChild(AFieldController controller) {
+    return ((XjcEntity) controller.getParentController().getEntity()).getTreeElement().getParentElement().getElement() instanceof QueryPreferenceWrapper;
+}</additionalCode>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(element, id).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="id$1"/>
+        <text property="id" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(element, id).concat(&quot;:&quot;)" linkedControl="id$1" id="id">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(queryParameter, binaryExpression).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="binaryExpression$1"/>
+        <text property="binaryExpression" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, binaryExpression).concat(&quot;:&quot;)" linkedControl="binaryExpression$1" id="binaryExpression">
+            <pluginEntity/>
+            <convertModelToTarget>return org.adichatz.common.encoding.Base64.decode(#FV());</convertModelToTarget>
+            <convertTargetToModel>return org.adichatz.common.encoding.Base64.encode(#FV());</convertTargetToModel>
+        </text>
+        <label text="#MSG(queryParameter, binarySecondExpression).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="binarySecondExpression$1"/>
+        <text property="binarySecondExpression" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, binarySecondExpression).concat(&quot;:&quot;)" linkedControl="binarySecondExpression$1" id="binarySecondExpression">
+            <pluginEntity/>
+            <convertModelToTarget>return org.adichatz.common.encoding.Base64.decode(#FV());</convertModelToTarget>
+            <convertTargetToModel>return org.adichatz.common.encoding.Base64.encode(#FV());</convertTargetToModel>
+        </text>
+        <label text="#MSG(queryParameter, columnText).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="columnText$1"/>
+        <text property="columnText" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, columnText).concat(&quot;:&quot;)" linkedControl="columnText$1" id="columnText">
+            <pluginEntity/>
+        </text>
+        <hyperlink text="#MSG(queryParameter, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIQueryParameterPART$1">
+            <pluginEntity/>
+        </hyperlink>
+        <text property="entityURI" labelText="#MSG(queryParameter, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIQueryParameterPART$1" noLabel="true" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="entityURI">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(queryParameter, expression).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="expression$1"/>
+        <text property="expression" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, expression).concat(&quot;:&quot;)" linkedControl="expression$1" id="expression">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(queryParameter, expressionClassName).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="expressionClassName$1"/>
+        <text property="expressionClassName" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, expressionClassName).concat(&quot;:&quot;)" linkedControl="expressionClassName$1" id="expressionClassName">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(queryParameter, expressionMethodURI).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="expressionMethodURI$1"/>
+        <text property="expressionMethodURI" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, expressionMethodURI).concat(&quot;:&quot;)" linkedControl="expressionMethodURI$1" id="expressionMethodURI">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(queryParameter, operator).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="operator$1"/>
+        <text property="operator" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, operator).concat(&quot;:&quot;)" linkedControl="operator$1" id="operator">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(queryParameter, permanent).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="permanent$1"/>
+        <checkBox property="permanent" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, permanent).concat(&quot;:&quot;)" linkedControl="permanent$1" id="permanent">
+            <pluginEntity/>
+        </checkBox>
+        <label text="#MSG(queryParameter, prompt).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="prompt$1"/>
+        <text property="prompt" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, prompt).concat(&quot;:&quot;)" linkedControl="prompt$1" id="prompt">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(queryParameter, property).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="property$1"/>
+        <text property="property" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, property).concat(&quot;:&quot;)" linkedControl="property$1" controllerClassName="org.adichatz.studio.xjc.controller.PropertyTextController" valid="isPreferenceChild(#CONTROLLER())" id="property">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="property$$VALIDFilter">
+                    <accept>return isPreferenceChild(#CONTROLLER());</accept>
+                </accessibility>
+            </accessibilities>
+        </text>
+        <label text="#MSG(queryParameter, secondColumnText).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="secondColumnText$1"/>
+        <text property="secondColumnText" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, secondColumnText).concat(&quot;:&quot;)" linkedControl="secondColumnText$1" id="secondColumnText">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(queryParameter, secondExpression).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="secondExpression$1"/>
+        <text property="secondExpression" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, secondExpression).concat(&quot;:&quot;)" linkedControl="secondExpression$1" id="secondExpression">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(queryParameter, style).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="style$1"/>
+        <text property="style" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, style).concat(&quot;:&quot;)" linkedControl="style$1" id="style">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(queryParameter, suffix).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="suffix$1"/>
+        <ccombo property="suffix" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, suffix).concat(&quot;:&quot;)" linkedControl="suffix$1" mandatory="true" controllerClassName="org.adichatz.studio.xjc.controller.SuffixCComboController" valid="isPreferenceChild(#CONTROLLER())" id="suffix">
+            <pluginEntity/>
+            <accessibilities>
+                <accessibility type="VALID" id="suffix$$VALIDFilter">
+                    <accept>return isPreferenceChild(#CONTROLLER());</accept>
+                </accessibility>
+            </accessibilities>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </ccombo>
+        <label text="#MSG(queryParameter, valid).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="valid$1"/>
+        <radioGroup property="valid" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, valid).concat(&quot;:&quot;)" linkedControl="valid$1" controllerClassName="org.adichatz.studio.xjc.controller.BooleanRadioGroupController" id="valid">
+            <pluginEntity/>
+        </radioGroup>
+        <label text="#MSG(queryParameter, visible).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="visible$1"/>
+        <text property="visible" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, visible).concat(&quot;:&quot;)" linkedControl="visible$1" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="visible">
+            <pluginEntity/>
+        </text>
+    </scrolledComposite>
+</containerTree>

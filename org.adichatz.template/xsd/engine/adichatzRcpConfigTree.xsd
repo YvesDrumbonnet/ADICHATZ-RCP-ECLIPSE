@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+ 	<xs:include schemaLocation="../common/base-common.xsd"/>
+ 	
+    <!-- ************************** -->
+    <!--			R O O T			-->
+    <!-- ************************** -->	
+	<xs:element name="adichatzRcpConfigTree">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="rcpConfiguration" type="rcpConfigurationType"/>
+				<xs:element name="login" type="loginType"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:NCName"/>
+		</xs:complexType>
+	</xs:element>
+
+
+    <!-- ********************************************** -->
+    <!--		R C P - C O N F I G U R A T I O N 		-->
+    <!-- ********************************************** -->
+	<xs:complexType name="rcpConfigurationType">
+  		<xs:complexContent>
+			<xs:extension base="paramsType">
+				<xs:sequence>
+					<xs:element name="navigators" type="navigatorsType"/>
+					<xs:element name="tableRenderers" type="tableRenderersType"/>
+					<xs:element name="tableStatusBars" type="tableStatusBarsType"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+    <!-- ********* -->
+    <!-- navigator -->
+    <!-- ********* -->
+    <xs:complexType name="navigatorsType">
+		<xs:sequence>
+			<xs:element name="navigator" type="navigatorType"  minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+	<xs:complexType name="navigatorType">
+		<xs:sequence>
+			<xs:element name="menuPath" type="menuPathType"  minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+		<xs:attribute name="id" type="xs:NCName" use="required"/>
+		<xs:attribute name="iconURI" type="xs:string"/>
+		<xs:attribute name="contributionURI" type="xs:string"/>
+		<xs:attribute name="label" type="xs:string" use="required"/>
+		<xs:attribute name="messageBundleURI" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="menuPathType">
+		<xs:attribute name="id" type="xs:NCName" use="required"/>
+		<xs:attribute name="adiResourceURI" type="xs:string"/>
+		<xs:attribute name="menuPathURI" type="xs:string"/>
+        <xs:attribute name="uniqueInstance" type="xs:boolean" default="false"/> <!-- Only for 'bundleclass' URI --> 
+	</xs:complexType>
+
+
+    <!-- *************** -->
+    <!-- table renderers -->
+    <!-- *************** -->
+    <xs:complexType name="tableRenderersType">
+		<xs:sequence>
+			<xs:element name="tableRenderer" type="tableComponentType"  minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ***************** -->
+    <!-- table status bars -->
+    <!-- ***************** -->
+    <xs:complexType name="tableStatusBarsType">
+		<xs:sequence>
+			<xs:element name="tableStatusBar" type="tableComponentType"  minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- *************** -->
+    <!-- table component -->
+    <!-- *************** -->
+	<xs:complexType name="tableComponentType">
+		<xs:attribute name="id" type="xs:NCName" use="required"/>
+		<xs:attribute name="text" type="xs:string" use="required"/>
+		<xs:attribute name="resourceBundleKey" type="xs:string" use="required"/>
+		<xs:attribute name="className" type="xs:string" use="required"/>
+		<xs:attribute name="tabularClassName" type="xs:string" use="required"/>
+		<xs:attribute name="requireBindingService" type="xs:boolean" default="false"/>
+		<xs:attribute name="default" type="xs:boolean" default="false"/>
+		<xs:attribute name="rank" type="xs:int"/>
+	</xs:complexType>
+
+    <!-- **************** -->
+    <!-- table status bar -->
+    <!-- **************** -->
+	<xs:complexType name="tableStatusBar">
+		<xs:attribute name="id" type="xs:NCName" use="required"/>
+		<xs:attribute name="text" type="xs:string" use="required"/>
+		<xs:attribute name="bundleFile" type="xs:string" use="required"/>
+		<xs:attribute name="className" type="xs:string" use="required"/>
+	</xs:complexType>
+
+    <!-- ****************************** -->
+    <!--			L O G I N			-->
+    <!-- ****************************** -->	
+    <!-- ***** -->
+    <!-- login -->
+    <!-- ***** -->
+	<xs:complexType name="loginType">
+		<xs:attribute name="loginClassName" type="xs:string" use="required"/>
+		<xs:attribute name="loginTemplate" type="loginTemplateEnum" use="required"/>
+	</xs:complexType>
+
+	<xs:simpleType name="loginTemplateEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="dialog"/>
+            <xs:enumeration value="os"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
+	

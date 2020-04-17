@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<scenarioTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/scenarioTree.xsd">
+	<params>
+    	<param id="devl.default.integer.pattern" value="#####" type="RUNTIME"/>
+        <param id="devl.gencode.directory" value="/"/>
+        <param id="plugin.package" value="org.adichatz.organizer.handling" type="ALL"/>
+        <param id="devl.gencode.package" value="org.adichatz.organizer.ui" type="ALL"/>
+    </params>
+    <scenarios>
+        <scenario type="PLUGIN_ENTITY" scenarioClassName="bundleclass://org.adichatz.organizer.scenario/org.adichatz.organizer.scenario.PluginEntityScenario"/>
+        <scenario type="ENTITY" scenarioClassName="org.adichatz.scenario.impl.EntityScenario"/>
+        <scenario type="NAVIGATOR" scenarioClassName="org.adichatz.scenario.impl.GroupListNavigatorScenario"/>
+        <scenario type="MESSAGE_BUNDLE" scenarioClassName="org.adichatz.scenario.impl.MessageBundleScenario"/>
+        <scenario type="EDITOR" scenarioClassName="org.adichatz.scenario.impl.EditorScenario"/>
+        <scenario type="DETAIL" scenarioClassName="org.adichatz.scenario.impl.SectionDetailScenario"/>
+        <scenario type="TABLE" scenarioClassName="org.adichatz.scenario.impl.GridScenario"/>
+        <scenario type="QUERY" scenarioClassName="org.adichatz.scenario.impl.QueryScenario"/>
+    </scenarios>
+	<actionResources>
+		<copyResource sourceURI="#PLUGINHOME(org.adichatz.template)/template/src/GlobalEnumType.java" targetURI="#PLUGINHOME()/src/#PLUGINPACKAGEDIR()/ejb/GlobalEnumType.java" actionWhen="WHEN_BUILDING_MODEL">
+			<condition>org.adichatz.generator.xjc.ModelPartType modelPart = scenarioResources.getGenerationScenario().getModelPart();
+if (null == modelPart)
+	return false;
+return !org.adichatz.scenario.util.ScenarioUtil.isWildfly14Version(modelPart.getConnectorASVersion());</condition>
+			<replacement token="#{adichatz.package.name}" value="#PLUGINPACKAGE().ejb"/>
+		</copyResource>
+		<copyResource sourceURI="#PLUGINHOME(org.adichatz.template)/template/src/GlobalEnumTypeHibernate_5_3_6.java" targetURI="#PLUGINHOME()/src/#PLUGINPACKAGEDIR()/ejb/GlobalEnumType.java" actionWhen="WHEN_BUILDING_MODEL">
+			<condition>org.adichatz.generator.xjc.ModelPartType modelPart = scenarioResources.getGenerationScenario().getModelPart();
+if (null == modelPart)
+	return false;
+return org.adichatz.scenario.util.ScenarioUtil.isWildfly14Version(modelPart.getConnectorASVersion());</condition>
+			<replacement token="#{adichatz.package.name}" value="#PLUGINPACKAGE().ejb"/>
+		</copyResource>
+		<copyResource sourceURI="#PLUGINBIN(org.adichatz.organizer)/org/adichatz/organizer/model" targetURI="#EJBJARFILE()!/org/adichatz/organizer/model" actionWhen="WHEN_BUILDING_EJB_JAR"/>
+	</actionResources>
+    <pathElements>
+        <pathElement type="PROJECT" location="org.adichatz.organizer.scenario" additionalResourcePath="true" addWhen="ALL"/>
+        <pathElement type="PROJECT" location="org.adichatz.organizer" addToManifestFile="true" additionalResourcePath="true" addWhen="ALL"/>
+    </pathElements>
+    <generationScenario scenarioClassName="org.adichatz.organizer.scenario.PluginEntityScenario">
+		<modelPart>
+    		<pojoRewriters>
+	    		<pojoRewriter rewriterClassName="org.adichatz.scenario.generation.PgPojoIdRewriter"/>
+	    		<pojoRewriter rewriterClassName="org.adichatz.scenario.generation.SuperPojoRewriter" propertyRegex="lastUpdate">
+	    			<params>
+	    				<param id="superClassURI" value="bundleclass://./#PLUGINPACKAGE().model.ASuperLastUpdate"/>
+	    				<param id="sourceURI" value="platform:/plugin/org.adichatz.template/template/src/ASuperLastUpdate.java"/>
+	    			</params>
+	    		</pojoRewriter>
+	    		<pojoRewriter rewriterClassName="org.adichatz.scenario.generation.ImplementsInterfaceRewriter" priority="9">
+	    			<params>
+	    				<param id="interfacePackageName" value="org.adichatz.organizer.model"/>
+                        <param id="generateInterfaces" value="false"/>
+                        <param id="interfacePrefix" value="IOrg"/>
+	    			</params>
+	    		</pojoRewriter>
+			</pojoRewriters>
+    	</modelPart>
+<!--  AVISATZ
+		<propertyField id="category" pojoType="#ENUM(MpaaCategoryEnum,{Anniversary, Business, Calls, Customer, Holidays, Miscellaneous, Personal, Suppliers, Travel, Vacation})">
+        	<controlField xsi:type="cComboType">
+				<labelProvider>
+	               <textCode>return((#MODELPACKAGE()) element).getValue();</textCode>
+				</labelProvider>
+				<initValues>return java.util.Arrays.asList(#MODELPACKAGE().MpaaCategoryEnum.values());</initValues>
+			</controlField>
+		</propertyField>
+ -->
+		<propertyField id="category" pojoType="org.adichatz.organizer.model.MpaaCategoryEnum">
+        	<controlField xsi:type="cComboType">
+				<labelProvider>
+	               <textCode>return ((org.adichatz.organizer.model.MpaaCategoryEnum) element).getValue();</textCode>
+				</labelProvider>
+				<initValues>return java.util.Arrays.asList(org.adichatz.organizer.model.MpaaCategoryEnum.values());</initValues>
+			</controlField>
+		</propertyField>
+		<propertyField id="lastUpdate">
+        	<controlField xsi:type="dateTextType" enabled="false" style="SWT.BORDER | SWT.TIME"/>
+		</propertyField>
+		<propertyField id="color">
+        	<controlField xsi:type="rgbTextType" style="SWT.BORDER">
+				<convertTargetToModel>return rgbText.getStringValue();</convertTargetToModel>
+				<convertModelToTarget>return org.adichatz.engine.common.EngineTools.getRGBFromHexa((String) value);</convertModelToTarget>
+        	</controlField>
+		</propertyField>
+    </generationScenario>
+    <customPostAction injectInsideScenarioFile="true" generatePojo="true" generateEJB="true" generatePersistenceXml="true" deployEJB="true">
+    </customPostAction>
+</scenarioTree>
+    

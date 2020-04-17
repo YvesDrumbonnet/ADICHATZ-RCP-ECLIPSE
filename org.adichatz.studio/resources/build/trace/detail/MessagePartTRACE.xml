@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/MessageMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(message, key).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="key$1"/>
+        <text property="key" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(message, key).concat(&quot;:&quot;)" linkedControl="key$1" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="key">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(message, language).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="language$1"/>
+        <text property="language" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(message, language).concat(&quot;:&quot;)" linkedControl="language$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="language">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(message, value).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="value$1"/>
+        <text property="value" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(message, value).concat(&quot;:&quot;)" linkedControl="value$1" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="value">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+    </scrolledComposite>
+</containerTree>

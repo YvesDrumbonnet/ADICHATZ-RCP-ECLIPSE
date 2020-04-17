@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+ 	<xs:include schemaLocation="base-common.xsd"/>
+ 	
+    <!-- ********************************************	-->
+    <!--			C O L U M N - P R E F E R E N C E	-->
+    <!-- ********************************************	-->
+    <!-- ***************** -->
+    <!-- columnPreferences -->
+    <!-- ***************** -->
+    <xs:complexType name="columnPreferencesType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:sequence>
+					<xs:element name="columnPreference" type="columnPreferenceType"  minOccurs="1" maxOccurs="unbounded"/>
+		        </xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+    <!-- **************** -->
+    <!-- columnPreference  -->
+    <!-- **************** -->
+	<xs:complexType name="columnPreferenceType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+		        <xs:attribute name="id" type="xs:NCName" use="required" />
+				<xs:attribute name="visible" type="xs:boolean" default="true"/>
+				<xs:attribute name="width" type="xs:int" default="-1"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ******* -->
+    <!-- filters -->
+    <!-- ******* -->
+    <xs:complexType name="filtersType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:sequence>
+					<xs:element name="filter" type="filterType"  minOccurs="1" maxOccurs="unbounded"/>
+		        </xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+    <!-- ****** -->
+    <!-- filter -->
+    <!-- ****** -->
+   <xs:complexType  name="filterType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:attribute name="enabled" type="xs:boolean" default="true"/>
+				<xs:attribute name="text" type="xs:string"/>
+				<xs:attribute name="column" type="xs:NCName"/>
+				<xs:attribute name="searchString" type="xs:string"/>
+				<xs:attribute name="columnType" type="columnTypeEnum" default="String"/>
+				<xs:attribute name="exactString" type="xs:boolean" default="true"/>
+				<xs:attribute name="caseInsensitive" type="xs:boolean" default="false"/>	
+			</xs:extension>
+		</xs:complexContent>
+   </xs:complexType>
+
+    <!-- ********************* -->
+    <!-- ColumnType Enumeration -->
+    <!-- ********************* -->
+	<xs:simpleType name="columnTypeEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Byte"/>
+            <xs:enumeration value="Short"/>
+            <xs:enumeration value="Integer"/>
+            <xs:enumeration value="Long"/>
+            <xs:enumeration value="Float"/>
+            <xs:enumeration value="Double"/>
+            <xs:enumeration value="Boolean"/>
+            <xs:enumeration value="BigDecimal"/>
+            <xs:enumeration value="Date"/>
+            <xs:enumeration value="String"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

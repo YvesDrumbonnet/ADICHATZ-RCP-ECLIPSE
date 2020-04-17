@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/PathElementMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="condition">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField mandatory="true" id="type">
+        <controlField xsi:type="cComboType" mandatory="true" layoutData="grow 0" style="SWT.BORDER | SWT.READ_ONLY">
+            <labelProvider>
+                <textCode>return ((PathElementEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.PathElementEnum
+import java.util.Arrays
+return Arrays.asList(PathElementEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+    <propertyField id="location">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="addWhen">
+        <controlField xsi:type="radioGroupType">
+            <labelProvider>
+                <textCode>return ((AddWhenEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.AddWhenEnum
+import java.util.Arrays
+return Arrays.asList(AddWhenEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+    <propertyField id="additionalResourcePath">
+        <controlField xsi:type="checkBoxType"/>
+    </propertyField>
+    <propertyField id="addToManifestFile">
+        <controlField xsi:type="checkBoxType"/>
+    </propertyField>
+    <propertyField id="addToClassPath">
+        <controlField xsi:type="checkBoxType"/>
+    </propertyField>
+</entityTree>

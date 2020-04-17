@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ASCII"?>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_dP_dYMvaEeGfUOREsyXWuQ" elementId="adichatz.application">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_wAnDwMvaEeGfUOREsyXWuQ" elementId="adichatz.application.trimmedwindow" label="%adichatz.application.name" iconURI="platform:/plugin/org.adichatz.engine.e4/resources/icons/adichatz32x32.png" tooltip="" width="800" height="600">
+    <tags>shellMaximized</tags>
+    <trimBars xmi:id="_wLT-MMymEeGnmaEYJ-MGRQ" elementId="adichatz.application.trimmedwindow.top">
+      <children xsi:type="menu:ToolBar" xmi:id="_dq36MG0KEeKRKuwN0esBxA" elementId="adichatz.application.toolbar"/>
+      <children xsi:type="menu:ToolBar" xmi:id="_M8zhsKEQEeK3WNwZYjU-ag" elementId="adichatz.editor.toolbar"/>
+      <children xsi:type="menu:ToolControl" xmi:id="_UL33AJ7MEeK9CJZtYrF_wg" elementId="adichatz.application.toolbar.spacer" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
+        <tags>stretch</tags>
+      </children>
+    </trimBars>
+  </children>
+  <bindingTables xmi:id="_2YGMMI7LEea1O-pnXkM4WA" elementId="org.adichatz.dialogAndWindow.bindingTable" bindingContext="_9kdesMyoEeGnmaEYJ-MGRQ"/>
+  <rootContext xmi:id="_9kdesMyoEeGnmaEYJ-MGRQ" elementId="adichatz.dialogAndWindow" name="In Dialog and Windows">
+    <children xmi:id="_GUJLoMypEeGnmaEYJ-MGRQ" elementId="adichatz.window" name="In Windows"/>
+    <children xmi:id="_Myu_sMypEeGnmaEYJ-MGRQ" elementId="adichatz.dialog" name="In Dialogs"/>
+  </rootContext>
+  <addons xmi:id="_dP_dYcvaEeGfUOREsyXWuQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_dP_dYsvaEeGfUOREsyXWuQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_dP_dY8vaEeGfUOREsyXWuQ" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
+  <addons xmi:id="_dP_dZMvaEeGfUOREsyXWuQ" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_dP_dZcvaEeGfUOREsyXWuQ" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_dP_dZsvaEeGfUOREsyXWuQ" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+  <addons xmi:id="_VrnQFtQBEeKYYP2aj1Qtdg" elementId="org.eclipse.e4.ui.workbench.handler.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
+  <addons xmi:id="_gNOUAMd7EeG969byIQLukw" elementId="MinMax Addon" contributionURI="bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.ui.workbench.addons.minmax.MinMaxAddon"/>
+</application:Application>

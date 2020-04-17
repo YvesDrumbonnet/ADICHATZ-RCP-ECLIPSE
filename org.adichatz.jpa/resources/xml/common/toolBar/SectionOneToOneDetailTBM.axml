@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<includeTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="false">
+	<managedToolBar id="managedToolBar">
+        <action id="refreshOTOEntityAction" actionClassName="org.adichatz.jpa.action.RefreshOTOEntityAction">
+        	<params>
+        		<param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+        	</params>
+        </action>
+        <action id="addOTOEntityAction" actionClassName="org.adichatz.jpa.action.AddOTOEntityAction">
+        	<params>
+        		<param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+        	</params>
+    	</action>
+        <action id="deleteOTOEntityAction" actionClassName="org.adichatz.jpa.action.DeleteOTOEntityAction">
+        	<params>
+        		<param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+        	</params>
+    	</action>
+    </managedToolBar>
+</includeTree>

@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.adichatz.template
+Bundle-Version: 0.9.1.qualifier
+Created-By: Adichatz
+Bundle-Localization: plugin
+Bundle-Name: Adichatz Template for build new project
+Bundle-Vendor: Adichatz
+Ant-Version: Apache Ant 1.7.0
+Automatic-Module-Name: org.adichatz.template

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ScenarioTreeMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/ParamsMM" id="params"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/GeneratorsMM" id="generators"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/PathElementsMM" id="pathElements"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/ControllersMM" id="controllers"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/GenerationScenarioMM" id="generationScenario"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/CustomizedScenariosMM" id="customizedScenarios"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/ActionResourcesMM" id="actionResources"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/CustomPostActionMM" id="customPostAction"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/ScenariosMM" id="scenarios"/>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/RemoveResourceMM" id="allActionResources">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/RemoveResourceMM" name="allActionResources"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

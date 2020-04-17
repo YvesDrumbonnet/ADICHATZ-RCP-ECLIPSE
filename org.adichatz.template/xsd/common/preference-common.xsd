@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+ 	<xs:include schemaLocation="../common/control-common.xsd"/>
+    <!-- ****************************************** -->
+    <!--		C O N T R O L L E R - P R E F E R E N C E		-->
+    <!-- ****************************************** -->
+
+	<xs:complexType name="controllerPreferenceType">
+		<xs:complexContent>
+			<xs:extension base="paramType">
+		        <xs:sequence>
+					<xs:element name="columnPreferences" type="columnPreferencesType"/>
+			 		<xs:element name="filters" type="filtersType"/>
+		   		</xs:sequence>
+				<xs:attribute name="columnOrder" type="xs:string"/>
+        		<xs:attribute name="statusBarKey" type="xs:string"/>
+        		<xs:attribute name="tableRendererKey" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>
+	

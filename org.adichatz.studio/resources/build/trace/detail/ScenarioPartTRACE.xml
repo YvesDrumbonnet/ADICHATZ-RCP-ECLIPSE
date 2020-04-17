@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ScenarioMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <hyperlink text="#MSG(scenario, scenarioClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="scenarioClassNameScenarioPART$1">
+            <pluginEntity/>
+        </hyperlink>
+        <text property="scenarioClassName" labelText="#MSG(scenario, scenarioClassName).concat(&quot;:&quot;)" linkedControl="scenarioClassNameScenarioPART$1" mandatory="true" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="scenarioClassName">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(scenario, type).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="type$1"/>
+        <ccombo property="type" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(scenario, type).concat(&quot;:&quot;)" linkedControl="type$1" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" layoutData="grow 0" style="SWT.BORDER | SWT.READ_ONLY" id="type">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+            <labelProvider>
+                <textCode>return ((GenerationEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.GenerationEnum
+import java.util.Arrays
+return Arrays.asList(GenerationEnum.class.getEnumConstants());</initValues>
+        </ccombo>
+    </scrolledComposite>
+</containerTree>

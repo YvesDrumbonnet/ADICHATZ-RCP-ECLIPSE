@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/PreferenceMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/QueryPreferenceMM" id="queryPreference"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/ControllerPreferenceMM" id="controllerPreference"/>
+    <propertyField mandatory="true" id="id">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+</entityTree>

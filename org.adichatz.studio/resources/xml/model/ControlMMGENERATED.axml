@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ControlMM" superEntityURI="adi://org.adichatz.studio/model/WidgetMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="background">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="backgroundImage">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="bounds">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="capture">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="foreground">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="focus">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="font">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="layoutData">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="location">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="menu">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="redraw">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="size">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="visible">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ParamMM" superEntityURI="adi://org.adichatz.studio/model/ElementMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="type">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="optional">
+        <controlField xsi:type="radioGroupType" controllerClassName="org.adichatz.studio.xjc.controller.BooleanRadioGroupController"/>
+    </propertyField>
+    <propertyField id="value">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

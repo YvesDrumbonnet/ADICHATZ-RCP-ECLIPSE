@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/SashFormMM" superEntityURI="adi://org.adichatz.studio/model/ValidableContainerMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="maximizedChild">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="orientation">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="weights">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

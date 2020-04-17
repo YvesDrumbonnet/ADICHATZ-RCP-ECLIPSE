@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/RemoveResourceMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="condition">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField mandatory="true" id="targetURI">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+    <propertyField id="actionWhen">
+        <controlField xsi:type="radioGroupType">
+            <labelProvider>
+                <textCode>return ((ActionWhenTypeEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.ActionWhenTypeEnum
+import java.util.Arrays
+return Arrays.asList(ActionWhenTypeEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+    <propertyField id="relative">
+        <controlField xsi:type="checkBoxType"/>
+    </propertyField>
+    <propertyField id="throwError">
+        <controlField xsi:type="checkBoxType"/>
+    </propertyField>
+</entityTree>

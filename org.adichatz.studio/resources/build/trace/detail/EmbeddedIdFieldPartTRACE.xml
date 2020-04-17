@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/EmbeddedIdFieldMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(field, id).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="id$1"/>
+        <text property="id" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(field, id).concat(&quot;:&quot;)" linkedControl="id$1" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="id">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(propertyField, mandatory).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="mandatory$1"/>
+        <radioGroup property="mandatory" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(propertyField, mandatory).concat(&quot;:&quot;)" linkedControl="mandatory$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.BooleanRadioGroupController" id="mandatory">
+            <pluginEntity/>
+        </radioGroup>
+        <label text="#MSG(propertyField, pojoType).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="pojoType$1"/>
+        <text property="pojoType" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(propertyField, pojoType).concat(&quot;:&quot;)" linkedControl="pojoType$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="pojoType">
+            <pluginEntity/>
+        </text>
+    </scrolledComposite>
+</containerTree>

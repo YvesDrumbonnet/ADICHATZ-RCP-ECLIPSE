@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<partTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" toolTipText="#PARAM(TOOL_TIP_TEXT)" title="#PARAM(TITLE)" image="#IMG(IMG_EDIT_SCENARIO.png)" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/partTree.xsd" bindingServiceClassName="org.adichatz.studio.xjc.data.XjcBindingService"  entityURI="adi://org.adichatz.studio/model/ScenarioTreeMM">
+	<config>
+		<customizations>
+			<action id="featuresTBM:generateScenarioAction" valid="false"/>
+		</customizations>
+	</config>
+    <formPage formText="#MSG(adichatzStudio, scenario.model.formText, #PARAM(pluginName))" title="#MSG(adichatzStudio, scenario.model.page)" id="modelPage"  entityURI="adi://org.adichatz.studio/model/ScenarioTreeMM">
+        <include adiResourceURI="adi://editor/ScenarioTBM" id="modelTBM"/>
+		<layout columnConstraints="[grow,fill]" rowConstraints="[grow,fill]" layoutConstraints="wrap"/>
+		<scrolledComposite id="scrolledComposite" layoutData="w 0:n:n, h 0:n:n">
+	        <layout columnConstraints="[grow,fill]" rowConstraints="[grow,fill][]" layoutConstraints="wrap"/>
+	        <listeners>
+				<listener listenerTypes="AFTER_END_LIFE_CYCLE">
+					<code>boolean enabled = !#CONTROLLER(modelPart).getValue();
+#CONTROLLER(modelPart).getControl().setEnabled(enabled);
+if (!enabled) {
+    #CONTROLLER(connectorDataSource).getControl().setEnabled(enabled);
+}</code>
+	        	</listener>
+	        </listeners>
+	        <composite id="generationScenarioComposite" entityURI="adi://org.adichatz.studio/model/GenerationScenarioMM" entity="#ENTITY(#BEAN().getGenerationScenario())" layoutData="w 0:n:n, h 0:n:n">
+	        	<layout columnConstraints="[grow,fill]" rowConstraints="[][grow,fill]" layoutConstraints="wrap"/>
+		        <composite>
+			        <layout columnConstraints="[]20[]10[grow,fill]" layoutConstraints="wrap"/>
+			        <checkBox id="modelPart" text="#MSG(adichatzStudio, scenario.has.model.part)" controllerClassName="org.adichatz.studio.xjc.controller.ModelCheckBoxController"/>
+				</composite>
+				<group id="entitiesTableGroup" text="#MSG(adichatzStudio, scenario.plugin.entities.group)">
+			        <layout columnConstraints="[grow,fill]" rowConstraints="[grow,fill]"  layoutConstraints="wrap"/>
+				    <table entityURI="adi://org.adichatz.studio/model/PluginEntityMM"  layoutData="h 0:n:n, w 0:n:n" controllerClassName="org.adichatz.studio.xjc.controller.EntitiesTableController" id="entitiesTable">
+						<contentProvider xsi:type="nativeContentProviderType" fieldName="pluginEntity"/>
+		       			<tableColumn sorted="true" property="entityURI" id="entityURITC"/>
+				    </table>
+	        	</group>
+	        </composite>
+	   		<section text="#MSG(adichatzStudio, scenario.model.part)" style="Section.TWISTIE | Section.TITLE_BAR | Section.EXPANDED" id="modelSection" entityURI="adi://org.adichatz.studio/model/ModelPartMM" entity="#ENTITY(#BEAN().getGenerationScenario().getModelPart())" valid="false" layoutData="w 0:n:n, h 0:n:n"> 
+	       		<layout columnConstraints="fill,grow" layoutConstraints="wrap 1"/>
+	       		<composite>
+		       		<layout columnConstraints="[fill,grow]" layoutConstraints="wrap 1, ins 0"/>
+		       		<composite>
+			       		<layout columnConstraints="[fill, align right]5[fill,grow][]" layoutConstraints="wrap 3, ins 0"/>
+			            <hyperlink text="#MSG(modelPart, connectorDataSource)" id="datasourceHL">
+			            	<runnableCode>#CONTROLLER(connectorDataSource).openDataSourceWindow();</runnableCode>
+			            </hyperlink>
+				        <combo style="SWT.READ_ONLY" mandatory="true" property="connectorDataSource" noLabel="true" id="connectorDataSource" controllerClassName="org.adichatz.studio.xjc.controller.DatasourceComboController"/>
+				        <button id="testConnection" text="#MSG(adichatzStudio, studio.testConnection)">
+				            <listeners>
+				                <listener listenerTypes="WIDGET_SELECTED">
+				                	<code>#CONTROLLER(connectorDataSource).testConnection();</code>
+				                </listener>
+				            </listeners>
+				        </button>
+						<label id="customFileLBL" text="#MSG(adichatzStudio, scenario.customization.file)"/>
+						<fileText id="customFileName" filterExtension="*.xml" noLabel="true" layoutData="span 2">
+							<validators>
+								<validator key="invalidCustomFile" errorMessage="#MSG(adichatzStudio, scenario.custom.invalid, getValue())" condition="VALID.MODIFY">
+									<errorWhen>import org.adichatz.studio.util.StudioUtil
+Object validation = StudioUtil.validateCustomizationFile(getControl().getValue(), null);
+return null != validation &amp;&amp; validation instanceof String;</errorWhen>
+								</validator>
+							</validators>
+						</fileText>
+					</composite>	
+		        	<group id="ejbGroup" text="#MSG(adichatzStudio, scenario.EJB.group)" font="#FONT(JFaceResources.BANNER_FONT)">
+						<layout layoutConstraints="wrap 4" columnConstraints="[align right]10[fill,grow]20[align right]10[fill,grow]"/>
+			            <hyperlink text="#MSG(modelPart, connectorASVersion)" id="applicationSeverHL">
+			            	<runnableCode>#CONTROLLER(connectorASVersion).openApplicationServerWindow();</runnableCode>
+			            </hyperlink>
+				        <combo style="SWT.READ_ONLY" mandatory="true" property="connectorASVersion" id="connectorASVersion" noLabel="true" controllerClassName="org.adichatz.studio.xjc.controller.ASComboController" labelForeground="#COLOR(IFormColors.TITLE)"/>
+				        <text mandatory="true" property="dataSourceUnit" id="dataSourceUnit" labelForeground="#COLOR(IFormColors.TITLE)"/>
+						<layout layoutConstraints="wrap 4" columnConstraints="[align right]10[fill,grow]20[align right]10[fill,grow]"/>
+				        <text mandatory="true" property="persistenceManagerClassName" id="persistenceManagerClassName" labelForeground="#COLOR(IFormColors.TITLE)">
+				        	<validators>
+				        		<validator validatorClassName="org.adichatz.studio.xjc.custom.ClassNameValidator" key="invalidClassName"/>
+				        	</validators>
+				        </text>
+				        <text mandatory="true" property="lockManagerClassName" id="lockManagerClassName" labelForeground="#COLOR(IFormColors.TITLE)">
+				        	<validators>
+				        		<validator validatorClassName="org.adichatz.studio.xjc.custom.ClassNameValidator" key="invalidClassName"/>
+				        	</validators>
+				        </text>
+					</group>
+		       		<composite>
+						<layout layoutConstraints="wrap 3, ins 0" columnConstraints="[align right]10[fill,grow][]"/>
+				        <text mandatory="true" property="modelPackageName" id="modelPackageName" labelForeground="#COLOR(IFormColors.TITLE)">
+					        <validators>
+					            <validator errorMessage="#MSG(adichatzStudio, studio.newProject.invalidPackageName)" key="incorrectPackageName">
+					                <errorWhen>import org.adichatz.generator.common.GeneratorUtil;
+import org.adichatz.engine.controller.APageController;
+import org.adichatz.generator.wrapper.ScenarioTreeWrapper;
+String modelPackageName = (String) getValue();
+if (null != modelPackageName) {
+    ScenarioTreeWrapper scenarioTree = (ScenarioTreeWrapper) ((APageController) genCode.getFromRegister("modelPage")).getEntity().getBean();
+    String packageName = GeneratorUtil.getParamValue(scenarioTree.getParams(), "plugin.package");
+    return modelPackageName.equals(packageName) || modelPackageName.equals(packageName.concat(".ejb"));
+}
+return  false;													
+									</errorWhen>
+					            </validator>
+					            <validator errorMessage="#MSG(modelPart, invalid.modelPackageName)" key="invalidPackageName">
+					                <errorWhen>import org.adichatz.studio.xjc.custom.ClassNameValidator
+String modelPackageName = (String) getValue();
+if (null != modelPackageName) {
+    return !ClassNameValidator.PACKAGE_PATTERN.matcher(modelPackageName).matches()  || ClassNameValidator.JAVA_KEYWORDS.contains(modelPackageName);
+}
+return false;
+									</errorWhen>
+					            </validator>
+					        </validators>
+				        </text>
+						<helpButton id="modelPackageHlp" helpLabel="#MSG(modelPart, specify.modelPackageName)" helpSpecify="#MSG(modelPart, specify.modelPackageName)" helpMessage="#MSG(modelPart, modelPackageName.message)"/>
+				        <radioGroup property="modelProcurement" id="modelProcurement" labelForeground="#COLOR(IFormColors.TITLE)" mandatory="true">
+				        	<layout layoutConstraints="wrap 2" columnConstraints="[]"/>
+				        	<initValues>import org.adichatz.generator.xjc.ModelProcurementEnum
+import java.util.Arrays
+return Arrays.asList(ModelProcurementEnum.values());
+							</initValues>
+							<labelProvider>
+								<textCode>import org.adichatz.engine.common.AdichatzApplication
+return AdichatzApplication.getInstance().getMessageBundle("adi://org.adichatz.studio/./modelPart","procurement." + ((ModelProcurementEnum) element).name());</textCode>
+							</labelProvider>
+				        </radioGroup>
+						<helpButton id="pojoProcurementHlp" helpLabel="#MSG(modelPart, specify.pojo.procurement)" helpSpecify="#MSG(modelPart, specify.pojo.procurement)" helpMessage="#MSG(modelPart, pojo.procurement.message)"/>
+			        </composite>
+			    </composite>
+	        	<group id="asGroup" text="#MSG(adichatzStudio, scenario.AS.group)" font="#FONT(JFaceResources.BANNER_FONT)" valid="false">
+					<layout layoutConstraints="wrap 4, hidemode 3" columnConstraints="[align right]10[fill,grow]20[align right]10[fill,grow]"/>
+			        <text property="ejbFileName" id="ejbFileName" labelForeground="#COLOR(IFormColors.TITLE)">
+			        	<validators>
+			        		<validator key="EJBFileName" errorMessage="#MSG(adichatzStudio, scenario.datasource.invalid.ejb)">
+			        			<errorWhen>return null != getValue() &amp;&amp; !getControl().getText().matches(&quot;.*\\..ar&quot;);</errorWhen>
+			        		</validator>
+			        	</validators>
+			        </text>
+			        <text property="jndi" id="jndi" labelForeground="#COLOR(IFormColors.TITLE)">
+			        	<validators>
+			        		<validator key="mandatoryField" errorMessage="#MSG(adi://org.adichatz.engine/./adichatzEngine, mandatoryField)">
+			        			<errorWhen>return null == getValue() &amp;&amp; !&quot;jse&quot;.equals(#CONTROLLER(connectorASVersion).getValue());</errorWhen>
+			        		</validator>
+			        	</validators>		        
+			        </text>
+			        <text property="dataSourceFileName" id="dataSourceFileName" labelForeground="#COLOR(IFormColors.TITLE)" valid="!#FV(connectorASVersion).startsWith(&quot;wildfly&quot;) &amp;&amp; !#FV(connectorASVersion).startsWith(&quot;jboss-eap-6&quot;)">
+			        	<validators>
+			        		<validator key="DatasourceFileName" errorMessage="#MSG(adichatzStudio, scenario.datasource.invalid.xml)">
+			        			<errorWhen>return !#FV(connectorASVersion).startsWith(&quot;jboss-7.1&quot;) &amp;&amp; !#FV(connectorASVersion).startsWith(&quot;wildfly&quot;) &amp;&amp; !#FV(connectorASVersion).startsWith(&quot;jboss-eap-6&quot;) &amp;&amp; !getControl().getText().endsWith(&quot;-ds.xml&quot;);</errorWhen>
+			        		</validator>
+			        	</validators>
+			        </text>
+				</group>	        
+			</section>
+		</scrolledComposite>
+    </formPage>	
+    <formPage formText="#MSG(adichatzStudio, scenario.generation.formText, #PARAM(pluginName))" title="#MSG(adichatzStudio, scenario.generation.page)" id="generationPage" entityURI="adi://org.adichatz.studio/model/ScenarioTreeMM">
+        <include adiResourceURI="adi://editor/ScenarioTBM" id="generationTBM"/>
+		<layout rowConstraints="[grow,fill]" columnConstraints="[grow,fill]" layoutConstraints="wrap"/>
+        <tree id="generationTree" expand="1" style="SWT.MULTI" headerVisible="false" controllerClassName="org.adichatz.studio.xjc.controller.GenerationTreeController">
+	        <listeners>
+				<listener id="afterCreateControlLsnr" listenerTypes="AFTER_CREATE_CONTROL">
+					<code>addEditorMenu();</code>
+	        	</listener>
+                <listener id="postSelectionChangeLsnr" listenerTypes="POST_SELECTION_CHANGED">
+                    <code>import org.adichatz.studio.xjc.data.XjcBindingService;
+((XjcBindingService) getBindingService()).enableActions();</code>
+                </listener>
+	        </listeners>
+        </tree>
+    </formPage>
+    <formPage formText="#MSG(adichatzStudio, scenario.features.formText, #PARAM(pluginName))" title="#MSG(adichatzStudio, scenario.features.page)" id="featuresPage"  entityURI="adi://org.adichatz.studio/model/ScenarioTreeMM">
+        <include adiResourceURI="adi://editor/ScenarioTBM" id="featuresTBM"/>
+        <layout rowConstraints="[grow,fill]" columnConstraints="[grow,fill]" layoutConstraints="wrap 1"/>
+		<cTabFolder selection="0" id="featuresTabFolder" layoutData="span 2">
+			<listeners>
+				<listener listenerTypes="WIDGET_SELECTED">
+					<code>import org.adichatz.studio.xjc.controller.FeaturesTableController
+((FeaturesTableController) getSelectedController().getChildControllers().get(0)).selectOutlinePage();
+</code>
+				</listener>
+			</listeners>
+            <cTabItem text="#MSG(adichatzStudio, scenario.generators)" id="generatorsItem" entityURI="adi://org.adichatz.studio/model/GeneratorsMM" entity="#ENTITY(#BEAN().getGenerators())">
+			    <table entityURI="adi://org.adichatz.studio/model/GeneratorMM" layoutData="h 0:n:n, w 0:n:n" controllerClassName="org.adichatz.studio.xjc.controller.FeaturesTableController" id="generatorsTable">
+                    <contentProvider xsi:type="nativeContentProviderType" fieldName="generator"/>
+			        <tableColumn sorted="true" property="treeClassName" id="treeClassNameTC" image="#IMG(adi://org.adichatz.studio/./IMG_GENERATE_JAVA.png)"/>
+       				<tableColumn sorted="true" property="generatorClassName" id="generatorClassNameTC"/>
+			    </table>
+            </cTabItem>
+            <cTabItem text="#MSG(adichatzStudio, scenario.scenarios)" id="scenariosItem" entityURI="adi://org.adichatz.studio/model/ScenariosMM" entity="#ENTITY(#BEAN().getScenarios())">
+			    <table entityURI="adi://org.adichatz.studio/model/ScenarioMM" layoutData="h 0:n:n, w 0:n:n" controllerClassName="org.adichatz.studio.xjc.controller.FeaturesTableController" id="scenariosTable">
+                    <contentProvider xsi:type="nativeContentProviderType" fieldName="scenario"/>
+			        <tableColumn sorted="true" property="type" id="typeTC" image="#IMG(adi://org.adichatz.studio/./IMG_SCENARIO.png)"/>
+       				<tableColumn sorted="true" property="scenarioClassName" id="scenarioClassNameTC"/>
+			    </table>
+            </cTabItem>
+            <cTabItem text="#MSG(adichatzStudio, scenario.controllers)" id="controllersItem" entityURI="adi://org.adichatz.studio/model/ControllersMM" entity="#ENTITY(#BEAN().getControllers())">
+			    <table entityURI="adi://org.adichatz.studio/model/ControllerMM" layoutData="h 0:n:n, w 0:n:n" controllerClassName="org.adichatz.studio.xjc.controller.FeaturesTableController" id="controllersTable">
+                    <contentProvider xsi:type="nativeContentProviderType" fieldName="controller"/>
+			        <tableColumn sorted="true" property="wrapperClassName" id="wrapperClassNameTC" image="#IMG(adi://org.adichatz.studio/xjc/controlField.png)"/>
+			        <tableColumn sorted="true" property="controllerClassName" id="controllerClassNameTC"/>
+			    </table>
+            </cTabItem>
+            <cTabItem text="#MSG(adichatzStudio, scenario.paths)" id="pathsItem" entityURI="adi://org.adichatz.studio/model/PathElementsMM" entity="#ENTITY(#BEAN().getPathElements())">
+			    <table entityURI="adi://org.adichatz.studio/model/PathElementMM" layoutData="h 0:n:n, w 0:n:n" controllerClassName="org.adichatz.studio.xjc.controller.FeaturesTableController" id="pathElementsTable">
+                    <contentProvider xsi:type="nativeContentProviderType" fieldName="pathElement"/>
+				    <tableColumn sorted="true" property="type" id="typeTC" image="#IMG(adi://org.adichatz.studio/xjc/path.png)">
+				    	<columnImage>import org.adichatz.generator.xjc.PathElementType
+if (null == row.getType())
+    return #IMG(adi://org.adichatz.studio/xjc/path.png);
+switch (row.getType()) {
+case DIRECTORY:
+    return #IMG(adi://org.adichatz.studio/xjc/directory.png);
+case PLUGIN:
+    return #IMG(adi://org.adichatz.studio/xjc/bundle.png);
+case LIBRARY:
+    return #IMG(adi://org.adichatz.studio/xjc/library.png);
+case PROJECT:
+    return #IMG(adi://org.adichatz.studio/./IMG_JAVA_PROJECT.png);
+}
+return null;</columnImage>
+				    </tableColumn>
+       				<tableColumn sorted="true" property="location" id="locationTC"/>
+			    </table>
+            </cTabItem>
+            <cTabItem text="#MSG(adichatzStudio, scenario.parameters)" id="parametersItem" entityURI="adi://org.adichatz.studio/model/ParamsMM" entity="#ENTITY(#BEAN().getParams())">
+			    <table entityURI="adi://org.adichatz.studio/model/ParamMM" layoutData="h 0:n:n, w 0:n:n" controllerClassName="org.adichatz.studio.xjc.controller.FeaturesTableController" id="paramsTable">
+                    <contentProvider xsi:type="nativeContentProviderType" fieldName="param"/>
+			        <tableColumn sorted="true" property="id" id="idTC" text="#MSG(element, id)" image="#IMG(adi://org.adichatz.studio/xjc/param.png)"/>
+			        <tableColumn sorted="true" property="value" id="valueTC"/>
+			    </table>
+            </cTabItem>
+            <cTabItem text="#MSG(adichatzStudio, scenario.action.resources)" id="actionResourcesItem">
+			    <table entityURI="adi://org.adichatz.studio/model/RemoveResourceMM" layoutData="h 0:n:n, w 0:n:n" controllerClassName="org.adichatz.studio.xjc.controller.FeaturesTableController" id="actionResourcesTable">
+                    <contentProvider xsi:type="nativeContentProviderType" fieldName="allActionResources"/>
+       				<tableColumn sorted="true" property="actionWhen" id="actionWhenTC"/>
+       				<tableColumn id="actionTypeTC" image="#IMG(adi://org.adichatz.studio/xjc/action.png)">
+				    	<columnText>import org.adichatz.generator.xjc.CopyResourceType;
+if (#ROW() instanceof CopyResourceType)
+    return #MSG(adichatzStudio, action.resource.copy);
+else
+    return #MSG(adichatzStudio, action.resource.remove);</columnText>
+				    	<columnImage>if (#ROW() instanceof org.adichatz.generator.xjc.CopyResourceType)
+    return #IMG(adi://org.adichatz.studio/./IMG_COPY.png);
+else
+    return #IMG(adi://org.adichatz.studio/./IMG_DELETE.gif);</columnImage>
+       				</tableColumn>
+       				<tableColumn sorted="true" property="targetURI" id="targetURITC"/>
+       				<tableColumn sorted="true" id="sourceURITC">
+       					<columnText>return #ROW() instanceof CopyResourceType ? ((CopyResourceType) #ROW()).getSourceURI() : &quot;&quot;;</columnText>
+       				</tableColumn>
+			    </table>
+            </cTabItem>
+	    </cTabFolder>
+    </formPage>
+    <formPage formText="#MSG(adichatzStudio, scenario.custom.formText, #PARAM(pluginName))" title="#MSG(adichatzStudio, scenario.custom.page)" id="customPage">
+        <layout rowConstraints="[grow,fill]" columnConstraints="[grow,fill]" layoutConstraints="wrap 1"/>
+        <sashForm weights="1,1" orientation="SWT.HORIZONTAL" id="parentSashForm">
+        	<layout rowConstraints="[grow,fill]" columnConstraints="[grow,fill]" layoutConstraints="wrap 1"/>
+        	<composite>
+	        	<layout rowConstraints="[][grow,fill]" columnConstraints="[grow,fill]" layoutConstraints="wrap 1"/>
+				<pgroup id="fileGroup" text="#MSG(adichatzStudio, scenario.custom.choose.file)" font="#FONT(JFaceResources.BANNER_FONT)" clientBackground="#COLOR(IFormColors.H_GRADIENT_START)">
+		            <pgroupToolItem image="#IMG(IMG_EDIT_SCENARIO.png)" toolTipText="#MSG(adichatzStudio, scenario.custom.merge)" id="mergeScenario" controllerClassName="org.adichatz.studio.command.CustomScenarioMergeItem"/>
+					<layout layoutConstraints="wrap 3" columnConstraints="[]15[grow,fill]10[]"/>
+					<label id="fileLBL" text="#MSG(adichatzStudio, scenario.custom.label)"  background="#COLOR(IFormColors.H_GRADIENT_START)"/>
+					<fileText id="scenarioFileName" filterExtension="*.xml" controllerClassName="org.adichatz.studio.xjc.controller.CustomFileTextController"/>
+					<helpButton id="scenarioFileHlp" helpLabel="#MSG(adichatzStudio, scenario.custom.toolTip)" helpSpecify="#MSG(adichatzStudio, scenario.custom.specify)" helpMessage="#MSG(adichatzStudio, scenario.custom.help)"/>
+				</pgroup>
+		        <composite id="customScenarioComposite" entityURI="adi://org.adichatz.studio/model/CustomizedScenariosMM" entity="#ENTITY(#BEAN().getCustomizedScenarios())" layoutData="w 0:n:n, h 0:n:n">
+		        	<layout columnConstraints="[grow,fill]" rowConstraints="[grow,fill]" layoutConstraints="wrap"/>
+					<grid entityURI="adi://org.adichatz.studio/model/CustomizedScenarioMM" layoutData="h 0:n:n, w 0:n:n" id="customsGrid" controllerClassName="org.adichatz.studio.xjc.controller.CustomGridController">
+		                <listeners>
+			                <listener id="selectionChangeLsnr" listenerTypes="SELECTION_CHANGED">
+			                    <code>selectOutlinePage();</code>
+			                </listener>
+		                </listeners>
+			        	<contentProvider xsi:type="nativeContentProviderType" fieldName="customizedScenario"/>
+		                <menuManager id="contextMenu">
+		                    <action imageDescriptor="#IMGDESC(IMG_OPEN_FILE)" text="#MSG(adichatzStudio, scenario.custom.openFile)" id="openFile">
+		                        <actionCode>import org.adichatz.studio.xjc.editor.ExternalResourcesFormEditor;
+ExternalResourcesFormEditor.openExternalFile(#ROW().getScenarioFile());
+		</actionCode>
+		                    </action>
+		                    <action imageDescriptor="#IMGDESC(IMG_COPY)" text="#MSG(adichatzStudio, scenario.custom.copyFileName)" id="copyFileName">
+		                        <actionCode>import org.adichatz.engine.common.EngineTools;
+EngineTools.copyToBuffer(#ROW().getScenarioFile());</actionCode>
+		                    </action>
+		                    <separator/>
+		                    <action imageDescriptor="#IMGDESC(IMG_REFRESH)" text="#MSG(adichatzStudio, scenario.custom.reloadCustom)" id="reloadCustomScenario">
+		                        <actionCode>#CONTROLLER(scenarioFileName).setValue(#ROW().getScenarioFile());</actionCode>
+		                    </action>
+		                    <separator/>
+		                    <action imageDescriptor="#IMGDESC(IMG_DELETE)" text="#MSG(adichatzStudio, scenario.custom.deleteCustom)" id="deleteCustomScenario">
+		                        <actionCode>import org.adichatz.studio.xjc.data.XjcBindingService;
+#BEAN(customScenarioComposite).getCustomizedScenario().remove(#ROW());
+((XjcBindingService) getBindingService()).getEditor().getScenarioResources().marshalScenarioFile();
+((XjcBindingService) getBindingService()).getEditor().doSave();</actionCode>
+		                    </action>
+		                </menuManager>
+						<gridColumn property="mergeDate" id="mergeDateTC"/> <!-- mergeDate has no Comparable interface -->
+						<gridColumn sorted="true" property="scenarioFile" id="scenarioFileTC"/>
+					</grid>
+				</composite>
+			</composite>
+			<group id="customScenarioGroup" text="#MSG(adichatzStudio, scenario.custom.tree)"  font="#FONT(JFaceResources.BANNER_FONT)" entity="null">
+				<layout layoutConstraints="wrap 1" columnConstraints="[grow,fill]" rowConstraints="grow,fill"/>
+		        <tree id="customGenerationTree" style="SWT.MULTI" headerVisible="false" controllerClassName="org.adichatz.studio.xjc.controller.ScenarioTreeController"/>
+			</group>
+		</sashForm>
+    </formPage>
+</partTree>

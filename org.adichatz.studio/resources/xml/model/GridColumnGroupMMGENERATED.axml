@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/GridColumnGroupMM" superEntityURI="adi://org.adichatz.studio/model/CollectionMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="text">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="image">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="expanded">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="headerFont">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="headerWordWrap">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/GridColumnMM" id="gridColumn">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/GridColumnMM" name="gridColumn"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

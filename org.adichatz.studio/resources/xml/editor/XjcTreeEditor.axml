@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<partTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" toolTipText="#PARAM(TOOL_TIP_TEXT)" title="#PARAM(TITLE)" image="#IMG(IMG_XJC_EDITOR.png)" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/partTree.xsd" bindingServiceClassName="org.adichatz.studio.xjc.data.XjcBindingService">
+    <formPage formText="#PARAM(TITLE)" id="treeForm" title="#MSG(adichatzStudio,studio.editor.treeForm)">
+        <additionalCode>import org.adichatz.studio.xjc.editor.AStudioFormEditor;
+boolean isEditable() {
+    return ((AStudioFormEditor) context.getXmlTreeGenCode().getController()).isEditable(); 
+}</additionalCode>
+        <layout rowConstraints="[grow,fill]" columnConstraints="[grow,fill]" layoutConstraints="wrap"/>
+        <managedToolBar id="pageToolBar">
+			<action actionClassName="org.adichatz.studio.xjc.editor.action.ExpandTreeAction" id="expandTreeAction" toolTipText="#MSG(adichatzStudio, studio.editor.expandTree)" imageDescriptor="#IMGDESC(IMG_DEVELOP)"/>
+ 			<action actionClassName="org.adichatz.studio.xjc.editor.action.CollapseTreeAction" id="collapseTreeAction" toolTipText="#MSG(adichatzStudio, studio.editor.collapseTree)" imageDescriptor="#IMGDESC(IMG_COLLAPSE.gif)"/>
+            <separator style="SWT.NONE"/>
+			<action controllerClassName="org.adichatz.studio.xjc.editor.action.SwitchToActiveFileActionController" id="switchToActiveFileAction" toolTipText="#MSG(adichatzStudio, studio.xjcEditor.switchToActiveFile)" imageDescriptor="#IMGDESC(IMG_SWITCH.png)" valid="isEditable()"/>
+			<action controllerClassName="org.adichatz.studio.xjc.editor.action.CompareFilesActionController" id="compareFilesAction" toolTipText="#MSG(adichatzStudio, studio.xjcEditor.compareCustomizedAndGeneratedFiles)" imageDescriptor="#IMGDESC(IMG_COMPARE.png)" valid="isEditable()"/>
+			<menuAction controllerClassName="org.adichatz.studio.xjc.editor.action.OpenJavaFileMAController" id="openJavaFileMenuAction" imageDescriptor="#IMGDESC(IMG_GENERATE_JAVA_FILES.png)" valid="isEditable()"/>
+            <separator style="SWT.NONE"/>
+			<action id="refreshFromXmlFileAction" toolTipText="#MSG(adichatzStudio, studio.editor.refreshFormPage)" imageDescriptor="#IMGDESC(IMG_REFRESH)" valid="isEditable()">
+				<actionCode>import org.adichatz.studio.xjc.data.XjcBindingService;
+import org.eclipse.jface.viewers.TreeSelection;
+((XjcBindingService) getBindingService()).getEditor().fileChanged();
+#CONTROLLER(xjcTree).getViewer().setSelection(TreeSelection.EMPTY);</actionCode>
+			</action>
+			<action id="savePageAction" toolTipText="#MSG(adichatzStudio, studio.editor.save)" imageDescriptor="#IMGDESC(IMG_SAVE)" enabled="false" valid="isEditable()">
+				<actionCode>import org.adichatz.studio.xjc.editor.AStudioFormEditor&#xD;
+((AStudioFormEditor) genCode.getContext().getRootCore().getController()).doSave();</actionCode>
+			</action>
+			<action actionClassName="org.adichatz.studio.xjc.editor.action.ErrorStudioAction" id="errorStudioAction" toolTipText="#MSG(adi://org.adichatz.engine/./adichatzEngine, error)" enabled="false" valid="isEditable()"/>
+        </managedToolBar>
+        <tree id="xjcTree" expand="3" showRoot="true" style="SWT.MULTI" headerVisible="false" controllerClassName="org.adichatz.studio.xjc.controller.XjcTreeController">
+       		<menuManager id="contextMenu" parentType="Tree">
+				<menu id="addXjcElement" text="#MSG(adichatzStudio, studio.editor.addElement)" imageDescriptor="#IMGDESC(IMG_ADD_ELEMENT.png)" valid="null != #ROW() &amp;&amp; isEditable()">
+     				<contributionItem controllerClassName="org.adichatz.studio.xjc.editor.action.AddXjcElement"/>
+       			</menu>
+				<separator/>
+       			<action actionClassName="org.adichatz.studio.xjc.editor.action.CutXjcElementAction" id="CutXjcElementAction" valid="null != #ROW() &amp;&amp; isEditable()"/>
+       			<action actionClassName="org.adichatz.studio.xjc.editor.action.CopyXjcElementAction" id="copyXjcElementAction" valid="null != #ROW() &amp;&amp; isEditable()"/>
+       			<action actionClassName="org.adichatz.studio.xjc.editor.action.PasteXjcElementAction" id="pasteXjcElementAction" valid="null != #ROW() &amp;&amp; isEditable()"/>
+				<separator/>
+       			<action actionClassName="org.adichatz.studio.xjc.editor.action.ShowOutlineViewAction" id="showOutlineViewAction" valid="org.adichatz.studio.xjc.editor.action.ShowOutlineViewAction.isHidden()"/>
+       			<action actionClassName="org.adichatz.studio.xjc.editor.action.ShowXjcFieldViewAction" id="showXjcFieldViewAction" valid="org.adichatz.studio.xjc.editor.action.ShowXjcFieldViewAction.isHidden()"/>
+       		</menuManager>
+	        <additionalCode>import org.adichatz.studio.xjc.editor.AStudioFormEditor;
+boolean isEditable() {
+    return ((AStudioFormEditor) context.getXmlTreeGenCode().getController()).isEditable(); 
+}</additionalCode>
+        </tree>
+    </formPage>	
+</partTree>

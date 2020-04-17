@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/EntityTreeMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <text property="callbackClassNames" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(entityTree, callbackClassNames).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CallBackForeController" id="callbackClassNames"/>
+        <text property="callforeClassNames" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(entityTree, callforeClassNames).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CallBackForeController" id="callforeClassNames"/>
+        <hyperlink text="#MSG(entityTree, compositeKeyStrategyFactoryClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="compositeKeyStrategyFactoryClassNameEntityTreePART$1"/>
+        <text property="compositeKeyStrategyFactoryClassName" labelText="#MSG(entityTree, compositeKeyStrategyFactoryClassName).concat(&quot;:&quot;)" linkedControl="compositeKeyStrategyFactoryClassNameEntityTreePART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="compositeKeyStrategyFactoryClassName"/>
+        <hyperlink text="#MSG(entityTree, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIEntityTreePART$1"/>
+        <text property="entityURI" labelText="#MSG(entityTree, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIEntityTreePART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="entityURI"/>
+        <text property="idFieldName" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(entityTree, idFieldName).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="idFieldName"/>
+        <text property="superEntityURI" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(entityTree, superEntityURI).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="superEntityURI"/>
+    </scrolledComposite>
+</containerTree>

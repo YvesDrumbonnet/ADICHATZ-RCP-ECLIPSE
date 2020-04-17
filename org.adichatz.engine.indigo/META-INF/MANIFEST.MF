@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Adichatz engine Indigo
+Bundle-SymbolicName: org.adichatz.engine.indigo
+Bundle-Version: 0.9.1.qualifier
+Bundle-Activator: org.adichatz.engine.indigo.IndigoUIPlugin
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: Adichatz
+Require-Bundle: org.adichatz.engine,
+ org.adichatz.generator,
+ org.adichatz.common,
+ org.adichatz.resources,
+ org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.forms,
+ org.eclipse.ui.views,
+ org.eclipse.ui.console,
+ org.eclipse.ui.navigator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.adichatz.engine.indigo,
+ org.adichatz.engine.indigo.controller,
+ org.adichatz.engine.indigo.editor,
+ org.adichatz.engine.indigo.rcp
+Automatic-Module-Name: org.adichatz.engine.indigo

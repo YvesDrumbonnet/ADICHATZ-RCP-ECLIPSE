@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<extendTree adiResourceURI="adi://org.adichatz.jpa/common.toolBar/MasterDetailStubTBM">
+    <managedToolBar id="managedToolBar">
+        <pluginEntity/>
+        <additionalCode>import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.SashForm;
+import org.eclipse.swt.widgets.Control;
+protected void expand(AAction action, Control control) {
+    SashForm sashForm = getSashForm();
+    if (!control.equals(sashForm.getMaximizedControl())) {
+        sashForm.setMaximizedControl(control);
+        setImages(sashForm);
+        action.setImageDescriptor(#IMGDESC(IMG_VERTICAL));     			
+    } else {
+        sashForm.setMaximizedControl(null);
+        setImages(sashForm);
+    }
+}
+protected void setImages(SashForm sashForm) {
+	#CONTROL(expandDetailAction).setImageDescriptor(#IMGDESC(IMG_VERTICAL_EXPAND_DETAIL));
+}
+</additionalCode>
+        <action imageDescriptor="#IMGDESC(IMG_VERTICAL_EXPAND_DETAIL)" toolTipText="#MSG(adi://org.adichatz.engine/./adichatzEngine, expandHeader)" id="expandDetailAction">
+            <pluginEntity/>
+            <actionCode>expand(#CONTROL(), getDetailControl());</actionCode>
+        </action>
+    </managedToolBar>
+</extendTree>

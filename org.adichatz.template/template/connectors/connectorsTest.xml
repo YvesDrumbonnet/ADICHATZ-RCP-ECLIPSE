@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<connectorTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/connectorTree.xsd">
+    <applicationServers>
+        <applicationServer name="wildfly-18.x">
+            <params>
+                <param id="adichatz.connector" type="SERVER" value="org.adichatz.hibernate4.jboss.connector.jar"/>
+                <param id="application.server.home" type="SERVER" value="D:\ADICHATZ\applicationServers\wildfly-18.0.1.Final"/>
+                <param id="ejb.deployment.dir" type="SERVER" value="standalone/deployments"/>
+                <param id="as.modules.directory" type="SERVER" value="modules/system/layers/base"/>
+           		<param id="java.naming.factory.initial" type="CONTEXT" value="org.wildfly.naming.client.WildFlyInitialContextFactory"/>
+           		<param id="java.naming.provider.url" type="CONTEXT" value="http-remoting://localhost:8080"/>
+           		<param id="jboss.naming.client.ejb.context" type="CONTEXT" value="true"/>
+            </params>
+        </applicationServer>
+        <applicationServer name="wildfly-17.x">
+            <params>
+                <param type="SERVER" value="org.adichatz.hibernate4.jboss.connector.jar" id="adichatz.connector"/>
+                <param type="SERVER" value="D:\ADICHATZ\applicationServers\wildfly-17.0.1.Final" id="application.server.home"/>
+                <param type="SERVER" value="standalone/deployments" id="ejb.deployment.dir"/>
+                <param type="SERVER" value="modules/system/layers/base" id="as.modules.directory"/>
+                <param type="CONTEXT" value="org.wildfly.naming.client.WildFlyInitialContextFactory" id="java.naming.factory.initial"/>
+                <param type="CONTEXT" value="org.jboss.ejb.client.naming" id="java.naming.factory.url.pkgs"/>
+                <param type="CONTEXT" value="http-remoting://localhost:8080" id="java.naming.provider.url"/>
+                <param type="CONTEXT" value="true" id="jboss.naming.client.ejb.context"/>
+                <param id="remote.connection.default.host"/>
+                <param id="remote.connection.default.port"/>
+            </params>
+        </applicationServer>
+        <applicationServer name="wildfly-14.x">
+            <params>
+                <param type="SERVER" value="org.adichatz.hibernate4.jboss.connector.jar" id="adichatz.connector"/>
+                <param type="SERVER" value="D:\ADICHATZ\applicationServers\wildfly-14.0.1.Final" id="application.server.home"/>
+                <param type="SERVER" value="standalone/deployments" id="ejb.deployment.dir"/>
+                <param type="SERVER" value="modules/system/layers/base" id="as.modules.directory"/>
+                <param type="CONTEXT" value="org.wildfly.naming.client.WildFlyInitialContextFactory" id="java.naming.factory.initial"/>
+                <param type="CONTEXT" value="org.jboss.ejb.client.naming" id="java.naming.factory.url.pkgs"/>
+                <param type="CONTEXT" value="http-remoting://localhost:8080" id="java.naming.provider.url"/>
+                <param type="CONTEXT" value="true" id="jboss.naming.client.ejb.context"/>
+            </params>
+        </applicationServer>
+        <applicationServer name="wildfly-12.x">
+            <params>
+                <param type="SERVER" value="org.adichatz.hibernate4.jboss.connector.jar" id="adichatz.connector"/>
+                <param type="SERVER" value="D:\ADICHATZ\applicationServers\wildfly-12.0.0.Final" id="application.server.home"/>
+                <param type="SERVER" value="standalone/deployments" id="ejb.deployment.dir"/>
+                <param type="SERVER" value="modules/system/layers/base" id="as.modules.directory"/>
+                <param type="CONTEXT" value="org.wildfly.naming.client.WildFlyInitialContextFactory" id="java.naming.factory.initial"/>
+                <param type="CONTEXT" value="org.jboss.ejb.client.naming" id="java.naming.factory.url.pkgs"/>
+                <param type="CONTEXT" value="http-remoting://localhost:8080" id="java.naming.provider.url"/>
+                <param type="CONTEXT" value="true" id="jboss.naming.client.ejb.context"/>
+            </params>
+        </applicationServer>
+        <applicationServer name="wildfly-11.x">
+            <params>
+                <param type="SERVER" value="org.adichatz.hibernate4.jboss.connector.jar" id="adichatz.connector"/>
+                <param type="SERVER" value="C:\ADICHATZ\applicationServers\wildfly-11.0.0.Final" id="application.server.home"/>
+                <param type="SERVER" value="standalone/deployments" id="ejb.deployment.dir"/>
+                <param type="SERVER" value="modules/system/layers/base" id="as.modules.directory"/>
+                <param type="CONTEXT" value="org.jboss.ejb.client.naming" id="java.naming.factory.url.pkgs"/>
+                <param type="REMOTE" value="localhost" id="remote.connection.default.host"/>
+                <param type="REMOTE" value="8080" id="remote.connection.default.port"/>
+                <param type="REMOTE" value="false" id="remote.connectionprovider.create.options.org.xnio.Options.SSL_ENABLED"/>
+                <param type="REMOTE" value="default" id="remote.connections"/>
+                <param type="REMOTE" value="false" id="remote.connection.default.connect.options.org.xnio.Options.SASL_POLICY_NOANONYMOUS"/>
+                <param id="java.naming.factory.initial"/>
+                <param id="java.naming.provider.url"/>
+            </params>
+        </applicationServer>
+        <applicationServer name="wildfly-10.x">
+            <params>
+                <param type="SERVER" value="org.adichatz.hibernate4.jboss.connector.jar" id="adichatz.connector"/>
+                <param type="SERVER" value="C:\ADICHATZ\applicationServers\wildfly-10.1.0.Final" id="application.server.home"/>
+                <param type="SERVER" value="standalone/deployments" id="ejb.deployment.dir"/>
+                <param type="SERVER" value="modules/system/layers/base" id="as.modules.directory"/>
+                <param type="CONTEXT" value="org.jboss.ejb.client.naming" id="java.naming.factory.url.pkgs"/>
+                <param type="REMOTE" value="localhost" id="remote.connection.default.host"/>
+                <param type="REMOTE" value="8080" id="remote.connection.default.port"/>
+                <param type="REMOTE" value="false" id="remote.connectionprovider.create.options.org.xnio.Options.SSL_ENABLED"/>
+                <param type="REMOTE" value="default" id="remote.connections"/>
+                <param type="REMOTE" value="false" id="remote.connection.default.connect.options.org.xnio.Options.SASL_POLICY_NOANONYMOUS"/>
+                <param id="java.naming.factory.initial"/>
+                <param id="java.naming.provider.url"/>
+            </params>
+        </applicationServer>
+        <applicationServer name="jse">
+            <params>
+                <param type="SERVER" value="org.adichatz.hibernate.jse.connector.jar" id="adichatz.connector"/>
+                <param type="JSE" value="adichatz" id="sql.connection.username"/>
+                <param type="JSE" value="2fqCBkBb457eGwoPQq3DCQ==" id="sql.connection.password"/>
+                <param type="JSE" value="sakila" id="sql.connection.schema"/>
+            </params>
+        </applicationServer>
+        <applicationServer name="wildfly-9.x">
+            <params>
+                <param type="SERVER" value="org.adichatz.hibernate4.jboss.connector.jar" id="adichatz.connector"/>
+                <param type="SERVER" value="C:\ADICHATZ\applicationServers\wildfly-9.0.1.Final" id="application.server.home"/>
+                <param type="SERVER" value="standalone/deployments" id="ejb.deployment.dir"/>
+                <param type="SERVER" value="modules/system/layers/base" id="as.modules.directory"/>
+                <param type="CONTEXT" value="org.jboss.ejb.client.naming" id="java.naming.factory.url.pkgs"/>
+                <param type="REMOTE" value="localhost" id="remote.connection.default.host"/>
+                <param type="REMOTE" value="8080" id="remote.connection.default.port"/>
+                <param type="REMOTE" value="false" id="remote.connectionprovider.create.options.org.xnio.Options.SSL_ENABLED"/>
+                <param type="REMOTE" value="default" id="remote.connections"/>
+                <param type="REMOTE" value="false" id="remote.connection.default.connect.options.org.xnio.Options.SASL_POLICY_NOANONYMOUS"/>
+                <param id="java.naming.factory.initial"/>
+                <param id="java.naming.provider.url"/>
+            </params>
+        </applicationServer>
+        <applicationServer name="jboss-7.1">
+            <params>
+                <param type="SERVER" value="org.adichatz.hibernate4.jboss.connector.jar" id="adichatz.connector"/>
+                <param type="SERVER" value="C:\ADICHATZ\applicationServers/jboss-as-7.1.1.Final" id="application.server.home"/>
+                <param type="SERVER" value="standalone/deployments" id="ejb.deployment.dir"/>
+                <param type="SERVER" value="modules" id="as.modules.directory"/>
+                <param type="CONTEXT" value="org.jboss.ejb.client.naming" id="java.naming.factory.url.pkgs"/>
+                <param type="REMOTE" value="localhost" id="remote.connection.default.host"/>
+                <param type="REMOTE" value="4447" id="remote.connection.default.port"/>
+                <param type="REMOTE" value="false" id="remote.connectionprovider.create.options.org.xnio.Options.SSL_ENABLED"/>
+                <param type="REMOTE" value="default" id="remote.connections"/>
+                <param type="REMOTE" value="false" id="remote.connection.default.connect.options.org.xnio.Options.SASL_POLICY_NOANONYMOUS"/>
+                <param id="java.naming.factory.initial"/>
+                <param id="java.naming.provider.url"/>
+            </params>
+        </applicationServer>
+        <applicationServer name="jboss-eap-6.2">
+            <params>
+                <param type="SERVER" value="org.adichatz.hibernate4.jboss.connector.jar" id="adichatz.connector"/>
+                <param type="SERVER" value="{YOUR_JBOSS_EAP_6.2_INSTALL_DIR}/jboss-eap-6.2" id="application.server.home"/>
+                <param type="SERVER" value="standalone/deployments" id="ejb.deployment.dir"/>
+                <param type="SERVER" value="modules/system/layers/base" id="as.modules.directory"/>
+                <param type="CONTEXT" value="org.jboss.ejb.client.naming" id="java.naming.factory.url.pkgs"/>
+                <param type="REMOTE" value="localhost" id="remote.connection.default.host"/>
+                <param type="REMOTE" value="4447" id="remote.connection.default.port"/>
+                <param type="REMOTE" value="false" id="remote.connectionprovider.create.options.org.xnio.Options.SSL_ENABLED"/>
+                <param type="REMOTE" value="default" id="remote.connections"/>
+                <param type="REMOTE" value="false" id="remote.connection.default.connect.options.org.xnio.Options.SASL_POLICY_NOANONYMOUS"/>
+                <param id="java.naming.factory.initial"/>
+                <param id="java.naming.provider.url"/>
+            </params>
+        </applicationServer>
+        <applicationServer name="jboss-eap-6.1">
+            <params>
+                <param type="SERVER" value="org.adichatz.hibernate4.jboss.connector.jar" id="adichatz.connector"/>
+                <param type="SERVER" value="{YOUR_JBOSS_EAP_6.1_INSTALL_DIR}/jboss-eap-6.1" id="application.server.home"/>
+                <param type="SERVER" value="standalone/deployments" id="ejb.deployment.dir"/>
+                <param type="SERVER" value="modules/system/layers/base" id="as.modules.directory"/>
+                <param type="CONTEXT" value="org.jboss.ejb.client.naming" id="java.naming.factory.url.pkgs"/>
+                <param type="REMOTE" value="localhost" id="remote.connection.default.host"/>
+                <param type="REMOTE" value="4447" id="remote.connection.default.port"/>
+                <param type="REMOTE" value="false" id="remote.connectionprovider.create.options.org.xnio.Options.SSL_ENABLED"/>
+                <param type="REMOTE" value="default" id="remote.connections"/>
+                <param type="REMOTE" value="false" id="remote.connection.default.connect.options.org.xnio.Options.SASL_POLICY_NOANONYMOUS"/>
+                <param id="java.naming.factory.initial"/>
+                <param id="java.naming.provider.url"/>
+            </params>
+        </applicationServer>
+        <applicationServer name="jboss-4.2.3">
+            <params>
+                <param type="SERVER" value="org.adichatz.hibernate.jboss.connector.jar" id="adichatz.connector"/>
+                <param type="SERVER" value="C:\ADICHATZ\applicationServers/jboss-4.2.3.GA2" id="application.server.home"/>
+                <param type="SERVER" value="server/default/deploy" id="ejb.deployment.dir"/>
+                <param type="CONTEXT" value="org.jnp.interfaces.NamingContextFactory" id="java.naming.factory.initial"/>
+                <param type="CONTEXT" value="org.jboss.naming:org.jnp.interfaces" id="java.naming.factory.url.pkgs"/>
+                <param type="CONTEXT" value="jnp://localhost:1099" id="java.naming.provider.url"/>
+            </params>
+        </applicationServer>
+    </applicationServers>
+    <datasources>
+        <datasource id="sakila" datasourceName="mysql.sakila" driver="mysql" description="Sakila schema for mysql database" customizationFile="C:\ADICHATZ\eclipse\workspaces\4.9\workspace\adichatz\org.adichatz.template\template\connectors\sakilaMappingOverride.xml">
+            <params>
+                <param value="org.hibernate.dialect.MySQL5InnoDBDialect" id="sql.connection.dialect"/>
+                <param value="com.mysql.jdbc.Driver" id="sql.connection.driver_class"/>
+                <param value="jdbc:mysql://localhost:3306/sakila?useSSL=false&amp;max_allowed_packet=2M" id="sql.connection.url"/>
+                <param value="adichatz" id="sql.connection.username"/>
+                <param value="2fqCBkBb457eGwoPQq3DCQ==" id="sql.connection.password"/>
+                <param value="sakila" id="sql.connection.schema"/>
+                <param value="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource" id="xaDatasourceClass"/>
+                <param value="C:\ADICHATZ\eclipse\eclipse.4.9\..\workspaces\4.9\workspace\adichatz\org.adichatz.template/template/connectors/mysql-connector-java-5.1.38-bin.jar" id="sql.connection.driver.jar"/>
+            </params>
+        </datasource>
+        <datasource id="pagila" datasourceName="pgsql.pagila" driver="pgsql" description="pagila schema for postgres database">
+            <params>
+                <param value="org.hibernate.dialect.PostgreSQLDialect" id="sql.connection.dialect"/>
+                <param value="org.postgresql.Driver" id="sql.connection.driver_class"/>
+                <param value="jdbc:postgresql://localhost/pagila" id="sql.connection.url"/>
+                <param value="adichatz" id="sql.connection.username"/>
+                <param value="2fqCBkBb457eGwoPQq3DCQ==" id="sql.connection.password"/>
+                <param value="pagila" id="sql.connection.schema"/>
+                <param value="#PLUGINHOME(org.adichatz.template)/template/connectors/postgresql-42.2.9.jar" id="sql.connection.driver.jar"/>
+                <param value="org.postgresql.xa.PGXADataSource" id="xaDatasourceClass"/>
+            </params>
+        </datasource>
+        <datasource id="jtest" datasourceName="mysql.jtest" driver="mysql" description="JTest schema for mysql database" customizationFile="#PLUGINHOME(org.adichatz.template)/template\connectors\jtestMappingOverride.xml">
+            <params>
+                <param id="sql.connection.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+                <param id="sql.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+                <param id="sql.connection.url" value="jdbc:mysql://localhost:3306/jtest??useSSL=false&amp;max_allowed_packet=2M"/>
+                <param id="sql.connection.username" value="adichatz"/>
+                <param id="sql.connection.password" value="2fqCBkBb457eGwoPQq3DCQ=="/>
+                <param id="sql.connection.driver.jar" value="#PLUGINHOME(org.adichatz.template)/template/connectors/mysql-connector-java-5.1.38-bin.jar"/>
+                <param id="xaDatasourceClass" value="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource"/>
+            </params>
+        </datasource>
+        <datasource id="organizer" datasourceName="pgsql.organizer" driver="pgsql" description="organizer schema for postgres database" customizationFile="#PLUGINHOME(org.adichatz.template)/template\connectors\organizerMappingOverride.xml">
+            <params>
+                <param id="sql.connection.dialect" value = "org.hibernate.dialect.PostgreSQL95Dialect"/>
+                <param id="sql.connection.driver_class" value="org.postgresql.Driver"/>
+                <param id="sql.connection.url" value="jdbc:postgresql://localhost/organizer"/>
+                <param id="sql.connection.username" value="adichatz"/>
+                <param id="sql.connection.password" value="2fqCBkBb457eGwoPQq3DCQ=="/>
+                <param id="sql.connection.schema" value="organizer"/>
+                <param id="xaDatasourceClass" value="org.postgresql.xa.PGXADataSource"/>
+                <param id="sql.connection.driver.jar" value="#PLUGINHOME(org.adichatz.template)/template/connectors/postgresql-42.2.9.jar"/>
+            </params>
+            <buildParams>
+                <param id="sql.connection.dialect" value = "org.hibernate.dialect.PostgreSQL9Dialect"/>
+			</buildParams>
+        </datasource>
+        <datasource id="adichatz" datasourceName="mysql.adichatz" driver="mysql" description="Adichatz schema for mysql database (Test for developers)" customizationFile="#PLUGINHOME(org.adichatz.template)/template\connectors\adichatzMappingOverride.xml">
+            <params>
+                <param id="sql.connection.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
+                <param id="sql.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+                <param id="sql.connection.url" value="jdbc:mysql://localhost:3306/adichatz?useSSL=false&amp;max_allowed_packet=2M"/>
+                <param id="sql.connection.username" value="adichatz"/>
+                <param id="sql.connection.password" value="2fqCBkBb457eGwoPQq3DCQ=="/>
+                <param id="sql.connection.schema" value="sakila"/>
+                <param id="xaDatasourceClass" value="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource"/>
+                <param id="sql.connection.driver.jar" value="C:\ADICHATZ\eclipse\eclipse.4.9\..\workspaces\4.9\workspace\adichatz\org.adichatz.template/template/connectors/mysql-connector-java-5.1.38-bin.jar"/>
+            </params>
+        </datasource>
+        <datasource id="post" datasourceName="mysql.post" driver="mysql" description="Post schema for mysql database (Test for developers)">
+            <params>
+                <param id="sql.connection.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
+                <param id="sql.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+                <param id="sql.connection.url" value="jdbc:mysql://localhost:3306/post?useSSL=false&amp;max_allowed_packet=2M"/>
+                <param id="sql.connection.username" value="adichatz"/>
+                <param id="sql.connection.password" value="2fqCBkBb457eGwoPQq3DCQ=="/>
+                <param id="sql.connection.schema" value="post"/>
+                <param id="xaDatasourceClass" value="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource"/>
+                <param id="sql.connection.driver.jar" value="C:\ADICHATZ\eclipse\eclipse.4.9\..\workspaces\4.9\workspace\adichatz\org.adichatz.template/template/connectors/mysql-connector-java-5.1.38-bin.jar"/>
+            </params>
+        </datasource>
+        <datasource id="sakila_brute" datasourceName="mysql.sakila" driver="mysql" description="Sakila schema for mysql (without customization)">
+            <params>
+                <param id="sql.connection.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+                <param id="sql.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+                <param id="sql.connection.url" value="jdbc:mysql://localhost:3306/sakila?useSSL=false"/>
+                <param id="sql.connection.username" value="adichatz"/>
+                <param id="sql.connection.password" value="2fqCBkBb457eGwoPQq3DCQ=="/>
+                <param id="sql.connection.schema" value="sakila"/>
+                <param id="xaDatasourceClass" value="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource"/>
+                <param id="sql.connection.driver.jar" value="#PLUGINHOME(org.adichatz.template)\template\connectors\mysql-connector-java-5.1.38-bin.jar"/>
+            </params>
+        </datasource>
+        <datasource id="pgtest" datasourceName="pgsql.test" driver="pgsql" description="Test schema for postgres database">
+            <params>
+                <param id="sql.connection.dialect" value = "org.hibernate.dialect.PostgreSQL95Dialect"/>
+                <param id="sql.connection.driver_class" value="org.postgresql.Driver"/>
+                <param id="sql.connection.url" value="jdbc:postgresql://localhost/test"/>
+                <param id="sql.connection.username" value="adichatz"/>
+                <param id="sql.connection.password" value="2fqCBkBb457eGwoPQq3DCQ=="/>
+                <param id="sql.connection.schema" value="pagila"/>
+                <param id="xaDatasourceClass" value="org.postgresql.xa.PGXADataSource"/>
+                <param id="sql.connection.driver.jar" value="#PLUGINHOME(org.adichatz.template)/template/connectors/postgresql-42.2.9.jar"/>
+            </params>
+            <buildParams>
+                <param id="sql.connection.dialect" value = "org.hibernate.dialect.PostgreSQL9Dialect"/>
+			</buildParams>
+        </datasource>
+        <datasource id="xjch2" datasourceName="mysql.xjch2" driver="mysql" description="xjch2 (Studio resource) schema for mysql database">
+		<!-- AVISATZ a supprimer -->
+            <params>
+                <param id="sql.connection.dialect" value="org.hibernate.dialect.MySQL57InnoDBDialect"/>
+                <param id="sql.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+                <param id="sql.connection.url" value="jdbc:mysql://localhost:3306/xjch2?useSSL=false&amp;max_allowed_packet=2M"/>
+                <param id="sql.connection.username" value="adichatz"/>
+                <param id="sql.connection.password" value="2fqCBkBb457eGwoPQq3DCQ=="/>
+                <param id="sql.connection.schema" value="xjch2"/>
+                <param id="xaDatasourceClass" value="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource"/>
+                <param id="sql.connection.driver.jar" value="#PLUGINHOME(org.adichatz.template)/template/connectors/mysql-connector-java-5.1.38-bin.jar"/>
+            </params>
+        </datasource>
+        <datasource id="northwind" datasourceName="pgsql.northwind" driver="pgsql" description="northwind schema for postgres database">
+            <params>
+                <param value="org.hibernate.dialect.PostgreSQLDialect" id="sql.connection.dialect"/>
+                <param value="org.postgresql.Driver" id="sql.connection.driver_class"/>
+                <param value="jdbc:postgresql://localhost/northwind" id="sql.connection.url"/>
+                <param value="adichatz" id="sql.connection.username"/>
+                <param value="2fqCBkBb457eGwoPQq3DCQ==" id="sql.connection.password"/>
+                <param value="northwind" id="sql.connection.schema"/>
+                <param value="#PLUGINHOME(org.adichatz.template)/template/connectors/postgresql-9.3-1101.jdbc41.jar" id="sql.connection.driver.jar"/>
+                <param value="org.postgresql.xa.PGXADataSource" id="xaDatasourceClass"/>
+            </params>
+        </datasource>
+        <datasource id="h2" datasourceName="h2.studioH2" driver="h2" description="a H2 database">
+            <params>
+                <param value="org.hibernate.dialect.IngresDialect" id="sql.connection.dialect"/>
+                <param value="org.h2.Driver" id="sql.connection.driver_class"/>
+                <param value="jdbc:h2:file:#PLUGINHOME(org.adichatz.template)/database/studioH2" id="sql.connection.url"/>
+                <param value="sa" id="sql.connection.username"/>
+                <param id="sql.connection.password"/>
+                <param value="PUBLIC" id="sql.connection.schema"/>
+                <param value="#PLUGINHOME(org.adichatz.template)/template/connectors/h2-1.3.154.jar" id="sql.connection.driver.jar"/>
+                <param value="org.h2.jdbcx.JdbcDataSource" id="xaDatasourceClass"/>
+            </params>
+        </datasource>
+    </datasources>
+</connectorTree>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/FilterMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <checkBox property="caseInsensitive" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(filter, caseInsensitive).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="caseInsensitive"/>
+        <text property="column" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(filter, column).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="column"/>
+        <ccombo property="columnType" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(filter, columnType).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" layoutData="grow 0" style="SWT.BORDER | SWT.READ_ONLY" id="columnType">
+            <labelProvider>
+                <textCode>return ((ColumnTypeEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.ColumnTypeEnum
+import java.util.Arrays
+return Arrays.asList(ColumnTypeEnum.class.getEnumConstants());</initValues>
+        </ccombo>
+        <text property="enabled" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(filter, enabled).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="enabled"/>
+        <checkBox property="exactString" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(filter, exactString).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="exactString"/>
+        <text property="searchString" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(filter, searchString).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="searchString"/>
+        <text property="text" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(filter, text).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="text"/>
+    </scrolledComposite>
+</containerTree>

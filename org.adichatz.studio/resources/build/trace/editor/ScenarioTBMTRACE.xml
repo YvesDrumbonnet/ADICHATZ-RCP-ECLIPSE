@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<includeTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="includeTreeWrapper$$0" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/includeTree.xsd">
+    <managedToolBar id="pageToolBar">
+        <action imageDescriptor="#IMGDESC(IMG_REFRESH)" toolTipText="#MSG(adi://org.adichatz.studio/./adichatzStudio, studio.editor.refreshFormPage)" id="refreshScenarioAction">
+            <actionCode>import org.adichatz.studio.xjc.data.XjcBindingService;
+((XjcBindingService) getBindingService()).getEditor().fileChanged();</actionCode>
+        </action>
+        <separator style="SWT.NONE" id="separatorWrapper$$1"/>
+        <action imageDescriptor="#IMGDESC(IMG_SAVE)" enabled="false" toolTipText="#MSG(adi://org.adichatz.studio/./adichatzStudio, studio.editor.save)" id="savePageAction">
+            <accessibilities>
+                <accessibility type="ENABLED" id="savePageAction$$ENABLEDFilter">
+                    <accept>return false;</accept>
+                </accessibility>
+            </accessibilities>
+            <actionCode>import org.adichatz.studio.xjc.editor.AStudioFormEditor&#13;
+((AStudioFormEditor) genCode.getContext().getRootCore().getController()).doSave();</actionCode>
+        </action>
+        <action actionClassName="org.adichatz.studio.xjc.editor.action.ErrorStudioAction" enabled="false" toolTipText="#MSG(adi://org.adichatz.engine/./adichatzEngine, error)" id="errorStudioAction">
+            <accessibilities>
+                <accessibility type="ENABLED" id="errorStudioAction$$ENABLEDFilter">
+                    <accept>return false;</accept>
+                </accessibility>
+            </accessibilities>
+        </action>
+        <separator style="SWT.NONE" id="separatorWrapper$$2"/>
+        <action imageDescriptor="#IMGDESC(IMG_GENERATE_SCENARIO.png)" controllerClassName="org.adichatz.studio.xjc.editor.action.GenerateScenarioActionController" toolTipText="#MSG(adi://org.adichatz.studio/./adichatzStudio, scenario.generate)" id="generateScenarioAction"/>
+    </managedToolBar>
+</includeTree>

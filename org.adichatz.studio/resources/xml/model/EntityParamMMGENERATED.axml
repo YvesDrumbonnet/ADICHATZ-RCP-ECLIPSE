@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/EntityParamMM" superEntityURI="adi://org.adichatz.studio/model/ParamMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="entityURI">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="idvalue">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="binaryIdvalue">
+        <controlField xsi:type="textType">
+            <convertModelToTarget>return org.adichatz.common.encoding.Base64.decode(#FV());</convertModelToTarget>
+            <convertTargetToModel>return org.adichatz.common.encoding.Base64.encode(#FV());</convertTargetToModel>
+        </controlField>
+    </propertyField>
+    <propertyField id="lazyFetches">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

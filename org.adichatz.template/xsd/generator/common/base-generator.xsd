@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+ 	<xs:include schemaLocation="../../common/base-common.xsd"/>
+
+    <!-- ***************************************************	-->
+    <!--			V A L I D - E L E M E N T					-->
+    <!-- ***************************************************	-->
+    <xs:complexType name="validElementType">
+        <xs:complexContent>
+            <xs:extension base="elementType">
+    			<xs:attribute name="ref" type="xs:NCName"/>
+                <xs:attribute name="valid" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- ***********************************************	-->
+    <!--			A C C E S S I B I L I T I E S			-->
+    <!-- ***********************************************	-->
+    <!-- *************** -->
+    <!-- accessibilities -->
+    <!-- *************** -->
+    <xs:complexType name="accessibilitiesType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:sequence>
+					<xs:element name="accessibility" type="accessibilityType"  minOccurs="1" maxOccurs="unbounded"/>
+		        </xs:sequence>
+      		</xs:extension>
+      	</xs:complexContent>
+    </xs:complexType>
+    <!-- ************* -->
+    <!-- accessibility -->
+    <!-- ************* -->
+    <xs:complexType name="accessibilityType">
+		<xs:complexContent>
+			<xs:extension base="elementType">
+				<xs:sequence>
+					<xs:element name="accept" type="xs:string"/>
+		        </xs:sequence>
+				<xs:attribute name="value" type="xs:string"/>
+				<xs:attribute name="type" type="accessibilityTypeEnum" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+	<xs:simpleType name="accessibilityTypeEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="VALID"/>
+            <xs:enumeration value="VISIBLE"/>
+            <xs:enumeration value="ENABLED"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ********************************	-->
+    <!--			L I S T E N E R			-->
+    <!-- *******************************	-->
+    <!-- ********* -->
+    <!-- listeners -->
+    <!-- ********* -->
+    <xs:complexType name="listenersType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:sequence>
+					<xs:element name="listener" type="listenerType"  minOccurs="1" maxOccurs="unbounded"/>
+		        </xs:sequence>
+      		</xs:extension>
+      	</xs:complexContent>
+    </xs:complexType>
+    <!-- ******** -->
+    <!-- listener -->
+    <!-- ******** -->
+    <xs:complexType name="listenerType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+		        <xs:sequence>
+					<xs:element name="code" type="xs:string"/>
+        		</xs:sequence>
+				<xs:attribute name="id" type="xs:string"/>
+				<xs:attribute name="listenerTypes" type="xs:string"/>
+				<xs:attribute name="listenerClassName" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+    <!-- ******************************** -->
+    <!-- listener type enumeration -->
+    <!-- ******************************** -->
+	<xs:simpleType name="listenerTypeEnum">
+        <xs:restriction base="xs:token">
+        	<!-- Entity -->
+			<xs:enumeration value="CHANGE_STATUS"/>
+			<xs:enumeration value="LOCK_ENTITY"/>
+			<xs:enumeration value="BEFORE_PROPERTY_CHANGE"/>
+			<xs:enumeration value="WHEN_PROPERTY_CHANGE"/>
+			<xs:enumeration value="AFTER_PROPERTY_CHANGE"/>
+			<xs:enumeration value="PRE_SAVE"/>
+			<xs:enumeration value="POST_SAVE"/>
+			<xs:enumeration value="PRE_REFRESH"/>
+			<xs:enumeration value="POST_REFRESH"/>
+        	<!-- databinding -->
+			<xs:enumeration value="PRE_SAVE_ENTITIES"/>
+			<xs:enumeration value="POST_SAVE_ENTITIES"/>
+			<xs:enumeration value="PRE_REFRESH_ENTITIES"/>
+			<xs:enumeration value="POST_REFRESH_ENTITIES"/>
+			<xs:enumeration value="ADD_ENTITY"/>
+			<xs:enumeration value="REMOVE_ENTITY"/>
+			<xs:enumeration value="POST_MESSAGE"/>
+        	<!-- Life cycle -->
+            <xs:enumeration value="BEFORE_ENTITY_INJECTION"/>
+            <xs:enumeration value="AFTER_ENTITY_INJECTION"/>
+			<xs:enumeration value="AFTER_INITIALIZE"/>
+			<xs:enumeration value="BEFORE_CREATE_CONTROL"/>
+			<xs:enumeration value="AFTER_CREATE_CONTROL"/>
+			<xs:enumeration value="BEFORE_SYNCHRONIZE"/>
+			<xs:enumeration value="AFTER_SYNCHRONIZE"/>
+			<xs:enumeration value="BEFORE_END_LIFE_CYCLE"/>
+			<xs:enumeration value="AFTER_END_LIFE_CYCLE"/>
+			<xs:enumeration value="BEFORE_DISPOSE"/>
+			<xs:enumeration value="AFTER_DISPOSE"/>
+			<xs:enumeration value="POST_CREATE_PART"/>
+        	<!-- Runnable -->
+			<xs:enumeration value="PRE_RUN"/>
+			<xs:enumeration value="POST_RUN"/>
+        	<!-- Control -->
+			<xs:enumeration value="MODIFY_TEXT"/>
+			<xs:enumeration value="CHECK_STATE"/>
+			<xs:enumeration value="SELECTION_CHANGED"/>
+			<xs:enumeration value="POST_SELECTION_CHANGED"/>
+			<xs:enumeration value="WIDGET_SELECTED"/>
+			<xs:enumeration value="DOUBLE_CLICK"/>
+			<xs:enumeration value="REFRESH"/>
+			<xs:enumeration value="BEFORE_FIELD_CHANGE"/>
+			<xs:enumeration value="AFTER_FIELD_CHANGE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ************************************	-->
+    <!--			V A L I D A T O R			-->
+    <!-- ************************************	-->
+    <!-- *********** -->
+    <!-- validators -->
+    <!-- ********** -->
+    <xs:complexType name="validatorsType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:sequence>
+					<xs:element name="validator" type="validatorType"  minOccurs="1" maxOccurs="unbounded"/>
+		        </xs:sequence>
+      		</xs:extension>
+      	</xs:complexContent>
+    </xs:complexType>
+    <!-- ********* -->
+    <!-- validator -->
+    <!-- ********* -->
+   <xs:complexType  name="validatorType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:sequence>
+					<xs:element name="errorWhen" type="xs:string"/>
+					<xs:element name="warningWhen" type="xs:string"/>
+		        </xs:sequence>
+				<xs:attribute name="key" type="xs:NCName" use="required"/>
+				<xs:attribute name="validatorClassName" type="xs:NCName"/>
+				<xs:attribute name="hostingControllerIds" type="xs:string"/>
+				<xs:attribute name="errorMessage" type="xs:string"/>
+				<xs:attribute name="warningMessage" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+   </xs:complexType>
+
+    <!-- ***********************************************	-->
+    <!--			R E S O U R C E - B U N D L E			-->
+    <!-- ***********************************************	-->
+    <!-- ************** -->
+    <!-- *************** -->
+    <!-- resourceBundles -->
+    <!-- *************** -->
+    <xs:complexType name="resourceBundlesType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:sequence>
+					<xs:element name="resourceBundle" type="resourceBundleType"  minOccurs="1" maxOccurs="unbounded"/>
+		        </xs:sequence>
+      		</xs:extension>
+      	</xs:complexContent>
+    </xs:complexType>
+    <!-- ************** -->
+    <!-- resourceBundle -->
+    <!-- ************** -->
+    <xs:complexType name="resourceBundleType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+		        <xs:attribute name="basename" type="xs:string" use="required"/>
+		        <xs:attribute name="var" type="xs:string"/>
+      		</xs:extension>
+      	</xs:complexContent>
+    </xs:complexType>
+
+    <!-- *****************************	-->
+    <!--			O T H E RS 			-->
+    <!-- ******************************	-->
+    
+    <!-- ************** -->
+    <!-- layoutType -->
+    <!-- ************** -->
+    <xs:complexType name="layoutType">
+		<xs:complexContent>
+			<xs:extension base="basicType">
+				<xs:attribute name="layoutConstraints" type="xs:string"/>
+				<xs:attribute name="columnConstraints" type="xs:string"/>
+				<xs:attribute name="rowConstraints" type="xs:string"/>		 
+      		</xs:extension>
+      	</xs:complexContent>
+    </xs:complexType>
+
+    <!-- ********************** -->
+    <!-- generation Enumeration -->
+    <!-- ********************** -->
+	<xs:simpleType name="generationEnum">
+        <xs:restriction base="xs:token">
+        	<!-- Project level -->
+            <xs:enumeration value="MODEL_PART"/>
+            <xs:enumeration value="EJB"/>
+            <xs:enumeration value="APPLICATION_PART"/>
+            <xs:enumeration value="RCP_PART"/>
+            <xs:enumeration value="PLUGIN_ENTITY"/>
+            <xs:enumeration value="NAVIGATOR"/>
+        	<!-- Entity level -->
+            <xs:enumeration value="ENTITY"/>
+            <xs:enumeration value="MESSAGE_BUNDLE"/>
+            <xs:enumeration value="EDITOR"/>
+            <xs:enumeration value="DETAIL"/>
+            <xs:enumeration value="TABLE"/>
+            <xs:enumeration value="QUERY"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ************************************ -->
+    <!--        Q U E R Y - B U I L D E R     -->
+    <!-- ************************************ -->
+    <xs:complexType name="queryBuilderType">
+		<xs:sequence>
+			<xs:element name="params" type="paramsType"/>
+		</xs:sequence>
+        <xs:attribute name="queryBuilderURI" type="xs:string"/>
+    </xs:complexType>
+
+</xs:schema>

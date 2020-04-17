@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/GeneratorMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField mandatory="true" id="treeClassName">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+    <propertyField mandatory="true" id="generatorClassName">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+</entityTree>

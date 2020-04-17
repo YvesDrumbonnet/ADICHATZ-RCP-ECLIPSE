@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/EntitySetContentProviderMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <text property="id" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(element, id).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="id"/>
+        <hyperlink text="#MSG(queryContentProvider, adiResourceURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="adiResourceURIEntitySetContentProviderPART$1"/>
+        <text property="adiResourceURI" labelText="#MSG(queryContentProvider, adiResourceURI).concat(&quot;:&quot;)" linkedControl="adiResourceURIEntitySetContentProviderPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="adiResourceURI"/>
+        <hyperlink text="#MSG(queryContentProvider, comparatorClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="comparatorClassNameEntitySetContentProviderPART$1"/>
+        <text property="comparatorClassName" labelText="#MSG(queryContentProvider, comparatorClassName).concat(&quot;:&quot;)" linkedControl="comparatorClassNameEntitySetContentProviderPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="comparatorClassName"/>
+        <text property="fieldName" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(listDetailContentProvider, fieldName).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="fieldName"/>
+        <radioGroup property="optional" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(param, optional).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.BooleanRadioGroupController" id="optional"/>
+        <text property="parentEntityURI" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(entitySetContentProvider, parentEntityURI).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="parentEntityURI"/>
+        <text property="pluginKey" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryContentProvider, pluginKey).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="pluginKey"/>
+        <text property="preferenceURI" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryContentProvider, preferenceURI).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="preferenceURI"/>
+        <text property="type" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(param, type).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="type"/>
+        <text property="value" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(param, value).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="value"/>
+    </scrolledComposite>
+</containerTree>

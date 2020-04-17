@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/EntitySetMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(field, id).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="id$1"/>
+        <text property="id" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(field, id).concat(&quot;:&quot;)" linkedControl="id$1" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="id">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <hyperlink text="#MSG(entitySet, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIEntitySetPART$1">
+            <pluginEntity/>
+        </hyperlink>
+        <text property="entityURI" labelText="#MSG(entitySet, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIEntitySetPART$1" mandatory="true" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="entityURI">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(entitySet, lazyFetches).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="lazyFetches$1"/>
+        <text property="lazyFetches" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(entitySet, lazyFetches).concat(&quot;:&quot;)" linkedControl="lazyFetches$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="lazyFetches">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(entitySet, mappedBy).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="mappedBy$1"/>
+        <text property="mappedBy" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(entitySet, mappedBy).concat(&quot;:&quot;)" linkedControl="mappedBy$1" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="mappedBy">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(entitySet, parentClause).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="parentClause$1"/>
+        <text property="parentClause" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(entitySet, parentClause).concat(&quot;:&quot;)" linkedControl="parentClause$1" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="parentClause">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+    </scrolledComposite>
+</containerTree>

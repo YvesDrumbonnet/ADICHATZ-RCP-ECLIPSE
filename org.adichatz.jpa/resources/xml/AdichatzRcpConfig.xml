@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<adichatzRcpConfigTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/engine/adichatzRcpConfigTree.xsd">
+    <rcpConfiguration>
+        <navigators>
+            <navigator id="groupNavigator" iconURI="platform:/plugin/org.adichatz.engine.e4/resources/icons/IMG_NAVIGATOR.png" contributionURI="bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.part.GroupNavigator" label="adichatz.group.navigator" messageBundleURI="adi://org.adichatz.jpa/./adichatzGroupNavigator">
+                <menuPath id="groupNavigator" adiResourceURI="adi://org.adichatz.jpa/groupNavigator/GroupNavigatorContent"/>
+                <menuPath id="jpaMenu" adiResourceURI="adi://org.adichatz.jpa/./JpaMenu"/>
+            </navigator>
+        </navigators>
+        <tableRenderers>
+            <tableRenderer id="Basic" text="tableRenderer.basic" resourceBundleKey="pagination" className="org.adichatz.engine.renderer.BasicTableRenderer" default="true"/>
+            <tableRenderer id="Stripe" text="tableRenderer.stripe" resourceBundleKey="pagination" className="org.adichatz.engine.renderer.TableStripeTableRenderer" tabularClassName="org.adichatz.engine.controller.collection.TableController"/>
+            <tableRenderer id="Stripe" text="tableRenderer.stripe" resourceBundleKey="pagination" className="org.adichatz.engine.renderer.GridStripeTableRenderer" tabularClassName="org.adichatz.engine.controller.nebula.GridController"/>
+            <tableRenderer id="Binding" text="tableRenderer.binding" resourceBundleKey="pagination" className="org.adichatz.engine.renderer.TableBindingRenderer" tabularClassName="org.adichatz.engine.controller.collection.TableController" requireBindingService="true"/>
+            <tableRenderer id="Binding" text="tableRenderer.binding" resourceBundleKey="pagination" className="org.adichatz.engine.renderer.GridBindingRenderer" tabularClassName="org.adichatz.engine.controller.nebula.GridController" requireBindingService="true"/>
+        </tableRenderers>
+        <tableStatusBars>
+            <tableStatusBar id="Slider" text="statusBar.slider" resourceBundleKey="pagination" className="org.adichatz.engine.tabular.SliderTabularStatusBar" default="true" rank="2"/>
+            <tableStatusBar id="Scale" text="statusBar.scale" resourceBundleKey="pagination" className="org.adichatz.engine.tabular.ScaleTabularStatusBar" rank="3"/>
+            <tableStatusBar id="Navigation" text="statusBar.navigation" resourceBundleKey="pagination" className="org.adichatz.engine.tabular.NavigationStatusBar" rank="4"/>
+            <tableStatusBar id="OnePage" text="statusBar.onePage" resourceBundleKey="pagination" className="org.adichatz.engine.tabular.OnePageTabularStatusBar" rank="5"/>
+        </tableStatusBars>
+    </rcpConfiguration>
+</adichatzRcpConfigTree>

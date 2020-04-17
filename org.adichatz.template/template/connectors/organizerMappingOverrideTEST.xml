@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<scenarioTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/scenarioTree.xsd">
+	<params>
+    	<param id="devl.default.integer.pattern" value="#####" type="RUNTIME"/>
+        <param id="devl.gencode.directory" value="/"/>
+        <param id="plugin.package" value="org.adichatz.organizer.handling" type="ALL"/>
+        <param id="devl.gencode.package" value="org.adichatz.organizer.ui" type="ALL"/>
+    </params>
+    <generationScenario>
+		<modelPart>
+    		<pojoRewriters>
+	    		<pojoRewriter rewriterClassName="org.adichatz.scenario.generation.PgPojoIdRewriter"/>
+	    		<pojoRewriter rewriterClassName="org.adichatz.scenario.generation.SuperPojoRewriter" propertyRegex="lastUpdate">
+	    			<params>
+	    				<param id="superClassURI" value="bundleclass://./#PLUGINPACKAGE().model.ASuperLastUpdate"/>
+	    				<param id="sourceURI" value="platform:/plugin/org.adichatz.template/template/src/ASuperLastUpdate.java"/>
+	    			</params>
+	    		</pojoRewriter>
+	    		<pojoRewriter rewriterClassName="org.adichatz.scenario.generation.ImplementsInterfaceRewriter" priority="9">
+	    			<params>
+	    				<param id="interfacePackageName" value="org.adichatz.organizer.model"/>
+                        <param id="generateInterfaces" value="false"/>
+                        <param id="interfacePrefix" value="IOrg"/>
+	    			</params>
+	    		</pojoRewriter>
+			</pojoRewriters>
+			<params>
+                <param id="sql.connection.dialect" value = "org.hibernate.dialect.PostgreSQL9Dialect"/>
+			</params>
+    	</modelPart>
+		<propertyField id="category" pojoType="org.adichatz.organizer.model.MpaaCategoryEnum">
+        	<controlField xsi:type="cComboType">
+				<labelProvider>
+	               <textCode>return ((org.adichatz.organizer.model.MpaaCategoryEnum) element).getValue();</textCode>
+				</labelProvider>
+				<initValues>return java.util.Arrays.asList(org.adichatz.organizer.model.MpaaCategoryEnum.values());</initValues>
+			</controlField>
+		</propertyField>
+		<propertyField id="lastUpdate">
+        	<controlField xsi:type="dateTextType" enabled="false" style="SWT.BORDER | SWT.TIME"/>
+		</propertyField>
+		<propertyField id="color">
+        	<controlField xsi:type="rgbTextType" style="SWT.BORDER">
+				<convertTargetToModel>return rgbText.getStringValue();</convertTargetToModel>
+				<convertModelToTarget>return org.adichatz.engine.common.EngineTools.getRGBFromHexa((String) value);</convertModelToTarget>
+        	</controlField>
+		</propertyField>
+    </generationScenario>
+    <customPostAction injectInsideScenarioFile="true" generatePojo="true" generateEJB="true" generatePersistenceXml="true" deployEJB="true"/>
+</scenarioTree>
+    

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/GenerationUnitMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <hyperlink text="#MSG(generationUnit, adiResourceURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="adiResourceURIGenerationUnitPART$1"/>
+        <text property="adiResourceURI" labelText="#MSG(generationUnit, adiResourceURI).concat(&quot;:&quot;)" linkedControl="adiResourceURIGenerationUnitPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="adiResourceURI"/>
+        <hyperlink text="#MSG(generationUnit, scenarioClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="scenarioClassNameGenerationUnitPART$1"/>
+        <text property="scenarioClassName" labelText="#MSG(generationUnit, scenarioClassName).concat(&quot;:&quot;)" linkedControl="scenarioClassNameGenerationUnitPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="scenarioClassName"/>
+        <ccombo property="type" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(generationUnit, type).concat(&quot;:&quot;)" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" layoutData="grow 0" style="SWT.BORDER | SWT.READ_ONLY" id="type">
+            <labelProvider>
+                <textCode>return ((GenerationEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.GenerationEnum
+import java.util.Arrays
+return Arrays.asList(GenerationEnum.class.getEnumConstants());</initValues>
+        </ccombo>
+    </scrolledComposite>
+</containerTree>

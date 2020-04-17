@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/PluginEntityMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/IconsMM" id="icons"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/MessagesMM" id="messages"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/ParamsMM" id="params"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/PojoRewritersMM" id="pojoRewriters"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/QueryBuilderMM" id="queryBuilder"/>
+    <propertyField id="beanClassName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="uiBeanClassName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField mandatory="true" id="entityURI">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+    <propertyField id="protectPojo">
+        <controlField xsi:type="checkBoxType"/>
+    </propertyField>
+    <propertyField id="retrieveRoles">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="mergeRoles">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="persistRoles">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="removeRoles">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/GenerationUnitMM" id="generationUnit">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/GenerationUnitMM" name="generationUnit"/>
+        </entityElements>
+    </oneToMany>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/PropertyFieldMM" id="propertyField">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/PropertyFieldMM" name="propertyField"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

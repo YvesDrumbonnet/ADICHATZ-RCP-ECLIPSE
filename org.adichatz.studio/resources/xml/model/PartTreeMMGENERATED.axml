@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/PartTreeMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/ConfigMM" id="config"/>
+    <propertyField id="additionalCode">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField id="bindingServiceClassName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="coreClassName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="entityURI">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="image">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="outlinePageClassName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="title">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="toolTipText">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/ValidElementMM" id="formPageOrInclude">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/FormPageMM" name="formPage"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/IncludeMM" name="include"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

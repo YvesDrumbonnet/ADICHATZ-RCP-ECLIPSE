@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/GenerationScenarioMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/ModelPartMM" id="modelPart"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/RcpPartMM" id="rcpPart"/>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/PluginEntityMM" id="pluginEntity">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/PluginEntityMM" name="pluginEntity"/>
+        </entityElements>
+    </oneToMany>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/GenerationUnitMM" id="generationUnit">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/GenerationUnitMM" name="generationUnit"/>
+        </entityElements>
+    </oneToMany>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/PropertyFieldMM" id="propertyField">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/PropertyFieldMM" name="propertyField"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

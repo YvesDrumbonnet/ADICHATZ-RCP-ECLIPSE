@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+ 	<xs:include schemaLocation="./query-common.xsd"/>
+ 	
+    <!-- ********************************************************** -->
+    <!--			R E C E N T - O P E N - E D I T O R 			-->
+    <!-- ********************************************************** -->
+	<xs:element name="recentOpenEditorTree">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="recentOpenEditor" type="recentOpenEditorType" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+    <xs:complexType name="recentOpenEditorType">
+		<xs:sequence>
+			<xs:element name="params" type="paramsType"/>
+		</xs:sequence>
+        <xs:attribute name="recentId" type="xs:string" use="required"/>
+		<xs:attribute name="label" type="xs:string"/>
+        <xs:attribute name="lastOpen" type="xs:dateTime"/>
+		<xs:attribute name="lastClose" type="xs:dateTime"/>
+    </xs:complexType>
+
+    <xs:complexType name="recentOpenQueryEditorType">
+       <xs:complexContent>
+           <xs:extension base="recentOpenEditorType">
+        		<xs:sequence>
+                    <xs:element name="recentPreferences" type="recentPreferencesType"/>
+        		</xs:sequence>
+           </xs:extension>
+       </xs:complexContent>
+    </xs:complexType>
+
+    <!-- *********************************************** -->
+    <!-- R E C E N T - Q U E R Y - P R E F E R E N C E S -->
+    <!-- *********************************************** -->
+    <xs:complexType  name="recentPreferencesType">
+        <xs:sequence>
+        	<xs:element name="recentPreference" type="recentPreferenceType"  minOccurs="1" maxOccurs="unbounded"/>
+	    </xs:sequence>
+    </xs:complexType>
+    <xs:complexType  name="recentPreferenceType">
+        <xs:attribute name="preferenceURI" type="xs:string" use="required"/>
+        <xs:attribute name="updated" type="xs:dateTime"/>
+    </xs:complexType>
+</xs:schema>
+	

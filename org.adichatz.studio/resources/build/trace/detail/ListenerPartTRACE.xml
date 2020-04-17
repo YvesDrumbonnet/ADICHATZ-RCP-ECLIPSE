@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ListenerMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]"/>
+        <hyperlink text="#MSG(adi://org.adichatz.studio/./listener, listenerClassName)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="listenerClassNameListenerPart$1">
+            <pluginEntity/>
+        </hyperlink>
+        <text property="listenerClassName" linkedControl="listenerClassNameListenerPart$1" noLabel="true" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="listenerClassName">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(listener, listenerTypes).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="listenerTypes$1"/>
+        <genericField property="listenerTypes" labelForeground="#COLOR(IFormColors.TITLE)" linkedControl="listenerTypes$1" mandatory="true" controllerClassName="org.adichatz.studio.xjc.controller.ListenerTypeController" id="listenerTypes">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </genericField>
+        <label text="#MSG(listener, code).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="code$1"/>
+        <text property="code" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(listener, code).concat(&quot;:&quot;)" linkedControl="code$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="code">
+            <pluginEntity/>
+        </text>
+        <validators>
+            <validator key="classOrCodeMandatory" errorMessage="#MSG(adichatzStudio,studio.listener.classOrCodeMandatory)">
+                <errorWhen>return null == #FV(listenerClassName) &amp;&amp; (null == #BEAN().getCode() || #BEAN().getCode().trim().isEmpty());</errorWhen>
+            </validator>
+        </validators>
+    </scrolledComposite>
+</containerTree>

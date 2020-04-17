@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<includeTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/includeTree.xsd">
+	<composite id="fullTextComposite">
+		<layout columnConstraints="[][grow,fill]2[]0[]" layoutConstraints="wrap 4, ins 5"/>
+	    <label id="fulltextLabel" text="#MSG(adichatzJpa, query.fulltext.label)"/>
+	    <text id="fulltextText" toolTipText="#MSG(adichatzJpa, query.fulltext.text.tooltip)" controllerClassName="org.adichatz.jpa.controller.QueryFulltextController"/>
+	    <button id="fullTextButton" toolTipText="#MSG(adichatzJpa, query.fulltext.launch.tooltip)" image="#IMG(IMG_LAUNCH_QUERY.png)" controllerClassName="org.adichatz.jpa.controller.FulltextButtonController"/>
+        <helpButton helpLabel="#MSG(adichatzJpa, query.fulltext.help.button.specify)" helpSpecify="#MSG(adichatzJpa, query.fulltext.help.button.specify)" helpMessage="#MSG(adichatzJpa, query.fulltext.help.button.message)" id="fullTextHlp"/>
+	</composite>
+</includeTree>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/PluginEntityMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <text property="beanClassName" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(pluginEntity, beanClassName).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="beanClassName"/>
+        <hyperlink text="#MSG(pluginEntity, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIPluginEntityPART$1"/>
+        <text property="entityURI" labelText="#MSG(pluginEntity, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIPluginEntityPART$1" mandatory="true" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="entityURI"/>
+        <text property="mergeRoles" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(pluginEntity, mergeRoles).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="mergeRoles"/>
+        <text property="persistRoles" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(pluginEntity, persistRoles).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="persistRoles"/>
+        <checkBox property="protectPojo" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(pluginEntity, protectPojo).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="protectPojo"/>
+        <text property="removeRoles" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(pluginEntity, removeRoles).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="removeRoles"/>
+        <text property="retrieveRoles" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(pluginEntity, retrieveRoles).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="retrieveRoles"/>
+        <text property="uiBeanClassName" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(pluginEntity, uiBeanClassName).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="uiBeanClassName"/>
+    </scrolledComposite>
+</containerTree>

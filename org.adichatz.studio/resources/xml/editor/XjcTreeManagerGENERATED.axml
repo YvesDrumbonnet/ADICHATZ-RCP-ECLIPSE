@@ -1,0 +1,1139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<treeManagerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" superTreeManagerClassName="org.adichatz.studio.xjc.editor.AStudioTreeManager" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/treeManagerTree.xsd">
+    <treeElement entityURI="adi://org.adichatz.studio/model/AccessibilitiesMM" label="&quot;Accessibilities&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibility" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/AccessibilityMM" image="#IMG(xjc/accessibility.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <labelCode>import org.adichatz.generator.xjc.AccessibilityType
+return concat("Accessibility", ((AccessibilityType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ActionMM" image="#IMG(xjc/action.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="params" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.ActionType
+return concat("Action", ((ActionType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ActionResourcesMM" label="&quot;ActionResources&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="copyResource" nodeType="LIST"/>
+        <treeNode propertyId="removeResource" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ApplicationServerMM" label="&quot;ApplicationServer&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="params" nodeType="REFERENCE"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ApplicationServersMM" label="&quot;ApplicationServers&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="applicationServer" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ArgPShelfMM" image="#IMG(xjc/argPShelf.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="labelProvider" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="scrolledFormOrSectionOrComposite" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.ArgPShelfType
+return concat("ArgPShelf", ((ArgPShelfType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ArgTabFolderMM" image="#IMG(xjc/argTabFolder.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="labelProvider" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="scrolledFormOrSectionOrComposite" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.ArgTabFolderType
+return concat("ArgTabFolder", ((ArgTabFolderType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ButtonBarMM" image="#IMG(xjc/buttonBar.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="buttonOrSeparator" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.ButtonBarType
+return concat("ButtonBar", ((ButtonBarType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ButtonMM" image="#IMG(xjc/button.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.ButtonType
+return concat("Button", ((ButtonType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/CComboMM" image="#IMG(adi://org.adichatz.studio/xjc/combo.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="labelProvider" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="queryReference" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.CComboType
+return concat("CCombo", ((CComboType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/CTabFolderMM" image="#IMG(xjc/cTabFolder.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="cTabItem" nodeType="LIST"/>
+        <treeNode propertyId="include" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.CTabFolderType
+return concat("CTabFolder", ((CTabFolderType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/CTabItemMM" image="#IMG(xjc/cTabItem.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="scrolledFormOrSectionOrComposite" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.CTabItemType
+return concat("CTabItem", ((CTabItemType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/CheckBoxMM" image="#IMG(xjc/checkBox.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.CheckBoxType
+return concat("CheckBox", ((CheckBoxType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ClientCanvasMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="dynamicClause" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <treeNode propertyId="scrolledFormOrSectionOrComposite" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.ClientCanvasType
+return concat("ClientCanvas", ((ClientCanvasType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/CollectionMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.CollectionType
+return concat("Collection", ((CollectionType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ColumnFieldMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.ColumnFieldType
+return concat("ColumnField", ((ColumnFieldType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ColumnPreferenceMM" image="#IMG(xjc/columnPreference.png);" label="&quot;ColumnPreference&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ColumnPreferencesMM" image="#IMG(adi://org.adichatz.studio/xjc/columnPreference.png);" label="&quot;ColumnPreferences&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="columnPreference" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ComboMM" image="#IMG(xjc/combo.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="labelProvider" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="queryReference" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.ComboType
+return concat("Combo", ((ComboType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/CompositeBagMM" image="#IMG(xjc/compositeBag.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="scrolledFormOrSectionOrComposite" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.CompositeBagType
+return concat("CompositeBag", ((CompositeBagType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/CompositeMM" image="#IMG(xjc/composite.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="dynamicClause" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <treeNode propertyId="scrolledFormOrSectionOrComposite" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.CompositeType
+return concat("Composite", ((CompositeType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/CompositeSeparatorMM" image="#IMG(xjc/compositeSeparator.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.CompositeSeparatorType
+return concat("CompositeSeparator", ((CompositeSeparatorType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ConfigMM" image="#IMG(xjc/config.png);" label="&quot;Config&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="customizations" nodeType="REFERENCE"/>
+        <treeNode propertyId="navigationPaths" nodeType="REFERENCE"/>
+        <treeNode propertyId="params" nodeType="REFERENCE"/>
+        <treeNode propertyId="resourceBundles" nodeType="REFERENCE"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ConnectorTreeMM" label="&quot;ConnectorTree&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="applicationServers" nodeType="REFERENCE"/>
+        <treeNode propertyId="datasources" nodeType="REFERENCE"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ContainerMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="config" nodeType="REFERENCE"/>
+        <treeNode propertyId="formPageOrScrolledFormOrSection" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.ContainerType
+return concat("Container", ((ContainerType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ContainerTreeMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="config" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="managedToolBar" nodeType="REFERENCE"/>
+        <treeNode propertyId="formPageOrScrolledFormOrSection" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.ContainerTree
+return concat("ContainerTree", ((ContainerTree) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ContentProviderMM" image="#IMG(xjc/contentProvider.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <labelCode>import org.adichatz.generator.xjc.ContentProviderType
+return concat("ContentProvider", ((ContentProviderType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ContributionItemMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.ContributionItemType
+return concat("ContributionItem", ((ContributionItemType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ControlFieldMM" image="#IMG(xjc/controlField.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.ControlFieldType
+return concat("ControlField", ((ControlFieldType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ControlMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.ControlType
+return concat("Control", ((ControlType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ControllerMM" label="&quot;Controller&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ControllerPreferenceMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="columnPreferences" nodeType="REFERENCE"/>
+        <treeNode propertyId="filters" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.ControllerPreferenceType
+return concat("ControllerPreference", ((ControllerPreferenceType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ControllersMM" label="&quot;Controllers&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="controller" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/CopyResourceMM" image="#IMG(adi://org.adichatz.studio/./IMG_COPY.png);" label="&quot;CopyResource&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="replacement" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/CrossReferenceMM" label="&quot;CrossReference&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/CrossReferencesMM" image="#IMG(adi://org.adichatz.engine/./IMG_CROSS_REFERENCE.png);" label="&quot;CrossReferences&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="crossReference" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/CustomGenerationUnitMM" image="#IMG(adi://org.adichatz.studio/./IMG_GENERATE_JAVA.png);" label="&quot;CustomGenerationUnit&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="generators" nodeType="REFERENCE"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/CustomPostActionMM" image="#IMG(adi://org.adichatz.studio/xjc/action.png);" label="&quot;CustomPostAction&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="customGenerationUnit" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/CustomizationClassParamMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <labelCode>import org.adichatz.generator.xjc.CustomizationClassParamType
+return concat("CustomizationClassParam", ((CustomizationClassParamType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/CustomizationsMM" image="#IMG(xjc/customizations.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="params" nodeType="REFERENCE"/>
+        <treeNode propertyId="scrolledFormOrClientCanvasOrSection" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.CustomizationsType
+return concat("Customizations", ((CustomizationsType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/CustomizedPreferenceMM" label="&quot;CustomizedPreference&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="preference" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/CustomizedScenarioMM" label="&quot;CustomizedScenario&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/CustomizedScenariosMM" label="&quot;CustomizedScenarios&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="customizedScenario" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/DatasourceMM" label="&quot;Datasource&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="params" nodeType="REFERENCE"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/DatasourcesMM" label="&quot;Datasources&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="datasource" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/DateTextMM" image="#IMG(xjc/dateText.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.DateTextType
+return concat("DateText", ((DateTextType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/DateTimeMM" image="#IMG(xjc/dateTime.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.DateTimeType
+return concat("DateTime", ((DateTimeType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/DirtyContainerMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="dynamicClause" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <treeNode propertyId="scrolledFormOrSectionOrComposite" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.DirtyContainerType
+return concat("DirtyContainer", ((DirtyContainerType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/DynamicClauseMM" label="&quot;DynamicClause&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/EditableFormTextMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <treeNode propertyId="textColor" nodeType="LIST"/>
+        <treeNode propertyId="textFont" nodeType="LIST"/>
+        <treeNode propertyId="textImage" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.EditableFormTextType
+return concat("EditableFormText", ((EditableFormTextType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ElementMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <labelCode>import org.adichatz.generator.xjc.ElementType
+return concat("Element", ((ElementType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/EmbeddedFieldMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="columnField" nodeType="REFERENCE"/>
+        <treeNode propertyId="controlField" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.EmbeddedFieldType
+return concat("EmbeddedField", ((EmbeddedFieldType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/EmbeddedIdFieldMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="columnField" nodeType="REFERENCE"/>
+        <treeNode propertyId="controlField" nodeType="REFERENCE"/>
+        <treeNode propertyId="embeddedField" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.EmbeddedIdFieldType
+return concat("EmbeddedIdField", ((EmbeddedIdFieldType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/EncryptedTextMM" image="#IMG(xjc/encryptedText.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.EncryptedTextType
+return concat("EncryptedText", ((EncryptedTextType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/EntityElementMM" label="&quot;EntityElement&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/EntityElementsMM" label="&quot;EntityElements&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="entityElement" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/EntityParamMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <labelCode>import org.adichatz.generator.xjc.EntityParamType
+return concat("EntityParam", ((EntityParamType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/EntitySetContentProviderMM" image="#IMG(adi://org.adichatz.studio/xjc/entitySet.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <labelCode>import org.adichatz.generator.xjc.EntitySetContentProviderType
+return concat("EntitySetContentProvider", ((EntitySetContentProviderType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/EntitySetMM" image="#IMG(xjc/entitySet.png);" label="&quot;EntitySet&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="entityElements" nodeType="REFERENCE"/>
+        <treeNode propertyId="queryReference" nodeType="REFERENCE"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/EntityTreeMM" image="#IMG(xjc/entity.png);" label="&quot;EntityTree&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="manyToMany" nodeType="LIST"/>
+        <treeNode propertyId="oneToMany" nodeType="LIST"/>
+        <treeNode propertyId="oneToOne" nodeType="LIST"/>
+        <treeNode propertyId="propertyField" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ExtendTreeMM" label="&quot;ExtendTree&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="config" nodeType="REFERENCE"/>
+        <treeNode propertyId="formPageOrScrolledFormOrSection" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ExtraTextMM" image="#IMG(adi://org.adichatz.studio/xjc/richText.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.ExtraTextType
+return concat("ExtraText", ((ExtraTextType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/FieldContainerMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="scrolledFormOrSectionOrComposite" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.FieldContainerType
+return concat("FieldContainer", ((FieldContainerType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/FieldMM" label="&quot;Field&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/FileTextMM" image="#IMG(xjc/fileText.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.FileTextType
+return concat("FileText", ((FileTextType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/FilterMM" image="#IMG(xjc/filter.png);" label="&quot;Filter&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/FiltersMM" image="#IMG(xjc/filters.png);" label="&quot;Filters&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="filter" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/FontTextMM" image="#IMG(adi://org.adichatz.engine/./IMG_FONT.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.FontTextType
+return concat("FontText", ((FontTextType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/FormPageMM" image="#IMG(xjc/formPage.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="dynamicClause" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="managedToolBar" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <treeNode propertyId="scrolledFormOrSectionOrComposite" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.FormPageType
+return concat("FormPage", ((FormPageType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/FormattedTextMM" image="#IMG(xjc/formattedText.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.FormattedTextType
+return concat("FormattedText", ((FormattedTextType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/GMapMM" image="#IMG(xjc/gMap.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.GMapType
+return concat("GMap", ((GMapType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/GenerationScenarioMM" label="&quot;GenerationScenario&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="modelPart" nodeType="REFERENCE"/>
+        <treeNode propertyId="rcpPart" nodeType="REFERENCE"/>
+        <treeNode propertyId="generationUnit" nodeType="LIST"/>
+        <treeNode propertyId="pluginEntity" nodeType="LIST"/>
+        <treeNode propertyId="propertyField" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/GenerationUnitMM" image="#IMG(adi://org.adichatz.studio/./IMG_GENERATE_JAVA.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="generators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.GenerationUnitType
+import org.adichatz.engine.common.EngineTools
+GenerationUnitType  generationUnit = (GenerationUnitType) treeElement.getElement();
+if (null == generationUnit.getAdiResourceURI())
+    return concat("GenerationUnit", generationUnit.getType().name());
+else
+    try {
+        return concat("GenerationUnit", EngineTools.getInstanceKeys(generationUnit.getAdiResourceURI())[2].concat(" - ").concat(generationUnit.getType().name()));
+    } catch(Exception e) {
+        return generationUnit.getAdiResourceURI();
+    }
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/GeneratorMM" image="#IMG(adi://org.adichatz.studio/./IMG_GENERATE_JAVA.png);" label="&quot;Generator&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/GeneratorsMM" image="#IMG(adi://org.adichatz.studio/./IMG_GENERATE_JAVA.png);" label="&quot;Generators&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="generator" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/GenericFieldMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.GenericFieldType
+return concat("GenericField", ((GenericFieldType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/GridColumnGroupMM" image="#IMG(xjc/gridColumnGroup.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="gridColumn" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.GridColumnGroupType
+return concat("GridColumnGroup", ((GridColumnGroupType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/GridColumnMM" image="#IMG(xjc/gridColumn.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.GridColumnType
+return concat("GridColumn", ((GridColumnType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/GridMM" image="#IMG(xjc/grid.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="columnPreferences" nodeType="REFERENCE"/>
+        <treeNode propertyId="contentProvider" nodeType="REFERENCE"/>
+        <treeNode propertyId="crossReferences" nodeType="REFERENCE"/>
+        <treeNode propertyId="filters" nodeType="REFERENCE"/>
+        <treeNode propertyId="headerMenuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="labelProvider" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="gridColumnOrGridColumnGroup" nodeType="LIST"/>
+        <treeNode propertyId="include" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.GridType
+return concat("Grid", ((GridType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/GroupMM" image="#IMG(xjc/group.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="dynamicClause" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <treeNode propertyId="scrolledFormOrSectionOrComposite" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.GroupType
+return concat("Group", ((GroupType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/HeaderMenuManagerMM" image="#IMG(adi://org.adichatz.studio/xjc/pGroupMenu.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="actionOrMenuOrSeparator" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.HeaderMenuManagerType
+return concat("HeaderMenuManager", ((HeaderMenuManagerType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/HelpButtonMM" image="#IMG(xjc/helpButton.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.HelpButtonType
+return concat("HelpButton", ((HelpButtonType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/HyperlinkMM" image="#IMG(xjc/hyperlink.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.HyperlinkType
+return concat("Hyperlink", ((HyperlinkType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/IconMM" label="&quot;Icon&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/IconsMM" label="&quot;Icons&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="icon" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ImageViewerMM" image="#IMG(xjc/imageViewer.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.ImageViewerType
+return concat("ImageViewer", ((ImageViewerType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/IncludeMM" image="#IMG(xjc/include.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="customizations" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="params" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.IncludeType
+return concat("Include", ((IncludeType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/IncludeTreeMM" image="#IMG(xjc/include.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="config" nodeType="REFERENCE"/>
+        <treeNode propertyId="formPageOrScrolledFormOrSection" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.IncludeTree
+return concat("IncludeTree", ((IncludeTree) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ItemMM" image="#IMG(xjc/item.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="customizations" nodeType="REFERENCE"/>
+        <treeNode propertyId="params" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.ItemType
+return concat("Item", ((ItemType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/JointureAliasMM" label="&quot;JointureAlias&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/JointureAliasesMM" label="&quot;JointureAliases&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="jointureAlias" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/JointureMM" image="#IMG(xjc/jointure.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="jointure" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.JointureType
+import org.adichatz.generator.xjc.JointureTypeEnum
+JointureType  jointure = (JointureType) treeElement.getElement();
+JointureTypeEnum  jointureType = jointure.getJointureType();
+return concatNvl("Jointure:", null == jointureType ? "?" : jointureType.value(), jointure.getFieldName(), jointure.getSuffix());</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/LabelMM" image="#IMG(xjc/label.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.LabelType
+return concat("Label", ((LabelType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/LabelProviderMM" image="#IMG(xjc/labelProvider.png);" label="&quot;LabelProvider&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/LayoutMM" image="#IMG(xjc/layout.png);" label="&quot;Layout&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/LazyFetchContainerMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.LazyFetchContainerType
+return concat("LazyFetchContainer", ((LazyFetchContainerType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ListDetailContentProviderMM" image="#IMG(adi://org.adichatz.studio/xjc/contentProvider.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <labelCode>import org.adichatz.generator.xjc.ListDetailContentProviderType
+return concat("ListDetailContentProvider", ((ListDetailContentProviderType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ListenerMM" image="#IMG(xjc/listener.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <labelCode>import org.adichatz.generator.xjc.ListenerType
+ListenerType  listener = (ListenerType) treeElement.getElement();
+return "Listener ".concat(null == listener.getListenerTypes() ? "": listener.getListenerTypes());</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ListenersMM" image="#IMG(xjc/listeners.png);" label="&quot;Listeners&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="listener" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ManagedToolBarMM" image="#IMG(xjc/managedToolBar.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="actionOrMenuActionOrSeparator" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.ManagedToolBarType
+return concat("ManagedToolBar", ((ManagedToolBarType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ManyToManyMM" label="&quot;ManyToMany&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="entityElements" nodeType="REFERENCE"/>
+        <treeNode propertyId="params" nodeType="REFERENCE"/>
+        <treeNode propertyId="queryReference" nodeType="REFERENCE"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/MenuActionMM" image="#IMG(xjc/menuAction.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="params" nodeType="REFERENCE"/>
+        <treeNode propertyId="actionOrMenuActionOrSeparator" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.MenuActionType
+return concat("MenuAction", ((MenuActionType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/MenuItemMM" image="#IMG(xjc/menuItem.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.MenuItemType
+return concat("MenuItem", ((MenuItemType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/MenuMM" image="#IMG(xjc/menu.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuOrItem" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.MenuType
+return concat("Menu", ((MenuType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/MenuManagerMM" image="#IMG(xjc/menuManager.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="actionOrMenuOrSeparator" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.MenuManagerType
+return concat("MenuManager", ((MenuManagerType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/MessageMM" image="#IMG(xjc/message.png);" label="&quot;Message&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/MessagesMM" image="#IMG(xjc/messages.png);" label="&quot;Messages&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="message" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ModelPartMM" label="&quot;ModelPart&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="params" nodeType="REFERENCE"/>
+        <treeNode propertyId="pojoRewriters" nodeType="REFERENCE"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/MultiChoiceMM" image="#IMG(adi://org.adichatz.engine/./IMG_MULTICHOICE.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="labelProvider" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="queryReference" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.MultiChoiceType
+return concat("MultiChoice", ((MultiChoiceType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/NativeContentProviderMM" image="#IMG(adi://org.adichatz.studio/xjc/contentProvider.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <labelCode>import org.adichatz.generator.xjc.NativeContentProviderType
+return concat("NativeContentProvider", ((NativeContentProviderType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/NavigationPathMM" image="#IMG(adi://org.adichatz.jpa/./IMG_NAVIGATION.png);" label="&quot;NavigationPath&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/NavigationPathsMM" image="#IMG(adi://org.adichatz.jpa/./IMG_NAVIGATION.png);" label="&quot;NavigationPaths&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="navigationPath" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/NavigatorTreeMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="config" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuOrItem" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.NavigatorTree
+return concat("NavigatorTree", ((NavigatorTree) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/NodeMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.NodeType
+return concat("Node", ((NodeType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/NumericTextMM" image="#IMG(xjc/numericText.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.NumericTextType
+return concat("NumericText", ((NumericTextType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/OneToManyMM" label="&quot;OneToMany&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="entityElements" nodeType="REFERENCE"/>
+        <treeNode propertyId="queryReference" nodeType="REFERENCE"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/OneToOneMM" image="#IMG(xjc/oneToOne.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <labelCode>import org.adichatz.generator.xjc.OneToOneType
+return concat("OneToOne", ((OneToOneType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/PGroupMM" image="#IMG(xjc/pGroup.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="dynamicClause" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <treeNode propertyId="pgroupToolItemOrPgroupMenu" nodeType="LIST"/>
+        <treeNode propertyId="scrolledFormOrSectionOrComposite" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.PGroupType
+return concat("PGroup", ((PGroupType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/PGroupMenuMM" image="#IMG(xjc/pGroupMenu.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuItem" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.PGroupMenuType
+return concat("PGroupMenu", ((PGroupMenuType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/PGroupToolItemMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="params" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.PGroupToolItemType
+return concat("PGroupToolItem", ((PGroupToolItemType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/PShelfItemMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="scrolledFormOrSectionOrComposite" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.PShelfItemType
+return concat("PShelfItem", ((PShelfItemType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/PShelfMM" image="#IMG(xjc/pShelf.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="include" nodeType="LIST"/>
+        <treeNode propertyId="pshelfItem" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.PShelfType
+return concat("PShelf", ((PShelfType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ParamMM" image="#IMG(xjc/param.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <labelCode>import org.adichatz.generator.xjc.ParamType
+return concat("Param", ((ParamType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ParamsMM" image="#IMG(xjc/params.png);" label="&quot;Params&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="param" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/PartTreeMM" label="&quot;PartTree&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="config" nodeType="REFERENCE"/>
+        <treeNode propertyId="formPageOrInclude" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/PathElementMM" image="#IMG(xjc/pathElement.png);" label="&quot;PathElement&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/PathElementsMM" image="#IMG(adi://org.adichatz.studio/xjc/pathElement.png);" label="&quot;PathElements&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="pathElement" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/PluginEntityMM" image="#IMG(xjc/pluginEntity.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="icons" nodeType="REFERENCE"/>
+        <treeNode propertyId="messages" nodeType="REFERENCE"/>
+        <treeNode propertyId="params" nodeType="REFERENCE"/>
+        <treeNode propertyId="pojoRewriters" nodeType="REFERENCE"/>
+        <treeNode propertyId="queryBuilder" nodeType="REFERENCE"/>
+        <treeNode propertyId="generationUnit" nodeType="LIST"/>
+        <treeNode propertyId="propertyField" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.PluginEntityType
+return concat("PluginEntity", ((PluginEntityType) treeElement.getElement()).getEntityURI());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/PojoRewriterMM" label="&quot;PojoRewriter&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="params" nodeType="REFERENCE"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/PojoRewritersMM" label="&quot;PojoRewriters&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="pojoRewriter" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/PojoSuperClassMM" label="&quot;PojoSuperClass&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/PreferenceMM" label="&quot;Preference&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="controllerPreference" nodeType="REFERENCE"/>
+        <treeNode propertyId="queryPreference" nodeType="REFERENCE"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/PropertyFieldMM" image="#IMG(xjc/propertyField.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="columnField" nodeType="REFERENCE"/>
+        <treeNode propertyId="controlField" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.PropertyFieldType
+return concat("PropertyField", ((PropertyFieldType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/QueryBuilderMM" label="&quot;QueryBuilder&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="params" nodeType="REFERENCE"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/QueryContentProviderMM" image="#IMG(adi://org.adichatz.studio/xjc/contentProvider.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <labelCode>import org.adichatz.generator.xjc.QueryContentProviderType
+return concat("QueryContentProvider", ((QueryContentProviderType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/QueryOpenClauseMM" image="#IMG(xjc/queryOpenClause.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="parameter" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.QueryOpenClauseType
+QueryOpenClauseType  openClause = (QueryOpenClauseType) treeElement.getElement();
+return null == openClause.getTitle() ? "QueryOpenClause" : "QueryOpenClause: ".concat(openClause.getTitle());</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/QueryPaginationMM" image="#IMG(xjc/queryPagination.png);" label="&quot;QueryPagination&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/QueryParameterMM" image="#IMG(adi://org.adichatz.jpa/./IMG_PARAMETER.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <labelCode>import org.adichatz.generator.xjc.QueryParameterType
+QueryParameterType  parameter = (QueryParameterType) treeElement.getElement();
+return "QueryParameter: ".concat(null == parameter.getId() ? parameter.getProperty() : parameter.getId());</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/QueryPartMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <labelCode>import org.adichatz.generator.xjc.QueryPartType
+return concat("QueryPart", ((QueryPartType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/QueryPreferenceMM" image="#IMG(xjc/queryPreference.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="pagination" nodeType="REFERENCE"/>
+        <treeNode propertyId="openClause" nodeType="LIST"/>
+        <treeNode propertyId="parameter" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.QueryPreferenceType
+return concat("QueryPreference", ((QueryPreferenceType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/QueryReferenceMM" image="#IMG(adi://org.adichatz.engine/./IMG_QUERY.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <labelCode>import org.adichatz.generator.xjc.QueryReferenceType
+return concat("QueryReference", ((QueryReferenceType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/QueryTreeMM" image="#IMG(xjc/query.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="customizedPreferences" nodeType="REFERENCE"/>
+        <treeNode propertyId="jointureAliases" nodeType="REFERENCE"/>
+        <treeNode propertyId="queryBuilder" nodeType="REFERENCE"/>
+        <treeNode propertyId="queryPreference" nodeType="REFERENCE"/>
+        <treeNode propertyId="jointure" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.QueryTree
+return concat("QueryTree", ((QueryTree) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/RadioGroupMM" image="#IMG(xjc/radioGroup.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="labelProvider" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="queryReference" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.RadioGroupType
+return concat("RadioGroup", ((RadioGroupType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/RcpPartMM" label="&quot;RcpPart&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/RefControlMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="labelProvider" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="queryReference" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.RefControlType
+return concat("RefControl", ((RefControlType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/RefFieldMM" image="#IMG(xjc/refField.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="columnField" nodeType="REFERENCE"/>
+        <treeNode propertyId="controlField" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.RefFieldType
+return concat("RefField", ((RefFieldType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/RefTextMM" image="#IMG(xjc/refText.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="labelProvider" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="params" nodeType="REFERENCE"/>
+        <treeNode propertyId="queryReference" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.RefTextType
+return concat("RefText", ((RefTextType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/RemoveResourceMM" image="#IMG(adi://org.adichatz.studio/./IMG_DELETE.gif);" label="&quot;RemoveResource&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ReplacementMM" label="&quot;Replacement&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ResourceBundleMM" label="&quot;ResourceBundle&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ResourceBundlesMM" label="&quot;ResourceBundles&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="resourceBundle" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/RgbTextMM" image="#IMG(adi://org.adichatz.engine/./IMG_COLOR.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.RgbTextType
+return concat("RgbText", ((RgbTextType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/RichTextMM" image="#IMG(xjc/richText.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.RichTextType
+return concat("RichText", ((RichTextType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/SashFormMM" image="#IMG(xjc/sashForm.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="dynamicClause" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <treeNode propertyId="scrolledFormOrSectionOrComposite" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.SashFormType
+return concat("SashForm", ((SashFormType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ScenarioMM" label="&quot;Scenario&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ScenarioTreeMM" label="&quot;ScenarioTree&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="actionResources" nodeType="REFERENCE"/>
+        <treeNode propertyId="controllers" nodeType="REFERENCE"/>
+        <treeNode propertyId="customPostAction" nodeType="REFERENCE"/>
+        <treeNode propertyId="customizedScenarios" nodeType="REFERENCE"/>
+        <treeNode propertyId="generationScenario" nodeType="REFERENCE"/>
+        <treeNode propertyId="generators" nodeType="REFERENCE"/>
+        <treeNode propertyId="params" nodeType="REFERENCE"/>
+        <treeNode propertyId="pathElements" nodeType="REFERENCE"/>
+        <treeNode propertyId="scenarios" nodeType="REFERENCE"/>
+        <treeNode propertyId="allActionResources" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ScenariosMM" label="&quot;Scenarios&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="scenario" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ScrolledCompositeMM" image="#IMG(xjc/scrolledComposite.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="dynamicClause" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <treeNode propertyId="scrolledFormOrSectionOrComposite" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.ScrolledCompositeType
+return concat("ScrolledComposite", ((ScrolledCompositeType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ScrolledFormMM" image="#IMG(xjc/scrolledForm.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="dynamicClause" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="managedToolBar" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <treeNode propertyId="action" nodeType="LIST"/>
+        <treeNode propertyId="scrolledFormOrSectionOrComposite" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.ScrolledFormType
+return concat("ScrolledForm", ((ScrolledFormType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/SectionMM" image="#IMG(xjc/section.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="dynamicClause" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="managedToolBar" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <treeNode propertyId="scrolledFormOrSectionOrComposite" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.SectionType
+return concat("Section", ((SectionType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/SeparatorMM" image="#IMG(xjc/separator.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.SeparatorType
+return concat("Separator", ((SeparatorType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/SetMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="headerMenuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="include" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.SetType
+return concat("Set", ((SetType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/StarRatingMM" image="#IMG(xjc/starRating.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.StarRatingType
+return concat("StarRating", ((StarRatingType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/TableColumnMM" image="#IMG(xjc/tableColumn.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.TableColumnType
+return concat("TableColumn", ((TableColumnType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/TableMM" image="#IMG(xjc/table.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="columnPreferences" nodeType="REFERENCE"/>
+        <treeNode propertyId="contentProvider" nodeType="REFERENCE"/>
+        <treeNode propertyId="crossReferences" nodeType="REFERENCE"/>
+        <treeNode propertyId="filters" nodeType="REFERENCE"/>
+        <treeNode propertyId="headerMenuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="labelProvider" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="include" nodeType="LIST"/>
+        <treeNode propertyId="tableColumn" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.TableType
+return concat("Table", ((TableType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/TabularMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="columnPreferences" nodeType="REFERENCE"/>
+        <treeNode propertyId="contentProvider" nodeType="REFERENCE"/>
+        <treeNode propertyId="crossReferences" nodeType="REFERENCE"/>
+        <treeNode propertyId="filters" nodeType="REFERENCE"/>
+        <treeNode propertyId="headerMenuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="labelProvider" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="include" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.TabularType
+return concat("Tabular", ((TabularType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/TextColorMM" label="&quot;TextColor&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/TextFontMM" label="&quot;TextFont&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/TextImageMM" label="&quot;TextImage&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/TextMM" image="#IMG(xjc/text.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.TextType
+return concat("Text", ((TextType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ToolBarMM" image="#IMG(xjc/toolBar.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="toolItemOrSeparator" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.ToolBarType
+return concat("ToolBar", ((ToolBarType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ToolItemMM" image="#IMG(xjc/toolItem.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="action" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuAction" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.ToolItemType
+return concat("ToolItem", ((ToolItemType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/TreeElementMM" label="&quot;TreeElement&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="treeNode" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/TreeMM" image="#IMG(xjc/tree.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="headerMenuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="menuManager" nodeType="REFERENCE"/>
+        <treeNode propertyId="include" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.TreeType
+return concat("Tree", ((TreeType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/TreeManagerTreeMM" label="&quot;TreeManagerTree&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="treeElement" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/TreeNodeMM" label="&quot;TreeNode&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild"/>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ValidElementMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <labelCode>import org.adichatz.generator.xjc.ValidElementType
+return concat("ValidElement", ((ValidElementType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ValidableContainerMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="dynamicClause" nodeType="REFERENCE"/>
+        <treeNode propertyId="layout" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <treeNode propertyId="validators" nodeType="REFERENCE"/>
+        <treeNode propertyId="scrolledFormOrSectionOrComposite" nodeType="LIST"/>
+        <labelCode>import org.adichatz.generator.xjc.ValidableContainerType
+return concat("ValidableContainer", ((ValidableContainerType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ValidatorMM" image="#IMG(xjc/validator.png);" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <labelCode>import org.adichatz.generator.xjc.ValidatorType
+return concat("Validator", ((ValidatorType) treeElement.getElement()).getKey());
+</labelCode>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/ValidatorsMM" image="#IMG(adi://org.adichatz.studio/xjc/validator.png);" label="&quot;Validators&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="validator" nodeType="LIST"/>
+    </treeElement>
+    <treeElement entityURI="adi://org.adichatz.studio/model/WidgetMM" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="accessibilities" nodeType="REFERENCE"/>
+        <treeNode propertyId="listeners" nodeType="REFERENCE"/>
+        <labelCode>import org.adichatz.generator.xjc.WidgetType
+return concat("Widget", ((WidgetType) treeElement.getElement()).getId());
+</labelCode>
+    </treeElement>
+</treeManagerTree>

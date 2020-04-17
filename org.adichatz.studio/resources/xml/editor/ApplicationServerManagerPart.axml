@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/tree/containerTree.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<group id="applicationServerGroup" text="#MSG(adichatzStudio, scenario.applicationServer.group)" font="#FONT(JFaceResources.BANNER_FONT)" background="#COLOR(IFormColors.H_GRADIENT_START)" layoutData="h 0:n:n, w 0:n:n">
+		<layout layoutConstraints="wrap 2" columnConstraints="[]15[grow,fill]" rowConstraints="[]2[]"/>
+		<label id="nameLBL" text="#MSG(adichatzStudio, scenario.applicationServer.name)"  background="#COLOR(IFormColors.H_GRADIENT_START)"/>
+		<text id="name" mandatory="true" enabled="false"/>
+		<label id="descriptionLBL" text="#MSG(adichatzStudio, scenario.datasource.description)" background="#COLOR(IFormColors.H_GRADIENT_START)"/>
+		<text id="description"/>
+	</group>
+	<group id="serverGroup" text="#MSG(adichatzStudio, scenario.as.SERVER)"  font="#FONT(JFaceResources.BANNER_FONT)"  entityURI="adi://org.adichatz.studio/model/ApplicationServerMM" layoutData="h 0:n:n, w 0:n:n">
+		<validators>
+			<validator errorMessage="#MSG(adichatzStudio, studio.fullProject.applicationServer)" key="invalidInstallation" hostingControllerIds="ejb.deployment.dir">
+				<errorWhen>import java.io.File;&#xD;
+String serverHome = (String) #CONTROLLER(application.server.home).getValue(); 
+String deployDir = (String) #CONTROLLER(ejb.deployment.dir).getValue(); 
+if (null == serverHome || null == deployDir)
+   return true;
+return !(new File(serverHome.concat(&quot;/&quot;).concat(deployDir)).exists());</errorWhen>
+			</validator>
+			<validator errorMessage="#MSG(adichatzStudio, studio.invalid.modules.directory)" key="invalidModulesDirectory" hostingControllerIds="as.modules.directory">
+				<errorWhen>import java.io.File;&#xD;
+String serverHome = (String) #CONTROLLER(application.server.home).getValue(); 
+String modulesDirectory = (String) #CONTROLLER(as.modules.directory).getValue(); 
+if (null == serverHome || null == modulesDirectory)
+   return true;
+return !(new File(serverHome.concat(&quot;/&quot;).concat(modulesDirectory)).exists());</errorWhen>
+			</validator>
+		</validators>
+		<layout layoutConstraints="wrap 2" columnConstraints="[]15[grow,fill]" rowConstraints="[]2[]2[]"/>
+		<label id="asHomeLBL" text="#MSG(adichatzStudio, scenario.as.home)"/>
+		<fileText id="application.server.home" style="SWT.BORDER | AdiSWT.DIRECTORY | SWT.NONE" mandatory="true" layoutData="wmin 400" forceBinding="true"
+                    toolTipText="#MSG(adichatzStudio, scenario.applicationServer.dir.sample)">
+			<validators>
+				<validator errorMessage="#MSG(adichatzStudio, scenario.applicationServer.invalid.deploymentDir)" key="invalidDeployDir">
+					<errorWhen>import java.io.File;&#xD;
+return null == getValue() || !(new File((String) getValue()).exists());</errorWhen>
+				</validator>
+			</validators>
+		</fileText>
+		<label id="asDeploymentDirLBL" text="#MSG(adichatzStudio, scenario.as.deploymentDir)"/>
+		<text id="ejb.deployment.dir"  mandatory="true" forceBinding="true"/>
+		<label id="as.modules.directoryLBL" text="#MSG(adichatzStudio, scenario.as.modulesDir)"/>
+		<text id="as.modules.directory"  mandatory="false" forceBinding="true"/>
+	</group>
+	<group id="contextGroup" text="#MSG(adichatzStudio, scenario.as.CONTEXT)"  font="#FONT(JFaceResources.BANNER_FONT)" layoutData="h 0:n:n, w 0:n:n">
+		<layout layoutConstraints="wrap 2" columnConstraints="[]15[grow,fill]" rowConstraints="[]2[]2[]"/>
+		<label id="urlPkgsLBL" text="java.naming.factory.url.pkgs:"/>
+		<text id="java.naming.factory.url.pkgs"/>
+		<label id="namingLBL" text="java.naming.factory.initial:"/>
+		<text id="java.naming.factory.initial"/>
+		<label id="providerUrlLBL" text="java.naming.provider.url:"/>
+		<text id="java.naming.provider.url"/>
+	</group>
+	<group id="remoteGroup" text="#MSG(adichatzStudio, scenario.as.REMOTE)"  font="#FONT(JFaceResources.BANNER_FONT)" layoutData="h 0:n:n, w 0:n:n">
+		<layout layoutConstraints="wrap 2" columnConstraints="[]15[grow,fill]" rowConstraints="[]2[]"/>
+		<label id="hostLBL" text="remote.connection.default.host:"/>
+		<text id="remote.connection.default.host"/>
+		<label id="portLBL" text="remote.connection.default.port:"/>
+		<text id="remote.connection.default.port"/>
+	</group>
+</containerTree>

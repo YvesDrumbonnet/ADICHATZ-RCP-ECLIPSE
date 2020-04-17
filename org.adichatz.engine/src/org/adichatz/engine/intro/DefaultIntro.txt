@@ -1,0 +1,10 @@
+<form>
+<p><span color="header" font="H2">Thank you for using </span>   <span color="adichatz" font="H1">ADICHATZ</span><span color="header" font="H2">.</span></p>
+<p><br/><br/></p>
+<p><span font="H3">Current version is a BETA version.</span></p>
+<p><span font="H3">It should not be used in production!</span></p>
+<p><br/><br/><br/><br/></p>
+<p> Visit our <img href="adichatzIcon"/> <a href="http://www.adichatz.org" nowrap="true">web site</a>.</p>
+<p> Join the discussion at this <img href="forumIcon"/> <a href="http://sourceforge.net/p/adichatz/forum/?source=navbar">Forum</a>.</p>
+<p> Contact us by <img href="mailIcon"/> <a href="mailto://contact@adichatz.org">mail</a>.</p>
+</form>

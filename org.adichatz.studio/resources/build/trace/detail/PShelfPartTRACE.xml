@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/PShelfMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(element, id).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="id$1"/>
+        <text property="id" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(element, id).concat(&quot;:&quot;)" linkedControl="id$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.IdTextController" id="id">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(collection, background).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="background$1"/>
+        <text property="background" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, background).concat(&quot;:&quot;)" linkedControl="background$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ColorController" id="background">
+            <pluginEntity/>
+        </text>
+        <hyperlink text="#MSG(collection, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNamePShelfPART$1">
+            <pluginEntity/>
+        </hyperlink>
+        <text property="controllerClassName" labelText="#MSG(collection, controllerClassName).concat(&quot;:&quot;)" linkedControl="controllerClassNamePShelfPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="controllerClassName">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(pShelf, delayed).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="delayed$1"/>
+        <text property="delayed" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(pShelf, delayed).concat(&quot;:&quot;)" linkedControl="delayed$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="delayed">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(collection, enabled).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="enabled$1"/>
+        <text property="enabled" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, enabled).concat(&quot;:&quot;)" linkedControl="enabled$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="enabled">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(collection, enableRoles).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="enableRoles$1"/>
+        <text property="enableRoles" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, enableRoles).concat(&quot;:&quot;)" linkedControl="enableRoles$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="enableRoles">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(collection, foreground).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="foreground$1"/>
+        <text property="foreground" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, foreground).concat(&quot;:&quot;)" linkedControl="foreground$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ColorController" id="foreground">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(pShelf, layoutData).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="layoutData$1"/>
+        <text property="layoutData" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(pShelf, layoutData).concat(&quot;:&quot;)" linkedControl="layoutData$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="layoutData">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(validElement, ref).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="ref$1"/>
+        <text property="ref" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validElement, ref).concat(&quot;:&quot;)" linkedControl="ref$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="ref">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(pShelf, selection).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="selection$1"/>
+        <text property="selection" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(pShelf, selection).concat(&quot;:&quot;)" linkedControl="selection$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="selection">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(pShelf, shelfRenderer).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="shelfRenderer$1"/>
+        <radioGroup property="shelfRenderer" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(pShelf, shelfRenderer).concat(&quot;:&quot;)" linkedControl="shelfRenderer$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="shelfRenderer">
+            <pluginEntity/>
+            <labelProvider>
+                <textCode>return ((ShelfRendererEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.ShelfRendererEnum
+import java.util.Arrays
+return Arrays.asList(ShelfRendererEnum.class.getEnumConstants());</initValues>
+        </radioGroup>
+        <label text="#MSG(collection, style).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="style$1"/>
+        <text property="style" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, style).concat(&quot;:&quot;)" linkedControl="style$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="style">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(validElement, valid).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="valid$1"/>
+        <text property="valid" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validElement, valid).concat(&quot;:&quot;)" linkedControl="valid$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="valid">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(collection, validRoles).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="validRoles$1"/>
+        <text property="validRoles" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, validRoles).concat(&quot;:&quot;)" linkedControl="validRoles$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="validRoles">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(collection, visible).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="visible$1"/>
+        <text property="visible" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, visible).concat(&quot;:&quot;)" linkedControl="visible$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="visible">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(collection, visibleRoles).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="visibleRoles$1"/>
+        <text property="visibleRoles" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, visibleRoles).concat(&quot;:&quot;)" linkedControl="visibleRoles$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="visibleRoles">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(collection, additionalCode).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="additionalCode$1"/>
+        <text property="additionalCode" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(collection, additionalCode).concat(&quot;:&quot;)" linkedControl="additionalCode$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="additionalCode">
+            <pluginEntity/>
+        </text>
+    </scrolledComposite>
+</containerTree>

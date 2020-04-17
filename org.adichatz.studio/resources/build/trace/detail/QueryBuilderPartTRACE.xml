@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/QueryBuilderMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(queryBuilder, queryBuilderURI).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="queryBuilderURI$1"/>
+        <text property="queryBuilderURI" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryBuilder, queryBuilderURI).concat(&quot;:&quot;)" linkedControl="queryBuilderURI$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="queryBuilderURI">
+            <pluginEntity/>
+        </text>
+    </scrolledComposite>
+</containerTree>

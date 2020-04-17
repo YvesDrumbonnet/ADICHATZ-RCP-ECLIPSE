@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:include schemaLocation="common/control.xsd"/>
+
+    <xs:element name="extendTree">
+        <xs:complexType>
+			<xs:choice>
+				<xs:element name="config" type="configType"/>
+				<xs:element name="additionalCode" type="xs:string"/>
+				<xs:choice maxOccurs="unbounded" minOccurs="0">
+				<!-- collections -->
+					<xs:element name="formPage" type="formPageType"/>
+					<xs:element name="scrolledForm" type="scrolledFormType"/>
+					<xs:element name="section" type="sectionType"/>
+					<xs:element name="composite" type="compositeType"/>
+					<xs:element name="compositeBag" type="compositeBagType"/>
+					<xs:element name="group" type="groupType"/>
+					<xs:element name="pgroup" type="pGroupType"/>
+					<xs:element name="sashForm" type="sashFormType"/>
+					<xs:element name="scrolledComposite" type="scrolledCompositeType"/>
+					<xs:element name="table" type="tableType"/>
+					<xs:element name="grid" type="gridType"/>
+					<xs:element name="cTabFolder" type="cTabFolderType"/>
+					<xs:element name="argTabFolder" type="argTabFolderType"/>
+					<xs:element name="pshelf" type="pShelfType"/>
+					<xs:element name="argPShelf" type="argPShelfType"/>
+					<xs:element name="include" type="includeType"/>
+					<xs:element name="headerMenuManager" type="headerMenuManagerType"/>
+					<xs:element name="menuManager" type="menuManagerType"/>
+					<xs:element name="managedToolBar" type="managedToolBarType"/>
+				</xs:choice>
+			</xs:choice>
+			<xs:attribute name="adiResourceURI" type="xs:string" use="required"/>
+        </xs:complexType>
+	</xs:element>
+</xs:schema>

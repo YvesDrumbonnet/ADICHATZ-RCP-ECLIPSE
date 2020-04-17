@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/CollectionMM" superEntityURI="adi://org.adichatz.studio/model/ValidElementMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/AccessibilitiesMM" id="accessibilities"/>
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/ListenersMM" id="listeners"/>
+    <propertyField id="additionalCode">
+        <controlField xsi:type="textType" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE"/>
+    </propertyField>
+    <propertyField id="controllerClassName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="background">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="enabled">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="foreground">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="style">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="visible">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="enableRoles">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="validRoles">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="visibleRoles">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

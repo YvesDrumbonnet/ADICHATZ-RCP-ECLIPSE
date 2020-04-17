@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree id="editorOutline" entityURI="adi://org.adichatz.jpa/jpa/EditorOutlineInputMM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<pshelf id="navigationFolder" selection="0">
+		<pshelfItem id="navigationItem" text="#MSG(editorOutline, navigation)" image="#IMG(IMG_NAVIGATION.png)">
+       		<composite id="navigationCmp">
+		        <layout columnConstraints="al center" layoutConstraints="wrap 1, ins 0, gapy 10!, alignx center"/>
+		    </composite>
+		</pshelfItem>
+		<pshelfItem id="entityItem" text="#MSG(editorOutline, entities)" image="#IMG(IMG_ENTITIES.png)">
+       		<composite id="entitiesCmp">
+		        <layout rowConstraints="grow,fill" columnConstraints="grow,fill" layoutConstraints="wrap 1, ins 0"/>
+		        <table id="entitiesTable" entityURI="adi://org.adichatz.jpa/jpa/EntityMM" layoutData="height 0:n:n, w 0:n:n">
+                    <contentProvider xsi:type="nativeContentProviderType" fieldName="entities"/>
+                     <tableColumn sorted="true" id="entityIdTC" text="#MSG(editorOutline, entity)">
+				    	<columnText>return row.getEntityMM().getEntityId();</columnText>
+				    	<columnImage>import org.adichatz.common.ejb.util.IEntityConstants
+if (#BEAN(editorOutline).hasError(row))
+	return #IMG(IMG_ERROR_ENTITY.png);
+switch (row.getStatus()) {
+case IEntityConstants.MERGE:					
+	return #IMG(IMG_UPDATE_ENTITY.png);
+case IEntityConstants.REMOVE:					
+	return #IMG(IMG_DELETE_ENTITY.png);
+case IEntityConstants.PERSIST:					
+	return #IMG(IMG_CREATE_ENTITY.png);
+}
+return #IMG(IMG_ENTITY.png);
+				    	</columnImage>
+				    </tableColumn>
+                     <tableColumn sorted="true" id="identifierTC" text="#MSG(editorOutline, identifier)">
+				    	<columnText>return String.valueOf(row.getBeanId());</columnText>
+				    </tableColumn>
+		        </table>
+       		</composite>
+		</pshelfItem>
+		<pshelfItem id="errorItem" text="#MSG(editorOutline, encounteredErrors)" image="#IMG(IMG_ERROR.png)">
+	        <table id="errorPathsTable" entityURI="adi://org.adichatz.jpa/jpa/ErrorPathMM" layoutData="height 0:n:n, w 0:n:n">
+	            <contentProvider xsi:type="nativeContentProviderType" fieldName="errorPaths"/>
+		        <listeners>
+		            <listener listenerTypes="DOUBLE_CLICK">
+		                <code>#BEAN(editorOutline).activateControllers(getSelectedObject());</code>
+	                </listener>
+	            </listeners>
+                <tableColumn sorted="true" id="pageTC" text="#MSG(editorOutline, page)" property="page"/>
+                <tableColumn sorted="true" id="entityIdTC" text="#MSG(editorOutline, entity)" property="entityId"/>
+                <tableColumn sorted="true" id="entityBeanIdTC" text="#MSG(editorOutline, identifier)" property="entityBeanId"/>
+                <tableColumn sorted="true" id="fieldTC" text="#MSG(editorOutline, field)" property="field"/>
+                <tableColumn sorted="true" id="messageTC" text="#MSG(editorOutline, message)">
+			    	<columnText>return String.valueOf(row.getErrorMessage().getMessageStr());</columnText>
+			    </tableColumn>
+	        </table>
+		</pshelfItem>
+       	<pshelfItem id="filterItem" text="#MSG(viewerFilter, filters)" image="#IMG(IMG_FILTER)">
+      		<layout layoutConstraints="ins 0, wrap 1" columnConstraints="grow, fill" rowConstraints="grow, fill"/>
+	 		<table id="filterTable" entityURI="adi://org.adichatz.jpa/query.model/ViewerFilterMM" controllerClassName="org.adichatz.jpa.query.custom.FilterTableController">
+		        <tableColumn id="textTC" property="text"/>
+	 		</table>
+    	</pshelfItem>       	
+	</pshelf>		
+</containerTree>

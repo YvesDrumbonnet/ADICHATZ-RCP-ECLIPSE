@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+ 	<xs:include schemaLocation="../common/base-common.xsd"/>
+ 	
+    <!-- ************************** -->
+    <!--			R O O T			-->
+    <!-- ************************** -->	
+	<xs:element name="adichatzTestingTree">
+		<xs:complexType>
+	        <xs:sequence>
+	            <xs:choice minOccurs="0" maxOccurs="unbounded">
+	                <xs:element name="suite" type="suiteType"/>
+	                <xs:element name="testFile" type="testFileType"/>
+	            </xs:choice>
+	            <xs:choice>
+	                <xs:element name="classLoaders" type="classLoadersType"/>
+	            </xs:choice>
+	        </xs:sequence>
+			<xs:attribute name="id" type="xs:NCName"/>
+			<xs:attribute name="applicationTestRunerURI" type="xs:NCName"/>
+	        <xs:attribute name="expanded" type="xs:boolean" default="true"/>
+		</xs:complexType>
+	</xs:element>
+
+    <!-- ********************************** -->
+    <!--            T E S T I N G           -->
+    <!-- ********************************** --> 
+    <!-- ******** -->
+    <!-- testNode -->
+    <!-- ******** -->
+    <!-- ***** -->
+    <xs:complexType name="testNodeType">
+        <xs:attribute name="id" type="xs:Name"/>
+        <xs:attribute name="label" type="xs:string"/>
+        <xs:attribute name="toolTipText" type="xs:string"/>
+        <xs:attribute name="forceOpenManagerPart" type="xs:boolean" default="false"/>
+    </xs:complexType>
+    <!-- ************** -->
+    <!-- collectionTest -->
+    <!-- ************** -->
+    <xs:complexType name="collectionTestType">
+        <xs:complexContent>
+            <xs:extension base="testNodeType">
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                	<xs:element name="test" type="testType"/>
+                </xs:choice>
+                <xs:attribute name="launchOnStartup" type="xs:boolean" default="false"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- ***** -->
+    <!-- suite -->
+    <!-- ***** -->
+    <xs:complexType name="suiteType">
+        <xs:complexContent>
+            <xs:extension base="collectionTestType">
+                <xs:attribute name="expanded" type="xs:boolean" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- **** -->
+    <!-- test -->
+    <!-- **** -->
+    <xs:complexType name="testType">
+        <xs:complexContent>
+            <xs:extension base="testNodeType">
+                <xs:attribute name="testURI" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- ******** -->
+    <!-- testFile -->
+    <!-- ******** -->
+    <xs:complexType name="testFileType">
+        <xs:complexContent>
+            <xs:extension base="collectionTestType">
+                <xs:attribute name="fileName" type="xs:Name"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- ************ -->
+    <!-- classLoaders -->
+    <!-- ************ -->
+    <xs:complexType name="classLoadersType">
+        <xs:complexContent>
+            <xs:extension base="testNodeType">
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="adiPluginName" type="xs:string"/>
+                </xs:choice>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>
+	

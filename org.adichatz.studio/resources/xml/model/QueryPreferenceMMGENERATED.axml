@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/QueryPreferenceMM" superEntityURI="adi://org.adichatz.studio/model/ParamMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/QueryPaginationMM" id="pagination"/>
+    <propertyField id="fullTextClause">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="orderByClause">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/QueryParameterMM" id="parameter">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/QueryParameterMM" name="parameter"/>
+        </entityElements>
+    </oneToMany>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/QueryOpenClauseMM" id="openClause">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/QueryOpenClauseMM" name="openClause"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

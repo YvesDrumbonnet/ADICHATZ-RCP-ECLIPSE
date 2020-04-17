@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<partTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" image="#PARAM(IMAGE)" outlinePageClassName="org.adichatz.jpa.query.QueryOutlinePage" title="#PARAM(TITLE)" toolTipText="#PARAM(TOOL_TIP_TEXT)" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/partTree.xsd">
+    <config>
+        <resourceBundles>
+            <resourceBundle basename="#PARAM(MESSAGE_BUNDLE)" var="queryBundle"/>
+        </resourceBundles>
+        <customizations id="customizationsWrapper$$1">
+            <tabular tableRendererKey="#LITERAL(getTableRendererKey((ATabularController&lt;?&gt;) controller))" id="tableInclude:table">
+                <listeners>
+                    <listener id="onDoubleClick" listenerTypes="DOUBLE_CLICK">
+                        <code>org.adichatz.jpa.extra.JPAUtil.openForm(getFromRegister("tableInclude:table"));</code>
+                    </listener>
+                </listeners>
+                <include adiResourceURI="adi://org.adichatz.jpa/common.contextMenu/QueryFormCM" id="tableCM"/>
+            </tabular>
+        </customizations>
+    </config>
+    <formPage formText="#MSG(queryBundle,queryFormText)" controllerClassName="org.adichatz.engine.controller.collection.FormPageController" id="Page1">
+        <layout layoutConstraints="wrap, ins 0" columnConstraints="[grow,fill]" rowConstraints="[grow,fill]"/>
+        <include adiResourceURI="#PARAM(FULLTEXT_RESOURCE_URI)" id="fullTextInclude"/>
+        <include adiResourceURI="#PARAM(TABLE_RESOURCE_URI)" id="tableInclude">
+            <params>
+                <param value="#PARAM(CONTENT_PROVIDER)" id="CONTENT_PROVIDER"/>
+            </params>
+        </include>
+        <label valid="null == #PARAM(TABLE_RESOURCE_URI)" id="toto">
+            <accessibilities>
+                <accessibility type="VALID" id="toto$$VALIDFilter">
+                    <accept>return null == #PARAM(TABLE_RESOURCE_URI);</accept>
+                </accessibility>
+            </accessibilities>
+        </label>
+    </formPage>
+    <additionalCode>import org.adichatz.engine.controller.collection.ATabularController;
+import org.adichatz.jpa.wrapper.ControllerPreferenceWrapper;
+import org.adichatz.jpa.tabular.JPAControllerPreferenceManager;
+private String getTableRendererKey(ATabularController&lt;?&gt; tabularController) {
+    ControllerPreferenceWrapper&lt;?&gt; controllerPreference = ((JPAControllerPreferenceManager) tabularController.getControllerPreferenceManager()).getControllerPreference();
+	if (null != controllerPreference &amp;&amp; null != controllerPreference.getTableRendererKey())
+	   return controllerPreference.getTableRendererKey();
+    return "Stripe";
+}</additionalCode>
+</partTree>

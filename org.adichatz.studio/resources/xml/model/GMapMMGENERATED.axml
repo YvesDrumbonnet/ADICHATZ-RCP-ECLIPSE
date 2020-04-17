@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/GMapMM" superEntityURI="adi://org.adichatz.studio/model/ControlFieldMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="addMarker">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="changeCoordinates">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="delayMillisLoading">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="editable">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="coordPattern">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="locale">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="mapTypeControl">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField mandatory="true" id="mapDataType">
+        <controlField xsi:type="radioGroupType" mandatory="true">
+            <labelProvider>
+                <textCode>return ((MapDataTypeEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.MapDataTypeEnum
+import java.util.Arrays
+return Arrays.asList(MapDataTypeEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+    <propertyField id="mapTypeId">
+        <controlField xsi:type="cComboType" layoutData="grow 0" style="SWT.BORDER | SWT.READ_ONLY">
+            <labelProvider>
+                <textCode>return ((MapTypeIdEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.MapTypeIdEnum
+import java.util.Arrays
+return Arrays.asList(MapTypeIdEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+    <propertyField id="toolBarStyle">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="zoom">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

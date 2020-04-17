@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+ 	<xs:include schemaLocation="../common/base-common.xsd"/>
+ 	
+    <!-- ************************** -->
+    <!--			R O O T			-->
+    <!-- ************************** -->	
+	<xs:element name="adichatzConnectorConfigTree">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="params" type="paramsType"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:NCName"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
+	

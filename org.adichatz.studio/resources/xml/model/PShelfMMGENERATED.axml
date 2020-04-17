@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/PShelfMM" superEntityURI="adi://org.adichatz.studio/model/CollectionMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="delayed">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="layoutData">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="selection">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="shelfRenderer">
+        <controlField xsi:type="radioGroupType">
+            <labelProvider>
+                <textCode>return ((ShelfRendererEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.ShelfRendererEnum
+import java.util.Arrays
+return Arrays.asList(ShelfRendererEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/PShelfItemMM" id="pshelfItem">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/PShelfItemMM" name="pshelfItem"/>
+        </entityElements>
+    </oneToMany>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/IncludeMM" id="include">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/IncludeMM" name="include"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

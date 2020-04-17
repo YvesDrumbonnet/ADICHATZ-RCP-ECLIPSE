@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/PluginEntityMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(adi://org.adichatz.studio/./pluginEntity, entityURI).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="entityURI$1"/>
+        <text property="entityURI" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(adi://org.adichatz.studio/./pluginEntity, entityURI).concat(&quot;:&quot;)" linkedControl="entityURI$1" mandatory="true" controllerClassName="org.adichatz.studio.xjc.controller.EntityUri4PETextController" id="entityURI">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(pluginEntity, beanClassName).concat(&quot;:&quot;)" id="beanClassName$1"/>
+        <text property="beanClassName" linkedControl="beanClassName$1" controllerClassName="org.adichatz.studio.xjc.controller.BeanClassTextController" id="beanClassName">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(pluginEntity, protectPojo).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="protectPojo$1"/>
+        <checkBox property="protectPojo" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(pluginEntity, protectPojo).concat(&quot;:&quot;)" linkedControl="protectPojo$1" id="protectPojo">
+            <pluginEntity/>
+        </checkBox>
+        <group text="#MSG(adichatzStudio, scenario.roles)" font="#FONT(JFaceResources.BANNER_FONT)" layoutData="gap top 20, span 2, grow" id="itemComposite">
+            <pluginEntity/>
+            <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+            <label text="#MSG(pluginEntity, retrieveRoles).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="retrieveRoles$1"/>
+            <text property="retrieveRoles" labelForeground="#COLOR(IFormColors.TITLE)" linkedControl="retrieveRoles$1" id="retrieveRoles">
+                <pluginEntity/>
+            </text>
+            <label text="#MSG(pluginEntity, mergeRoles).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="mergeRoles$1"/>
+            <text property="mergeRoles" labelForeground="#COLOR(IFormColors.TITLE)" linkedControl="mergeRoles$1" id="mergeRoles">
+                <pluginEntity/>
+            </text>
+            <label text="#MSG(pluginEntity, persistRoles).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="persistRoles$1"/>
+            <text property="persistRoles" labelForeground="#COLOR(IFormColors.TITLE)" linkedControl="persistRoles$1" id="persistRoles">
+                <pluginEntity/>
+            </text>
+            <label text="#MSG(pluginEntity, removeRoles).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="removeRoles$1"/>
+            <text property="removeRoles" labelForeground="#COLOR(IFormColors.TITLE)" linkedControl="removeRoles$1" id="removeRoles">
+                <pluginEntity/>
+            </text>
+        </group>
+    </scrolledComposite>
+</containerTree>

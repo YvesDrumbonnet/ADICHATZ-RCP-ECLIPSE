@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  	<xs:include schemaLocation="common/control.xsd"/>
+ 
+    <!-- *************** -->
+    <!-- treeManagerTree -->
+    <!-- *************** -->
+    <xs:element name="treeManagerTree">
+        <xs:complexType>
+	        <xs:choice>
+				<xs:element name="treeElement" type="treeElementType" minOccurs="1" maxOccurs="unbounded"/>
+				<xs:element name="additionalCode" type="xs:string"/>
+        	</xs:choice>
+			<xs:attribute name="superTreeManagerClassName" type="xs:NCName"/>
+	    </xs:complexType>
+	</xs:element>
+
+    <xs:complexType name="treeElementType">
+        <xs:choice>
+			<xs:element name="treeNode" type="treeNodeType" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="backgroundCode" type="xs:string"/>
+			<xs:element name="foregroundlCode" type="xs:string"/>
+			<xs:element name="fontCode" type="xs:string"/>
+			<xs:element name="labelCode" type="xs:string"/>
+			<xs:element name="imageCode" type="xs:string"/>
+       	</xs:choice>
+		<xs:attribute name="entityURI" type="xs:string" use="required"/>
+		<xs:attribute name="background" type="xs:string"/>
+		<xs:attribute name="foreground" type="xs:string"/>
+		<xs:attribute name="font" type="xs:string"/>
+		<xs:attribute name="image" type="xs:string"/>
+		<xs:attribute name="label" type="xs:string"/>
+		<xs:attribute name="treeChildClassName" type="xs:NCName"/>
+	</xs:complexType>     
+	
+    <!-- ******** -->
+    <!-- treeNode -->
+    <!-- ******** -->
+    <xs:complexType name="treeNodeType">
+		<xs:attribute name="propertyId" type="xs:NCName" use="required"/>
+		<xs:attribute name="nodeType" type="nodeTypeEnum" use="required"/>
+	</xs:complexType>     
+
+	<xs:simpleType name="nodeTypeEnum">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="REFERENCE"/>
+            <xs:enumeration value="LIST"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

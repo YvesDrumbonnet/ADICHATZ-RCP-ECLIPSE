@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:include schemaLocation="common/base-generator.xsd"/>
+	
+    <!-- ************************** -->
+    <!--			R O O T			-->
+    <!-- ************************** -->	
+	<xs:element name="connectorTree">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="applicationServers" type="applicationServersType"/>
+				<xs:element name="datasources" type="datasourcesType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+    <!-- ********************************************************** -->
+    <!--			A P P L I C A T I O  N   S E R V E R			-->
+    <!-- ********************************************************** -->
+    <!-- ****************** -->
+    <!-- applicationServers -->
+    <!-- ****************** -->    
+	<xs:complexType name="applicationServersType">
+		<xs:sequence>
+			<xs:element name="applicationServer" type="applicationServerType"  minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+    <!-- ***************** -->
+    <!-- applicationServer -->
+    <!-- ***************** -->    
+	<xs:complexType name="applicationServerType">
+		<xs:sequence>
+			<xs:element name="params" type="paramsType" />
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="description" type="xs:string"/>
+	</xs:complexType>
+
+    <!-- ************************************** -->
+    <!--			D A T A S O U R C E			-->
+    <!-- ************************************** -->
+    <!-- *********** -->
+    <!-- datasources -->
+    <!-- *********** -->    
+	<xs:complexType name="datasourcesType">
+		<xs:sequence>
+			<xs:element name="datasource" type="datasourceType"  minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+    <!-- ********** -->
+    <!-- datasource -->
+    <!-- ********** -->    
+	<xs:complexType name="datasourceType">
+		<xs:sequence>
+			<xs:element name="params" type="paramsType"/>
+			<!--  BuildParams override params in build process -->
+			<xs:element name="buildParams" type="paramsType"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="datasourceName" type="xs:string" use="required"/>
+		<xs:attribute name="driver" type="xs:string" use="required"/>
+		<xs:attribute name="description" type="xs:string"/>
+		<xs:attribute name="customizationFile" type="xs:string"/>
+	</xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.jpa/jpa/EditorOutlineInputMM" xsi:noNamespaceSchemaLocation="false">
+    <oneToMany setType="NATIVE" field="entities" entityId="Entity" id="entities"/>
+    <oneToMany setType="NATIVE" field="errorPaths" entityId="ErrorPath" id="errorPaths"/>
+    <oneToMany setType="NATIVE" field="viewerFilters" entityId="ErrorPath" id="viewerFilters"/>
+</entityTree>

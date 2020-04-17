@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/FilterMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="enabled">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="text">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="column">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="searchString">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="columnType">
+        <controlField xsi:type="cComboType" layoutData="grow 0" style="SWT.BORDER | SWT.READ_ONLY">
+            <labelProvider>
+                <textCode>return ((ColumnTypeEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.ColumnTypeEnum
+import java.util.Arrays
+return Arrays.asList(ColumnTypeEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+    <propertyField id="exactString">
+        <controlField xsi:type="checkBoxType"/>
+    </propertyField>
+    <propertyField id="caseInsensitive">
+        <controlField xsi:type="checkBoxType"/>
+    </propertyField>
+</entityTree>

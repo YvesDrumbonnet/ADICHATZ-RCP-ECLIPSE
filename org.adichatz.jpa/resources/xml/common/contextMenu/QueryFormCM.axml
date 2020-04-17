@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<includeTree coreClassName="org.adichatz.jpa.extra.ATabularContextMenuCore" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="false">
+        <additionalCode>import org.adichatz.jpa.query.IQueryOutlinePage;
+import org.adichatz.engine.e4.part.PartCore;
+import org.adichatz.jpa.query.QueryToolInput;
+private QueryToolInput getQueryToolInput() {
+    return ((IQueryOutlinePage) ((PartCore) getContext().getRootCore()).getOutlinePage()).getQueryToolInput();
+}
+</additionalCode>
+    <headerMenuManager id="headerMenu">
+        <action controllerClassName="org.adichatz.engine.tabular.HideColumnActionController" id="hideColumnAction"/>
+		<menu controllerClassName="org.adichatz.engine.tabular.ShowColumnMenuManagerController"  id="showColumns"/>
+        <action controllerClassName="org.adichatz.engine.tabular.RefreshColumnSizeActionController" id="refreshColumnSize"/>
+		<separator/>
+        <action controllerClassName="org.adichatz.jpa.action.AddColumnFilterActionController" id="addColumnFilterAction" valid="isColumnFilterable()"/>
+        <action controllerClassName="org.adichatz.engine.tabular.RemoveColumnFilterActionController" id="RemoveColumnFilterAction" valid="hasFilterOnColumn()"/>
+    </headerMenuManager>
+   	<menuManager id="contextMenu">
+		<action actionClassName="org.adichatz.jpa.query.action.LaunchQueryAction" id="launchQueryAction" enabled="!org.adichatz.engine.e4.part.OutlinePart.getInstance().getCurrentPage().hasError()">
+        	<params>
+               	<param value="#CONTROLLER(contextMenu).getMenuContainer()" id="TABULAR_CONTROLLER"/>
+        	</params>
+		</action>
+		<separator/>
+        <action controllerClassName="org.adichatz.engine.tabular.FilterByValueActionController" id="filterByValueAction" valid="isFilterable()"/>
+        <action controllerClassName="org.adichatz.jpa.tabular.DisableAllFiltersActionController" id="disableAllFiltersAction" valid="hasEnabledFilter()"/>
+        <action controllerClassName="org.adichatz.jpa.tabular.EnableAllFiltersActionController" id="enableAllFiltersAction" valid="hasDisabledFilter()"/>
+        <action controllerClassName="org.adichatz.jpa.tabular.RemoveAllFiltersActionController" id="removeAllFiltersAction" valid="hasFilter()"/>
+		<separator/>
+		<action actionClassName="org.adichatz.engine.tabular.CopyTableToClipboardAction" id="copyTableToClipboardAction">
+        	<params>
+               	<param value="#CONTROLLER(contextMenu).getMenuContainer()" id="TABULAR_CONTROLLER"/>
+        	</params>
+		</action>
+		<separator/>
+		<menu id="crossReference" valid="hasReferenceCode()" text="#MSG(adichatzJpa, table.crossReferences)" imageDescriptor="#IMGDESC(IMG_CROSS_REFERENCE)">
+	    	<contributionItem controllerClassName="org.adichatz.jpa.query.action.CrossReferenceMenuActions"/>
+        </menu>
+        <menu id="preferenceMenu" valid="!getPreferenceTitle().isEmpty()" text="#MSG(adichatzJpa, table.preferences)" imageDescriptor="#IMGDESC(IMG_PREFERENCE)">
+            <contributionItem id="preferenceSaveNew" imageDescriptor="#IMGDESC(IMG_PREFERENCE_NEW.png)" text="#MSG(adichatzJpa, table.preference.save.as)">
+                <itemCode>getQueryToolInput().savePreferenceAs();</itemCode>
+            </contributionItem>
+            <contributionItem id="preferenceSaveCurrent" imageDescriptor="#IMGDESC(IMG_PREFERENCE_SAVE.png)" text="#MSG(adichatzJpa, table.preference.save.current, getPreferenceTitle())">
+                <itemCode>getQueryToolInput().saveCurrentPreference();</itemCode>
+            </contributionItem>
+			<separator/>
+            <contributionItem id="resetPreference" imageDescriptor="#IMGDESC(IMG_REMOVE_PREFERENCE.png)" text="#MSG(adichatzJpa, table.preference.reset)" valid="getQueryToolInput().isCurrentPreferenceLinked()">
+                <itemCode>getQueryToolInput().cancelPreference();</itemCode>
+            </contributionItem>
+            <contributionItem id="preferenceLinkCurrent" imageDescriptor="#IMGDESC(IMG_LINK_PREFERENCE.png)" text="#MSG(adichatzJpa, table.preference.link.current)" valid="!getQueryToolInput().isCurrentPreferenceLinked()">
+                <itemCode>getQueryToolInput().linkCurrentPreference();</itemCode>
+            </contributionItem>
+        </menu>
+        <action id="saveNewPreferenceMenu" valid="getPreferenceTitle().isEmpty()" imageDescriptor="#IMGDESC(IMG_PREFERENCE_NEW.png)" text="#MSG(adichatzJpa, table.preference.save.as)">
+            <actionCode>getQueryToolInput().savePreferenceAs();</actionCode>
+        </action>
+		<separator/>
+        <action actionClassName="org.adichatz.jpa.action.EditNewEntityAction" id="editNewEntityAction" valid="!hasParentEntity()">
+        	<params>
+               	<param value="#CONTROLLER(contextMenu).getMenuContainer()" id="TABULAR_CONTROLLER"/>
+        	</params>
+        </action>
+        <action actionClassName="org.adichatz.jpa.action.AddEntityAction" id="addEntityAction" valid="hasParentEntity() &amp;&amp;  #AUTHORIZATION(IEntityConstants.PERSIST)">
+        	<params>
+               	<param value="#CONTROLLER(contextMenu).getMenuContainer()" id="TABULAR_CONTROLLER"/>
+        	</params>
+        </action>
+        <action actionClassName="org.adichatz.jpa.action.EditEntityAction" id="editEntityAction" enabled="null != #ROW()">
+        	<params>
+               	<param value="#CONTROLLER(contextMenu).getMenuContainer()" id="TABULAR_CONTROLLER"/>
+        	</params>
+        </action>
+    </menuManager>
+</includeTree>

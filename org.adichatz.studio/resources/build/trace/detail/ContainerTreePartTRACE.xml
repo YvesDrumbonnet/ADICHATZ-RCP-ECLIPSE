@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ContainerTreeMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity>
+        <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+    </pluginEntity>
+    <pshelf delayed="true" selection="0" id="detailPShelf">
+        <pluginEntity>
+            <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+        </pluginEntity>
+        <pshelfItem text="#MSG(adichatzStudio, studio.xjcEditor.basicItem)" id="basicItem">
+            <pluginEntity>
+                <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+            </pluginEntity>
+            <scrolledComposite dirtyManagement="false" id="basicItemSC">
+                <pluginEntity>
+                    <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+                </pluginEntity>
+                <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+                <label text="#MSG(element, id).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="id$1"/>
+                <text property="id" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(element, id).concat(&quot;:&quot;)" linkedControl="id$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="id">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <hyperlink text="#MSG(containerTree, bindingServiceClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="bindingServiceClassNameContainerTreePART$1">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+                    </pluginEntity>
+                </hyperlink>
+                <text property="bindingServiceClassName" labelText="#MSG(containerTree, bindingServiceClassName).concat(&quot;:&quot;)" linkedControl="bindingServiceClassNameContainerTreePART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="bindingServiceClassName">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(container, coreClassName).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="coreClassName$1"/>
+                <text property="coreClassName" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(container, coreClassName).concat(&quot;:&quot;)" linkedControl="coreClassName$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="coreClassName">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="coreClassName$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(containerTree, dirtyManagement).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="dirtyManagement$1"/>
+                <text property="dirtyManagement" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(containerTree, dirtyManagement).concat(&quot;:&quot;)" linkedControl="dirtyManagement$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" valid="null != #FV()" id="dirtyManagement">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="dirtyManagement$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <hyperlink text="#MSG(container, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIContainerTreePART$1">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+                    </pluginEntity>
+                </hyperlink>
+                <text property="entityURI" labelText="#MSG(container, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIContainerTreePART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" valid="null != #FV()" id="entityURI">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="entityURI$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+                <label text="#MSG(container, additionalCode).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="additionalCode$1"/>
+                <text property="additionalCode" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(container, additionalCode).concat(&quot;:&quot;)" linkedControl="additionalCode$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" valid="null != #FV()" id="additionalCode">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+                    </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="VALID" id="additionalCode$$VALIDFilter">
+                            <accept>return null != #FV();</accept>
+                        </accessibility>
+                    </accessibilities>
+                </text>
+            </scrolledComposite>
+        </pshelfItem>
+        <pshelfItem text="#MSG(adichatzStudio, studio.xjcEditor.lifeCycleItem)" id="lifeCycleItem">
+            <pluginEntity>
+                <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+            </pluginEntity>
+            <scrolledComposite dirtyManagement="false" id="lifeCycleItemSC">
+                <pluginEntity>
+                    <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+                </pluginEntity>
+                <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+                <label text="#MSG(container, coreClassName).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="coreClassName$1"/>
+                <text property="coreClassName" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(container, coreClassName).concat(&quot;:&quot;)" linkedControl="coreClassName$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="coreClassName">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(containerTree, dirtyManagement).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="dirtyManagement$1"/>
+                <text property="dirtyManagement" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(containerTree, dirtyManagement).concat(&quot;:&quot;)" linkedControl="dirtyManagement$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="dirtyManagement">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <hyperlink text="#MSG(container, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIContainerTreePART$1">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+                    </pluginEntity>
+                </hyperlink>
+                <text property="entityURI" labelText="#MSG(container, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIContainerTreePART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="entityURI">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+                <label text="#MSG(container, additionalCode).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="additionalCode$1"/>
+                <text property="additionalCode" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(container, additionalCode).concat(&quot;:&quot;)" linkedControl="additionalCode$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="additionalCode">
+                    <pluginEntity>
+                        <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
+                    </pluginEntity>
+                </text>
+            </scrolledComposite>
+        </pshelfItem>
+    </pshelf>
+</containerTree>

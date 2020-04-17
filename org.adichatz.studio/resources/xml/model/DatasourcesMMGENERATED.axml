@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/DatasourcesMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <oneToMany entityURI="adi://org.adichatz.studio/model/DatasourceMM" id="datasource">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/DatasourceMM" name="datasource"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

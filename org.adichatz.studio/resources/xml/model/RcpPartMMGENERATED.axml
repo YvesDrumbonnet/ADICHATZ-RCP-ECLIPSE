@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/RcpPartMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="application">
+        <controlField xsi:type="radioGroupType" controllerClassName="org.adichatz.studio.xjc.controller.BooleanRadioGroupController"/>
+    </propertyField>
+    <propertyField id="navigator">
+        <controlField xsi:type="radioGroupType" controllerClassName="org.adichatz.studio.xjc.controller.BooleanRadioGroupController"/>
+    </propertyField>
+</entityTree>

@@ -1,0 +1,8 @@
+#adichatz-testing { /* DO NOT ADD PROPERTY  without knowing reskin process in Adichatz 
+	/*######################## */
+	/*# Specific to Adichatz # */
+	/*######################## */
+	testing-info-color: #00008F;
+	testing-partial-color: #008F8F;
+	testing-success-color: #008F00;
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ToolBarMM" superEntityURI="adi://org.adichatz.studio/model/CollectionMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/LayoutMM" id="layout"/>
+    <propertyField id="layoutData">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/WidgetMM" id="toolItemOrSeparator">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ToolItemMM" name="toolItem"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/SeparatorMM" name="separator"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

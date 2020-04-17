@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/CustomizedScenarioMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="scenarioFile">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="mergeDate">
+        <controlField xsi:type="dateTextType" controllerClassName="org.adichatz.studio.xjc.controller.XMLGregorianCalendarTextController"/>
+        <columnField xsi:type="tableColumnType">
+            <columnText>return null == text ? "" : #Row().getMergeDate().toGregorianCalendar().getTime();</columnText>
+        </columnField>
+    </propertyField>
+</entityTree>

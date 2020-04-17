@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<includeTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="false">
+	<managedToolBar id="managedToolBar">
+        <action id="refreshEntityAction" actionClassName="org.adichatz.jpa.action.RefreshEntityAction">
+        	<params>
+        		<param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+        	</params>
+        </action>
+        <action actionClassName="org.adichatz.jpa.action.DeleteEntityAndCloseAction" id="deleteEntityAndCloseAction" valid="&quot;DETAIL&quot;.equals(#PARAM(TOOL_BAR_TYPE))">
+        	<params>
+        		<param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+        		<param value="#PARAM(TOOL_BAR_TYPE)" id="TOOL_BAR_TYPE"/>
+        	</params>
+    	</action>
+        <action actionClassName="org.adichatz.jpa.action.DeleteEntityAction" id="deleteEntityAction" valid="#AUTHORIZATION(IEntityConstants.REMOVE) &amp;&amp; &quot;CHILD&quot;.equals(#PARAM(TOOL_BAR_TYPE))">
+        	<params>
+        		<param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+        		<param value="#PARAM(TOOL_BAR_TYPE)" id="TOOL_BAR_TYPE"/>
+        	</params>
+    	</action>
+    </managedToolBar>
+</includeTree>

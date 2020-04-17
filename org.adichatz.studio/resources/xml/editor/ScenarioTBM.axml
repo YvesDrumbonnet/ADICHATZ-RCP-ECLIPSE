@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<includeTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="false">
+	<managedToolBar id="pageToolBar">
+		<action id="refreshScenarioAction" toolTipText="#MSG(adi://org.adichatz.studio/./adichatzStudio, studio.editor.refreshFormPage)" imageDescriptor="#IMGDESC(IMG_REFRESH)">
+			<actionCode>import org.adichatz.studio.xjc.data.XjcBindingService;
+((XjcBindingService) getBindingService()).getEditor().fileChanged();</actionCode>
+		</action>
+		<separator style="SWT.NONE"/>
+		<action id="savePageAction" toolTipText="#MSG(adi://org.adichatz.studio/./adichatzStudio, studio.editor.save)" imageDescriptor="#IMGDESC(IMG_SAVE)" enabled="false">
+			<actionCode>import org.adichatz.studio.xjc.editor.AStudioFormEditor&#xD;
+((AStudioFormEditor) genCode.getContext().getRootCore().getController()).doSave();</actionCode>
+		</action>
+		<action actionClassName="org.adichatz.studio.xjc.editor.action.ErrorStudioAction" id="errorStudioAction" toolTipText="#MSG(adi://org.adichatz.engine/./adichatzEngine, error)" enabled="false"/>
+        <separator style="SWT.NONE"/>
+		<action controllerClassName="org.adichatz.studio.xjc.editor.action.GenerateScenarioActionController" id="generateScenarioAction" toolTipText="#MSG(adi://org.adichatz.studio/./adichatzStudio, scenario.generate)" imageDescriptor="#IMGDESC(IMG_GENERATE_SCENARIO.png)"/>
+    </managedToolBar>
+</includeTree>

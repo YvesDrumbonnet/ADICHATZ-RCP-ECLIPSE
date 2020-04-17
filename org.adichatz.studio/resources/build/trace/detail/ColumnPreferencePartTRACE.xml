@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ColumnPreferenceMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(columnPreference, id).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="id$1"/>
+        <text property="id" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(columnPreference, id).concat(&quot;:&quot;)" linkedControl="id$1" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="id">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(columnPreference, visible).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="visible$1"/>
+        <text property="visible" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(columnPreference, visible).concat(&quot;:&quot;)" linkedControl="visible$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="visible">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(columnPreference, width).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="width$1"/>
+        <numericText property="width" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(columnPreference, width).concat(&quot;:&quot;)" linkedControl="width$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" layoutData="width min:100:150, growx" controllerClassName="org.adichatz.engine.controller.field.NumericTextController" id="width">
+            <pluginEntity/>
+        </numericText>
+    </scrolledComposite>
+</containerTree>

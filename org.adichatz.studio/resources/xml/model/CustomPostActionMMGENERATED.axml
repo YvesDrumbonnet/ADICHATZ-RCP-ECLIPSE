@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/CustomPostActionMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="rewritePojos">
+        <controlField xsi:type="checkBoxType"/>
+    </propertyField>
+    <propertyField id="generateEJB">
+        <controlField xsi:type="checkBoxType"/>
+    </propertyField>
+    <propertyField id="generatePersistenceXml">
+        <controlField xsi:type="checkBoxType"/>
+    </propertyField>
+    <propertyField id="deployEJB">
+        <controlField xsi:type="checkBoxType"/>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/CustomGenerationUnitMM" id="customGenerationUnit">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/CustomGenerationUnitMM" name="customGenerationUnit"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

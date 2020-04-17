@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<includeTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="includeTreeWrapper$$0" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/includeTree.xsd">
+    <pluginEntity/>
+    <managedToolBar id="managedToolBar">
+        <pluginEntity/>
+        <action actionClassName="org.adichatz.jpa.action.RefreshOTOEntityAction" id="refreshOTOEntityAction">
+            <pluginEntity/>
+            <params>
+                <param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+            </params>
+        </action>
+        <action actionClassName="org.adichatz.jpa.action.AddOTOEntityAction" id="addOTOEntityAction">
+            <pluginEntity/>
+            <params>
+                <param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+            </params>
+        </action>
+        <action actionClassName="org.adichatz.jpa.action.DeleteOTOEntityAction" id="deleteOTOEntityAction">
+            <pluginEntity/>
+            <params>
+                <param value="#PARAM(CONTROLLER)" id="CONTROLLER"/>
+            </params>
+        </action>
+    </managedToolBar>
+</includeTree>

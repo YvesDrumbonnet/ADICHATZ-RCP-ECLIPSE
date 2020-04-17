@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Adichatz Common
+Bundle-SymbolicName: org.adichatz.common
+Bundle-Version: 0.9.1.qualifier
+Bundle-Vendor: Adichatz
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.adichatz.resources,
+ org.eclipse.osgi
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.adichatz.common.ejb,
+ org.adichatz.common.ejb.extra,
+ org.adichatz.common.ejb.remote,
+ org.adichatz.common.ejb.util,
+ org.adichatz.common.encoding
+Automatic-Module-Name: org.adichatz.common

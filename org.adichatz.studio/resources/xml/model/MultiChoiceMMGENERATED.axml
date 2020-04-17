@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/MultiChoiceMM" superEntityURI="adi://org.adichatz.studio/model/RefControlMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="numberOfColumns">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="popupToolbar">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="popupTitle">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="popupMaxWidth">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="popupMaxHeight">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField mandatory="true" id="multiChoiceType">
+        <controlField xsi:type="radioGroupType" mandatory="true">
+            <labelProvider>
+                <textCode>return ((MultiChoiceTypeEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.MultiChoiceTypeEnum
+import java.util.Arrays
+return Arrays.asList(MultiChoiceTypeEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+</entityTree>

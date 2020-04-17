@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/PGroupMM" superEntityURI="adi://org.adichatz.studio/model/ClientCanvasMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="toggleRenderer">
+        <controlField xsi:type="cComboType" layoutData="grow 0" style="SWT.BORDER | SWT.READ_ONLY">
+            <labelProvider>
+                <textCode>return ((ToggleRendererEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.ToggleRendererEnum
+import java.util.Arrays
+return Arrays.asList(ToggleRendererEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+    <propertyField id="toolItemRenderer">
+        <controlField xsi:type="radioGroupType">
+            <labelProvider>
+                <textCode>return ((ToolItemRendererEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.ToolItemRendererEnum
+import java.util.Arrays
+return Arrays.asList(ToolItemRendererEnum.class.getEnumConstants());</initValues>
+        </controlField>
+    </propertyField>
+    <propertyField id="image">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="togglePosition">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="imagePosition">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="linePosition">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/ValidElementMM" id="pgroupToolItemOrPgroupMenu">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/PGroupToolItemMM" name="pgroupToolItem"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/PGroupMenuMM" name="pgroupMenu"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

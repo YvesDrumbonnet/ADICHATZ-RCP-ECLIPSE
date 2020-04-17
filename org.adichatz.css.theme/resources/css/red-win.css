@@ -1,0 +1,206 @@
+Composite, ScrolledComposite, ExpandableComposite, Canvas, TabFolder, CLabel, Label,
+ToolBar, ToolItem, Sash, Group, Hyperlink, ImageHyperlink, Button, Text, AdiText,
+DateText, FileText, StarRating, MultiChoice, FontDataText, RGBText, FormText, AdiFormText, EditableFormText, NumericText,
+RadioGroup, ScrollingText, StyledText, SWTImageCanvas, LimitedComposite, ButtonItem {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.MPart {
+    background-color: #F7E3E1; /* Bottom and head page panel */
+    color: #000000;
+}
+
+.MPartStack {
+    swt-selected-tab-fill: #FCF6F4 #FCF6F4 100%; /* title background for selected tab */
+    swt-unselected-tabs-color: #FFFFFF #F7E3E1 100% 100%; /* title background for unselected tab */
+    swt-outer-keyline-color: #FAA49B; /* border color for whole tabs container */
+    swt-inner-keyline-color: #FAA49B;
+    swt-tab-outline: #F7E3E1; /* border color for selected tab */
+    padding: 0px 2px 2px;
+    swt-shadow-visible: false;
+    swt-mru-visible: true;
+    swt-corner-radius: 16px;
+}
+
+.MPartSashContainer, Sash {
+    background-color: #FFF0F0;
+}
+
+CTabItem,
+CTabItem CLabel {
+    font-family: Segoe UI;
+    font-size: 9px;
+    font-weight: bold;
+	background-color: #F7E3E1; /* HACK for background of CTabFolder inner Toolbars */
+    color: #666666;
+}
+
+CTabItem:selected,
+CTabItem:selected CLabel {
+    background-color: #F7E3E1;
+	color: #000000;
+}
+
+CTabFolder {
+    /* Set the styles for the inner tabs: */
+    color: #000000;
+    swt-tab-renderer: url('bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.CTabRendering');
+    padding: 0px 2px 2px;
+    swt-tab-outline: #E0CDBB; /* border color for selected tab */
+    swt-outer-keyline-color: #F7E3E1; /* border color for whole tabs container */
+    swt-unselected-tabs-color: #FCF6F4 #FCF6F4 100% 100%; /* title background for unselected tab */
+    swt-selected-tab-fill: #FCF6F4; /* title background for selected tab */
+    swt-corner-radius: 16px;
+    swt-unselected-hot-tab-color-background: #F3E8E0; /* Bug 465711 */
+    swt-shadow-visible: false; 
+}
+
+Form, FormHeading {
+    background: #F7E3E1;
+    background-color: #F7E3E1;
+    background-image: #F7E3E1;
+}
+
+FormHeading > CLabel {
+    background-color: #F7E3E1;
+}
+
+FormHeading > Hyperlink {
+    background-color: #F7E3E1;
+}
+
+FormHeading > LayoutComposite {
+    background-color:#F7E3E1;
+    color:#000000;
+}
+
+TitleRegion > Label {
+    background-color:#F7E3E1;
+    color:#D77800;
+}
+
+ToolBar {
+    background: #F7E3E1;
+    background-color: #F7E3E1;
+    background-image: #F7E3E1;
+}
+
+Shell > Composite   {
+    background-color:#FFFFFF;
+}
+
+CTabFolder > Composite, ToolBar {
+    background-color:#F7E3E1;
+    color:#000000;
+}
+
+Section {
+       background-color: #FFFFFF;
+       color: #000000;
+       background-color-titlebar: #F7E3E1;
+       foreground-color-titlebar: #7F4C19;
+       background-color-gradient-titlebar: #F7E3E1;
+       border-color-titlebar: #FAA49B;
+       toggle-color: #7F4C19;
+       active-toggle-color: #D77800;
+}
+
+Tree, Table {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+PShelf {
+	pshelf-selectedcolor-start: #FAA49B;
+	pshelf-selectedcolor-end: #F7E3E1;
+	pshelf-unselectedcolor-start: #F7E3E1;
+	pshelf-unselectedcolor-end: #FFFFFF;
+	pshelf-hovercolor-start: #FAA49B;
+	pshelf-hovercolor-end: #FFFFFF;
+	pshelf-line-color: #F7E3E1;
+    background-color: #FFFFFF;
+    color: #666666;
+    hover-color: #D77800;
+    font-weight: bold;
+}
+
+GMap > ToolBar > Composite, GMap > ToolBar > Composite > Label {
+    background-color: #F7E3E1;
+    color: #DD6666;
+}
+
+/* ##################################### Adichatz Styles ##################################### */
+
+#adichatz-table-stripe-even {
+    background-color: #FAFAFA;
+    color: #AAAAAA;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 9px;
+    font-style: oblique;
+    /* font-weight: bold; */
+    font-variant: small-caps;
+}
+
+#adichatz-table-stripe-odd {
+    background-color: #FCDEF0;
+    color: #666666;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 9px;
+    font-style: oblique;
+    /* font-weight: bold; */
+    font-variant: small-caps;
+}
+
+
+#adichatz-emphasize {
+    background-color: #A0A0A0;
+    color: #EEEEEE;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12px;
+    font-style: oblique;
+    font-weight: bold;
+ 	font-variant: small-caps;
+}
+
+#adichatz-common { /* DO NOT ADD PROPERTY without knowing reskin process in Adichatz 
+	  ###################################################################
+	  # Specific to Adichatz								  			#
+	  #  - Each property is defined plugin.xml file						#
+	  ################################################################### */
+    error-foreground-color: #FF0000;
+    info-foreground-color: #0000FF;
+    widget-background: #F0F0F0;
+    title-background: #FCDEF0;
+	title-color: #7F4C19;
+    button_background: #F7E3E1;
+    keyline-color: #FAA49B;
+}
+
+#adichatz-forms {/* DO NOT ADD PROPERTY without knowing reskin process in Adichatz 
+	  ###################################################################
+	  # Specific to Adichatz								  			#
+	  #  - Each property is defined plugin.xml file						#
+	  ################################################################### */
+	background-color: #FFFFFF;
+	foreground-color: #000000;
+   
+	HYPERLINK_COLOR: #DD6666;
+	ACTIVE_HYPERLINK_COLOR: #BB4444;
+
+	org-eclipse-ui-forms-TITLE: #7F4C19;
+	org-eclipse-ui-forms-SEPARATOR: #7F4C19;
+	org-eclipse-ui-forms-BORDER: #ACB6C1;
+
+	org-eclipse-ui-forms-H_GRADIENT_END: #FFFFFF;
+	org-eclipse-ui-forms-H_GRADIENT_START: #F7E3E1;
+	org-eclipse-ui-forms-H_BOTTOM_KEYLINE1: #FFFFFF;
+	org-eclipse-ui-forms-H_BOTTOM_KEYLINE2: #FAA49B;
+	org-eclipse-ui-forms-H_H_HOVER_LIGHT: #C1B6AC;
+	org-eclipse-ui-forms-H_H_HOVER_FULL: #F2E3D5;
+
+	org-eclipse-ui-forms-TB_BG: #F7E3E1;
+	org-eclipse-ui-forms-TB_BORDER: #FAA49B;
+	org-eclipse-ui-forms-TB_TOGGLE: #7F4C19;
+	org-eclipse-ui-forms-TB_TOGGLE_HOVER: #F5CBC6;
+}

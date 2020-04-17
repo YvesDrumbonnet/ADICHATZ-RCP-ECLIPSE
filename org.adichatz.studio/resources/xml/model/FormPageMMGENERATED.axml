@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/FormPageMM" superEntityURI="adi://org.adichatz.studio/model/ValidableContainerMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/ManagedToolBarMM" id="managedToolBar"/>
+    <propertyField id="bindingServiceClassName">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="formMessageManager">
+        <controlField xsi:type="radioGroupType" controllerClassName="org.adichatz.studio.xjc.controller.BooleanRadioGroupController"/>
+    </propertyField>
+    <propertyField id="formText">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="image">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField mandatory="true" id="title">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+    <propertyField id="validStatus">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

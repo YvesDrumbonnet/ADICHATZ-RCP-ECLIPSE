@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/EditableFormTextMM" superEntityURI="adi://org.adichatz.studio/model/ControlFieldMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="parseTags">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="expandURLs">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="paragraphsSeparated">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="whitespaceNormalized">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="text">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/TextFontMM" id="textFont">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/TextFontMM" name="textFont"/>
+        </entityElements>
+    </oneToMany>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/TextColorMM" id="textColor">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/TextColorMM" name="textColor"/>
+        </entityElements>
+    </oneToMany>
+    <oneToMany entityURI="adi://org.adichatz.studio/model/TextImageMM" id="textImage">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/TextImageMM" name="textImage"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

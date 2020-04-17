@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/TreeMM" superEntityURI="adi://org.adichatz.studio/model/SetMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="showRoot">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="treeManager">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="expand">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField id="rootElement">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+</entityTree>

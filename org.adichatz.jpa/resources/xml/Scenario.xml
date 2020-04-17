@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenarioTree>
+	<params>
+		<!-- plugin parameters -->
+		<param id="plugin.name" value="org.adichatz.jpa"/>
+		<param id="plugin.package" value="org.adichatz.jpa"/>
+		<!-- Development parameters -->
+		<param id="devl.eclipse.directory" value="E:/ADICHATZ/ECLIPSE/eclipse.mars"/>
+		<param id="devl.workspace.directory" value="C:/ADICHATZ/ECLIPSE/workspaces/4.9/workspace/adichatz"/>
+		<param id="devl.create.xml.trace" value="true"/>
+		<param id="devl.default.integer.pattern" value="######"/>
+		<param id="devl.default.integer.scale" value="2"/>
+		<param id="devl.format.generated.classes" value="false"/>
+		<param id="devl.gencode.directory" value="/"/>
+		<param id="devl.model.package.name" value="org.adichatz.jpa.model"/>
+	</params>
+	<generators>
+		<generator treeClassName="org.adichatz.generator.wrapper.NavigatorTreeWrapper" generatorClassName="org.adichatz.generator.MenuGenerator"/>
+		<generator treeClassName="org.adichatz.generator.wrapper.EntityTreeWrapper" generatorClassName="org.adichatz.generator.EntityMetaModelGenerator"/>
+		<generator treeClassName="org.adichatz.generator.wrapper.PartTreeWrapper" generatorClassName="org.adichatz.generator.PartTreeGenerator"/>
+        <generator treeClassName="org.adichatz.generator.wrapper.ExtendTreeWrapper" generatorClassName="org.adichatz.generator.ExtendTreeGenerator"/>
+		<generator treeClassName="org.adichatz.generator.wrapper.IncludeTreeWrapper" generatorClassName="org.adichatz.generator.IncludeTreeGenerator"/>
+		<generator treeClassName="org.adichatz.generator.wrapper.ContainerTreeWrapper" generatorClassName="org.adichatz.generator.ContainerTreeGenerator"/>
+		<generator treeClassName="org.adichatz.generator.wrapper.QueryTreeWrapper" generatorClassName="org.adichatz.generator.QueryGenerator"/>
+        <generator treeClassName="org.adichatz.generator.wrapper.TableWrapper" generatorClassName="org.adichatz.generator.TableGenerator"/>
+        <generator treeClassName="org.adichatz.generator.wrapper.GridWrapper" generatorClassName="org.adichatz.generator.GridGenerator"/>
+	</generators>
+	<pathElements>
+		<pathElement type="PLUGIN" location="org.eclipse.swt.win32.win32.x86"/>
+		<pathElement type="PLUGIN" location="org.eclipse.swt.win32.win32.x86_64"/>
+		<pathElement type="PLUGIN" location="org.eclipse.jface"/>
+		<pathElement type="PLUGIN" location="org.eclipse.ui.forms"/>
+		<pathElement type="PLUGIN" location="org.eclipse.core.commands"/>
+		<pathElement type="PLUGIN" location="org.eclipse.ui.workbench"/>
+		<pathElement type="PLUGIN" location="org.eclipse.equinox.common"/>
+		<pathElement type="PLUGIN" location="org.eclipse.equinox.registry"/>
+		<pathElement type="PLUGIN" location="org.adichatz.common"/>
+		<pathElement type="PLUGIN" location="org.adichatz.engine"/>
+		<pathElement type="PLUGIN" location="org.adichatz.jpa"/>
+		<pathElement type="PLUGIN" location="org.adichatz.resources"/>
+		<pathElement type="DIRECTORY" location="#PLUGINHOME()/bin"/>
+	</pathElements>
+	<controllers>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.ActionWrapper" controllerClassName="org.adichatz.engine.controller.action.ActionController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.ButtonBarWrapper" controllerClassName="org.adichatz.engine.controller.collection.ButtonBarController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.ButtonWrapper" controllerClassName="org.adichatz.engine.controller.action.ButtonController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.CheckBoxWrapper" controllerClassName="org.adichatz.engine.controller.field.CheckBoxController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.ComboWrapper" controllerClassName="org.adichatz.engine.controller.field.ComboController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.CompositeWrapper" controllerClassName="org.adichatz.engine.controller.collection.CompositeController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.CompositeBagWrapper" controllerClassName="org.adichatz.engine.controller.collection.CompositeBagController"/>
+        <controller controllerClassName="org.adichatz.engine.controller.field.CompositeSeparatorController" wrapperClassName="org.adichatz.generator.wrapper.CompositeSeparatorWrapper"/>
+        <controller controllerClassName="org.adichatz.engine.controller.collection.ScrolledCompositeController" wrapperClassName="org.adichatz.generator.wrapper.ScrolledCompositeWrapper"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.ArgTabFolderWrapper" controllerClassName="org.adichatz.engine.controller.collection.ArgTabFolderController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.CTabFolderWrapper" controllerClassName="org.adichatz.engine.controller.collection.CTabFolderController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.CTabItemWrapper" controllerClassName="org.adichatz.engine.controller.collection.CTabItemController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.DateTextWrapper" controllerClassName="org.adichatz.engine.controller.field.DateTextController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.DetailPartWrapper" controllerClassName="org.adichatz.engine.controller.collection.DetailPageController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.EditableFormTextWrapper" controllerClassName="org.adichatz.engine.controller.field.EditableFormTextController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.EncryptedTextWrapper" controllerClassName="org.adichatz.engine.controller.field.EncryptedTextController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.ExtraTextWrapper" controllerClassName="org.adichatz.engine.controller.field.ExtraTextController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.FormPageWrapper" controllerClassName="org.adichatz.engine.controller.collection.FormPageController"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.FormattedTextWrapper" controllerClassName="org.adichatz.engine.controller.nebula.FormattedTextController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.FormTextWrapper" controllerClassName="org.adichatz.engine.controller.field.FormTextController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.GroupWrapper" controllerClassName="org.adichatz.engine.controller.collection.GroupController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.HelpButtonWrapper" controllerClassName="org.adichatz.engine.controller.action.HelpButtonController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.ImageViewerWrapper" controllerClassName="org.adichatz.engine.controller.field.ImageViewerController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.IncludeWrapper" controllerClassName="org.adichatz.engine.controller.collection.IncludeController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.LabelWrapper" controllerClassName="org.adichatz.engine.controller.field.LabelController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.ManagedActionWrapper" controllerClassName="org.adichatz.engine.controller.action.ActionController"/>		
+		<controller wrapperClassName="org.adichatz.generator.wrapper.ManagedToolBarWrapper" controllerClassName="org.adichatz.engine.controller.collection.ManagedToolBarController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.MasterDetailPageWrapper" controllerClassName="org.adichatz.engine.controller.collection.MasterDetailPageController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.MenuActionWrapper" controllerClassName="org.adichatz.engine.controller.action.MenuActionController"/>
+        <controller controllerClassName="org.adichatz.engine.controller.action.MenuItemController" wrapperClassName="org.adichatz.generator.wrapper.MenuItemWrapper"/>
+        <controller controllerClassName="org.adichatz.engine.controller.collection.MenuManagerController" wrapperClassName="org.adichatz.generator.xjc.MenuManagerType"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.NumericTextWrapper" controllerClassName="org.adichatz.engine.controller.field.NumericTextController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.ContainerTreeWrapper" controllerClassName="org.adichatz.engine.controller.collection.ContainerController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.RadioGroupWrapper" controllerClassName="org.adichatz.engine.controller.field.RadioGroupController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.RefRadioGroupWrapper" controllerClassName="org.adichatz.engine.controller.field.RefRadioGroupController"/>
+        <controller controllerClassName="org.adichatz.jpa.controller.RefTextController" wrapperClassName="org.adichatz.generator.wrapper.RefTextWrapper"/>
+        <controller wrapperClassName="org.adichatz.generator.wrapper.RichTextWrapper" controllerClassName="org.adichatz.engine.controller.nebula.RichTextController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.SashFormWrapper" controllerClassName="org.adichatz.engine.controller.collection.SashFormController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.ScrolledFormWrapper" controllerClassName="org.adichatz.engine.controller.collection.ScrolledFormController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.SectionWrapper" controllerClassName="org.adichatz.engine.controller.collection.SectionController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.SeparatorWrapper" controllerClassName="org.adichatz.engine.controller.action.SeparatorController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.TableColumnWrapper" controllerClassName="org.adichatz.engine.controller.field.TableColumnController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.TableWrapper" controllerClassName="org.adichatz.engine.controller.collection.TableController"/>
+        <controller controllerClassName="org.adichatz.engine.controller.collection.ATabularController" wrapperClassName="org.adichatz.generator.wrapper.TabularWrapper"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.TextWrapper" controllerClassName="org.adichatz.engine.controller.field.TextController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.ToolBarWrapper" controllerClassName="org.adichatz.engine.controller.collection.ToolBarController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.ToolItemWrapper" controllerClassName="org.adichatz.engine.controller.action.ToolItemController"/>
+		<controller wrapperClassName="org.adichatz.generator.wrapper.TreeWrapper" controllerClassName="org.adichatz.engine.controller.collection.TreeController"/>
+        <!--  NEBULA -->
+        <controller controllerClassName="org.adichatz.engine.controller.nebula.PGroupController" wrapperClassName="org.adichatz.generator.wrapper.PGroupWrapper"/>
+        <controller controllerClassName="org.adichatz.engine.controller.nebula.PShelfController" wrapperClassName="org.adichatz.generator.wrapper.PShelfWrapper"/>
+        <controller controllerClassName="org.adichatz.engine.controller.nebula.ArgPShelfController" wrapperClassName="org.adichatz.generator.wrapper.ArgPShelfrapper"/>
+        <controller controllerClassName="org.adichatz.engine.controller.nebula.PShelfItemController" wrapperClassName="org.adichatz.generator.wrapper.PShelfItemWrapper"/>
+        <controller controllerClassName="org.adichatz.engine.controller.nebula.GridController" wrapperClassName="org.adichatz.generator.wrapper.GridWrapper"/>
+        <controller controllerClassName="org.adichatz.engine.controller.nebula.GridColumnController" wrapperClassName="org.adichatz.generator.wrapper.GridColumnWrapper"/>
+        <controller controllerClassName="org.adichatz.engine.controller.nebula.GridColumnGroupController" wrapperClassName="org.adichatz.generator.wrapper.GridColumnGroupWrapper"/>
+        <controller controllerClassName="org.adichatz.engine.controller.nebula.PGroupToolItemController" wrapperClassName="org.adichatz.generator.wrapper.PGroupToolItemWrapper"/>
+        <controller controllerClassName="org.adichatz.engine.controller.nebula.PGroupMenuController" wrapperClassName="org.adichatz.generator.wrapper.PGroupMenuWrapper"/>
+	</controllers>
+    <generationScenario scenarioClassName="org.adichatz.scenario.impl.PluginEntityScenario">
+        <pluginEntity entityURI="adi://org.adichatz.jpa/query.model/ColumnPreferenceMM" beanClassName="org.adichatz.jpa.xjc.ColumnPreferenceType">
+            <generationUnit adiResourceURI="adi://org.adichatz.jpa/query.model/ColumnPreferenceMM" type="ENTITY"/>
+        </pluginEntity>
+        <pluginEntity entityURI="adi://org.adichatz.jpa/query.model/ControllerPreferenceMM" beanClassName="org.adichatz.jpa.wrapper.ControllerPreferenceWrapper">
+            <generationUnit adiResourceURI="adi://org.adichatz.jpa/query.model/ControllerPreferenceMM" type="ENTITY"/>
+        </pluginEntity>
+        <pluginEntity entityURI="adi://org.adichatz.jpa/query.model/OpenClauseMM" beanClassName="org.adichatz.jpa.xjc.QueryOpenClauseType">
+            <generationUnit adiResourceURI="adi://org.adichatz.jpa/query.model/OpenClauseMM" type="ENTITY"/>
+        </pluginEntity>
+        <pluginEntity entityURI="adi://org.adichatz.jpa/query.model/RecentPreferenceMM" beanClassName="org.adichatz.jpa.wrapper.RecentPreferenceWrapper">
+            <generationUnit adiResourceURI="adi://org.adichatz.jpa/query.model/RecentPreferenceMM" type="ENTITY"/>
+        </pluginEntity>
+        <pluginEntity entityURI="adi://org.adichatz.jpa/query.model/ParameterMM" beanClassName="org.adichatz.jpa.wrapper.QueryParameterWrapper">
+            <generationUnit adiResourceURI="adi://org.adichatz.jpa/query.model/ParameterMM" type="ENTITY"/>
+        </pluginEntity>
+        <pluginEntity entityURI="adi://org.adichatz.jpa/query.model/QueryManagerMM" beanClassName="org.adichatz.jpa.query.JPAQueryManager">
+            <generationUnit adiResourceURI="adi://org.adichatz.jpa/query.model/QueryManagerMM" type="ENTITY"/>
+        </pluginEntity>
+        <pluginEntity entityURI="adi://org.adichatz.jpa/query.model/QueryToolInputMM" beanClassName="org.adichatz.jpa.query.QueryToolInput">
+            <generationUnit adiResourceURI="adi://org.adichatz.jpa/query.model/QueryToolInputMM" type="ENTITY"/>
+        </pluginEntity>
+        <pluginEntity entityURI="adi://org.adichatz.jpa/query.model/PaginationMM" beanClassName="org.adichatz.jpa.wrapper.QueryPaginationWrapper">
+            <generationUnit adiResourceURI="adi://org.adichatz.jpa/query.model/PaginationMM" type="ENTITY"/>
+        </pluginEntity>
+        <pluginEntity entityURI="adi://org.adichatz.jpa/query.model/ViewerFilterMM" beanClassName="org.adichatz.jpa.xjc.FilterType">
+            <generationUnit adiResourceURI="adi://org.adichatz.jpa/query.model/ViewerFilterMM" type="ENTITY"/>
+        </pluginEntity>
+        <pluginEntity entityURI="adi://org.adichatz.jpa/query.model/QueryPreferenceMM" beanClassName="org.adichatz.jpa.wrapper.QueryPreferenceWrapper">
+            <generationUnit adiResourceURI="adi://org.adichatz.jpa/query.model/QueryPreferenceMM" type="ENTITY"/>
+        </pluginEntity>
+        <pluginEntity entityURI="adi://org.adichatz.jpa/jpa/EntityMM" beanClassName="org.adichatz.engine.data.AEntity">
+            <generationUnit adiResourceURI="adi://org.adichatz.jpa/jpa/EntityMM" type="ENTITY"/>
+        </pluginEntity>
+        <pluginEntity entityURI="adi://org.adichatz.jpa/jpa/ErrorPathMM" beanClassName="org.adichatz.engine.validation.ErrorPath">
+            <generationUnit adiResourceURI="adi://org.adichatz.jpa/jpa/ErrorPathMM" type="ENTITY"/>
+        </pluginEntity>
+        <pluginEntity entityURI="adi://org.adichatz.jpa/jpa/EditorOutlineInputMM" beanClassName="org.adichatz.jpa.editor.EditorOutlineInput">
+            <generationUnit adiResourceURI="adi://org.adichatz.jpa/jpa/EditorOutlineInputMM" type="ENTITY"/>
+        </pluginEntity>
+        <generationUnit scenarioClassName="org.adichatz.scenario.impl.PlainEntityScenario" type="ENTITY"/>
+    </generationScenario>
+</scenarioTree>

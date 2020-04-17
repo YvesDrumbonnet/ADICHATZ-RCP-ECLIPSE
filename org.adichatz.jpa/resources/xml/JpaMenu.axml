@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<navigatorTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Navigator" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/navigatorTree.xsd">
+    <menu label="#MSG(adichatzJpa,tools)" image="#IMG(adi://org.adichatz.engine.e4/./IMG_TOOL.png)" id="jpaTools">
+        <item label="#MSG(adichatzJpa,preferences)" image="#IMG(IMG_PREFERENCE)" id="openPreference">
+            <params>
+                <param id="COMMAND" value="adichatz.preference.command"/>
+            </params>
+        </item>
+        <item label="#MSG(adichatzJpa,switchEditors)" image="#IMG(adi://org.adichatz.engine.e4/./IMG_SWITCH_EDITORS.png)" id="IMG_SWITCH_EDITORS.png">
+            <params>
+                <param id="COMMAND" value="adichatz.switch.editor.command"/>
+            </params>
+        </item>
+        <item label="#MSG(adichatzJpa,pooledQueries)" image="#IMG(adi://org.adichatz.engine.e4/./IMG_QUERY_MANAGER.png)" id="openPooledQueries">
+            <params>
+                <param id="COMMAND" value="adichatz.application.pooledQuery.command"/>
+            </params>
+        </item>
+        <separator/>
+        <menu label="#MSG(adi://org.adichatz.engine.e4/./adichatzEngineE4, menu.perspective)" image="#IMG(adi://org.adichatz.engine.e4/./IMG_PERSPECTIVE.png)" id="perspectiveMenu" controllerClassName="org.adichatz.engine.e4.resource.PerspectiveMenuController"/>
+    </menu>
+</navigatorTree>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ValidatorMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(validator, key).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="key$1"/>
+        <text property="key" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validator, key).concat(&quot;:&quot;)" linkedControl="key$1" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="key">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <hyperlink text="#MSG(validator, validatorClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="validatorClassNameValidatorPART$1">
+            <pluginEntity/>
+        </hyperlink>
+        <text property="validatorClassName" labelText="#MSG(validator, validatorClassName).concat(&quot;:&quot;)" linkedControl="validatorClassNameValidatorPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="validatorClassName">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(validator, hostingControllerIds).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="hostingControllerIds$1"/>
+        <text property="hostingControllerIds" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validator, hostingControllerIds).concat(&quot;:&quot;)" linkedControl="hostingControllerIds$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="hostingControllerIds">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(validator, errorMessage).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="errorMessage$1"/>
+        <text property="errorMessage" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validator, errorMessage).concat(&quot;:&quot;)" linkedControl="errorMessage$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="errorMessage">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(validator, errorWhen).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="errorWhen$1"/>
+        <text property="errorWhen" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validator, errorWhen).concat(&quot;:&quot;)" linkedControl="errorWhen$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="errorWhen">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(validator, warningMessage).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="warningMessage$1"/>
+        <text property="warningMessage" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validator, warningMessage).concat(&quot;:&quot;)" linkedControl="warningMessage$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="warningMessage">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(validator, warningWhen).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="warningWhen$1"/>
+        <text property="warningWhen" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validator, warningWhen).concat(&quot;:&quot;)" linkedControl="warningWhen$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="warningWhen">
+            <pluginEntity/>
+        </text>
+    </scrolledComposite>
+</containerTree>

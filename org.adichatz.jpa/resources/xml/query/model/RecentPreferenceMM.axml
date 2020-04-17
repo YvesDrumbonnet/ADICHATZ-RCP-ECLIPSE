@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.jpa/query.model/RecentPreferenceMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="preferenceURI"/>
+    <propertyField id="updated"/>
+    <oneToMany id="viewerFilters"/>
+    <oneToMany id="columnPrefs"/>
+</entityTree>

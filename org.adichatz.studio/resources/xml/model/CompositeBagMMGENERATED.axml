@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/CompositeBagMM" superEntityURI="adi://org.adichatz.studio/model/CollectionMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <oneToMany entityURI="adi://org.adichatz.studio/model/ValidElementMM" id="scrolledFormOrSectionOrComposite">
+        <entityElements>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ScrolledFormMM" name="scrolledForm"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/SectionMM" name="section"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/CompositeMM" name="composite"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/GroupMM" name="group"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/PGroupMM" name="pgroup"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/SashFormMM" name="sashForm"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ScrolledCompositeMM" name="scrolledComposite"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/CTabFolderMM" name="cTabFolder"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ArgTabFolderMM" name="argTabFolder"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/PShelfMM" name="pshelf"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/ArgPShelfMM" name="argPShelf"/>
+            <entityElement entityURI="adi://org.adichatz.studio/model/IncludeMM" name="include"/>
+        </entityElements>
+    </oneToMany>
+</entityTree>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.jpa/query.model/ParameterMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="id"/>
+    <propertyField id="entityURI"/>
+    <propertyField id="suffix"/>
+    <propertyField id="style"/>
+    <propertyField id="binarySecondExpression"/>
+    <propertyField id="secondColumnText"/>
+    <propertyField id="secondExpression"/>
+    <propertyField id="expressionClassName"/>
+    <propertyField id="binaryExpression"/>
+    <propertyField id="expressionMethodURI"/>
+    <propertyField id="columnText"/>
+    <propertyField id="expression"/>
+    <propertyField id="operator"/>
+</entityTree>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<scenarioTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/scenarioTree.xsd">
+	<params>
+    	<param id="devl.default.integer.pattern" value="#####"/>
+        <param id="runtime.resources.dir" value="#PLUGINHOME(org.adichatz.template)/template/resources" type="RUNTIME"/>
+    </params>
+	<actionResources>
+		<copyResource sourceURI="#PLUGINHOME(org.adichatz.template)/template/src/PgFullTextDialect.java" targetURI="#PLUGINHOME()/src/#PLUGINPACKAGEDIR()/ejb/PgFullTextDialect.java" actionWhen="WHEN_BUILDING_MODEL">
+			<replacement token="#{adichatz.package.name}" value="#PLUGINPACKAGE().ejb"/>
+		</copyResource>
+		<copyResource sourceURI="#PLUGINHOME(org.adichatz.template)/template/src/PgFullTextFunction.java" targetURI="#PLUGINHOME()/src/#PLUGINPACKAGEDIR()/ejb/PgFullTextFunction.java" actionWhen="WHEN_BUILDING_MODEL">
+			<replacement token="#{adichatz.package.name}" value="#PLUGINPACKAGE().ejb"/>
+		</copyResource>
+		<copyResource sourceURI="#PLUGINHOME(org.adichatz.template)/template/src/GlobalEnumType.java" targetURI="#PLUGINHOME()/src/#PLUGINPACKAGEDIR()/ejb/GlobalEnumType.java" actionWhen="WHEN_BUILDING_MODEL">
+			<condition>org.adichatz.generator.xjc.ModelPartType modelPart = scenarioResources.getGenerationScenario().getModelPart();
+if (null == modelPart)
+	return false;
+return !org.adichatz.scenario.util.ScenarioUtil.isWildfly14Version(modelPart.getConnectorASVersion());</condition>
+			<replacement token="#{adichatz.package.name}" value="#PLUGINPACKAGE().ejb"/>
+		</copyResource>
+		<copyResource sourceURI="#PLUGINHOME(org.adichatz.template)/template/src/GlobalEnumTypeHibernate_5_3_6.java" targetURI="#PLUGINHOME()/src/#PLUGINPACKAGEDIR()/ejb/GlobalEnumType.java" actionWhen="WHEN_BUILDING_MODEL">
+			<condition>org.adichatz.generator.xjc.ModelPartType modelPart = scenarioResources.getGenerationScenario().getModelPart();
+if (null == modelPart)
+	return false;
+return org.adichatz.scenario.util.ScenarioUtil.isWildfly14Version(modelPart.getConnectorASVersion());</condition>
+			<replacement token="#{adichatz.package.name}" value="#PLUGINPACKAGE().ejb"/>
+		</copyResource>
+		<copyResource sourceURI="#PLUGINHOME(org.adichatz.template)/template/src/StringArrayType.java" targetURI="#PLUGINHOME()/src/#PLUGINPACKAGEDIR()/ejb/StringArrayType.java" actionWhen="WHEN_BUILDING_MODEL">
+			<replacement token="#{adichatz.package.name}" value="#PLUGINPACKAGE().ejb"/>
+			<condition>org.adichatz.generator.xjc.ModelPartType modelPart = scenarioResources.getGenerationScenario().getModelPart();
+if (null == modelPart)
+	return false;
+return !org.adichatz.scenario.util.ScenarioUtil.isWildfly14Version(modelPart.getConnectorASVersion());</condition>
+		</copyResource>
+		<copyResource sourceURI="#PLUGINHOME(org.adichatz.template)/template/src/StringArrayType_5_3_6.java" targetURI="#PLUGINHOME()/src/#PLUGINPACKAGEDIR()/ejb/StringArrayType.java" actionWhen="WHEN_BUILDING_MODEL">
+			<replacement token="#{adichatz.package.name}" value="#PLUGINPACKAGE().ejb"/>
+			<condition>org.adichatz.generator.xjc.ModelPartType modelPart = scenarioResources.getGenerationScenario().getModelPart();
+if (null == modelPart)
+	return false;
+return org.adichatz.scenario.util.ScenarioUtil.isWildfly14Version(modelPart.getConnectorASVersion());</condition>
+		</copyResource>
+		<copyResource sourceURI="#PLUGINHOME(org.adichatz.template)/template/src/PgQueryBuilder.java" targetURI="#PLUGINHOME()/src/#PLUGINPACKAGEDIR()/PgQueryBuilder.java" actionWhen="WHEN_BUILDING_MODEL">
+			<replacement token="#{adichatz.package.name}" value="#PLUGINPACKAGE()"/>
+			<replacement token="#{adichatz.language.name}" value="english"/>
+		</copyResource>
+	</actionResources>
+    <generationScenario>
+		<modelPart>
+    		<pojoRewriters>
+	    		<pojoRewriter rewriterClassName="org.adichatz.scenario.generation.PgPojoIdRewriter"/>
+	    		<pojoRewriter rewriterClassName="org.adichatz.scenario.generation.SuperPojoRewriter" propertyRegex="lastUpdate">
+	    			<params>
+	    				<param id="superClassURI" value="bundleclass://./#PLUGINPACKAGE().model.ASuperLastUpdate"/>
+	    				<param id="sourceURI" value="platform:/plugin/org.adichatz.template/template/src/ASuperLastUpdate.java"/>
+	    			</params>
+	    		</pojoRewriter>
+			</pojoRewriters>
+    	</modelPart>
+		<propertyField id="lastUpdate">
+        	<controlField xsi:type="dateTextType" enabled="false" style="SWT.BORDER | SWT.TIME"/>
+		</propertyField>
+		<propertyField id="rating" pojoType="#ENUM(MpaaRatingEnum, {G, PG, PG-13, R, NC-17})">
+        	<controlField xsi:type="cComboType">
+				<labelProvider>
+	               <textCode>return ((#MODELPACKAGE().MpaaRatingEnum) element).getValue();</textCode>
+				</labelProvider>
+				<initValues>return java.util.Arrays.asList(#MODELPACKAGE().MpaaRatingEnum.values());</initValues>
+			</controlField>
+		</propertyField>
+		<propertyField id="fulltext" pojoType="tsvector"/>
+		<pluginEntity entityURI="adi://././FilmMM">
+			<messages>
+        		<message key="invalid.year.value" value="Invalid year '{0}'! Value must be between 1900 and 2155"/>
+        	</messages>
+            <params>
+                <param id="FULLTEXT_RESOURCE_URI" type="QUERY_ITEM" value="adi://org.adichatz.jpa/query/FullTextInclude"/>
+            </params>
+            <propertyField id="releaseYear" pojoType="int">
+		        <controlField xsi:type="formattedTextType" editPattern="####" format="Integer">
+		        	<validators>
+	           			<validator key="invalidYear" errorMessage="#MSG(film, invalid.year.value, #FV())">
+	           				<errorWhen>return #FV() &lt; 1900 ||  #FV() &gt; 2155;</errorWhen>
+	           			</validator>
+		        	</validators>
+		        </controlField>
+            </propertyField>
+            <propertyField id="specialFeatures" pojoType="String[]">
+		        <controlField xsi:type="multiChoiceType" values="Trailers,Commentaries,Deleted Scenes,Behind the Scenes" multiChoiceType="Array" popupToolbar="true">
+		        	<convertTargetToModel>return java.util.Arrays.copyOf((Object[]) value, ((Object[]) value).length, String[].class);</convertTargetToModel>
+		        </controlField>
+            </propertyField>
+        </pluginEntity>
+    </generationScenario>
+    <customPostAction injectInsideScenarioFile="true" generatePojo="true" generateEJB="true" generatePersistenceXml="true" deployEJB="true">
+        <customGenerationUnit type="DETAIL" propertyRegex="lastUpdate"/>
+    </customPostAction>
+</scenarioTree>
+    

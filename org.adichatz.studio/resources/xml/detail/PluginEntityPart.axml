@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/PluginEntityMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/engine/containerTree.xsd">
+    <scrolledComposite id="itemComposite">
+        <layout rowConstraints="[]" columnConstraints="[align right]10[fill,grow]" layoutConstraints="wrap 2" labelForeground="#COLOR(IFormColors.TITLE)"/>
+        <text mandatory="true" labelText="#MSG(adi://org.adichatz.studio/./pluginEntity, entityURI).concat(&quot;:&quot;)" labelForeground="#COLOR(IFormColors.TITLE)"
+              controllerClassName="org.adichatz.studio.xjc.controller.EntityUri4PETextController" property="entityURI" id="entityURI"/>
+        <text linkedControl="beanClassNamePluginEntityPart$1" property="beanClassName" controllerClassName="org.adichatz.studio.xjc.controller.BeanClassTextController" id="beanClassName"/>
+        <checkBox labelText="#MSG(pluginEntity, protectPojo).concat(&quot;:&quot;)" labelForeground="#COLOR(IFormColors.TITLE)" property="protectPojo" id="protectPojo"/>
+	    <group id="itemComposite" text="#MSG(adichatzStudio, scenario.roles)" layoutData="gap top 20, span 2, grow" font="#FONT(JFaceResources.BANNER_FONT)">
+    	    <layout rowConstraints="[]" columnConstraints="[align right]10[fill,grow]" layoutConstraints="wrap 2"/>
+	        <text property="retrieveRoles" id="retrieveRoles" labelForeground="#COLOR(IFormColors.TITLE)"/>
+	        <text property="mergeRoles" id="mergeRoles" labelForeground="#COLOR(IFormColors.TITLE)"/>
+	        <text property="persistRoles" id="persistRoles" labelForeground="#COLOR(IFormColors.TITLE)"/>
+	        <text property="removeRoles" id="removeRoles" labelForeground="#COLOR(IFormColors.TITLE)"/>
+		</group>
+    </scrolledComposite>
+</containerTree>

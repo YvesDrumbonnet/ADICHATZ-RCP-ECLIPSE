@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/HelpButtonMM" superEntityURI="adi://org.adichatz.studio/model/ControlMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+    <propertyField id="image">
+        <controlField xsi:type="textType"/>
+    </propertyField>
+    <propertyField mandatory="true" id="helpLabel">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+    <propertyField mandatory="true" id="helpSpecify">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+    <propertyField mandatory="true" id="helpMessage">
+        <controlField xsi:type="textType" mandatory="true"/>
+    </propertyField>
+</entityTree>

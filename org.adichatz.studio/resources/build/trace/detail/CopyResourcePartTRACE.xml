@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/CopyResourceMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(removeResource, actionWhen).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="actionWhen$1"/>
+        <radioGroup property="actionWhen" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(removeResource, actionWhen).concat(&quot;:&quot;)" linkedControl="actionWhen$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="actionWhen">
+            <pluginEntity/>
+            <labelProvider>
+                <textCode>return ((ActionWhenTypeEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.ActionWhenTypeEnum
+import java.util.Arrays
+return Arrays.asList(ActionWhenTypeEnum.class.getEnumConstants());</initValues>
+        </radioGroup>
+        <label text="#MSG(copyResource, force).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="force$1"/>
+        <checkBox property="force" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(copyResource, force).concat(&quot;:&quot;)" linkedControl="force$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="force">
+            <pluginEntity/>
+        </checkBox>
+        <label text="#MSG(removeResource, relative).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="relative$1"/>
+        <checkBox property="relative" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(removeResource, relative).concat(&quot;:&quot;)" linkedControl="relative$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="relative">
+            <pluginEntity/>
+        </checkBox>
+        <label text="#MSG(copyResource, sourceURI).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="sourceURI$1"/>
+        <text property="sourceURI" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(copyResource, sourceURI).concat(&quot;:&quot;)" linkedControl="sourceURI$1" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="sourceURI">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(removeResource, targetURI).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="targetURI$1"/>
+        <text property="targetURI" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(removeResource, targetURI).concat(&quot;:&quot;)" linkedControl="targetURI$1" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="targetURI">
+            <pluginEntity/>
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(removeResource, throwError).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="throwError$1"/>
+        <checkBox property="throwError" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(removeResource, throwError).concat(&quot;:&quot;)" linkedControl="throwError$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="throwError">
+            <pluginEntity/>
+        </checkBox>
+        <label text="#MSG(removeResource, condition).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="condition$1"/>
+        <text property="condition" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(removeResource, condition).concat(&quot;:&quot;)" linkedControl="condition$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.CodeTextController" style="SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | AdiSWT.EXPANDABLE" id="condition">
+            <pluginEntity/>
+        </text>
+    </scrolledComposite>
+</containerTree>

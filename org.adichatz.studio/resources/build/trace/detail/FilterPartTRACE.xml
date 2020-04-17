@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/FilterMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(filter, caseInsensitive).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="caseInsensitive$1"/>
+        <checkBox property="caseInsensitive" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(filter, caseInsensitive).concat(&quot;:&quot;)" linkedControl="caseInsensitive$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="caseInsensitive">
+            <pluginEntity/>
+        </checkBox>
+        <label text="#MSG(filter, column).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="column$1"/>
+        <text property="column" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(filter, column).concat(&quot;:&quot;)" linkedControl="column$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="column">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(filter, columnType).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="columnType$1"/>
+        <ccombo property="columnType" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(filter, columnType).concat(&quot;:&quot;)" linkedControl="columnType$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" layoutData="grow 0" style="SWT.BORDER | SWT.READ_ONLY" id="columnType">
+            <pluginEntity/>
+            <labelProvider>
+                <textCode>return ((ColumnTypeEnum) element).value();</textCode>
+            </labelProvider>
+            <initValues>import org.adichatz.generator.xjc.ColumnTypeEnum
+import java.util.Arrays
+return Arrays.asList(ColumnTypeEnum.class.getEnumConstants());</initValues>
+        </ccombo>
+        <label text="#MSG(filter, enabled).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="enabled$1"/>
+        <text property="enabled" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(filter, enabled).concat(&quot;:&quot;)" linkedControl="enabled$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.XjcTextController" id="enabled">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(filter, exactString).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="exactString$1"/>
+        <checkBox property="exactString" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(filter, exactString).concat(&quot;:&quot;)" linkedControl="exactString$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="exactString">
+            <pluginEntity/>
+        </checkBox>
+        <label text="#MSG(filter, searchString).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="searchString$1"/>
+        <text property="searchString" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(filter, searchString).concat(&quot;:&quot;)" linkedControl="searchString$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="searchString">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(filter, text).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="text$1"/>
+        <text property="text" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(filter, text).concat(&quot;:&quot;)" linkedControl="text$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="text">
+            <pluginEntity/>
+        </text>
+    </scrolledComposite>
+</containerTree>

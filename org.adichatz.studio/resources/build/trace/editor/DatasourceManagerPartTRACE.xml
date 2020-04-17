@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="containerTreeWrapper$$0" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <group text="#MSG(adichatzStudio, scenario.datasource.group)" font="#FONT(JFaceResources.BANNER_FONT)" layoutData="h 0:n:n, w 0:n:n" background="#COLOR(IFormColors.H_GRADIENT_START)" id="datasourceGroup">
+        <layout layoutConstraints="wrap 2" columnConstraints="[]15[grow,fill]" rowConstraints="[]2[][]"/>
+        <label text="#MSG(adichatzStudio, scenario.datasource.id)" background="#COLOR(IFormColors.H_GRADIENT_START)" id="id"/>
+        <text mandatory="true" id="id">
+            <validators>
+                <validator key="connectorNameAlreadyExist" errorMessage="#MSG(adichatzStudio, scenario.datasource.connector.exist, getValue())">
+                    <errorWhen>return null != getConnectorTree().getDatasource(getControl().getText().trim()) &amp;&amp; !#PARAM(CONNECTOR).equals(getControl().getText().trim());</errorWhen>
+                </validator>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(adichatzStudio, scenario.datasource.name)" background="#COLOR(IFormColors.H_GRADIENT_START)" id="nameLBL"/>
+        <text mandatory="true" id="name">
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(adichatzStudio, scenario.datasource.description)" background="#COLOR(IFormColors.H_GRADIENT_START)" id="descriptionLBL"/>
+        <text mandatory="true" id="description">
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(adichatzStudio, scenario.customization.file)" background="#COLOR(IFormColors.H_GRADIENT_START)" id="customizationFileLBL"/>
+        <fileText filterExtension="*.xml" id="customizationFile">
+            <validators>
+                <validator key="invalidCustomFile" errorMessage="#MSG(adichatzStudio, scenario.custom.invalid, getValue())">
+                    <errorWhen>import org.adichatz.studio.util.StudioUtil
+Object validation = StudioUtil.validateCustomizationFile(getControl().getValue(), null);
+return null != validation &amp;&amp; validation instanceof String;</errorWhen>
+                </validator>
+            </validators>
+        </fileText>
+    </group>
+    <group text="#MSG(adichatzStudio, scenario.datasource.properties.group)" font="#FONT(JFaceResources.BANNER_FONT)" layoutData="h 0:n:n, w 0:n:n" id="propertiesGroup">
+        <additionalCode>import org.adichatz.generator.common.FileUtil;
+import org.adichatz.generator.common.GeneratorConstants;
+import org.adichatz.generator.wrapper.ConnectorTreeWrapper;
+import org.adichatz.scenario.util.ScenarioUtil;
+private ConnectorTreeWrapper connectorTree;
+private ConnectorTreeWrapper getConnectorTree() {
+    if (null == connectorTree) {
+       connectorTree = ScenarioUtil.getConnectorTree(#PARAM(CONNECTORS_URI));
+    }
+    return connectorTree;
+}
+private String getConnectorDirectory() {
+    return FileUtil.getPluginHome(GeneratorConstants.TEMPLATE_BUNDLE) + "/template/connectors";
+}
+		</additionalCode>
+        <layout layoutConstraints="wrap 2" columnConstraints="[]15[grow,fill]" rowConstraints="[]2[]2[]2[]2[]2[]2[]2[]"/>
+        <label text="#MSG(adichatzStudio, studio.jdbc.dialect).concat(&quot;:&quot;)" id="dialectLBL"/>
+        <text mandatory="true" controllerClassName="org.adichatz.studio.xjc.controller.DialectTextController" id="dialect">
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(adichatzStudio, studio.jdbc.driverClass).concat(&quot;:&quot;)" id="connectionDriverClassLBL"/>
+        <text mandatory="true" id="connectionDriverClass">
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(adichatzStudio, studio.jdbc.URL).concat(&quot;:&quot;)" id="connectionUrlLBL"/>
+        <text mandatory="true" id="connectionUrl">
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(adichatzStudio, studio.jdbc.username).concat(&quot;:&quot;)" id="connectionUsernameLBL"/>
+        <text mandatory="true" id="connectionUsername">
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </text>
+        <label text="#MSG(adichatzStudio, studio.jdbc.password).concat(&quot;:&quot;)" id="connectionPasswordLBL"/>
+        <encryptedText id="connectionPassword"/>
+        <label text="#MSG(adichatzStudio, studio.jdbc.schema).concat(&quot;:&quot;)" id="connectionSchemaLBL"/>
+        <text id="connectionSchema"/>
+        <label text="#MSG(adichatzStudio, studio.jdbc.driverJar).concat(&quot;:&quot;)" id="jdbcDriverJarLBL"/>
+        <fileText filterExtension="*.jar, *.zip" filterPath="#LITERAL(getConnectorDirectory())" mandatory="true" id="jdbcDriverJar">
+            <validators>
+                <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
+            </validators>
+        </fileText>
+        <label text="#MSG(adichatzStudio, studio.reveng.file).concat(&quot;:&quot;)" id="revengFileLBL"/>
+        <fileText filterExtension="*.xml" filterPath="#LITERAL(getConnectorDirectory())" id="revengFile"/>
+    </group>
+    <group text="#MSG(adichatzStudio, scenario.datasource.AS)" font="#FONT(JFaceResources.BANNER_FONT)" layoutData="h 0:n:n, w 0:n:n" background="#COLOR(IFormColors.H_GRADIENT_START)" id="jboss71Group">
+        <layout layoutConstraints="wrap 3" columnConstraints="[]15[grow,fill][]" rowConstraints="[]2[]"/>
+        <label text="#MSG(adichatzStudio, scenario.datasource.driver)" background="#COLOR(IFormColors.H_GRADIENT_START)" id="driverLBL"/>
+        <text id="driver"/>
+        <helpButton helpLabel="#MSG(adichatzStudio, scenario.specify.driver)" helpSpecify="#MSG(adichatzStudio, scenario.specify.driver)" helpMessage="#MSG(adichatzStudio, scenario.specify.message)" id="driverHlp"/>
+        <label text="#MSG(adichatzStudio, scenario.datasource.xa.datasource.class)" background="#COLOR(IFormColors.H_GRADIENT_START)" id="xaDataSourceClassLBL"/>
+        <text id="xaDataSourceClass"/>
+        <helpButton helpLabel="#MSG(adichatzStudio, scenario.xa.datasource.class.driver)" helpSpecify="#MSG(adichatzStudio, scenario.xa.datasource.class.driver)" helpMessage="#MSG(adichatzStudio, scenario.xa.datasource.class.message)" id="xaDataSourceClassHlp"/>
+    </group>
+</containerTree>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/JointureAliasMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
+    <pluginEntity/>
+    <scrolledComposite dirtyManagement="false" id="itemComposite">
+        <pluginEntity/>
+        <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
+        <label text="#MSG(jointureAlias, alias).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="alias$1"/>
+        <text property="alias" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(jointureAlias, alias).concat(&quot;:&quot;)" linkedControl="alias$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="alias">
+            <pluginEntity/>
+        </text>
+        <label text="#MSG(jointureAlias, path).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="path$1"/>
+        <text property="path" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(jointureAlias, path).concat(&quot;:&quot;)" linkedControl="path$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="path">
+            <pluginEntity/>
+        </text>
+    </scrolledComposite>
+</containerTree>
