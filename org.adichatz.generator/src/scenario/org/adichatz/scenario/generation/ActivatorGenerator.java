@@ -133,8 +133,6 @@ public class ActivatorGenerator extends ACompilationUnitGenerator {
 			imports.add(AdiPluginResources.class.getName());
 			imports.add(BundleContext.class.getName());
 			if (scenarioResources.hasModelPart()) {
-				imports.add(scenarioResources.getPluginPackage().concat(".BeanInterceptor"));
-				imports.add(scenarioResources.getPluginPackage().concat(".JPAConnector"));
 				imports.add(ADataAccess.class.getName());
 				imports.add(JPADataAccess.class.getName());
 				imports.add(IBeanInterceptorFactory.class.getName());

@@ -435,6 +435,12 @@ public class UIComponentGeneration {
 							ScenarioUtil.addAttrribute(doc, plugin, "fragment", "true");
 						plugins.appendChild(plugin);
 					}
+					Element configurations = doc.createElement("configurations");
+					rootElement.appendChild(configurations);
+					addPluginConfigurations(doc, configurations, "org.apache.felix.scr", "2");
+					addPluginConfigurations(doc, configurations, "org.eclipse.core.runtime", "0");
+					addPluginConfigurations(doc, configurations, "org.eclipse.equinox.common", "2");
+					addPluginConfigurations(doc, configurations, "org.eclipse.equinox.event", "2");
 				}
 
 				// write the content into xml file
@@ -470,6 +476,15 @@ public class UIComponentGeneration {
 		} catch (IOException e) {
 			logError(e);
 		}
+	}
+
+	private void addPluginConfigurations(Document doc, Element configurations, String id, String startLevel) {
+		Element plugin = doc.createElement("plugin");
+		ScenarioUtil.addAttrribute(doc, plugin, "id", id);
+		ScenarioUtil.addAttrribute(doc, plugin, "autoStart", "true");
+		ScenarioUtil.addAttrribute(doc, plugin, "startLevel", startLevel);
+		configurations.appendChild(plugin);
+
 	}
 
 	/**

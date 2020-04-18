@@ -314,7 +314,7 @@ public class ComponentGeneration {
 									generationEnum.name()));
 						else {
 							try {
-								PluginEntity pe = gu.getPluginEntity(pluginEntity, scenarioResources);
+								PluginEntity<?> pe = gu.getPluginEntity(pluginEntity, scenarioResources);
 								generateXml = generateJava = compile = true;
 								ScenarioInput scenarioInput = new ScenarioInput(scenarioResources, pe, generateXml, generateJava,
 										compile, refresh);
@@ -455,14 +455,13 @@ public class ComponentGeneration {
 				manifestSB.append(Constants.BUNDLE_NAME + ": " + scenarioResources.getPluginName() + "\n");
 				manifestSB.append(Constants.BUNDLE_SYMBOLICNAME + ": " + scenarioResources.getPluginName() + "\n");
 				manifestSB.append(Constants.BUNDLE_ACTIVATOR + ": " + scenarioResources.getPluginPackage() + ".Activator\n");
+				manifestSB.append(Constants.BUNDLE_REQUIREDEXECUTIONENVIRONMENT + ": JavaSE-9\n");
 				manifestSB.append(Constants.REQUIRE_BUNDLE + ": org.eclipse.core.runtime,\n");
 				manifestSB.append(" " + EngineConstants.ENGINE_BUNDLE + ",\n");
 				manifestSB.append(" " + EngineConstants.JPA_BUNDLE + ",\n");
 				manifestSB.append(" " + GeneratorConstants.GENERATOR_BUNDLE + ",\n");
 				manifestSB.append(" " + EngineConstants.COMMON_BUNDLE + ",\n");
 				manifestSB.append(" org.adichatz.resources\n");
-				manifestSB.append(
-						Constants.BUNDLE_REQUIREDEXECUTIONENVIRONMENT + ": Bundle-RequiredExecutionEnvironment: JavaSE-1.8");
 				manifestWriter.write(manifestSB.toString());
 				manifestWriter.close();
 				refresh("META-INF");

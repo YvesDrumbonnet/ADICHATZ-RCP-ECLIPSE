@@ -151,12 +151,22 @@ public class PojoTypeRewriter extends ARewriter implements IPojoRewriter {
 							if (null != pojoTypeClass && pojoTypeClass.isEnum())
 								addEnum = true;
 						}
-						int index = pojoType.lastIndexOf('.');
-						if (-1 != index) {
-							fieldType = pojoType.substring(index + 1);
-							addImport(pojoType);
-						} else
+						int pojoIndex = pojoType.lastIndexOf('.');
+						if (-1 != pojoIndex) {
+							int beanIndex = beanClassName.lastIndexOf('.');
+							fieldType = pojoType.substring(pojoIndex + 1);
+							String pojoPakageName = pojoType.substring(0, pojoIndex);
+							if (-1 == beanIndex)
+								addImport(pojoType);
+							else {
+								String beanPakageName = beanClassName.substring(0, pojoIndex);
+								if (!pojoPakageName.equals(beanPakageName))
+									addImport(pojoType);
+							}
+						} else {
 							fieldType = pojoType;
+						}
+
 						if (fieldType.endsWith("[]")) {// array
 							isArray = true;
 							fieldType = fieldType.substring(0, fieldType.length() - 2);

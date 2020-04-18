@@ -146,7 +146,7 @@ public abstract class ACompilationUnitGenerator {
 		if (addCaution) {
 			addLine2Comment(ast, javadoc, "");
 			addLine2Comment(ast, javadoc,
-					"CAUTION: Generation process could be relaunched by developper so be careful if you manually change code.");
+					"CAUTION: Generation process could be relaunched by developer so be careful if you manually change code.");
 		}
 		return javadoc;
 	}

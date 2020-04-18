@@ -205,13 +205,13 @@ import org.adichatz.generator.xjc.ScenarioType;
 import org.adichatz.generator.xjc.ScenariosType;
 import org.adichatz.jpa.controller.RefTextController;
 import org.adichatz.scenario.IScenarioConstants;
-import org.adichatz.scenario.impl.SectionDetailScenario;
 import org.adichatz.scenario.impl.EditorScenario;
 import org.adichatz.scenario.impl.EntityScenario;
 import org.adichatz.scenario.impl.GroupNavigatorScenario;
 import org.adichatz.scenario.impl.MessageBundleScenario;
 import org.adichatz.scenario.impl.PluginEntityScenario;
 import org.adichatz.scenario.impl.QueryScenario;
+import org.adichatz.scenario.impl.SectionDetailScenario;
 import org.adichatz.scenario.impl.TableScenario;
 import org.adichatz.scenario.util.ScenarioUtil;
 import org.eclipse.core.resources.IFile;
@@ -433,7 +433,7 @@ public class ScenarioTreeGeneration {
 		addParam(IScenarioConstants.DEFAULT_DECIMAL_SCALE, "2");
 		addParam(IScenarioConstants.DEFAULT_INTEGER_PATTERN, "######");
 		addParam(IScenarioConstants.FORMAT_GENERATED_CLASS, store.getString(IScenarioConstants.FORMAT_GENERATED_CLASS));
-		addParam(EngineConstants.ADICHATZ_GMAP_API_KEY, "AIzaSyAmAouB-WGtS8fKvwXgC4WQqwz9FdoB2EU");
+		addParam(EngineConstants.ADICHATZ_GMAP_API_KEY, EngineConstants.RUNTIME, "YOUR_GMAP_API_KEY");
 		addParam(EngineConstants.ADICHATZ_AVOIDED_MESSAGES, "HHH000412, HHH000206");
 		addParam(IScenarioConstants.PLUGIN_PACKAGE, pluginPackage);
 	}

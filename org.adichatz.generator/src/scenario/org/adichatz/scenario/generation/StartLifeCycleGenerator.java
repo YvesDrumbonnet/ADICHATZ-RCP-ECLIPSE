@@ -139,11 +139,8 @@ public class StartLifeCycleGenerator extends ACompilationUnitGenerator {
 		Set<String> imports = new HashSet<String>();
 		imports.add(AStartupLifeCycleHandler.class.getName());
 		imports.add(PostContextCreate.class.getName());
-		imports.add(SuppressWarnings.class.getName());
 		imports.add(AdichatzApplication.class.getName());
 		if (scenarioResources.hasModelPart()) {
-			imports.add(scenarioResources.getPluginPackage().concat(".BeanInterceptor"));
-			imports.add(scenarioResources.getPluginPackage().concat(".JPAConnector"));
 			imports.add(ADataAccess.class.getName());
 			imports.add(JPADataAccess.class.getName());
 			imports.add(IBeanInterceptorFactory.class.getName());
@@ -156,15 +153,6 @@ public class StartLifeCycleGenerator extends ACompilationUnitGenerator {
 		classType.modifiers().add(ast.newModifier(Modifier.ModifierKeyword.PUBLIC_KEYWORD));
 		classType.setName(ast.newSimpleName(GENERATED_CLASS_NAME));
 		classType.setSuperclassType(ast.newSimpleType(ast.newSimpleName(AStartupLifeCycleHandler.class.getSimpleName())));
-
-		StringLiteral sl;
-		// // @SuppressWarnings("restriction")
-		// SingleMemberAnnotation suppressWarnings = ast.newSingleMemberAnnotation();
-		// suppressWarnings.setTypeName(ast.newSimpleName("SuppressWarnings"));
-		// sl = ast.newStringLiteral();
-		// sl.setLiteralValue("restriction");
-		// suppressWarnings.setValue(sl);
-		// classType.modifiers().add(0, suppressWarnings);
 
 		astRoot.types().add(classType);
 
@@ -189,6 +177,7 @@ public class StartLifeCycleGenerator extends ACompilationUnitGenerator {
 		MethodInvocation mi = ast.newMethodInvocation();
 		mi.setExpression(ast.newSimpleName("AdichatzApplication"));
 		mi.setName(ast.newSimpleName("getPluginResources"));
+		StringLiteral sl;
 		sl = ast.newStringLiteral();
 		sl.setLiteralValue(scenarioResources.getPluginName());
 		mi.arguments().add(sl);
