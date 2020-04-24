@@ -71,6 +71,9 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.collection;
 
+import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
+import static org.adichatz.engine.common.LogBroker.logError;
+
 import org.adichatz.engine.cache.IEntity;
 import org.adichatz.engine.controller.ACollectionController;
 import org.adichatz.engine.controller.APageController;
@@ -120,7 +123,7 @@ public class ManagedToolBarController extends ACollectionController {
 	 * Creates the tool bar manager (which is not a control for SWT).
 	 */
 	public void createControl() {
-		ICollectionController toolBarContainer = getToolBarContainer(parentController);
+		ACollectionController toolBarContainer = (ACollectionController) getToolBarContainer(parentController);
 		if (toolBarContainer instanceof SectionController) {
 			toolBarManager = new ToolBarManager(SWT.FLAT);
 			SectionController sectionController = (SectionController) toolBarContainer;
@@ -142,7 +145,8 @@ public class ManagedToolBarController extends ACollectionController {
 				toolBarManager = ((ScrolledFormController) toolBarContainer).getControl().getToolBarManager();
 			} else if (toolBarContainer instanceof ContainerController) {
 				toolBarManager = ((ContainerController) toolBarContainer).getToolBarManager();
-			}
+			} else
+				logError(getFromEngineBundle("invalid.toolbar.container", toolBarContainer.getRegisterId()));
 			toolBar = ((ToolBarManager) toolBarManager).getControl();
 		}
 	}

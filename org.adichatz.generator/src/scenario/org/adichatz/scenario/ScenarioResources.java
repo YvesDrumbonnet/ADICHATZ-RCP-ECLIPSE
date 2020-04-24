@@ -202,6 +202,9 @@ public class ScenarioResources {
 	 */
 	public boolean ACTIVATOR_FIRST_PASSAGE = false;
 
+	// Flag pointing if process is in Infly to avoid infinite loop
+	private boolean inInfly;
+
 	/**
 	 * Gets the scenario resources map.
 	 *
@@ -1352,6 +1355,9 @@ public class ScenarioResources {
 	public boolean getCondition(String predicate) {
 		if (EngineTools.isEmpty(predicate))
 			return true;
+		if (inInfly)
+			return false;
+		inInfly = true;
 		BooleanSupplier condition = conditionMap.get(predicate);
 		if (null == condition)
 			try {
@@ -1359,8 +1365,10 @@ public class ScenarioResources {
 				conditionMap.put(predicate, condition);
 			} catch (Exception e) {
 				logError(e);
+				inInfly = false;
 				return true;
 			}
+		inInfly = false;
 		return condition.getAsBoolean();
 	}
 

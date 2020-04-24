@@ -176,6 +176,8 @@ public class EngineConstants {
 	}
 
 	/** The Query preference. */
+	public static String RECENT_FILE_PREFIX = "recentOpenEditor_";
+
 	public static String PREF_FILE_URI_PREFIX = "preferenceFile://";
 
 	public static String PREF_NAME_URI_PREFIX = "preferenceName://";

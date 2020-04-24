@@ -170,7 +170,7 @@ public class ExtraText extends Composite {
 
 		createToolBar(this);
 
-		styledText = new StyledText(this, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL);
+		styledText = new StyledText(this, SWT.BORDER | SWT.MULTI | SWT.WRAP | SWT.V_SCROLL | SWT.H_SCROLL);
 
 		final ToolTip toolTip = new ToolTip(styledText.getShell(), SWT.BALLOON);
 		styledText.addMouseListener(new MouseListener() {

@@ -84,23 +84,10 @@ public class RecentPreferenceColumnViewerToolTipSupport extends ColumnViewerTool
 					.format(recentPreference.getUpdated().toGregorianCalendar().getTime()));
 			updated.setFont(EngineTools.getModifiedFont(fileNameText.getFont(), SWT.BOLD));
 		} else {
-			RecentPreferenceWrapper<?> recentPreference = (RecentPreferenceWrapper<?>) recentElement;
+			RecentPreferenceSet recentPreferenceSet = (RecentPreferenceSet) recentElement;
 			toolkit.createLabel(editorComposite, getFromJpaBundle("preference.title"));
-			Text titleText = toolkit.createText(editorComposite, recentPreference.getTitle());
+			Text titleText = toolkit.createText(editorComposite, recentPreferenceSet.getQueryURI());
 			titleText.setFont(EngineTools.getModifiedFont(titleText.getFont(), SWT.BOLD));
-			toolkit.createLabel(editorComposite, getFromJpaBundle("recent.preference.file.name"));
-			Text fileNameText = toolkit.createText(editorComposite, recentPreference.getPreferenceFile().getName());
-			fileNameText.setFont(EngineTools.getModifiedFont(fileNameText.getFont(), SWT.BOLD));
-			toolkit.createLabel(editorComposite, getFromJpaBundle("recent.editor.last.open"));
-			Text lasOpenText = toolkit.createText(editorComposite,
-					DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM)
-							.format(recentPreference.getUpdated().toGregorianCalendar().getTime()));
-			lasOpenText.setFont(EngineTools.getModifiedFont(fileNameText.getFont(), SWT.BOLD));
-			if (null == recentPreference.getPreferenceTree()) {
-				titleText.setForeground(AController.ERROR_COLOR);
-				fileNameText.setForeground(AController.ERROR_COLOR);
-				lasOpenText.setForeground(AController.ERROR_COLOR);
-			}
 		}
 
 		return content;

@@ -107,6 +107,9 @@ public class JPAUtil {
 	/** The RECENT_QUERY_PREFERENCE. */
 	public static String RECENT_QUERY_PREFERENCE = "RECENT_QUERY_PREFERENCE";
 
+	/** Recent file prefix */
+	public static String RECENT_FILE_PREFIX = "recentOpenEditor_";
+
 	/** The ENTITY_EDITOR_CONTRIBUTION_URI. */
 	public static String ENTITY_EDITOR_CONTRIBUTION_URI = "bundleclass://".concat(EngineConstants.JPA_BUNDLE).concat("/")
 			.concat(EntityEditorPart.class.getName());

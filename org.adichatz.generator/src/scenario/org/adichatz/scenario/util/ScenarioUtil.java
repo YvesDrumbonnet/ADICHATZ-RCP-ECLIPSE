@@ -604,6 +604,8 @@ public class ScenarioUtil {
 				GeneratorConstants.WORKSPACE_DIRECTORY = properties.getProperty("WORKSPACE_DIRECTORY");
 			if (null == GeneratorConstants.PLUGINS_DIRECTORY)
 				GeneratorConstants.PLUGINS_DIRECTORY = properties.getProperty("PLUGINS_DIRECTORY");
+			if (null == GeneratorConstants.SECONDARY_WORKSPACE_DIRECTORY)
+				GeneratorConstants.SECONDARY_WORKSPACE_DIRECTORY = properties.getProperty("SECONDARY_WORKSPACE_DIRECTORY");
 		} catch (FileNotFoundException e) {
 		} catch (IOException e) {
 			e.printStackTrace();

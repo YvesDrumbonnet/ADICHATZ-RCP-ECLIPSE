@@ -86,6 +86,7 @@ import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.plugin.ParamMap;
 import org.adichatz.engine.tabular.IMarshalledElement;
 import org.adichatz.engine.wrapper.IMarshalledWrapper;
+import org.adichatz.jpa.extra.JPAUtil;
 import org.adichatz.jpa.xjc.ParamType;
 import org.adichatz.jpa.xjc.QueryContentProviderType;
 import org.adichatz.jpa.xjc.RecentPreferenceType;
@@ -157,7 +158,7 @@ public class RecentUtil {
 	 * @return the recent opened editor file
 	 */
 	public static File getRecentOpenEditorFile() {
-		String fileName = "recentOpenEditor_".concat(getUserName()).concat(".xml");
+		String fileName = JPAUtil.RECENT_FILE_PREFIX.concat(getUserName()).concat(".xml");
 		return new File(EngineConstants.getAdiPermanentDirName().concat("/").concat(fileName));
 	}
 

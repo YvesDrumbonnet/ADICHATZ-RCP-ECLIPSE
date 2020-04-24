@@ -98,6 +98,7 @@ import org.eclipse.nebula.widgets.pshelf.PShelf;
 import org.eclipse.nebula.widgets.pshelf.PShelfItem;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
+import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.events.ExpandEvent;
 import org.eclipse.swt.events.ExpandListener;
@@ -168,6 +169,38 @@ public class AdiFormToolkit extends FormToolkit {
 		GMap gmap = new GMap(parent, style, toolBarStyle);
 		adapt(gmap);
 		return gmap;
+	}
+
+	/**
+	 * Creates a clabel as a part of the form.
+	 *
+	 * @param parent
+	 *            the clabel parent
+	 * @param text
+	 *            the clabel text
+	 * @return the clabel widget
+	 */
+	public CLabel createCLabel(Composite parent, String text) {
+		return createCLabel(parent, text, SWT.NONE);
+	}
+
+	/**
+	 * Creates a clabel as a part of the form.
+	 *
+	 * @param parent
+	 *            the clabel parent
+	 * @param text
+	 *            the clabel text
+	 * @param style
+	 *            the clabel style
+	 * @return the clabel widget
+	 */
+	public CLabel createCLabel(Composite parent, String text, int style) {
+		CLabel label = new CLabel(parent, style);
+		if (text != null)
+			label.setText(text);
+		adapt(label, false, false);
+		return label;
 	}
 
 	public Group createGroup(Composite parent, String text, int style) {
