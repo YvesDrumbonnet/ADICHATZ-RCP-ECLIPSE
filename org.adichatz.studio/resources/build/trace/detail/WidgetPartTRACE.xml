@@ -14,7 +14,7 @@
                 <superEntityURI>adi://org.adichatz.studio/model/ValidElementMM</superEntityURI>
             </pluginEntity>
         </text>
-        <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameWidgetPART$1">
+        <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameWidgetPART$1">
             <pluginEntity>
                 <superEntityURI>adi://org.adichatz.studio/model/ValidElementMM</superEntityURI>
             </pluginEntity>

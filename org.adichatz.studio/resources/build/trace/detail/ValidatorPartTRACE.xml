@@ -11,7 +11,7 @@
                 <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
             </validators>
         </text>
-        <hyperlink text="#MSG(validator, validatorClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="validatorClassNameValidatorPART$1">
+        <hyperlink text="#MSG(validator, validatorClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="validatorClassNameValidatorPART$1">
             <pluginEntity/>
         </hyperlink>
         <text property="validatorClassName" labelText="#MSG(validator, validatorClassName).concat(&quot;:&quot;)" linkedControl="validatorClassNameValidatorPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="validatorClassName">

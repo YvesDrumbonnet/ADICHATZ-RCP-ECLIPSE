@@ -20,7 +20,7 @@ import java.util.Arrays&#xD;
 return Arrays.asList(GenerationEnum.class.getEnumConstants());
 			</initValues>
         </combo>
-        <hyperlink id="adiResourceURIHL" valid="GenerationEnum.NAVIGATOR == #BEAN().getType()" text="#MSG(generationUnit, adiResourceURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable"/>
+        <hyperlink id="adiResourceURIHL" valid="GenerationEnum.NAVIGATOR == #BEAN().getType()" text="#MSG(generationUnit, adiResourceURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" enabled="null != #BEAN().getAdiResourceURI()" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController"/>
         <text id="adiResourceURI4Navigator" mandatory="true" valid="GenerationEnum.NAVIGATOR == #BEAN().getType()" linkedControl="adiResourceURIHL" noLabel="true" labelForeground="#COLOR(IFormColors.TITLE)" property="adiResourceURI" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController"/>
         <text mandatory="true" valid="isPluginEntityGU()" labelForeground="#COLOR(IFormColors.TITLE)" property="adiResourceURI" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="adiResourceURI"/>        
     </scrolledComposite>

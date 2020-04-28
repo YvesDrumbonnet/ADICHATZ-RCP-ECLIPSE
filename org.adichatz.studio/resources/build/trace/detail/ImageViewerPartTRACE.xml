@@ -77,7 +77,7 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameImageViewerPART$1">
+                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameImageViewerPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ControlFieldMM</superEntityURI>
                     </pluginEntity>
@@ -114,7 +114,7 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="fieldBindManagerClassNameImageViewerPART$1">
+                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="fieldBindManagerClassNameImageViewerPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ControlFieldMM</superEntityURI>
                     </pluginEntity>
@@ -470,7 +470,7 @@ return Arrays.asList(ImageTypeEnum.class.getEnumConstants());</initValues>
                         <superEntityURI>adi://org.adichatz.studio/model/ControlFieldMM</superEntityURI>
                     </pluginEntity>
                 </text>
-                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameImageViewerPART$1">
+                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameImageViewerPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ControlFieldMM</superEntityURI>
                     </pluginEntity>
@@ -486,7 +486,7 @@ return Arrays.asList(ImageTypeEnum.class.getEnumConstants());</initValues>
                         <superEntityURI>adi://org.adichatz.studio/model/ControlFieldMM</superEntityURI>
                     </pluginEntity>
                 </text>
-                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="fieldBindManagerClassNameImageViewerPART$1">
+                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="fieldBindManagerClassNameImageViewerPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ControlFieldMM</superEntityURI>
                     </pluginEntity>

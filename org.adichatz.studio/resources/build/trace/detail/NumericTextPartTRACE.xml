@@ -88,7 +88,7 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameNumericTextPART$1">
+                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameNumericTextPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ControlFieldMM</superEntityURI>
                     </pluginEntity>
@@ -136,7 +136,7 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="fieldBindManagerClassNameNumericTextPART$1">
+                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="fieldBindManagerClassNameNumericTextPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ControlFieldMM</superEntityURI>
                     </pluginEntity>
@@ -455,7 +455,7 @@
                         <superEntityURI>adi://org.adichatz.studio/model/ControlFieldMM</superEntityURI>
                     </pluginEntity>
                 </text>
-                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameNumericTextPART$1">
+                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameNumericTextPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ControlFieldMM</superEntityURI>
                     </pluginEntity>
@@ -471,7 +471,7 @@
                         <superEntityURI>adi://org.adichatz.studio/model/ControlFieldMM</superEntityURI>
                     </pluginEntity>
                 </text>
-                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="fieldBindManagerClassNameNumericTextPART$1">
+                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="fieldBindManagerClassNameNumericTextPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ControlFieldMM</superEntityURI>
                     </pluginEntity>

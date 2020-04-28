@@ -57,7 +57,7 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameDateTextPART$1">
+                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameDateTextPART$1">
                     <pluginEntity/>
                 </hyperlink>
                 <text property="controllerClassName" labelText="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" linkedControl="controllerClassNameDateTextPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" valid="null != #FV()" id="controllerClassName">
@@ -86,7 +86,7 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="fieldBindManagerClassNameDateTextPART$1">
+                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="fieldBindManagerClassNameDateTextPART$1">
                     <pluginEntity/>
                 </hyperlink>
                 <text property="fieldBindManagerClassName" labelText="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" linkedControl="fieldBindManagerClassNameDateTextPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" valid="null != #FV()" id="fieldBindManagerClassName">
@@ -332,7 +332,7 @@
                 <text property="ref" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validElement, ref).concat(&quot;:&quot;)" linkedControl="ref$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="ref">
                     <pluginEntity/>
                 </text>
-                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameDateTextPART$1">
+                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameDateTextPART$1">
                     <pluginEntity/>
                 </hyperlink>
                 <text property="controllerClassName" labelText="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" linkedControl="controllerClassNameDateTextPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="controllerClassName">
@@ -342,7 +342,7 @@
                 <text property="controlValueType" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(controlField, controlValueType).concat(&quot;:&quot;)" linkedControl="controlValueType$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="controlValueType">
                     <pluginEntity/>
                 </text>
-                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="fieldBindManagerClassNameDateTextPART$1">
+                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="fieldBindManagerClassNameDateTextPART$1">
                     <pluginEntity/>
                 </hyperlink>
                 <text property="fieldBindManagerClassName" labelText="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" linkedControl="fieldBindManagerClassNameDateTextPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="fieldBindManagerClassName">

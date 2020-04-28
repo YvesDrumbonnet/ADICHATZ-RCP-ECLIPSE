@@ -138,7 +138,7 @@
                         </accessibility>
                     </accessibilities>
                 </numericText>
-                <hyperlink text="#MSG(tableColumn, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameTableColumnPART$1">
+                <hyperlink text="#MSG(tableColumn, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameTableColumnPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ColumnFieldMM</superEntityURI>
                     </pluginEntity>
@@ -327,7 +327,7 @@ return Arrays.asList(SortEnum.class.getEnumConstants());</initValues>
                         <superEntityURI>adi://org.adichatz.studio/model/ColumnFieldMM</superEntityURI>
                     </pluginEntity>
                 </text>
-                <hyperlink text="#MSG(tableColumn, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameTableColumnPART$1">
+                <hyperlink text="#MSG(tableColumn, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameTableColumnPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ColumnFieldMM</superEntityURI>
                     </pluginEntity>

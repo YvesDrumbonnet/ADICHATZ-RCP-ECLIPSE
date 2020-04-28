@@ -24,7 +24,7 @@
         <text property="capture" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(control, capture).concat(&quot;:&quot;)" linkedControl="capture$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="capture">
             <pluginEntity/>
         </text>
-        <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameEncryptedTextPART$1">
+        <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameEncryptedTextPART$1">
             <pluginEntity/>
         </hyperlink>
         <text property="controllerClassName" labelText="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" linkedControl="controllerClassNameEncryptedTextPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="controllerClassName">
@@ -46,7 +46,7 @@
         <text property="encryptedKey" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(encryptedText, encryptedKey).concat(&quot;:&quot;)" linkedControl="encryptedKey$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="encryptedKey">
             <pluginEntity/>
         </text>
-        <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="fieldBindManagerClassNameEncryptedTextPART$1">
+        <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="fieldBindManagerClassNameEncryptedTextPART$1">
             <pluginEntity/>
         </hyperlink>
         <text property="fieldBindManagerClassName" labelText="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" linkedControl="fieldBindManagerClassNameEncryptedTextPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="fieldBindManagerClassName">

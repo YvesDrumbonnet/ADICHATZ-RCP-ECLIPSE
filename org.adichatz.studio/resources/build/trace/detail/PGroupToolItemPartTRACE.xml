@@ -8,13 +8,13 @@
         <text property="id" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(element, id).concat(&quot;:&quot;)" linkedControl="id$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.IdTextController" id="id">
             <pluginEntity/>
         </text>
-        <hyperlink text="#MSG(pGroupToolItem, actionClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="actionClassNamePGroupToolItemPART$1">
+        <hyperlink text="#MSG(pGroupToolItem, actionClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="actionClassNamePGroupToolItemPART$1">
             <pluginEntity/>
         </hyperlink>
         <text property="actionClassName" labelText="#MSG(pGroupToolItem, actionClassName).concat(&quot;:&quot;)" linkedControl="actionClassNamePGroupToolItemPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="actionClassName">
             <pluginEntity/>
         </text>
-        <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNamePGroupToolItemPART$1">
+        <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNamePGroupToolItemPART$1">
             <pluginEntity/>
         </hyperlink>
         <text property="controllerClassName" labelText="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" linkedControl="controllerClassNamePGroupToolItemPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="controllerClassName">

@@ -261,7 +261,7 @@ public class AdiResourceUriTextController extends TextController {
 		addValidator(new AValidator(this, "studio.instance.adiResourceURI") {
 			@Override
 			public int validate() {
-				linkedController.getControl().setEnabled(false);
+				linkedController.setEnabled(false);
 				String adiResourceURI = (String) getValue();
 				int level = IMessageProvider.NONE;
 				if (!EngineTools.isEmpty(adiResourceURI))
@@ -318,7 +318,7 @@ public class AdiResourceUriTextController extends TextController {
 											// URI could be the result of a function (e.g. #PARAM(...)).
 											message = getFromStudioBundle("studio.invalid.treeId", instanceKeys[2]);
 										} else
-											linkedController.getControl().setEnabled(true);
+											linkedController.setEnabled(true);
 								}
 							}
 						}

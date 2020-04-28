@@ -95,6 +95,7 @@ import org.adichatz.studio.db4o.model.Property;
 import org.adichatz.studio.xjc.controller.ClassTextController;
 import org.adichatz.studio.xjc.controller.CodeTextController;
 import org.adichatz.studio.xjc.controller.MultiClassChoiceController;
+import org.adichatz.studio.xjc.controller.OutlineHyperlinkController;
 import org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable;
 
 // TODO: Auto-generated Javadoc
@@ -308,18 +309,11 @@ public class XjcDetailPartScenario extends AScenario implements IDetailScenario 
 		if (null != controllerClassName) // when keep value from controlField.getControllerClassName()
 			controlField.setControllerClassName(controllerClassName);
 
-		String plugEntityId = pluginEntity.getEntityId();
 		String labelText = addLabel
-				? "#MSG(" + EngineTools.lowerCaseFirstLetter(plugEntityId) + ", " + controlField.getProperty() + ").concat(\":\")"
+				? "#MSG(" + EngineTools.lowerCaseFirstLetter(pluginEntity.getEntityId()) + ", " + controlField.getProperty()
+						+ ").concat(\":\")"
 				: null;
 
-		String runnableClassName = null;
-		if ((ClassTextController.class.getName().equals(controlField.getControllerClassName())
-				|| MultiClassChoiceController.class.getName().equals(controlField.getControllerClassName()))
-				&& !"Controller".equals(plugEntityId))
-			runnableClassName = OpenClassEditorRunnable.class.getName();
-		else if ("org.adichatz.studio.xjc.controller.AdiResourceUriTextController".equals(controlField.getControllerClassName()))
-			runnableClassName = "org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable";
 		if (usePshelf) {
 			Method getGetMethod = FieldTools.getGetMethod(pluginEntity.getEntityMetaModel().getBeanClass(),
 					property.getId().substring(property.getId().indexOf('#') + 1), true);
@@ -341,31 +335,47 @@ public class XjcDetailPartScenario extends AScenario implements IDetailScenario 
 			}
 
 			if ("BASIC".equals(category))
-				add2parent(pluginEntity, entityId, basics, controlField, labelText, runnableClassName);
+				add2parent(pluginEntity, entityId, basics, controlField, labelText);
 			else {
 				ControlFieldType cloneElement = (ControlFieldType) EngineTools.cloneSerializable(controlField);
 				if (!getGetMethod.getReturnType().isPrimitive()) // Valid clause will be used in clone of controlField
 					cloneElement.setValid("null != #FV()");
-				add2parent(pluginEntity, entityId, basics, cloneElement, labelText, runnableClassName);
+				add2parent(pluginEntity, entityId, basics, cloneElement, labelText);
 				if ("LIFE_CYCLE".equals(category))
-					add2parent(pluginEntity, entityId, lifeCycles, controlField, labelText, runnableClassName);
+					add2parent(pluginEntity, entityId, lifeCycles, controlField, labelText);
 				else if ("CONTROL".equals(category))
-					add2parent(pluginEntity, entityId, controls, controlField, labelText, runnableClassName);
+					add2parent(pluginEntity, entityId, controls, controlField, labelText);
 			}
 		} else {
-			add2parent(pluginEntity, entityId, basics, controlField, labelText, runnableClassName);
+			add2parent(pluginEntity, entityId, basics, controlField, labelText);
 			// controlField.setLabelText(labelText);
 			// basics.add(controlField);
 		}
 	}
 
 	private void add2parent(PluginEntity pluginEntity, String entityId, List<ValidElementType> parentCollection,
-			ControlFieldType controlField, String labelText, String runnableClassName) {
+			ControlFieldType controlField, String labelText) {
+		String runnableClassName = null;
+		boolean isURI = false;
+		if ((ClassTextController.class.getName().equals(controlField.getControllerClassName())
+				|| MultiClassChoiceController.class.getName().equals(controlField.getControllerClassName()))
+				&& !"Controller".equals(pluginEntity.getEntityId())) {
+			runnableClassName = OpenClassEditorRunnable.class.getName();
+		} else if ("org.adichatz.studio.xjc.controller.AdiResourceUriTextController"
+				.equals(controlField.getControllerClassName())) {
+			runnableClassName = "org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable";
+			isURI = true;
+		}
 		if (null != runnableClassName) {
 			controlField.setNoLabel(true);
 			HyperlinkWrapper hyperlink = new HyperlinkWrapper();
 			hyperlink.setId(controlField.getId() + labelSuffix);
 			hyperlink.setRunnableClassName(runnableClassName);
+			if (isURI) {
+				String fieldName = EngineTools.upperCaseFirstLetter(controlField.getId());
+				hyperlink.setEnabled("null != #BEAN().get" + fieldName + "()");
+			}
+			hyperlink.setControllerClassName(OutlineHyperlinkController.class.getName());
 			String hlLabelText;
 			if (null != labelText)
 				hlLabelText = labelText;

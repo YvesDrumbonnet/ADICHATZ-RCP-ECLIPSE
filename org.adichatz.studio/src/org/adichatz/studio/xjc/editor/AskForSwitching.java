@@ -126,7 +126,7 @@ public class AskForSwitching {
 					okButton.setToolTipText(getFromStudioBundle("studio.xjcEditor.save.active.file.tooltip", activeFile.getName(),
 							generatedFile.getName()));
 					Button saveGenerated = createButton(composite, 2, getFromStudioBundle("studio.xjcEditor.save.generated.file"),
-							true);
+							false);
 					saveGenerated.setToolTipText(
 							getFromStudioBundle("studio.xjcEditor.save.generated.file.tooltip", generatedFile.getName()));
 					createButton(composite, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);

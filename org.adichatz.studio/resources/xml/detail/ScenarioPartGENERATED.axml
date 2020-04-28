@@ -2,7 +2,7 @@
 <containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ScenarioMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/containerTree.xsd">
     <scrolledComposite dirtyManagement="false" id="itemComposite">
         <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
-        <hyperlink text="#MSG(scenario, scenarioClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="scenarioClassNameScenarioPART$1"/>
+        <hyperlink text="#MSG(scenario, scenarioClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="scenarioClassNameScenarioPART$1"/>
         <text property="scenarioClassName" labelText="#MSG(scenario, scenarioClassName).concat(&quot;:&quot;)" linkedControl="scenarioClassNameScenarioPART$1" mandatory="true" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="scenarioClassName"/>
         <ccombo property="type" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(scenario, type).concat(&quot;:&quot;)" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" layoutData="grow 0" style="SWT.BORDER | SWT.READ_ONLY" id="type">
             <labelProvider>

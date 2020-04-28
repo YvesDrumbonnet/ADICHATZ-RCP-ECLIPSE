@@ -57,7 +57,7 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameCComboPART$1">
+                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameCComboPART$1">
                     <pluginEntity/>
                 </hyperlink>
                 <text property="controllerClassName" labelText="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" linkedControl="controllerClassNameCComboPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" valid="null != #FV()" id="controllerClassName">
@@ -86,7 +86,7 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="fieldBindManagerClassNameCComboPART$1">
+                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="fieldBindManagerClassNameCComboPART$1">
                     <pluginEntity/>
                 </hyperlink>
                 <text property="fieldBindManagerClassName" labelText="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" linkedControl="fieldBindManagerClassNameCComboPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" valid="null != #FV()" id="fieldBindManagerClassName">
@@ -169,7 +169,7 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(refControl, labelProviderClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="labelProviderClassNameCComboPART$1">
+                <hyperlink text="#MSG(refControl, labelProviderClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="labelProviderClassNameCComboPART$1">
                     <pluginEntity/>
                 </hyperlink>
                 <text property="labelProviderClassName" labelText="#MSG(refControl, labelProviderClassName).concat(&quot;:&quot;)" linkedControl="labelProviderClassNameCComboPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" valid="null != #FV()" id="labelProviderClassName">
@@ -378,7 +378,7 @@
                 <text property="ref" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(validElement, ref).concat(&quot;:&quot;)" linkedControl="ref$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="ref">
                     <pluginEntity/>
                 </text>
-                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameCComboPART$1">
+                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameCComboPART$1">
                     <pluginEntity/>
                 </hyperlink>
                 <text property="controllerClassName" labelText="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" linkedControl="controllerClassNameCComboPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="controllerClassName">
@@ -388,7 +388,7 @@
                 <text property="controlValueType" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(controlField, controlValueType).concat(&quot;:&quot;)" linkedControl="controlValueType$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="controlValueType">
                     <pluginEntity/>
                 </text>
-                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="fieldBindManagerClassNameCComboPART$1">
+                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="fieldBindManagerClassNameCComboPART$1">
                     <pluginEntity/>
                 </hyperlink>
                 <text property="fieldBindManagerClassName" labelText="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" linkedControl="fieldBindManagerClassNameCComboPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="fieldBindManagerClassName">
@@ -414,7 +414,7 @@
                 <text property="labelLayoutData" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(controlField, labelLayoutData).concat(&quot;:&quot;)" linkedControl="labelLayoutData$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="labelLayoutData">
                     <pluginEntity/>
                 </text>
-                <hyperlink text="#MSG(refControl, labelProviderClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="labelProviderClassNameCComboPART$1">
+                <hyperlink text="#MSG(refControl, labelProviderClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="labelProviderClassNameCComboPART$1">
                     <pluginEntity/>
                 </hyperlink>
                 <text property="labelProviderClassName" labelText="#MSG(refControl, labelProviderClassName).concat(&quot;:&quot;)" linkedControl="labelProviderClassNameCComboPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="labelProviderClassName">

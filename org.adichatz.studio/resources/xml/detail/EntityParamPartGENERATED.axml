@@ -7,7 +7,7 @@
             <convertModelToTarget>return org.adichatz.common.encoding.Base64.decode(#FV());</convertModelToTarget>
             <convertTargetToModel>return org.adichatz.common.encoding.Base64.encode(#FV());</convertTargetToModel>
         </text>
-        <hyperlink text="#MSG(entityParam, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIEntityParamPART$1"/>
+        <hyperlink text="#MSG(entityParam, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" enabled="null != #BEAN().getEntityURI()" id="entityURIEntityParamPART$1"/>
         <text property="entityURI" labelText="#MSG(entityParam, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIEntityParamPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="entityURI"/>
         <text property="idvalue" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(entityParam, idvalue).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="idvalue"/>
         <text property="lazyFetches" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(entityParam, lazyFetches).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="lazyFetches"/>

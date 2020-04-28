@@ -12,7 +12,7 @@
             <convertTargetToModel>return org.adichatz.common.encoding.Base64.encode(#FV());</convertTargetToModel>
         </text>
         <text property="columnText" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, columnText).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="columnText"/>
-        <hyperlink text="#MSG(queryParameter, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIQueryParameterPART$1"/>
+        <hyperlink text="#MSG(queryParameter, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" enabled="null != #BEAN().getEntityURI()" id="entityURIQueryParameterPART$1"/>
         <text property="entityURI" labelText="#MSG(queryParameter, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIQueryParameterPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="entityURI"/>
         <text property="expression" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, expression).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="expression"/>
         <text property="expressionClassName" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(queryParameter, expressionClassName).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="expressionClassName"/>

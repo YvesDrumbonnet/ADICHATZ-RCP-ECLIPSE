@@ -165,7 +165,7 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(collection, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameSectionPART$1">
+                <hyperlink text="#MSG(collection, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameSectionPART$1">
                     <pluginEntity/>
                 </hyperlink>
                 <text property="controllerClassName" labelText="#MSG(collection, controllerClassName).concat(&quot;:&quot;)" linkedControl="controllerClassNameSectionPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" valid="null != #FV()" id="controllerClassName">
@@ -212,8 +212,13 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(fieldContainer, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURISectionPART$1">
+                <hyperlink text="#MSG(fieldContainer, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" enabled="null != #BEAN().getEntityURI()" id="entityURISectionPART$1">
                     <pluginEntity/>
+                    <accessibilities>
+                        <accessibility type="ENABLED" id="entityURISectionPART$1$$ENABLEDFilter">
+                            <accept>return null != #BEAN().getEntityURI();</accept>
+                        </accessibility>
+                    </accessibilities>
                 </hyperlink>
                 <text property="entityURI" labelText="#MSG(fieldContainer, entityURI).concat(&quot;:&quot;)" linkedControl="entityURISectionPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" valid="null != #FV()" id="entityURI">
                     <pluginEntity/>
@@ -394,7 +399,7 @@
                 <text property="clientCapture" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(clientCanvas, clientCapture).concat(&quot;:&quot;)" linkedControl="clientCapture$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="clientCapture">
                     <pluginEntity/>
                 </text>
-                <hyperlink text="#MSG(collection, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameSectionPART$1">
+                <hyperlink text="#MSG(collection, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameSectionPART$1">
                     <pluginEntity/>
                 </hyperlink>
                 <text property="controllerClassName" labelText="#MSG(collection, controllerClassName).concat(&quot;:&quot;)" linkedControl="controllerClassNameSectionPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="controllerClassName">
@@ -412,8 +417,13 @@
                 <text property="entity" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(fieldContainer, entity).concat(&quot;:&quot;)" linkedControl="entity$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="entity">
                     <pluginEntity/>
                 </text>
-                <hyperlink text="#MSG(fieldContainer, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURISectionPART$1">
+                <hyperlink text="#MSG(fieldContainer, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" enabled="null != #BEAN().getEntityURI()" id="entityURISectionPART$1">
                     <pluginEntity/>
+                    <accessibilities>
+                        <accessibility type="ENABLED" id="entityURISectionPART$1$$ENABLEDFilter">
+                            <accept>return null != #BEAN().getEntityURI();</accept>
+                        </accessibility>
+                    </accessibilities>
                 </hyperlink>
                 <text property="entityURI" labelText="#MSG(fieldContainer, entityURI).concat(&quot;:&quot;)" linkedControl="entityURISectionPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="entityURI">
                     <pluginEntity/>

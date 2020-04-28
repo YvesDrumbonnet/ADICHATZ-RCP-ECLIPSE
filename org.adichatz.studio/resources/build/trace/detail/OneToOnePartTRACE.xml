@@ -11,8 +11,13 @@
                 <validator key="mandatoryField" validatorClassName="org.adichatz.engine.validation.MandatoryValidator"/>
             </validators>
         </text>
-        <hyperlink text="#MSG(oneToOne, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIOneToOnePART$1">
+        <hyperlink text="#MSG(oneToOne, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" enabled="null != #BEAN().getEntityURI()" id="entityURIOneToOnePART$1">
             <pluginEntity/>
+            <accessibilities>
+                <accessibility type="ENABLED" id="entityURIOneToOnePART$1$$ENABLEDFilter">
+                    <accept>return null != #BEAN().getEntityURI();</accept>
+                </accessibility>
+            </accessibilities>
         </hyperlink>
         <text property="entityURI" labelText="#MSG(oneToOne, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIOneToOnePART$1" mandatory="true" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="entityURI">
             <pluginEntity/>

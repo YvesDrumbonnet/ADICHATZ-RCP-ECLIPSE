@@ -8,13 +8,18 @@
         <text property="id" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(element, id).concat(&quot;:&quot;)" linkedControl="id$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="id">
             <pluginEntity/>
         </text>
-        <hyperlink text="#MSG(queryContentProvider, adiResourceURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="adiResourceURIEntitySetContentProviderPART$1">
+        <hyperlink text="#MSG(queryContentProvider, adiResourceURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" enabled="null != #BEAN().getAdiResourceURI()" id="adiResourceURIEntitySetContentProviderPART$1">
             <pluginEntity/>
+            <accessibilities>
+                <accessibility type="ENABLED" id="adiResourceURIEntitySetContentProviderPART$1$$ENABLEDFilter">
+                    <accept>return null != #BEAN().getAdiResourceURI();</accept>
+                </accessibility>
+            </accessibilities>
         </hyperlink>
         <text property="adiResourceURI" labelText="#MSG(queryContentProvider, adiResourceURI).concat(&quot;:&quot;)" linkedControl="adiResourceURIEntitySetContentProviderPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="adiResourceURI">
             <pluginEntity/>
         </text>
-        <hyperlink text="#MSG(queryContentProvider, comparatorClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="comparatorClassNameEntitySetContentProviderPART$1">
+        <hyperlink text="#MSG(queryContentProvider, comparatorClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="comparatorClassNameEntitySetContentProviderPART$1">
             <pluginEntity/>
         </hyperlink>
         <text property="comparatorClassName" labelText="#MSG(queryContentProvider, comparatorClassName).concat(&quot;:&quot;)" linkedControl="comparatorClassNameEntitySetContentProviderPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.ClassTextController" id="comparatorClassName">

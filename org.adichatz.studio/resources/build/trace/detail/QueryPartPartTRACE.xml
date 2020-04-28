@@ -8,8 +8,13 @@
         <text property="id" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(element, id).concat(&quot;:&quot;)" linkedControl="id$1" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="id">
             <pluginEntity/>
         </text>
-        <hyperlink text="#MSG(queryPart, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIQueryPartPART$1">
+        <hyperlink text="#MSG(queryPart, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" enabled="null != #BEAN().getEntityURI()" id="entityURIQueryPartPART$1">
             <pluginEntity/>
+            <accessibilities>
+                <accessibility type="ENABLED" id="entityURIQueryPartPART$1$$ENABLEDFilter">
+                    <accept>return null != #BEAN().getEntityURI();</accept>
+                </accessibility>
+            </accessibilities>
         </hyperlink>
         <text property="entityURI" labelText="#MSG(queryPart, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIQueryPartPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="entityURI">
             <pluginEntity/>

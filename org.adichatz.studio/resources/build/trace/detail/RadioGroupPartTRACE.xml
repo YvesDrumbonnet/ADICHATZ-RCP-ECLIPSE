@@ -77,7 +77,7 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameRadioGroupPART$1">
+                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameRadioGroupPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/RefControlMM</superEntityURI>
                     </pluginEntity>
@@ -125,7 +125,7 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="fieldBindManagerClassNameRadioGroupPART$1">
+                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="fieldBindManagerClassNameRadioGroupPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/RefControlMM</superEntityURI>
                     </pluginEntity>
@@ -228,7 +228,7 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(refControl, labelProviderClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="labelProviderClassNameRadioGroupPART$1">
+                <hyperlink text="#MSG(refControl, labelProviderClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="labelProviderClassNameRadioGroupPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/RefControlMM</superEntityURI>
                     </pluginEntity>
@@ -493,7 +493,7 @@
                         <superEntityURI>adi://org.adichatz.studio/model/RefControlMM</superEntityURI>
                     </pluginEntity>
                 </text>
-                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameRadioGroupPART$1">
+                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameRadioGroupPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/RefControlMM</superEntityURI>
                     </pluginEntity>
@@ -509,7 +509,7 @@
                         <superEntityURI>adi://org.adichatz.studio/model/RefControlMM</superEntityURI>
                     </pluginEntity>
                 </text>
-                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="fieldBindManagerClassNameRadioGroupPART$1">
+                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="fieldBindManagerClassNameRadioGroupPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/RefControlMM</superEntityURI>
                     </pluginEntity>
@@ -531,7 +531,7 @@
                         <superEntityURI>adi://org.adichatz.studio/model/RefControlMM</superEntityURI>
                     </pluginEntity>
                 </text>
-                <hyperlink text="#MSG(refControl, labelProviderClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="labelProviderClassNameRadioGroupPART$1">
+                <hyperlink text="#MSG(refControl, labelProviderClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="labelProviderClassNameRadioGroupPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/RefControlMM</superEntityURI>
                     </pluginEntity>

@@ -28,11 +28,14 @@ import java.util.Arrays&#13;
 return Arrays.asList(GenerationEnum.class.getEnumConstants());
 			</initValues>
         </combo>
-        <hyperlink text="#MSG(generationUnit, adiResourceURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" valid="GenerationEnum.NAVIGATOR == #BEAN().getType()" id="adiResourceURIHL">
+        <hyperlink text="#MSG(generationUnit, adiResourceURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" enabled="null != #BEAN().getAdiResourceURI()" valid="GenerationEnum.NAVIGATOR == #BEAN().getType()" id="adiResourceURIHL">
             <pluginEntity/>
             <accessibilities>
                 <accessibility type="VALID" id="adiResourceURIHL$$VALIDFilter">
                     <accept>return GenerationEnum.NAVIGATOR == #BEAN().getType();</accept>
+                </accessibility>
+                <accessibility type="ENABLED" id="adiResourceURIHL$$ENABLEDFilter">
+                    <accept>return null != #BEAN().getAdiResourceURI();</accept>
                 </accessibility>
             </accessibilities>
         </hyperlink>

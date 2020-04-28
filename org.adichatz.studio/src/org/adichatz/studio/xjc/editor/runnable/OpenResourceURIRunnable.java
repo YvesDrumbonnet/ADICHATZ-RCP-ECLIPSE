@@ -74,6 +74,7 @@ package org.adichatz.studio.xjc.editor.runnable;
 import static org.adichatz.engine.common.LogBroker.logError;
 import static org.adichatz.studio.util.StudioUtil.getFromStudioBundle;
 
+import org.adichatz.engine.common.AdichatzErrorException;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.controller.field.HyperlinkController;
 import org.adichatz.engine.widgets.supplement.AHyperlinkRunnable;
@@ -111,21 +112,24 @@ public class OpenResourceURIRunnable extends AHyperlinkRunnable {
 	@Override
 	public void run() {
 		String adiResourceURI = (String) getLinkedController().getValue();
-		ScenarioResources scenarioResources = ((XjcBindingService) getLinkedController().getBindingService()).getEditor()
-				.getScenarioResources();
-
-		IFile axmlFile = ScenarioUtil.getXmlFileFromURI(scenarioResources, adiResourceURI);
-		if (null == axmlFile) {
-			String message = getFromStudioBundle("studio.no.resource", adiResourceURI);
-			EngineTools.openDialog(MessageDialog.WARNING, message, message);
-		} else
+		if (!EngineTools.isEmpty(adiResourceURI)) {
+			ScenarioResources scenarioResources = ((XjcBindingService) getLinkedController().getBindingService()).getEditor()
+					.getScenarioResources();
 			try {
-				FileEditorInput fileEditorInput = new FileEditorInput(axmlFile);
-				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-						.openEditor(fileEditorInput, XjcTreeFormEditor.ID);
+				IFile axmlFile = ScenarioUtil.getXmlFileFromURI(scenarioResources, adiResourceURI);
+				if (null == axmlFile) {
+					String message = getFromStudioBundle("studio.no.resource", adiResourceURI);
+					EngineTools.openDialog(MessageDialog.WARNING, message, message);
+				} else {
+					FileEditorInput fileEditorInput = new FileEditorInput(axmlFile);
+					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().openEditor(fileEditorInput,
+							XjcTreeFormEditor.ID);
+				}
+			} catch (AdichatzErrorException e) {
+				logError(e);
 			} catch (PartInitException e) {
 				logError(e);
 			}
+		}
 	}
-
 }

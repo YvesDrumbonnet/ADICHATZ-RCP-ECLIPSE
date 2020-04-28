@@ -77,7 +77,7 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameLabelPART$1">
+                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameLabelPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ControlMM</superEntityURI>
                     </pluginEntity>
@@ -258,7 +258,7 @@
                         <superEntityURI>adi://org.adichatz.studio/model/ControlMM</superEntityURI>
                     </pluginEntity>
                 </text>
-                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameLabelPART$1">
+                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameLabelPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ControlMM</superEntityURI>
                     </pluginEntity>

@@ -22,7 +22,7 @@
                         <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
                     </pluginEntity>
                 </text>
-                <hyperlink text="#MSG(containerTree, bindingServiceClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="bindingServiceClassNameContainerTreePART$1">
+                <hyperlink text="#MSG(containerTree, bindingServiceClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="bindingServiceClassNameContainerTreePART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
                     </pluginEntity>
@@ -54,10 +54,15 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(container, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIContainerTreePART$1">
+                <hyperlink text="#MSG(container, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" enabled="null != #BEAN().getEntityURI()" id="entityURIContainerTreePART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
                     </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="ENABLED" id="entityURIContainerTreePART$1$$ENABLEDFilter">
+                            <accept>return null != #BEAN().getEntityURI();</accept>
+                        </accessibility>
+                    </accessibilities>
                 </hyperlink>
                 <text property="entityURI" labelText="#MSG(container, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIContainerTreePART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" valid="null != #FV()" id="entityURI">
                     <pluginEntity>
@@ -103,10 +108,15 @@
                         <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
                     </pluginEntity>
                 </text>
-                <hyperlink text="#MSG(container, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIContainerTreePART$1">
+                <hyperlink text="#MSG(container, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" enabled="null != #BEAN().getEntityURI()" id="entityURIContainerTreePART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ContainerMM</superEntityURI>
                     </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="ENABLED" id="entityURIContainerTreePART$1$$ENABLEDFilter">
+                            <accept>return null != #BEAN().getEntityURI();</accept>
+                        </accessibility>
+                    </accessibilities>
                 </hyperlink>
                 <text property="entityURI" labelText="#MSG(container, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIContainerTreePART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="entityURI">
                     <pluginEntity>

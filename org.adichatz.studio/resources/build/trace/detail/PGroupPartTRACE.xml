@@ -209,7 +209,7 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(collection, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNamePGroupPART$1">
+                <hyperlink text="#MSG(collection, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNamePGroupPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ClientCanvasMM</superEntityURI>
                     </pluginEntity>
@@ -268,10 +268,15 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(fieldContainer, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIPGroupPART$1">
+                <hyperlink text="#MSG(fieldContainer, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" enabled="null != #BEAN().getEntityURI()" id="entityURIPGroupPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ClientCanvasMM</superEntityURI>
                     </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="ENABLED" id="entityURIPGroupPART$1$$ENABLEDFilter">
+                            <accept>return null != #BEAN().getEntityURI();</accept>
+                        </accessibility>
+                    </accessibilities>
                 </hyperlink>
                 <text property="entityURI" labelText="#MSG(fieldContainer, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIPGroupPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" valid="null != #FV()" id="entityURI">
                     <pluginEntity>
@@ -574,7 +579,7 @@ return Arrays.asList(ToolItemRendererEnum.class.getEnumConstants());</initValues
                         <superEntityURI>adi://org.adichatz.studio/model/ClientCanvasMM</superEntityURI>
                     </pluginEntity>
                 </text>
-                <hyperlink text="#MSG(collection, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNamePGroupPART$1">
+                <hyperlink text="#MSG(collection, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNamePGroupPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ClientCanvasMM</superEntityURI>
                     </pluginEntity>
@@ -602,10 +607,15 @@ return Arrays.asList(ToolItemRendererEnum.class.getEnumConstants());</initValues
                         <superEntityURI>adi://org.adichatz.studio/model/ClientCanvasMM</superEntityURI>
                     </pluginEntity>
                 </text>
-                <hyperlink text="#MSG(fieldContainer, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIPGroupPART$1">
+                <hyperlink text="#MSG(fieldContainer, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" enabled="null != #BEAN().getEntityURI()" id="entityURIPGroupPART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/ClientCanvasMM</superEntityURI>
                     </pluginEntity>
+                    <accessibilities>
+                        <accessibility type="ENABLED" id="entityURIPGroupPART$1$$ENABLEDFilter">
+                            <accept>return null != #BEAN().getEntityURI();</accept>
+                        </accessibility>
+                    </accessibilities>
                 </hyperlink>
                 <text property="entityURI" labelText="#MSG(fieldContainer, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIPGroupPART$1" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="entityURI">
                     <pluginEntity>

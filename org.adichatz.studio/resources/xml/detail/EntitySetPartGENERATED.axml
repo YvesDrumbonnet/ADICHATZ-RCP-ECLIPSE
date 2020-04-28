@@ -3,7 +3,7 @@
     <scrolledComposite dirtyManagement="false" id="itemComposite">
         <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
         <text property="id" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(field, id).concat(&quot;:&quot;)" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="id"/>
-        <hyperlink text="#MSG(entitySet, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" id="entityURIEntitySetPART$1"/>
+        <hyperlink text="#MSG(entitySet, entityURI).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenResourceURIRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" enabled="null != #BEAN().getEntityURI()" id="entityURIEntitySetPART$1"/>
         <text property="entityURI" labelText="#MSG(entitySet, entityURI).concat(&quot;:&quot;)" linkedControl="entityURIEntitySetPART$1" mandatory="true" noLabel="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" controllerClassName="org.adichatz.studio.xjc.controller.AdiResourceUriTextController" id="entityURI"/>
         <text property="lazyFetches" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(entitySet, lazyFetches).concat(&quot;:&quot;)" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="lazyFetches"/>
         <text property="mappedBy" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(entitySet, mappedBy).concat(&quot;:&quot;)" mandatory="true" fieldBindManagerClassName="org.adichatz.studio.xjc.data.XjcFieldBindingManager" id="mappedBy"/>

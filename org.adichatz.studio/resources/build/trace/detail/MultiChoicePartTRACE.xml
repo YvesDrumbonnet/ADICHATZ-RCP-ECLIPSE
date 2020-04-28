@@ -77,7 +77,7 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameMultiChoicePART$1">
+                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameMultiChoicePART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/RefControlMM</superEntityURI>
                     </pluginEntity>
@@ -114,7 +114,7 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="fieldBindManagerClassNameMultiChoicePART$1">
+                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="fieldBindManagerClassNameMultiChoicePART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/RefControlMM</superEntityURI>
                     </pluginEntity>
@@ -217,7 +217,7 @@
                         </accessibility>
                     </accessibilities>
                 </text>
-                <hyperlink text="#MSG(refControl, labelProviderClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="labelProviderClassNameMultiChoicePART$1">
+                <hyperlink text="#MSG(refControl, labelProviderClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="labelProviderClassNameMultiChoicePART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/RefControlMM</superEntityURI>
                     </pluginEntity>
@@ -567,7 +567,7 @@ return Arrays.asList(MultiChoiceTypeEnum.class.getEnumConstants());</initValues>
                         <superEntityURI>adi://org.adichatz.studio/model/RefControlMM</superEntityURI>
                     </pluginEntity>
                 </text>
-                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="controllerClassNameMultiChoicePART$1">
+                <hyperlink text="#MSG(widget, controllerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="controllerClassNameMultiChoicePART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/RefControlMM</superEntityURI>
                     </pluginEntity>
@@ -583,7 +583,7 @@ return Arrays.asList(MultiChoiceTypeEnum.class.getEnumConstants());</initValues>
                         <superEntityURI>adi://org.adichatz.studio/model/RefControlMM</superEntityURI>
                     </pluginEntity>
                 </text>
-                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="fieldBindManagerClassNameMultiChoicePART$1">
+                <hyperlink text="#MSG(controlField, fieldBindManagerClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="fieldBindManagerClassNameMultiChoicePART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/RefControlMM</superEntityURI>
                     </pluginEntity>
@@ -623,7 +623,7 @@ return Arrays.asList(MultiChoiceTypeEnum.class.getEnumConstants());</initValues>
                         <superEntityURI>adi://org.adichatz.studio/model/RefControlMM</superEntityURI>
                     </pluginEntity>
                 </text>
-                <hyperlink text="#MSG(refControl, labelProviderClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" id="labelProviderClassNameMultiChoicePART$1">
+                <hyperlink text="#MSG(refControl, labelProviderClassName).concat(&quot;:&quot;)" runnableClassName="org.adichatz.studio.xjc.editor.runnable.OpenClassEditorRunnable" controllerClassName="org.adichatz.studio.xjc.controller.OutlineHyperlinkController" id="labelProviderClassNameMultiChoicePART$1">
                     <pluginEntity>
                         <superEntityURI>adi://org.adichatz.studio/model/RefControlMM</superEntityURI>
                     </pluginEntity>

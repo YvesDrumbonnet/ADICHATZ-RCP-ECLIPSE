@@ -82,7 +82,6 @@ import org.adichatz.engine.controller.ASetController;
 import org.adichatz.engine.controller.AWidgetController;
 import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.controller.collection.ContainerController;
-import org.adichatz.engine.controller.field.HyperlinkController;
 import org.adichatz.engine.controller.nebula.PShelfController;
 import org.adichatz.engine.controller.nebula.PShelfItemController;
 import org.adichatz.engine.core.ControllerCore;
@@ -90,6 +89,7 @@ import org.adichatz.engine.indigo.editor.IAdiOutlinePage;
 import org.adichatz.engine.validation.EntityInjection;
 import org.adichatz.generator.common.GeneratorConstants;
 import org.adichatz.studio.xjc.controller.AdiResourceUriTextController;
+import org.adichatz.studio.xjc.controller.OutlineHyperlinkController;
 import org.adichatz.studio.xjc.controller.ProposalTextController;
 import org.adichatz.studio.xjc.controller.XjcTreeController;
 import org.adichatz.studio.xjc.data.XjcBindingService;
@@ -119,6 +119,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.forms.ManagedForm;
 import org.eclipse.ui.forms.widgets.FormToolkit;
+import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.part.Page;
 
@@ -445,8 +446,17 @@ public class StudioOutlinePage extends Page implements IAdiOutlinePage {
 								((ProposalTextController) controller).disposeTextProposal();
 							else if (controller instanceof AdiResourceUriTextController)
 								((AdiResourceUriTextController) controller).disposeProposal();
-					} else if (controller instanceof HyperlinkController) {
-						((Control) controller.getControl()).setEnabled(enabled);
+					} else if (controller instanceof OutlineHyperlinkController) {
+						// HyperlinkController hyperlinkController = (HyperlinkController) controller;
+						//						if (enabled && null != hyperlinkController.getLinkedController()) {
+						//							AControlController controlController = hyperlinkController.getLinkedController();
+						//							if (!((Control) collectionController.getControl()).isEnabled())
+						//								((Control) controller.getControl()).setEnabled(enabled);
+						//						} else
+						Hyperlink hyperlink = ((OutlineHyperlinkController) controller).getControl();
+						Object enabledFlag = hyperlink.getData(OutlineHyperlinkController.ENABLED_FLAG);
+						if (null == enabledFlag || !enabled)
+							hyperlink.setEnabled(enabled);
 					}
 				} else if (controller instanceof ICollectionController) {
 					disableColumnControllers((ICollectionController) controller, enabled);
