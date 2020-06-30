@@ -417,6 +417,8 @@ public class ScenarioResources {
 	 *            the building project
 	 */
 	public void initFromProject(IFile scenarioFile, boolean buildingProject) {
+		if (!project.exists()) // When deleting project with open resources
+			throw new RuntimeException(getFromGeneratorBundle("generation.project.not.exists", project.getName()));
 		pluginHome = project.getLocation().toOSString();
 		try {
 			manifestChanger = new ManifestChanger(project, null);

@@ -366,7 +366,7 @@ public class FullProjectWizard extends EmptyProjectWizard {
 				}
 				if (0 != (check71Installation & IScenarioConstants.MISSING_DATASOURCE_STANDALONE)) {
 					addDatasourceInStandalone = toolkit.createButton(initJbossGroup,
-							getFromStudioBundle("scenario.add.datasource.standalone", datasource.getDatasourceName()), SWT.CHECK);
+							getFromStudioBundle("scenario.add.datasource.standalone", modelPart.getJndi()), SWT.CHECK);
 					addDatasourceInStandalone.setBackground(initJbossGroup.getBackground());
 					addDatasourceInStandalone.setSelection(true);
 				}

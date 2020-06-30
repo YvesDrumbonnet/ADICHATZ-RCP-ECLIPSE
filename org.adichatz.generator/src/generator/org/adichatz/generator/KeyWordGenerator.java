@@ -2268,20 +2268,7 @@ public class KeyWordGenerator extends AGenerator {
 	 */
 	public String getCSSFont(Statement statement, String selector) {
 		ACodeGenerator generator = statement.getBufferCode().getGenerator();
-		//		if ("font".equals(statement.getProperty())) {
-		//			statement.setGetter("");
-		//			if ("font".equals(statement.getProperty())) {
-		//				control = "getControl()";
-		//				statement.setSetter("setCssFont");
-		//			} else {
-		//				control = "getControl()";
-		//				statement.setSetter("setCssForeground");
-		//			}
-		//			return "\"" + selector + "\", " + control;
-		//		}
-		//		else {
 		return generator.getObjectName(AReskinManager.class) + ".getInstance().getFont(\"" + selector + "\", getControl())";
-		//	}
 	}
 
 	public String getTextFont(BufferCode bufferCode, String value) {

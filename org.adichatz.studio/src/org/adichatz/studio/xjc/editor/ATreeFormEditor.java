@@ -388,11 +388,6 @@ public abstract class ATreeFormEditor extends AStudioFormEditor implements IReso
 			public void partClosed(IWorkbenchPart part) {
 				if (part.equals(ATreeFormEditor.this))
 					site.getPage().removePartListener(this);
-				if (part instanceof ScenarioFormEditor) {
-					// Change name as standard name so that created memento in workbench.xmi file is compliant
-					// EditorReference#getName method (see bug #0.9.0-05).
-					((ScenarioFormEditor) part).setPartName(fileEditorInput.getName());
-				}
 			}
 		};
 		site.getPage().addPartListener(partListener);

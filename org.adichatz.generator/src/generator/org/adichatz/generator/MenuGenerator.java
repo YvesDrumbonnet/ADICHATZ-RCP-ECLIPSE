@@ -210,7 +210,7 @@ public class MenuGenerator extends AConfigGenerator {
 				classBodyBuffer.append("@Override");
 				classBodyBuffer.appendPlus("public " + getObjectName(ParamMap.class) + " getParamMap() {");
 				classBodyBuffer.append("paramMap = new ParamMap();");
-				CodeGenerationUtil.addParams(classBodyBuffer, "paramMap", item.getParams());
+				CodeGenerationUtil.addParams(classBodyBuffer, "paramMap.", item.getParams(), false);
 
 				boolean hasPluginResourcesParam = false;
 				if (null != item.getParams().getParam())

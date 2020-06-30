@@ -112,11 +112,6 @@ public abstract class AConfigGenerator extends ACollectionGenerator {
 			}
 	}
 
-	protected void addParams(ConfigType config, String paramMap) throws IOException {
-		if (null != config)
-			CodeGenerationUtil.addParams(classBodyBuffer, paramMap, config.getParams());
-	}
-
 	/**
 	 * Adds the config customizations.
 	 * 

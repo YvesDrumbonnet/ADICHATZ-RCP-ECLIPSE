@@ -300,6 +300,7 @@ public class EditorScenario extends AScenario implements IEditorScenario {
 			setDependenciesFormText(entityMM, oneToManyFPW, "dependenciesFormText");
 			path = new StringBuffer(oneToManyFPW.getId()).append(", ").append(cTabFolderWrapper.getId()).append(", ").toString();
 		}
+		boolean removeAuthorizationClause = false; // Remove Authorization if at least one entitySet has no AuthorisationClause; 
 		for (EntitySetType entitySet : entitySets) {
 			if (null == generationScenario.getPluginEntity(entitySet.getEntityURI()))
 				// Skip field when reference do not belongs to pluginResources scope
@@ -338,16 +339,18 @@ public class EditorScenario extends AScenario implements IEditorScenario {
 			}
 			addDetailInclude(compositeBag, childPluginEntity, detailId, mappedBy, toolBarType);
 		}
-		oneToManyFPW.setValid(masterValidClause);
+		oneToManyFPW.setValid(removeAuthorizationClause ? masterValidClause : null);
 		sashForm.getElements().add(compositeBag);
 	}
 
-	protected void addDependencyPage(FieldContainerType parentWrapper, EntitySetType entitySet,
+	protected boolean addDependencyPage(FieldContainerType parentWrapper, EntitySetType entitySet,
 			PluginEntityWrapper childPluginEntity, String detailId) {
+		boolean addAuthorisationClause = false;
 		if (addAuthorization(childPluginEntity, RETRIEVE_ROLE)) {
 			String validClause = "#AUTHORIZATION(" + entitySet.getEntityURI() + ",IEntityConstants.RETRIEVE)";
 			parentWrapper.setValid(validClause);
-			masterValidClause = null == masterValidClause ? validClause : masterValidClause + " || " + validClause;
+			masterValidClause = null == masterValidClause ? validClause : masterValidClause + " && " + validClause;
+			addAuthorisationClause = true;
 		}
 		String treeId = scenarioInput.getScenarioResources().getPluginEntityScenario().getTreeId(childPluginEntity,
 				GenerationEnum.TABLE);
@@ -359,6 +362,7 @@ public class EditorScenario extends AScenario implements IEditorScenario {
 		ScenarioResources childSR = ScenarioResources.getInstance(childPluginEntity.getEntityKeys()[0],
 				scenarioInput.getScenarioResources().getPluginName());
 		addTableWrapperCustomization(entitySet, detailId, includeTSIId, childPluginEntity, childSR);
+		return addAuthorisationClause;
 	}
 
 	protected TabularWrapper addTableWrapperCustomization(EntitySetType entitySet, String detailId, String includeTSIId) {
@@ -440,6 +444,7 @@ public class EditorScenario extends AScenario implements IEditorScenario {
 
 				String entityMethodName = "get" + EngineTools.upperCaseFirstLetter(oneToOne.getId()) + "Entity";
 				otoPage.setEntity(entityMethodName + "()");
+				otoPage.setEntityURI(oneToOne.getEntityURI());
 
 				StringBuffer additionalMethodSB = new StringBuffer();
 				additionalMethodSB.append("import static ").append(LogBroker.class.getName()).append(".logError;\n");

@@ -77,12 +77,14 @@ import java.util.List;
 import java.util.Set;
 
 import org.adichatz.engine.cache.IEntity;
+import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.Utilities;
 import org.adichatz.engine.controller.collection.IncludeController;
 import org.adichatz.engine.core.ControllerCore;
 import org.adichatz.engine.listener.AListener;
 import org.adichatz.engine.listener.IEventType;
 import org.adichatz.engine.plugin.AdiContext;
+import org.adichatz.engine.plugin.PluginEntity;
 import org.adichatz.engine.validation.ABindingService;
 import org.adichatz.engine.validation.EntityBindingDispatcher;
 import org.adichatz.engine.validation.EntityInjection;
@@ -113,6 +115,9 @@ public abstract class ACollectionController extends AWidgetController implements
 
 	/** The break injection: true means that current collection controller needs new EntityInjection. */
 	protected boolean breakInjection;
+
+	/** The plugin entity. */
+	protected PluginEntity<?> pluginEntity;
 
 	/**
 	 * Instantiates a new a collection controller.
@@ -360,6 +365,37 @@ public abstract class ACollectionController extends AWidgetController implements
 	}
 
 	/**
+	 * Gets the plugin entity.
+	 *
+	 * @return the plugin entity
+	 */
+	public PluginEntity<?> getPluginEntity() {
+		if (null == pluginEntity && null != parentController)
+			return parentController.getPluginEntity();
+		return pluginEntity;
+	}
+
+	public void setPluginEntity(PluginEntity<?> pluginEntity) {
+		this.pluginEntity = pluginEntity;
+	}
+
+	/**
+	 * Sets the plugin entity.
+	 *
+	 * @param entityURI the new plugin entity
+	 */
+	public void setPluginEntity(String entityURI) {
+		if (null == pluginEntity) {
+			IEntity<?> entity = getEntity();
+			if (null != entity)
+				pluginEntity = entity.getEntityMM().getPluginEntity();
+			else if (null != entityURI) {
+				pluginEntity = AdichatzApplication.getInstance().getPluginEntity(entityURI);
+			}
+		}
+	}
+
+	/**
 	 * Dispose entity injections.
 	 */
 	public void disposeEntityInjections() {
@@ -433,5 +469,4 @@ public abstract class ACollectionController extends AWidgetController implements
 	public boolean isBreakInjection() {
 		return breakInjection;
 	}
-
 }

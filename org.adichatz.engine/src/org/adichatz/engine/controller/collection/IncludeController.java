@@ -109,7 +109,18 @@ public abstract class IncludeController extends AEntityManagerController {
 	public IncludeController(String id, IContainerController parentController, ControllerCore genCode) {
 		super(id, parentController, genCode);
 		// contents (child controllers) must be created to initialized lazy fetch members and register
+		addParams();
 		createContents();
+	}
+
+	@Override
+	public void startLifeCycle() {
+		// relaunch addParams because some controllers needed in params can be missing when instantiating IncludeController 
+		addParams();
+		super.startLifeCycle();
+	}
+
+	protected void addParams() {
 	}
 
 	/**

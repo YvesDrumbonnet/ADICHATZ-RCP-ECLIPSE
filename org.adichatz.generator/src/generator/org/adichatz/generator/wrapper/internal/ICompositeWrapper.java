@@ -71,7 +71,6 @@
  *******************************************************************************/
 package org.adichatz.generator.wrapper.internal;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * The Interface for Collection Wrapper. Used for Containers element like composite, section, formPage...
@@ -79,13 +78,6 @@ package org.adichatz.generator.wrapper.internal;
  * @author Yves Drumbonnet
  */
 public interface ICompositeWrapper extends IControlContainerWrapper, IEntityContainerWrapper {
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adichatz.generator.wrapper.collection.IEntityContainerWrapper#getEntityId()
-	 */
-	public String getEntityURI();
 
 	/**
 	 * Gets the gencode class.

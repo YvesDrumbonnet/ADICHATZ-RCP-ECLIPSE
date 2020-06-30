@@ -3,6 +3,17 @@
     <pluginEntity/>
     <scrolledComposite id="itemComposite">
         <pluginEntity/>
+        <listeners>
+            <listener listenerTypes="POST_SAVE">
+                <code>import org.adichatz.engine.controller.collection.ContainerController;
+import org.adichatz.studio.xjc.data.XjcBindingService;
+import org.adichatz.studio.xjc.editor.ScenarioFormEditor;
+XjcBindingService bindingService = (XjcBindingService) genCode.getContext().getRootCore().getController(); 
+ScenarioFormEditor editor = (ScenarioFormEditor) bindingService.getBindingService(); 
+editor.setProposePluginEntitiesGeneration(true);
+</code>
+            </listener>
+        </listeners>
         <layout layoutConstraints="wrap 2" columnConstraints="[align right]10[fill,grow]" rowConstraints="[]"/>
         <label text="#MSG(adi://org.adichatz.studio/./pluginEntity, entityURI).concat(&quot;:&quot;)" foreground="#COLOR(IFormColors.TITLE)" id="entityURI$1"/>
         <text property="entityURI" labelForeground="#COLOR(IFormColors.TITLE)" labelText="#MSG(adi://org.adichatz.studio/./pluginEntity, entityURI).concat(&quot;:&quot;)" linkedControl="entityURI$1" mandatory="true" controllerClassName="org.adichatz.studio.xjc.controller.EntityUri4PETextController" id="entityURI">

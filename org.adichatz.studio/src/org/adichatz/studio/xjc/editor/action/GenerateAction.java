@@ -73,6 +73,8 @@ package org.adichatz.studio.xjc.editor.action;
 
 import static org.adichatz.engine.common.LogBroker.logError;
 
+import java.util.List;
+
 import javax.xml.bind.JAXBException;
 
 import org.adichatz.engine.action.AAction;
@@ -140,15 +142,21 @@ public class GenerateAction extends AAction {
 			ScenarioInput scenarioInput = new ScenarioInput(scenarioResources, treeId, treeWrapperClone.getSubPackage(),
 					treeWrapperClone);
 			scenarioInput.setXmlFile(xmlFile);
-			for (IResource resource : ScenarioUtil.getJavaFiles(xmlFile))
+			List<IResource> javaFiles = ScenarioUtil.getJavaFiles(xmlFile);
+			long stamp = System.currentTimeMillis();
+			GeneratorUnit generatorUnit = new GeneratorUnit(scenarioInput);
+			generatorUnit.generateCodeFromXMLTree(true);
+			// delete superfluous java files
+			// Do not delete before to avoid Java file closing.
+			for (IResource resource : javaFiles) {
 				try {
-					resource.delete(true, null);
+					resource.refreshLocal(IResource.DEPTH_ZERO, null);
+					if (resource.getLocalTimeStamp() < stamp)
+						resource.delete(true, null);
 				} catch (Exception e) {
 					logError("Cannot delete resource '" + resource.getName() + "'!");
 				}
-
-			GeneratorUnit generatorUnit = new GeneratorUnit(scenarioInput);
-			generatorUnit.generateCodeFromXMLTree(true);
+			}
 			new ErroneousFilesFormDialog(editor, display, scenarioResources);
 		} catch (JAXBException | CoreException e) {
 			logError(e);

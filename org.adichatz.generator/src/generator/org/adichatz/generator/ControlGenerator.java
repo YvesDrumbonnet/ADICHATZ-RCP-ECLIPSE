@@ -99,6 +99,7 @@ import org.adichatz.engine.widgets.supplement.TextControllerProposal;
 import org.adichatz.engine.wrapper.ITreeWrapper;
 import org.adichatz.generator.common.GeneratorUnit;
 import org.adichatz.generator.tools.AListenerTypeManager;
+import org.adichatz.generator.tools.AdditionalBufferCode;
 import org.adichatz.generator.tools.BufferCode;
 import org.adichatz.generator.tools.CodeGenerationUtil;
 import org.adichatz.generator.tools.ControlBufferCode;
@@ -121,6 +122,7 @@ import org.adichatz.generator.wrapper.TextWrapper;
 import org.adichatz.generator.wrapper.ToolItemWrapper;
 import org.adichatz.generator.wrapper.TreeWrapper;
 import org.adichatz.generator.wrapper.internal.IActionContainer;
+import org.adichatz.generator.wrapper.internal.IAdditionaCodeWrapper;
 import org.adichatz.generator.wrapper.internal.IArgCollectionWrapper;
 import org.adichatz.generator.wrapper.internal.ICollectionWrapper;
 import org.adichatz.generator.wrapper.internal.IColumnWrapper;
@@ -136,6 +138,7 @@ import org.adichatz.generator.wrapper.internal.IValueListWrapper;
 import org.adichatz.generator.wrapper.internal.IWidgetWrapper;
 import org.adichatz.generator.xjc.ActionType;
 import org.adichatz.generator.xjc.CheckBoxType;
+import org.adichatz.generator.xjc.CollectionType;
 import org.adichatz.generator.xjc.ColumnFieldType;
 import org.adichatz.generator.xjc.ColumnPreferenceType;
 import org.adichatz.generator.xjc.ContributionItemType;
@@ -417,8 +420,8 @@ public class ControlGenerator extends ACodeGenerator {
 			scenarioInput.setColumnWrapper(null);
 
 		if (controlWrapper instanceof IParamsContainer && !(controlWrapper instanceof IncludeWrapper)) {
-			CodeGenerationUtil.addParams(paramCreateControlBuffer, "getParamMap()",
-					((IParamsContainer) controlWrapper).getParams());
+			CodeGenerationUtil.addParams(paramCreateControlBuffer, "getParamMap().",
+					((IParamsContainer) controlWrapper).getParams(), false);
 		}
 
 		// adds a line in declaration buffer for the control. LazyFetchContainerType is assumed by AxxxGenCode, IncludeWrapper must
@@ -637,6 +640,14 @@ public class ControlGenerator extends ACodeGenerator {
 							+ "(this, parentController.getEntity());");
 					entityInjectionBuffer.addIdent(-1);
 					entityInjectionBuffer.append("return entityInjection;");
+					StringBuffer pluginEntitySB = new StringBuffer("setPluginEntity(");
+					String entityURI = ((ValidableContainerType) controlWrapper).getEntityURI();
+					if (!isEmpty(entityURI))
+						pluginEntitySB.append(keyWordGenerator.evalExpr2Str(classBodyBuffer, entityURI, true, false));
+					else
+						pluginEntitySB.append("(String) null");
+					pluginEntitySB.append(");");
+					afterInstantiateControllerBuffer.append(pluginEntitySB.toString());
 					afterInstantiateControllerBuffer.append("breakInjection = true;");
 				}
 
@@ -699,8 +710,7 @@ public class ControlGenerator extends ACodeGenerator {
 		if (controlWrapper instanceof IncludeWrapper) {
 			IncludeWrapper includeWrapper = (IncludeWrapper) controlWrapper;
 			BufferCode includeBC = addBuffer("include", "public void " + METHOD_CREATE_CONTENTS + "()");
-			CodeGenerationUtil.addParams(includeBC, "getParamMap()", includeWrapper.getParams());
-			includeBC.append("// loads and instantiates the class " + controllerName + ".");
+			includeBC.append("// loads and instantiates the class for '" + controllerName + "' include wrapper.");
 			boolean canBeDirectlyLaunched = -1 == includeWrapper.getAdiResourceURI().indexOf('#');
 			if (canBeDirectlyLaunched) {
 				includeBC.appendPlus("if (null != " + getObjectName(EngineConstants.class) + ".GENERATOR) {");
@@ -723,6 +733,10 @@ public class ControlGenerator extends ACodeGenerator {
 				includeBC.append("new " + includeKeys[2] + "(getParamMap(), this, "
 						+ CodeGenerationUtil.betweenQuotes(includeWrapper.getId()) + ", context).createContents();");
 				includeBC.addIdent(-1);
+			}
+			if (null != includeWrapper.getParams()) {
+				BufferCode paramBC = addBuffer("includeParam", "public void addParams()");
+				CodeGenerationUtil.addParams(paramBC, "getParamMap().", includeWrapper.getParams(), true);
 			}
 		}
 
@@ -1336,6 +1350,14 @@ public class ControlGenerator extends ACodeGenerator {
 		if (controlWrapper instanceof GMapType)
 			afterCreateControlBuffer.append("gmap.createContents();");
 
+		// AdditionCode is treated by ACollectionGenerator and generation code is put at class level and not at controller level
+		if (!(controlWrapper instanceof CollectionType) && controlWrapper instanceof IAdditionaCodeWrapper
+				&& !isEmpty(((IAdditionaCodeWrapper) controlWrapper).getAdditionalCode())) {
+			AdditionalBufferCode additionalBuffer = new AdditionalBufferCode(this, classBodyBuffer.getIdent() + 1,
+					"additionalBuffer");
+			extraBufferMap.put(additionalBuffer.getKeyBuffer(), additionalBuffer);
+			CodeGenerationUtil.addAdditionalCode(additionalBuffer, ((IAdditionaCodeWrapper) controlWrapper).getAdditionalCode());
+		}
 		/*
 		 * Flush all buffers
 		 */

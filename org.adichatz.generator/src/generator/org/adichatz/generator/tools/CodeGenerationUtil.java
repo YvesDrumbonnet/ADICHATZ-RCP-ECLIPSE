@@ -61,10 +61,12 @@ import static org.adichatz.generator.common.GeneratorUtil.getFromGeneratorBundle
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
+import java.text.Normalizer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.function.BooleanSupplier;
+import java.util.regex.Pattern;
 
 import org.adichatz.common.ejb.util.IEntityConstants;
 import org.adichatz.common.encoding.Base64;
@@ -432,7 +434,7 @@ public class CodeGenerationUtil {
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public static void addParams(BufferCode buffer, String paramMap, ParamsType params) throws IOException {
+	public static void addParams(BufferCode buffer, String paramMap, ParamsType params, boolean include) throws IOException {
 		if (null != params) {
 			KeyWordGenerator keyWordGenerator = buffer.getGenerator().getScenarioInput().getScenarioResources()
 					.getKeyWordGenerator();
@@ -497,7 +499,7 @@ public class CodeGenerationUtil {
 					}
 				}
 				String putString = Boolean.TRUE.equals(param.isOptional()) ? "putOptional" : "put";
-				buffer.append(paramMap + "." + putString + "(" + keyWordGenerator.evalExpr2Str(buffer, param.getId(), false) + ", "
+				buffer.append(paramMap + putString + "(" + keyWordGenerator.evalExpr2Str(buffer, param.getId(), false) + ", "
 						+ valueExpr + ");");
 			}
 		}
@@ -811,5 +813,33 @@ public class CodeGenerationUtil {
 			beanClass = pluginEntity.getEntityMetaModel().getUIBeanClass();
 		}
 		return beanClass;
+	}
+
+	public static String getNormalizedId(String id) {
+		if (EngineTools.isEmpty(id) || id.trim().isEmpty())
+			return "_id_";
+		StringBuffer normalizedSB = new StringBuffer();
+		char[] chars = id.trim().toCharArray();
+		boolean upper = false;
+		for (char car : chars) {
+			if (Character.isLetterOrDigit(car))
+				if (upper) {
+					normalizedSB.append(Character.toUpperCase(car));
+					upper = false;
+				} else
+					normalizedSB.append(car);
+			else
+				upper = true;
+		}
+		String result = normalizedSB.toString();
+		if (EngineTools.isEmpty(result))
+			return "_id_";
+		if (Character.isDigit(result.charAt(0))) {
+			normalizedSB.insert(0, '_');
+			result = normalizedSB.toString();
+		}
+		String strTemp = Normalizer.normalize(result, Normalizer.Form.NFD);
+		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+		return EngineTools.lowerCaseFirstLetter(pattern.matcher(strTemp).replaceAll(""));
 	}
 }

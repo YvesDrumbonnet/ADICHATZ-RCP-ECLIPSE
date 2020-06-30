@@ -34,7 +34,6 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.DecorationOverlayIcon;
@@ -191,30 +190,32 @@ public class OpenJavaFileMAController extends MenuActionController {
 							}
 						}
 					}
-					new SeparatorController("compileSeparator", OpenJavaFileMAController.this, genCode);
-					new ActionController("compile", OpenJavaFileMAController.this, genCode) {
-						@Override
-						public boolean isValid() {
-							return true; // Validity does not depend on parent validity
-						}
+					if (editor.isEditable()) {
+						new SeparatorController("compileSeparator", OpenJavaFileMAController.this, genCode);
+						new ActionController("compile", OpenJavaFileMAController.this, genCode) {
+							@Override
+							public boolean isValid() {
+								return true; // Validity does not depend on parent validity
+							}
 
-						@Override
-						public void createControl() {
-							action = new AAction() {
-								@Override
-								public void runAction() {
-									GenerateAction generateAction = new GenerateAction(editor.getEditorInput().getFile(),
-											editor.getComposite().getDisplay());
-									generateAction.setEditor(editor);
-									generateAction.runAction();
-								}
-							};
-							action.setText(getFromStudioBundle("studio.xjcEditor.regenerate.java.files"));
-							action.setImageDescriptor(generateJavaFiles);
-							action.setActionController(this);
-							super.createControl();
-						}
-					};
+							@Override
+							public void createControl() {
+								action = new AAction() {
+									@Override
+									public void runAction() {
+										GenerateAction generateAction = new GenerateAction(editor.getEditorInput().getFile(),
+												editor.getComposite().getDisplay());
+										generateAction.setEditor(editor);
+										generateAction.runAction();
+									}
+								};
+								action.setText(getFromStudioBundle("studio.xjcEditor.regenerate.java.files"));
+								action.setImageDescriptor(generateJavaFiles);
+								action.setActionController(this);
+								super.createControl();
+							}
+						};
+					}
 				} catch (CoreException e) {
 					logError(e);
 				}
@@ -256,11 +257,6 @@ public class OpenJavaFileMAController extends MenuActionController {
 		if (!javaResources.isEmpty())
 			menuAction.setToolTipText(
 					getFromStudioBundle("studio.xjcEditor.open.file", javaResources.get(0).getFullPath().lastSegment()));
-	}
-
-	private IFile getJavaFile(final IPath javaPath) {
-		final IFile javaFile = editor.getScenarioResources().getProject().getFile(javaPath.removeFirstSegments(1));
-		return javaFile;
 	}
 
 	private void openJavaFile(final IResource javaFile) throws PartInitException {

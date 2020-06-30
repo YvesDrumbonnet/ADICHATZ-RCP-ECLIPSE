@@ -77,6 +77,7 @@ import org.adichatz.engine.cache.IEntity;
 import org.adichatz.engine.controller.utils.ElementaryAccessibility;
 import org.adichatz.engine.core.ControllerCore;
 import org.adichatz.engine.listener.AListener;
+import org.adichatz.engine.plugin.PluginEntity;
 import org.adichatz.engine.validation.ABindingService;
 import org.eclipse.swt.widgets.Composite;
 
@@ -131,6 +132,13 @@ public interface ICollectionController extends IController {
 	 * @return the entity
 	 */
 	public IEntity<?> getEntity();
+
+	/**
+	 * Gets the plugin entity.
+	 *
+	 * @return the plugin entity
+	 */
+	public PluginEntity<?> getPluginEntity();
 
 	/**
 	 * Checks if is valid.

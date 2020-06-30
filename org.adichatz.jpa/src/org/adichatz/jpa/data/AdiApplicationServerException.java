@@ -71,7 +71,6 @@
  *******************************************************************************/
 package org.adichatz.jpa.data;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class AdiApplicationServerException.
@@ -89,6 +88,10 @@ public class AdiApplicationServerException extends RuntimeException {
 	 */
 	public AdiApplicationServerException(Exception exception) {
 		super(exception);
+	}
+
+	public AdiApplicationServerException(String message) {
+		super(message);
 	}
 
 }

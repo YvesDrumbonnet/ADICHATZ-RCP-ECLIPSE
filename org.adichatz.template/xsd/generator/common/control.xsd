@@ -44,6 +44,7 @@
 					<xs:choice>
 						<xs:element name="listeners" type="listenersType"/>
 						<xs:element name="accessibilities" type="accessibilitiesType"/>
+						<xs:element name="additionalCode" type="xs:string"/>
 					</xs:choice>
 				</xs:sequence>
 				<xs:attribute name="controllerClassName" type="xs:NCName"/>
@@ -784,6 +785,7 @@
 					<xs:element name="columnFont" type="xs:string"/>
 					<xs:element name="accessibilities" type="accessibilitiesType"/>
 					<xs:element name="listeners" type="listenersType"/>
+					<xs:element name="additionalCode" type="xs:string"/>
 				</xs:choice>
 		        <xs:attribute name="property" type="xs:NCName"/>
         		<xs:attribute name="image" type="xs:string"/>

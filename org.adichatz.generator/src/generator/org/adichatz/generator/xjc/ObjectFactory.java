@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.01.22 à 11:02:17 AM CET 
+// Généré le : 2020.06.26 à 05:05:47 PM CEST 
 //
 
 
@@ -469,14 +469,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PartTree }
-     * 
-     */
-    public PartTree createPartTree() {
-        return new PartTree();
-    }
-
-    /**
      * Create an instance of {@link ContainerTree }
      * 
      */
@@ -490,6 +482,14 @@ public class ObjectFactory {
      */
     public LayoutType createLayoutType() {
         return new LayoutType();
+    }
+
+    /**
+     * Create an instance of {@link PartTree }
+     * 
+     */
+    public PartTree createPartTree() {
+        return new PartTree();
     }
 
     /**
@@ -1101,19 +1101,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CustomizedScenarioType }
-     * 
-     */
-    public CustomizedScenarioType createCustomizedScenarioType() {
-        return new CustomizedScenarioType();
-    }
-
-    /**
      * Create an instance of {@link EntityElementsType }
      * 
      */
     public EntityElementsType createEntityElementsType() {
         return new EntityElementsType();
+    }
+
+    /**
+     * Create an instance of {@link CustomizedScenarioType }
+     * 
+     */
+    public CustomizedScenarioType createCustomizedScenarioType() {
+        return new CustomizedScenarioType();
     }
 
     /**

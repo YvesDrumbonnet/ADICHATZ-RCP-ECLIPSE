@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.01.22 à 11:02:17 AM CET 
+// Généré le : 2020.06.26 à 05:05:47 PM CEST 
 //
 
 
@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;choice>
  *           &lt;element name="listeners" type="{}listenersType"/>
  *           &lt;element name="accessibilities" type="{}accessibilitiesType"/>
+ *           &lt;element name="additionalCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;/choice>
  *       &lt;/sequence>
  *       &lt;attribute name="controllerClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" />
@@ -48,7 +49,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "widgetType", propOrder = {
     "listeners",
-    "accessibilities"
+    "accessibilities",
+    "additionalCode"
 })
 @XmlSeeAlso({
     IncludeType.class,
@@ -69,6 +71,7 @@ public class WidgetType
     private final static long serialVersionUID = 1L;
     protected ListenersType listeners;
     protected AccessibilitiesType accessibilities;
+    protected String additionalCode;
     @XmlAttribute(name = "controllerClassName")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlSchemaType(name = "NCName")
@@ -126,6 +129,30 @@ public class WidgetType
      */
     public void setAccessibilities(AccessibilitiesType value) {
         this.accessibilities = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété additionalCode.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAdditionalCode() {
+        return additionalCode;
+    }
+
+    /**
+     * Définit la valeur de la propriété additionalCode.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAdditionalCode(String value) {
+        this.additionalCode = value;
     }
 
     /**

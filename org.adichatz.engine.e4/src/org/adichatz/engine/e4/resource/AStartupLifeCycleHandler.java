@@ -5,12 +5,10 @@ import static org.adichatz.engine.e4.resource.EngineE4Util.getFromEngineE4Bundle
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import org.adichatz.common.ejb.Session;
 import org.adichatz.engine.common.AdiPluginResources;
 import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineConstants;
@@ -19,7 +17,7 @@ import org.adichatz.engine.common.IAdiLogger;
 import org.adichatz.engine.common.LogBroker;
 import org.adichatz.engine.common.ReflectionTools;
 import org.adichatz.engine.e4.part.IntroPart;
-import org.adichatz.engine.extra.ALoginDialog;
+import org.adichatz.engine.extra.IAdiLogin;
 import org.adichatz.engine.xjc.LoginType;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.services.events.IEventBroker;
@@ -70,28 +68,32 @@ public abstract class AStartupLifeCycleHandler {
 			context.set(Logger.class.getName(), new E4Logger(context));
 			LogBroker.getLogger().initPreferenceManager();
 
+			adichatzApplication.loadRcpConfigTree(pluginResources, display);
+
+			String loggerClassName = (String) adichatzApplication.popParam("adiLoggerClassName");
+			if (!EngineTools.isEmpty(loggerClassName)) {
+				try {
+					Logger logger = (Logger) ReflectionTools.instantiateClass(loggerClassName,
+							new Class[] { IEclipseContext.class, EModelService.class }, new Object[] { context, modelService });
+					context.set(Logger.class.getName(), logger);
+				} catch (Exception e) {
+					logError(e);
+				}
+			}
+
 			/*
 			 * Login must succeed to continue
 			 */
-			if (!login()) {
+			String loginMessage = login();
+			if (null != loginMessage) {
 				EngineTools.openDialog(MessageDialog.ERROR, getFromEngineE4Bundle("cannot.initialize.application"),
-						getFromEngineE4Bundle("loginFailedInterrupApplication"));
+						getFromEngineE4Bundle("loginFailedInterrupApplication"), "", "\n\t" + loginMessage);
 				System.exit(0);
 			}
 		} catch (Exception e) {
 			EngineTools.openDialog(MessageDialog.ERROR, getFromEngineE4Bundle("cannot.initialize.application"),
-					EngineTools.getErrorString(e));
-		}
-		adichatzApplication.loadRcpConfigTree(pluginResources, display);
-		String loggerClassName = (String) adichatzApplication.popParam("adiLoggerClassName");
-		if (!EngineTools.isEmpty(loggerClassName)) {
-			try {
-				Logger logger = (Logger) ReflectionTools.instantiateClass(loggerClassName,
-						new Class[] { IEclipseContext.class, EModelService.class }, new Object[] { context, modelService });
-				context.set(Logger.class.getName(), logger);
-			} catch (Exception e) {
-				logError(e);
-			}
+					EngineTools.getErrorString(e), "", "\n\t" + getFromEngineE4Bundle("loginFailedInterrupApplication"));
+			System.exit(0);
 		}
 
 		adichatzApplication.getEarlyStartupHooks().add(() -> {
@@ -163,24 +165,29 @@ public abstract class AStartupLifeCycleHandler {
 	 * @param adichatzApplication the adichatz application
 	 * @return true, if successful
 	 */
-	protected boolean login() {
+	protected String login() {
 		LoginType login = adichatzApplication.getLogin();
-		if (null == login) {
-			adichatzApplication.setSession(
-					new Session(pluginResources.getPluginName(), System.getProperty("user.name"), new HashSet<String>(0)));
-			return true;
-		} else {
-			if (login.getLoginTemplate().value().equals(EngineConstants.LOGIN_TEMPLATE_DIALOG)) {
-				ALoginDialog loginDialog = (ALoginDialog) ReflectionTools.instantiateClass(login.getLoginClassName());
+		if (null == login)
+			return getFromEngineE4Bundle("no.login.specified");
+		else {
+			if (null != login.getLoginTemplate()
+					&& login.getLoginTemplate().value().equals(EngineConstants.LOGIN_TEMPLATE_DIALOG)) {
+				IAdiLogin loginDialog = (IAdiLogin) ReflectionTools.instantiateClass(login.getLoginClassName());
 				while (true) {
-					if (loginDialog.open() == Window.OK) {
+					int result = loginDialog.open();
+					switch (result) {
+					case Window.OK: {
 						adichatzApplication.setSession(loginDialog.getSession());
-						return true;
-					} else
-						return false;
+						return null;
+					}
+					case Window.CANCEL:
+						return getFromEngineE4Bundle("login.process.cancelled");
+					default:
+						return getFromEngineE4Bundle("invalid.login.parameters");
+					}
 				}
 			} else {
-				return false;
+				return getFromEngineE4Bundle("invalid.login.template");
 			}
 		}
 	}

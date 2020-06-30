@@ -289,6 +289,10 @@ public class ExtendTreeWrapper extends ExtendTree implements ICollectionWrapper<
 		return null;
 	}
 
+	@Override
+	public void setEntityURI(String value) {
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 

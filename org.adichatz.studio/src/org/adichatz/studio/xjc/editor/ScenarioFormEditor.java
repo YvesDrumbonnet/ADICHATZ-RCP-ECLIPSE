@@ -65,9 +65,11 @@ import javax.xml.bind.JAXBException;
 
 import org.adichatz.common.ejb.MultiKey;
 import org.adichatz.common.ejb.QueryResult;
+import org.adichatz.engine.cache.IEntity;
 import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.common.LogBroker;
+import org.adichatz.engine.common.Utilities;
 import org.adichatz.engine.controller.APageController;
 import org.adichatz.engine.controller.ASetController;
 import org.adichatz.engine.controller.action.ActionController;
@@ -85,6 +87,7 @@ import org.adichatz.generator.common.GeneratorConstants;
 import org.adichatz.generator.wrapper.GenerationScenarioWrapper;
 import org.adichatz.generator.wrapper.PluginEntityWrapper;
 import org.adichatz.generator.wrapper.ScenarioTreeWrapper;
+import org.adichatz.generator.xjc.GenerationUnitType;
 import org.adichatz.generator.xjc.PluginEntityType;
 import org.adichatz.scenario.ScenarioResources;
 import org.adichatz.scenario.util.ScenarioUtil;
@@ -95,6 +98,7 @@ import org.adichatz.studio.xjc.controller.FeaturesTableController;
 import org.adichatz.studio.xjc.controller.GenerationTreeController;
 import org.adichatz.studio.xjc.data.XjcBindingService;
 import org.adichatz.studio.xjc.data.XjcDataCache;
+import org.adichatz.studio.xjc.data.XjcEntity;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -142,6 +146,12 @@ public class ScenarioFormEditor extends ATreeFormEditor {
 	private boolean isChangingPage;
 
 	private int currentPageIndex;
+
+	/**
+	 * True when PluginEntityType is updated or GenerationUnitType.adiResourceURI is changed
+	 * (so confirm is asked for ComponentGeneration#generatePluginEntityTreeClass()) 
+	 */
+	private boolean proposePluginEntitiesGeneration = false;
 
 	/*
 	 * (non-Javadoc)
@@ -446,6 +456,16 @@ public class ScenarioFormEditor extends ATreeFormEditor {
 				}
 			} else if ("generationPage".equals(page)) {
 				((GenerationTreeController) genCode.getFromRegister("generationTree")).setExpandedURIs();
+				for (IEntity<?> entity : getBindingService().getUpdatedEntities().keySet()) {
+					if (entity.getBean() instanceof GenerationUnitType) {
+						GenerationUnitType gu = (GenerationUnitType) entity.getBean();
+						GenerationUnitType beforeGu = (GenerationUnitType) ((XjcEntity<?>) entity).getBeforeBean();
+						if (!Utilities.equals(gu.getAdiResourceURI(), beforeGu.getAdiResourceURI())) {
+							proposePluginEntitiesGeneration = true;
+							break;
+						}
+					}
+				}
 			}
 		}
 		super.doSave();
@@ -477,12 +497,14 @@ public class ScenarioFormEditor extends ATreeFormEditor {
 			}
 		} else if ("generationPage".equals(page)) {
 			((GenerationTreeController) genCode.getFromRegister("generationTree")).expandedURIs();
-			if (EngineTools.openDialog(MessageDialog.CONFIRM, getFromStudioBundle("scenario.change"),
-					getFromStudioBundle("scenario.regenerate.PluginEntityTree"))) {
-				scenarioResources.getComponentGeneration().generatePluginEntityTreeClass();
-			}
 		} else if ("featuresPage".equals(page))
 			scenarioResources.loadScenarioParameters();
+		if (proposePluginEntitiesGeneration) {
+			proposePluginEntitiesGeneration = false;
+			if (EngineTools.openDialog(MessageDialog.CONFIRM, getFromStudioBundle("scenario.change"),
+					getFromStudioBundle("scenario.regenerate.PluginEntityTree")))
+				scenarioResources.getComponentGeneration().generatePluginEntityTreeClass();
+		}
 		setEditable(true);
 		xmlTextEditor.setXmlEditable(true);
 		if (outlinePage != null && outlinePage.getControl() != null && !outlinePage.getControl().isDisposed()) {
@@ -544,5 +566,9 @@ public class ScenarioFormEditor extends ATreeFormEditor {
 		GenerationTreeController generationTree = (GenerationTreeController) genCode.getFromRegister("generationTree");
 		if (null != generationTree) // Scenario.xml file was changed outside eclipse
 			generationTree.expandedURIs();
+	}
+
+	public void setProposePluginEntitiesGeneration() {
+		proposePluginEntitiesGeneration = true;
 	}
 }

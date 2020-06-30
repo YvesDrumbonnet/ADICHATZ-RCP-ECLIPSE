@@ -881,7 +881,22 @@ public class ModelComponentGeneration {
 					if (ScenarioUtil.isWildflyNewVersion(connectorVersion)) {
 						copy71Libraries(libFolder, jbossInstallation, "org.wildfly.common");
 						copy71Libraries(libFolder, jbossInstallation, "org.wildfly.discovery");
-						copy71Libraries(libFolder, jbossInstallation, "org.wildfly.security.elytron-private");
+						FileFilter elytronFF = new FileFilter() {
+							@Override
+							public boolean accept(File file) {
+								String fileName = file.getName();
+								if ((fileName.contains("wildfly-elytron-credential") || fileName.contains("wildfly-elytron-client")
+										|| fileName.contains("wildfly-elytron-base")
+										|| fileName.contains("wildfly-elytron-provider-util")
+										|| fileName.contains("wildfly-elytron-auth")) && !fileName.contains("http")
+										&& !fileName.contains("sasl") && !fileName.contains("deprecated")
+										&& !fileName.contains("wildfly-elytron-auth-util") && !fileName.contains("source")
+										&& !fileName.contains("store"))
+									return true;
+								return false;
+							}
+						};
+						copy71Libraries(libFolder, jbossInstallation, "org.wildfly.security.elytron-private", elytronFF);
 						copy71Libraries(libFolder, jbossInstallation, "org.wildfly.naming-client");
 						copy71Libraries(libFolder, jbossInstallation, "org.wildfly.transaction.client");
 						File jbossCliClientJar = new File(jbossInstallation.concat("/bin/client/jboss-cli-client.jar"));
@@ -979,8 +994,8 @@ public class ModelComponentGeneration {
 	 * @param libraryName
 	 *            the library name
 	 */
-	private void copy71Libraries(File libDirectory, String jbossInstallation, String libraryName) {
-		for (File library : get71Libraries(jbossInstallation, libraryName)) {
+	private void copy71Libraries(File libDirectory, String jbossInstallation, String libraryName, FileFilter... fileFilters) {
+		for (File library : get71Libraries(jbossInstallation, libraryName, fileFilters)) {
 			FileUtil.copyFile(library, new File(libDirectory, library.getName()), true);
 		}
 	}
@@ -1005,7 +1020,7 @@ public class ModelComponentGeneration {
 	 *            the library name
 	 * @return the 71 libraries
 	 */
-	private File[] get71Libraries(String jbossInstallation, String libraryName) {
+	private File[] get71Libraries(String jbossInstallation, String libraryName, FileFilter... fileFilters) {
 		StringBuffer directoryName = new StringBuffer(jbossInstallation);
 		String moduleName = getASConnector().getModulesDirectory();
 		if (!moduleName.startsWith("/"))
@@ -1021,10 +1036,14 @@ public class ModelComponentGeneration {
 		File directory = new File(directoryName.toString());
 		if (directory.isDirectory()) {
 			return directory.listFiles(new FileFilter() {
-
 				@Override
 				public boolean accept(File file) {
-					return file.getName().endsWith(".jar");
+					boolean ok = file.getName().endsWith(".jar");
+					if (ok && null != fileFilters)
+						for (FileFilter fileFilter : fileFilters)
+							if (!fileFilter.accept(file))
+								return false;
+					return ok;
 				}
 			});
 

@@ -81,7 +81,7 @@ import org.adichatz.generator.xjc.ElementType;
  * 
  * @author Yves Drumbonnet
  */
-public interface ICollectionWrapper<T extends ElementType> extends IElementWrapper {
+public interface ICollectionWrapper<T extends ElementType> extends IElementWrapper, IAdditionaCodeWrapper {
 
 	/**
 	 * Gets the elements.
@@ -89,5 +89,4 @@ public interface ICollectionWrapper<T extends ElementType> extends IElementWrapp
 	 * @return the elements
 	 */
 	public List<T> getElements();
-
 }

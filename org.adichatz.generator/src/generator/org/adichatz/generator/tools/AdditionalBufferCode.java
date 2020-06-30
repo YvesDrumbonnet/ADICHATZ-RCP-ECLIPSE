@@ -77,16 +77,8 @@ public class AdditionalBufferCode extends BufferCode {
 
 	private String collectionName;
 
-	/**
-	 * Instantiates a new additional buffer code.
-	 * 
-	 * @param generator
-	 *            the generator
-	 * @param collectionName
-	 *            the collection name
-	 */
-	public AdditionalBufferCode(ACodeGenerator generator, String collectionName) {
-		super(generator, 1, "additionalBuffer");
+	public AdditionalBufferCode(ACodeGenerator generator, int indent, String collectionName) {
+		super(generator, indent, "additionalBuffer");
 		this.collectionName = collectionName;
 	}
 

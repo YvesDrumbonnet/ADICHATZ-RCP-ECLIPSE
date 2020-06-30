@@ -82,6 +82,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -254,7 +255,7 @@ public class EntityScenario extends AScenario implements IEntityScenario {
 	protected void addOneToManyColumn(EntityTree entityTree, Field field) {
 		Method getMethod = FieldTools.getGetMethod(beanClass, field.getName(), true);
 		Class<?> referencedClass = ScenarioUtil.getGeneric(field);
-		PluginEntity pluginEntity = scenarioInput.getPluginEntityTree().getPluginEntity(referencedClass);
+		PluginEntity<?> pluginEntity = scenarioInput.getPluginEntityTree().getPluginEntity(referencedClass);
 		if (null == pluginEntity)
 			logWarning(getFromGeneratorBundle("generation.entity.ref.noEntityFoundForPlugin", field.getName(),
 					entityTree.getEntityURI(), referencedClass));
@@ -265,7 +266,7 @@ public class EntityScenario extends AScenario implements IEntityScenario {
 			oneToMany.setId(field.getName());
 			oneToMany.setMappedBy(mappedBy);
 			oneToMany.setEntityURI(entityURI);
-			PluginEntity genericPE = scenarioInput.getPluginEntityTree().getPluginEntity(ScenarioUtil.getGeneric(field));
+			PluginEntity<?> genericPE = scenarioInput.getPluginEntityTree().getPluginEntity(ScenarioUtil.getGeneric(field));
 			QueryReferenceType queryReference = new QueryReferenceType();
 			String adiResourceURI = EngineTools.getAdiResourceURI(genericPE.getEntityKeys()[0], genericPE.getEntityKeys()[1],
 					genericPE.getEntityId() + "QUERY");
@@ -301,39 +302,56 @@ public class EntityScenario extends AScenario implements IEntityScenario {
 		String mappedBy = getMethod.getAnnotation(ManyToMany.class).mappedBy();
 		String entityURI = null;
 		Class<?> referencedClass = ScenarioUtil.getGeneric(field);
-		PluginEntity pluginEntity = scenarioInput.getPluginEntityTree().getPluginEntity(referencedClass);
-		if (null == pluginEntity)
+		PluginEntity<?> pluginEntity = scenarioInput.getPluginEntityTree().getPluginEntity(referencedClass);
+		if (null == pluginEntity) {
 			logWarning(getFromGeneratorBundle("generation.entity.ref.noEntityFoundForPlugin", field.getName(),
 					entityTree.getEntityURI(), referencedClass));
-		else {
-			entityURI = pluginEntity.getEntityURI();
-			if (EngineTools.isEmpty(mappedBy)) {
+			return;
+		}
+		entityURI = pluginEntity.getEntityURI();
+		if (EngineTools.isEmpty(mappedBy)) { // look for field using manyToMany#mappedby annotation
+			for (Field rField : referencedClass.getDeclaredFields())
+				if (!Modifier.isStatic(rField.getModifiers())) {
+					Method refGetMethod = FieldTools.getGetMethod(referencedClass, rField.getName(), true);
+					ManyToMany manyToManyAnnotation = refGetMethod.getAnnotation(ManyToMany.class);
+					if (null != manyToManyAnnotation && field.getName().equals(manyToManyAnnotation.mappedBy())) {
+						mappedBy = rField.getName();
+						break;
+					}
+				}
+		}
+		if (EngineTools.isEmpty(mappedBy)) { // look for field using manyToMany#mappedby annotation
+			JoinTable parentJoinTable = getMethod.getAnnotation(JoinTable.class);
+			if (null != parentJoinTable)
 				for (Field rField : referencedClass.getDeclaredFields())
 					if (!Modifier.isStatic(rField.getModifiers())) {
-						Method childGetMethod = FieldTools.getGetMethod(referencedClass, rField.getName(), true);
-						ManyToMany manyToManyAnnotation = childGetMethod.getAnnotation(ManyToMany.class);
-						if (null != manyToManyAnnotation && field.getName().equals(manyToManyAnnotation.mappedBy())) {
+						Method refGetMethod = FieldTools.getGetMethod(referencedClass, rField.getName(), true);
+						JoinTable refJoinTable = refGetMethod.getAnnotation(JoinTable.class);
+						if (null != refJoinTable && parentJoinTable.name().equals(refJoinTable.name())) {
 							mappedBy = rField.getName();
 							break;
 						}
 					}
-			}
-			ManyToManyType manyToMany = new ManyToManyType();
-			manyToMany.setId(field.getName());
-			manyToMany.setMappedBy(mappedBy);
-			manyToMany.setEntityURI(entityURI);
-			PluginEntity genericPE = scenarioInput.getPluginEntityTree().getPluginEntity(ScenarioUtil.getGeneric(field));
-			QueryReferenceType queryReference = new QueryReferenceType();
-			String adiResourceURI = EngineTools.getAdiResourceURI(genericPE.getEntityKeys()[0], genericPE.getEntityKeys()[1],
-					genericPE.getEntityId() + "QUERY");
-			queryReference.setAdiQueryURI(adiResourceURI);
-			QueryTree queryTree = (QueryTree) new GeneratorUnit(new ScenarioInput(scenarioInput, null, adiResourceURI))
-					.getTreeWrapperFromXml(true);
-			manyToMany.setParentClause("?# in elements (" + queryTree.getSuffix() + "." + mappedBy + ")");
-			manyToMany.setQueryReference(queryReference);
-
-			entityTree.getManyToMany().add(manyToMany);
 		}
+		if (EngineTools.isEmpty(mappedBy)) {
+			logError(getFromGeneratorBundle("scenario.cannot.generate.manyToMany", entityURI, field.getName()));
+			return;
+		}
+		ManyToManyType manyToMany = new ManyToManyType();
+		manyToMany.setId(field.getName());
+		manyToMany.setMappedBy(mappedBy);
+		manyToMany.setEntityURI(entityURI);
+		PluginEntity<?> genericPE = scenarioInput.getPluginEntityTree().getPluginEntity(ScenarioUtil.getGeneric(field));
+		QueryReferenceType queryReference = new QueryReferenceType();
+		String adiResourceURI = EngineTools.getAdiResourceURI(genericPE.getEntityKeys()[0], genericPE.getEntityKeys()[1],
+				genericPE.getEntityId() + "QUERY");
+		queryReference.setAdiQueryURI(adiResourceURI);
+		QueryTree queryTree = (QueryTree) new GeneratorUnit(new ScenarioInput(scenarioInput, null, adiResourceURI))
+				.getTreeWrapperFromXml(true);
+		manyToMany.setParentClause("?# in elements (" + queryTree.getSuffix() + "." + mappedBy + ")");
+		manyToMany.setQueryReference(queryReference);
+
+		entityTree.getManyToMany().add(manyToMany);
 	}
 
 	/**
@@ -408,7 +426,7 @@ public class EntityScenario extends AScenario implements IEntityScenario {
 				}
 			}
 			((RefFieldType) propertyField).setParentMappedBy(parentMappedBy);
-			PluginEntity pluginEntity = scenarioInput.getPluginEntityTree().getPluginEntity(getMethod.getReturnType());
+			PluginEntity<?> pluginEntity = scenarioInput.getPluginEntityTree().getPluginEntity(getMethod.getReturnType());
 			if (null == pluginEntity) {
 				logWarning(getFromGeneratorBundle("generation.entity.ref.noEntityFoundForPlugin", fieldId,
 						entityTree.getEntityURI(), getMethod.getReturnType()));

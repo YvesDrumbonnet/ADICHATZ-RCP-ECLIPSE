@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <containerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/PluginEntityMM" id="detailPart" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/engine/containerTree.xsd">
     <scrolledComposite id="itemComposite">
+        <listeners>
+            <listener listenerTypes="POST_SAVE">
+                <code>import org.adichatz.engine.controller.collection.ContainerController;
+import org.adichatz.studio.xjc.data.XjcBindingService;
+import org.adichatz.studio.xjc.editor.ScenarioFormEditor;
+XjcBindingService bindingService = (XjcBindingService) genCode.getContext().getRootCore().getController().getBindingService(); 
+ScenarioFormEditor editor = (ScenarioFormEditor) bindingService.getEditor(); 
+editor.setProposePluginEntitiesGeneration();
+</code>
+            </listener>
+        </listeners>
         <layout rowConstraints="[]" columnConstraints="[align right]10[fill,grow]" layoutConstraints="wrap 2" labelForeground="#COLOR(IFormColors.TITLE)"/>
         <text mandatory="true" labelText="#MSG(adi://org.adichatz.studio/./pluginEntity, entityURI).concat(&quot;:&quot;)" labelForeground="#COLOR(IFormColors.TITLE)"
               controllerClassName="org.adichatz.studio.xjc.controller.EntityUri4PETextController" property="entityURI" id="entityURI"/>

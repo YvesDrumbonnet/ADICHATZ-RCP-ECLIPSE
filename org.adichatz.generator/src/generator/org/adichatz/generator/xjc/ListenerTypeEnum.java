@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.01.22 à 11:02:17 AM CET 
+// Généré le : 2020.06.26 à 05:05:47 PM CEST 
 //
 
 
@@ -48,6 +48,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="BEFORE_DISPOSE"/>
  *     &lt;enumeration value="AFTER_DISPOSE"/>
  *     &lt;enumeration value="POST_CREATE_PART"/>
+ *     &lt;enumeration value="BEFORE_FIELD_CHANGE"/>
+ *     &lt;enumeration value="AFTER_FIELD_CHANGE"/>
  *     &lt;enumeration value="PRE_RUN"/>
  *     &lt;enumeration value="POST_RUN"/>
  *     &lt;enumeration value="MODIFY_TEXT"/>
@@ -57,8 +59,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="WIDGET_SELECTED"/>
  *     &lt;enumeration value="DOUBLE_CLICK"/>
  *     &lt;enumeration value="REFRESH"/>
- *     &lt;enumeration value="BEFORE_FIELD_CHANGE"/>
- *     &lt;enumeration value="AFTER_FIELD_CHANGE"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -96,6 +96,8 @@ public enum ListenerTypeEnum {
     BEFORE_DISPOSE,
     AFTER_DISPOSE,
     POST_CREATE_PART,
+    BEFORE_FIELD_CHANGE,
+    AFTER_FIELD_CHANGE,
     PRE_RUN,
     POST_RUN,
     MODIFY_TEXT,
@@ -104,9 +106,7 @@ public enum ListenerTypeEnum {
     POST_SELECTION_CHANGED,
     WIDGET_SELECTED,
     DOUBLE_CLICK,
-    REFRESH,
-    BEFORE_FIELD_CHANGE,
-    AFTER_FIELD_CHANGE;
+    REFRESH;
 
     public String value() {
         return name();

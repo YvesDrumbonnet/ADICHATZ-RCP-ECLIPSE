@@ -82,7 +82,7 @@ import org.adichatz.generator.xjc.ListenersType;
  * 
  * @author Yves Drumbonnet
  */
-public interface IWidgetWrapper extends IElementWrapper {
+public interface IWidgetWrapper extends IElementWrapper, IAdditionaCodeWrapper {
 
 	/**
 	 * Gets the style.

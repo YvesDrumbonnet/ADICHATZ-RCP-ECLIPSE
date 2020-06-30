@@ -56,7 +56,10 @@ package org.adichatz.generator.tools;
 import static org.adichatz.engine.common.LogBroker.logError;
 import static org.adichatz.generator.common.GeneratorUtil.getFromGeneratorBundle;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -76,6 +79,7 @@ import org.adichatz.engine.common.LogBroker;
 import org.adichatz.engine.common.ReflectionTools;
 import org.adichatz.engine.plugin.PluginEntity;
 import org.adichatz.engine.validation.MandatoryValidator;
+import org.adichatz.generator.common.GeneratorConstants;
 import org.adichatz.generator.common.GeneratorUnit;
 import org.adichatz.generator.common.GeneratorUtil;
 import org.adichatz.generator.wrapper.ContainerTreeWrapper;
@@ -86,6 +90,7 @@ import org.adichatz.generator.wrapper.IncludeWrapper;
 import org.adichatz.generator.wrapper.LabelWrapper;
 import org.adichatz.generator.wrapper.PartTreeWrapper;
 import org.adichatz.generator.wrapper.PluginEntityWrapper;
+import org.adichatz.generator.wrapper.internal.IAdditionaCodeWrapper;
 import org.adichatz.generator.wrapper.internal.ICollectionWrapper;
 import org.adichatz.generator.wrapper.internal.IColumnWrapper;
 import org.adichatz.generator.wrapper.internal.IControlWrapper;
@@ -156,7 +161,7 @@ public class TransformTreeTools {
 	private static ILazyFetchesContainer currentLazyFetchesContainer;
 
 	/** The current plugin entity. */
-	private PluginEntity currentPluginEntity;
+	private PluginEntity<?> currentPluginEntity;
 
 	/** The current adichatz plugin resources. */
 	private AdiPluginResources currentPluginResources;
@@ -359,15 +364,16 @@ public class TransformTreeTools {
 	 *            the prefix
 	 */
 	public TransformTreeTools(ScenarioInput scenarioInput, IElementWrapper parentWrapper, IncludeWrapper includeWrapper,
-			String prefix, AdiPluginResources currentPluginResources, PluginEntity currentPluginEntity) {
+			String prefix, AdiPluginResources currentPluginResources, PluginEntity<?> currentPluginEntity) {
 		this.scenarioInput = scenarioInput;
 		this.currentPluginEntity = currentPluginEntity;
 		this.currentPluginResources = currentPluginResources;
 
 		String adiResourceURI = includeWrapper.getAdiResourceURI();
-		if (null == adiResourceURI)
-			logError("Include whith id '" + includeWrapper.getId() + "' has no URI and cannot be processed!");
-		else {
+		if (null == adiResourceURI) {
+			if (!(currentCollection instanceof CustomizationsType))
+				logError("Include whith id '" + includeWrapper.getId() + "' has no URI and cannot be processed!");
+		} else {
 			if (-1 == adiResourceURI.indexOf('#')) {
 				// indicates if it is an include from an other treeWrapper
 				String[] includeKeys = EngineTools.getInstanceKeys(adiResourceURI);
@@ -521,7 +527,7 @@ public class TransformTreeTools {
 			element.setPluginEntity(parentWrapper.getPluginEntity());
 		if (null != rootWrapper && !EngineTools.isEmpty(element.getId()))
 			rootWrapper.getElementMap().put(element.getId(), element);
-		PluginEntity oldCurrentPluginEntity = currentPluginEntity;
+		PluginEntity<?> oldCurrentPluginEntity = currentPluginEntity;
 		if (!EngineTools.isEmpty(element.getValid()))
 			addAccessibility(element, AccessibilityTypeEnum.VALID, element.getValid());
 		if (element instanceof CollectionType) {
@@ -597,7 +603,7 @@ public class TransformTreeTools {
 
 		}
 
-		if (element instanceof IEntityContainerWrapper && element instanceof IElementWrapper) {
+		if (element instanceof IEntityContainerWrapper) {
 			if (null != ((IEntityContainerWrapper) element).getEntityURI()) {
 				currentPluginEntity = getPluginEntity(currentPluginResources, ((IEntityContainerWrapper) element).getEntityURI());
 				((IElementWrapper) element).setPluginEntity(currentPluginEntity);
@@ -707,23 +713,57 @@ public class TransformTreeTools {
 						reprocessList(element, (List<?>) fieldValue, prefix);
 					} else if (fieldValue instanceof ListenersType) {
 						ListenersType listenersType = (ListenersType) fieldValue;
+						int listenerNb = 0;
 						for (ListenerType listener : listenersType.getListener()
 								.toArray(new ListenerType[listenersType.getListener().size()])) {
 							if (!EngineTools.isEmpty(listener.getListenerTypes())) {
 								String listenerType = listener.getListenerTypes();
 								StringTokenizer tokenizer = new StringTokenizer(listenerType, "|");
 								boolean first = true;
+								Boolean reprocessListener = false;
 								while (tokenizer.hasMoreElements()) {
 									String token = tokenizer.nextToken().trim();
 									if (first) {
 										listener.setListenerTypes(token);
 										first = false;
 									} else {
+										if (element instanceof IAdditionaCodeWrapper && null != reprocessListener
+												&& !reprocessListener && null != listener.getCode()) {
+											BufferedReader reader = new BufferedReader(new StringReader(listener.getCode()));
+											String currentLine = null;
+											int countLines = 0;
+											try {
+												reprocessListener = false;
+												while ((currentLine = reader.readLine()) != null) {
+													currentLine = currentLine.trim();
+													if (!currentLine.startsWith("import ") && !currentLine.startsWith("//"))
+														if (0 != countLines) {
+															reprocessListener = true;
+															break;
+														} else
+															countLines++;
+												}
+											} catch (IOException e) {
+												logError(e);
+											}
+										}
+										if (null != reprocessListener && reprocessListener) {
+											String listenerName = CodeGenerationUtil.getNormalizedId(element.getId())
+													+ "HandleListener" + ++listenerNb;
+											StringBuffer additionalCodeSB = new StringBuffer("private void ");
+											additionalCodeSB.append(listenerName).append("() {\n");
+											additionalCodeSB.append(listener.getCode()).append("\n}");
+											listener.setCode(listenerName + "();");
+											((IAdditionaCodeWrapper) element).setAdditionalCode(additionalCodeSB.toString());
+										}
 										ListenerType newListener = new ListenerType();
 										listenersType.getListener().add(newListener);
 										newListener.setListenerTypes(token);
 										newListener.setCode(listener.getCode());
 										newListener.setId(listener.getId());
+									}
+									if (reprocessListener) {
+
 									}
 								}
 							}
@@ -789,7 +829,7 @@ public class TransformTreeTools {
 		String column = element.getProperty();
 		StringBuffer expressionSB = new StringBuffer(str);
 		int[] nextFV = new int[4];
-		PluginEntity pluginEntity = element.getPluginEntity();
+		PluginEntity<?> pluginEntity = element.getPluginEntity();
 		if (null == element.getPluginEntity() && scenarioInput.getXmlElement() instanceof EntityTree)
 			pluginEntity = scenarioInput.getPluginEntity(); // pluginEntity is null when processing Entity Meta Model xml File.
 		try {
@@ -828,7 +868,7 @@ public class TransformTreeTools {
 	private String evalBeanElement(IElementWrapper element, String str, boolean skipFirst) {
 		StringBuffer expressionSB = new StringBuffer(str);
 		int[] nextFV = new int[2];
-		PluginEntity pluginEntity = element.getPluginEntity();
+		PluginEntity<?> pluginEntity = element.getPluginEntity();
 		if (null == element.getPluginEntity() && scenarioInput.getXmlElement() instanceof EntityTree)
 			pluginEntity = scenarioInput.getPluginEntity(); // pluginEntity is null when processing Entity Meta Model xml File.
 		try {
@@ -988,8 +1028,13 @@ public class TransformTreeTools {
 	 * 
 	 */
 	public void createTrace() {
-		if (null != rootWrapper
-				&& "true".equals(scenarioInput.getScenarioResources().getParam(IScenarioConstants.CREATE_XML_TRACE))) {
+		boolean addTrace = null != rootWrapper;
+		if (addTrace)
+			if (null == GeneratorConstants.ADICHATZ_STUDIO_PREFERENCE_STORE)
+				addTrace = "true".equals(scenarioInput.getScenarioResources().getParam(IScenarioConstants.CREATE_XML_TRACE));
+			else
+				addTrace = GeneratorConstants.ADICHATZ_STUDIO_PREFERENCE_STORE.getBoolean(IScenarioConstants.CREATE_XML_TRACE);
+		if (addTrace) {
 			File traceDirectory = new File(scenarioInput.getScenarioResources().getPluginHome() + "/resources/build/trace/"
 					+ scenarioInput.getSubPackage().replace('.', '/'));
 			if (traceDirectory.exists() || traceDirectory.mkdirs()) {
@@ -1052,7 +1097,7 @@ public class TransformTreeTools {
 	 *            the current entity
 	 * @return the plugin entity
 	 */
-	private PluginEntity getPluginEntity(AdiPluginResources pluginResources, String entityURI) {
+	private PluginEntity<?> getPluginEntity(AdiPluginResources pluginResources, String entityURI) {
 		if (null == pluginResources)
 			pluginResources = this.scenarioInput.getScenarioResources().getPluginResources();
 		return pluginResources.getPluginEntity(entityURI);

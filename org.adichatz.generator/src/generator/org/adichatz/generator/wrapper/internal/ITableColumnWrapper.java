@@ -79,7 +79,7 @@ import org.adichatz.generator.xjc.SortEnum;
  * @author Yves Drumbonnet
  * @version _._._
  */
-public interface ITableColumnWrapper extends IColumnWrapper, ILazyFetchesContainer {
+public interface ITableColumnWrapper extends IColumnWrapper, ILazyFetchesContainer, IAdditionaCodeWrapper {
 	public String getColumnValue();
 
 	public String getColumnValueType();

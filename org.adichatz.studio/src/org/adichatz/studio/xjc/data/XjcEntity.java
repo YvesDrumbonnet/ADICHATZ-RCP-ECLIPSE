@@ -297,4 +297,12 @@ public class XjcEntity<T> extends AEntity<T> {
 		this.setController = setController;
 	}
 
+	/**
+	 * Gets the before bean.
+	 *
+	 * @return the before bean
+	 */
+	public T getBeforeBean() {
+		return beforeBean;
+	}
 }

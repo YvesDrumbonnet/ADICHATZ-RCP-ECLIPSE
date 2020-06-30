@@ -266,7 +266,7 @@ public class GenerateScenarioActionController extends ActionController {
 												"scenario.add.driver.standalone", true, datasource.getDriver());
 									if (0 != (check71Installation & IScenarioConstants.MISSING_DATASOURCE_STANDALONE))
 										createButton(createInitJbossGroup(parent, toolkit), "addDatasourceInStandalone",
-												"scenario.add.datasource.standalone", true, datasource.getDatasourceName());
+												"scenario.add.datasource.standalone", true, modelPart.getJndi());
 									if (!connectorTree.testConnection(display.getActiveShell(), modelPart.getConnectorDataSource(),
 											false))
 										throw new AdichatzErrorException(null);

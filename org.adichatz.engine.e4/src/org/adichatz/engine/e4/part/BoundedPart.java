@@ -90,6 +90,7 @@ import org.adichatz.engine.listener.AdiEvent;
 import org.adichatz.engine.listener.IEventType;
 import org.adichatz.engine.plugin.AdiContext;
 import org.adichatz.engine.plugin.ParamMap;
+import org.adichatz.engine.plugin.PluginEntity;
 import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.validation.ABindingService;
 import org.eclipse.e4.core.contexts.IEclipseContext;
@@ -129,6 +130,7 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 	/** The input part. */
 	protected AdiInputPart inputPart;
 
+	/** The page manager map. */
 	protected Map<String, PageManager> pageManagerMap = new HashMap<String, PageManager>();
 
 	/** The active page manager. */
@@ -140,35 +142,56 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 	/** The binding services. */
 	private List<ABindingService> bindingServices = new ArrayList<ABindingService>();
 
+	/** The entity. */
 	protected IEntity<?> entity;
 
+	/** The plugin entity. */
+	protected PluginEntity<?> pluginEntity;
+
+	/** The change manager. */
 	protected BoundedPartChangeManager changeManager;
 
+	/** The parent. */
 	@Inject
 	protected Composite parent;
 
+	/** The first page. */
 	private String firstPage;
 
+	/** The editor tool bar. */
 	protected boolean editorToolBar;
 
+	/** The has several pages. */
 	protected boolean hasSeveralPages = false;
 
+	/** The listeners. */
 	protected List<AListener> listeners;
 
+	/** The container. */
 	protected Composite container;
 
+	/**
+	 * Creates the control.
+	 */
 	@PostConstruct
 	public void createControl() {
 		// DO NOT CHANGE layout for parent
 		inputPart = context.get(AdiInputPart.class);
 		context.remove(AdiInputPart.class);
 		entity = (IEntity<?>) inputPart.getParamMap().get(ParamMap.ENTITY);
+		if (null != entity)
+			pluginEntity = entity.getEntityMM().getPluginEntity();
 		String addEditorToolBar = inputPart.getParamMap().getString(ParamMap.ADD_EDITOR_TOOLBAR);
 		if (null != addEditorToolBar && addEditorToolBar.toLowerCase().equals("true"))
 			editorToolBar = true;
 		changeManager = new BoundedPartChangeManager(this);
 	}
 
+	/**
+	 * Gets the binding service.
+	 *
+	 * @return the binding service
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -238,6 +261,11 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 		}
 	}
 
+	/**
+	 * Gets the entity.
+	 *
+	 * @return the entity
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -248,6 +276,21 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 		return entity;
 	}
 
+	/**
+	 * Gets the plugin entity.
+	 *
+	 * @return the plugin entity
+	 */
+	@Override
+	public PluginEntity<?> getPluginEntity() {
+		return pluginEntity;
+	}
+
+	/**
+	 * Gets the plugin resources.
+	 *
+	 * @return the plugin resources
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -258,6 +301,11 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 		return inputPart.getPluginResources();
 	}
 
+	/**
+	 * Sets the plugin resources.
+	 *
+	 * @param pluginResources the new plugin resources
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -267,6 +315,11 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 	public void setPluginResources(AdiPluginResources pluginResources) {
 	}
 
+	/**
+	 * Gets the parent controller.
+	 *
+	 * @return the parent controller
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -277,6 +330,11 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 		return null;
 	}
 
+	/**
+	 * Gets the gen code.
+	 *
+	 * @return the gen code
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -287,6 +345,11 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 		return genCode;
 	}
 
+	/**
+	 * Gets the child controllers.
+	 *
+	 * @return the child controllers
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -302,6 +365,11 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 		return childControllers;
 	}
 
+	/**
+	 * Checks if is valid.
+	 *
+	 * @return true, if is valid
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -312,6 +380,11 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 		return true;
 	}
 
+	/**
+	 * Checks if is locked.
+	 *
+	 * @return true, if is locked
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -331,6 +404,11 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 		return activePageManager;
 	}
 
+	/**
+	 * Sets the active page manager.
+	 *
+	 * @param activePageManager the new active page manager
+	 */
 	public void setActivePageManager(PageManager activePageManager) {
 		this.activePageManager = activePageManager;
 	}
@@ -344,6 +422,11 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 		return inputPart;
 	}
 
+	/**
+	 * Gets the control.
+	 *
+	 * @return the control
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -354,6 +437,11 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 		return null;
 	}
 
+	/**
+	 * Gets the accessibilities.
+	 *
+	 * @return the accessibilities
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -364,21 +452,42 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 		return null;
 	}
 
+	/**
+	 * Gets the image.
+	 *
+	 * @return the image
+	 */
 	public Image getImage() {
 		if (null == image)
 			image = EngineTools.getImage(inputPart.getIconURI());
 		return image;
 	}
 
+	/**
+	 * Gets the title.
+	 *
+	 * @return the title
+	 */
 	public String getTitle() {
 		return inputPart.getLabel();
 	}
 
+	/**
+	 * Gets the context.
+	 *
+	 * @return the context
+	 */
 	@Override
 	public IEclipseContext getContext() {
 		return context;
 	}
 
+	/**
+	 * Sets the dirty.
+	 *
+	 * @param dirty the dirty
+	 * @return true, if successful
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -396,6 +505,11 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 		return false;
 	}
 
+	/**
+	 * Checks if is dirty.
+	 *
+	 * @return true, if is dirty
+	 */
 	public boolean isDirty() {
 		for (ABindingService bindingService : bindingServices)
 			if (bindingService.isDirty())
@@ -403,15 +517,30 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 		return false;
 	}
 
+	/**
+	 * Gets the composite.
+	 *
+	 * @return the composite
+	 */
 	@Override
 	public Composite getComposite() {
 		return parent;
 	}
 
+	/**
+	 * Gets the page manager map.
+	 *
+	 * @return the page manager map
+	 */
 	public Map<String, PageManager> getPageManagerMap() {
 		return pageManagerMap;
 	}
 
+	/**
+	 * Activate page.
+	 *
+	 * @param pageId the page id
+	 */
 	public void activatePage(String pageId) {
 		PageManager pageManager = pageManagerMap.get(pageId);
 		if (null == pageManager)
@@ -419,6 +548,11 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 		activatePage(pageManager);
 	}
 
+	/**
+	 * Adds the listener.
+	 *
+	 * @param listener the listener
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -431,6 +565,11 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 		listeners.add(listener);
 	}
 
+	/**
+	 * Lock field controllers.
+	 *
+	 * @param locked the locked
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -440,6 +579,9 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 	public void lockFieldControllers(boolean locked) {
 	}
 
+	/**
+	 * Validate fields.
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -449,6 +591,13 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 	public void validateFields() {
 	}
 
+	/**
+	 * Pre destroy.
+	 *
+	 * @param application the application
+	 * @param modelService the model service
+	 * @param partService the part service
+	 */
 	@PreDestroy
 	protected void preDestroy(MApplication application, EModelService modelService, EPartService partService) {
 		if (isDirty())
@@ -465,6 +614,9 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 		}
 	}
 
+	/**
+	 * Part activation.
+	 */
 	public void partActivation() {
 		if (null == activePageManager) {
 			genCode = (PartCore) AdichatzApplication.prepareAndInstantiateClass(inputPart.getPluginResources(), this,
@@ -477,10 +629,18 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 			OutlinePart.getInstance().showPage(genCode.getOutlinePage());
 	}
 
+	/**
+	 * Fire dirty property change.
+	 */
 	public void fireDirtyPropertyChange() {
 		E4AdichatzApplication.getInstance().enableToolBar(this);
 	}
 
+	/**
+	 * Adds the page.
+	 *
+	 * @param pageManager the page manager
+	 */
 	public void addPage(PageManager pageManager) {
 		pageManager.setParent(parent);
 		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
@@ -501,26 +661,52 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 			firstPage = pageManager.getPageId();
 	}
 
+	/**
+	 * Gets the bounded part change manager.
+	 *
+	 * @return the bounded part change manager
+	 */
 	public BoundedPartChangeManager getBoundedPartChangeManager() {
 		return changeManager;
 	}
 
+	/**
+	 * Persist.
+	 */
 	@Persist
 	public void persist() {
 		changeManager.doSave();
 	}
 
+	/**
+	 * Sets the several pages.
+	 *
+	 * @param severalPages the new several pages
+	 */
 	public void setSeveralPages(boolean severalPages) {
 		this.hasSeveralPages = severalPages;
 	}
 
+	/**
+	 * Adds the child controller.
+	 *
+	 * @param controller the controller
+	 */
 	public void addChildController(AWidgetController controller) {
 	};
 
+	/**
+	 * Checks for editor tool bar.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean hasEditorToolBar() {
 		return editorToolBar;
 	}
 
+	/**
+	 * Close.
+	 */
 	public void close() {
 		inputPart.getTags().add(EPartService.REMOVE_ON_HIDE_TAG);
 		partService.hidePart(inputPart, true);
@@ -556,10 +742,20 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 		}
 	}
 
+	/**
+	 * Fire outline listener.
+	 *
+	 * @param event the event
+	 */
 	public void fireOutlineListener(OutlineEvent event) {
 		OutlinePart.getInstance().getCurrentPage().fireListener(event);
 	}
 
+	/**
+	 * Gets the container.
+	 *
+	 * @return the container
+	 */
 	@Override
 	public Composite getContainer() {
 		return container;

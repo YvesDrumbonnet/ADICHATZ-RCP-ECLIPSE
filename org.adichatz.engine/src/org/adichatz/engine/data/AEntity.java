@@ -628,8 +628,9 @@ public abstract class AEntity<T> implements IEntity<T> {
 			previousStatus = this.status;
 			this.status = status;
 			AListener.fireListener(listeners, entityEvent);
-			for (ABindingService bindingService : bindingServices)
-				bindingService.fireListener(IEventType.CHANGE_STATUS);
+			if (null != bindingServices)
+				for (ABindingService bindingService : bindingServices)
+					bindingService.fireListener(IEventType.CHANGE_STATUS);
 		}
 	}
 

@@ -128,9 +128,8 @@ public class EntityInjection {
 	 *            the entity
 	 */
 	public EntityInjection(AEntityManagerController entityController, IEntity<?> ientity) {
-		if (null != ientity) {
+		if (null != ientity)
 			ientity.initialize();
-		}
 		this.entityController = entityController;
 		bindingService = entityController.getBindingService();
 		entityController.setEntityInjection(this);
@@ -153,6 +152,7 @@ public class EntityInjection {
 			AListener.fireListener(bindingService.getListeners(), new AdiEntityEvent(IEventType.REMOVE_ENTITY, entity));
 			boundedControllers.clear();
 			bindingDispatcher.getEntityInjections().remove(this);
+			entityController.setPluginEntity(entity.getEntityMM().getPluginEntity());
 		}
 
 		this.entity = entity;

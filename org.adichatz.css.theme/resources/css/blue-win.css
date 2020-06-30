@@ -6,13 +6,6 @@ RadioGroup, ScrollingText, StyledText, SWTImageCanvas, LimitedComposite, ButtonI
     color: #000000;
 }
 
-/*
-ImageViewer, ImageViewer SWTImageCanvas, SWTImageCanvas {
-    background-color:#f0FF58;
-    color:#eeeeee;
-}
-*/
-
 .MPart {
     background-color: #E0E8F1; /* Bottom and head page panel */
     color: #000000;

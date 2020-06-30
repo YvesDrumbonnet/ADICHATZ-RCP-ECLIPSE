@@ -72,12 +72,22 @@
 package org.adichatz.engine.extra;
 
 import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
+import static org.adichatz.engine.common.LogBroker.logError;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import org.adichatz.common.ejb.Session;
+import org.adichatz.engine.common.EngineConstants;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
@@ -96,7 +106,7 @@ import net.miginfocom.swt.MigLayout;
  * @author Yves Drumbonnet
  *
  */
-public abstract class ALoginDialog extends Dialog {
+public abstract class AAdiLoginDialog extends Dialog implements IAdiLogin {
 
 	/** The username text. */
 	private Text usernameText;
@@ -110,10 +120,12 @@ public abstract class ALoginDialog extends Dialog {
 	/** The password. */
 	private String password;
 
+	protected Session session;
+
 	/**
 	 * Instantiates a new login dialog.
 	 */
-	public ALoginDialog() {
+	public AAdiLoginDialog() {
 		super((Shell) null);
 	}
 
@@ -124,7 +136,7 @@ public abstract class ALoginDialog extends Dialog {
 	 */
 	protected Control createDialogArea(Composite parent) {
 		Group loginGroup = new Group(parent, SWT.NONE);
-		loginGroup.setLayout(new MigLayout("wrap 2, ins 15 30 15 30", "[fill,grow][fill,grow]"));
+		loginGroup.setLayout(new MigLayout("wrap 3, ins 15 30 15 30", "[fill,grow][fill,grow]"));
 		loginGroup.setText(getFromEngineBundle("loginGroup"));
 
 		Label usernameLabel = new Label(loginGroup, SWT.NONE);
@@ -141,6 +153,7 @@ public abstract class ALoginDialog extends Dialog {
 		});
 
 		Label passwordLabel = new Label(loginGroup, SWT.NONE);
+		passwordLabel.setLayoutData("newline");
 		passwordLabel.setText(getFromEngineBundle("loginPassword"));
 
 		passwordText = new Text(loginGroup, SWT.BORDER | SWT.PASSWORD);
@@ -150,6 +163,32 @@ public abstract class ALoginDialog extends Dialog {
 			getButton(IDialogConstants.OK_ID)
 					.setEnabled(usernameText.getText().length() > 0 && passwordText.getText().length() > 0);
 		});
+		char echoChar = passwordText.getEchoChar();
+		CLabel showCL = new CLabel(loginGroup, SWT.NONE);
+		showCL.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseUp(MouseEvent e) {
+				passwordText.setEchoChar(echoChar);
+			}
+
+			@Override
+			public void mouseDown(MouseEvent e) {
+				passwordText.setEchoChar('\0');
+			}
+
+			@Override
+			public void mouseDoubleClick(MouseEvent e) {
+			}
+		});
+		try {
+			InputStream is = Platform.getBundle(EngineConstants.ENGINE_BUNDLE).getResource("resources/icons/IMG_EYE.png")
+					.openStream();
+			Image image = new Image(showCL.getDisplay(), is);
+			showCL.setImage(image);
+		} catch (IOException e) {
+			logError(e);
+		}
 
 		return loginGroup;
 	}
@@ -189,7 +228,9 @@ public abstract class ALoginDialog extends Dialog {
 	 * 
 	 * @return the session
 	 */
-	public abstract Session getSession();
+	public Session getSession() {
+		return session;
+	}
 
 	/**
 	 * Gets the ok selection listener.

@@ -118,6 +118,8 @@
 			<xs:enumeration value="BEFORE_DISPOSE"/>
 			<xs:enumeration value="AFTER_DISPOSE"/>
 			<xs:enumeration value="POST_CREATE_PART"/>
+			<xs:enumeration value="BEFORE_FIELD_CHANGE"/>
+			<xs:enumeration value="AFTER_FIELD_CHANGE"/>
         	<!-- Runnable -->
 			<xs:enumeration value="PRE_RUN"/>
 			<xs:enumeration value="POST_RUN"/>
@@ -129,8 +131,6 @@
 			<xs:enumeration value="WIDGET_SELECTED"/>
 			<xs:enumeration value="DOUBLE_CLICK"/>
 			<xs:enumeration value="REFRESH"/>
-			<xs:enumeration value="BEFORE_FIELD_CHANGE"/>
-			<xs:enumeration value="AFTER_FIELD_CHANGE"/>
         </xs:restriction>
     </xs:simpleType>
 

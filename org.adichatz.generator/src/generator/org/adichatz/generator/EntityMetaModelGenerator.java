@@ -359,7 +359,7 @@ public class EntityMetaModelGenerator extends AClassGenerator {
 				+ manyToMany.getId() + "\", " + CodeGenerationUtil.betweenQuotes(manyToMany.getMappedBy()) + ", "
 				+ CodeGenerationUtil.betweenQuotes(manyToMany.getParentClause()) + ");");
 
-		CodeGenerationUtil.addParams(classBodyBuffer, "manyToMany.getParamMap()", manyToMany.getParams());
+		CodeGenerationUtil.addParams(classBodyBuffer, "manyToMany.getParamMap().", manyToMany.getParams(), false);
 
 		if (null != manyToMany.getEntityElements())
 			for (EntityElementType entityElement : manyToMany.getEntityElements().getEntityElement()) {

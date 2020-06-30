@@ -322,7 +322,7 @@ public abstract class ACollectionGenerator extends AClassGenerator {
 			}
 		}
 		if (parentCollection instanceof CollectionType && null != ((CollectionType) parentCollection).getAdditionalCode()) {
-			AdditionalBufferCode additionalBuffer = new AdditionalBufferCode(this, parentCollectionName);
+			AdditionalBufferCode additionalBuffer = new AdditionalBufferCode(this, 1, parentCollectionName);
 			extraBufferMap.put(additionalBuffer.getKeyBuffer(), additionalBuffer);
 			CodeGenerationUtil.addAdditionalCode(additionalBuffer, ((CollectionType) parentCollection).getAdditionalCode());
 		}

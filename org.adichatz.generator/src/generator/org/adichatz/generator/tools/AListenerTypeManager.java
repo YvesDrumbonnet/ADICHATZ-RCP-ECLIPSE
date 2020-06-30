@@ -193,6 +193,17 @@ public abstract class AListenerTypeManager {
 				return element instanceof CollectionType || element instanceof ColumnFieldType || element instanceof WidgetType;
 			}
 		});
+		LISTENER_MANAGER_MAP.put(ListenerTypeEnum.BEFORE_FIELD_CHANGE, new AListenerTypeManager(LIFE_CYCLE) {
+			public boolean isEligible(IElementWrapper element) {
+				return element instanceof IControlWrapper;
+			}
+		});
+		LISTENER_MANAGER_MAP.put(ListenerTypeEnum.AFTER_FIELD_CHANGE, new AListenerTypeManager(LIFE_CYCLE) {
+			public boolean isEligible(IElementWrapper element) {
+				return element instanceof IControlWrapper;
+			}
+		});
+
 		/** ENTITY_INJECTION */
 		LISTENER_MANAGER_MAP.put(ListenerTypeEnum.BEFORE_ENTITY_INJECTION, new AListenerTypeManager(BEFORE_ENTITY_INJECTION) {
 			public boolean isEligible(IElementWrapper element) {
@@ -259,16 +270,6 @@ public abstract class AListenerTypeManager {
 				return element instanceof SetType;
 			}
 		});
-		LISTENER_MANAGER_MAP.put(ListenerTypeEnum.BEFORE_FIELD_CHANGE, new AListenerTypeManager(CONTROL) {
-			public boolean isEligible(IElementWrapper element) {
-				return element instanceof IControlWrapper;
-			}
-		});
-		LISTENER_MANAGER_MAP.put(ListenerTypeEnum.AFTER_FIELD_CHANGE, new AListenerTypeManager(CONTROL) {
-			public boolean isEligible(IElementWrapper element) {
-				return element instanceof IControlWrapper;
-			}
-		});
 
 	}
 
@@ -306,6 +307,8 @@ public abstract class AListenerTypeManager {
 		LISTENER_TYPE_MAP.put("BEFORE_DISPOSE", ListenerTypeEnum.BEFORE_DISPOSE);
 		LISTENER_TYPE_MAP.put("AFTER_DISPOSE", ListenerTypeEnum.AFTER_DISPOSE);
 		LISTENER_TYPE_MAP.put("POST_CREATE_PART", ListenerTypeEnum.POST_CREATE_PART);
+		LISTENER_TYPE_MAP.put("BEFORE_FIELD_CHANGE", ListenerTypeEnum.BEFORE_FIELD_CHANGE);
+		LISTENER_TYPE_MAP.put("AFTER_FIELD_CHANGE", ListenerTypeEnum.AFTER_FIELD_CHANGE);
 
 		/** ENTITY_INJECTION */
 		LISTENER_TYPE_MAP.put("BEFORE_ENTITY_INJECTION", ListenerTypeEnum.BEFORE_ENTITY_INJECTION);
@@ -323,8 +326,6 @@ public abstract class AListenerTypeManager {
 		LISTENER_TYPE_MAP.put("WIDGET_SELECTED", ListenerTypeEnum.WIDGET_SELECTED);
 		LISTENER_TYPE_MAP.put("DOUBLE_CLICK", ListenerTypeEnum.DOUBLE_CLICK);
 		LISTENER_TYPE_MAP.put("REFRESH", ListenerTypeEnum.REFRESH);
-		LISTENER_TYPE_MAP.put("BEFORE_FIELD_CHANGE", ListenerTypeEnum.BEFORE_FIELD_CHANGE);
-		LISTENER_TYPE_MAP.put("AFTER_FIELD_CHANGE", ListenerTypeEnum.AFTER_FIELD_CHANGE);
 	}
 
 	public static boolean isEligible(IElementWrapper element, int category) {

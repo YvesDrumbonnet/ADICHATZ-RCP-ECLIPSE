@@ -141,19 +141,19 @@ public class ToolActivator implements BundleActivator {
 						ToolNavigatorContent.getInstance().refreshOpenPartsInNewThread(event);
 				}
 			});
-			AdichatzApplication.getInstance().getApplicationListeners()
-					.add(new AApplicationListener(EVENT_TYPE.POST_INSTANTIATE_XMLCORE) {
-						@Override
-						public void handleEvent(ApplicationEvent event) {
-							// ToolNavigatorContent instance could be null when navigator is minimized
-							if (null != ToolNavigatorContent.getInstance()
-									&& event.context.getRootCore().getController() instanceof BoundedPart) {
-								event.context.getOpenParts().add(event.adiResourceURI);
-								ToolNavigatorContent.getInstance().refreshOpenPartsInNewThread(event);
-							}
-						}
-					});
 		}
+		AdichatzApplication.getInstance().getApplicationListeners()
+				.add(new AApplicationListener(EVENT_TYPE.POST_INSTANTIATE_XMLCORE) {
+					@Override
+					public void handleEvent(ApplicationEvent event) {
+						if (event.context.getRootCore().getController() instanceof BoundedPart) {
+							event.context.getOpenParts().add(event.adiResourceURI);
+							// ToolNavigatorContent instance could be null when navigator is minimized
+							if (null != ToolNavigatorContent.getInstance())
+								ToolNavigatorContent.getInstance().refreshOpenPartsInNewThread(event);
+						}
+					}
+				});
 
 		Class<?> generatorClass = AdichatzApplication.getInstance().getApplicationPluginResources().getGencodePath()
 				.getClazz(EngineConstants.GENERATOR_CLASS_NAME, true);

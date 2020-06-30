@@ -241,7 +241,8 @@ public class PartTreeGenerator extends AConfigGenerator {
 		}
 
 		addResourceBundleTranslation(treeWrapper.getConfig());
-		addParams(treeWrapper.getConfig(), "paramMap");
+		if (null != treeWrapper.getConfig())
+			CodeGenerationUtil.addParams(classBodyBuffer, "paramMap.", treeWrapper.getConfig().getParams(), false);
 
 		String partClassName = null;
 		if (!legacyVersion) {

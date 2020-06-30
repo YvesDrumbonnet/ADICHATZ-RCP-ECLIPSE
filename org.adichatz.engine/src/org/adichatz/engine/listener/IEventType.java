@@ -142,6 +142,10 @@ public interface IEventType {
 
 	public static int AFTER_INSTANTIATE_CONTROLLER = 30;
 
+	public static int BEFORE_FIELD_CHANGE = 31;
+
+	public static int AFTER_FIELD_CHANGE = 32;
+
 	//
 	// Events combining action, controller, databinding
 	// ------------------------------------------------
@@ -149,10 +153,10 @@ public interface IEventType {
 
 	// Before setting managed entity {@link org.adichatz.engine.validation.EntityInjection.injectEntity(IEntity<?>,
 	// ACollectionController))}.
-	public static int BEFORE_ENTITY_INJECTION = 31;
+	public static int BEFORE_ENTITY_INJECTION = 35;
 
 	// After setting managed entity org.adichatz.engine.validation.EntityInjection.initialize(IEntity<?>).
-	public static int AFTER_ENTITY_INJECTION = 32;
+	public static int AFTER_ENTITY_INJECTION = 36;
 
 	//
 	// Events on ActionController or AdiRunnable
@@ -179,10 +183,6 @@ public interface IEventType {
 
 	/** The Refresh controller. */
 	public static int REFRESH = 54;
-
-	public static int BEFORE_FIELD_CHANGE = 55;
-
-	public static int AFTER_FIELD_CHANGE = 56;
 
 	//
 	// Events on JPA query

@@ -208,6 +208,12 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 		});
 	}
 
+	@Override
+	public String getPartName() {
+		// AVISATZ landmark à supprimer
+		return super.getPartName();
+	}
+
 	/**
 	 * Launch editor.
 	 */

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <connectorTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/connectorTree.xsd">
     <applicationServers>
+        <applicationServer name="wildfly-19.x">
+            <params>
+                <param id="adichatz.connector" type="SERVER" value="org.adichatz.hibernate4.jboss.connector.jar"/>
+                <param id="application.server.home" type="SERVER" value="D:\ADICHATZ\applicationServers\wildfly-19.0.0.Final"/>
+                <param id="ejb.deployment.dir" type="SERVER" value="standalone/deployments"/>
+                <param id="as.modules.directory" type="SERVER" value="modules/system/layers/base"/>
+           		<param id="java.naming.factory.initial" type="CONTEXT" value="org.wildfly.naming.client.WildFlyInitialContextFactory"/>
+           		<param id="java.naming.provider.url" type="CONTEXT" value="http-remoting://localhost:8080"/>
+           		<param id="jboss.naming.client.ejb.context" type="CONTEXT" value="true"/>
+            </params>
+        </applicationServer>
         <applicationServer name="wildfly-18.x">
             <params>
                 <param id="adichatz.connector" type="SERVER" value="org.adichatz.hibernate4.jboss.connector.jar"/>
@@ -169,6 +180,22 @@
                 <param id="sql.connection.username" value="adichatz"/>
                 <param id="sql.connection.password" value="2fqCBkBb457eGwoPQq3DCQ=="/>
                 <param id="sql.connection.schema" value="pagila"/>
+                <param id="xaDatasourceClass" value="org.postgresql.xa.PGXADataSource"/>
+                <param id="sql.connection.driver.jar" value="#PLUGINHOME(org.adichatz.template)/template/connectors/postgresql-42.2.9.jar"/>
+                <param id="reverse.engineering.file" value="#PLUGINHOME(org.adichatz.template)/template/connectors/reveng_pagila.xml"/>
+            </params>
+            <buildParams>
+                <param id="sql.connection.dialect" value = "org.hibernate.dialect.PostgreSQL9Dialect"/>
+			</buildParams>
+        </datasource>
+        <datasource id="authentification" datasourceName="pgsql.authentification" driver="pgsql" description="User / Role schema for postgres database" customizationFile="#PLUGINHOME(org.adichatz.template)/template\connectors\authentificationMappingOverride.xml">
+            <params>
+                <param id="sql.connection.dialect" value = "org.hibernate.dialect.PostgreSQL95Dialect"/>
+                <param id="sql.connection.driver_class" value="org.postgresql.Driver"/>
+                <param id="sql.connection.url" value="jdbc:postgresql://localhost/authentification"/>
+                <param id="sql.connection.username" value="admin"/>
+                <param id="sql.connection.password" value="v1Z7dUjFwpnpdVXfg449lw=="/>
+                <param id="sql.connection.schema" value="user"/>
                 <param id="xaDatasourceClass" value="org.postgresql.xa.PGXADataSource"/>
                 <param id="sql.connection.driver.jar" value="#PLUGINHOME(org.adichatz.template)/template/connectors/postgresql-42.2.9.jar"/>
                 <param id="reverse.engineering.file" value="#PLUGINHOME(org.adichatz.template)/template/connectors/reveng_pagila.xml"/>

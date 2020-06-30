@@ -96,6 +96,8 @@ import javax.xml.transform.stream.StreamResult;
 import org.adichatz.engine.common.EngineConstants;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.wrapper.AdichatzRcpConfigTreeWrapper;
+import org.adichatz.engine.xjc.LoginTemplateEnum;
+import org.adichatz.engine.xjc.LoginType;
 import org.adichatz.engine.xjc.ParamType;
 import org.adichatz.engine.xjc.RcpConfigurationType;
 import org.adichatz.generator.common.FileUtil;
@@ -469,6 +471,10 @@ public class UIComponentGeneration {
 			// Copy resources/css and resources/icons directories
 			FileUtil.copyDirectory(new File(templateDirName + "resources/"), new File(pluginHome + "/resources"));
 
+			FileUtil.copyFile(templateDirName + "src/MockLogin.java", pluginHome + "/" + srcPathName + "/MockLogin.java",
+					new String[] { "#{adichatz.project.name}", "#{adichatz.package.name}" },
+					new String[] { pluginName, pluginPackage }, force);
+
 			buildAdichatzRcpConfigFile();
 
 			new ActivatorGenerator().generateCU(scenarioResources);
@@ -508,6 +514,10 @@ public class UIComponentGeneration {
 						param.setValue(prm.getValue());
 						configuration.getParam().add(param);
 					}
+				LoginType login = new LoginType();
+				configTree.setLogin(login);
+				login.setLoginClassName(pluginPackage + ".MockLogin");
+				login.setLoginTemplate(LoginTemplateEnum.DIALOG);
 				ScenarioUtil.createXmlFile(configFile, configTree, scenarioResources.getGenerationScenario());
 			} catch (CoreException e) {
 				logError(e);

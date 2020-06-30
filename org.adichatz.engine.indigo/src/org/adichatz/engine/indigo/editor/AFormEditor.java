@@ -66,6 +66,7 @@ import org.adichatz.engine.controller.IRootController;
 import org.adichatz.engine.controller.utils.ElementaryAccessibility;
 import org.adichatz.engine.extra.OutlineEvent;
 import org.adichatz.engine.listener.AListener;
+import org.adichatz.engine.plugin.PluginEntity;
 import org.adichatz.engine.validation.ABindingService;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.swt.graphics.Image;
@@ -99,6 +100,9 @@ public abstract class AFormEditor extends FormEditor implements IRootController 
 
 	/** The entity. */
 	protected IEntity<?> entity;
+
+	/** The plugin entity. */
+	protected PluginEntity<?> pluginEntity;
 
 	/** The binding service. */
 	protected EditorBindingService editorBindingService;
@@ -168,6 +172,13 @@ public abstract class AFormEditor extends FormEditor implements IRootController 
 	 */
 	public IEntity<?> getEntity() {
 		return entity;
+	}
+
+	@Override
+	public PluginEntity<?> getPluginEntity() {
+		// Useful for authorization process only.
+		// Not implemented here. If choice changed, set PluginEntity thru getTreeWrapper method
+		return null;
 	}
 
 	/**

@@ -94,6 +94,7 @@ import org.adichatz.common.ejb.MultiKey;
 import org.adichatz.common.ejb.ProxyEntity;
 import org.adichatz.common.ejb.ProxyTransaction;
 import org.adichatz.common.ejb.QueryResult;
+import org.adichatz.common.ejb.Session;
 import org.adichatz.common.ejb.remote.IAdiLockManager;
 import org.adichatz.common.ejb.remote.IAdiPersistenceManager;
 import org.adichatz.common.ejb.util.AdiLock;
@@ -185,6 +186,10 @@ public class JPADataAccess extends ADataAccess {
 	public IAdiPersistenceManager getPersistenceManager() {
 		if (null == adichatzPersistenceManager)
 			try {
+				Session session = AdichatzApplication.getInstance().getSession();
+				if (null == session) {
+					throw new AdiApplicationServerException(getFromJpaBundle("AS.no.session"));
+				}
 				adichatzPersistenceManager = gatewayConnector.getPersistenceManager();
 			} catch (Exception e) {
 				String message = getFromJpaBundle("AS.access.error.message");
