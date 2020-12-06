@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<scenarioTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://yvesdrumbonnet.github.io/Adichatz-RCP-Update-Site/xsd/generator/scenarioTree.xsd">
+	<params>
+    	<param id="devl.default.integer.pattern" value="#####"/>
+        <param id="runtime.resources.dir" value="#PLUGINHOME(org.adichatz.template)/template/resources" type="RUNTIME"/>
+    </params>
+    <scenarios>
+        <scenario type="NAVIGATOR" scenarioClassName="org.adichatz.scenario.impl.GroupListNavigatorScenario"/>
+        <scenario type="TABLE" scenarioClassName="org.adichatz.scenario.impl.GridScenario"/>
+        <scenario type="EDITOR" scenarioClassName="org.adichatz.scenario.impl.OnePageEditorScenario"/>
+    </scenarios>
+    <generationScenario>
+		<modelPart>
+    		<pojoRewriters>
+	    		<pojoRewriter rewriterClassName="org.adichatz.scenario.generation.PgPojoIdRewriter"/>
+	    		<pojoRewriter rewriterClassName="org.adichatz.scenario.generation.SuperPojoRewriter" propertyRegex="lastUpdate">
+	    			<params>
+	    				<param id="superClassURI" value="bundleclass://./#PLUGINPACKAGE().model.ASuperLastUpdate"/>
+	    				<param id="sourceURI" value="platform:/plugin/org.adichatz.template/template/src/ASuperLastUpdate.java"/>
+	    			</params>
+	    		</pojoRewriter>
+			</pojoRewriters>
+    	</modelPart>
+		<propertyField id="lastUpdate">
+        	<controlField xsi:type="dateTextType" enabled="false" style="SWT.BORDER | SWT.TIME"/>
+		</propertyField>
+    </generationScenario>
+    <customPostAction injectInsideScenarioFile="true" generatePojo="true" generateEJB="true" generatePersistenceXml="true" deployEJB="true">
+        <customGenerationUnit type="DETAIL" propertyRegex="lastUpdate"/>
+    </customPostAction>
+</scenarioTree>
+    
