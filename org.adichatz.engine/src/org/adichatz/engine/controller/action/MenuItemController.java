@@ -113,6 +113,7 @@ public class MenuItemController extends AWidgetController {
 	 */
 	@Override
 	public void createControl() {
+		super.createControl();
 		menuItem = new MenuItem(((IMenuController) parentController).getControl(), style);
 	}
 

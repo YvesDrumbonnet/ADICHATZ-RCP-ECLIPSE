@@ -81,7 +81,6 @@ import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineConstants;
 import org.adichatz.engine.common.LogBroker;
 import org.adichatz.engine.data.GencodePath;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.generator.common.FileUtil;
 import org.adichatz.generator.common.GeneratorConstants;
 import org.adichatz.scenario.util.PlainPluginResources;
@@ -90,8 +89,6 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.internal.InternalPolicy;
-import org.eclipse.jface.preference.JFacePreferences;
-import org.eclipse.swt.widgets.Display;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleException;
 
@@ -123,21 +120,8 @@ public class ScenarioAdichatzApplication extends AdichatzApplication {
 	public ScenarioAdichatzApplication() {
 		super();
 		BEFORE = this;
-		setSession(new Session(GeneratorConstants.STUDIO_BUNDLE, System.getProperty("user.name"), new HashSet<String>()));
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adichatz.engine.common.AdichatzApplication#getFormToolkit()
-	 */
-	public AdiFormToolkit getFormToolkit() {
-		if (null == formToolkit) {
-			Display display = Display.getCurrent();
-			formToolkit = new AdiFormToolkit(display);
-			formToolkit.getColors().createColor(JFacePreferences.ERROR_COLOR, 255, 0, 0);
-		}
-		return formToolkit;
+		applContext.put(Session.class.getName(),
+				new Session(GeneratorConstants.STUDIO_BUNDLE, System.getProperty("user.name"), new HashSet<String>()));
 	}
 
 	/**

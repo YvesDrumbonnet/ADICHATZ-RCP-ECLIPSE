@@ -74,7 +74,7 @@ public class QueryOpenClauseWrapper extends QueryOpenClauseType {
 	private static final long serialVersionUID = 7669232202599693010L;
 
 	public Image getImage() {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		return isValid() ? toolkit.getRegisteredImage("IMG_ACCEPT") : toolkit.getRegisteredImage("IMG_CANCEL");
 	}
 

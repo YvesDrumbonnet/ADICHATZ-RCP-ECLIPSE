@@ -24,8 +24,11 @@ public class StripeTableRenderer<T> extends BasicTableRenderer<T> {
 
 	protected Font oddFont;
 
+	protected AdiFormToolkit toolkit;
+
 	public StripeTableRenderer(ATabularController<T> tabularController, String key) {
 		super(tabularController, key);
+		toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		initResources();
 	}
 
@@ -39,8 +42,8 @@ public class StripeTableRenderer<T> extends BasicTableRenderer<T> {
 			evenFont = AReskinManager.getInstance().getFont("#adichatz-table-stripe-even", null);
 			oddFont = AReskinManager.getInstance().getFont("#adichatz-table-stripe-odd", null);
 		} else {
-			evenBackground = AdichatzApplication.getInstance().getFormToolkit().getColors().getColor(IFormColors.H_GRADIENT_END);
-			oddBackground = AdichatzApplication.getInstance().getFormToolkit().getColors().getColor(IFormColors.H_GRADIENT_START);
+			evenBackground = toolkit.getColors().getColor(IFormColors.H_GRADIENT_END);
+			oddBackground = toolkit.getColors().getColor(IFormColors.H_GRADIENT_START);
 		}
 	}
 }

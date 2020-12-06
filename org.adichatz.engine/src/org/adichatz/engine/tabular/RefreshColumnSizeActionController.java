@@ -78,8 +78,8 @@ import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineConstants;
 import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.controller.action.ActionController;
-import org.adichatz.engine.controller.collection.MenuManagerController;
 import org.adichatz.engine.controller.collection.ATabularController;
+import org.adichatz.engine.controller.collection.MenuManagerController;
 import org.adichatz.engine.controller.field.AColumnController;
 import org.adichatz.engine.core.ControllerCore;
 
@@ -106,6 +106,7 @@ public class RefreshColumnSizeActionController<T> extends ActionController {
 	 */
 	@Override
 	public void createControl() {
+		super.createControl();
 		action = new AAction() {
 			@Override
 			public void runAction() {
@@ -118,8 +119,8 @@ public class RefreshColumnSizeActionController<T> extends ActionController {
 		};
 		action.setText(getFromEngineBundle("query.refresh.column.size"));
 		action.setToolTipText(getFromEngineBundle("query.refresh.column.size"));
-		action.setImageDescriptor(AdichatzApplication.getInstance().getImageDescriptor(EngineConstants.ENGINE_BUNDLE,
-				"IMG_REFRESH_COLUMN.png"));
+		action.setImageDescriptor(
+				AdichatzApplication.getInstance().getImageDescriptor(EngineConstants.ENGINE_BUNDLE, "IMG_REFRESH_COLUMN.png"));
 		action.setActionController(this);
 	}
 

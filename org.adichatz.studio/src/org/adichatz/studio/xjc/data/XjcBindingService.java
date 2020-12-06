@@ -69,7 +69,7 @@ import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.controller.IValidableController;
 import org.adichatz.engine.controller.collection.ContainerController;
 import org.adichatz.engine.controller.collection.TableController;
-import org.adichatz.engine.controller.collection.TreeController;
+import org.adichatz.engine.controller.collection.ATreeController;
 import org.adichatz.engine.data.ADataCache;
 import org.adichatz.engine.indigo.editor.ADirtyFormEditor;
 import org.adichatz.engine.indigo.editor.EditorBindingService;
@@ -392,11 +392,11 @@ public class XjcBindingService extends EditorBindingService {
 				TableController<?> tableController = (TableController<?>) validationPath.getController();
 				tableController.getViewer()
 						.setSelection(new StructuredSelection(((IEntity<?>) validationPath.getValue()).getBean()));
-			} else if (validationPath.getController() instanceof TreeController) {
-				RootElement rootElement = (RootElement) ((TreeController) validationPath.getController()).getRootElement();
+			} else if (validationPath.getController() instanceof ATreeController) {
+				RootElement rootElement = (RootElement) ((ATreeController) validationPath.getController()).getRootElement();
 				TreePath selectedPath = lookIntoTree((IEntity<?>) validationPath.getValue(), (XjcTreeElement) rootElement.getRoot(),
 						new TreePath(new Object[] { rootElement.getRoot() }));
-				TreeController treeController = (TreeController) validationPath.getController();
+				ATreeController treeController = (ATreeController) validationPath.getController();
 				treeController.getViewer().setSelection(new TreeSelection(selectedPath));
 			}
 		}

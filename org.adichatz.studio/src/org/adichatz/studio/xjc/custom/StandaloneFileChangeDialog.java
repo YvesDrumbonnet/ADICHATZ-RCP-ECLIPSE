@@ -107,20 +107,20 @@ import net.miginfocom.swt.MigLayout;
  */
 @SuppressWarnings("restriction")
 public class StandaloneFileChangeDialog extends ConfirmFormDialog {
-	public StandaloneFileChangeDialog(Shell shell, AdiFormToolkit toolkit, JBossStandaloneReader standaloneReader) {
-		super(shell, toolkit, getFromStudioBundle("scenario.jboss.installation"),
+	public StandaloneFileChangeDialog(Shell shell, JBossStandaloneReader standaloneReader) {
+		super(shell, getFromStudioBundle("scenario.jboss.installation"),
 				AdichatzApplication.getInstance().getImage(GeneratorConstants.STUDIO_BUNDLE, "IMG_SERVERS.gif"),
 				new IConfirmContent() {
 					private Button stopApplicationServerBTN;
+
 					private IProcess applicatonServerProcess;
+
 					private JBossStandaloneReader jbossStandaloneReader;
 
 					@Override
-					public void createConfirmContent(Composite parent, AdiFormToolkit toolkit,
-							List<Control> complementControls) {
+					public void createConfirmContent(Composite parent, AdiFormToolkit toolkit, List<Control> complementControls) {
 						parent.setLayout(new MigLayout("wrap 1, ins 10"));
-						final Label label = toolkit.createLabel(parent,
-								getFromStudioBundle("scenario.jboss.installation.changed"));
+						final Label label = toolkit.createLabel(parent, getFromStudioBundle("scenario.jboss.installation.changed"));
 						label.setFont(JFaceResources.getBannerFont());
 						label.setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 

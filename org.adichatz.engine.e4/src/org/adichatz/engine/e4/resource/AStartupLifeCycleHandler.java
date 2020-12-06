@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.adichatz.common.ejb.Session;
 import org.adichatz.engine.common.AdiPluginResources;
 import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineConstants;
@@ -24,6 +25,7 @@ import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.core.services.log.Logger;
 import org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine;
 import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.workbench.UIEvents;
 import org.eclipse.e4.ui.workbench.lifecycle.PreSave;
@@ -31,7 +33,6 @@ import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.e4.ui.workbench.modeling.ISaveHandler;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.Window;
-import org.eclipse.swt.widgets.Display;
 
 import sun.misc.Unsafe;
 
@@ -46,31 +47,17 @@ public abstract class AStartupLifeCycleHandler {
 	@Inject
 	protected EModelService modelService;
 
-	protected Display display;
-
 	protected E4AdichatzApplication adichatzApplication;
 
 	protected void init(final IEclipseContext context) {
 		adichatzApplication = E4AdichatzApplication.getInstance();
 
-		// Force plugin resources to be initialized if not already loaded.
-		AdichatzApplication.getPluginResources(EngineConstants.ENGINE_BUNDLE);
-		String gencodePackage = (String) adichatzApplication.popParam(EngineConstants.GENCODE_PACKAGE);
-		new AdiPluginResources(EngineConstants.ENGINE_E4_BUNDLE, EngineConstants.ENGINE_E4_BUNDLE, gencodePackage,
-				getClass().getClassLoader());
-
-		adichatzApplication.setApplicationPluginResources(pluginResources);
-
 		try {
-			display = Display.getDefault();
-			context.set(Display.class.getName(), display);
 			EngineConstants.SYNCHRONIZE_REFLOW_MODE = false;
 			context.set(Logger.class.getName(), new E4Logger(context));
 			LogBroker.getLogger().initPreferenceManager();
 
-			adichatzApplication.loadRcpConfigTree(pluginResources, display);
-
-			String loggerClassName = (String) adichatzApplication.popParam("adiLoggerClassName");
+			String loggerClassName = (String) adichatzApplication.popContextValue(EngineConstants.ADICHATZ_LOGGER_CLASS_NAME);
 			if (!EngineTools.isEmpty(loggerClassName)) {
 				try {
 					Logger logger = (Logger) ReflectionTools.instantiateClass(loggerClassName,
@@ -97,8 +84,7 @@ public abstract class AStartupLifeCycleHandler {
 		}
 
 		adichatzApplication.getEarlyStartupHooks().add(() -> {
-			String applicationPostOpenURI = (String) adichatzApplication.getApplicationParamMap()
-					.get(EngineConstants.APPLICATION_POST_OPEN_URI);
+			String applicationPostOpenURI = (String) adichatzApplication.popContextValue(EngineConstants.APPLICATION_POST_OPEN_URI);
 			if (!EngineTools.isEmpty(applicationPostOpenURI)) {
 				try {
 					Runnable applicationPostOpen = ((Runnable) ReflectionTools.instantiateURI(applicationPostOpenURI,
@@ -166,7 +152,7 @@ public abstract class AStartupLifeCycleHandler {
 	 * @return true, if successful
 	 */
 	protected String login() {
-		LoginType login = adichatzApplication.getLogin();
+		LoginType login = adichatzApplication.getContextValue(LoginType.class);
 		if (null == login)
 			return getFromEngineE4Bundle("no.login.specified");
 		else {
@@ -177,7 +163,7 @@ public abstract class AStartupLifeCycleHandler {
 					int result = loginDialog.open();
 					switch (result) {
 					case Window.OK: {
-						adichatzApplication.setSession(loginDialog.getSession());
+						adichatzApplication.getApplContext().put(Session.class.getName(), loginDialog.getSession());
 						return null;
 					}
 					case Window.CANCEL:
@@ -194,6 +180,7 @@ public abstract class AStartupLifeCycleHandler {
 
 	@PreSave
 	private void presave() {
-		adichatzApplication.getEditorPartStack().setSelectedElement(null); // Avoid reference to a non persistable BoundedPart
+		MPartStack editorPartStack = (MPartStack) AdichatzApplication.getInstance().getContextValue(EngineE4Util.EDITOR_PARTSTACK);
+		editorPartStack.setSelectedElement(null); // Avoid reference to a non persistable BoundedPart
 	}
 }

@@ -181,8 +181,9 @@ public interface IEventType {
 
 	public static int DOUBLE_CLICK = 53; // onDoubleClick
 
-	/** The Refresh controller. */
-	public static int REFRESH = 54;
+	public static int BEFORE_REFRESH = 54; // before having refreshed input
+
+	public static int AFTER_REFRESH = 55; // After having refreshed input
 
 	//
 	// Events on JPA query

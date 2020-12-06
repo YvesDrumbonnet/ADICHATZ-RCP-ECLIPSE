@@ -200,12 +200,10 @@ public class MultiKey implements Serializable {
 	 * @return true if equal
 	 */
 	public boolean equals(Object other) {
-		if (other == this) {
+		if (other == this)
 			return true;
-		}
-		if (other instanceof MultiKey) {
+		if (other instanceof MultiKey)
 			return Arrays.equals(keys, ((MultiKey) other).keys);
-		}
 		return false;
 	}
 

@@ -107,7 +107,7 @@ public class RefreshEntityAction extends ADetailAction {
 		String text = getFromJpaBundle("detail.refreshEntity");
 		setText(text);
 		setToolTipText(text);
-		setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_ENTITY_REFRESH"));
+		setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_ENTITY_REFRESH"));
 	}
 
 	/*

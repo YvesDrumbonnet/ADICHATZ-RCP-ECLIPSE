@@ -18,6 +18,7 @@ import org.adichatz.engine.e4.handler.PerspectiveSwitchHandler;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.swt.graphics.Image;
 
@@ -33,11 +34,12 @@ public class PerspectiveMenuController extends MenuController {
 	public List<ANodeController> getChildren() {
 		ItemController itemController;
 		if (null == children) {
-			IEclipseContext context = E4AdichatzApplication.getInstance().getContext();
-			final MApplication application = context.get(MApplication.class);
+			IEclipseContext eclipseContext = AdichatzApplication.getInstance().getContextValue(IEclipseContext.class);
+			final MApplication application = eclipseContext.get(MApplication.class);
+			MPerspectiveStack perspectiveStack = AdichatzApplication.getInstance().getContextValue(MPerspectiveStack.class);
 			children = new ArrayList<>(4);
-			itemController = new ItemController(getPluginResources(), getMenuCore(), "#perspective.reset#", getFromEngineE4Bundle(
-					"menu.perspective.reset", E4AdichatzApplication.getInstance().getCurrentPerspective().getLabel()), null) {
+			itemController = new ItemController(getPluginResources(), getMenuCore(), "#perspective.reset#",
+					getFromEngineE4Bundle("menu.perspective.reset", perspectiveStack.getSelectedElement().getLabel()), null) {
 				@Override
 				public void handleActivate() {
 					new PerspectiveResetHandler().execute(application);
@@ -50,9 +52,9 @@ public class PerspectiveMenuController extends MenuController {
 				}
 			};
 			children.add(itemController);
-			if (1 < E4AdichatzApplication.getInstance().getPerspectiveStack().getChildren().size())
-				for (final MPerspective perspective : E4AdichatzApplication.getInstance().getPerspectiveStack().getChildren()) {
-					if (!perspective.equals(E4AdichatzApplication.getInstance().getCurrentPerspective())) {
+			if (1 < perspectiveStack.getChildren().size())
+				for (final MPerspective perspective : perspectiveStack.getChildren()) {
+					if (!perspective.equals(perspectiveStack.getSelectedElement())) {
 						itemController = new ItemController(getPluginResources(), getMenuCore(),
 								getFromEngineE4Bundle("menu.perspective.Switch", perspective.getLocalizedLabel()),
 								perspective.getLabel(), null) {

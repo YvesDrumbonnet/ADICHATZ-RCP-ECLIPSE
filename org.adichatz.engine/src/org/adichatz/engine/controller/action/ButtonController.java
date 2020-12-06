@@ -72,7 +72,6 @@
 package org.adichatz.engine.controller.action;
 
 import org.adichatz.engine.cache.IEntity;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.core.ControllerCore;
 import org.eclipse.swt.SWT;
@@ -124,7 +123,8 @@ public class ButtonController extends AActionContainerCtler {
 	 */
 	@Override
 	public void createControl() {
-		button = AdichatzApplication.getInstance().getFormToolkit().createButton(parentController.getComposite(), null, style);
+		super.createControl();
+		button = toolkit.createButton(parentController.getComposite(), null, style);
 	}
 
 	/*

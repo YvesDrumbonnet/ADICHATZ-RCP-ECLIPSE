@@ -105,7 +105,7 @@ public class ConnectionUtil {
 			url = Platform.getBundle(GeneratorConstants.TEMPLATE_BUNDLE)
 					.getEntry("/template/lib/tool/org.adichatz.generator.dynamic.jar");
 		} else {
-			String dynamicJarName = GeneratorConstants.PLUGINS_DIRECTORY + "/" + GeneratorConstants.TEMPLATE_BUNDLE
+			String dynamicJarName = GeneratorConstants.SECONDARY_WORKSPACE_DIRECTORY + "/" + GeneratorConstants.TEMPLATE_BUNDLE
 					+ "/template/lib/tool/org.adichatz.generator.dynamic.jar";
 			try {
 				url = new File(dynamicJarName).toURI().toURL();

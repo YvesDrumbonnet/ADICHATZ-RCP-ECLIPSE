@@ -71,7 +71,6 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.field;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.controller.AFieldController;
 import org.adichatz.engine.controller.IContainerController;
@@ -148,8 +147,8 @@ public class FontTextController extends AFieldController {
 	 */
 	@Override
 	public void createControl() {
-		fontDataText = AdichatzApplication.getInstance().getFormToolkit().createFontDataText(parentController.getComposite(),
-				style);
+		super.createControl();
+		fontDataText = toolkit.createFontDataText(parentController.getComposite(), style);
 	}
 
 	/*

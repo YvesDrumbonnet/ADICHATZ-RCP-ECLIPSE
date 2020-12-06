@@ -301,14 +301,6 @@ public interface IEntity<T> {
 	public Map<MultiKey, RelationshipUpdate<T>> getRelationshipUpdateMap();
 
 	/**
-	 * Adds the entity listener.
-	 * 
-	 * @param entityListener
-	 *            the entity listener
-	 */
-	public void addEntityListener(AEntityListener entityListener);
-
-	/**
 	 * Removes the entity listener.
 	 * 
 	 * @param entityListener

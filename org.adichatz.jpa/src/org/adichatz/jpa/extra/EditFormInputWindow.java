@@ -93,7 +93,7 @@ public class EditFormInputWindow extends AFormWindow {
 		if (null != title)
 			getShell().setText(title);
 		scrolledForm.getBody().setLayout(new FillLayout());
-		AdichatzApplication.getInstance().getFormToolkit().decorateFormHeading(scrolledForm.getForm());
+		toolkit.decorateFormHeading(scrolledForm.getForm());
 		ContainerController containerController = new ContainerController(formInput, managedForm, title, false);
 		formBindingService = new FormBindingService(containerController);
 		if (null != tabularController && null != tabularController.getBindingService())
@@ -134,19 +134,19 @@ public class EditFormInputWindow extends AFormWindow {
 				addSectionActions(mergeAuthorization, removeAuthorization);
 			} else
 				detailController.setEnabled(false);
-		formBindingService.addBindingListener(new ABindingListener(IEventType.POST_MESSAGE) {
+		formBindingService.addBindingListener(new ABindingListener("EditFormInputWindow#POST_MESSAGE", IEventType.POST_MESSAGE) {
 			@Override
 			public void handleEvent(AdiEvent event) {
 				change();
 			}
 		});
-		entity.addEntityListener(new AEntityListener(detailController, IEventType.CHANGE_STATUS) {
+		new AEntityListener(detailController, IEventType.CHANGE_STATUS) {
 			@Override
 			public void handleEntityEvent(AdiEntityEvent event) {
 				if (IEntityConstants.REMOVE != event.getEntity().getStatus())
 					change();
 			}
-		});
+		};
 		if (newEntity) {
 			scrolledForm.setText(emptyErrorMessages ? null : "");
 			containerController.getFormMessageManager().getForm().getMessageManager().update();
@@ -195,8 +195,7 @@ public class EditFormInputWindow extends AFormWindow {
 				@Override
 				public void init() {
 					setEnabled(false);
-					setImageDescriptor(
-							AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_ACCEPT"));
+					setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_ACCEPT"));
 					setText(jpaBundle.getString("save.new.entity"));
 				}
 			};
@@ -206,8 +205,7 @@ public class EditFormInputWindow extends AFormWindow {
 			toolBarManager.add(validAction);
 		}
 		if (!newEntity && getAuthorization("AUTHORIZATION_REMOVE") && removeAuthorization) {
-			ImageDescriptor deleteID = AdichatzApplication.getInstance().getFormToolkit()
-					.getRegisteredImageDescriptor("IMG_DELETE");
+			ImageDescriptor deleteID = toolkit.getRegisteredImageDescriptor("IMG_DELETE");
 			AAction removeAction = new AAction() {
 				@Override
 				public void runAction() {
@@ -217,8 +215,7 @@ public class EditFormInputWindow extends AFormWindow {
 				@Override
 				public void init() {
 					setEnabled(false);
-					setImageDescriptor(
-							AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_ACCEPT"));
+					setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_ACCEPT"));
 					setText(jpaBundle.getString("save.new.entity"));
 				}
 			};
@@ -231,7 +228,7 @@ public class EditFormInputWindow extends AFormWindow {
 	protected void addPGroupToolItems(boolean mergeAuthorization, boolean removeAuthorization) {
 		if (mergeAuthorization) {
 			AdiPGroupToolItem validToolItem = new AdiPGroupToolItem(((PGroupController) detailController).getControl(), SWT.NONE);
-			validToolItem.setImage(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImage("IMG_ACCEPT"));
+			validToolItem.setImage(toolkit.getRegisteredImage("IMG_ACCEPT"));
 			validToolItem.setToolTipText(jpaBundle.getString(newEntity ? "save.new.entity" : "save.changes.entity"));
 			validToolItem.addSelectionListener(new SelectionAdapter() {
 				@Override
@@ -247,7 +244,7 @@ public class EditFormInputWindow extends AFormWindow {
 		}
 		if (!newEntity && getAuthorization("AUTHORIZATION_REMOVE") && removeAuthorization) {
 			AdiPGroupToolItem removeToolItem = new AdiPGroupToolItem(((PGroupController) detailController).getControl(), SWT.NONE);
-			Image deleteImage = AdichatzApplication.getInstance().getFormToolkit().getRegisteredImage("IMG_DELETE");
+			Image deleteImage = toolkit.getRegisteredImage("IMG_DELETE");
 			removeToolItem.setImage(deleteImage);
 			removeToolItem.setToolTipText(jpaBundle.getString("detail.deleteEntity"));
 			removeToolItem.addSelectionListener(new SelectionAdapter() {

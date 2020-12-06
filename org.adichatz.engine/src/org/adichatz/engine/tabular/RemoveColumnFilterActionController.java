@@ -56,11 +56,10 @@ package org.adichatz.engine.tabular;
 import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
 
 import org.adichatz.engine.action.AAction;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.controller.action.ActionController;
-import org.adichatz.engine.controller.collection.MenuManagerController;
 import org.adichatz.engine.controller.collection.ATabularController;
+import org.adichatz.engine.controller.collection.MenuManagerController;
 import org.adichatz.engine.core.ControllerCore;
 
 // TODO: Auto-generated Javadoc
@@ -96,9 +95,9 @@ public class RemoveColumnFilterActionController<T> extends ActionController {
 			}
 		};
 		action.setText(getFromEngineBundle("query.remove.filter", tabularController.getRightClickColumnController().getText()));
-		action.setImageDescriptor(
-				AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_DELETE_FILTER"));
+		action.setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_DELETE_FILTER"));
 		action.setActionController(this);
+		super.createControl();
 	}
 
 	@Override

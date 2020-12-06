@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import org.adichatz.engine.common.AdichatzApplication;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -41,7 +42,7 @@ public class DateChooser {
 		}
 
 		Button ok = new Button(dialog, SWT.IMAGE_BMP);
-		ok.setImage(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImage("IMG_ACCEPT"));
+		ok.setImage(AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class).getRegisteredImage("IMG_ACCEPT"));
 		ok.setToolTipText(getFromEngineBundle("field.acceptToolTip"));
 		ok.setLayoutData("align right");
 		ok.addSelectionListener(new SelectionAdapter() {

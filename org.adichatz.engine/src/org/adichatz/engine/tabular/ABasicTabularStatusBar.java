@@ -154,7 +154,7 @@ public abstract class ABasicTabularStatusBar extends ATabularStatusBar {
 		createToolBar();
 		if (null == getLayoutData())
 			setLayoutData("h ".concat(String.valueOf(getHeight())).concat("!"));
-		refreshListener = new AControlListener("BasicTabularStatusBar#Refresh", IEventType.REFRESH, tabularController) {
+		refreshListener = new AControlListener("BasicTabularStatusBar#Refresh", IEventType.AFTER_REFRESH, tabularController) {
 			@Override
 			public void handleEvent(AdiEvent event) {
 				afterRefreshTabularController();
@@ -180,7 +180,7 @@ public abstract class ABasicTabularStatusBar extends ATabularStatusBar {
 	 * Creates the tool bar.
 	 */
 	protected void createToolBar() {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		if (null != AReskinManager.getInstance()) {
 			backgroundColor = AReskinManager.getInstance().getColor(AdiFormToolkit.CSS_ADICHATZ_COMMON_SELECTOR, "title-background",
 					AControlController.ADI_CSS_BACKGROUND, this);

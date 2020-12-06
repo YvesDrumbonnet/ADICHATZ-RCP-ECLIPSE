@@ -77,12 +77,10 @@ import static org.adichatz.jpa.extra.JPAUtil.getFromJpaBundle;
 import java.lang.reflect.Method;
 
 import org.adichatz.engine.cache.IEntity;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.FieldTools;
 import org.adichatz.engine.controller.nebula.PGroupController;
 import org.adichatz.engine.controller.nebula.PGroupToolItemController;
 import org.adichatz.engine.core.ControllerCore;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.jpa.query.QueryToolInput;
 import org.adichatz.jpa.wrapper.QueryParameterWrapper;
 import org.eclipse.nebula.widgets.pgroup.PGroup;
@@ -102,8 +100,6 @@ public class ValidateParameterItemController extends PGroupToolItemController {
 
 	private String invalidateMessage;
 
-	private AdiFormToolkit toolkit;
-
 	/**
 	 * Instantiates a new validate parameter action.
 	 * 
@@ -116,7 +112,6 @@ public class ValidateParameterItemController extends PGroupToolItemController {
 	 */
 	public ValidateParameterItemController(String id, PGroupController parentController, ControllerCore genCode) {
 		super(id, parentController, genCode);
-		toolkit = AdichatzApplication.getInstance().getFormToolkit();
 	}
 
 	@Override

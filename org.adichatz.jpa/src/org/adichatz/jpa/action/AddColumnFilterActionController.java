@@ -74,14 +74,12 @@ package org.adichatz.jpa.action;
 import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
 
 import org.adichatz.engine.action.AAction;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.controller.action.ActionController;
-import org.adichatz.engine.controller.collection.MenuManagerController;
 import org.adichatz.engine.controller.collection.ATabularController;
+import org.adichatz.engine.controller.collection.MenuManagerController;
 import org.adichatz.engine.controller.field.AColumnController;
 import org.adichatz.engine.core.ControllerCore;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.jpa.tabular.JPAControllerPreferenceManager;
 
 // TODO: Auto-generated Javadoc
@@ -109,16 +107,16 @@ public class AddColumnFilterActionController<T> extends ActionController {
 	 */
 	@Override
 	public void createControl() {
-		final AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		action = new AAction() {
 			@Override
 			public void runAction() {
 				AColumnController<T> columnController = tabularController.getRightClickColumnController();
 				if (null != columnController) {
-					new ColumnFilterFormDialog<T>(toolkit, tabularController, columnController, title).open();
+					new ColumnFilterFormDialog<T>(tabularController, columnController, title).open();
 				}
 			}
 		};
+		super.createControl();
 		boolean replace = null != ((JPAControllerPreferenceManager<T>) tabularController.getControllerPreferenceManager())
 				.getFilter(tabularController.getRightClickColumnController().getColumnId());
 		title = getFromEngineBundle(replace ? "query.edit.filter" : "query.add.filter",

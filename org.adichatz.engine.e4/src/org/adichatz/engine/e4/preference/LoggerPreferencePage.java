@@ -4,9 +4,7 @@ import static org.adichatz.engine.e4.resource.EngineE4Util.getFromEngineE4Bundle
 
 import java.util.logging.Logger;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.LogBroker;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ComboViewer;
@@ -23,14 +21,13 @@ import net.miginfocom.swt.MigLayout;
 public class LoggerPreferencePage extends APreferencePage {
 	private Group logGroup;
 
-	public LoggerPreferencePage(AdiPreferenceManager preferenceManager, IEclipsePreferences eclipsePreferences,
-			Composite parent, TreeViewer treeViewer) {
+	public LoggerPreferencePage(AdiPreferenceManager preferenceManager, IEclipsePreferences eclipsePreferences, Composite parent,
+			TreeViewer treeViewer) {
 		super(preferenceManager, eclipsePreferences, parent, treeViewer);
 	}
 
 	@Override
 	public void createPropertiesContent(Composite parent) {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		logGroup = toolkit.createGroup(parent, getFromEngineE4Bundle("logger.properties"), SWT.NONE);
 		logGroup.setLayout(new MigLayout("wrap 2", "[grow,fill]25[grow,fill]"));
 		logGroup.setFont(JFaceResources.getBannerFont());
@@ -99,14 +96,13 @@ public class LoggerPreferencePage extends APreferencePage {
 			@Override
 			public boolean injectValue(IEclipsePreferences eclipsePreferences, boolean force) {
 				boolean result = super.injectValue(eclipsePreferences, force);
-				Logger.getGlobal().getParent().setLevel(LogBroker.getLogger()
-						.getLevel((String) getComboViewer().getStructuredSelection().getFirstElement()));
+				Logger.getGlobal().getParent().setLevel(
+						LogBroker.getLogger().getLevel((String) getComboViewer().getStructuredSelection().getFirstElement()));
 				return result;
 			}
 		};
 		ComboViewer comboViewer = levelFE.getComboViewer();
-		comboViewer.setInput(
-				new String[] { "OFF", "SEVERE", "WARNING", "INFO", "CONFIG", "FINE", "FINER", "FINEST", "ALL" });
+		comboViewer.setInput(new String[] { "OFF", "SEVERE", "WARNING", "INFO", "CONFIG", "FINE", "FINER", "FINEST", "ALL" });
 		comboViewer.getCCombo().setToolTipText(getFromEngineE4Bundle("jdkLogger.level.tooltip"));
 		comboViewer.setSelection(new StructuredSelection(LogBroker.getLogger().getJdkLoggerLevel()));
 		addField(levelFE);

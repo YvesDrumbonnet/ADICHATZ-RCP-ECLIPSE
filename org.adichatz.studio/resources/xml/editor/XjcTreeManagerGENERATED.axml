@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<treeManagerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" superTreeManagerClassName="org.adichatz.studio.xjc.editor.AStudioTreeManager" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/treeManagerTree.xsd">
+<treeManagerTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" superTreeManagerClassName="org.adichatz.studio.xjc.editor.AStudioTreeManager" xsi:noNamespaceSchemaLocation="https://yvesdrumbonnet.github.io/Adichatz-RCP-Update-Site/xsd/generator/treeManagerTree.xsd">
     <treeElement entityURI="adi://org.adichatz.studio/model/AccessibilitiesMM" label="&quot;Accessibilities&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
         <treeNode propertyId="accessibility" nodeType="LIST"/>
     </treeElement>
@@ -263,6 +263,7 @@ return concat("Customizations", ((CustomizationsType) treeElement.getElement()).
         <treeNode propertyId="customizedScenario" nodeType="LIST"/>
     </treeElement>
     <treeElement entityURI="adi://org.adichatz.studio/model/DatasourceMM" label="&quot;Datasource&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">
+        <treeNode propertyId="buildParams" nodeType="REFERENCE"/>
         <treeNode propertyId="params" nodeType="REFERENCE"/>
     </treeElement>
     <treeElement entityURI="adi://org.adichatz.studio/model/DatasourcesMM" label="&quot;Datasources&quot;;" treeChildClassName="org.adichatz.studio.xjc.data.AXjcTreeChild">

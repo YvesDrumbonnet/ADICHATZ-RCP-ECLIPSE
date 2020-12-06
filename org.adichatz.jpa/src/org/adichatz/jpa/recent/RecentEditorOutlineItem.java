@@ -33,6 +33,7 @@ import org.adichatz.engine.extra.ARecentOutlineItem;
 import org.adichatz.engine.extra.IOutlinePage;
 import org.adichatz.engine.listener.IEventType;
 import org.adichatz.engine.plugin.ParamMap;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.tabular.IMarshalledElement;
 import org.adichatz.engine.viewer.ATreeContentProvider;
 import org.adichatz.engine.widgets.LimitedComposite;
@@ -51,6 +52,7 @@ import org.adichatz.jpa.xjc.RecentPreferenceType;
 import org.adichatz.jpa.xjc.RecentPreferencesType;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -131,7 +133,7 @@ public class RecentEditorOutlineItem extends ARecentOutlineItem {
 
 	@Override
 	public void init() {
-		this.toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		this.toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		initPreferenceManager();
 		text = getFromJpaBundle("recent.open.editors");
 		image = AdichatzApplication.getInstance().getImage("org.adichatz.jpa", "IMG_RECENT_EDITOR.png");
@@ -419,7 +421,7 @@ public class RecentEditorOutlineItem extends ARecentOutlineItem {
 								toolkit.getRegisteredImageDescriptor("IMG_EDITOR")) {
 							@Override
 							public void run() {
-								if (0 == new EditEntryDialog(parent.getShell(), toolkit, recentElement).open()) {
+								if (0 == new EditEntryDialog(parent.getShell(), recentElement).open()) {
 									recentEditorCBTV.refresh();
 								}
 							}
@@ -551,7 +553,8 @@ public class RecentEditorOutlineItem extends ARecentOutlineItem {
 	private BoundedPart openPart(IRecentOpenEditor recentOpenEditor) {
 		try {
 			ParamMap paramMap = recentOpenEditor.getParamMap().cloneAndMarshal();
-			return E4AdichatzApplication.openPart(E4AdichatzApplication.getInstance().getContext(), paramMap);
+			return E4AdichatzApplication.openPart(AdichatzApplication.getInstance().getContextValue(IEclipseContext.class),
+					paramMap);
 		} catch (Exception e) {
 			logError(getFromJpaBundle("recent.opening.editor.error"));
 			return null;

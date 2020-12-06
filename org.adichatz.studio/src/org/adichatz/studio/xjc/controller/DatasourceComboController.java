@@ -76,7 +76,6 @@ import static org.adichatz.studio.util.StudioUtil.getFromStudioBundle;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.field.ComboController;
@@ -177,7 +176,7 @@ public class DatasourceComboController extends ComboController {
 		String title = (String) getValue();
 		if (null != title) {
 			ScenarioResources scenarioResources = ((XjcBindingService) getBindingService()).getEditor().getScenarioResources();
-			DatasourceWindow datasourceWindow = new DatasourceWindow(AdichatzApplication.getInstance().getFormToolkit(), title,
+			DatasourceWindow datasourceWindow = new DatasourceWindow(title,
 					scenarioResources.getParam(IScenarioConstants.CONNECTORS_URI));
 			if (Dialog.OK == datasourceWindow.open()) {
 				String datasourceId = datasourceWindow.getDataSource().getId();

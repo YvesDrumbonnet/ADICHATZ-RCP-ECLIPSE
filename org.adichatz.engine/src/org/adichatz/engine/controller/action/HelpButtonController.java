@@ -73,7 +73,6 @@ package org.adichatz.engine.controller.action;
 
 import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.controller.AControlController;
 import org.adichatz.engine.controller.ICollectionController;
@@ -134,7 +133,8 @@ public class HelpButtonController extends AControlController {
 	 */
 	@Override
 	public void createControl() {
-		helpButton = AdichatzApplication.getInstance().getFormToolkit().createButton(parentController.getComposite(), null, style);
+		super.createControl();
+		helpButton = toolkit.createButton(parentController.getComposite(), null, style);
 		helpButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {

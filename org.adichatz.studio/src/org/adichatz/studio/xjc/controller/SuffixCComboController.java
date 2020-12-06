@@ -39,12 +39,12 @@ public class SuffixCComboController extends CComboController {
 							values.add(jointure.getSuffix());
 					this.values = values;
 				}
-				getEntity().addEntityListener(new AEntityListener(parentController, IEventType.AFTER_PROPERTY_CHANGE) {
+				new AEntityListener(parentController, IEventType.AFTER_PROPERTY_CHANGE) {
 					@Override
 					public void handleEntityEvent(AdiEntityEvent event) {
 						values = new ArrayList<String>(0);
 					}
-				});
+				};
 			}
 		}
 		return values;

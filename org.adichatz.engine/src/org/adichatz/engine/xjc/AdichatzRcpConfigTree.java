@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.06.26 à 05:05:51 PM CEST 
+// Généré le : 2020.07.08 à 04:48:21 PM CEST 
 //
 
 
@@ -42,7 +42,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(factoryClass=WrapperFactory.class, factoryMethod="getAdichatzRcpConfigTree", name = "", propOrder = {
+@XmlType(name = "", propOrder = {
     "rcpConfiguration",
     "login"
 })

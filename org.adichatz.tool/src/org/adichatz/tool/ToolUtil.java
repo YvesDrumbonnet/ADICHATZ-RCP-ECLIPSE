@@ -80,7 +80,6 @@ import java.util.Properties;
 
 import org.adichatz.engine.common.AdiPluginResources;
 import org.adichatz.engine.common.AdichatzApplication;
-import org.adichatz.engine.e4.resource.E4AdichatzApplication;
 import org.adichatz.engine.e4.resource.EngineE4Util;
 import org.adichatz.generator.broadcast.BroadcastUtil;
 import org.adichatz.generator.common.GeneratorConstants;
@@ -145,7 +144,7 @@ public class ToolUtil {
 	private static void openEditor(AdiPluginResources pluginResources, final MApplication application,
 			final EModelService modelService, final EPartService partService, String contribURI, String elementId, String label) {
 		MPart part = MBasicFactory.INSTANCE.createPart();
-		final MPartStack editorPartStack = E4AdichatzApplication.getInstance().getEditorPartStack();
+		MPartStack editorPartStack = (MPartStack) AdichatzApplication.getInstance().getContextValue(EngineE4Util.EDITOR_PARTSTACK);
 		for (MStackElement element : editorPartStack.getChildren())
 			if (element instanceof MPart && contribURI.equals(((MPart) element).getContributionURI())) {
 				part = (MPart) element;

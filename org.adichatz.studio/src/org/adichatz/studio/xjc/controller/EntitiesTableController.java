@@ -165,7 +165,6 @@ public class EntitiesTableController<T> extends TableController<T> {
 	@Override
 	public void createControl() {
 		super.createControl();
-		final AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		scenarioResources = ((XjcBindingService) getBindingService()).getEditor().getScenarioResources();
 		table.setLayoutData("height 200:200:n, w 300:300:n");
 		final MenuManager menuManager = new MenuManager();
@@ -184,7 +183,6 @@ public class EntitiesTableController<T> extends TableController<T> {
 								getFromStudioBundle("scenario.generation.chooseEntities"));
 						final Shell shell = Display.getCurrent().getActiveShell();
 						ConfirmFormDialog confirmFormDialog = new ConfirmFormDialog(shell,
-								AdichatzApplication.getInstance().getFormToolkit(),
 								getFromStudioBundle("scenario.generation.chooseEntities"),
 								AdichatzApplication.getInstance().getImage(GeneratorConstants.STUDIO_BUNDLE, "IMG_ENTITY.gif"),
 								confirmContent) {

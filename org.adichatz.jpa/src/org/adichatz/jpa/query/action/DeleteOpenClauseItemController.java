@@ -55,7 +55,6 @@ package org.adichatz.jpa.query.action;
 
 import static org.adichatz.jpa.extra.JPAUtil.getFromJpaBundle;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.controller.collection.CTabItemController;
 import org.adichatz.engine.controller.nebula.PGroupController;
@@ -104,7 +103,7 @@ public class DeleteOpenClauseItemController extends PGroupToolItemController {
 		super.createControl();
 		String text = getFromJpaBundle("query.openClause.delete");
 		getControl().setToolTipText(text);
-		getControl().setImage(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImage("IMG_ENTITY_DELETE"));
+		getControl().setImage(toolkit.getRegisteredImage("IMG_ENTITY_DELETE"));
 		openParameterGroup = (PGroupController) parentController;
 		openClauseCTIC = (CTabItemController) openParameterGroup.getParentController();
 	}

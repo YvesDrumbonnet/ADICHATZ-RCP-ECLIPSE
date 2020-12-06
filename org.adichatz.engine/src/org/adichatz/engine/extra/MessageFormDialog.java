@@ -1,6 +1,5 @@
 package org.adichatz.engine.extra;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
@@ -10,7 +9,7 @@ import org.eclipse.swt.widgets.Shell;
 public class MessageFormDialog extends ConfirmFormDialog {
 
 	public MessageFormDialog(Shell shell, String title, Image image, IConfirmContent confirmContent) {
-		super(shell, AdichatzApplication.getInstance().getFormToolkit(), title, image, confirmContent);
+		super(shell, title, image, confirmContent);
 	}
 
 	@Override

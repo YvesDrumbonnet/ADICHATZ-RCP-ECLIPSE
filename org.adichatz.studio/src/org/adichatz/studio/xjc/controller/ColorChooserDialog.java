@@ -15,7 +15,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineConstants;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.extra.IConfirmContent;
@@ -85,7 +84,7 @@ public class ColorChooserDialog extends AChooserDialog {
 	private Display display;
 
 	public ColorChooserDialog(Shell shell, AChooserController chooserController) {
-		super(shell, AdichatzApplication.getInstance().getFormToolkit(), "colorChooser", "xjc/color.png", chooserController);
+		super(shell, "colorChooser", "xjc/color.png", chooserController);
 		display = shell.getDisplay();
 	}
 
@@ -412,7 +411,7 @@ public class ColorChooserDialog extends AChooserDialog {
 			private CTabItem createItem(CTabFolder folder, String itemTitle) {
 				CTabItem item = new CTabItem(folder, SWT.NONE);
 				item.setText(resourceBundle.getString(itemTitle));
-				Composite composite = AdichatzApplication.getInstance().getFormToolkit().createComposite(folder);
+				Composite composite = toolkit.createComposite(folder);
 
 				item.setControl(composite);
 				composite.setLayout(new MigLayout("wrap 4, ins 0", "grow,fill"));

@@ -15,11 +15,12 @@ import org.adichatz.engine.controller.AController;
 import org.adichatz.engine.e4.part.AdiInputPart;
 import org.adichatz.engine.e4.part.BoundedPart;
 import org.adichatz.engine.e4.resource.BoundedPartChangeManager;
-import org.adichatz.engine.e4.resource.E4AdichatzApplication;
+import org.adichatz.engine.e4.resource.EngineE4Util;
 import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.validation.ABindingService;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MStackElement;
 import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
@@ -99,7 +100,7 @@ public class SwitchEditorHandler {
 				getShell().setImage(
 						AdichatzApplication.getInstance().getImage(EngineConstants.ENGINE_E4_BUNDLE, "IMG_SWITCH_EDITORS.png"));
 				initializeBounds();
-				AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+				AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 				if (null == toolkit)
 					toolkit = new AdiFormToolkit(Display.getCurrent());
 				parent.setBackground(toolkit.getColors().getBackground());
@@ -343,7 +344,8 @@ public class SwitchEditorHandler {
 
 	private void refresh() {
 		inputParts = new ArrayList<AdiInputPart>();
-		for (MStackElement element : E4AdichatzApplication.getInstance().getEditorPartStack().getChildren())
+		MPartStack editorPartStack = (MPartStack) AdichatzApplication.getInstance().getContextValue(EngineE4Util.EDITOR_PARTSTACK);
+		for (MStackElement element : editorPartStack.getChildren())
 			if (element instanceof AdiInputPart && ((AdiInputPart) element).getObject() instanceof BoundedPart)
 				inputParts.add((AdiInputPart) element);
 		tableViewer.setInput(inputParts);

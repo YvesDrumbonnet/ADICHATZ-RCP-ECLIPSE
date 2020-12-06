@@ -120,6 +120,7 @@ public class SeparatorController extends AWidgetController implements IRankedCon
 	 */
 	@Override
 	public void createControl() {
+		super.createControl();
 		if (parentController instanceof ButtonBarController) {
 			Label label = new Label(parentController.getComposite(), style
 					| (0 != (((ButtonBarController) parentController).getStyle() & SWT.VERTICAL) ? SWT.HORIZONTAL : SWT.VERTICAL));

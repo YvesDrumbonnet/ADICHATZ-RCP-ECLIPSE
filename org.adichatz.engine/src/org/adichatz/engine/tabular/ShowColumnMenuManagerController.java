@@ -2,7 +2,6 @@ package org.adichatz.engine.tabular;
 
 import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineConstants;
 import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.controller.collection.ATabularController;
@@ -27,7 +26,7 @@ public class ShowColumnMenuManagerController<T> extends MenuManagerController {
 	@Override
 	public void createControl() {
 		super.createControl();
-		setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_SHOW_COLUMN"));
+		setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_SHOW_COLUMN"));
 		setText(getFromEngineBundle("query.show.columns"));
 		super.createControl();
 		Action action;

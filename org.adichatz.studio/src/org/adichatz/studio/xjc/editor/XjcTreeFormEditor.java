@@ -94,6 +94,7 @@ import org.adichatz.engine.listener.AControlListener;
 import org.adichatz.engine.listener.AdiEvent;
 import org.adichatz.engine.listener.IEventType;
 import org.adichatz.engine.plugin.ParamMap;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.wrapper.ITreeWrapper;
 import org.adichatz.generator.common.Generator;
 import org.adichatz.generator.common.GeneratorConstants;
@@ -173,19 +174,17 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 	@Override
 	public void init(IEditorSite site, IEditorInput input) throws PartInitException {
 		setSite(site);
-		if (input instanceof FileEditorInput) {
-			fileEditorInput = (FileEditorInput) input;
-		} else
-			throw new RuntimeException("Don't know how to open " + this.getClass().getSimpleName() + " with input " + input + "?!");
-		setInput(fileEditorInput);
+		if (!(input instanceof FileEditorInput))
+			throw new RuntimeException(getFromStudioBundle("studio.invalid.input", this.getClass().getSimpleName(), input));
+		setInput(input);
 
 		pluginResources = StudioRcpPlugin.getDefault().getPluginResources();
 
-		scenarioResources = ScenarioResources.getInstance(fileEditorInput.getFile().getProject());
-		String fileName = fileEditorInput.getName();
+		scenarioResources = ScenarioResources.getInstance(getEditorInput().getFile().getProject());
+		String fileName = input.getName();
 		cacheKey = new MultiKey(scenarioResources.getPluginName(),
-				fileName.substring(0, fileName.length() - fileEditorInput.getFile().getFileExtension().length() - 1),
-				ScenarioUtil.getSubPackage(fileEditorInput.getFile()));
+				fileName.substring(0, fileName.length() - getEditorInput().getFile().getFileExtension().length() - 1),
+				ScenarioUtil.getSubPackage(getEditorInput().getFile()));
 		setPartName(fileName);
 
 		setTitleImage(AdichatzApplication.getInstance().getImage(GeneratorConstants.STUDIO_BUNDLE, "IMG_XJC_EDITOR.png"));
@@ -206,12 +205,6 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 				}
 			}
 		});
-	}
-
-	@Override
-	public String getPartName() {
-		// AVISATZ landmark à supprimer
-		return super.getPartName();
 	}
 
 	/**
@@ -239,6 +232,8 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 		if (null == treeWrapper && !emptyFile) {// Start editor
 			getTreeWrapper(true, true);
 			checkJavaMarkers();
+			// Workaround on a possible bug on toolbar which is not correctly update.  
+			((ManagedToolBarController) genCode.getFromRegister("pageToolBar")).getToolBarManager().update(true);
 		}
 	}
 
@@ -250,7 +245,7 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 	@Override
 	public void addPages() {
 		try {
-			IFileStore store = org.eclipse.core.filesystem.EFS.getStore(fileEditorInput.getFile().getLocationURI());
+			IFileStore store = org.eclipse.core.filesystem.EFS.getStore(getEditorInput().getFile().getLocationURI());
 			if (0l < store.fetchInfo().getLength()) {
 				for (final FormPageHeader formPageHeader : genCode.getFormPageHeaders()) {
 					formPageHeader.addPage(this, entity, 0);
@@ -289,30 +284,31 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 	 */
 	@Override
 	public ITreeWrapper getTreeWrapper(boolean reloadFile, boolean initTree) {
-		IFile file = fileEditorInput.getFile();
+		IFile file = getEditorInput().getFile();
 		try {
-			if ((null == treeWrapper || reloadFile) && !fileEditorInput.getFile().isSynchronized(IResource.DEPTH_ZERO))
+			if ((null == treeWrapper || reloadFile) && !getEditorInput().getFile().isSynchronized(IResource.DEPTH_ZERO))
 				file.refreshLocal(IResource.DEPTH_ZERO, null);
 			InputStream content = file.getContents();
-			treeWrapper = (ITreeWrapper) FileUtility.getTreeFromXmlFile(Generator.getUnmarshaller(), content);
+			ITreeWrapper treeWrapper = (ITreeWrapper) FileUtility.getTreeFromXmlFile(Generator.getUnmarshaller(), content);
+			this.treeWrapper = treeWrapper;
 			MultiKey cacheKey = getCacheKey();
 			treeWrapper.setPluginName(cacheKey.getString(0));
 			treeWrapper.setTreeId(cacheKey.getString(1));
 			treeWrapper.setSubPackage(cacheKey.getString(2));
-			treeWrapper.setXmlFile(fileEditorInput.getFile().getLocation().toFile());
+			treeWrapper.setXmlFile(getEditorInput().getFile().getLocation().toFile());
 			if (initTree) {
 				treeController = (XjcTreeController) genCode.getFromRegister("xjcTree");
 				treeController.initTreeManager(treeWrapper, getCacheKey());
 			}
 			// treeController.refresh();
-			treeController.getControl()
-					.setBackground(AdichatzApplication.getInstance().getFormToolkit().getColors().getBackground());
+			treeController.getControl().setBackground(
+					AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class).getColors().getBackground());
 
 			checkJavaMarkers();
 		} catch (CoreException | JAXBException e) {
 			displayError(getFromStudioBundle("studio.invalid.axml.file", file.getName()), e);
 		}
-		return treeWrapper;
+		return (ITreeWrapper) treeWrapper;
 	}
 
 	/*
@@ -354,13 +350,13 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 				refreshPageAC.setEnabled(editable);
 				openJavaFileMAC.setEnabled(editable);
 				boolean switchVisibleOld = switchToActiveFileCI.isVisible();
-				boolean switchVisible = AdiPropertyTester.isSwitchable(fileEditorInput.getFile()) && editable;
+				boolean switchVisible = AdiPropertyTester.isSwitchable(getEditorInput().getFile()) && editable;
 				if (switchVisible != switchVisibleOld) {
 					switchToActiveFileCI.setVisible(switchVisible);
 					updateToolBar = true;
 				}
 				boolean compareVisibleOld = compareFilesActionCI.isVisible();
-				boolean compareVisible = AdiPropertyTester.isComparable(fileEditorInput.getFile());
+				boolean compareVisible = AdiPropertyTester.isComparable(getEditorInput().getFile());
 				if (compareVisible != compareVisibleOld) {
 					compareFilesActionCI.setVisible(compareVisible);
 					updateToolBar = true;
@@ -380,7 +376,7 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 			if (contributionItem instanceof ActionContributionItem) {
 				AAction action = (AAction) ((ActionContributionItem) contributionItem).getAction();
 				if ("switchToActiveFileAction".equals(action.getActionController().getRegisterId()))
-					contributionItem.setVisible(AdiPropertyTester.isSwitchable(fileEditorInput.getFile()) && editable);
+					contributionItem.setVisible(AdiPropertyTester.isSwitchable(getEditorInput().getFile()) && editable);
 			}
 		}
 		pageToolBar.getToolBarManager().update(true);
@@ -393,9 +389,7 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 	 */
 	@Override
 	public void doSave() {
-		//		if (StudioRcpPlugin.getDefault().getPreferenceStore().getBoolean(IStudioConstants.ASK_FOR_SWITCHING_FILE)
-		//				&& AdiPropertyTester.isSwitchable(fileEditorInput.getFile())) {
-		AskForSwitching askForSwithcing = new AskForSwitching(this, fileEditorInput.getFile(), null);
+		AskForSwitching askForSwithcing = new AskForSwitching(this, getEditorInput().getFile(), null);
 		int returnValue = askForSwithcing.getReturnValue();
 		/*
 		 return Value:
@@ -411,15 +405,15 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 		try {
 			insideFileChanged = true;
 			final XjcTreeController treeController = (XjcTreeController) genCode.getRegister().get("xjcTree").getController();
-			treeWrapper = (ITreeWrapper) treeController.getEntity().getBean();
+			treeWrapper = treeController.getEntity().getBean();
 
-			ScenarioUtil.createXmlFile(treeWrapper.getXmlFile(), treeWrapper);
+			ScenarioUtil.createXmlFile(((ITreeWrapper) treeWrapper).getXmlFile(), treeWrapper);
 			treeController.getBindingService().saveEntities();
-			fileEditorInput.getFile().refreshLocal(IResource.DEPTH_ZERO, null);
+			getEditorInput().getFile().refreshLocal(IResource.DEPTH_ZERO, null);
 			enableAction(true);
 			if (StudioRcpPlugin.getDefault().getPreferenceStore().getBoolean(IStudioConstants.GENERATE_CLASS_AFTER_SAVING)) {
 				// Generate automatically java class
-				new GenerateAction(fileEditorInput.getFile(), treeController.getControl().getDisplay()).runAction();
+				new GenerateAction(getEditorInput().getFile(), treeController.getControl().getDisplay()).runAction();
 			}
 			treeController.getViewer().setSelection(TreeSelection.EMPTY);
 			setEditable(true);
@@ -462,11 +456,11 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 	}
 
 	private void checkJavaFiles(boolean force) throws CoreException {
-		String treeId = treeWrapper.getTreeId();
+		String treeId = ((ITreeWrapper) treeWrapper).getTreeId();
 		if (treeId.endsWith("GENERATED"))
 			treeId = treeId.substring(0, treeId.length() - 9);
-		ScenarioInput scenarioInput = new ScenarioInput(scenarioResources, treeId, treeWrapper.getSubPackage());
-		scenarioInput.setXmlFile(fileEditorInput.getFile());
+		ScenarioInput scenarioInput = new ScenarioInput(scenarioResources, treeId, ((ITreeWrapper) treeWrapper).getSubPackage());
+		scenarioInput.setXmlFile(getEditorInput().getFile());
 		GeneratorUnit generatorUnit = new GeneratorUnit(scenarioInput);
 		generatorUnit.initialize(true);
 		if (generatorUnit.isJavaFilesExpired() || force) {
@@ -474,18 +468,18 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 				scenarioResources.getPluginResources().loadPluginEntities();
 			generatorUnit.generateCodeFromXMLTree(true);
 			new ErroneousFilesFormDialog(this, Display.getCurrent(), scenarioResources);
-			if (0 != fileEditorInput.getFile().findMarkers(IMarker.PROBLEM, false, IResource.DEPTH_ZERO).length) {
+			if (0 != getEditorInput().getFile().findMarkers(IMarker.PROBLEM, false, IResource.DEPTH_ZERO).length) {
 				addErrorDecorator("DCR_ERROR.png");
 			}
 		}
 	}
 
 	public void checkJavaMarkers() {
-		IFile file = fileEditorInput.getFile();
+		IFile file = getEditorInput().getFile();
 		long fileTime = file.getLocalTimeStamp();
 		try {
 			file.deleteMarkers(null, false, IResource.DEPTH_ZERO);
-		} catch (ResourceException e) {
+		} catch (@SuppressWarnings("restriction") ResourceException e) {
 		} catch (CoreException e) {
 			logError(e);
 		}
@@ -510,18 +504,9 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 		}
 	}
 
-	private void addMarker(IFile file, String message) {
-		try {
-			IMarker marker = file.createMarker(IMarker.PROBLEM);
-			marker.setAttribute(IMarker.MESSAGE, getFromStudioBundle("studio.invalid.axml.file", file.getName()));
-			marker.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_HIGH);
-			marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
-			addErrorDecorator("DCR_ERROR.png");
-		} catch (ResourceException e) {
-		} catch (CoreException e) {
-			logError(e);
-		}
-		addErrorDecorator("DCR_ERROR.png");
+	@Override
+	public ITreeWrapper getTreeWrapper() {
+		return (ITreeWrapper) super.getTreeWrapper();
 	}
 
 	/**

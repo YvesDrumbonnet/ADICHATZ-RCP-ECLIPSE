@@ -57,7 +57,6 @@ import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
 import static org.adichatz.engine.common.LogBroker.logError;
 
 import org.adichatz.engine.action.AAction;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.common.FieldTools;
 import org.adichatz.engine.controller.ICollectionController;
@@ -135,10 +134,10 @@ public class FilterByValueActionController<T> extends ActionController {
 				}
 			}
 		};
+		super.createControl();
 		action.setText(getFromEngineBundle("query.filter.value"));
 		action.setToolTipText(getFromEngineBundle("query.filter.value"));
-		action.setImageDescriptor(
-				AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_ADD_FILTER"));
+		action.setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_ADD_FILTER"));
 		action.setActionController(this);
 	}
 

@@ -7,7 +7,8 @@ Bundle-Vendor: Adichatz
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: resources/xml/fragment
 Eclipse-BuddyPolicy: registered
-Require-Bundle: javax.inject,
+Require-Bundle: javax.annotation,
+ javax.inject,
  org.adichatz.common,
  org.adichatz.engine,
  org.adichatz.resources,
@@ -26,6 +27,7 @@ Require-Bundle: javax.inject,
  org.eclipse.e4.ui.model.workbench,
  org.eclipse.e4.ui.workbench,
  org.eclipse.e4.ui.workbench.swt,
+ org.eclipse.e4.ui.workbench.addons.swt,
  org.eclipse.e4.ui.workbench.renderers.swt,
  org.eclipse.emf.common,
  org.eclipse.emf.ecore,
@@ -36,7 +38,6 @@ Require-Bundle: javax.inject,
  org.eclipse.jface,
  org.eclipse.ui.forms,
  org.w3c.css.sac
-Import-Package: javax.annotation;version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.adichatz.engine.e4.part,
  org.adichatz.engine.e4.resource,

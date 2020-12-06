@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<containerTree xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/tree/containerTree.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<containerTree xsi:noNamespaceSchemaLocation="https://yvesdrumbonnet.github.io/Adichatz-RCP-Update-Site/xsd/generator/tree/containerTree.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <layout rowConstraints="grow,fill" columnConstraints="grow,fill" layoutConstraints="wrap, ins 0"/>
     <managedToolBar>
 		<action imageDescriptor="#IMGDESC(IMG_ACCEPT)" text="#MSG(adichatzJpa, save.new.entity)" id="saveNewEntity">

@@ -53,13 +53,11 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.field;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.common.Utilities;
 import org.adichatz.engine.controller.ARefController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.core.ControllerCore;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.widgets.MultiChoice;
 import org.adichatz.engine.widgets.MultiChoiceViewer;
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -80,7 +78,8 @@ public class MultiChoiceController extends ARefController {
 	 */
 	public static enum MULTI_CHOICE_TYPE {
 		ARRAY, // ARRAY type.
-		STRING // STRING type.
+		STRING, // STRING type.
+		QUERY // QUERY type.
 	};
 
 	/** The multiChoice. */
@@ -122,8 +121,7 @@ public class MultiChoiceController extends ARefController {
 	 */
 	@Override
 	public void createControl() {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
-
+		super.createControl();
 		multiChoiceViewer = new MultiChoiceViewer(toolkit.createMultiChoice(parentController.getComposite(), style));
 		multiChoice = multiChoiceViewer.getControl();
 		multiChoiceViewer.setContentProvider(new ArrayContentProvider());
@@ -181,6 +179,7 @@ public class MultiChoiceController extends ARefController {
 	public Object getValue() {
 		switch (multiChoiceType) {
 		case ARRAY:
+		case QUERY:
 			StructuredSelection selection = (StructuredSelection) multiChoiceViewer.getSelection();
 			if (selection.isEmpty())
 				return null;
@@ -208,6 +207,7 @@ public class MultiChoiceController extends ARefController {
 				Object[] values;
 				switch (multiChoiceType) {
 				case ARRAY:
+				case QUERY:
 					values = EngineTools.createArrayFromArrayObject(result);
 					break;
 				default:

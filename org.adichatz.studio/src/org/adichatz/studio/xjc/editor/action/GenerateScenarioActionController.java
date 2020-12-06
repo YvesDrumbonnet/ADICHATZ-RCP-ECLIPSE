@@ -19,7 +19,6 @@ import org.adichatz.engine.controller.ASetController;
 import org.adichatz.engine.controller.AWidgetController;
 import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.controller.action.ActionController;
-import org.adichatz.engine.controller.collection.ManagedToolBarController;
 import org.adichatz.engine.controller.collection.TableController;
 import org.adichatz.engine.controller.field.CheckBoxController;
 import org.adichatz.engine.controller.field.FileTextController;
@@ -382,15 +381,14 @@ public class GenerateScenarioActionController extends ActionController {
 
 				};
 				try {
-					confirmFormDialog = new ConfirmFormDialog(display.getActiveShell(),
-							AdichatzApplication.getInstance().getFormToolkit(), title,
+					confirmFormDialog = new ConfirmFormDialog(display.getActiveShell(), title,
 							getControl().getImageDescriptor().createImage(), confirmContent);
 					confirmFormDialog.open();
 				} catch (AdichatzErrorException e) {
 				}
 			}
 		};
-		((ManagedToolBarController) parentController).getToolBarManager().add(action);
+		super.createControl();
 		action.setActionController(this);
 	}
 
@@ -571,8 +569,8 @@ public class GenerateScenarioActionController extends ActionController {
 		String title = application ? getFromStudioBundle("scenario.generation.rcp")
 				: getFromStudioBundle("scenario.generate.rcp.application");
 		try {
-			confirmFormDialog = new ConfirmFormDialog(display.getActiveShell(), AdichatzApplication.getInstance().getFormToolkit(),
-					title, getControl().getImageDescriptor().createImage(), confirmContent);
+			confirmFormDialog = new ConfirmFormDialog(display.getActiveShell(), title,
+					getControl().getImageDescriptor().createImage(), confirmContent);
 			confirmFormDialog.open();
 		} catch (AdichatzErrorException e) {
 		}
@@ -743,7 +741,7 @@ public class GenerateScenarioActionController extends ActionController {
 			public void menuAboutToShow(IMenuManager mgr) {
 				if (!EngineTools.isEmpty(scenarioCustomizationField.getValue())) {
 					Action openFileAction = new Action(getFromStudioBundle("scenario.custom.openFile"),
-							AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_OPEN_FILE")) {
+							toolkit.getRegisteredImageDescriptor("IMG_OPEN_FILE")) {
 						@Override
 						public void run() {
 							ExternalResourcesFormEditor.openExternalFile(scenarioCustomizationField.getValue());
@@ -751,7 +749,7 @@ public class GenerateScenarioActionController extends ActionController {
 					};
 					mgr.add(openFileAction);
 					Action copyFileNameAction = new Action(getFromStudioBundle("scenario.custom.copyFileName"),
-							AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_COPY")) {
+							toolkit.getRegisteredImageDescriptor("IMG_COPY")) {
 						@Override
 						public void run() {
 							EngineTools.copyToBuffer(scenarioCustomizationField.getValue());

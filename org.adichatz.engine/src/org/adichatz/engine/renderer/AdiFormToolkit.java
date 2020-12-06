@@ -122,6 +122,8 @@ public class AdiFormToolkit extends FormToolkit {
 
 	private Map<String, ImageDescriptor> registeredImageDescriptors = new HashMap<>();
 
+	private boolean disposed = false;
+
 	/**
 	 * Creates a toolkit that is self-sufficient (will manage its own colors).
 	 * <p>
@@ -369,5 +371,16 @@ public class AdiFormToolkit extends FormToolkit {
 		ButtonItem buttonItem = new ButtonItem(parent, style);
 		adapt(buttonItem, true, true);
 		return buttonItem;
+	}
+
+	@Override
+	public void dispose() {
+		disposed = true;
+		super.dispose();
+	}
+
+	public boolean isDisposed() {
+		return disposed;
+
 	}
 }

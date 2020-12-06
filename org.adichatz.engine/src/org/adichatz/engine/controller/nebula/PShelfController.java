@@ -71,7 +71,6 @@
 package org.adichatz.engine.controller.nebula;
 
 import org.adichatz.engine.common.AdiPluginResources;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.ACollectionController;
 import org.adichatz.engine.controller.AWidgetController;
 import org.adichatz.engine.controller.IContainerController;
@@ -124,7 +123,8 @@ public class PShelfController extends ACollectionController implements IItemCont
 	 */
 	@Override
 	public void createControl() {
-		pshelf = AdichatzApplication.getInstance().getFormToolkit().createPShelf(parentController.getComposite(), SWT.NONE);
+		super.createControl();
+		pshelf = toolkit.createPShelf(parentController.getComposite(), SWT.NONE);
 		composite = pshelf;
 		if (delayed) {
 			SelectionListener selectionListener = new SelectionAdapter() {

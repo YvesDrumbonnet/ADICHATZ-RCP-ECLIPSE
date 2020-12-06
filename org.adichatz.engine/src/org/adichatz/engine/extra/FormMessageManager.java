@@ -75,6 +75,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 import org.adichatz.engine.common.AdichatzApplication;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.resource.JFaceResources;
@@ -140,7 +141,8 @@ public class FormMessageManager {
 				messageShell.setImage(getImage(form.getMessageType()));
 				messageShell.setText(title);
 				messageShell.setLayout(new FillLayout());
-				FormText text = AdichatzApplication.getInstance().getFormToolkit().createFormText(messageShell, true);
+				FormText text = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class).createFormText(messageShell,
+						true);
 				configureFormText(form, text);
 				if (href instanceof IMessage[])
 					text.setText(createFormTextContent((IMessage[]) href), true, false);

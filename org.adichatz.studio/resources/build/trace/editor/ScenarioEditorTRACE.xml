@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<partTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bindingServiceClassName="org.adichatz.studio.xjc.data.XjcBindingService" entityURI="adi://org.adichatz.studio/model/ScenarioTreeMM" image="#IMG(IMG_EDIT_SCENARIO.png)" title="#PARAM(TITLE)" toolTipText="#PARAM(TOOL_TIP_TEXT)" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/partTree.xsd">
+<partTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bindingServiceClassName="org.adichatz.studio.xjc.data.XjcBindingService" entityURI="adi://org.adichatz.studio/model/ScenarioTreeMM" image="#IMG(IMG_EDIT_SCENARIO.png)" title="#PARAM(TITLE)" toolTipText="#PARAM(TOOL_TIP_TEXT)" xsi:noNamespaceSchemaLocation="https://yvesdrumbonnet.github.io/Adichatz-RCP-Update-Site/xsd/generator/partTree.xsd">
     <pluginEntity/>
     <config>
         <pluginEntity/>
@@ -403,7 +403,7 @@ else
                     <helpButton helpLabel="#MSG(adichatzStudio, scenario.custom.toolTip)" helpSpecify="#MSG(adichatzStudio, scenario.custom.specify)" helpMessage="#MSG(adichatzStudio, scenario.custom.help)" id="scenarioFileHlp">
                         <pluginEntity/>
                     </helpButton>
-                    <pgroupToolItem image="#IMG(IMG_EDIT_SCENARIO.png)" controllerClassName="org.adichatz.studio.command.CustomScenarioMergeItem" toolTipText="#MSG(adichatzStudio, scenario.custom.merge)" id="mergeScenario">
+                    <pgroupToolItem image="#IMG(IMG_EDIT_SCENARIO.png)" controllerClassName="org.adichatz.studio.command.CustomScenarioMergeItemController" toolTipText="#MSG(adichatzStudio, scenario.custom.merge)" id="mergeScenario">
                         <pluginEntity/>
                     </pgroupToolItem>
                 </pgroup>

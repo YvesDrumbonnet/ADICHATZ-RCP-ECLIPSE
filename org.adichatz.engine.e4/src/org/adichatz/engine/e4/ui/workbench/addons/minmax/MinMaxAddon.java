@@ -82,10 +82,8 @@ import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.e4.ui.internal.workbench.swt.AbstractPartRenderer;
-import org.eclipse.e4.ui.internal.workbench.swt.AnimationEngine;
-import org.eclipse.e4.ui.internal.workbench.swt.FaderAnimationFeedback;
 import org.eclipse.e4.ui.model.application.MAddon;
-import org.eclipse.e4.ui.model.application.ui.MElementContainer;
+import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.SideValue;
 import org.eclipse.e4.ui.model.application.ui.advanced.MArea;
@@ -101,11 +99,13 @@ import org.eclipse.e4.ui.model.application.ui.menu.impl.MenuFactoryImpl;
 import org.eclipse.e4.ui.workbench.IPresentationEngine;
 import org.eclipse.e4.ui.workbench.UIEvents;
 import org.eclipse.e4.ui.workbench.UIEvents.EventTags;
+import org.eclipse.e4.ui.workbench.addons.minmax.TrimStackIdHelper;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabFolder2Adapter;
 import org.eclipse.swt.custom.CTabFolderEvent;
+import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.graphics.Rectangle;
@@ -113,83 +113,62 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.osgi.service.event.Event;
 
-// TODO: Auto-generated Javadoc
 /**
- * Workbench addon that provides methods to minimize, maximize and restore parts in the window<br>
- * Based on org.eclipse.e4.ui.workbench.addons.minmax.MinMaxAddon class<br>
+ * Workbench addon that provides methods to minimize, maximize and restore parts in the window
  * 
- * Changes concern:
- * <ul>
- * <li>CTF buttons adjustement.</li>
- * <li>getElementToMinimize.</li>
- * </ul>
- * 
- * =======================================================================<br>
- * Class name must end by "ui.workbench.addons.minmax.MinMaxAddon" string.
- * =======================================================================<br>
- * 
- * @see org.eclipse.e4.ui.workbench.addons.swt.MinMaxProcessor.addMinMaxAddon(MApplication, EModelService)
+ * changes from the official version are:
+ * 	- special processing for ID_EDITOR_AREA ("org.eclipse.ui.editorss") are removed.
+ *  - All PlaceHolder except calling Placeholder are minimize (and not only "STANDALONE").  
  */
-@SuppressWarnings("restriction")
 public class MinMaxAddon {
 
-	/**
-	 * The identifier for the shared area in the Eclipse Platform. This value should be identical to the value defined in
-	 * org.eclipse.ui.IPageLayout.ID_EDITOR_AREA.
-	 */
-	private static final String ID_EDITOR_AREA = "org.eclipse.ui.editorss"; //$NON-NLS-1$
+	private static final String DISABLE_MINMAX_ADDON = "DisableMinMaxAddon";
 
-	/** The Constant GLOBAL_CACHE_ID. */
+	private static final String MIN_MAXIMIZEABLE_CHILDREN_AREA_TAG = IPresentationEngine.MIN_MAXIMIZEABLE_CHILDREN_AREA_TAG;
+
 	private static final String GLOBAL_CACHE_ID = "Global"; //$NON-NLS-1$
 
-	/** The id suffix. */
-	static String ID_SUFFIX = "(minimized)"; //$NON-NLS-1$
-
 	// tags representing the min/max state (h
-	/** The minimized. */
-	private static String MINIMIZED = IPresentationEngine.MINIMIZED;
+	private static final String MINIMIZED = IPresentationEngine.MINIMIZED;
 
-	/** The maximized. */
-	private static String MAXIMIZED = IPresentationEngine.MAXIMIZED;
+	private static final String MAXIMIZED = IPresentationEngine.MAXIMIZED;
 
-	/** The minimized by zoom. */
-	private static String MINIMIZED_BY_ZOOM = IPresentationEngine.MINIMIZED_BY_ZOOM;
+	private static final String MINIMIZED_BY_ZOOM = IPresentationEngine.MINIMIZED_BY_ZOOM;
 
-	/** The event broker. */
 	@Inject
 	IEventBroker eventBroker;
 
-	/** The model service. */
 	@Inject
 	EModelService modelService;
 
-	/** The context. */
 	@Inject
 	private IEclipseContext context;
 
-	/** The part service. */
-	@Inject
-	private EPartService partService;
-
 	// Allow 'local' changes to the tags
-	/** The ignore tag changes. */
 	private boolean ignoreTagChanges = false;
 
-	/** The min max addon. */
 	@Inject
 	MAddon minMaxAddon;
 
-	/** The CTF button listener. */
+	@Inject
+	MApplication app;
+
 	private CTabFolder2Adapter CTFButtonListener = new CTabFolder2Adapter() {
 		private MUIElement getElementToChange(CTabFolderEvent event) {
 			CTabFolder ctf = (CTabFolder) event.widget;
 			MUIElement element = (MUIElement) ctf.getData(AbstractPartRenderer.OWNING_ME);
-			if (element instanceof MArea)
+			if (element instanceof MArea) {
 				return element.getCurSharedRef();
+			}
 
 			MUIElement parentElement = element.getParent();
-			while (parentElement != null && !(parentElement instanceof MArea))
+			while (parentElement != null && !(parentElement instanceof MArea)) {
 				parentElement = parentElement.getParent();
+			}
+
+			if (parentElement != null && MinMaxAddonUtil.isMinMaxChildrenAreaWithMultipleVisibleChildren(parentElement)) {
+				return element;
+			}
 
 			return parentElement != null ? parentElement.getCurSharedRef() : element;
 		}
@@ -210,12 +189,7 @@ public class MinMaxAddon {
 		}
 	};
 
-	/** The CTF dbl click listener. */
-	private MouseListener CTFDblClickListener = new MouseListener() {
-		@Override
-		public void mouseUp(MouseEvent e) {
-		}
-
+	private MouseListener CTFDblClickListener = new MouseAdapter() {
 		@Override
 		public void mouseDown(MouseEvent e) {
 			// HACK! If this is an empty stack treat it as though it was the editor area
@@ -245,8 +219,13 @@ public class MinMaxAddon {
 			}
 
 			MUIElement parentElement = element.getParent();
-			while (parentElement != null && !(parentElement instanceof MArea))
+			while (parentElement != null && !(parentElement instanceof MArea)) {
 				parentElement = parentElement.getParent();
+			}
+
+			if (parentElement != null && MinMaxAddonUtil.isMinMaxChildrenAreaWithMultipleVisibleChildren(parentElement)) {
+				return element;
+			}
 
 			return parentElement != null ? parentElement.getCurSharedRef() : element;
 		}
@@ -255,15 +234,15 @@ public class MinMaxAddon {
 		public void mouseDoubleClick(MouseEvent e) {
 			// only maximize if the primary mouse button was used
 			if (e.button == 1) {
-				CTabFolder ctf = (CTabFolder) e.widget;
-				if (!ctf.getMaximizeVisible())
-					return;
-
-				// Only fire if we're in the 'tab' area
-				if (e.y > ctf.getTabHeight())
-					return;
 
 				MUIElement elementToChange = getElementToChange(e);
+				CTabFolder ctf = (CTabFolder) e.widget;
+
+				// Only fire if we're in the 'tab' area
+				if (e.y > ctf.getTabHeight()) {
+					return;
+				}
+
 				if (!elementToChange.getTags().contains(MAXIMIZED)) {
 					setState(elementToChange, MAXIMIZED);
 				} else {
@@ -273,15 +252,10 @@ public class MinMaxAddon {
 		}
 	};
 
-	/**
-	 * Sets the state.
-	 *
-	 * @param element
-	 *            the element
-	 * @param state
-	 *            the state
-	 */
 	private void setState(MUIElement element, String state) {
+		if (element == null) {
+			return;
+		}
 		if (MINIMIZED.equals(state)) {
 			element.getTags().remove(MAXIMIZED);
 			element.getTags().add(MINIMIZED);
@@ -295,31 +269,34 @@ public class MinMaxAddon {
 
 	}
 
-	/**
-	 * Subscribe topic widget.
-	 *
-	 * @param event
-	 *            the event
-	 */
 	@Inject
 	@Optional
 	private void subscribeTopicWidget(@UIEventTopic(UIEvents.UIElement.TOPIC_WIDGET) Event event) {
-		final MUIElement changedElement = (MUIElement) event.getProperty(EventTags.ELEMENT);
-		if (!(changedElement instanceof MPartStack) && !(changedElement instanceof MArea))
+
+		if (app.getTags().contains(DISABLE_MINMAX_ADDON)) {
 			return;
+		}
+
+		final MUIElement changedElement = (MUIElement) event.getProperty(EventTags.ELEMENT);
+		if (!(changedElement instanceof MPartStack) && !(changedElement instanceof MArea)) {
+			return;
+		}
 
 		final CTabFolder ctf = getCTFFor(changedElement);
-		if (ctf == null)
+		if (ctf == null) {
 			return;
+		}
 
 		MUIElement stateElement = changedElement;
 		if (changedElement instanceof MPartStack) {
 			MPartStack stack = (MPartStack) changedElement;
-			MArea area = getAreaFor(stack);
-			if (area != null && !(area.getWidget() instanceof CTabFolder))
+			MArea area = MinMaxAddonUtil.getAreaFor(stack);
+			if (area != null && !(area.getWidget() instanceof CTabFolder)) {
 				stateElement = area.getCurSharedRef();
-		} else if (changedElement instanceof MArea)
+			}
+		} else if (changedElement instanceof MArea) {
 			stateElement = changedElement.getCurSharedRef();
+		}
 
 		adjustCTFButtons(stateElement);
 
@@ -331,15 +308,19 @@ public class MinMaxAddon {
 	}
 
 	/**
-	 * Handles removals from the perspective.
+	 * Handles removals from the perspective
 	 *
 	 * @param event
-	 *            the event
 	 */
 
 	@Inject
 	@Optional
 	private void subscribeTopicChildren(@UIEventTopic(UIEvents.ElementContainer.TOPIC_CHILDREN) Event event) {
+
+		if (app.getTags().contains(DISABLE_MINMAX_ADDON)) {
+			return;
+		}
+
 		final MUIElement changedElement = (MUIElement) event.getProperty(EventTags.ELEMENT);
 		MWindow window = modelService.getTopLevelWindowFor(changedElement);
 
@@ -358,7 +339,7 @@ public class MinMaxAddon {
 				MTrimBar bar = modelService.getTrim((MTrimmedWindow) window, SideValue.TOP);
 
 				// gather up any minimized stacks for this perspective...
-				List<MToolControl> toRemove = new ArrayList<MToolControl>();
+				List<MToolControl> toRemove = new ArrayList<>();
 				for (MUIElement child : bar.getChildren()) {
 					String trimElementId = child.getElementId();
 					if (child instanceof MToolControl && trimElementId.contains(perspectiveId)) {
@@ -376,33 +357,41 @@ public class MinMaxAddon {
 	}
 
 	/**
-	 * Handles changes of the perspective.
+	 * Handles changes of the perspective
 	 *
 	 * @param event
-	 *            the event
 	 */
 
 	@Inject
 	@Optional
 	private void subscribeTopicSelectedElement(@UIEventTopic(UIEvents.ElementContainer.TOPIC_SELECTEDELEMENT) Event event) {
-		final MUIElement changedElement = (MUIElement) event.getProperty(EventTags.ELEMENT);
-		if (!(changedElement instanceof MPerspectiveStack))
+
+		if (app.getTags().contains(DISABLE_MINMAX_ADDON)) {
 			return;
+		}
+
+		final MUIElement changedElement = (MUIElement) event.getProperty(EventTags.ELEMENT);
+		if (!(changedElement instanceof MPerspectiveStack)) {
+			return;
+		}
 
 		MPerspectiveStack ps = (MPerspectiveStack) changedElement;
 		MWindow window = modelService.getTopLevelWindowFor(ps);
-		List<MToolControl> tcList = modelService.findElements(window, null, MToolControl.class, null);
+		final Shell winShell = (Shell) window.getWidget();
+		if (winShell == null) {
+			return;
+		}
+		List<MToolControl> tcList = modelService.findElements(window, null, MToolControl.class);
 
 		final MPerspective curPersp = ps.getSelectedElement();
 		if (curPersp != null) {
-			List<String> tags = new ArrayList<String>();
+			List<String> tags = new ArrayList<>();
 			tags.add(IPresentationEngine.MINIMIZED);
 
 			List<MUIElement> minimizedElements = modelService.findElements(curPersp, null, MUIElement.class, tags);
 			// Show any minimized stack from the current perspective
-			String perspId = '(' + curPersp.getElementId() + ')';
 			for (MUIElement ele : minimizedElements) {
-				String fullId = ele.getElementId() + perspId;
+				String fullId = TrimStackIdHelper.createTrimStackId(ele, curPersp, window);
 
 				for (MToolControl tc : tcList) {
 					if (fullId.equals(tc.getElementId())) {
@@ -410,18 +399,6 @@ public class MinMaxAddon {
 					}
 				}
 			}
-
-			// Adichatz ADD lines BEGIN
-			// Adichatz: adjust for all MPlaceholder or MPartStack
-			adjustContainers(curPersp);
-			// Adichatz ADD lines END
-
-			// Adichatz REMOVE lines BEGIN
-			// Original lines: Why limit adjust to editor area?
-			// // Find the editor 'area'
-			// MPlaceholder eaPlaceholder = (MPlaceholder) modelService.find(ID_EDITOR_AREA, curPersp);
-			// adjustCTFButtons(eaPlaceholder);
-			// Adichatz REMOVE lines END
 		}
 
 		// Hide any minimized stacks from the old perspective
@@ -437,54 +414,35 @@ public class MinMaxAddon {
 			}
 		}
 
-		final Shell winShell = (Shell) window.getWidget();
-		winShell.getDisplay().asyncExec(new Runnable() {
-			@Override
-			public void run() {
-				if (!winShell.isDisposed()) {
-					winShell.layout(true, true);
-				}
+		winShell.getDisplay().asyncExec(() -> {
+			if (!winShell.isDisposed()) {
+				winShell.layout(true, true);
 			}
 		});
 	}
 
-	// Adichatz ADD lines BEGIN
 	/**
-	 * Adjust containers.
-	 * 
-	 * Add by adichatz
-	 *
-	 * @param container
-	 *            the container
-	 */
-	@SuppressWarnings("rawtypes")
-	private void adjustContainers(MElementContainer container) {
-		for (Object element : container.getChildren()) {
-			if (element instanceof MPlaceholder || element instanceof MPartStack)
-				adjustCTFButtons((MUIElement) element);
-			else if (element instanceof MElementContainer)
-				adjustContainers((MElementContainer) element);
-		}
-	}
-	// Adichatz END lines BEGIN
-
-	/**
-	 * Handles changes in tags.
+	 * Handles changes in tags
 	 *
 	 * @param event
-	 *            the event
 	 */
 
 	@Inject
 	@Optional
 	private void subscribeTopicTagsChanged(@UIEventTopic(UIEvents.ApplicationElement.TOPIC_TAGS) Event event) {
-		if (ignoreTagChanges)
+		if (ignoreTagChanges) {
 			return;
+		}
+
+		if (app.getTags().contains(DISABLE_MINMAX_ADDON)) {
+			return;
+		}
 
 		Object changedObj = event.getProperty(EventTags.ELEMENT);
 
-		if (!(changedObj instanceof MUIElement))
+		if (!(changedObj instanceof MUIElement)) {
 			return;
+		}
 
 		final MUIElement changedElement = (MUIElement) changedObj;
 
@@ -504,23 +462,29 @@ public class MinMaxAddon {
 	}
 
 	/**
-	 * Handles changes in the id of the element If a perspective ID changes fix any TrimStacks that reference the old id to point at
-	 * the new id.
-	 * 
-	 * This keeps trim stacks attached to the correct perspective when a perspective is saved with a new name.
+	 * Handles changes in the id of the element If a perspective ID changes fix any TrimStacks that
+	 * reference the old id to point at the new id.
+	 *
+	 * This keeps trim stacks attached to the correct perspective when a perspective is saved with a
+	 * new name.
 	 *
 	 * @param event
-	 *            the event
 	 */
 
 	@Inject
 	@Optional
 	private void subscribeTopicElementId(@UIEventTopic(UIEvents.ApplicationElement.TOPIC_ELEMENTID) Event event) {
+
+		if (app.getTags().contains(DISABLE_MINMAX_ADDON)) {
+			return;
+		}
+
 		Object changedObject = event.getProperty(EventTags.ELEMENT);
 
 		// Only care about MPerspective id changes
-		if (!(changedObject instanceof MPerspective))
+		if (!(changedObject instanceof MPerspective)) {
 			return;
+		}
 
 		MPerspective perspective = (MPerspective) changedObject;
 
@@ -533,84 +497,62 @@ public class MinMaxAddon {
 
 		// Search the trim for the window containing the perspective
 		MWindow perspWin = modelService.getTopLevelWindowFor(perspective);
-		if (perspWin == null)
+		if (perspWin == null) {
 			return;
+		}
 
-		List<MToolControl> trimStacks = modelService.findElements(perspWin, null, MToolControl.class, null);
+		List<MToolControl> trimStacks = modelService.findElements(perspWin, null, MToolControl.class);
 		for (MToolControl trimStack : trimStacks) {
 			// Only care about MToolControls that are TrimStacks
-			if (TrimStack.CONTRIBUTION_URI.equals(trimStack.getContributionURI()))
+			if (TrimStack.CONTRIBUTION_URI.equals(trimStack.getContributionURI())) {
 				trimStack.setElementId(trimStack.getElementId().replace(oldID, newID));
+			}
 		}
 	}
 
 	/**
-	 * Handles the event that the perspective is saved.
+	 * Handles the event that the perspective is saved
 	 *
 	 * @param event
-	 *            the event
 	 */
 
 	@Inject
 	@Optional
 	private void subscribeTopicPerspSaved(@UIEventTopic(UIEvents.UILifeCycle.PERSPECTIVE_SAVED) Event event) {
+
+		if (app.getTags().contains(DISABLE_MINMAX_ADDON)) {
+			return;
+		}
+
 		final MPerspective savedPersp = (MPerspective) event.getProperty(EventTags.ELEMENT);
 		String cache = getTrimCache(savedPersp);
 		minMaxAddon.getPersistedState().put(savedPersp.getElementId(), cache);
 	}
 
-	/**
-	 * Gets the trim cache.
-	 *
-	 * @param savedPersp
-	 *            the saved persp
-	 * @return the trim cache
-	 */
 	private String getTrimCache(MPerspective savedPersp) {
 		MWindow topWin = modelService.getTopLevelWindowFor(savedPersp);
-		String perspIdStr = '(' + savedPersp.getElementId() + ')';
-
-		String cache = getWinCache(topWin, perspIdStr);
+		StringBuilder cache = new StringBuilder(getWinCache(topWin, savedPersp));
 		for (MWindow dw : savedPersp.getWindows()) {
-			cache += getWinCache(dw, perspIdStr);
+			cache.append(getWinCache(dw, savedPersp));
 		}
-
-		return cache;
+		return cache.toString();
 	}
 
-	/**
-	 * Gets the win cache.
-	 *
-	 * @param win
-	 *            the win
-	 * @param perspIdStr
-	 *            the persp id str
-	 * @return the win cache
-	 */
-	private String getWinCache(MWindow win, String perspIdStr) {
-		String winStr = ""; //$NON-NLS-1$
-
-		List<MPartStack> stackList = modelService.findElements(win, null, MPartStack.class, null);
+	private String getWinCache(MWindow win, MPerspective perspective) {
+		StringBuilder winStrBuilder = new StringBuilder();
+		List<MPartStack> stackList = modelService.findElements(win, null, MPartStack.class);
 		for (MPartStack stack : stackList) {
-			winStr += getStackTrimLoc(stack, perspIdStr);
+			winStrBuilder.append(getStackTrimLoc(stack, perspective));
 		}
-		return winStr;
+		return winStrBuilder.toString();
 	}
 
-	/**
-	 * Gets the stack trim loc.
-	 *
-	 * @param stack
-	 *            the stack
-	 * @param perspIdStr
-	 *            the persp id str
-	 * @return the stack trim loc
-	 */
-	private String getStackTrimLoc(MPartStack stack, String perspIdStr) {
-		MWindow stackWin = modelService.getTopLevelWindowFor(stack);// getContainingWindow(stack);
-		MUIElement tcElement = modelService.find(stack.getElementId() + perspIdStr, stackWin);
-		if (tcElement == null)
+	private String getStackTrimLoc(MPartStack stack, MPerspective perspective) {
+		MWindow stackWin = modelService.getTopLevelWindowFor(stack);
+		MUIElement tcElement = modelService.find(TrimStackIdHelper.createTrimStackId(stack, perspective, stackWin), stackWin);
+		if (tcElement == null) {
 			return ""; //$NON-NLS-1$
+		}
 
 		MTrimBar bar = (MTrimBar) ((MUIElement) tcElement.getParent());
 		int sideVal = bar.getSide().getValue();
@@ -619,14 +561,18 @@ public class MinMaxAddon {
 	}
 
 	/**
-	 * Handles the event that the perspective is reset.
+	 * Handles the event that the perspective is reset
 	 *
 	 * @param event
-	 *            the event
 	 */
 	@Inject
 	@Optional
 	private void subscribeTopicPerspReset(@UIEventTopic(UIEvents.UILifeCycle.PERSPECTIVE_RESET) Event event) {
+
+		if (app.getTags().contains(DISABLE_MINMAX_ADDON)) {
+			return;
+		}
+
 		final MPerspective resetPersp = (MPerspective) event.getProperty(EventTags.ELEMENT);
 
 		// Find any minimized stacks and show their trim
@@ -638,14 +584,18 @@ public class MinMaxAddon {
 	}
 
 	/**
-	 * Handles the event that the perspective is opened.
+	 * Handles the event that the perspective is opened
 	 *
 	 * @param event
-	 *            the event
 	 */
 	@Inject
 	@Optional
 	private void subscribeTopicPerspOpened(@UIEventTopic(UIEvents.UILifeCycle.PERSPECTIVE_OPENED) Event event) {
+
+		if (app.getTags().contains(DISABLE_MINMAX_ADDON)) {
+			return;
+		}
+
 		final MPerspective openedPersp = (MPerspective) event.getProperty(EventTags.ELEMENT);
 
 		// Find any minimized stacks and show their trim
@@ -656,33 +606,6 @@ public class MinMaxAddon {
 		}
 	}
 
-	/**
-	 * Gets the area for.
-	 *
-	 * @param stack
-	 *            the stack
-	 * @return the area for
-	 */
-	private MArea getAreaFor(MPartStack stack) {
-		MUIElement parent = stack.getParent();
-		while (parent != null) {
-			if (parent instanceof MArea)
-				return (MArea) parent;
-			parent = parent.getParent();
-		}
-		return null;
-	}
-
-	/**
-	 * Sets the ctf buttons.
-	 *
-	 * @param ctf
-	 *            the ctf
-	 * @param stateElement
-	 *            the state element
-	 * @param hideButtons
-	 *            the hide buttons
-	 */
 	private void setCTFButtons(CTabFolder ctf, MUIElement stateElement, boolean hideButtons) {
 		if (hideButtons) {
 			ctf.setMinimizeVisible(false);
@@ -701,55 +624,55 @@ public class MinMaxAddon {
 				ctf.setMaximizeVisible(true);
 				ctf.setMinimized(false);
 				ctf.setMaximized(false);
-				ctf.layout();
+				ctf.requestLayout();
 			}
 		}
 	}
 
 	/**
-	 * Set the state of the min / max buttons on the CTF based on the model element's state. The input is expected to be the element
-	 * that contains the min/max state info which should either be an MPartStack or an MPlaceholder for the shared area.
+	 * Set the state of the min / max buttons on the CTF based on the model element's state. The
+	 * input is expected to be the element that contains the min/max state info which should either
+	 * be an MPartStack or an MPlaceholder for the shared area.
 	 *
 	 * @param element
 	 *            The element to test
 	 */
-	private void adjustCTFButtons(MUIElement element) {
-		if (!(element instanceof MPartStack) && !(element instanceof MPlaceholder))
+	void adjustCTFButtons(MUIElement element) {
+		if (!(element instanceof MPartStack) && !(element instanceof MPlaceholder)) {
 			return;
+		}
 
 		CTabFolder ctf = getCTFFor(element);
-		if (ctf == null)
+		if (ctf == null) {
 			return;
+		}
 
 		if (element instanceof MPlaceholder) {
 			setCTFButtons(ctf, element, false);
 		} else {
-			MArea area = getAreaFor((MPartStack) element);
+			MArea area = MinMaxAddonUtil.getAreaFor((MPartStack) element);
 			if (area == null) {
+				setCTFButtons(ctf, element, false);
+			} else if (area.getTags().contains(MIN_MAXIMIZEABLE_CHILDREN_AREA_TAG)) {
 				setCTFButtons(ctf, element, false);
 			}
 		}
 	}
 
-	/**
-	 * Gets the ctf for.
-	 *
-	 * @param element
-	 *            the element
-	 * @return the CTF for
-	 */
 	private CTabFolder getCTFFor(MUIElement element) {
 		if (element instanceof MArea) {
-			if (element.getWidget() instanceof CTabFolder)
+			if (element.getWidget() instanceof CTabFolder) {
 				return (CTabFolder) element.getWidget();
-			List<MPartStack> stacks = modelService.findElements(element, null, MPartStack.class, null);
-			for (MPartStack stack : stacks) {
-				if (stack.getWidget() instanceof CTabFolder)
-					return (CTabFolder) stack.getWidget();
 			}
-		} else if (element.getWidget() instanceof CTabFolder)
+			List<MPartStack> stacks = modelService.findElements(element, null, MPartStack.class);
+			for (MPartStack stack : stacks) {
+				if (stack.getWidget() instanceof CTabFolder) {
+					return (CTabFolder) stack.getWidget();
+				}
+			}
+		} else if (element.getWidget() instanceof CTabFolder) {
 			return (CTabFolder) element.getWidget();
-		else if (element instanceof MPlaceholder) {
+		} else if (element instanceof MPlaceholder) {
 			MPlaceholder ph = (MPlaceholder) element;
 			if (ph.getRef() instanceof MArea) {
 				return getCTFFor(ph.getRef());
@@ -758,30 +681,19 @@ public class MinMaxAddon {
 		return null;
 	}
 
-	/**
-	 * Checks if is empty perspective stack.
-	 *
-	 * @param element
-	 *            the element
-	 * @return true, if checks if is empty perspective stack
-	 */
 	boolean isEmptyPerspectiveStack(MUIElement element) {
-		if (!(element instanceof MPerspectiveStack))
+		if (!(element instanceof MPerspectiveStack)) {
 			return false;
+		}
 		MPerspectiveStack ps = (MPerspectiveStack) element;
-		return ps.getChildren().size() == 0;
+		return ps.getChildren().isEmpty();
 	}
 
-	/**
-	 * Minimize.
-	 *
-	 * @param element
-	 *            the element
-	 */
 	void minimize(MUIElement element) {
 		// Can't minimize a non-rendered element
-		if (!element.isToBeRendered())
+		if (!element.isToBeRendered()) {
 			return;
+		}
 
 		if (isEmptyPerspectiveStack(element)) {
 			element.setVisible(false);
@@ -793,24 +705,25 @@ public class MinMaxAddon {
 		adjustCTFButtons(element);
 		// Activate a part other than the trimStack so that if the tool item is pressed
 		// immediately it will still open the stack.
+		MWindow win = MinMaxAddonUtil.getWindowFor(element);
+		EPartService partService = win.getContext().get(EPartService.class);
 		partService.requestActivation();
 	}
 
-	/**
-	 * Restore.
-	 *
-	 * @param element
-	 *            the element
-	 */
 	void restore(MUIElement element) {
 		MWindow window = modelService.getTopLevelWindowFor(element);
-		String trimId = element.getElementId() + getMinimizedElementSuffix(element);
+		String trimId = getTrimId(element, MinMaxAddonUtil.getWindowFor(element));
 		MToolControl trimStack = (MToolControl) modelService.find(trimId, window);
 		if (trimStack == null || trimStack.getObject() == null) {
-			if (element instanceof MPerspectiveStack) {
-				element.setVisible(true);
+			// try legacy id
+			trimId = TrimStackIdHelper.createTrimStackId(element, modelService.getPerspectiveFor(element), null);
+			trimStack = (MToolControl) modelService.find(trimId, window);
+			if (trimStack == null || trimStack.getObject() == null) {
+				if (element instanceof MPerspectiveStack) {
+					element.setVisible(true);
+				}
+				return;
 			}
-			return;
 		}
 
 		TrimStack ts = (TrimStack) trimStack.getObject();
@@ -818,10 +731,13 @@ public class MinMaxAddon {
 
 		adjustCTFButtons(element);
 
-		List<String> maximizeTag = new ArrayList<String>();
+		List<String> maximizeTag = new ArrayList<>();
 		maximizeTag.add(IPresentationEngine.MAXIMIZED);
 		List<MUIElement> curMax = modelService.findElements(window, null, MUIElement.class, maximizeTag,
 				EModelService.PRESENTATION);
+
+		MinMaxAddonUtil.ignoreChildrenOfMinMaxChildrenArea(modelService, element, curMax);
+
 		if (curMax.size() > 0) {
 			MUIElement maxElement = curMax.get(0);
 			List<MUIElement> elementsLeftToRestore = getElementsToRestore(maxElement);
@@ -829,32 +745,33 @@ public class MinMaxAddon {
 			// Are any stacks still minimized ?
 			boolean unMax = true;
 			for (MUIElement toRestore : elementsLeftToRestore) {
-				if (!toRestore.isVisible())
+				if (!toRestore.isVisible()) {
 					unMax = false;
+				}
 			}
 			if (unMax) {
 				maxElement.getTags().remove(IPresentationEngine.MAXIMIZED);
 			}
 		}
+		MinMaxAddonUtil.restoreStacksOfMinMaxChildrenArea(this, element, maximizeTag);
 	}
 
-	/**
-	 * Maximize.
-	 *
-	 * @param element
-	 *            the element
-	 */
+	void executeWithIgnoredTagChanges(Runnable runnable) {
+		ignoreTagChanges = true;
+		try {
+			runnable.run();
+		} finally {
+			ignoreTagChanges = false;
+		}
+	}
+
 	void maximize(final MUIElement element) {
-		if (!element.isToBeRendered())
+		if (!element.isToBeRendered()) {
 			return;
+		}
 
 		List<MUIElement> elementsToMinimize = getElementsToMinimize(element);
-		Shell hostShell = (Shell) modelService.getTopLevelWindowFor(element).getWidget();
-		MWindow win = getWindowFor(element);
-
-		FaderAnimationFeedback fader = new FaderAnimationFeedback(hostShell);
-		AnimationEngine engine = new AnimationEngine(win.getContext(), fader, 300);
-		engine.schedule();
+		MWindow win = MinMaxAddonUtil.getWindowFor(element);
 
 		// Restore any currently maximized element
 		restoreMaximizedElement(element, win);
@@ -865,33 +782,30 @@ public class MinMaxAddon {
 		}
 
 		adjustCTFButtons(element);
+
+		MinMaxAddonUtil.maximizeMinMaxChildrenArea(this, element);
 	}
 
 	/**
-	 * Gets the elements to minimize.
-	 *
 	 * @param element
-	 *            the element
 	 * @return The list of elements that need to be minimized during a maximize
 	 */
 	private List<MUIElement> getElementsToMinimize(MUIElement element) {
-		MWindow win = getWindowFor(element);
-		MPerspective persp = modelService.getActivePerspective(win);
+		MWindow win = MinMaxAddonUtil.getWindowFor(element);
+		MPerspective persp;
+		if (win == null) {
+			persp = null;
+		} else {
+			persp = modelService.getActivePerspective(win);
+		}
 
-		List<MUIElement> elementsToMinimize = new ArrayList<MUIElement>();
+		List<MUIElement> elementsToMinimize = new ArrayList<>();
 		int loc = modelService.getElementLocation(element);
 		if ((loc & EModelService.OUTSIDE_PERSPECTIVE) != 0) {
 			// Minimize all other global stacks
-			List<MPartStack> globalStacks = modelService.findElements(win, null, MPartStack.class, null,
-					EModelService.OUTSIDE_PERSPECTIVE);
-			for (MPartStack gStack : globalStacks) {
-				if (gStack == element || !gStack.isToBeRendered())
-					continue;
-
-				if (gStack.getWidget() != null && !gStack.getTags().contains(MINIMIZED)) {
-					elementsToMinimize.add(gStack);
-				}
-			}
+			List<MPartStack> partStacksToMinimize = findValidElementsToMinimize(element, win, win, null, MPartStack.class,
+					EModelService.OUTSIDE_PERSPECTIVE, false);
+			elementsToMinimize.addAll(partStacksToMinimize);
 
 			// Minimize the Perspective Stack
 			MUIElement perspStack = null;
@@ -899,91 +813,120 @@ public class MinMaxAddon {
 				// special case for windows with no perspectives (eg bug 372614:
 				// intro part with no perspectives). We know we're outside
 				// of the perspective stack, so find it top-down
-				List<MPerspectiveStack> pStacks = modelService.findElements(win, null, MPerspectiveStack.class, null);
+				List<MPerspectiveStack> pStacks = modelService.findElements(win, null, MPerspectiveStack.class);
 				perspStack = (pStacks.size() > 0) ? pStacks.get(0) : null;
 			} else {
 				perspStack = persp.getParent();
 			}
 			if (perspStack != null) {
-				if (perspStack.getElementId() == null || perspStack.getElementId().length() == 0)
+				if (perspStack.getElementId() == null || perspStack.getElementId().length() == 0) {
 					perspStack.setElementId("PerspectiveStack"); //$NON-NLS-1$
+				}
 
 				elementsToMinimize.add(perspStack);
 			}
+
 		} else {
-			List<MPartStack> stacks = modelService.findElements(persp == null ? win : persp, null, MPartStack.class, null,
-					EModelService.PRESENTATION);
-			for (MPartStack theStack : stacks) {
-				if (theStack == element || !theStack.isToBeRendered())
+			List<MPartStack> partStacksToMinimize = findValidElementsToMinimize(element, win, persp == null ? win : persp, null,
+					MPartStack.class, EModelService.PRESENTATION, false);
+			elementsToMinimize.addAll(partStacksToMinimize);
+			List<MPlaceholder> standaloneViews = modelService.findElements(persp == null ? win : persp, null, MPlaceholder.class,
+					null, EModelService.PRESENTATION);
+			for (MPlaceholder part : standaloneViews) {
+				if (!part.isToBeRendered()) {
 					continue;
-
-				// Exclude stacks in DW's
-				if (getWindowFor(theStack) != win)
-					continue;
-
-				loc = modelService.getElementLocation(theStack);
-				if (loc != EModelService.IN_SHARED_AREA && theStack.getWidget() != null && theStack.isVisible()
-						&& !theStack.getTags().contains(MINIMIZED)) {
-					elementsToMinimize.add(theStack);
 				}
+				if (!part.equals(element))
+					elementsToMinimize.add(part);
 			}
-
-			List<MPlaceholder> placeholders = modelService.findElements(persp == null ? win : persp, null, MPlaceholder.class, null,
-					EModelService.PRESENTATION);
-			for (MPlaceholder placeholder : placeholders) {
-				if (element != placeholder && placeholder != null && placeholder.getWidget() != null && placeholder.isVisible()
-						&& placeholder.isToBeRendered())
-					elementsToMinimize.add(placeholder);
-			}
-
-			// // Find any 'standalone' views *not* in a stack
-			// List<String> standaloneTag = new ArrayList<String>();
-			// standaloneTag.add(IPresentationEngine.STANDALONE);
-			// List<MPlaceholder> standaloneViews = modelService.findElements(persp == null ? win : persp, null, MPlaceholder.class,
-			// standaloneTag, EModelService.PRESENTATION);
-			// for (MPlaceholder part : standaloneViews) {
-			// if (!part.isToBeRendered())
-			// continue;
-			// elementsToMinimize.add(part);
-			// }
-			//
-			// // Find the editor 'area'
-			// if (persp != null) {
-			// MPlaceholder eaPlaceholder = (MPlaceholder) modelService.find(ID_EDITOR_AREA, persp);
-			// if (element != eaPlaceholder && eaPlaceholder != null && eaPlaceholder.getWidget() != null
-			// && eaPlaceholder.isVisible()) {
-			// elementsToMinimize.add(eaPlaceholder);
-			// }
-			// }
 		}
+
+		MinMaxAddonUtil.handleMinimizeOfMinMaxChildrenArea(modelService, element, win, persp, elementsToMinimize);
 
 		return elementsToMinimize;
 	}
 
 	/**
-	 * Restore any currently maximized element (except the one we're in the process of maximizing.
+	 * Find all elements based on
+	 * {@link EModelService#findElements(MUIElement, String, Class, List, int)} and filter them for
+	 * correct window and visibility.
+	 *
+	 * First all possible elements based on the parameters of EModelService#findElements(MUIElement,
+	 * String, Class, List, int)} are retrieved. Then they are checked to be in the correct window.
+	 * Then a check for the correct location is made and in the end the elements are checked to be
+	 * valid (visible, not yet minimized and have a widget).
+	 *
+	 * @param elementToMaximize
+	 *            the {@link MUIElement} being maximized
+	 * @param currentWindow
+	 *            the window of the elementToMaximize
+	 * @param searchRoot
+	 *            the searchRoot for possible elements
+	 * @param id
+	 *            the id of the element to search
+	 * @param clazz
+	 *            the Class of the elements to find
+	 * @param searchFlag
+	 *            the search flags as defined in {@link EModelService}
+	 * @param allowSharedArea
+	 *            whether the found element is allowed to be in a shared area
+	 * @return the list of elements which should be minimized
+	 */
+	private <T extends MUIElement> List<T> findValidElementsToMinimize(MUIElement elementToMaximize, MWindow currentWindow,
+			MUIElement searchRoot, String id, Class<T> clazz, int searchFlag, boolean allowSharedArea) {
+		List<T> elementsToMinimize = new ArrayList<>();
+		List<T> elements = modelService.findElements(searchRoot, id, clazz, null, searchFlag);
+		for (T element : elements) {
+			if (element == elementToMaximize || !element.isToBeRendered()) {
+				continue;
+			}
+
+			// Exclude stacks in DW's
+			if (MinMaxAddonUtil.getWindowFor(element) != currentWindow) {
+				continue;
+			}
+
+			int loc = modelService.getElementLocation(element);
+			boolean inSharedArea = loc == EModelService.IN_SHARED_AREA;
+			boolean validLocation = allowSharedArea || !inSharedArea;
+			if (validLocation && element.getWidget() != null && element.isVisible() && !element.getTags().contains(MINIMIZED)) {
+				elementsToMinimize.add(element);
+			}
+		}
+		return elementsToMinimize;
+	}
+
+	/**
+	 * Restore any currently maximized element (except the one we're in the process of maximizing
 	 *
 	 * @param element
-	 *            the element
 	 * @param win
-	 *            the win
 	 */
 	private void restoreMaximizedElement(final MUIElement element, MWindow win) {
 		MPerspective elePersp = modelService.getPerspectiveFor(element);
-		List<String> maxTag = new ArrayList<String>();
+		if (elePersp == null) {
+			return;
+		}
+		List<String> maxTag = new ArrayList<>();
 		maxTag.add(MAXIMIZED);
 		List<MUIElement> curMax = modelService.findElements(win, null, MUIElement.class, maxTag);
 		if (curMax.size() > 0) {
 			for (MUIElement maxElement : curMax) {
 				// Only unmax elements in this window
-				if (getWindowFor(maxElement) != win)
+				if (MinMaxAddonUtil.getWindowFor(maxElement) != win) {
 					continue;
+				}
 
 				MPerspective maxPersp = modelService.getPerspectiveFor(maxElement);
-				if (maxPersp != elePersp)
+				if (maxPersp != elePersp) {
 					continue;
-				if (maxElement == element)
+				}
+				if (maxElement == element) {
 					continue;
+				}
+				if (MinMaxAddonUtil.isPartOfMinMaxChildrenArea(maxElement)) {
+					continue;
+				}
 				ignoreTagChanges = true;
 				try {
 					maxElement.getTags().remove(MAXIMIZED);
@@ -994,40 +937,8 @@ public class MinMaxAddon {
 		}
 	}
 
-	/**
-	 * Return the MWindow containing this element (if any). This may either be a 'top level' window -or- a detached window. This
-	 * allows the min.max code to only affect elements in the window containing the element.
-	 *
-	 * @param element
-	 *            The element to check
-	 *
-	 * @return the window containing the element.
-	 */
-	private MWindow getWindowFor(MUIElement element) {
-		MUIElement parent = element.getParent();
-
-		// We rely here on the fact that a DW's 'getParent' will return
-		// null since it's not in the 'children' hierarchy
-		while (parent != null && !(parent instanceof MWindow))
-			parent = parent.getParent();
-
-		// A detached window will end up with getParent() == null
-		return (MWindow) parent;
-	}
-
-	/**
-	 * Unzoom.
-	 *
-	 * @param element
-	 *            the element
-	 */
 	void unzoom(final MUIElement element) {
-		MWindow win = getWindowFor(element);
-
-		Shell hostShell = (Shell) win.getWidget();
-		FaderAnimationFeedback fader = new FaderAnimationFeedback(hostShell);
-		AnimationEngine engine = new AnimationEngine(win.getContext(), fader, 300);
-		engine.schedule();
+		MWindow win = MinMaxAddonUtil.getWindowFor(element);
 
 		List<MUIElement> elementsToRestore = getElementsToRestore(element);
 		for (MUIElement toRestore : elementsToRestore) {
@@ -1037,24 +948,24 @@ public class MinMaxAddon {
 
 		adjustCTFButtons(element);
 
+		MinMaxAddonUtil.unzoomStackOfMinMaxChildrenArea(this, element);
+
 		// There are more views available to be active...
+		EPartService partService = win.getContext().get(EPartService.class);
 		partService.requestActivation();
 	}
 
 	/**
-	 * Gets the elements to restore.
-	 *
 	 * @param element
-	 *            the element
 	 * @return The list of elements that need to be restored by an unzoom
 	 */
 	private List<MUIElement> getElementsToRestore(MUIElement element) {
-		MWindow win = getWindowFor(element);
+		MWindow win = MinMaxAddonUtil.getWindowFor(element);
 		MPerspective persp = modelService.getActivePerspective(win);
 
-		List<MUIElement> elementsToRestore = new ArrayList<MUIElement>();
+		List<MUIElement> elementsToRestore = new ArrayList<>();
 
-		List<String> minTag = new ArrayList<String>();
+		List<String> minTag = new ArrayList<>();
 		minTag.add(IPresentationEngine.MINIMIZED_BY_ZOOM);
 
 		// Restore any minimized stacks
@@ -1066,12 +977,13 @@ public class MinMaxAddon {
 				// unzoooming an element outside the perspectives
 				if (outsidePerspectives) {
 					int stackLoc = modelService.getElementLocation(theStack);
-					if ((stackLoc & EModelService.OUTSIDE_PERSPECTIVE) == 0)
+					if ((stackLoc & EModelService.OUTSIDE_PERSPECTIVE) == 0) {
 						continue;
+					}
 				}
 
 				// Make sure we're only working on *our* window
-				if (getWindowFor(theStack) == win) {
+				if (MinMaxAddonUtil.getWindowFor(theStack) == win) {
 					elementsToRestore.add(theStack);
 				}
 			}
@@ -1080,21 +992,15 @@ public class MinMaxAddon {
 		// Restore any minimized standalone views
 		List<MPlaceholder> views = modelService.findElements(win, null, MPlaceholder.class, minTag, EModelService.PRESENTATION);
 		for (MPlaceholder ph : views) {
-			if (ph.getWidget() != null && getWindowFor(ph) == win) {
+			if (ph.getWidget() != null && MinMaxAddonUtil.getWindowFor(ph) == win) {
 				elementsToRestore.add(ph);
 			}
-		}
-
-		// Find the editor 'area'
-		MPlaceholder eaPlaceholder = (MPlaceholder) modelService.find(ID_EDITOR_AREA, persp == null ? win : persp);
-		if (element != eaPlaceholder && eaPlaceholder != null && eaPlaceholder.getTags().contains(MINIMIZED_BY_ZOOM)) {
-			elementsToRestore.add(eaPlaceholder);
 		}
 
 		// Find the Perspective Stack
 		int loc = modelService.getElementLocation(element);
 		if ((loc & EModelService.OUTSIDE_PERSPECTIVE) != 0) {
-			List<MPerspectiveStack> psList = modelService.findElements(win, null, MPerspectiveStack.class, null);
+			List<MPerspectiveStack> psList = modelService.findElements(win, null, MPerspectiveStack.class);
 			if (psList.size() == 1) {
 				MPerspectiveStack perspStack = psList.get(0);
 				if (element != perspStack && perspStack != null && perspStack.getTags().contains(MINIMIZED_BY_ZOOM)) {
@@ -1103,17 +1009,13 @@ public class MinMaxAddon {
 			}
 		}
 
+		MinMaxAddonUtil.addChildrenOfMinMaxChildrenAreaToRestoreList(modelService, element, win, persp, elementsToRestore);
+
 		return elementsToRestore;
 	}
 
-	/**
-	 * Creates the trim.
-	 *
-	 * @param element
-	 *            the element
-	 */
 	private void createTrim(MUIElement element) {
-		MWindow win = getWindowFor(element);
+		MWindow win = MinMaxAddonUtil.getWindowFor(element);
 		if (!(win instanceof MTrimmedWindow)) {
 			return;
 		}
@@ -1122,7 +1024,7 @@ public class MinMaxAddon {
 		Shell winShell = (Shell) window.getWidget();
 
 		// Is there already a TrimControl there ?
-		String trimId = element.getElementId() + getMinimizedElementSuffix(element);
+		String trimId = getTrimId(element, window);
 		MToolControl trimStack = (MToolControl) modelService.find(trimId, window);
 
 		if (trimStack == null) {
@@ -1134,10 +1036,11 @@ public class MinMaxAddon {
 			// Check if we have a cached location
 			MTrimBar bar = getBarForElement(element, window);
 			int index = getCachedIndex(element);
-			if (index == -1 || index >= bar.getChildren().size())
+			if (index == -1 || index >= bar.getChildren().size()) {
 				bar.getChildren().add(trimStack);
-			else
+			} else {
 				bar.getChildren().add(index, trimStack);
+			}
 
 			bar.setVisible(true);
 
@@ -1163,34 +1066,30 @@ public class MinMaxAddon {
 		}
 	}
 
-	/**
-	 * Gets the cached info.
-	 *
-	 * @param element
-	 *            the element
-	 * @return the cached info
-	 */
+	private String getTrimId(MUIElement element, MWindow window) {
+		String trimId;
+		if (MinMaxAddonUtil.isPartOfMinMaxChildrenArea(element)) {
+			trimId = TrimStackIdHelper.createTrimStackId(element, null, window);
+		} else {
+			trimId = TrimStackIdHelper.createTrimStackId(element, modelService.getPerspectiveFor(element), window);
+		}
+		return trimId;
+	}
+
 	private String getCachedInfo(MUIElement element) {
 		String cacheId = GLOBAL_CACHE_ID;
 		MPerspective persp = modelService.getPerspectiveFor(element);
-		if (persp != null)
+		if (persp != null) {
 			cacheId = persp.getElementId();
-		String cacheInfo = minMaxAddon.getPersistedState().get(cacheId);
-
-		return cacheInfo;
+		}
+		return minMaxAddon.getPersistedState().get(cacheId);
 	}
 
-	/**
-	 * Gets the cached index.
-	 *
-	 * @param element
-	 *            the element
-	 * @return the cached index
-	 */
 	private int getCachedIndex(MUIElement element) {
 		String cache = getCachedInfo(element);
-		if (cache == null)
+		if (cache == null) {
 			return -1;
+		}
 
 		String[] stacks = cache.split("#"); //$NON-NLS-1$
 		for (String stackInfo : stacks) {
@@ -1202,17 +1101,11 @@ public class MinMaxAddon {
 		return -1;
 	}
 
-	/**
-	 * Gets the cached bar.
-	 *
-	 * @param element
-	 *            the element
-	 * @return the cached bar
-	 */
 	private SideValue getCachedBar(MUIElement element) {
 		String cache = getCachedInfo(element);
-		if (cache == null)
+		if (cache == null) {
 			return null;
+		}
 
 		String[] stacks = cache.split("#"); //$NON-NLS-1$
 		for (String stackInfo : stacks) {
@@ -1225,15 +1118,6 @@ public class MinMaxAddon {
 		return null;
 	}
 
-	/**
-	 * Gets the bar for element.
-	 *
-	 * @param element
-	 *            the element
-	 * @param window
-	 *            the window
-	 * @return the bar for element
-	 */
 	private MTrimBar getBarForElement(MUIElement element, MTrimmedWindow window) {
 		SideValue side = getCachedBar(element);
 		if (side == null) {
@@ -1246,24 +1130,6 @@ public class MinMaxAddon {
 			int stackCenterX = stackBounds.x + (stackBounds.width / 2);
 			side = stackCenterX < winCenterX ? SideValue.LEFT : SideValue.RIGHT;
 		}
-		MTrimBar bar = modelService.getTrim(window, side);
-
-		return bar;
-	}
-
-	/**
-	 * Gets the minimized element suffix.
-	 *
-	 * @param element
-	 *            the element
-	 * @return the minimized element suffix
-	 */
-	private String getMinimizedElementSuffix(MUIElement element) {
-		String id = ID_SUFFIX;
-		MPerspective persp = modelService.getPerspectiveFor(element);
-		if (persp != null) {
-			id = '(' + persp.getElementId() + ')';
-		}
-		return id;
+		return modelService.getTrim(window, side);
 	}
 }

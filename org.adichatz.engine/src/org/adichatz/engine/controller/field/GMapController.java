@@ -71,7 +71,6 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.field;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AFieldController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.core.ControllerCore;
@@ -147,7 +146,8 @@ public class GMapController extends AFieldController {
 	 */
 	@Override
 	public void createControl() {
-		gmap = AdichatzApplication.getInstance().getFormToolkit().createGMap(parentController.getComposite(), style, toolBarStyle);
+		super.createControl();
+		gmap = toolkit.createGMap(parentController.getComposite(), style, toolBarStyle);
 		gmap.setLayoutData("h 0:64:n, w 0:64:n");
 	}
 

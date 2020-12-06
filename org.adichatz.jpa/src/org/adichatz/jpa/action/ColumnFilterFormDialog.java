@@ -85,7 +85,6 @@ import org.adichatz.engine.common.LogBroker;
 import org.adichatz.engine.controller.collection.ATabularController;
 import org.adichatz.engine.controller.field.AColumnController;
 import org.adichatz.engine.extra.AFormDialog;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.tabular.ColumnViewerFilter;
 import org.adichatz.engine.widgets.supplement.AdiDecimalFormat;
 import org.adichatz.jpa.tabular.JPAControllerPreferenceManager;
@@ -131,9 +130,8 @@ public class ColumnFilterFormDialog<T> extends AFormDialog {
 	/**
 	 * Instantiates a new communication port form dialog.
 	 */
-	public ColumnFilterFormDialog(AdiFormToolkit toolkit, ATabularController<T> tabularController,
-			AColumnController<T> columnController, String title) {
-		super(Display.getCurrent().getActiveShell(), toolkit);
+	public ColumnFilterFormDialog(ATabularController<T> tabularController, AColumnController<T> columnController, String title) {
+		super(Display.getCurrent().getActiveShell());
 		this.tabularController = tabularController;
 		this.columnController = columnController;
 		this.title = title;

@@ -71,7 +71,6 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.field;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AControlController;
 import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.core.ControllerCore;
@@ -110,7 +109,8 @@ public class LabelController extends AControlController {
 	 */
 	@Override
 	public void createControl() {
-		label = AdichatzApplication.getInstance().getFormToolkit().createLabel(parentController.getComposite(), null, style);
+		super.createControl();
+		label = toolkit.createLabel(parentController.getComposite(), null, style);
 	}
 
 	/*

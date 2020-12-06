@@ -160,6 +160,8 @@ public class JPADataAccess extends ADataAccess {
 	/** Store dirty entities (MERGE or REMOVE) */
 	protected Set<JPAEntity<?>> dirtyEntities = new HashSet<>();
 
+	protected Session session;
+
 	/**
 	 * Instantiates a new jPA data access.
 	 * 
@@ -176,6 +178,7 @@ public class JPADataAccess extends ADataAccess {
 		dataCache = new JPADataCache(this);
 		this.gatewayConnector = gatewayConnector;
 		this.beanInterceptorFactory = beanInterceptorFactory;
+		session = AdichatzApplication.getInstance().getContextValue(Session.class);
 	}
 
 	/**
@@ -186,7 +189,6 @@ public class JPADataAccess extends ADataAccess {
 	public IAdiPersistenceManager getPersistenceManager() {
 		if (null == adichatzPersistenceManager)
 			try {
-				Session session = AdichatzApplication.getInstance().getSession();
 				if (null == session) {
 					throw new AdiApplicationServerException(getFromJpaBundle("AS.no.session"));
 				}
@@ -248,7 +250,7 @@ public class JPADataAccess extends ADataAccess {
 
 	private <T> ProxyEntity<T> findImpl(ProxyEntity<T> proxyentity) {
 		try {
-			return getPersistenceManager().find(AdichatzApplication.getInstance().getSession(), proxyentity);
+			return getPersistenceManager().find(session, proxyentity);
 		} catch (AdiApplicationServerException e) {
 			// Display error already done
 		} catch (EntityNotFoundException e) {
@@ -389,8 +391,7 @@ public class JPADataAccess extends ADataAccess {
 			 ************************************************ 
 			 */
 			preSaveEntities();
-			ProxyTransaction proxyTransaction = new ProxyTransaction(AdichatzApplication.getInstance().getSession(),
-					pluginResources.getPluginName());
+			ProxyTransaction proxyTransaction = new ProxyTransaction(session, pluginResources.getPluginName());
 			proxyTransaction.setProxyEntities(proxyEntities);
 			proxyTransaction = getPersistenceManager().saveEntities(proxyTransaction);
 			for (JPAEntity<?> jpaEntity : entityMap.values())
@@ -483,7 +484,8 @@ public class JPADataAccess extends ADataAccess {
 				displayError("Error saving object", e, errorMessage(throwable, null), cause.toString());
 			processed = false;
 		} finally {
-			checkDirty(bindingService);
+			if (null != bindingService)
+				checkDirty(bindingService);
 			ABindingService.setSynchronizing(false);
 		}
 		return processed;
@@ -561,8 +563,7 @@ public class JPADataAccess extends ADataAccess {
 			boolean unlock) {
 		ProxyTransaction proxyTransaction;
 		boolean hasEntities = null != entities && !entities.isEmpty();
-		proxyTransaction = new ProxyTransaction(AdichatzApplication.getInstance().getSession(), pluginResources.getPluginName(),
-				unlock);
+		proxyTransaction = new ProxyTransaction(session, pluginResources.getPluginName(), unlock);
 		if (hasEntities) {
 			List<ProxyEntity<?>> proxyEntities = preRefreshEntities(bindingService, unlock,
 					entities.toArray(new IEntity<?>[entities.size()]));
@@ -687,8 +688,7 @@ public class JPADataAccess extends ADataAccess {
 				}
 		try {
 			List<ProxyEntity<?>> proxyEntities = preRefreshEntities(bindingService, unlock, entities);
-			ProxyTransaction proxyTransaction = new ProxyTransaction(AdichatzApplication.getInstance().getSession(),
-					pluginResources.getPluginName(), unlock);
+			ProxyTransaction proxyTransaction = new ProxyTransaction(session, pluginResources.getPluginName(), unlock);
 			proxyTransaction.setProxyEntities(proxyEntities);
 			proxyTransaction = getPersistenceManager().refreshEntities(proxyTransaction);
 			postRefreshEntitties(bindingService, proxyTransaction, unlock);
@@ -808,8 +808,7 @@ public class JPADataAccess extends ADataAccess {
 							getFromJpaBundle(getMessage(status)), false);
 					return false;
 				}
-				adiLocks.add(new AdiLock(entities[i].getBeanClass(), entities[i].getBeanId(),
-						AdichatzApplication.getInstance().getSession()));
+				adiLocks.add(new AdiLock(entities[i].getBeanClass(), entities[i].getBeanId(), session));
 			}
 		}
 		if (0 == adiLocks.size() || getAdichatzLockManager().lock(adiLocks.toArray(new AdiLock[adiLocks.size()]))) {

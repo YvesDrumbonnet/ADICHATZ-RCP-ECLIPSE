@@ -234,7 +234,7 @@ public class RGBText extends Composite {
 	 * Sets the images.
 	 */
 	protected void setImages() {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		GridData buttonLayout = new GridData();
 		if ("win32".equals(SWT.getPlatform())) {
 			ImageData id = toolkit.getRegisteredImage("IMG_DELETE").getImageData();
@@ -250,7 +250,7 @@ public class RGBText extends Composite {
 		Display display = getDisplay();
 		text.setText((null == value) ? "" : getStringValue());
 		if (null == value)
-			colorChoosertButton.setImage(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImage("IMG_COLOR"));
+			colorChoosertButton.setImage(toolkit.getRegisteredImage("IMG_COLOR"));
 		else {
 			Image colorImage = new Image(display, 16, 16);
 			GC gc = new GC(colorImage);

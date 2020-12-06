@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<navigatorTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Navigator" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/navigatorTree.xsd">
+<navigatorTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Navigator" xsi:noNamespaceSchemaLocation="https://yvesdrumbonnet.github.io/Adichatz-RCP-Update-Site/xsd/generator/navigatorTree.xsd">
     <menu label="#MSG(adichatzJpa,tools)" image="#IMG(adi://org.adichatz.engine.e4/./IMG_TOOL.png)" id="jpaTools">
         <item label="#MSG(adichatzJpa,preferences)" image="#IMG(IMG_PREFERENCE)" id="openPreference">
             <params>

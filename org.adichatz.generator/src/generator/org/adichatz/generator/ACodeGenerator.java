@@ -53,6 +53,9 @@
  *******************************************************************************/
 package org.adichatz.generator;
 
+import static org.adichatz.engine.common.LogBroker.logError;
+import static org.adichatz.generator.common.GeneratorUtil.getFromGeneratorBundle;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -222,10 +225,12 @@ public abstract class ACodeGenerator extends AGenerator {
 	/** The scenario input. */
 	protected ScenarioInput scenarioInput;
 
+	protected Map<String, String> injectMap = new HashMap<>();
+
 	/** The imports. */
 	protected SortedSet<String> imports = new TreeSet<String>();
 
-	/** The static imports. */
+	/** The static importStatics. */
 	protected SortedSet<String> importStatics = new TreeSet<String>();
 
 	/** Buffer code for main class body. */
@@ -299,6 +304,16 @@ public abstract class ACodeGenerator extends AGenerator {
 	 */
 	public SortedSet<String> getImports() {
 		return imports;
+	}
+
+	public String addInjects(String fieldName, String type) {
+		String actualType = injectMap.get(fieldName);
+		if (null != actualType) {
+			if (!type.equals(actualType))
+				logError(getFromGeneratorBundle("bad.inject.type", type, actualType, fieldName));
+		} else
+			injectMap.put(fieldName, type);
+		return getObjectName(type);
 	}
 
 	/**
@@ -464,7 +479,7 @@ public abstract class ACodeGenerator extends AGenerator {
 		return false;
 	}
 
-	public PluginEntity getPluginEntity() {
+	public PluginEntity<?> getPluginEntity() {
 		return scenarioInput.getPluginEntity();
 	}
 

@@ -511,7 +511,7 @@ public class QueryToolInput<T> {
 	public void savePreferenceAs() {
 		SaveAsConfirmContent confirmContent = new SaveAsConfirmContent();
 		confirmFormDialog = new ConfirmFormDialog(Display.getCurrent().getActiveShell(),
-				AdichatzApplication.getInstance().getFormToolkit(), getFromJpaBundle("table.preference.save.as"),
+				getFromJpaBundle("table.preference.save.as"),
 				AdichatzApplication.getInstance().getImage(EngineConstants.JPA_BUNDLE, "IMG_PREFERENCE_NEW.png"), confirmContent) {
 			@Override
 			protected void createButtonsForButtonBar(Composite parent) {
@@ -599,7 +599,7 @@ public class QueryToolInput<T> {
 		controllerPreferenceManager.setActiveRecentPreference(null);
 		getQueryManager().fireListener(IEventType.AFTER_PREFERENCE_CHANGE);
 		tabularController.getViewer().setInput(new QueryResult(Collections.EMPTY_LIST, 0l));
-		AListener.fireListener(tabularController.getListenerMap(), IEventType.REFRESH);
+		AListener.fireListener(tabularController.getListenerMap(), IEventType.AFTER_REFRESH);
 	}
 
 	public JPAControllerPreferenceManager<T> getControllerPreferenceManager() {

@@ -71,13 +71,11 @@
  *******************************************************************************/
 package org.adichatz.jpa.query.action;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.collection.CTabItemController;
 import org.adichatz.engine.controller.nebula.PGroupController;
 import org.adichatz.engine.controller.nebula.PGroupToolItemController;
 import org.adichatz.engine.core.ControllerCore;
 import org.adichatz.engine.data.plain.PlainEntity;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.jpa.query.QueryToolInput;
 import org.adichatz.jpa.xjc.QueryOpenClauseType;
 import org.eclipse.nebula.widgets.pgroup.PGroup;
@@ -96,8 +94,6 @@ public class ValidateOpenClauseItemController extends PGroupToolItemController {
 	/** The open clause ctic. */
 	private CTabItemController openClauseCTIC;
 
-	private AdiFormToolkit toolkit;
-
 	/**
 	 * Instantiates a new validate open clause item controller.
 	 * 
@@ -110,8 +106,6 @@ public class ValidateOpenClauseItemController extends PGroupToolItemController {
 	 */
 	public ValidateOpenClauseItemController(String id, PGroupController parentController, ControllerCore genCode) {
 		super(id, parentController, genCode);
-		toolkit = AdichatzApplication.getInstance().getFormToolkit();
-
 	}
 
 	/*

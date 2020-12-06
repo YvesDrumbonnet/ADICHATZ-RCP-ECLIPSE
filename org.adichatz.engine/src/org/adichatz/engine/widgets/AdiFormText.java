@@ -26,11 +26,13 @@ public class AdiFormText extends FormText {
 	}
 
 	public void addToolkitColor(String key, String registryKey) {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		setColor(key, toolkit.getColors().getColor(registryKey));
 		if (null != AReskinManager.getInstance()) {
 			getRunnables().add(() -> {
-				setColor(key, AdichatzApplication.getInstance().getFormToolkit().getColors().getColor(registryKey));
+				// Reload toolkit due to CSS theme changes
+				AdiFormToolkit toolkit2 = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
+				setColor(key, toolkit2.getColors().getColor(registryKey));
 			});
 		}
 	}

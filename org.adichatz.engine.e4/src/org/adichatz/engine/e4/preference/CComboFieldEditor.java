@@ -1,7 +1,5 @@
 package org.adichatz.engine.e4.preference;
 
-import org.adichatz.engine.common.AdichatzApplication;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ComboViewer;
@@ -23,7 +21,6 @@ public class CComboFieldEditor extends AFieldEditor {
 			Composite parent) {
 		super(id);
 		this.defaultValue = defaultValue;
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		toolkit.createLabel(parent, labelText.concat(0 < labelText.indexOf(':') ? "" : ":"));
 		CCombo ccombo = toolkit.createCCombo(parent, SWT.BORDER);
 		ccombo.addSelectionListener(new SelectionAdapter() {

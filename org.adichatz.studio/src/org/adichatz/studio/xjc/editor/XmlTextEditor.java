@@ -5,6 +5,7 @@ import static org.adichatz.studio.util.StudioUtil.getFromStudioBundle;
 
 import org.adichatz.engine.common.AdiResourceBundle;
 import org.adichatz.engine.common.AdichatzApplication;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.generator.common.GeneratorConstants;
 import org.adichatz.scenario.util.ScenarioUtil;
 import org.eclipse.core.internal.resources.ResourceException;
@@ -61,8 +62,8 @@ public class XmlTextEditor extends StructuredTextEditor implements IFormPage {
 					saveAction.setEnabled(false);
 				}
 			};
-			refreshAction.setImageDescriptor(
-					AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_REFRESH"));
+			AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
+			refreshAction.setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_REFRESH"));
 			refreshAction.setToolTipText(resourceBundle.getValueFromBundle("studio.editor.refreshFormPage"));
 			scrolledForm.getToolBarManager().add(refreshAction);
 
@@ -73,8 +74,7 @@ public class XmlTextEditor extends StructuredTextEditor implements IFormPage {
 					saveAction.setEnabled(false);
 				}
 			};
-			saveAction.setImageDescriptor(
-					AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_SAVE"));
+			saveAction.setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_SAVE"));
 			saveAction.setToolTipText(resourceBundle.getValueFromBundle("studio.editor.save"));
 			saveAction.setEnabled(false);
 			scrolledForm.getToolBarManager().add(saveAction);

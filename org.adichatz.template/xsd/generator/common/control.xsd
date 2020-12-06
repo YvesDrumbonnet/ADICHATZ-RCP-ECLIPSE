@@ -755,6 +755,7 @@
         <xs:restriction base="xs:token">
             <xs:enumeration value="Array"/>
             <xs:enumeration value="String"/>
+            <xs:enumeration value="QUERY"/>
         </xs:restriction>
     </xs:simpleType>
 

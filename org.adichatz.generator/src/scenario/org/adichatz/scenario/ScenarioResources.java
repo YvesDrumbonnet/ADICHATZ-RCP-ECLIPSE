@@ -55,7 +55,6 @@ package org.adichatz.scenario;
 
 import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
 import static org.adichatz.engine.common.LogBroker.logError;
-import static org.adichatz.engine.common.LogBroker.logInfo;
 import static org.adichatz.engine.common.LogBroker.logTrace;
 import static org.adichatz.engine.common.LogBroker.logWarning;
 import static org.adichatz.generator.common.GeneratorUtil.getFromGeneratorBundle;
@@ -64,16 +63,9 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -138,6 +130,7 @@ import org.adichatz.scenario.generation.ComponentGeneration;
 import org.adichatz.scenario.generation.ManifestChanger;
 import org.adichatz.scenario.generation.PojoTypeRewriter;
 import org.adichatz.scenario.impl.PluginEntityScenario;
+import org.adichatz.scenario.util.InFlyClassBuilder;
 import org.adichatz.scenario.util.ScenarioUtil;
 import org.eclipse.core.internal.resources.ResourceException;
 import org.eclipse.core.resources.IContainer;
@@ -161,7 +154,6 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
-import org.eclipse.jdt.internal.compiler.tool.EclipseCompiler;
 import org.eclipse.jface.internal.InternalPolicy;
 import org.eclipse.osgi.container.ModuleLoader;
 import org.eclipse.osgi.internal.framework.EquinoxBundle;
@@ -263,6 +255,9 @@ public class ScenarioResources {
 	/** The xml folder. */
 	private IFolder xmlFolder;
 
+	/** The xml folder. */
+	private IFile scenarioFile;
+
 	/** The gencode folder. */
 	private IFolder gencodeFolder;
 
@@ -363,8 +358,7 @@ public class ScenarioResources {
 	 */
 	public ScenarioResources(IProject project, boolean buildingProject) {
 		this.project = project;
-		IFile scenarioFile = getXmlFolder().getFile(GeneratorConstants.SCENARIO_FILE);
-		initFromProject(scenarioFile, buildingProject);
+		initFromProject(getScenarioFile(), buildingProject);
 		currentStamp = computeCurrentStamp();
 	}
 
@@ -391,8 +385,7 @@ public class ScenarioResources {
 			try {
 				project = ResourcesPlugin.getWorkspace().getRoot().getProject(bundleName);
 				if (project.exists()) {
-					IFile scenarioFile = getXmlFolder().getFile(GeneratorConstants.SCENARIO_FILE);
-					initFromProject(scenarioFile, false);
+					initFromProject(getScenarioFile(), false);
 				} else {
 					bundle = Platform.getBundle(bundleName);
 					if (null != bundle) {
@@ -430,7 +423,6 @@ public class ScenarioResources {
 				loadScenarioTree(scenarioFile.getContents());
 				if (null == pluginPackage)
 					throw new RuntimeException(getFromGeneratorBundle("generation.null.plugin.package", pluginName));
-				scenarioTree.setXmlFile(new File(scenarioFile.getLocation().toOSString()));
 				/*
 				 * Defines entries
 				 */
@@ -493,7 +485,6 @@ public class ScenarioResources {
 					pluginHome + "/" + EngineConstants.XML_FILES_PATH + "/" + GeneratorConstants.SCENARIO_FILE);
 			if (scenarioFile.exists()) {
 				loadScenarioTree(scenarioFile.toURI().toURL().openStream());
-				scenarioTree.setXmlFile(scenarioFile);
 				String gencodeDir = getParam(IScenarioConstants.GENCODE_DIRECTORY);
 				if (null == gencodeDir)
 					gencodeDir = EngineConstants.GENCODE_DIR;
@@ -530,7 +521,6 @@ public class ScenarioResources {
 						logError("cannot start bundle " + bundle.getSymbolicName() + "!", e);
 					}
 				loadScenarioTree(scenarioURL.openStream());
-				scenarioTree.setXmlFile(new File(FileLocator.toFileURL(scenarioURL).getFile()));
 				AdiPluginResources pluginResources = AdichatzApplication.getPluginResources(pluginName);
 
 				ModuleLoader moduleLoader = ((EquinoxBundle) bundle).getModule().getCurrentRevision().getWiring().getModuleLoader();
@@ -597,8 +587,7 @@ public class ScenarioResources {
 	 * Marshal scenario file.
 	 */
 	public void marshalScenarioFile() {
-		IFile scenarioFile = getXmlFolder().getFile(GeneratorConstants.SCENARIO_FILE);
-		ScenarioUtil.createXmlFile(scenarioFile.getLocation().toFile(), getScenarioTree());
+		ScenarioUtil.createXmlFile(getScenarioFile().getLocation().toFile(), getScenarioTree());
 		try {
 			scenarioFile.refreshLocal(IResource.DEPTH_ZERO, null);
 		} catch (CoreException e) {
@@ -614,7 +603,7 @@ public class ScenarioResources {
 	 * @return the long
 	 */
 	private long computeCurrentStamp() {
-		return getXmlFolder().getFile(GeneratorConstants.SCENARIO_FILE).getModificationStamp();
+		return getScenarioFile().getModificationStamp();
 	}
 
 	/**
@@ -1363,7 +1352,7 @@ public class ScenarioResources {
 		BooleanSupplier condition = conditionMap.get(predicate);
 		if (null == condition)
 			try {
-				condition = inFlyBooleanCompile(predicate);
+				condition = new InFlyClassBuilder(this, predicate).evaluateSupplier();
 				conditionMap.put(predicate, condition);
 			} catch (Exception e) {
 				logError(e);
@@ -1372,59 +1361,6 @@ public class ScenarioResources {
 			}
 		inInfly = false;
 		return condition.getAsBoolean();
-	}
-
-	/**
-	 * In fly boolean compile.
-	 *
-	 * @param predicate
-	 *            the predicate
-	 * @return the boolean supplier
-	 * @throws Exception
-	 *             the exception
-	 */
-	public BooleanSupplier inFlyBooleanCompile(String predicate) throws Exception {
-		// Class name must be unique otherwise even when changindg predicate, Class Loader takes old class.
-		String className = "Harmless".concat(String.valueOf(System.currentTimeMillis()).substring(5));
-		logInfo("Compiling new predicate class " + className + ".'");
-		StringBuffer sourceSB = new StringBuffer("import org.adichatz.scenario.ScenarioResources;");
-		sourceSB.append("public class ").append(className).append(" implements java.util.function.BooleanSupplier {");
-		sourceSB.append("private ScenarioResources scenarioResources;");
-		sourceSB.append("public ").append(className)
-				.append("(ScenarioResources scenarioResources){this.scenarioResources=scenarioResources;}");
-		sourceSB.append("public boolean getAsBoolean() {").append(predicate);
-		if (!predicate.endsWith(";"))
-			sourceSB.append(";");
-		sourceSB.append("}}");
-		EclipseCompiler compiler = new EclipseCompiler() {
-			@Override
-			public int run(InputStream in, OutputStream out, OutputStream err, String... arguments) {
-				boolean succeed = new org.eclipse.jdt.internal.compiler.batch.Main(
-						new PrintWriter(new OutputStreamWriter(System.out)), new PrintWriter(new OutputStreamWriter(System.err)),
-						false/* systemExit */, null/* options */, null/* progress */).compile(arguments);
-				return succeed ? 0 : -1;
-			}
-		};
-
-		String binLocation = pluginHome.concat("/resources/build/predicate");
-		File bindDirectory = new File(binLocation);
-		bindDirectory.mkdirs();
-		Path sourcePath = Paths.get(binLocation, className.concat(".java"));
-		try {
-			Files.write(sourcePath, sourceSB.toString().getBytes(StandardCharsets.UTF_8));
-		} catch (IOException e) {
-			logError(e);
-			throw e;
-		}
-		if (null == classPath)
-			loadScenarioParameters();
-
-		String[] commandLine = { "-classpath", classPath, "-1.8", "-nowarn", "-d", binLocation,
-				sourcePath.toFile().getAbsolutePath() };
-		compiler.run(null, null, null, commandLine);
-		gencodePath.getClassPaths().add(bindDirectory);
-		Class<?> clazz = Class.forName(className, true, gencodePath.getClassLoader());
-		return (BooleanSupplier) clazz.getConstructor(ScenarioResources.class).newInstance(this);
 	}
 
 	/**
@@ -1534,6 +1470,12 @@ public class ScenarioResources {
 		if (null == xmlFolder)
 			xmlFolder = getProject().getFolder(EngineConstants.XML_FILES_PATH);
 		return xmlFolder;
+	}
+
+	public IFile getScenarioFile() {
+		if (null == scenarioFile)
+			scenarioFile = getXmlFolder().getFile(GeneratorConstants.SCENARIO_FILE);
+		return scenarioFile;
 	}
 
 	/**

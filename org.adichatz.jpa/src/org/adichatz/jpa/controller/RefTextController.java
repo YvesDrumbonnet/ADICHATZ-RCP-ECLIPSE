@@ -55,7 +55,6 @@ package org.adichatz.jpa.controller;
 
 import org.adichatz.common.ejb.util.IEntityConstants;
 import org.adichatz.engine.common.AdiPluginResources;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.common.Utilities;
 import org.adichatz.engine.contentProvider.QueryContentProvider;
@@ -65,7 +64,6 @@ import org.adichatz.engine.controller.utils.AdiSWT;
 import org.adichatz.engine.core.ControllerCore;
 import org.adichatz.engine.data.ADataAccess;
 import org.adichatz.engine.plugin.ParamMap;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.validation.ABindingService;
 import org.adichatz.engine.widgets.supplement.ButtonItem;
 import org.adichatz.jpa.data.JPAEntity;
@@ -192,7 +190,7 @@ public class RefTextController extends ARefController {
 	@Override
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void createControl() {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		super.createControl();
 		containerComposite = new Composite(parentController.getComposite(), style) {
 			@Override
 			public void setEnabled(boolean enabled) {

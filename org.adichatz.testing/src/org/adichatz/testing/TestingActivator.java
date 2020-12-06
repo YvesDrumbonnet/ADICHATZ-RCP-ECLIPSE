@@ -16,6 +16,7 @@ import org.adichatz.engine.e4.preference.AdiPreferenceManager;
 import org.adichatz.engine.e4.resource.E4SimulationTools;
 import org.adichatz.engine.xjc.MenuPathType;
 import org.adichatz.engine.xjc.NavigatorType;
+import org.adichatz.engine.xjc.NavigatorsType;
 import org.adichatz.testing.xjc.AdichatzTestingTree;
 import org.adichatz.testing.xjc.ClassLoadersType;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
@@ -47,11 +48,12 @@ public class TestingActivator implements BundleActivator {
 				String filters = InstanceScope.INSTANCE.getNode(TestingTools.TESTING_BUNDLE).get(TestingTools.NAVIGATOR_FILTERS,
 						"");
 				FiltersMatcher filterMatchers = new FiltersMatcher(filters);
-				for (NavigatorType navigator : AdichatzApplication.getInstance().getConfigTree().getRcpConfiguration()
-						.getNavigators().getNavigator()) {
-					if (filterMatchers.evaluate(navigator.getId()))
-						navigator.getMenuPath().add(menuPath);
-				}
+				NavigatorsType navigators = AdichatzApplication.getInstance().getContextValue(NavigatorsType.class);
+				if (null != navigators)
+					for (NavigatorType navigator : navigators.getNavigator()) {
+						if (filterMatchers.evaluate(navigator.getId()))
+							navigator.getMenuPath().add(menuPath);
+					}
 				ClassLoadersType classLoaders = testingTree.getClassLoaders();
 				AdiPluginResources applicationPluginResources = AdichatzApplication.getInstance().getApplicationPluginResources();
 				if (!classLoaders.getAdiPluginName().contains(applicationPluginResources.getPluginName()))

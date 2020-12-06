@@ -5,7 +5,9 @@ import static org.adichatz.engine.common.LogBroker.logError;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineConstants;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.simulation.AutomaticResponseManager;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.SWT;
@@ -22,8 +24,12 @@ public class ADialog extends Dialog {
 	/** The scrolled form. */
 	protected Composite skinnedParent;
 
+	/** The toolkit. */
+	protected AdiFormToolkit toolkit;
+
 	protected ADialog(Shell shell) {
 		super(shell);
+		toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 	}
 
 	public void addPostReskinListener(Runnable runnable) {

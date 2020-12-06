@@ -113,6 +113,7 @@ public class MenuActionController extends ACollectionController {
 	 */
 	@Override
 	public void createControl() {
+		super.createControl();
 		if (null == menuAction)
 			menuAction = new MenuAction(this);
 		((ManagedToolBarController) parentController).getToolBarManager().add(menuAction);

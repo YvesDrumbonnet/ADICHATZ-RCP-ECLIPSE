@@ -72,13 +72,11 @@
 package org.adichatz.engine.controller.collection;
 
 import org.adichatz.engine.common.AdiPluginResources;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.ACollectionController;
 import org.adichatz.engine.controller.AWidgetController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.IItemContainerController;
 import org.adichatz.engine.core.ControllerCore;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
@@ -124,7 +122,7 @@ public class CTabFolderController extends ACollectionController implements IItem
 	 */
 	@Override
 	public void createControl() {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		super.createControl();
 		cTabFolder = new CTabFolder(parentController.getComposite(), SWT.FLAT | SWT.TOP);
 		toolkit.paintBordersFor(cTabFolder);
 		toolkit.adapt(cTabFolder, true, true);

@@ -60,8 +60,8 @@ import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineConstants;
 import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.controller.action.ActionController;
-import org.adichatz.engine.controller.collection.MenuManagerController;
 import org.adichatz.engine.controller.collection.ATabularController;
+import org.adichatz.engine.controller.collection.MenuManagerController;
 import org.adichatz.engine.core.ControllerCore;
 import org.adichatz.engine.tabular.ColumnViewerFilter;
 import org.adichatz.jpa.xjc.FilterType;
@@ -107,6 +107,7 @@ public class DisableAllFiltersActionController<T> extends ActionController {
 				tabularController.getControl().setRedraw(true);
 			}
 		};
+		super.createControl();
 		action.setText(getFromEngineBundle("query.disable.all.filters"));
 		action.setToolTipText(getFromEngineBundle("query.disable.all.filters"));
 		action.setImageDescriptor(

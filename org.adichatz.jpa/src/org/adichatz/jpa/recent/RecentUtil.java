@@ -187,7 +187,7 @@ public class RecentUtil {
 	 * @return the user name
 	 */
 	private static String getUserName() {
-		Session session = AdichatzApplication.getInstance().getSession();
+		Session session = AdichatzApplication.getInstance().getContextValue(Session.class);
 		String username;
 		if (null == session)
 			username = "";

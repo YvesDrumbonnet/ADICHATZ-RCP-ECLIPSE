@@ -91,7 +91,6 @@ import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineConstants;
 import org.adichatz.engine.common.ImageManager;
 import org.adichatz.engine.controller.utils.AReskinManager;
-import org.adichatz.engine.e4.resource.E4AdichatzApplication;
 import org.adichatz.engine.e4.resource.EngineE4Util;
 import org.adichatz.testing.tracking.AdiResultListener;
 import org.adichatz.testing.tracking.TestEvent;
@@ -102,6 +101,7 @@ import org.adichatz.testing.xjc.ObjectFactory;
 import org.adichatz.testing.xjc.TestFileType;
 import org.adichatz.testing.xjc.TestNodeType;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.model.application.ui.basic.MBasicFactory;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
@@ -207,7 +207,7 @@ public class TestingTools {
 	}
 
 	public static void activeTestManagerPart() {
-		MPartStack editorPartStack = E4AdichatzApplication.getInstance().getEditorPartStack();
+		MPartStack editorPartStack = (MPartStack) AdichatzApplication.getInstance().getContextValue(EngineE4Util.EDITOR_PARTSTACK);
 		MPart inputPart = null;
 		for (MStackElement element : editorPartStack.getChildren()) {
 			if (element instanceof MPart
@@ -231,7 +231,8 @@ public class TestingTools {
 			editorPartStack.getChildren().add(inputPart);
 		}
 		try {
-			E4AdichatzApplication.getInstance().getContext().get(EPartService.class).showPart(inputPart, PartState.ACTIVATE);
+			AdichatzApplication.getInstance().getContextValue(IEclipseContext.class).get(EPartService.class).showPart(inputPart,
+					PartState.ACTIVATE);
 			((TestingManagerPart) inputPart.getObject()).refresh();
 			inputPart.getTransientData().put(EngineE4Util.NO_SAVE, true);
 		} catch (IllegalStateException e) {

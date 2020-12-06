@@ -69,9 +69,9 @@ import org.adichatz.engine.common.LogBroker;
 import org.adichatz.engine.e4.part.BoundedPart;
 import org.adichatz.engine.e4.preference.AdiPreferenceManager;
 import org.adichatz.engine.extra.IGenerator;
-import org.adichatz.engine.xjc.AdichatzRcpConfigTree;
 import org.adichatz.engine.xjc.MenuPathType;
 import org.adichatz.engine.xjc.NavigatorType;
+import org.adichatz.engine.xjc.NavigatorsType;
 import org.adichatz.generator.common.GeneratorConstants;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
@@ -85,8 +85,6 @@ import org.osgi.framework.BundleContext;
  * The activator class controls the plug-in life cycle.
  */
 public class ToolActivator implements BundleActivator {
-
-	private AdichatzRcpConfigTree configTree;
 
 	/*
 	 * (non-Javadoc)
@@ -110,11 +108,8 @@ public class ToolActivator implements BundleActivator {
 
 		boolean addToolNavigator = InstanceScope.INSTANCE.getNode(GeneratorConstants.TOOL_BUNDLE)
 				.getBoolean(ToolUtil.ADD_TOOL_NAVIGATOR, true);
-		if (addToolNavigator) {
-			configTree = AdichatzApplication.getInstance().getConfigTree();
-			addToolNavigator = null != configTree && null != configTree.getRcpConfiguration()
-					&& null != configTree.getRcpConfiguration().getNavigators();
-		}
+		if (addToolNavigator)
+			addToolNavigator = null != AdichatzApplication.getInstance().getContextValue(NavigatorsType.class);
 
 		if (addToolNavigator) {
 			// Add a Application listener for adding menu to existing navigator following to preerence filters
@@ -128,7 +123,8 @@ public class ToolActivator implements BundleActivator {
 					String filters = InstanceScope.INSTANCE.getNode(GeneratorConstants.TOOL_BUNDLE).get(ToolUtil.NAVIGATOR_FILTERS,
 							"");
 					FiltersMatcher filterMatchers = new FiltersMatcher(filters);
-					for (NavigatorType navigator : configTree.getRcpConfiguration().getNavigators().getNavigator()) {
+					for (NavigatorType navigator : AdichatzApplication.getInstance().getContextValue(NavigatorsType.class)
+							.getNavigator()) {
 						if (filterMatchers.evaluate(navigator.getId()))
 							navigator.getMenuPath().add(menuPath);
 					}

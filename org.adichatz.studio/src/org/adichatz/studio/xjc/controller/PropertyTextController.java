@@ -238,7 +238,6 @@ public class PropertyTextController extends ATextController {
 							}
 						}
 					};
-					getEntity().addEntityListener(propertyListener);
 				}
 			}
 		}

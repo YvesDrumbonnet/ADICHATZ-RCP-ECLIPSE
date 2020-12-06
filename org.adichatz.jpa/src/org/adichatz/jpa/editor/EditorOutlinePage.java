@@ -80,7 +80,6 @@ import org.adichatz.engine.listener.ACoreListener;
 import org.adichatz.engine.listener.AdiEvent;
 import org.adichatz.engine.listener.ControllerEvent;
 import org.adichatz.engine.listener.IEventType;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.renderer.BasicTableRenderer;
 import org.adichatz.engine.validation.ABindingListener;
 import org.adichatz.engine.validation.ABindingService;
@@ -191,7 +190,7 @@ public class EditorOutlinePage extends ABindingOutlinePage implements IControlle
 						final ATabularController<?> tabularController = (ATabularController<?>) event.getController();
 						if (tabularController.getQueryManager().getContentProvider() instanceof EntitySetContentProvider) {
 							final AControlListener controlListener = new AControlListener("#refreshEditorTable#1",
-									IEventType.REFRESH, tabularController) {
+									IEventType.AFTER_REFRESH, tabularController) {
 								@Override
 								public void handleEvent(AdiEvent event) {
 									refresh();
@@ -225,10 +224,9 @@ public class EditorOutlinePage extends ABindingOutlinePage implements IControlle
 	@SuppressWarnings("unchecked")
 	@Override
 	public void createControl(Composite parent) {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		boundedPart = (BoundedPart) editorOutlineInput.getBoundedPart();
 
-		scrolledForm = toolkit.createScrolledForm(parent);
+		scrolledForm = getToolkit().createScrolledForm(parent);
 		ManagedForm managedForm = new ManagedForm(toolkit, scrolledForm);
 		scrolledForm.getBody().setLayout(new MigLayout("wrap 1, ins 0", "grow,fill", "grow,fill"));
 
@@ -253,8 +251,7 @@ public class EditorOutlinePage extends ABindingOutlinePage implements IControlle
 		List<APartNavigation> navigations = boundedPart.getGenCode().getNavigations();
 		if (null != navigations) {
 			for (final APartNavigation navigation : navigations) {
-				final Hyperlink hyperlink = AdichatzApplication.getInstance().getFormToolkit()
-						.createHyperlink(navigationCmp.getControl(), navigation.getName(), SWT.WRAP);
+				final Hyperlink hyperlink = toolkit.createHyperlink(navigationCmp.getControl(), navigation.getName(), SWT.WRAP);
 				hyperlink.setFont(JFaceResources.getBannerFont());
 				hyperlink.addHyperlinkListener(new HyperlinkAdapter() {
 					@Override
@@ -319,25 +316,25 @@ public class EditorOutlinePage extends ABindingOutlinePage implements IControlle
 		});
 
 		for (ABindingService bindingService : boundedPart.getBindingServices()) {
-			bindingService.addBindingListener(new ABindingListener(IEventType.POST_MESSAGE) {
+			bindingService.addBindingListener(new ABindingListener("EditorOutlinePage#POST_MESSAGE", IEventType.POST_MESSAGE) {
 				@Override
 				public void handleEvent(AdiEvent event) {
 					refreshEntities();
 				}
 			});
-			bindingService.addBindingListener(new ABindingListener(IEventType.CHANGE_STATUS) {
+			bindingService.addBindingListener(new ABindingListener("EditorOutlinePage#CHANGE_STATUS", IEventType.CHANGE_STATUS) {
 				@Override
 				public void handleEvent(AdiEvent event) {
 					refreshEntities();
 				}
 			});
-			bindingService.addBindingListener(new ABindingListener(IEventType.ADD_ENTITY) {
+			bindingService.addBindingListener(new ABindingListener("EditorOutlinePage#ADD_ENTITY", IEventType.ADD_ENTITY) {
 				@Override
 				public void handleEvent(AdiEvent event) {
 					refreshEntities();
 				}
 			});
-			bindingService.addBindingListener(new ABindingListener(IEventType.REMOVE_ENTITY) {
+			bindingService.addBindingListener(new ABindingListener("EditorOutlinePage#REMOVE_ENTITY", IEventType.REMOVE_ENTITY) {
 				@Override
 				public void handleEvent(AdiEvent event) {
 					refreshEntities();

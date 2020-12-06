@@ -76,7 +76,6 @@ import static org.adichatz.jpa.extra.JPAUtil.getFromJpaBundle;
 
 import org.adichatz.common.ejb.util.IEntityConstants;
 import org.adichatz.engine.cache.IEntity;
-import org.adichatz.engine.common.AdichatzApplication;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -94,7 +93,7 @@ public class RefreshTableAction extends ATabularAction {
 		String text = getFromJpaBundle("table.refreshTable");
 		setText(text);
 		setToolTipText(text);
-		setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_REFRESH_SET"));
+		setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_REFRESH_SET"));
 	}
 
 	/*

@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineConstants;
 import org.adichatz.engine.extra.IConfirmContent;
 import org.adichatz.engine.renderer.AdiFormToolkit;
@@ -59,7 +58,7 @@ public class FontChooserDialog extends AChooserDialog {
 	private Map<String, CSS2FontPropertiesImpl> selectorFontMap = new HashMap<>();
 
 	public FontChooserDialog(Shell shell, AChooserController chooserController) {
-		super(shell, AdichatzApplication.getInstance().getFormToolkit(), "fontChooser", "xjc/font.png", chooserController);
+		super(shell, "fontChooser", "xjc/font.png", chooserController);
 		confirmContent = getConfirmContent();
 		isColumn = chooserController.getEntity().getBean() instanceof ColumnFieldType;
 	}
@@ -296,7 +295,7 @@ public class FontChooserDialog extends AChooserDialog {
 			private CTabItem createItem(CTabFolder folder, String itemTitle) {
 				CTabItem item = new CTabItem(folder, SWT.NONE);
 				item.setText(resourceBundle.getString(itemTitle));
-				Composite composite = AdichatzApplication.getInstance().getFormToolkit().createComposite(folder);
+				Composite composite = toolkit.createComposite(folder);
 
 				item.setControl(composite);
 				composite.setLayout(new MigLayout("wrap 1, ins 0", "grow,fill"));

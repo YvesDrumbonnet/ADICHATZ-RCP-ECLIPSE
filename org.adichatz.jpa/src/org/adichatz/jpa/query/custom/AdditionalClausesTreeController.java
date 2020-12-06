@@ -62,7 +62,7 @@ import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineConstants;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.controller.IContainerController;
-import org.adichatz.engine.controller.collection.TreeController;
+import org.adichatz.engine.controller.collection.ATreeController;
 import org.adichatz.engine.core.ControllerCore;
 import org.adichatz.engine.viewer.ATreeManager;
 import org.adichatz.jpa.wrapper.QueryParameterWrapper;
@@ -74,7 +74,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.graphics.Image;
 
 // TODO: Auto-generated Javadoc
-public class AdditionalClausesTreeController extends TreeController {
+public class AdditionalClausesTreeController extends ATreeController {
 	private static Image parameterImage = AdichatzApplication.getInstance().getImage(EngineConstants.JPA_BUNDLE,
 			"IMG_PARAMETER.png");
 

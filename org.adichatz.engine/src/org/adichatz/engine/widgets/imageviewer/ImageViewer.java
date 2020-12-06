@@ -171,7 +171,7 @@ public class ImageViewer extends Composite {
 	 *            the image style
 	 */
 	private void createContents(final int imageStyle, final int toolBarStyle) {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		if (0 == (toolBarStyle & AdiSWT.NO_TOOL_BAR)) {
 			toolBar = new ToolBar(this, SWT.HORIZONTAL | SWT.FLAT | SWT.RIGHT_TO_LEFT);
 			setLayout(new MigLayout("wrap 1, gap 0, ins 0", "[grow, fill]", "[][grow, fill]"));
@@ -302,7 +302,8 @@ public class ImageViewer extends Composite {
 
 							@Override
 							protected void createFormContent() {
-								AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+								// Reload necessary due to Reskin process
+								AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 								Composite parent = managedForm.getForm().getBody();
 								parent.setLayout(new MigLayout("wrap", "grow,fill", "[grow,fill][]"));
 								final ImageViewer imageViewer = new ImageViewer(parent, imageType, getStyle(), imageStyle,

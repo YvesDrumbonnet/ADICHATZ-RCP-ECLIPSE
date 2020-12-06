@@ -76,14 +76,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.adichatz.engine.wrapper.ITreeWrapper;
-import org.adichatz.generator.wrapper.internal.IGeneratorEntry;
 import org.adichatz.generator.xjc.EntitySetType;
 import org.adichatz.generator.xjc.EntityTree;
 import org.adichatz.generator.xjc.ManyToManyType;
 import org.adichatz.generator.xjc.OneToManyType;
 import org.adichatz.generator.xjc.PropertyFieldType;
 
-public class EntityTreeWrapper extends EntityTree implements ITreeWrapper, IGeneratorEntry {
+public class EntityTreeWrapper extends EntityTree implements ITreeWrapper {
 	/** The xml file. */
 	File xmlFile;
 

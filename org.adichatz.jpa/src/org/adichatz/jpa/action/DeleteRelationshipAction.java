@@ -59,7 +59,6 @@ import org.adichatz.common.ejb.util.IEntityConstants;
 import org.adichatz.engine.cache.IEntity;
 import org.adichatz.engine.cache.LocalLazyNode;
 import org.adichatz.engine.cache.RelationshipUpdate;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.common.LogBroker;
 import org.adichatz.engine.common.ReflectionTools;
@@ -87,7 +86,7 @@ public class DeleteRelationshipAction extends ATabularAction {
 	public void init() {
 		setText(getFromJpaBundle("table.deleteRelationship"));
 		setToolTipText(getFromJpaBundle("table.deleteRelationshipToolTip"));
-		setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_ENTITY_DELETE"));
+		setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_ENTITY_DELETE"));
 	}
 
 	/*

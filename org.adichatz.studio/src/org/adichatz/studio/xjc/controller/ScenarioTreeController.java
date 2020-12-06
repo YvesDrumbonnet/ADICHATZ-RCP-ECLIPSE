@@ -54,8 +54,9 @@
 package org.adichatz.studio.xjc.controller;
 
 import org.adichatz.engine.common.EngineTools;
+import org.adichatz.engine.common.InjectionInspector;
 import org.adichatz.engine.controller.IContainerController;
-import org.adichatz.engine.controller.collection.TreeController;
+import org.adichatz.engine.controller.collection.ATreeController;
 import org.adichatz.engine.core.ControllerCore;
 import org.adichatz.engine.widgets.LimitedComposite;
 import org.adichatz.generator.wrapper.ScenarioTreeWrapper;
@@ -76,7 +77,7 @@ import net.miginfocom.swt.MigLayout;
 /**
  * The Class XjcTreeController.
  */
-public class ScenarioTreeController extends TreeController {
+public class ScenarioTreeController extends ATreeController {
 
 	protected boolean editableOutlinePage;
 
@@ -98,6 +99,7 @@ public class ScenarioTreeController extends TreeController {
 
 	@Override
 	public void createControl() {
+		InjectionInspector.inject(this);
 		composite = new LimitedComposite(parentController.getComposite(), SWT.NONE);
 		composite.setLayout(new MigLayout("wrap, ins 0", "grow,fill", "[grow,fill]"));
 		composite.setLayoutData("height 200:200:n, w 300:300:n");

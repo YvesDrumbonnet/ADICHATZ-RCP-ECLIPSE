@@ -54,14 +54,12 @@
 package org.adichatz.engine.controller.collection;
 
 import org.adichatz.engine.cache.IEntity;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.ASetController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.utils.AReskinManager;
 import org.adichatz.engine.core.ControllerCore;
 import org.adichatz.engine.listener.AListener;
 import org.adichatz.engine.listener.IEventType;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.viewer.ATreeManager;
 import org.adichatz.engine.viewer.RootElement;
 import org.adichatz.engine.viewer.TreeContentProvider;
@@ -75,9 +73,9 @@ import net.miginfocom.swt.MigLayout;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class TreeController.
+ * The Class ATreeController.
  */
-public class TreeController extends ASetController {
+public abstract class ATreeController extends ASetController {
 
 	/** The tree. */
 	protected Tree tree;
@@ -106,7 +104,7 @@ public class TreeController extends ASetController {
 	 * @param pluginResources
 	 *            the plugin resources
 	 */
-	public TreeController(String id, IContainerController parentController, ControllerCore genCode) {
+	public ATreeController(String id, IContainerController parentController, ControllerCore genCode) {
 		super(id, parentController, genCode);
 		if (null != parentController)
 			this.pluginResources = parentController.getPluginResources();
@@ -116,7 +114,7 @@ public class TreeController extends ASetController {
 	 * Creates the control.
 	 */
 	public void createControl() {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		super.createControl();
 		composite = new LimitedComposite(parentController.getComposite(), containerStyle);
 		composite.setLayout(new MigLayout("wrap, ins 0", "grow,fill", "grow,fill"));
 
@@ -187,7 +185,7 @@ public class TreeController extends ASetController {
 	public void refresh() {
 		tree.setRedraw(false);
 		viewer.setInput(rootElement);
-		AListener.fireListener(listenerMap, IEventType.REFRESH);
+		AListener.fireListener(listenerMap, IEventType.AFTER_REFRESH);
 
 		if (null != levelToExpand)
 			if (-1 == levelToExpand)

@@ -57,6 +57,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.adichatz.engine.common.AdichatzApplication;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 
@@ -68,6 +70,8 @@ public abstract class AOutlinePage implements IOutlinePage {
 
 	/** The outline page listeners. */
 	private List<AOutlineListener> outlinePageListeners = new ArrayList<>();
+
+	protected AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 
 	/**
 	 * Gets the post open part listeners.
@@ -104,6 +108,18 @@ public abstract class AOutlinePage implements IOutlinePage {
 				child.setVisible(false);
 			}
 		}
+	}
+
+	/**
+	 * Gets the toolkit.
+	 *
+	 * @return the toolkit
+	 */
+	public AdiFormToolkit getToolkit() {
+		// toolkit could be dispose due to css theme procecces.
+		if (null == toolkit || toolkit.isDisposed())
+			toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
+		return toolkit;
 	}
 
 	@Override

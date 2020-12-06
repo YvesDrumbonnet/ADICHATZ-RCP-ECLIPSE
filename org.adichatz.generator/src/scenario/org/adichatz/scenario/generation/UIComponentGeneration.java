@@ -95,7 +95,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.adichatz.engine.common.EngineConstants;
 import org.adichatz.engine.common.EngineTools;
-import org.adichatz.engine.wrapper.AdichatzRcpConfigTreeWrapper;
+import org.adichatz.engine.xjc.AdichatzRcpConfigTree;
 import org.adichatz.engine.xjc.LoginTemplateEnum;
 import org.adichatz.engine.xjc.LoginType;
 import org.adichatz.engine.xjc.ParamType;
@@ -250,6 +250,8 @@ public class UIComponentGeneration {
 			new File(pluginHome + "/resources/build").mkdirs();
 			File workFile = new File(pluginHome + "/resources/build/work.product");
 			File targetFile = new File(pluginHome + "/" + pluginName + ".product");
+			logInfo(getFromGeneratorBundle("generation.build.product", targetFile.getName()));
+
 			try {
 				DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -304,139 +306,155 @@ public class UIComponentGeneration {
 
 				Element plugins = doc.createElement("plugins");
 				rootElement.appendChild(plugins);
-				{
-					Version version = Platform.getBundle("org.eclipse.platform").getVersion();
-					Element applicationPlugin = doc.createElement("plugin");
-					ScenarioUtil.addAttrribute(doc, applicationPlugin, "id", pluginName);
-					plugins.appendChild(applicationPlugin);
-					Map<String, Boolean> pluginMap = new HashMap<>();
-					if (version.getMajor() < 4 && version.getMinor() > 10 && version.getMinor() < 14) {
-						pluginMap.put("com.google.inject", false);
-						pluginMap.put("com.google.inject.multibindings", true);
-					}
-					pluginMap.put("com.ibm.icu", false);
-					pluginMap.put("javax.annotation", false);
-					pluginMap.put("javax.inject", false);
+
+				Version version = Platform.getBundle("org.eclipse.platform").getVersion();
+				if (4 != version.getMajor())
+					logError(getFromGeneratorBundle("generation.build.product.invalid.version"));
+				int minor = version.getMinor();
+				Element applicationPlugin = doc.createElement("plugin");
+				ScenarioUtil.addAttrribute(doc, applicationPlugin, "id", pluginName);
+				plugins.appendChild(applicationPlugin);
+				Map<String, Boolean> pluginMap = new HashMap<>();
+				pluginMap.put("com.ibm.icu", false);
+				pluginMap.put("javax.annotation", false);
+				pluginMap.put("javax.inject", false);
+				if (minor < 16)
 					pluginMap.put("javax.xml", false);
-					pluginMap.put("org.adichatz.common", false);
-					pluginMap.put("org.adichatz.css.theme", false);
-					pluginMap.put("org.adichatz.engine", false);
-					pluginMap.put("org.adichatz.engine.e4", false);
-					pluginMap.put("org.adichatz.generator", false);
-					pluginMap.put("org.adichatz.jpa", false);
-					pluginMap.put("org.adichatz.resources", false);
-					pluginMap.put("org.adichatz.testing", false);
-					pluginMap.put("org.adichatz.tool", false);
-					pluginMap.put("org.apache.ant", false);
-					if (version.getMajor() >= 4 && version.getMinor() >= 8)
-						pluginMap.put("org.apache.batik.constants", false);
-					pluginMap.put("org.apache.batik.css", false);
-					if (version.getMajor() >= 4 && version.getMinor() >= 8)
-						pluginMap.put("org.apache.batik.i18n", false);
-					pluginMap.put("org.apache.batik.util", false);
-					// if (version.getMajor() >= 4 && version.getMinor() >= 8)
-					// pluginMap.put("org.apache.batik.util.gui", false);
-					pluginMap.put("org.apache.commons.jxpath", false);
-					if (version.getMajor() >= 4 && version.getMinor() >= 8)
-						pluginMap.put("org.apache.commons.logging", false);
+				pluginMap.put("org.adichatz.common", false);
+				pluginMap.put("org.adichatz.css.theme", false);
+				pluginMap.put("org.adichatz.engine", false);
+				pluginMap.put("org.adichatz.engine.e4", false);
+				pluginMap.put("org.adichatz.generator", false);
+				pluginMap.put("org.adichatz.jpa", false);
+				pluginMap.put("org.adichatz.resources", false);
+				pluginMap.put("org.adichatz.testing", false);
+				pluginMap.put("org.adichatz.tool", false);
+				pluginMap.put("org.apache.ant", false);
+				if (minor >= 8)
+					pluginMap.put("org.apache.batik.constants", false);
+				pluginMap.put("org.apache.batik.css", false);
+				if (minor >= 8)
+					pluginMap.put("org.apache.batik.i18n", false);
+				pluginMap.put("org.apache.batik.util", false);
+				// if (minor >= 8)
+				// pluginMap.put("org.apache.batik.util.gui", false);
+				pluginMap.put("org.apache.commons.jxpath", false);
+				if (minor >= 8)
+					pluginMap.put("org.apache.commons.logging", false);
+				if (minor < 16) {
 					pluginMap.put("org.apache.felix.gogo.command", false);
 					pluginMap.put("org.apache.felix.gogo.runtime", false);
-					pluginMap.put("org.apache.felix.scr", false);
-					if (version.getMajor() >= 4 && version.getMinor() >= 8) {
-						pluginMap.put("org.apache.commons.io", false);
-						pluginMap.put("org.apache.xmlgraphics", false);
-					}
+				}
+				pluginMap.put("org.apache.felix.scr", false);
+				if (minor >= 8) {
+					pluginMap.put("org.apache.commons.io", false);
+					pluginMap.put("org.apache.xmlgraphics", false);
+				}
+				if (minor < 16)
 					pluginMap.put("org.eclipse.compare.core", false);
-					pluginMap.put("org.eclipse.core.commands", false);
-					pluginMap.put("org.eclipse.core.contenttype", false);
-					pluginMap.put("org.eclipse.core.databinding", false);
-					pluginMap.put("org.eclipse.core.databinding.observable", false);
-					pluginMap.put("org.eclipse.core.databinding.property", false);
-					pluginMap.put("org.eclipse.core.expressions", false);
-					pluginMap.put("org.eclipse.core.filesystem", false);
+				pluginMap.put("org.eclipse.core.commands", false);
+				pluginMap.put("org.eclipse.core.contenttype", false);
+				pluginMap.put("org.eclipse.core.databinding", false);
+				if (minor >= 16)
+					pluginMap.put("org.eclipse.core.databinding.beans", false);
+				pluginMap.put("org.eclipse.core.databinding.observable", false);
+				pluginMap.put("org.eclipse.core.databinding.property", false);
+				pluginMap.put("org.eclipse.core.expressions", false);
+				pluginMap.put("org.eclipse.core.filesystem", false);
+				if (minor < 16)
 					pluginMap.put("org.eclipse.core.filesystem.win32.x86_64", true);
-					pluginMap.put("org.eclipse.core.jobs", false);
-					pluginMap.put("org.eclipse.core.resources", false);
+				pluginMap.put("org.eclipse.core.jobs", false);
+				pluginMap.put("org.eclipse.core.resources", false);
+				if (minor < 16)
 					pluginMap.put("org.eclipse.core.resources.win32.x86_64", true);
-					pluginMap.put("org.eclipse.core.runtime", false);
+				pluginMap.put("org.eclipse.core.runtime", false);
+				if (minor < 16)
 					pluginMap.put("org.eclipse.core.variables", false);
-					pluginMap.put("org.eclipse.e4.core.commands", false);
-					pluginMap.put("org.eclipse.e4.core.contexts", false);
-					pluginMap.put("org.eclipse.e4.core.di", false);
-					pluginMap.put("org.eclipse.e4.core.di.annotations", false);
-					pluginMap.put("org.eclipse.e4.core.di.extensions", false);
-					pluginMap.put("org.eclipse.e4.core.di.extensions.supplier", false);
-					pluginMap.put("org.eclipse.e4.core.services", false);
-					pluginMap.put("org.eclipse.e4.emf.xpath", false);
-					pluginMap.put("org.eclipse.e4.ui.bindings", false);
-					pluginMap.put("org.eclipse.e4.ui.css.core", false);
-					pluginMap.put("org.eclipse.e4.ui.css.swt", false);
-					pluginMap.put("org.eclipse.e4.ui.css.swt.theme", false);
-					pluginMap.put("org.eclipse.e4.ui.di", false);
-					if (version.getMajor() >= 4 && version.getMinor() >= 14)
-						pluginMap.put("org.eclipse.e4.ui.dialogs", false);
-					pluginMap.put("org.eclipse.e4.ui.model.workbench", false);
-					pluginMap.put("org.eclipse.e4.ui.services", false);
-					pluginMap.put("org.eclipse.e4.ui.widgets", false);
-					pluginMap.put("org.eclipse.e4.ui.workbench", false);
-					pluginMap.put("org.eclipse.e4.ui.workbench.addons.swt", false);
-					pluginMap.put("org.eclipse.e4.ui.workbench.renderers.swt", false);
-					pluginMap.put("org.eclipse.e4.ui.workbench.swt", false);
-					pluginMap.put("org.eclipse.e4.ui.workbench3", false);
-					pluginMap.put("org.eclipse.emf.common", false);
-					pluginMap.put("org.eclipse.emf.ecore", false);
-					pluginMap.put("org.eclipse.emf.ecore.change", false);
-					pluginMap.put("org.eclipse.emf.ecore.xmi", false);
-					pluginMap.put("org.eclipse.equinox.app", false);
-					pluginMap.put("org.eclipse.equinox.common", false);
-					if (version.getMajor() < 4 || version.getMinor() > 10)
-						pluginMap.put("org.eclipse.equinox.ds", false);
-					pluginMap.put("org.eclipse.equinox.event", false);
-					pluginMap.put("org.eclipse.equinox.preferences", false);
-					pluginMap.put("org.eclipse.equinox.registry", false);
+				pluginMap.put("org.eclipse.e4.core.commands", false);
+				pluginMap.put("org.eclipse.e4.core.contexts", false);
+				pluginMap.put("org.eclipse.e4.core.di", false);
+				pluginMap.put("org.eclipse.e4.core.di.annotations", false);
+				pluginMap.put("org.eclipse.e4.core.di.extensions", false);
+				pluginMap.put("org.eclipse.e4.core.di.extensions.supplier", false);
+				pluginMap.put("org.eclipse.e4.core.services", false);
+				pluginMap.put("org.eclipse.e4.emf.xpath", false);
+				pluginMap.put("org.eclipse.e4.ui.bindings", false);
+				pluginMap.put("org.eclipse.e4.ui.css.core", false);
+				pluginMap.put("org.eclipse.e4.ui.css.swt", false);
+				pluginMap.put("org.eclipse.e4.ui.css.swt.theme", false);
+				pluginMap.put("org.eclipse.e4.ui.di", false);
+				if (minor >= 14)
+					pluginMap.put("org.eclipse.e4.ui.dialogs", false);
+				pluginMap.put("org.eclipse.e4.ui.model.workbench", false);
+				pluginMap.put("org.eclipse.e4.ui.services", false);
+				pluginMap.put("org.eclipse.e4.ui.widgets", false);
+				pluginMap.put("org.eclipse.e4.ui.workbench", false);
+				pluginMap.put("org.eclipse.e4.ui.workbench.addons.swt", false);
+				pluginMap.put("org.eclipse.e4.ui.workbench.renderers.swt", false);
+				pluginMap.put("org.eclipse.e4.ui.workbench.swt", false);
+				pluginMap.put("org.eclipse.e4.ui.workbench3", false);
+				pluginMap.put("org.eclipse.emf.common", false);
+				pluginMap.put("org.eclipse.emf.ecore", false);
+				pluginMap.put("org.eclipse.emf.ecore.change", false);
+				if (minor >= 16)
+					pluginMap.put("org.eclipse.emf.ecore.databinding", false);
+				pluginMap.put("org.eclipse.emf.ecore.xmi", false);
+				pluginMap.put("org.eclipse.equinox.app", false);
+				pluginMap.put("org.eclipse.equinox.common", false);
+				if (minor > 10 && minor < 16)
+					pluginMap.put("org.eclipse.equinox.ds", false);
+				if (minor >= 16)
+					pluginMap.put("org.eclipse.equinox.concurrent", false);
+				pluginMap.put("org.eclipse.equinox.event", false);
+				pluginMap.put("org.eclipse.equinox.preferences", false);
+				pluginMap.put("org.eclipse.equinox.registry", false);
+				if (minor > 10 && minor < 16)
 					pluginMap.put("org.eclipse.equinox.util", false);
-					pluginMap.put("org.eclipse.help", false);
-					pluginMap.put("org.eclipse.jdt.compiler.apt", true);
-					pluginMap.put("org.eclipse.jdt.compiler.tool", true);
-					pluginMap.put("org.eclipse.jdt.core", false);
-					pluginMap.put("org.eclipse.jface", false);
-					pluginMap.put("org.eclipse.jface.databinding", false);
-					pluginMap.put("org.eclipse.jface.text", false);
-					pluginMap.put("org.eclipse.osgi", false);
-					pluginMap.put("org.eclipse.osgi.compatibility.state", true);
-					pluginMap.put("org.eclipse.osgi.services", false);
-					pluginMap.put("org.eclipse.osgi.util", false);
-					pluginMap.put("org.eclipse.swt", false);
-					pluginMap.put("org.eclipse.swt.win32.win32.x86_64", true);
-					pluginMap.put("org.eclipse.text", false);
-					pluginMap.put("org.eclipse.ui", false);
-					pluginMap.put("org.eclipse.ui.forms", false);
-					pluginMap.put("org.eclipse.ui.navigator", false);
-					pluginMap.put("org.eclipse.ui.views", false);
-					pluginMap.put("org.eclipse.ui.views.log", false);
-					pluginMap.put("org.eclipse.ui.workbench", false);
+				pluginMap.put("org.eclipse.help", false);
+				pluginMap.put("org.eclipse.jdt.core", false);
+				pluginMap.put("org.eclipse.jface", false);
+				pluginMap.put("org.eclipse.jface.databinding", false);
+				pluginMap.put("org.eclipse.jface.text", false);
+				pluginMap.put("org.eclipse.osgi", false);
+				pluginMap.put("org.eclipse.osgi.compatibility.state", true);
+				pluginMap.put("org.eclipse.osgi.services", false);
+				pluginMap.put("org.eclipse.osgi.util", false);
+				pluginMap.put("org.eclipse.swt", false);
+				pluginMap.put("org.eclipse.swt.win32.win32.x86_64", true);
+				pluginMap.put("org.eclipse.text", false);
+				pluginMap.put("org.eclipse.ui", false);
+				pluginMap.put("org.eclipse.ui.forms", false);
+				pluginMap.put("org.eclipse.ui.navigator", false);
+				pluginMap.put("org.eclipse.ui.views", false);
+				pluginMap.put("org.eclipse.ui.views.log", false);
+				pluginMap.put("org.eclipse.ui.workbench", false);
+				if (minor > 10 && minor < 16)
 					pluginMap.put("org.eclipse.ui.workbench.texteditor", false);
-					pluginMap.put("org.w3c.css.sac", false);
-					pluginMap.put("org.w3c.dom.events", false);
-					pluginMap.put("org.w3c.dom.smil", false);
-					pluginMap.put("org.w3c.dom.svg", false);
-					if (null != scenarioResources.getScenarioTree().getPathElements()) {
-						for (PathElementType pathElement : ScenarioUtil.getPathElements(scenarioResources,
-								scenarioResources.getScenarioTree().getPathElements().getPathElement())) {
-							if (pathElement.isAddToManifestFile() && (PathElementEnum.PLUGIN == pathElement.getType()
-									|| PathElementEnum.PROJECT == pathElement.getType())) {
-								pluginMap.put(ScenarioUtil.evalLocation(scenarioResources.getBuffer(), pathElement.getLocation()),
-										false);
-							}
+				else
+					pluginMap.put("org.eclipse.urischeme", false);
+
+				pluginMap.put("org.w3c.css.sac", false);
+				pluginMap.put("org.w3c.dom.events", false);
+				pluginMap.put("org.w3c.dom.smil", false);
+				pluginMap.put("org.w3c.dom.svg", false);
+				if (null != scenarioResources.getScenarioTree().getPathElements()) {
+					for (PathElementType pathElement : ScenarioUtil.getPathElements(scenarioResources,
+							scenarioResources.getScenarioTree().getPathElements().getPathElement())) {
+						if (pathElement.isAddToManifestFile() && (PathElementEnum.PLUGIN == pathElement.getType()
+								|| PathElementEnum.PROJECT == pathElement.getType())) {
+							pluginMap.put(ScenarioUtil.evalLocation(scenarioResources.getBuffer(), pathElement.getLocation()),
+									false);
 						}
 					}
-					for (Map.Entry<String, Boolean> entry : pluginMap.entrySet()) {
-						Element plugin = doc.createElement("plugin");
-						ScenarioUtil.addAttrribute(doc, plugin, "id", entry.getKey());
-						if (entry.getValue())
-							ScenarioUtil.addAttrribute(doc, plugin, "fragment", "true");
-						plugins.appendChild(plugin);
-					}
+				}
+				for (Map.Entry<String, Boolean> entry : pluginMap.entrySet()) {
+					Element plugin = doc.createElement("plugin");
+					ScenarioUtil.addAttrribute(doc, plugin, "id", entry.getKey());
+					if (entry.getValue())
+						ScenarioUtil.addAttrribute(doc, plugin, "fragment", "true");
+					plugins.appendChild(plugin);
+				}
+				if (minor >= 13 && minor <= 15) {
 					Element configurations = doc.createElement("configurations");
 					rootElement.appendChild(configurations);
 					addPluginConfigurations(doc, configurations, "org.apache.felix.scr", "2");
@@ -503,7 +521,7 @@ public class UIComponentGeneration {
 			try {
 				configFile.create(new ByteArrayInputStream(new byte[0]), IResource.NONE, monitor);
 				logInfo(getFromGeneratorBundle("generation.build.adichatzRcpConfig"));
-				AdichatzRcpConfigTreeWrapper configTree = new AdichatzRcpConfigTreeWrapper();
+				AdichatzRcpConfigTree configTree = new AdichatzRcpConfigTree();
 
 				RcpConfigurationType configuration = new RcpConfigurationType();
 				configTree.setRcpConfiguration(configuration);

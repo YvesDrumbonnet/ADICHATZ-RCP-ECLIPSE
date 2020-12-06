@@ -81,13 +81,14 @@ import org.adichatz.engine.controller.ACollectionController;
 import org.adichatz.engine.controller.ASetController;
 import org.adichatz.engine.controller.AWidgetController;
 import org.adichatz.engine.controller.collection.ATabularController;
-import org.adichatz.engine.controller.collection.TreeController;
+import org.adichatz.engine.controller.collection.ATreeController;
 import org.adichatz.engine.controller.utils.AReskinManager;
 import org.adichatz.engine.controller.utils.AdiSWT;
 import org.adichatz.engine.data.AEntity;
 import org.adichatz.engine.e4.part.OutlinePart;
 import org.adichatz.engine.plugin.ParamMap;
 import org.adichatz.engine.plugin.PluginEntity;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.tabular.ATabularContentProvider;
 import org.adichatz.engine.widgets.GMap;
 import org.adichatz.engine.widgets.imageviewer.ImageViewer;
@@ -180,7 +181,7 @@ public class KeyWordGenerator extends AGenerator {
 	 */
 	protected void initTypeMap() {
 		typeMap.put(ParamMap.TABULAR_CONTROLLER, ATabularController.class);
-		typeMap.put(ParamMap.TREE_CONTROLLER, TreeController.class);
+		typeMap.put(ParamMap.TREE_CONTROLLER, ATreeController.class);
 		typeMap.put(ParamMap.CONTENT_PROVIDER, ATabularContentProvider.class);
 		typeMap.put(ParamMap.ENTITY, AEntity.class);
 		typeMap.put(IScenarioConstants.PROJECT, IProject.class);
@@ -573,10 +574,10 @@ public class KeyWordGenerator extends AGenerator {
 						bundleKeys = EngineTools.getInstanceKeys(adiImageURI);
 					} catch (AdichatzErrorException e) {
 						if (-1 == adiImageURI.indexOf('.')) {
-							imageBuffer.append(getObjectName(statement.getBufferCode(), AdichatzApplication.class))
-									.append(".getInstance().getFormToolkit().getRegisteredImage")
-									.append(key.equals("IMGDESC") ? "Descriptor" : "").append("(")
-									.append("\"" + adiImageURI + "\")");
+							getClassGenerator(statement.getBufferCode().getGenerator()).addInjects("toolkit",
+									AdiFormToolkit.class.getName());
+							imageBuffer.append("toolkit.getRegisteredImage").append(key.equals("IMGDESC") ? "Descriptor" : "")
+									.append("(").append("\"" + adiImageURI + "\")");
 							return imageBuffer.toString();
 						}
 						bundleKeys = new String[] { statement.getBufferCode().getScenarioResources().getPluginName(), ".",
@@ -1499,6 +1500,9 @@ public class KeyWordGenerator extends AGenerator {
 							case STRING:
 								multiChoiceTypeSB.append("STRING");
 								break;
+							case QUERY:
+								multiChoiceTypeSB.append("QUERY");
+								break;
 							default:
 								throw new RuntimeException(
 										"MultiChoice has no valid type! Usage is <multiChoiceType=\"Array | String\">.");
@@ -2203,8 +2207,8 @@ public class KeyWordGenerator extends AGenerator {
 		if (EngineTools.isHexaColor(expression)) {
 			startString = generator.getObjectName(EngineTools.class) + ".getColorFromHexa(\"" + expression + "\")";
 		} else if (expression.startsWith("IFormColors.")) {
-			startString = generator.getObjectName(AdichatzApplication.class)
-					+ ".getInstance().getFormToolkit().getColors().getColor(";
+			getClassGenerator(generator).addInjects("toolkit", AdiFormToolkit.class.getName());
+			startString = "toolkit.getColors().getColor(";
 			variableString = expression.substring(11);
 			variableString = generator.getObjectName(IFormColors.class) + variableString + ")";
 		} else if (expression.startsWith("SWT.COLOR_")) {
@@ -2406,4 +2410,12 @@ public class KeyWordGenerator extends AGenerator {
 			String expression) {
 		return new Statement(prefix, getter, setter, bufferCode, property, expression).getStatement(this);
 	}
+
+	public AClassGenerator getClassGenerator(ACodeGenerator generator) {
+		ACodeGenerator resultGenerator = generator;
+		while (null != resultGenerator && !(resultGenerator instanceof AClassGenerator))
+			resultGenerator = resultGenerator.getParentGenerator();
+		return (AClassGenerator) resultGenerator;
+	}
+
 }

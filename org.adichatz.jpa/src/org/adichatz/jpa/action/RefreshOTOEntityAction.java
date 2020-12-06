@@ -76,7 +76,6 @@ import static org.adichatz.jpa.extra.JPAUtil.getFromJpaBundle;
 
 import org.adichatz.common.ejb.util.IEntityConstants;
 import org.adichatz.engine.cache.IEntity;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.common.MessageUtility;
 import org.adichatz.engine.validation.ABindingService;
@@ -101,7 +100,7 @@ public class RefreshOTOEntityAction extends AOneToOneAction {
 		String text = getFromJpaBundle("detail.refreshEntity");
 		setText(text);
 		setToolTipText(text);
-		setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_ENTITY_REFRESH"));
+		setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_ENTITY_REFRESH"));
 	}
 
 	@Override

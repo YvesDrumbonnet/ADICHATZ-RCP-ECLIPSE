@@ -67,11 +67,11 @@ import org.adichatz.engine.core.ARootMenuCore;
 import org.adichatz.engine.e4.part.ANavigator;
 import org.adichatz.engine.e4.part.BoundedPart;
 import org.adichatz.engine.e4.part.PartCore;
-import org.adichatz.engine.e4.resource.E4AdichatzApplication;
 import org.adichatz.engine.e4.resource.E4SimulationTools;
+import org.adichatz.engine.e4.resource.EngineE4Util;
 import org.adichatz.engine.xjc.MenuPathType;
 import org.adichatz.engine.xjc.NavigatorType;
-import org.adichatz.engine.xjc.RcpConfigurationType;
+import org.adichatz.engine.xjc.NavigatorsType;
 import org.adichatz.generator.common.GeneratorConstants;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.e4.core.contexts.IEclipseContext;
@@ -120,9 +120,6 @@ public class ToolNavigatorContent extends ARootMenuCore {
 
 	/** The part service. */
 	private EPartService partService;
-
-	/** The editor part stack. */
-	private MPartStack editorPartStack;
 
 	/** The tool menu controller. */
 	private MenuController toolMenuController;
@@ -294,7 +291,9 @@ public class ToolNavigatorContent extends ARootMenuCore {
 					navigator.refreshMenuController(toolMenuController);
 				}
 			} else {
-				if (getEditorPartStack().equals(part.getParent())) {
+				MPartStack editorPartStack = (MPartStack) AdichatzApplication.getInstance()
+						.getContextValue(EngineE4Util.EDITOR_PARTSTACK);
+				if (editorPartStack.equals(part.getParent())) {
 					if (part.getObject() instanceof BoundedPart) {
 						if (!part.getObject().equals(currentPart))
 							updateOpenMenuController(part);
@@ -335,8 +334,8 @@ public class ToolNavigatorContent extends ARootMenuCore {
 	 *            the navigator
 	 */
 	public void createNavigatorController(ANavigator navigator) {
-		RcpConfigurationType rcpConfiguration = AdichatzApplication.getInstance().getConfigTree().getRcpConfiguration();
-		if (null != rcpConfiguration && null != rcpConfiguration.getNavigators()) {
+		NavigatorsType navigators = AdichatzApplication.getInstance().getContextValue(NavigatorsType.class);
+		if (null != navigators) {
 			String navigatorNodeId = "#navigatorController#";
 			if (null == navigatorController) {
 				navigatorController = new MenuController(pluginResources, this, navigatorNodeId,
@@ -372,7 +371,7 @@ public class ToolNavigatorContent extends ARootMenuCore {
 				String navigatorId = ((MPart) navigator.getContext().get(MPartSashContainerElement.class)).getElementId();
 				boolean hideExternalResources = InstanceScope.INSTANCE.getNode(GeneratorConstants.TOOL_BUNDLE)
 						.getBoolean(ToolUtil.HIDE_EXTERNAL_RESOURCES, true);
-				for (NavigatorType navigatorType : rcpConfiguration.getNavigators().getNavigator()) {
+				for (NavigatorType navigatorType : navigators.getNavigator()) {
 					if (navigatorId.equals(navigatorType.getId())) {
 						for (MenuPathType menuPath : navigatorType.getMenuPath()) {
 							if (menuPath.getAdiResourceURI().startsWith("adi://")) {
@@ -516,11 +515,5 @@ public class ToolNavigatorContent extends ARootMenuCore {
 					openPartMenuController.getChildren().add(itemController);
 				}
 			}
-	}
-
-	public MPartStack getEditorPartStack() {
-		if (null == editorPartStack)
-			editorPartStack = E4AdichatzApplication.getInstance().getEditorPartStack();
-		return editorPartStack;
 	}
 }

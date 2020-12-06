@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<includeTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="includeTreeWrapper$$0" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/includeTree.xsd">
+<includeTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="includeTreeWrapper$$0" xsi:noNamespaceSchemaLocation="https://yvesdrumbonnet.github.io/Adichatz-RCP-Update-Site/xsd/generator/includeTree.xsd">
     <managedToolBar id="pageToolBar">
         <action imageDescriptor="#IMGDESC(IMG_REFRESH)" toolTipText="#MSG(adi://org.adichatz.studio/./adichatzStudio, studio.editor.refreshFormPage)" id="refreshScenarioAction">
             <actionCode>import org.adichatz.studio.xjc.data.XjcBindingService;

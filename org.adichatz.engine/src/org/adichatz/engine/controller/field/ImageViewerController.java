@@ -71,7 +71,6 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.field;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AFieldController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.core.ControllerCore;
@@ -175,8 +174,8 @@ public class ImageViewerController extends AFieldController {
 	 */
 	@Override
 	public void createControl() {
-		imageViewer = AdichatzApplication.getInstance().getFormToolkit().createImageViewer(parentController.getComposite(),
-				imageType, style, imageStyle, toolBarStyle);
+		super.createControl();
+		imageViewer = toolkit.createImageViewer(parentController.getComposite(), imageType, style, imageStyle, toolBarStyle);
 		imageViewer.setLayoutData("h 0:64:n, w 0:64:n");
 	}
 

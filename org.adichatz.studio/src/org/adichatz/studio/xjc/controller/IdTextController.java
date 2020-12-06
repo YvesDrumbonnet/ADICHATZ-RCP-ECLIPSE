@@ -59,7 +59,7 @@ import java.util.Set;
 import org.adichatz.common.ejb.util.IEntityConstants;
 import org.adichatz.engine.common.ReflectionTools;
 import org.adichatz.engine.controller.IContainerController;
-import org.adichatz.engine.controller.collection.TreeController;
+import org.adichatz.engine.controller.collection.ATreeController;
 import org.adichatz.engine.controller.field.TextController;
 import org.adichatz.engine.core.ControllerCore;
 import org.adichatz.engine.validation.AValidator;
@@ -102,7 +102,7 @@ public class IdTextController extends TextController {
 	@Override
 	public void initialize() {
 		super.initialize();
-		TreeController treeController = (TreeController) ((XjcEntity<?>) getEntity()).getSetController();
+		ATreeController treeController = (ATreeController) ((XjcEntity<?>) getEntity()).getSetController();
 		if (treeController instanceof XjcTreeController
 				&& !(((XjcBindingService) getBindingService()).getEditor() instanceof InternalTreeFormEditor)) {
 			this.treeController = (XjcTreeController) treeController;

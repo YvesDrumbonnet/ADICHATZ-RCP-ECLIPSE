@@ -71,11 +71,9 @@
  *******************************************************************************/
 package org.adichatz.engine.e4.part;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.core.AContainerCore;
 import org.adichatz.engine.extra.AOutlinePage;
 import org.adichatz.engine.extra.IOutlinePage;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
@@ -103,8 +101,6 @@ public abstract class AMultiOutlinePage extends AOutlinePage {
 	/** The page tab folder. */
 	protected CTabFolder pageTabFolder;
 
-	protected AdiFormToolkit toolkit;
-
 	/**
 	 * Instantiates a new a multi outline page.
 	 *
@@ -122,8 +118,7 @@ public abstract class AMultiOutlinePage extends AOutlinePage {
 	 */
 	@Override
 	public void createControl(Composite parent) {
-		toolkit = AdichatzApplication.getInstance().getFormToolkit();
-		scrolledForm = toolkit.createScrolledForm(parent);
+		scrolledForm = getToolkit().createScrolledForm(parent);
 		scrolledForm.getBody().setLayout(new MigLayout("wrap 1, ins 0", "grow,fill", "grow,fill"));
 		pageTabFolder = new CTabFolder(scrolledForm.getBody(), SWT.BOTTOM | SWT.FLAT);
 		toolkit.adapt(pageTabFolder);

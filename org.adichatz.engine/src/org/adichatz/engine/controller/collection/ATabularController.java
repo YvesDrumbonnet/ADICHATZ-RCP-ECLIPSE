@@ -200,6 +200,7 @@ public abstract class ATabularController<T> extends ASetController {
 	 */
 	@SuppressWarnings("unchecked")
 	public void createControl() {
+		super.createControl();
 		internalCreateControl();
 
 		composite.setLayout(new MigLayout("wrap, ins 0", "grow,fill", "[grow,fill][]"));
@@ -431,10 +432,11 @@ public abstract class ATabularController<T> extends ASetController {
 				if (null != comparator)
 					Collections.sort((List<T>) queryResult.getQueryResultList(), comparator);
 				queryManager.setQueryResult(queryResult);
+				AListener.fireListener(listenerMap, IEventType.BEFORE_REFRESH);
 				viewer.setInput(queryResult);
 				packColumns();
 
-				AListener.fireListener(listenerMap, IEventType.REFRESH);
+				AListener.fireListener(listenerMap, IEventType.AFTER_REFRESH);
 				if (null != sortedTableColumn)
 					sortedTableColumn.sort();
 			}

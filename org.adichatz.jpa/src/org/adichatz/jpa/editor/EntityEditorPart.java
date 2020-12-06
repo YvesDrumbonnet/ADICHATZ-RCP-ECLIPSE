@@ -38,7 +38,7 @@ public class EntityEditorPart extends MultiBoundedPart {
 		editorToolBar = true;
 		if (null != entity) {
 			String checkBeforeOpening = (String) AdichatzApplication.getInstance()
-					.getParam(EngineConstants.CHECK_BEFORE_OPEN_ENTITY_EDITOR);
+					.getContextValue(EngineConstants.CHECK_BEFORE_OPEN_ENTITY_EDITOR);
 			if (null != checkBeforeOpening && "true".equals(checkBeforeOpening.toLowerCase())) {
 				try {
 					((JPADataAccess) entity.getEntityMM().getDataAccess()).getPersistenceManager().find(null,

@@ -101,6 +101,7 @@ import org.adichatz.engine.listener.IEventType;
 import org.adichatz.engine.model.AEntityMetaModel;
 import org.adichatz.engine.model.EntitySet;
 import org.adichatz.engine.model.RefField;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.validation.ABindingService;
 import org.adichatz.engine.validation.EntityBindingDispatcher;
 import org.adichatz.engine.validation.EntityInjection;
@@ -573,7 +574,8 @@ public class EntityDetailPage implements IDetailsPage {
 			public Image getImage(Object element) {
 				if (element instanceof LocalLazyNode) {
 					if (((LocalLazyNode) element).getLazyField() instanceof EntitySet<?>)
-						return AdichatzApplication.getInstance().getFormToolkit().getRegisteredImage("IMG_QUERY");
+						return AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class)
+								.getRegisteredImage("IMG_QUERY");
 					if (((LocalLazyNode) element).getLazyField() instanceof RefField<?>)
 						return AdichatzApplication.getInstance().getImage(GeneratorConstants.TOOL_BUNDLE, "IMG_ENTITY.png");
 					return AdichatzApplication.getInstance().getImage(GeneratorConstants.TOOL_BUNDLE, "IMG_ALL_OBJECT");

@@ -78,7 +78,6 @@ import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.adichatz.engine.extra.AFormDialog;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyleRange;
@@ -130,9 +129,8 @@ public class HyperlinkDialog extends AFormDialog {
 	 * @param styleRange
 	 *            the style range
 	 */
-	public HyperlinkDialog(Shell shell, AdiFormToolkit toolkit, ExtraText extraText, String text, String href,
-			StyleRange styleRange) {
-		super(shell, toolkit);
+	public HyperlinkDialog(Shell shell, ExtraText extraText, String text, String href, StyleRange styleRange) {
+		super(shell);
 		setShellStyle(SWT.APPLICATION_MODAL | SWT.MAX | SWT.RESIZE | getDefaultOrientation());
 		this.text = text;
 		this.href = href;

@@ -41,7 +41,7 @@ public class BoundedPartFatalError {
 
 	private boolean canConsoleBeInhibited() {
 		String inhibitConsoleOnfatalError = (String) AdichatzApplication.getInstance()
-				.getParam(EngineConstants.INHIBIT_CONSOLE_ON_FATAL_ERROR);
+				.getContextValue(EngineConstants.INHIBIT_CONSOLE_ON_FATAL_ERROR);
 		return null != inhibitConsoleOnfatalError && "true".equals(inhibitConsoleOnfatalError.toLowerCase());
 
 	}

@@ -171,7 +171,7 @@ public class PreferenceDialogHandler {
 				getShell().setSize(800, 400);
 				getShell().setText(getFromEngineE4Bundle("adichatz.preferences"));
 				initializeBounds();
-				AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+				AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 				if (null == toolkit)
 					toolkit = new AdiFormToolkit(Display.getCurrent());
 				getShell().setImage(toolkit.getRegisteredImage("IMG_PREFERENCE"));

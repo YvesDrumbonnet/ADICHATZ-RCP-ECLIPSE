@@ -85,6 +85,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.common.FileUtility;
 import org.adichatz.engine.data.GencodePath;
@@ -210,6 +212,13 @@ public abstract class AClassGenerator extends ACodeGenerator {
 			javaClassFile.write("package " + classPackage + ";\n\n");
 
 			addBlocks();
+			if (!injectMap.isEmpty()) {
+				getObjectName(Inject.class);
+				for (Map.Entry<String, String> entry : injectMap.entrySet()) {
+					declarationBuffer.append("@Inject");
+					declarationBuffer.append("protected " + getObjectName(entry.getValue()) + " " + entry.getKey() + ";");
+				}
+			}
 
 			addDeclareURIAnnotation();
 			writeImportClause();

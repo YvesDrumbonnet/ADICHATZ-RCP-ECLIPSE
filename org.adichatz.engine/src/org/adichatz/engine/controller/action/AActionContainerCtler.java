@@ -71,9 +71,12 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.action;
 
+import javax.inject.Inject;
+
 import org.adichatz.engine.controller.AWidgetController;
 import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.core.ControllerCore;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -86,6 +89,9 @@ public abstract class AActionContainerCtler extends AWidgetController {
 
 	/** The action. */
 	protected ActionController actionController;
+
+	@Inject
+	protected AdiFormToolkit toolkit;
 
 	/**
 	 * Instantiates a new a action container controller.

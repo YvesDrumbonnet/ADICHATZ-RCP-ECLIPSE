@@ -74,14 +74,13 @@ package org.adichatz.generator.wrapper;
 import java.io.File;
 
 import org.adichatz.engine.wrapper.ITreeWrapper;
-import org.adichatz.generator.wrapper.internal.IGeneratorEntry;
 import org.adichatz.generator.xjc.TreeManagerTree;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class TreeManagerTreeWrapper.
  */
-public class TreeManagerTreeWrapper extends TreeManagerTree implements ITreeWrapper, IGeneratorEntry {
+public class TreeManagerTreeWrapper extends TreeManagerTree implements ITreeWrapper {
 	/** The tree id. */
 	String treeId;
 

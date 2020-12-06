@@ -125,7 +125,7 @@ public class DeleteOTOEntityAction extends AOneToOneAction {
 	public void init() {
 		setText(getFromJpaBundle("detail.deleteEntity"));
 		setToolTipText(getFromJpaBundle("detail.deleteEntityToolTip"));
-		setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_ENTITY_DELETE"));
+		setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_ENTITY_DELETE"));
 	}
 
 	/*
@@ -191,7 +191,7 @@ public class DeleteOTOEntityAction extends AOneToOneAction {
 							entityManagerController.endLifeCycle();
 							entity.getBeanInterceptor().adi$FireNullEntity();
 							EngineTools.reinitMiglayout(entityManagerController.getComposite());
-							entity.addEntityListener(new AEntityListener(entityManagerController, IEventType.CHANGE_STATUS) {
+							new AEntityListener(entityManagerController, IEventType.CHANGE_STATUS) {
 								@Override
 								public void handleEntityEvent(AdiEntityEvent event) {
 									// Refresh OTO element after cancellation of deletion request
@@ -203,7 +203,7 @@ public class DeleteOTOEntityAction extends AOneToOneAction {
 										EngineTools.reinitMiglayout(entityManagerController.getComposite());
 									}
 								}
-							});
+							};
 
 							EngineTools.openDialog(MessageDialog.INFORMATION, getFromJpaBundle("detail.deleteEntity"),
 									getFromJpaBundle("detail.deleteEntityMessage"));
@@ -246,7 +246,7 @@ public class DeleteOTOEntityAction extends AOneToOneAction {
 				public void handleEvent(AdiEvent event) {
 					IEntity<?> entity = getController().getEntity();
 					if (null != entity && IEntityConstants.PERSIST == entity.getStatus()) {
-						entity.addEntityListener(new AEntityListener(entityManagerController, IEventType.CHANGE_STATUS) {
+						new AEntityListener(entityManagerController, IEventType.CHANGE_STATUS) {
 							@Override
 							public void handleEntityEvent(AdiEntityEvent event) {
 								actionController.setEnabled(enable(entityManagerController.getEntity()));
@@ -254,7 +254,7 @@ public class DeleteOTOEntityAction extends AOneToOneAction {
 									// Direct use of method dispose() throws a ConcurrentModificationException
 									AListener.addListenerToDispose(this);
 							}
-						});
+						};
 					}
 				}
 			};

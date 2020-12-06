@@ -56,7 +56,6 @@ package org.adichatz.engine.e4.part;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.extra.ABindingOutlinePage;
 import org.adichatz.engine.extra.IOutlinePage;
 import org.eclipse.swt.SWT;
@@ -170,7 +169,7 @@ public class OutlinePart extends AAdiBasicPart {
 		 */
 		@Override
 		public void createControl(Composite parent) {
-			composite = AdichatzApplication.getInstance().getFormToolkit().createComposite(parent);
+			composite = getToolkit().createComposite(parent);
 		}
 
 		/*

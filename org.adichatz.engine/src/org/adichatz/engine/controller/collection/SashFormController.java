@@ -71,12 +71,10 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.collection;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AEntityManagerController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.IControlController;
 import org.adichatz.engine.core.ControllerCore;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.widgets.Composite;
@@ -103,7 +101,7 @@ public class SashFormController extends AEntityManagerController implements ICon
 
 	@Override
 	public void createControl() {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		super.createControl();
 		sashForm = new SashForm(parentController.getComposite(), style);
 		toolkit.adapt(sashForm);
 		sashForm.setSashWidth(5);

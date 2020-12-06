@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.generator.tree.ATreeChild;
 import org.adichatz.generator.tree.AXjcTreeElement;
 import org.adichatz.generator.xjc.ElementType;
@@ -21,7 +22,7 @@ public abstract class AXjcTreeChild extends ATreeChild {
 
 	private static Color getHyperLinkColor() {
 		if (null == HYPER_LINK_COLOR)
-			HYPER_LINK_COLOR = AdichatzApplication.getInstance().getFormToolkit().getColors()
+			HYPER_LINK_COLOR = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class).getColors()
 					.getColor(JFacePreferences.ACTIVE_HYPERLINK_COLOR);
 		return HYPER_LINK_COLOR;
 	}

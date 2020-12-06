@@ -71,7 +71,6 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.field;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AControlController;
 import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.core.ControllerCore;
@@ -110,8 +109,8 @@ public class CompositeSeparatorController extends AControlController {
 	 */
 	@Override
 	public void createControl() {
-		compositeSeparator = AdichatzApplication.getInstance().getFormToolkit()
-				.createCompositeSeparator(parentController.getComposite());
+		super.createControl();
+		compositeSeparator = toolkit.createCompositeSeparator(parentController.getComposite());
 	}
 
 	/*

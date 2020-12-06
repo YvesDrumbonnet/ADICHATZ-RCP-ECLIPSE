@@ -95,8 +95,8 @@ public abstract class ABindingListener extends AListener {
 	 * @param eventType
 	 *            the event type
 	 */
-	public ABindingListener(int eventType) {
-		super(null, eventType);
+	public ABindingListener(String id, int eventType) {
+		super(id, eventType);
 	}
 
 	/*

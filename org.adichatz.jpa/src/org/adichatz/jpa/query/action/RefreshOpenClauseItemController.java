@@ -74,7 +74,6 @@ package org.adichatz.jpa.query.action;
 import static org.adichatz.jpa.extra.JPAUtil.getFromJpaBundle;
 
 import org.adichatz.engine.cache.IEntity;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.controller.AEntityManagerController;
 import org.adichatz.engine.controller.collection.ATabularController;
@@ -82,7 +81,6 @@ import org.adichatz.engine.controller.collection.CTabItemController;
 import org.adichatz.engine.controller.nebula.PGroupController;
 import org.adichatz.engine.controller.nebula.PGroupToolItemController;
 import org.adichatz.engine.core.ControllerCore;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.viewer.NativeContentProvider;
 import org.adichatz.jpa.extra.JPAUtil;
 import org.adichatz.jpa.query.custom.OpenClauseParameterTableController;
@@ -129,7 +127,7 @@ public class RefreshOpenClauseItemController extends PGroupToolItemController {
 		super.createControl();
 		String text = getFromJpaBundle("query.openClause.refresh");
 		getControl().setToolTipText(text);
-		getControl().setImage(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImage("IMG_ENTITY_REFRESH"));
+		getControl().setImage(toolkit.getRegisteredImage("IMG_ENTITY_REFRESH"));
 		openParameterGroup = (PGroupController) parentController;
 	}
 
@@ -177,7 +175,6 @@ public class RefreshOpenClauseItemController extends PGroupToolItemController {
 		// Use JPAUtil.getChild rather than getFromRegister: several controllers may have same id possible (one per openClause)
 		openParameterTable.validateOpenClause((QueryOpenClauseWrapper) openParameterGroup.getEntity().getBean());
 		QueryOpenClauseType openClause = (QueryOpenClauseType) openParameterGroup.getEntity().getBean();
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		((CTabItemController) parentController.getParentController()).getItem().setImage(
 				openClause.isValid() ? toolkit.getRegisteredImage("IMG_ACCEPT") : toolkit.getRegisteredImage("IMG_CANCEL"));
 	}

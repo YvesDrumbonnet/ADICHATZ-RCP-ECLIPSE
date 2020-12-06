@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<containerTree xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/tree/containerTree.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<containerTree xsi:noNamespaceSchemaLocation="https://yvesdrumbonnet.github.io/Adichatz-RCP-Update-Site/xsd/generator/tree/containerTree.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<group id="applicationServerGroup" text="#MSG(adichatzStudio, scenario.applicationServer.group)" font="#FONT(JFaceResources.BANNER_FONT)" background="#COLOR(IFormColors.H_GRADIENT_START)" layoutData="h 0:n:n, w 0:n:n">
 		<layout layoutConstraints="wrap 2" columnConstraints="[]15[grow,fill]" rowConstraints="[]2[]"/>
 		<label id="nameLBL" text="#MSG(adichatzStudio, scenario.applicationServer.name)"  background="#COLOR(IFormColors.H_GRADIENT_START)"/>

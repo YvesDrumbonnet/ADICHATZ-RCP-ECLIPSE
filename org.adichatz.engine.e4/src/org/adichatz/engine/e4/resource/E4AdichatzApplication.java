@@ -81,41 +81,36 @@ import org.adichatz.common.ejb.util.IEntityConstants;
 import org.adichatz.engine.common.AdiPluginResources;
 import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineConstants;
+import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.common.LogBroker;
 import org.adichatz.engine.common.ReflectionTools;
-import org.adichatz.engine.controller.menu.NavigatorPath;
-import org.adichatz.engine.e4.handler.PerspectiveSwitchHandler;
 import org.adichatz.engine.e4.part.AdiConsole;
 import org.adichatz.engine.e4.part.BoundedPart;
 import org.adichatz.engine.e4.part.OutlinePart;
 import org.adichatz.engine.extra.IOutlineContainerPart;
 import org.adichatz.engine.plugin.ParamMap;
 import org.adichatz.engine.query.AQueryManager;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.widgets.GMap;
-import org.adichatz.engine.wrapper.AdichatzRcpConfigTreeWrapper;
 import org.adichatz.engine.xjc.AdichatzRcpConfigTree;
 import org.adichatz.engine.xjc.LoginType;
-import org.adichatz.engine.xjc.NavigatorType;
+import org.adichatz.engine.xjc.NavigatorsType;
 import org.adichatz.engine.xjc.ParamType;
 import org.adichatz.engine.xjc.RcpConfigurationType;
 import org.eclipse.core.commands.Command;
 import org.eclipse.core.commands.ParameterizedCommand;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.e4.core.commands.ECommandService;
 import org.eclipse.e4.core.commands.EHandlerService;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.css.swt.theme.IThemeEngine;
 import org.eclipse.e4.ui.model.application.MApplication;
-import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
-import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.menu.impl.HandledToolItemImpl;
 import org.eclipse.e4.ui.model.application.ui.menu.impl.ToolBarImpl;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
-import org.eclipse.e4.ui.workbench.modeling.EPartService;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.internal.InternalPolicy;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -164,20 +159,6 @@ public class E4AdichatzApplication extends AdichatzApplication {
 	 * end S T A T I C
 	 */
 
-	/** The context. */
-	protected IEclipseContext context;
-
-	/** The application (Rcp E4). */
-	protected MApplication application;
-
-	/** The display. */
-	protected Display display;
-
-	/** The editor part stack. */
-	protected MPartStack editorPartStack;
-
-	protected MPerspectiveStack perspectiveStack;
-
 	/** The save tool item. */
 	private HandledToolItemImpl saveToolItem;
 
@@ -193,12 +174,7 @@ public class E4AdichatzApplication extends AdichatzApplication {
 	/** The active part. */
 	private Object activePart;
 
-	private MPerspective consolePerspective;
-
 	protected Map<BoundedPart, Object> openPartMap = new HashMap<>();
-
-	/** The login. */
-	private LoginType login;
 
 	public E4AdichatzApplication(AdichatzApplication oldAA, AdiPluginResources pluginResources) {
 		super();
@@ -208,22 +184,12 @@ public class E4AdichatzApplication extends AdichatzApplication {
 			earlyStartupHooks.addAll(oldAA.getEarlyStartupHooks());
 		}
 		setApplicationPluginResources(pluginResources);
+		// Force plugin resources to be initialized if not already loaded.
+		AdichatzApplication.getPluginResources(EngineConstants.ENGINE_BUNDLE);
+		String gencodePackage = popContextValue(EngineConstants.GENCODE_PACKAGE);
+		new AdiPluginResources(EngineConstants.ENGINE_E4_BUNDLE, EngineConstants.ENGINE_E4_BUNDLE, gencodePackage,
+				getClass().getClassLoader());
 		loadRcpConfigTree();
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adichatz.engine.common.AdichatzApplication#getFormToolkit()
-	 */
-	@Override
-	public AdiFormToolkit getFormToolkit() {
-		if (null == formToolkit) {
-			if (null == display)
-				display = Display.getCurrent();
-			formToolkit = new AdiFormToolkit(display);
-		}
-		return formToolkit;
 	}
 
 	/**
@@ -235,13 +201,10 @@ public class E4AdichatzApplication extends AdichatzApplication {
 	 *            the context
 	 */
 	public void initToolbar(MApplication application, IEclipseContext context) {
-		this.context = context;
-		this.application = application;
-		editorPartStack = (MPartStack) context.get(EModelService.class).find(PerspectiveProcessor.EDITOR_PARTSTACK, application);
-		perspectiveStack = (MPerspectiveStack) context.get(EModelService.class).find(PerspectiveProcessor.PERSPECTIVE_STACK,
-				application);
-		this.display = context.get(Display.class);
+		applContext.put(IEclipseContext.class.getName(), context.getActiveLeaf());
 		EModelService modelService = context.get(EModelService.class);
+		applContext.put(EngineE4Util.EDITOR_PARTSTACK, modelService.find(EngineE4Util.EDITOR_PARTSTACK, application));
+		applContext.put(MPerspectiveStack.class.getName(), modelService.find(EngineE4Util.PERSPECTIVE_STACK, application));
 		toolbar = (ToolBarImpl) modelService.find("adichatz.editor.toolbar", application);
 		saveToolItem = (HandledToolItemImpl) modelService.find("adichatz.editor.save.toolItem", application);
 		saveToolItem.setTooltip(getFromEngineE4Bundle("adichatz.save.editor"));
@@ -308,147 +271,75 @@ public class E4AdichatzApplication extends AdichatzApplication {
 		}
 	}
 
-	/**
-	 * Gets the context.
-	 *
-	 * @return the context
-	 */
-	public IEclipseContext getContext() {
-		return context.getActiveLeaf();
-	}
-
-	/**
-	 * Gets the editor part stack.
-	 *
-	 * @return the editor part stack
-	 */
-	public MPartStack getEditorPartStack() {
-		return editorPartStack;
-	}
-
-	/**
-	 * Gets the perspective stack.
-	 *
-	 * @return the perspective stack
-	 */
-	public MPerspectiveStack getPerspectiveStack() {
-		return perspectiveStack;
-	}
-
-	public MPerspective getCurrentPerspective() {
-		return perspectiveStack.getSelectedElement();
-	}
-
-	public MPerspective getConsolePerspective() {
-		if (null == consolePerspective) {
-			MPerspectiveStack perspectiveStack = (MPerspectiveStack) context.get(EModelService.class)
-					.find(PerspectiveProcessor.PERSPECTIVE_STACK, application);
-			for (MPerspective perspective : perspectiveStack.getChildren())
-				if (PerspectiveProcessor.CONSOLE_PERSPECTIVE.equals(perspective.getElementId())) {
-					consolePerspective = perspective;
-					break;
-				}
-		}
-		return consolePerspective;
-	}
-
 	public Map<BoundedPart, Object> getOpenPartMap() {
 		return openPartMap;
-	}
-
-	public void setConsolePerspective(MPerspective consolePerspective) {
-		this.consolePerspective = consolePerspective;
-	}
-
-	public void switchToConsolePerspective() {
-		if (null != perspectiveStack && !getCurrentPerspective().equals(getConsolePerspective())) {
-			new PerspectiveSwitchHandler().switchPerspective(application.getContext().get(EPartService.class), consolePerspective);
-		}
 	}
 
 	/**
 	 * Load config tree (only when called from RCP context).
 	 *
-	 * @param pluginResources
-	 *            the plugin resources
-	 * @param display
-	 *            the display
 	 */
-	public void loadRcpConfigTree() {
-		if (null == configTree) {
-			configTree = (AdichatzRcpConfigTree) applicationPluginResources.getConfigTree("AdichatzRcpConfig.xml", true);
-			if (null == configTree)
-				configTree = new AdichatzRcpConfigTreeWrapper();
+	private void loadRcpConfigTree() {
 
-			// Put default values
-			applicationParamMap.put(EngineConstants.DEFAULT_REF_TEXT_POPUP_URI, "adi://org.adichatz.jpa/common/DefaultRefText");
-			RcpConfigurationType rcpConfiguration = configTree.getRcpConfiguration();
-			if (null == rcpConfiguration) {
-				rcpConfiguration = new RcpConfigurationType();
-				configTree.setRcpConfiguration(rcpConfiguration);
-				ParamType param = new ParamType();
-				param.setId(EngineConstants.DEFAULT_QUERY_MAX_RESULT);
-				param.setValue("50");
-				rcpConfiguration.getParam().add(param);
+		AdichatzRcpConfigTree configTree = (AdichatzRcpConfigTree) applicationPluginResources.getConfigTree("AdichatzRcpConfig.xml",
+				true);
+		if (null == configTree)
+			configTree = new AdichatzRcpConfigTree();
 
-				param = new ParamType();
-				param.setId(EngineConstants.DEFAULT_REF_TEXT_POPUP_URI);
-				param.setValue("adi://org.adichatz.jpa/common/DefaultRefText");
-				rcpConfiguration.getParam().add(param);
-
-				param = new ParamType();
-				param.setId(EngineConstants.INTRO_PART_URI);
-				param.setValue("bundleclass://org.adichatz.engine/org.adichatz.engine.intro.DefaultIntroPanel");
-				rcpConfiguration.getParam().add(param);
-
-				param = new ParamType();
-				param.setId(EngineConstants.INTRO_OUTLINE_URI);
-				param.setValue("bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.resource.RecentOutlinePage");
-				rcpConfiguration.getParam().add(param);
-			}
-		}
-	}
-
-	public void loadRcpConfigTree(AdiPluginResources pluginResources, Display display) {
+		// Put default values
+		applContext.put(EngineConstants.DEFAULT_REF_TEXT_POPUP_URI, "adi://org.adichatz.jpa/common/DefaultRefText");
 		RcpConfigurationType rcpConfiguration = configTree.getRcpConfiguration();
-		for (ParamType param : rcpConfiguration.getParam())
-			if (param.getId().equals(EngineConstants.DEFAULT_QUERY_MAX_RESULT))
-				AQueryManager.DEFAULT_MAX_RESULTS = Integer.parseInt(param.getValue());
-			else if (param.getId().equals(EngineConstants.ADICHATZ_GMAP_API_KEY)) {
-				GMap.GMAP_API_KEY = param.getValue();
-			} else if (param.getId().equals(EngineConstants.INTRO_OUTLINE_URI)) {
-				try {
-					ReflectionTools.instantiateURI(param.getValue(), null, null);
-				} catch (Exception e) {
-					LogBroker.logError(e);
-				}
-			} else if (param.getId().equals(EngineConstants.ADICHATZ_AVOIDED_MESSAGES)) {
-				StringTokenizer tokenizer = new StringTokenizer(param.getValue(), ",");
-				while (tokenizer.hasMoreTokens()) {
-					AdiConsole.AVOIDED_MESSAGES.add(tokenizer.nextToken().trim());
-				}
-			} else
-				applicationParamMap.put(param.getId(), param.getValue());
-		if (null != rcpConfiguration.getNavigators()) {
-			for (NavigatorType navigator : rcpConfiguration.getNavigators().getNavigator()) {
-				navigatorMap.put(navigator.getId(), new NavigatorPath(navigator.getMenuPath()));
-			}
-		}
-		if (InternalPolicy.OSGI_AVAILABLE)
-			login = configTree.getLogin();
-	}
+		if (null == rcpConfiguration) {
+			rcpConfiguration = new RcpConfigurationType();
+			configTree.setRcpConfiguration(rcpConfiguration);
+			ParamType param = new ParamType();
+			param.setId(EngineConstants.DEFAULT_QUERY_MAX_RESULT);
+			param.setValue("50");
+			rcpConfiguration.getParam().add(param);
 
-	/**
-	 * Gets the login.
-	 * 
-	 * @return the login
-	 */
-	public LoginType getLogin() {
-		return login;
+			param = new ParamType();
+			param.setId(EngineConstants.DEFAULT_REF_TEXT_POPUP_URI);
+			param.setValue("adi://org.adichatz.jpa/common/DefaultRefText");
+			rcpConfiguration.getParam().add(param);
+
+			param = new ParamType();
+			param.setId(EngineConstants.INTRO_PART_URI);
+			param.setValue("bundleclass://org.adichatz.engine/org.adichatz.engine.intro.DefaultIntroPanel");
+			rcpConfiguration.getParam().add(param);
+
+			param = new ParamType();
+			param.setId(EngineConstants.INTRO_OUTLINE_URI);
+			param.setValue("bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.resource.RecentOutlinePage");
+			rcpConfiguration.getParam().add(param);
+		} else {
+			for (ParamType param : rcpConfiguration.getParam())
+				if (param.getId().equals(EngineConstants.DEFAULT_QUERY_MAX_RESULT))
+					AQueryManager.DEFAULT_MAX_RESULTS = Integer.parseInt(param.getValue());
+				else if (param.getId().equals(EngineConstants.ADICHATZ_GMAP_API_KEY)) {
+					GMap.GMAP_API_KEY = param.getValue();
+				} else if (param.getId().equals(EngineConstants.INTRO_OUTLINE_URI)) {
+					try {
+						ReflectionTools.instantiateURI(param.getValue(), null, null);
+					} catch (Exception e) {
+						LogBroker.logError(e);
+					}
+				} else if (param.getId().equals(EngineConstants.ADICHATZ_AVOIDED_MESSAGES)) {
+					StringTokenizer tokenizer = new StringTokenizer(param.getValue(), ",");
+					while (tokenizer.hasMoreTokens()) {
+						AdiConsole.AVOIDED_MESSAGES.add(tokenizer.nextToken().trim());
+					}
+				} else
+					applContext.put(param.getId(), param.getValue());
+			if (null != rcpConfiguration.getNavigators())
+				applContext.put(NavigatorsType.class.getName(), rcpConfiguration.getNavigators());
+			if (InternalPolicy.OSGI_AVAILABLE)
+				applContext.put(LoginType.class.getName(), configTree.getLogin());
+		}
 	}
 
 	@Override
 	public void reapplyStyles(Control control) {
+		IEclipseContext context = getContextValue(IEclipseContext.class);
 		if (null != context) {
 			IThemeEngine themeEngine = context.get(IThemeEngine.class);
 			if (null != themeEngine)
@@ -456,7 +347,13 @@ public class E4AdichatzApplication extends AdichatzApplication {
 		}
 	}
 
-	public Object getActivePart() {
-		return activePart;
+	protected Object injectValue(String key) {
+		if (MPerspectiveStack.class.getName().equals(key)) {
+			String location = Platform.getLocation().toString();
+			EngineTools.openDialog(MessageDialog.ERROR, getFromEngineE4Bundle("invalid.run.configuration.title"),
+					getFromEngineE4Bundle("invalid.run.configuration.content", location,
+							location.concat("/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi")));
+		}
+		return super.injectValue(key);
 	}
 }

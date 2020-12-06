@@ -71,7 +71,9 @@
  *******************************************************************************/
 package org.adichatz.engine.extra;
 
-import org.adichatz.engine.common.AdichatzApplication;
+import javax.inject.Inject;
+
+import org.adichatz.engine.common.InjectionInspector;
 import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
@@ -94,12 +96,15 @@ public abstract class AFormWindow extends Window {
 	/** The managed form. */
 	protected ManagedForm managedForm;
 
+	@Inject
+	protected AdiFormToolkit toolkit;
+
 	/**
-	 * Instantiates a new a form window.
-	 * 
-	 * @param parentShell
-	 *            the parent shell
-	 */
+		 * Instantiates a new a form window.
+		 * 
+		 * @param parentShell
+		 *            the parent shell
+		 */
 	public AFormWindow(Shell parentShell) {
 		this(parentShell, SWT.APPLICATION_MODAL | SWT.MAX | SWT.RESIZE | getDefaultOrientation());
 	}
@@ -108,6 +113,7 @@ public abstract class AFormWindow extends Window {
 		super(parentShell);
 		setShellStyle(style);
 		setBlockOnOpen(true);
+		InjectionInspector.inject(this);
 	}
 
 	/*
@@ -117,7 +123,6 @@ public abstract class AFormWindow extends Window {
 	 */
 	@Override
 	protected Control createContents(Composite parent) {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		scrolledForm = toolkit.createScrolledForm(parent);
 		scrolledForm.setLayoutData(new GridData(GridData.FILL_BOTH));
 		managedForm = new ManagedForm(toolkit, scrolledForm);

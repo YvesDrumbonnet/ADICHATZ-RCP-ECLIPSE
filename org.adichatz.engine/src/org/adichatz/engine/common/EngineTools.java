@@ -100,6 +100,7 @@ import org.adichatz.common.encoding.ClassLoaderObjectInputStream;
 import org.adichatz.engine.controller.AWidgetController;
 import org.adichatz.engine.controller.IRankedController;
 import org.adichatz.engine.extra.AdiMessageDialog;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.xjc.ObjectFactory;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -251,7 +252,8 @@ public class EngineTools {
 	 */
 	public static Image getCheckedImage() {
 		if (null == CHECKED_IMAGE)
-			CHECKED_IMAGE = AdichatzApplication.getInstance().getFormToolkit().getRegisteredImage("IMG_CHECKED");
+			CHECKED_IMAGE = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class)
+					.getRegisteredImage("IMG_CHECKED");
 		return CHECKED_IMAGE;
 	}
 
@@ -262,7 +264,8 @@ public class EngineTools {
 	 */
 	public static Image getUncheckedImage() {
 		if (null == UNCHECKED_IMAGE)
-			UNCHECKED_IMAGE = AdichatzApplication.getInstance().getFormToolkit().getRegisteredImage("IMG_UNCHECKED");
+			UNCHECKED_IMAGE = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class)
+					.getRegisteredImage("IMG_UNCHECKED");
 		return UNCHECKED_IMAGE;
 	}
 
@@ -459,7 +462,6 @@ public class EngineTools {
 		try {
 			FileOutputStream xmlFileFOS = new FileOutputStream(file);
 			createXmlFile(xmlFileFOS, treeWrapper, schemaLocation);
-			xmlFileFOS.close();
 		} catch (IOException e) {
 			logError(e);
 		}
@@ -482,28 +484,7 @@ public class EngineTools {
 			if (null != schemaLocation)
 				m.setProperty(Marshaller.JAXB_NO_NAMESPACE_SCHEMA_LOCATION, schemaLocation);
 			m.marshal(treeWrapper, outputStream);
-		} catch (JAXBException e) {
-			logError(e);
-		}
-	}
-
-	/**
-	 * Creates the xml file.
-	 * 
-	 * @param xmlFileFOS     the xml file fos
-	 * @param treeWrapper    the tree wrapper
-	 * @param schemaLocation the schema location
-	 */
-	public static void createXmlFile(FileOutputStream xmlFileFOS, Object treeWrapper, String schemaLocation) {
-		try {
-			JAXBContext context = JAXBContext.newInstance(EngineTools.getChildXjcClass(treeWrapper));
-
-			Marshaller m = context.createMarshaller();
-			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			if (null != schemaLocation)
-				m.setProperty(Marshaller.JAXB_NO_NAMESPACE_SCHEMA_LOCATION, schemaLocation);
-			m.marshal(treeWrapper, xmlFileFOS);
-			xmlFileFOS.close();
+			outputStream.close();
 		} catch (IOException | JAXBException e) {
 			logError(e);
 		}
@@ -1078,7 +1059,7 @@ public class EngineTools {
 			int endIndex = param.indexOf(')', beginIndex);
 			if (-1 < endIndex) {
 				String key = param.substring(beginIndex + 7, endIndex);
-				String value = (String) AdichatzApplication.getInstance().getApplicationParamMap().get(key);
+				String value = (String) AdichatzApplication.getInstance().getContextValue(key);
 				if (null != value) {
 					StringBuffer paramSB = new StringBuffer();
 					if (beginIndex > 0)

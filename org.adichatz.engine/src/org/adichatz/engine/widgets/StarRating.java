@@ -69,6 +69,7 @@ import org.eclipse.nebula.widgets.formattedtext.FloatFormatter;
 import org.eclipse.nebula.widgets.formattedtext.FormattedText;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.GC;
@@ -183,6 +184,12 @@ public class StarRating extends Canvas {
 	/** The decimal format. */
 	private DecimalFormat decimalFormat;
 
+	private AReskinManager reskinEngine;
+
+	private boolean error;
+
+	private boolean enabled = true;
+
 	/**
 	 * Constructs a new instance of this class given its parent and a style value describing its behavior and appearance.
 	 * <p>
@@ -201,7 +208,8 @@ public class StarRating extends Canvas {
 	 */
 	public StarRating(final Composite parent, final int style, final String numericPattern) {
 		super(parent, style | SWT.DOUBLE_BUFFERED);
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
+		reskinEngine = AReskinManager.getInstance();
 		if (0 != (style & SWT.MAX))
 			size = SIZE_BIG;
 		else if (0 != (style & SWT.MIN))
@@ -213,7 +221,7 @@ public class StarRating extends Canvas {
 		else {
 			setLayout(new MigLayout("wrap 1, ins 0"));
 			formattedText = toolkit.createFormattedText(this, SWT.RIGHT);
-			final Text numericText = formattedText.getControl();
+			Text numericText = formattedText.getControl();
 			numericText.addModifyListener((event) -> {
 				float currentValue = 0f;
 				try {
@@ -221,17 +229,12 @@ public class StarRating extends Canvas {
 				} catch (ParseException e) {
 					logError(e);
 				}
-				if (rating != currentValue) {
+				if (rating != currentValue || error) {
 					setRating(currentValue);
 				}
 				StarRating.this.notifyListeners(SWT.Modify, null);
 			});
-			AReskinManager reskineEngine = AReskinManager.getInstance();
-			if (null == reskineEngine)
-				numericText.setBackground(numericText.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
-			else
-				numericText.setBackground(reskineEngine.getColor(AdiFormToolkit.CSS_ADICHATZ_COMMON_SELECTOR, "widget-background",
-						AControlController.ADI_CSS_BACKGROUND, numericText));
+			setNumericTextBackground(numericText);
 			setNumericPattern(numericPattern);
 			FontData[] fontData = numericText.getFont().getFontData();
 			switch (size) {
@@ -303,6 +306,14 @@ public class StarRating extends Canvas {
 		}
 	}
 
+	private void setNumericTextBackground(final Text numericText) {
+		if (null == reskinEngine)
+			numericText.setBackground(numericText.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+		else
+			numericText.setBackground(reskinEngine.getColor(AdiFormToolkit.CSS_ADICHATZ_COMMON_SELECTOR, "widget-background",
+					AControlController.ADI_CSS_BACKGROUND, numericText));
+	}
+
 	/**
 	 * On mouse enter or move.
 	 *
@@ -310,19 +321,21 @@ public class StarRating extends Canvas {
 	 *            the event
 	 */
 	private void onMouseEnterOrMove(final Event event) {
-		for (final Star star : stars) {
-			star.hover = false;
-		}
-
-		for (final Star star : stars) {
-			final boolean mouseHover = star.bounds.contains(event.x, event.y);
-			star.hover = true;
-			if (mouseHover) {
-				break;
+		if (enabled) {
+			for (final Star star : stars) {
+				star.hover = false;
 			}
+
+			for (final Star star : stars) {
+				final boolean mouseHover = star.bounds.contains(event.x, event.y);
+				star.hover = true;
+				if (mouseHover) {
+					break;
+				}
+			}
+			redraw();
+			update();
 		}
-		redraw();
-		update();
 	}
 
 	/**
@@ -332,11 +345,13 @@ public class StarRating extends Canvas {
 	 *            the event
 	 */
 	private void onMouseExit(final Event event) {
-		for (final Star star : stars) {
-			star.hover = false;
+		if (enabled) {
+			for (final Star star : stars) {
+				star.hover = false;
+			}
+			redraw();
+			update();
 		}
-		redraw();
-		update();
 	}
 
 	/**
@@ -346,23 +361,24 @@ public class StarRating extends Canvas {
 	 *            the event
 	 */
 	private void onMouseUp(final Event event) {
-		for (int i = 0; i < maxNumberOfStars; i++) {
-			final Star star = stars.get(i);
-			final boolean selected = star.bounds.contains(event.x, event.y);
-			if (selected) {
-				setRating(i + 1);
-				final Event newEvent = new Event();
-				newEvent.widget = this;
-				newEvent.display = getDisplay();
-				newEvent.item = this;
-				newEvent.type = SWT.Selection;
-				notifyListeners(SWT.Modify, null);
-				redraw();
-				update();
-				break;
+		if (enabled) {
+			for (int i = 0; i < maxNumberOfStars; i++) {
+				final Star star = stars.get(i);
+				final boolean selected = star.bounds.contains(event.x, event.y);
+				if (selected) {
+					setRating(i + 1);
+					final Event newEvent = new Event();
+					newEvent.widget = this;
+					newEvent.display = getDisplay();
+					newEvent.item = this;
+					newEvent.type = SWT.Selection;
+					notifyListeners(SWT.Modify, null);
+					redraw();
+					update();
+					break;
+				}
 			}
 		}
-
 	}
 
 	/**
@@ -460,20 +476,37 @@ public class StarRating extends Canvas {
 	 */
 	public void setRating(final float rating) {
 		checkWidget();
-		if (rating < 0 || rating > maxNumberOfStars)
-			SWT.error(SWT.ERROR_INVALID_ARGUMENT);
-		this.rating = rating;
-		for (final Star star : stars) {
-			star.marked = false;
-		}
+		if (rating < 0 || rating > maxNumberOfStars) {
+			if (null != formattedText) {
+				Color errorColor;
+				if (null == reskinEngine)
+					errorColor = getDisplay().getSystemColor(SWT.COLOR_RED);
+				else
+					errorColor = reskinEngine.getColor(AdiFormToolkit.CSS_ADICHATZ_COMMON_SELECTOR, "error-foreground-color",
+							AControlController.ADI_CSS_BACKGROUND, this);
 
-		for (int i = 0; i < rating; i++) {
-			stars.get(i).marked = true;
+				formattedText.getControl().setBackground(errorColor);
+				error = true;
+			}
+			logError(getFromEngineBundle("invalid.range", 0, maxNumberOfStars));
+		} else {
+			if (error && null != formattedText) {
+				setNumericTextBackground(formattedText.getControl());
+				error = false;
+			}
+			this.rating = rating;
+			for (final Star star : stars) {
+				star.marked = false;
+			}
+
+			for (int i = 0; i < rating; i++) {
+				stars.get(i).marked = true;
+			}
+			if (null != formattedText) {
+				formattedText.setValue(rating);
+			}
+			notifyListeners(SWT.Modify, null);
 		}
-		if (null != formattedText) {
-			formattedText.setValue(rating);
-		}
-		notifyListeners(SWT.Modify, null);
 	}
 
 	/**
@@ -562,6 +595,18 @@ public class StarRating extends Canvas {
 		}
 	}
 
+	@Override
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	@Override
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+		if (null != formattedText)
+			formattedText.getControl().setEnabled(enabled);
+	}
+
 	/**
 	 * Gets the formatted text.
 	 *
@@ -636,23 +681,20 @@ public class StarRating extends Canvas {
 		 *            the y
 		 */
 		void draw(final GC gc, final int x, final int y) {
-			if (!StarRating.this.isEnabled()) {
-				currentImage = defaultImage16;
-			} else {
-				if (marked) {
-					if (hover) {
-						currentImage = selectedHoverImage16;
-					} else {
-						currentImage = selectedImage16;
-					}
+			if (marked) {
+				if (hover) {
+					currentImage = selectedHoverImage16;
 				} else {
-					if (hover) {
-						currentImage = hoverImage16;
-					} else {
-						currentImage = defaultImage16;
-					}
+					currentImage = selectedImage16;
+				}
+			} else {
+				if (hover) {
+					currentImage = hoverImage16;
+				} else {
+					currentImage = defaultImage16;
 				}
 			}
+			//			}
 
 			gc.drawImage(currentImage, x, y);
 			bounds = new Rectangle(x, y, size, size);

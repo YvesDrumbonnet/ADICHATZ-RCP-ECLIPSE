@@ -308,8 +308,7 @@ public class ErroneousFilesFormDialog {
 				}
 			}
 		};
-		confirmFormDialog = new ConfirmFormDialog(null, AdichatzApplication.getInstance().getFormToolkit(),
-				getFromStudioBundle("generation.encountered.errors"),
+		confirmFormDialog = new ConfirmFormDialog(null, getFromStudioBundle("generation.encountered.errors"),
 				AdichatzApplication.getInstance().getImage(GeneratorConstants.STUDIO_BUNDLE, "IMG_ERROR.png"), confirmContent);
 		confirmFormDialog.open();
 	}

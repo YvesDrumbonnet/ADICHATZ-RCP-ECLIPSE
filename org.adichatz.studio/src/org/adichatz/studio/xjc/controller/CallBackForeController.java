@@ -193,8 +193,7 @@ public class CallBackForeController extends TextController {
 					event.doit = false;
 					final Shell shell = Display.getCurrent().getActiveShell();
 					IConfirmContent confirmContent = getConfirmContent(null, null);
-					confirmFormDialog = new ConfirmFormDialog(shell, AdichatzApplication.getInstance().getFormToolkit(),
-							getFromStudioBundle(title), classImage, confirmContent) {
+					confirmFormDialog = new ConfirmFormDialog(shell, getFromStudioBundle(title), classImage, confirmContent) {
 						protected void buttonPressed(int buttonId) {
 							if (IDialogConstants.OK_ID == buttonId) {
 								boolean first = true;

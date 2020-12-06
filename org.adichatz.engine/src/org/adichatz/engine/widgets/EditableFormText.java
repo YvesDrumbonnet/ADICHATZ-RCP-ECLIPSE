@@ -171,7 +171,7 @@ public class EditableFormText extends AFormTextScrolledComposite {
 	 */
 	public EditableFormText(Composite parent, final int style) {
 		super(parent, style);
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		this.originalStyle = style;
 		toolkit.adapt(this);
 
@@ -182,7 +182,7 @@ public class EditableFormText extends AFormTextScrolledComposite {
 		formText = toolkit.createFormText(textComposite, true);
 		formText.setLayoutData("h 20:20, w 20:20");
 		toolkit.adapt(formText);
-		formText.setHyperlinkSettings(AdichatzApplication.getInstance().getFormToolkit().getHyperlinkGroup());
+		formText.setHyperlinkSettings(toolkit.getHyperlinkGroup());
 
 		if (expandURLs)
 			formText.addHyperlinkListener(new HyperlinkAdapter() {
@@ -544,12 +544,12 @@ public class EditableFormText extends AFormTextScrolledComposite {
 	}
 
 	public void addToolkitColor(String key, String registryKey) {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		Color color = toolkit.getColors().getColor(registryKey);
 		addFormTextResource(new FormTextResource(key, color));
 		if (null != AReskinManager.getInstance()) {
 			formText.getRunnables().add(() -> {
-				formText.setColor(key, AdichatzApplication.getInstance().getFormToolkit().getColors().getColor(registryKey)); // Do not use parent toolkit because it could be disposed
+				formText.setColor(key, toolkit.getColors().getColor(registryKey)); // Do not use parent toolkit because it could be disposed
 			});
 		}
 	}

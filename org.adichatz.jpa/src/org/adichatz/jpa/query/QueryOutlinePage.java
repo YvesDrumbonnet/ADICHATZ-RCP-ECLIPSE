@@ -53,7 +53,6 @@
  *******************************************************************************/
 package org.adichatz.jpa.query;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AEntityManagerController;
 import org.adichatz.engine.controller.AWidgetController;
 import org.adichatz.engine.controller.collection.ContainerController;
@@ -71,7 +70,6 @@ import org.adichatz.engine.listener.AListener;
 import org.adichatz.engine.listener.AdiEvent;
 import org.adichatz.engine.listener.IEventType;
 import org.adichatz.engine.plugin.RegisterEntry;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.jpa.gencode.query.QueryToolContainer;
 import org.adichatz.jpa.query.custom.FilterTableController;
 import org.adichatz.jpa.wrapper.RecentOpenEditorTreeWrapper;
@@ -146,8 +144,7 @@ public class QueryOutlinePage extends AOutlinePage implements IQueryOutlinePage 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void createControl(Composite parent) {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
-		scrolledForm = toolkit.createScrolledForm(parent);
+		scrolledForm = getToolkit().createScrolledForm(parent);
 		ManagedForm managedForm = new ManagedForm(toolkit, scrolledForm);
 		scrolledForm.getBody().setLayout(new MigLayout("wrap 1, ins 0", "grow,fill", "grow,fill"));
 
@@ -168,7 +165,7 @@ public class QueryOutlinePage extends AOutlinePage implements IQueryOutlinePage 
 		filterTableController = (FilterTableController<?>) queryToolContainer.getRegister().get("filterTable").getController();
 		filterItem = ((PShelfItemController) queryToolContainer.getFromRegister("filterItem")).getItem();
 		preferenceItem = ((PShelfItemController) queryToolContainer.getFromRegister("preferenceItem")).getItem();
-		final AControlListener controlListener = new AControlListener("QueryOutlinePage#refreshTable#1", IEventType.REFRESH,
+		final AControlListener controlListener = new AControlListener("QueryOutlinePage#refreshTable#1", IEventType.AFTER_REFRESH,
 				(AWidgetController) queryToolInput.getTabularController()) {
 			@Override
 			public void handleEvent(AdiEvent event) {

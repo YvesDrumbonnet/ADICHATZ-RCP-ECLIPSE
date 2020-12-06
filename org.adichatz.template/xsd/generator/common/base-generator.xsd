@@ -9,6 +9,7 @@
     <xs:complexType name="validElementType">
         <xs:complexContent>
             <xs:extension base="elementType">
+            	<!--  Controlle is not create but refers to a already create controller e.g. 'coreController.getParentController()' or 'CONTROLLER(xxx)' -->
     			<xs:attribute name="ref" type="xs:NCName"/>
                 <xs:attribute name="valid" type="xs:string"/>
             </xs:extension>
@@ -130,7 +131,8 @@
 			<xs:enumeration value="POST_SELECTION_CHANGED"/>
 			<xs:enumeration value="WIDGET_SELECTED"/>
 			<xs:enumeration value="DOUBLE_CLICK"/>
-			<xs:enumeration value="REFRESH"/>
+			<xs:enumeration value="BEFORE_REFRESH"/>
+			<xs:enumeration value="AFTER_REFRESH"/>
         </xs:restriction>
     </xs:simpleType>
 

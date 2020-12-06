@@ -82,7 +82,6 @@ import org.adichatz.engine.common.FieldTools;
 import org.adichatz.engine.plugin.PluginEntity;
 import org.adichatz.engine.wrapper.ITreeWrapper;
 import org.adichatz.generator.wrapper.internal.IEntityContainerWrapper;
-import org.adichatz.generator.wrapper.internal.IGeneratorEntry;
 import org.adichatz.generator.wrapper.internal.IJointure;
 import org.adichatz.generator.xjc.JointureType;
 import org.adichatz.generator.xjc.QueryTree;
@@ -94,7 +93,7 @@ import org.adichatz.generator.xjc.QueryTree;
  * @author Yves Drumbonnet
  *
  */
-public class QueryTreeWrapper extends QueryTree implements ITreeWrapper, IJointure, IGeneratorEntry, IEntityContainerWrapper {
+public class QueryTreeWrapper extends QueryTree implements ITreeWrapper, IJointure, IEntityContainerWrapper {
 
 	/** The plugin name. */
 	private String pluginName;

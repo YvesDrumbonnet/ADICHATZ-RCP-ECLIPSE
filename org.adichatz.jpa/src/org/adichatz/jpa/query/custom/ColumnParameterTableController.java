@@ -223,7 +223,7 @@ public class ColumnParameterTableController<T> extends TableController<T> {
 		ATabularContentProvider<T> contentProvider = new NativeContentProvider<T>(nativeQueryManager);
 		contentProvider.setTabularController(this);
 
-		addListener(new AControlListener("ColumnParameterTableController#Refresh", IEventType.REFRESH) {
+		addListener(new AControlListener("ColumnParameterTableController#Refresh", IEventType.AFTER_REFRESH) {
 			@Override
 			public void handleEvent(AdiEvent event) {
 				if (null != columnParameter) {
@@ -373,7 +373,7 @@ public class ColumnParameterTableController<T> extends TableController<T> {
 		if (!columnParameter.isPermanent()) {
 			columnParameterGroup.setEnabled(true);
 			if (parameterEntity.getListeners().isEmpty()) {
-				parameterEntity.addEntityListener(new AEntityListener(columnParameterGroup, IEventType.WHEN_PROPERTY_CHANGE) {
+				new AEntityListener("whenPropertyChange", columnParameterGroup, IEventType.WHEN_PROPERTY_CHANGE) {
 					@Override
 					public void handleEntityEvent(AdiEntityEvent event) {
 						ParameterFieldManager parameterFieldManager = columnParameter.getParameterFieldManager(null, null);
@@ -398,13 +398,13 @@ public class ColumnParameterTableController<T> extends TableController<T> {
 							columnParameter.setSecondColumnText(String
 									.valueOf(parameterFieldManager.getValueFldCtlr().toString(columnParameter.getSecondValue())));
 					}
-				});
-				parameterEntity.addEntityListener(new AEntityListener(columnParameterGroup, IEventType.AFTER_PROPERTY_CHANGE) {
+				};
+				new AEntityListener("afterPropertyChange", columnParameterGroup, IEventType.AFTER_PROPERTY_CHANGE) {
 					@Override
 					public void handleEntityEvent(AdiEntityEvent event) {
 						validateItemController.setImage();
 					}
-				});
+				};
 			}
 		} else
 			columnParameterGroup.setEnabled(false);

@@ -73,9 +73,7 @@ package org.adichatz.engine.extra;
 
 import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -101,9 +99,6 @@ public abstract class AFormDialog extends ADialog {
 	/** The managed form. */
 	protected ManagedForm managedForm;
 
-	/** The toolkit. */
-	protected AdiFormToolkit toolkit;
-
 	/**
 	 * Instantiates a new a form dialog.
 	 *
@@ -112,9 +107,8 @@ public abstract class AFormDialog extends ADialog {
 	 * @param toolkit
 	 *            the toolkit
 	 */
-	public AFormDialog(Shell shell, AdiFormToolkit toolkit) {
+	public AFormDialog(Shell shell) {
 		super(shell);
-		this.toolkit = toolkit;
 	}
 
 	/*
@@ -124,8 +118,6 @@ public abstract class AFormDialog extends ADialog {
 	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		toolkit = AdichatzApplication.getInstance().getFormToolkit();
-
 		scrolledForm = toolkit.createScrolledForm(parent);
 		skinnedParent = scrolledForm;
 

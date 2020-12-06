@@ -77,8 +77,7 @@ public class AskForSwitching {
 
 			final Image image = AdichatzApplication.getInstance().getImage(GeneratorConstants.STUDIO_BUNDLE, "IMG_SWITCH.png");
 			ConfirmFormDialog confirmFormDialog = new ConfirmFormDialog(editor.getSite().getShell(),
-					AdichatzApplication.getInstance().getFormToolkit(), getFromStudioBundle("studio.xjcEditor.switchToActiveFile"),
-					image, confirmContent) {
+					getFromStudioBundle("studio.xjcEditor.switchToActiveFile"), image, confirmContent) {
 				protected void buttonPressed(int buttonId) {
 					returnValue = buttonId;
 					if (IDialogConstants.OK_ID == buttonId) {

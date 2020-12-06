@@ -77,7 +77,6 @@ import java.util.Collection;
 import java.util.Set;
 
 import org.adichatz.common.ejb.util.IEntityConstants;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.ReflectionTools;
 import org.adichatz.engine.controller.IValidableController;
 import org.adichatz.engine.validation.ErrorMessage;
@@ -109,7 +108,7 @@ public class CutXjcElementAction extends AOneParentXjcAction {
 		String text = getFromStudioBundle("studio.editor.cut");
 		setText(text);
 		setToolTipText(text);
-		setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_CUT"));
+		setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_CUT"));
 	}
 
 	/*

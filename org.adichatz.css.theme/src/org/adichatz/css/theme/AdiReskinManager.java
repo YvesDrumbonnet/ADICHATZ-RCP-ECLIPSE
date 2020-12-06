@@ -478,10 +478,10 @@ public class AdiReskinManager extends AReskinManager {
 		}
 
 		activeTheme = theme;
-		toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		toolkit.dispose();
 		toolkit = new AdiFormToolkit(display);
-		AdichatzApplication.getInstance().setFormToolkit(toolkit);
+		AdichatzApplication.getInstance().getApplContext().put(AdiFormToolkit.class.getName(), toolkit);
 		FormColors formColors = toolkit.getColors();
 		CSSStyle formsStyle = cssStyleMap.get("#adichatz-forms");
 		if (null != formsStyle) {

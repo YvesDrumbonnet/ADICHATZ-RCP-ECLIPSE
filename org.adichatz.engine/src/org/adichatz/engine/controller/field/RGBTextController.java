@@ -71,7 +71,6 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.field;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.controller.AFieldController;
 import org.adichatz.engine.controller.IContainerController;
@@ -148,7 +147,8 @@ public class RGBTextController extends AFieldController {
 	 */
 	@Override
 	public void createControl() {
-		rgbText = AdichatzApplication.getInstance().getFormToolkit().createRGBText(parentController.getComposite(), style);
+		super.createControl();
+		rgbText = toolkit.createRGBText(parentController.getComposite(), style);
 	}
 
 	/*

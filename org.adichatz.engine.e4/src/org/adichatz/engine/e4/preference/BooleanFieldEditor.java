@@ -1,6 +1,5 @@
 package org.adichatz.engine.e4.preference;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -18,7 +17,7 @@ public class BooleanFieldEditor extends AFieldEditor {
 			Composite parent) {
 		super(id);
 		this.defaultValue = defaultValue;
-		button = AdichatzApplication.getInstance().getFormToolkit().createButton(parent, labelText, SWT.CHECK);
+		button = toolkit.createButton(parent, labelText, SWT.CHECK);
 		button.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {

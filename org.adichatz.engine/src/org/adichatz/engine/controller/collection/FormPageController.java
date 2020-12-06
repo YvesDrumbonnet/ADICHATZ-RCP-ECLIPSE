@@ -71,7 +71,6 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.collection;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.APageController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.IDirtyableForm;
@@ -119,9 +118,10 @@ public class FormPageController extends APageController implements IToolBarConta
 	 * Creates the control.
 	 */
 	public void createControl() {
+		super.createControl();
 		composite = scrolledForm.getBody();
-		// gives head grandient color even when there is no FormMessageManager (validator)
-		AdichatzApplication.getInstance().getFormToolkit().decorateFormHeading(scrolledForm.getForm());
+		// gives head gradient color even when there is no FormMessageManager (validator)
+		toolkit.decorateFormHeading(scrolledForm.getForm());
 		AReskinManager reskinManager = AReskinManager.getInstance();
 		if (null != reskinManager)
 			reskinManager.addSkinnedWidget(scrolledForm);

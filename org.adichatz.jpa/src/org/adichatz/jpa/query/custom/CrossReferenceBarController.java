@@ -3,7 +3,6 @@ package org.adichatz.jpa.query.custom;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AControlController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.collection.ATabularController;
@@ -40,7 +39,6 @@ public class CrossReferenceBarController extends CompositeController {
 		final ATabularController<?> tableController = queryToolInput.getTabularController();
 		composite.setLayout(new MigLayout("wrap 1", "grow,fill"));
 		composite.setLayoutData("push, grow");
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		for (final CrossReference crossReference : ((ATabularCore<?>) tableController.getGenCode()).getCrossReferences()) {
 			Button button = toolkit.createButton(composite, crossReference.getDescription(), SWT.PUSH);
 

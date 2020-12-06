@@ -47,6 +47,9 @@ import org.eclipse.e4.ui.workbench.IPresentationEngine;
 import org.eclipse.e4.ui.workbench.IResourceUtilities;
 import org.eclipse.e4.ui.workbench.UIEvents;
 import org.eclipse.e4.ui.workbench.UIEvents.EventTags;
+import org.eclipse.e4.ui.workbench.addons.minmax.TrimPaneLayout;
+import org.eclipse.e4.ui.workbench.addons.minmax.TrimStackIdHelper;
+import org.eclipse.e4.ui.workbench.addons.minmax.TrimStackIdHelper.TrimStackIdPart;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.e4.ui.workbench.renderers.swt.TrimmedPartLayout;
@@ -54,9 +57,9 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
+import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.events.ControlListener;
-import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
@@ -64,56 +67,41 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
+import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
 
 /**
- * Class for representing window trim containing minimized views and shared areas.<br>
- * Based on org.eclipse.e4.ui.workbench.addons.minmax.TrimStack class<br>
- * 
- * Changes concern:
- * <ul>
- * <li>CONTRIBUTION_URI constant.</li>
- * <li>fixToolItemSelection method.</li>
- * </ul>
+ * Class for representing window trim containing minimized views and shared areas
  */
-@SuppressWarnings("restriction")
 public class TrimStack {
 
-	/** Contribution URI for this class. */
+	/**
+	 * Contribution URI for this class
+	 */
 	public static String CONTRIBUTION_URI = "bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.ui.workbench.addons.minmax.TrimStack"; //$NON-NLS-1$
 
-	/** The Constant LAYOUT_ICON_URI. */
-	private static final String LAYOUT_ICON_URI = "platform:/plugin/org.adichatz.engine.e4/resources/icons/layout_co.gif"; //$NON-NLS-1$
+	private static final String LAYOUT_ICON_URI = "platform:/plugin/org.eclipse.e4.ui.workbench.addons.swt/icons/full/obj16/layout_co.png"; //$NON-NLS-1$
 
-	/** The Constant RESTORE_ICON_URI. */
-	private static final String RESTORE_ICON_URI = "platform:/plugin/org.adichatz.engine.e4/resources/icons/fastview_restore.gif"; //$NON-NLS-1$
+	private static final String RESTORE_ICON_URI = "platform:/plugin/org.eclipse.e4.ui.workbench.addons.swt/icons/full/etool16/fastview_restore.png"; //$NON-NLS-1$
 
-	/** The Constant USE_OVERLAYS_KEY. */
 	public static final String USE_OVERLAYS_KEY = "UseOverlays"; //$NON-NLS-1$
 
-	/** The Constant STATE_XSIZE. */
 	static final String STATE_XSIZE = "XSize"; //$NON-NLS-1$
 
-	/** The Constant STATE_YSIZE. */
 	static final String STATE_YSIZE = "YSize"; //$NON-NLS-1$
 
-	/** The Constant MINIMIZED_AND_SHOWING. */
 	public static final String MINIMIZED_AND_SHOWING = "MinimizedAndShowing"; //$NON-NLS-1$
 
-	/** The layout image. */
 	private Image layoutImage;
 
-	/** The restore image. */
 	private Image restoreImage;
 
-	/** The trim stack tb. */
 	private ToolBar trimStackTB;
 
 	/**
@@ -121,20 +109,15 @@ public class TrimStack {
 	 */
 	private Menu trimStackMenu;
 
-	/** The cached use overlays. */
 	private boolean cachedUseOverlays = true;
 
-	/** The is showing. */
 	private boolean isShowing = false;
 
-	/** The minimized element. */
 	private MUIElement minimizedElement;
 
 	// private Composite clientAreaComposite;
-	/** The host pane. */
 	private Composite hostPane;
 
-	/** The res utils. */
 	@Inject
 	@Named("org.eclipse.e4.ui.workbench.IResourceUtilities")
 	private IResourceUtilities<ImageDescriptor> resUtils;
@@ -142,71 +125,54 @@ public class TrimStack {
 	/**
 	 * A map of created images from a part's icon URI path.
 	 */
-	private Map<String, Image> imageMap = new HashMap<String, Image>();
+	private Map<String, Image> imageMap = new HashMap<>();
 
-	/** The ca resize listener. */
-	ControlListener caResizeListener = new ControlListener() {
+	ControlListener caResizeListener = new ControlAdapter() {
 		@Override
 		public void controlResized(ControlEvent e) {
-			if (hostPane != null && hostPane.isVisible())
+			if (hostPane != null && hostPane.isVisible()) {
 				setPaneLocation();
-		}
-
-		@Override
-		public void controlMoved(ControlEvent e) {
-		}
-	};
-
-	// Listens to ESC and closes the active fast view
-	/** The escape listener. */
-	private Listener escapeListener = new Listener() {
-		@Override
-		public void handleEvent(Event event) {
-			if (event.character == SWT.ESC) {
-				showStack(false);
-				partService.requestActivation();
 			}
 		}
 	};
 
-	/** The model service. */
 	@Inject
 	EModelService modelService;
 
-	/** The part service. */
 	@Inject
 	EPartService partService;
 
-	/** The window. */
 	@Inject
 	MWindow window;
 
-	/** The tool control. */
 	@Inject
 	MToolControl toolControl;
 
-	/** The event broker. */
 	@Inject
 	protected IEventBroker eventBroker;
 
-	/**
-	 * Subscribe topic tags changed.
-	 *
-	 * @param event
-	 *            the event
-	 */
+	// Listens to ESC and closes the active fast view
+	private Listener escapeListener = event -> {
+		if (event.character == SWT.ESC) {
+			showStack(false);
+			partService.requestActivation();
+		}
+	};
+
 	@Inject
 	@Optional
 	private void subscribeTopicTagsChanged(
 			@UIEventTopic(UIEvents.ApplicationElement.TOPIC_TAGS) org.osgi.service.event.Event event) {
 		Object changedObj = event.getProperty(EventTags.ELEMENT);
 
-		if (!(changedObj instanceof MToolControl))
+		if (!(changedObj instanceof MToolControl)) {
 			return;
+		}
 
 		final MToolControl changedElement = (MToolControl) changedObj;
-		if (changedElement.getObject() != this)
+		if (changedElement.getObject() != this) {
 			return;
+		}
 
 		if (UIEvents.isREMOVE(event)) {
 			if (UIEvents.contains(event, UIEvents.EventTags.OLD_VALUE, MINIMIZED_AND_SHOWING)) {
@@ -215,38 +181,27 @@ public class TrimStack {
 		}
 	}
 
-	/**
-	 * Gets the override image.
-	 *
-	 * @param element
-	 *            the element
-	 * @return the override image
-	 */
 	private Image getOverrideImage(MUIElement element) {
 		Image result = null;
 
 		Object imageObject = element.getTransientData().get(IPresentationEngine.OVERRIDE_ICON_IMAGE_KEY);
-		if (imageObject != null && imageObject instanceof Image && !((Image) imageObject).isDisposed())
+		if (imageObject != null && imageObject instanceof Image && !((Image) imageObject).isDisposed()) {
 			result = (Image) imageObject;
+		}
 		return result;
 	}
 
-	/**
-	 * Gets the override title tool tip.
-	 *
-	 * @param element
-	 *            the element
-	 * @return the override title tool tip
-	 */
 	private String getOverrideTitleToolTip(MUIElement element) {
 		String result = null;
 
 		Object stringObject = element.getTransientData().get(IPresentationEngine.OVERRIDE_TITLE_TOOL_TIP_KEY);
-		if (stringObject != null && stringObject instanceof String)
+		if (stringObject != null && stringObject instanceof String) {
 			result = (String) stringObject;
+		}
 
-		if (result == null || result.length() == 0)
+		if (result == null || result.length() == 0) {
 			return null;
+		}
 
 		if (element instanceof MUILabel) {
 			String label = ((MUILabel) element).getLocalizedLabel();
@@ -259,12 +214,10 @@ public class TrimStack {
 	}
 
 	/**
-	 * This is the new way to handle UIEvents (as opposed to subscring and unsubscribing them with the event broker.
-	 * 
-	 * The method is described in detail at http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
+	 * This is the new way to handle UIEvents (as opposed to subscring and unsubscribing them with
+	 * the event broker.
 	 *
-	 * @param event
-	 *            the event
+	 * The method is described in detail at http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
 	 */
 	@SuppressWarnings("unchecked")
 	@Inject
@@ -272,8 +225,9 @@ public class TrimStack {
 	private void handleTransientDataEvents(
 			@UIEventTopic(UIEvents.ApplicationElement.TOPIC_TRANSIENTDATA) org.osgi.service.event.Event event) {
 		// Prevent exceptions on shutdown
-		if (trimStackTB == null || trimStackTB.isDisposed() || minimizedElement.getWidget() == null)
+		if (trimStackTB == null || trimStackTB.isDisposed() || minimizedElement.getWidget() == null) {
 			return;
+		}
 
 		Object changedElement = event.getProperty(UIEvents.EventTags.ELEMENT);
 		if (!(changedElement instanceof MUIElement)) {
@@ -289,22 +243,36 @@ public class TrimStack {
 
 		if (key.equals(IPresentationEngine.OVERRIDE_ICON_IMAGE_KEY)) {
 			ToolItem toolItem = getChangedToolItem((MUIElement) changedElement);
-			if (toolItem != null)
+			if (toolItem != null) {
 				toolItem.setImage(getImage((MUILabel) toolItem.getData()));
+			}
 		} else if (key.equals(IPresentationEngine.OVERRIDE_TITLE_TOOL_TIP_KEY)) {
 			ToolItem toolItem = getChangedToolItem((MUIElement) changedElement);
-			if (toolItem != null)
+			if (toolItem != null) {
 				toolItem.setToolTipText(getLabelText((MUILabel) toolItem.getData()));
+			}
 		}
 	}
 
-	/**
-	 * Gets the changed tool item.
-	 *
-	 * @param changedElement
-	 *            the changed element
-	 * @return the changed tool item
-	 */
+	@Inject
+	@Optional
+	private void subscribeTopicIconUriChanged(@UIEventTopic(UIEvents.UILabel.TOPIC_ICONURI) Event event) {
+		// Prevent exceptions on shutdown
+		if (trimStackTB == null || trimStackTB.isDisposed() || minimizedElement.getWidget() == null) {
+			return;
+		}
+
+		Object changedElement = event.getProperty(UIEvents.EventTags.ELEMENT);
+		if (!(changedElement instanceof MUIElement)) {
+			return;
+		}
+
+		ToolItem toolItem = getChangedToolItem((MUIElement) changedElement);
+		if (toolItem != null) {
+			toolItem.setImage(getImage((MUILabel) toolItem.getData()));
+		}
+	}
+
 	private ToolItem getChangedToolItem(MUIElement changedElement) {
 		ToolItem[] toolItems = trimStackTB.getItems();
 		for (ToolItem toolItem : toolItems) {
@@ -316,56 +284,47 @@ public class TrimStack {
 	}
 
 	/**
-	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown by handleTransientDataEvents()
-	 * and described in the article at http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
+	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown
+	 * by handleTransientDataEvents() and described in the article at
+	 * http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
 	 */
-	private EventHandler closeHandler = new EventHandler() {
-		@Override
-		public void handleEvent(org.osgi.service.event.Event event) {
-			if (!isShowing)
-				return;
+	private EventHandler closeHandler = event -> {
+		if (!isShowing) {
+			return;
+		}
 
-			// The only time we don't close is if I've selected my tab.
-			MUIElement changedElement = (MUIElement) event.getProperty(UIEvents.EventTags.ELEMENT);
+		// The only time we don't close is if I've selected my tab.
+		MUIElement changedElement = (MUIElement) event.getProperty(UIEvents.EventTags.ELEMENT);
 
-			// Perspective changed, close the visible stacks
-			if (changedElement instanceof MPerspectiveStack) {
-				showStack(false);
-				return;
-			}
+		// Perspective changed, close the visible stacks
+		if (changedElement instanceof MPerspectiveStack) {
+			showStack(false);
+			return;
+		}
 
-			if (changedElement instanceof MCompositePart) {
-				MPart innerPart = getLeafPart(changedElement);
-				if (innerPart != null) {
-					fixToolItemSelection();
-					return;
-				}
-			}
-
-			if (changedElement == getLeafPart(minimizedElement)) {
+		if (changedElement instanceof MCompositePart) {
+			MPart innerPart = getLeafPart(changedElement);
+			if (innerPart != null) {
 				fixToolItemSelection();
 				return;
 			}
-
-			showStack(false);
 		}
+
+		if (changedElement == getLeafPart(minimizedElement)) {
+			fixToolItemSelection();
+			return;
+		}
+
+		showStack(false);
 	};
 
 	// Close any open stacks before shutting down
-	/** The shutdown handler. */
-	private EventHandler shutdownHandler = new EventHandler() {
-		@Override
-		public void handleEvent(org.osgi.service.event.Event event) {
-			showStack(false);
-		}
-	};
+	private EventHandler shutdownHandler = event -> showStack(false);
 
-	/**
-	 * Fix tool item selection.
-	 */
 	private void fixToolItemSelection() {
-		if (trimStackTB == null || trimStackTB.isDisposed())
+		if (trimStackTB == null || trimStackTB.isDisposed()) {
 			return;
+		}
 
 		if (!isShowing) {
 			// Not open...no selection
@@ -384,8 +343,9 @@ public class TrimStack {
 			} else {
 				MPartStack partStack = (MPartStack) minimizedElement;
 				MUIElement selElement = partStack.getSelectedElement();
-				if (selElement instanceof MPlaceholder)
+				if (selElement instanceof MPlaceholder) {
 					selElement = ((MPlaceholder) selElement).getRef();
+				}
 
 				for (ToolItem item : trimStackTB.getItems()) {
 					boolean isSel = item.getData() == selElement;
@@ -395,167 +355,139 @@ public class TrimStack {
 		}
 	}
 
-	/**
-	 * Checks if is editor stack.
-	 *
-	 * @return true, if checks if is editor stack
-	 */
 	private boolean isEditorStack() {
-		if (!(minimizedElement instanceof MPlaceholder))
+		if (!(minimizedElement instanceof MPlaceholder)) {
 			return false;
+		}
 
 		MPlaceholder ph = (MPlaceholder) minimizedElement;
 		return ph.getRef() instanceof MArea;
 	}
 
-	/**
-	 * Checks if is perspective stack.
-	 *
-	 * @return true, if checks if is perspective stack
-	 */
 	private boolean isPerspectiveStack() {
 		return minimizedElement instanceof MPerspectiveStack;
 	}
 
-	/**
-	 * Gets the leaf part.
-	 *
-	 * @param element
-	 *            the element
-	 * @return the leaf part
-	 */
 	private MPart getLeafPart(MUIElement element) {
-		if (element instanceof MPlaceholder)
+		if (element instanceof MPlaceholder) {
 			return getLeafPart(((MPlaceholder) element).getRef());
+		}
 
-		if (element instanceof MElementContainer<?>)
+		if (element instanceof MElementContainer<?>) {
 			return getLeafPart(((MElementContainer<?>) element).getSelectedElement());
+		}
 
-		if (element instanceof MPart)
+		if (element instanceof MPart) {
 			return (MPart) element;
+		}
 
 		return null;
 	}
 
 	/**
-	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown by handleTransientDataEvents()
-	 * and described in the article at http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
+	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown
+	 * by handleTransientDataEvents() and described in the article at
+	 * http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
 	 */
-	private EventHandler openHandler = new EventHandler() {
-		@Override
-		public void handleEvent(org.osgi.service.event.Event event) {
-			if (isShowing)
-				return;
+	private EventHandler openHandler = event -> {
+		if (isShowing) {
+			return;
+		}
 
-			MUIElement changedElement = (MUIElement) event.getProperty(UIEvents.EventTags.ELEMENT);
+		MUIElement changedElement = (MUIElement) event.getProperty(UIEvents.EventTags.ELEMENT);
 
-			// Open if shared area
-			if (getLeafPart(minimizedElement) == changedElement && !(minimizedElement instanceof MPerspectiveStack)) {
-				showStack(true);
-				return;
-			}
-
-			MUIElement selectedElement = null;
-
-			if (minimizedElement instanceof MPlaceholder) {
-				selectedElement = ((MPlaceholder) minimizedElement).getRef();
-			} else if (minimizedElement instanceof MPartStack) {
-				selectedElement = ((MPartStack) minimizedElement).getSelectedElement();
-			}
-
-			if (selectedElement == null)
-				return;
-
-			if (selectedElement instanceof MPlaceholder)
-				selectedElement = ((MPlaceholder) selectedElement).getRef();
-
-			if (changedElement != selectedElement)
-				return;
-
+		// Open if shared area
+		if (getLeafPart(minimizedElement) == changedElement && !(minimizedElement instanceof MPerspectiveStack)) {
 			showStack(true);
+			return;
 		}
+
+		MUIElement selectedElement = null;
+
+		if (minimizedElement instanceof MPlaceholder) {
+			selectedElement = ((MPlaceholder) minimizedElement).getRef();
+		} else if (minimizedElement instanceof MPartStack) {
+			selectedElement = ((MPartStack) minimizedElement).getSelectedElement();
+		}
+
+		if (selectedElement == null) {
+			return;
+		}
+
+		if (selectedElement instanceof MPlaceholder) {
+			selectedElement = ((MPlaceholder) selectedElement).getRef();
+		}
+
+		if (changedElement != selectedElement) {
+			return;
+		}
+
+		showStack(true);
 	};
 
 	/**
-	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown by handleTransientDataEvents()
-	 * and described in the article at http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
+	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown
+	 * by handleTransientDataEvents() and described in the article at
+	 * http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
 	 */
-	private EventHandler toBeRenderedHandler = new EventHandler() {
-		@Override
-		public void handleEvent(org.osgi.service.event.Event event) {
-			if (minimizedElement == null || trimStackTB == null)
-				return;
+	private EventHandler toBeRenderedHandler = event -> {
+		if (minimizedElement == null || trimStackTB == null) {
+			return;
+		}
 
-			MUIElement changedElement = (MUIElement) event.getProperty(UIEvents.EventTags.ELEMENT);
+		MUIElement changedElement = (MUIElement) event.getProperty(UIEvents.EventTags.ELEMENT);
 
-			// if our stack is going away, so should we
-			if (changedElement == minimizedElement && !minimizedElement.isToBeRendered()) {
-				restoreStack();
-				return;
-			}
+		// if our stack is going away, so should we
+		if (changedElement == minimizedElement && !minimizedElement.isToBeRendered()) {
+			restoreStack();
+			return;
+		}
 
-			// if one of the kids changes state, re-scrape the CTF
-			MUIElement parentElement = changedElement.getParent();
-			if (parentElement == minimizedElement) {
-				trimStackTB.getDisplay().asyncExec(new Runnable() {
-					@Override
-					public void run() {
-						updateTrimStackItems();
-					}
-				});
-			}
+		// if one of the kids changes state, re-scrape the CTF
+		MUIElement parentElement = changedElement.getParent();
+		if (parentElement == minimizedElement) {
+			trimStackTB.getDisplay().asyncExec(this::updateTrimStackItems);
 		}
 	};
 
 	/**
-	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown by handleTransientDataEvents()
-	 * and described in the article at http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
+	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown
+	 * by handleTransientDataEvents() and described in the article at
+	 * http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
 	 */
-	private EventHandler childrenHandler = new EventHandler() {
-		@Override
-		public void handleEvent(org.osgi.service.event.Event event) {
-			if (minimizedElement == null || trimStackTB == null)
-				return;
+	private EventHandler childrenHandler = event -> {
+		if (minimizedElement == null || trimStackTB == null) {
+			return;
+		}
 
-			Object changedObj = event.getProperty(UIEvents.EventTags.ELEMENT);
+		Object changedObj = event.getProperty(UIEvents.EventTags.ELEMENT);
 
-			// if a child has been added or removed, re-scape the CTF
-			if (changedObj == minimizedElement) {
-				trimStackTB.getDisplay().asyncExec(new Runnable() {
-					@Override
-					public void run() {
-						updateTrimStackItems();
-					}
-				});
-			}
+		// if a child has been added or removed, re-scape the CTF
+		if (changedObj == minimizedElement) {
+			trimStackTB.getDisplay().asyncExec(this::updateTrimStackItems);
 		}
 	};
 
 	/**
-	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown by handleTransientDataEvents()
-	 * and described in the article at http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
+	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown
+	 * by handleTransientDataEvents() and described in the article at
+	 * http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
 	 */
-	private EventHandler widgetHandler = new EventHandler() {
-		@Override
-		public void handleEvent(org.osgi.service.event.Event event) {
-			Object changedObj = event.getProperty(UIEvents.EventTags.ELEMENT);
-			if (changedObj != minimizedElement)
-				return;
+	private EventHandler widgetHandler = event -> {
+		Object changedObj = event.getProperty(UIEvents.EventTags.ELEMENT);
+		if (changedObj != minimizedElement) {
+			return;
+		}
 
-			if (minimizedElement.getWidget() != null) {
-				trimStackTB.getDisplay().asyncExec(new Runnable() {
-					@Override
-					public void run() {
-						updateTrimStackItems();
-					}
-				});
-			}
+		if (minimizedElement.getWidget() != null) {
+			trimStackTB.getDisplay().asyncExec(this::updateTrimStackItems);
 		}
 	};
 
 	/**
-	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown by handleTransientDataEvents()
-	 * and described in the article at http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
+	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown
+	 * by handleTransientDataEvents() and described in the article at
+	 * http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
 	 */
 	// Listener attached to every ToolItem in a TrimStack. Responsible for activating the
 	// appropriate part.
@@ -589,15 +521,14 @@ public class TrimStack {
 
 	// private MTrimBar bar;
 
-	/** The fixed sides. */
 	private int fixedSides;
 
-	/** The original parent. */
 	private Composite originalParent;
 
 	/**
-	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown by handleTransientDataEvents()
-	 * and described in the article at http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
+	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown
+	 * by handleTransientDataEvents() and described in the article at
+	 * http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
 	 */
 	@PostConstruct
 	void addListeners() {
@@ -609,28 +540,26 @@ public class TrimStack {
 		eventBroker.subscribe(UIEvents.UILifeCycle.APP_SHUTDOWN_STARTED, shutdownHandler);
 	}
 
-	/**
-	 * Gets the ca composite.
-	 *
-	 * @return the CA composite
-	 */
 	private Composite getCAComposite() {
-		if (trimStackTB == null)
+		if (trimStackTB == null) {
 			return null;
+		}
 
 		// Get the shell's client area composite
 		Shell theShell = trimStackTB.getShell();
 		if (theShell.getLayout() instanceof TrimmedPartLayout) {
 			TrimmedPartLayout tpl = (TrimmedPartLayout) theShell.getLayout();
-			if (!tpl.clientArea.isDisposed())
+			if (!tpl.clientArea.isDisposed()) {
 				return tpl.clientArea;
+			}
 		}
 		return null;
 	}
 
 	/**
-	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown by handleTransientDataEvents()
-	 * and described in the article at http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
+	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown
+	 * by handleTransientDataEvents() and described in the article at
+	 * http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
 	 */
 	@PreDestroy
 	void removeListeners() {
@@ -641,16 +570,6 @@ public class TrimStack {
 		eventBroker.unsubscribe(closeHandler);
 	}
 
-	/**
-	 * Creates the widget.
-	 *
-	 * @param parent
-	 *            the parent
-	 * @param me
-	 *            the me
-	 * @param cssUtils
-	 *            the css utils
-	 */
 	@PostConstruct
 	void createWidget(Composite parent, MToolControl me, CSSRenderingUtils cssUtils) {
 		if (minimizedElement == null) {
@@ -661,45 +580,46 @@ public class TrimStack {
 		int orientation = SWT.HORIZONTAL;
 		if (meParent instanceof MTrimBar) {
 			MTrimBar bar = (MTrimBar) meParent;
-			if (bar.getSide() == SideValue.RIGHT || bar.getSide() == SideValue.LEFT)
+			if (bar.getSide() == SideValue.RIGHT || bar.getSide() == SideValue.LEFT) {
 				orientation = SWT.VERTICAL;
+			}
+			// TrimStacks are draggable by default
+			me.getTags().add(IPresentationEngine.DRAGGABLE);
 		}
 		trimStackTB = new ToolBar(parent, orientation | SWT.FLAT | SWT.WRAP);
-		trimStackTB.addDisposeListener((e) -> {
+		trimStackTB.addDisposeListener(e -> {
 			showStack(false);
 
 			trimStackTB = null;
 			trimStackMenu = null;
 		});
 
-		trimStackTB.addListener(SWT.MenuDetect, new Listener() {
-			@Override
-			public void handleEvent(Event event) {
-				// Clear any existing menus
-				while (trimStackMenu.getItemCount() > 0)
-					trimStackMenu.getItem(0).dispose();
+		trimStackTB.addListener(SWT.MenuDetect, event -> {
+			// Clear any existing menus
+			while (trimStackMenu.getItemCount() > 0) {
+				trimStackMenu.getItem(0).dispose();
+			}
 
-				// Only open the menu if a tool item is selected
-				Point point = trimStackTB.getDisplay().map(null, trimStackTB, new Point(event.x, event.y));
-				ToolItem selectedToolItem = trimStackTB.getItem(point);
-				if (selectedToolItem == null) {
-					return;
-				}
+			// Only open the menu if a tool item is selected
+			Point point = trimStackTB.getDisplay().map(null, trimStackTB, new Point(event.x, event.y));
+			ToolItem selectedToolItem = trimStackTB.getItem(point);
+			if (selectedToolItem == null) {
+				return;
+			}
 
-				// Are we hovering over a valid tool item (vs restore button)
-				Object data = selectedToolItem.getData();
-				if (data instanceof MPart) {
-					// A part on a stack or editor area
-					createPartMenu((MPart) data);
-				} else if (data instanceof MPerspective) {
-					// A perspective in a perspective stack (for now we just support restore)
-					createEmtpyEditorAreaMenu();
-				} else if (isEditorStack()) {
-					// An empty editor area
-					createEmtpyEditorAreaMenu();
-				} else {
-					createUseOverlaysMenu();
-				}
+			// Are we hovering over a valid tool item (vs restore button)
+			Object data = selectedToolItem.getData();
+			if (data instanceof MPart) {
+				// A part on a stack or editor area
+				createPartMenu((MPart) data);
+			} else if (data instanceof MPerspective) {
+				// A perspective in a perspective stack (for now we just support restore)
+				createEmtpyEditorAreaMenu();
+			} else if (isEditorStack()) {
+				// An empty editor area
+				createEmtpyEditorAreaMenu();
+			} else {
+				createUseOverlaysMenu();
 			}
 		});
 
@@ -709,51 +629,40 @@ public class TrimStack {
 		ToolItem restoreBtn = new ToolItem(trimStackTB, SWT.PUSH);
 		restoreBtn.setToolTipText(Messages.TrimStack_RestoreText);
 		restoreBtn.setImage(getRestoreImage());
-		restoreBtn.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				minimizedElement.getTags().remove(IPresentationEngine.MINIMIZED);
-			}
-		});
+		restoreBtn.addSelectionListener(
+				SelectionListener.widgetSelectedAdapter(e -> minimizedElement.getTags().remove(IPresentationEngine.MINIMIZED)));
 
 		updateTrimStackItems();
 	}
 
 	/**
-	 * Creates a restore menu item that removes the minimized tag from the {@link #minimizedElement}.
+	 * Creates a restore menu item that removes the minimized tag from the {@link #minimizedElement}
 	 */
 	private void createEmtpyEditorAreaMenu() {
 		MenuItem restoreItem = new MenuItem(trimStackMenu, SWT.NONE);
 		restoreItem.setText(Messages.TrimStack_RestoreText);
-		restoreItem.addListener(SWT.Selection, new Listener() {
-			@Override
-			public void handleEvent(Event event) {
-				minimizedElement.getTags().remove(IPresentationEngine.MINIMIZED);
-			}
-		});
+		restoreItem.addListener(SWT.Selection, event -> minimizedElement.getTags().remove(IPresentationEngine.MINIMIZED));
 	}
 
 	/**
-	 * Creates a restore menu item that removes the minimized tag from the {@link #minimizedElement}.
+	 * Creates a restore menu item that removes the minimized tag from the {@link #minimizedElement}
 	 */
 	private void createUseOverlaysMenu() {
 		MenuItem useOverlaysItem = new MenuItem(trimStackMenu, SWT.CHECK);
 		useOverlaysItem.setText(Messages.TrimStack_Show_In_Original_Location);
 		useOverlaysItem.setSelection(!useOverlays());
-		useOverlaysItem.addListener(SWT.Selection, new Listener() {
-			@Override
-			public void handleEvent(Event event) {
-				if (toolControl != null) {
-					toolControl.getPersistedState().put(USE_OVERLAYS_KEY, Boolean.toString(!useOverlays()));
-				}
+		useOverlaysItem.addListener(SWT.Selection, event -> {
+			if (toolControl != null) {
+				toolControl.getPersistedState().put(USE_OVERLAYS_KEY, Boolean.toString(!useOverlays()));
 			}
 		});
 	}
 
 	/**
-	 * Creates a series of menu items when a part is selected. The orientation submenu changes the layout tags on the
-	 * {@link #minimizedElement}. The restore item will remove the minimized tag. The close item is not available on the editor
-	 * stack, but will ask the part service to hide the part.
+	 * Creates a series of menu items when a part is selected. The orientation submenu changes the
+	 * layout tags on the {@link #minimizedElement}. The restore item will remove the minimized tag.
+	 * The close item is not available on the editor stack, but will ask the part service to hide
+	 * the part.
 	 *
 	 * @param selectedPart
 	 *            the part from the data of the selected tool item
@@ -766,43 +675,34 @@ public class TrimStack {
 
 		MenuItem defaultItem = new MenuItem(orientationMenu, SWT.RADIO);
 		defaultItem.setText(Messages.TrimStack_DefaultOrientationItem);
-		defaultItem.addListener(SWT.Selection, new Listener() {
-			@Override
-			public void handleEvent(Event event) {
-				boolean doRefresh = minimizedElement.getTags().remove(IPresentationEngine.ORIENTATION_HORIZONTAL);
-				doRefresh |= minimizedElement.getTags().remove(IPresentationEngine.ORIENTATION_VERTICAL);
-				if (isShowing && doRefresh) {
-					setPaneLocation();
-				}
+		defaultItem.addListener(SWT.Selection, event -> {
+			boolean doRefresh = minimizedElement.getTags().remove(IPresentationEngine.ORIENTATION_HORIZONTAL);
+			doRefresh |= minimizedElement.getTags().remove(IPresentationEngine.ORIENTATION_VERTICAL);
+			if (isShowing && doRefresh) {
+				setPaneLocation();
 			}
 		});
 
 		MenuItem horizontalItem = new MenuItem(orientationMenu, SWT.RADIO);
 		horizontalItem.setText(Messages.TrimStack_Horizontal);
-		horizontalItem.addListener(SWT.Selection, new Listener() {
-			@Override
-			public void handleEvent(Event event) {
-				if (!minimizedElement.getTags().contains(IPresentationEngine.ORIENTATION_HORIZONTAL)) {
-					minimizedElement.getTags().remove(IPresentationEngine.ORIENTATION_VERTICAL);
-					minimizedElement.getTags().add(IPresentationEngine.ORIENTATION_HORIZONTAL);
-					if (isShowing) {
-						setPaneLocation();
-					}
+		horizontalItem.addListener(SWT.Selection, event -> {
+			if (!minimizedElement.getTags().contains(IPresentationEngine.ORIENTATION_HORIZONTAL)) {
+				minimizedElement.getTags().remove(IPresentationEngine.ORIENTATION_VERTICAL);
+				minimizedElement.getTags().add(IPresentationEngine.ORIENTATION_HORIZONTAL);
+				if (isShowing) {
+					setPaneLocation();
 				}
 			}
 		});
 
 		MenuItem verticalItem = new MenuItem(orientationMenu, SWT.RADIO);
 		verticalItem.setText(Messages.TrimStack_Vertical);
-		verticalItem.addListener(SWT.Selection, new Listener() {
-			@Override
-			public void handleEvent(Event event) {
-				if (!minimizedElement.getTags().contains(IPresentationEngine.ORIENTATION_VERTICAL)) {
-					minimizedElement.getTags().remove(IPresentationEngine.ORIENTATION_HORIZONTAL);
-					minimizedElement.getTags().add(IPresentationEngine.ORIENTATION_VERTICAL);
-					if (isShowing) {
-						setPaneLocation();
-					}
+		verticalItem.addListener(SWT.Selection, event -> {
+			if (!minimizedElement.getTags().contains(IPresentationEngine.ORIENTATION_VERTICAL)) {
+				minimizedElement.getTags().remove(IPresentationEngine.ORIENTATION_HORIZONTAL);
+				minimizedElement.getTags().add(IPresentationEngine.ORIENTATION_VERTICAL);
+				if (isShowing) {
+					setPaneLocation();
 				}
 			}
 		});
@@ -818,30 +718,19 @@ public class TrimStack {
 
 		MenuItem restoreItem = new MenuItem(trimStackMenu, SWT.NONE);
 		restoreItem.setText(Messages.TrimStack_RestoreText);
-		restoreItem.addListener(SWT.Selection, new Listener() {
-			@Override
-			public void handleEvent(Event event) {
-				minimizedElement.getTags().remove(IPresentationEngine.MINIMIZED);
-				partService.activate(selectedPart);
-			}
+		restoreItem.addListener(SWT.Selection, event -> {
+			minimizedElement.getTags().remove(IPresentationEngine.MINIMIZED);
+			partService.activate(selectedPart);
 		});
 
 		// Do not allow the shared editor area to be closed
 		if (!isEditorStack()) {
 			MenuItem closeItem = new MenuItem(trimStackMenu, SWT.NONE);
 			closeItem.setText(Messages.TrimStack_CloseText);
-			closeItem.addListener(SWT.Selection, new Listener() {
-				@Override
-				public void handleEvent(Event event) {
-					partService.hidePart(selectedPart);
-				}
-			});
+			closeItem.addListener(SWT.Selection, event -> partService.hidePart(selectedPart));
 		}
 	}
 
-	/**
-	 * Destroy.
-	 */
 	@PreDestroy
 	void destroy() {
 		for (Image image : imageMap.values()) {
@@ -859,38 +748,31 @@ public class TrimStack {
 		}
 	}
 
-	/**
-	 * Gets the minimized element.
-	 *
-	 * @return the minimized element
-	 */
 	public MUIElement getMinimizedElement() {
 		return minimizedElement;
 	}
 
-	/**
-	 * Find element.
-	 *
-	 * @return the MUI element
-	 */
 	private MUIElement findElement() {
 		MUIElement result;
-		List<MPerspectiveStack> ps = modelService.findElements(window, null, MPerspectiveStack.class, null);
-		if (ps.size() == 0) {
+		List<MPerspectiveStack> ps = modelService.findElements(window, null, MPerspectiveStack.class);
+		if (ps.isEmpty()) {
 			String toolControlId = toolControl.getElementId();
 			int index = toolControlId.indexOf('(');
 			String stackId = toolControlId.substring(0, index);
 			result = modelService.find(stackId, window);
 		} else {
 			String toolControlId = toolControl.getElementId();
-			int index = toolControlId.indexOf('(');
-			String stackId = toolControlId.substring(0, index);
-			String perspId = toolControlId.substring(index + 1, toolControlId.length() - 1);
+			Map<TrimStackIdPart, String> parsedIds = TrimStackIdHelper.parseTrimStackId(toolControlId);
+
+			String stackId = parsedIds.get(TrimStackIdPart.ELEMENT_ID);
+			String perspId = parsedIds.get(TrimStackIdPart.PERSPECTIVE_ID);
 
 			MPerspective persp = null;
-			List<MPerspective> perspectives = modelService.findElements(ps.get(0), perspId, MPerspective.class, null);
-			if (perspectives != null && !perspectives.isEmpty()) {
-				persp = perspectives.get(0);
+			if (perspId != null) {
+				List<MPerspective> perspectives = modelService.findElements(ps.get(0), perspId, MPerspective.class);
+				if (perspectives != null && !perspectives.isEmpty()) {
+					persp = perspectives.get(0);
+				}
 			}
 
 			if (persp != null) {
@@ -903,38 +785,26 @@ public class TrimStack {
 		return result;
 	}
 
-	/**
-	 * Gets the label text.
-	 *
-	 * @param label
-	 *            the label
-	 * @return the label text
-	 */
 	private String getLabelText(MUILabel label) {
 		// Use override text if available
 		if (label instanceof MUIElement) {
 			String text = getOverrideTitleToolTip((MUIElement) label);
-			if (text != null && text.length() > 0)
+			if (text != null && text.length() > 0) {
 				return text;
+			}
 		}
 
 		String string = label.getLocalizedLabel();
 		return string == null ? "" : string; //$NON-NLS-1$
 	}
 
-	/**
-	 * Gets the image.
-	 *
-	 * @param element
-	 *            the element
-	 * @return the image
-	 */
 	private Image getImage(MUILabel element) {
 		// Use override image if available
 		if (element instanceof MUIElement) {
 			Image image = getOverrideImage((MUIElement) element);
-			if (image != null)
+			if (image != null) {
 				return image;
+			}
 		}
 
 		String iconURI = element.getIconURI();
@@ -950,27 +820,19 @@ public class TrimStack {
 		return null;
 	}
 
-	/**
-	 * Gets the label element.
-	 *
-	 * @param element
-	 *            the element
-	 * @return the label element
-	 */
 	private MUILabel getLabelElement(MUIElement element) {
-		if (element instanceof MPlaceholder)
+		if (element instanceof MPlaceholder) {
 			element = ((MPlaceholder) element).getRef();
+		}
 
 		return (MUILabel) (element instanceof MUILabel ? element : null);
 	}
 
-	/**
-	 * Update trim stack items.
-	 */
 	private void updateTrimStackItems() {
 		// Prevent exceptions on shutdown
-		if (trimStackTB == null || trimStackTB.isDisposed() || minimizedElement.getWidget() == null)
+		if (trimStackTB == null || trimStackTB.isDisposed() || minimizedElement.getWidget() == null) {
 			return;
+		}
 
 		// Remove any current items except the 'restore' button
 		while (trimStackTB.getItemCount() > 1) {
@@ -1030,14 +892,10 @@ public class TrimStack {
 				return;
 			}
 		}
-
 		trimStackTB.pack();
-		trimStackTB.getShell().layout(new Control[] { trimStackTB }, SWT.DEFER);
+		trimStackTB.requestLayout();
 	}
 
-	/**
-	 * Restore stack.
-	 */
 	void restoreStack() {
 		showStack(false);
 
@@ -1059,24 +917,29 @@ public class TrimStack {
 
 		toolControl.setToBeRendered(false);
 
-		if (hostPane != null && !hostPane.isDisposed())
+		if (hostPane != null && !hostPane.isDisposed()) {
 			hostPane.dispose();
+		}
 		hostPane = null;
 	}
 
 	/**
-	 * Sets whether this stack should be visible or hidden.
+	 * Sets whether this stack should be visible or hidden
 	 *
 	 * @param show
 	 *            whether the stack should be visible
 	 */
 	public void showStack(boolean show) {
 		Control ctrl = (Control) minimizedElement.getWidget();
+		if (ctrl == null) {
+			return;
+		}
 		CTabFolder ctf = ctrl instanceof CTabFolder ? (CTabFolder) ctrl : null;
 
 		Composite clientAreaComposite = getCAComposite();
-		if (clientAreaComposite == null || clientAreaComposite.isDisposed())
+		if (clientAreaComposite == null || clientAreaComposite.isDisposed()) {
 			return;
+		}
 
 		if (show && !isShowing) {
 			if (useOverlays()) {
@@ -1184,19 +1047,16 @@ public class TrimStack {
 			fixToolItemSelection();
 		} else if (!show && isShowing) {
 			if (cachedUseOverlays) {
-				// Check to ensure that the client area is non-null since the
-				// trimstack may be currently hosted in the limbo shell
-				if (clientAreaComposite != null) {
-					clientAreaComposite.removeControlListener(caResizeListener);
-				}
+				clientAreaComposite.removeControlListener(caResizeListener);
 
 				ctrl.setParent(originalParent);
 
 				hostPane.dispose();
 				hostPane = null;
 			} else {
-				if (ctrl != null && !ctrl.isDisposed())
+				if (ctrl != null && !ctrl.isDisposed()) {
 					ctrl.removeListener(SWT.Traverse, escapeListener);
+				}
 				minimizedElement.setVisible(false);
 			}
 
@@ -1208,28 +1068,26 @@ public class TrimStack {
 	}
 
 	/**
-	 * Use overlays.
-	 *
-	 * @return 'true' iff the minimized stack should overlay the current presentation, 'false' means to temporarily restore the
-	 *         stack into the current presentation.
+	 * @return 'true' iff the minimized stack should overlay the current presentation, 'false' means
+	 *         to temporarily restore the stack into the current presentation.
 	 */
 	private boolean useOverlays() {
-		if (toolControl == null)
+		if (toolControl == null) {
 			return true;
+		}
 
 		String useOverlays = toolControl.getPersistedState().get(USE_OVERLAYS_KEY);
-		if (useOverlays == null)
+		if (useOverlays == null) {
 			useOverlays = "true"; //$NON-NLS-1$
+		}
 		return Boolean.parseBoolean(useOverlays);
 	}
 
-	/**
-	 * Sets the pane location.
-	 */
 	private void setPaneLocation() {
 		Composite clientAreaComposite = getCAComposite();
-		if (clientAreaComposite == null || clientAreaComposite.isDisposed())
+		if (clientAreaComposite == null || clientAreaComposite.isDisposed()) {
 			return;
+		}
 
 		Rectangle caRect = clientAreaComposite.getBounds();
 
@@ -1237,62 +1095,61 @@ public class TrimStack {
 		Point paneSize = hostPane.getSize();
 
 		// Ensure it's not clipped
-		if (paneSize.x > caRect.width)
+		if (paneSize.x > caRect.width) {
 			paneSize.x = caRect.width;
-		if (paneSize.y > caRect.height)
+		}
+		if (paneSize.y > caRect.height) {
 			paneSize.y = caRect.height;
+		}
 
-		if (minimizedElement.getTags().contains(IPresentationEngine.ORIENTATION_HORIZONTAL))
+		if (minimizedElement.getTags().contains(IPresentationEngine.ORIENTATION_HORIZONTAL)) {
 			paneSize.x = caRect.width;
-		if (minimizedElement.getTags().contains(IPresentationEngine.ORIENTATION_VERTICAL))
+		}
+		if (minimizedElement.getTags().contains(IPresentationEngine.ORIENTATION_VERTICAL)) {
 			paneSize.y = caRect.height;
+		}
 
 		Point loc = new Point(0, 0);
-		if (isFixed(SWT.LEFT))
+		if (isFixed(SWT.LEFT)) {
 			loc.x = caRect.x;
-		else
+		} else {
 			loc.x = (caRect.x + caRect.width) - paneSize.x;
+		}
 
-		if (isFixed(SWT.TOP))
+		if (isFixed(SWT.TOP)) {
 			loc.y = caRect.y;
-		else
+		} else {
 			loc.y = (caRect.y + caRect.height) - paneSize.y;
+		}
 
 		hostPane.setSize(paneSize);
 		hostPane.setLocation(loc);
 	}
 
-	/**
-	 * Sets the host size.
-	 */
 	private void setHostSize() {
-		if (hostPane == null || hostPane.isDisposed())
+		if (hostPane == null || hostPane.isDisposed()) {
 			return;
+		}
 
 		int xSize = 600;
 		String xSizeStr = toolControl.getPersistedState().get(STATE_XSIZE);
-		if (xSizeStr != null)
+		if (xSizeStr != null) {
 			xSize = Integer.parseInt(xSizeStr);
+		}
 		int ySize = 400;
 		String ySizeStr = toolControl.getPersistedState().get(STATE_YSIZE);
-		if (ySizeStr != null)
+		if (ySizeStr != null) {
 			ySize = Integer.parseInt(ySizeStr);
+		}
 		hostPane.setSize(xSize, ySize);
 	}
 
-	/**
-	 * Gets the host pane.
-	 *
-	 * @return the host pane
-	 */
 	private Composite getHostPane() {
 		// Create one
 		hostPane = new Composite(trimStackTB.getShell(), SWT.NONE);
 		hostPane.setData(ShellActivationListener.DIALOG_IGNORE_KEY, Boolean.TRUE);
 
-		hostPane.addDisposeListener((e) -> {
-			hostPane = null;
-		});
+		hostPane.addDisposeListener(e -> hostPane = null);
 
 		setHostSize();
 
@@ -1303,15 +1160,11 @@ public class TrimStack {
 		return hostPane;
 	}
 
-	/**
-	 * Gets the fixed sides.
-	 *
-	 * @return the fixed sides
-	 */
 	private int getFixedSides() {
 		MUIElement tcParent = toolControl.getParent();
-		if (!(tcParent instanceof MTrimBar))
+		if (!(tcParent instanceof MTrimBar)) {
 			return 0;
+		}
 		MTrimBar bar = (MTrimBar) tcParent;
 		Composite trimComp = (Composite) bar.getWidget();
 		Rectangle trimBounds = trimComp.getBounds();
@@ -1339,11 +1192,6 @@ public class TrimStack {
 		return SWT.BOTTOM | SWT.RIGHT;
 	}
 
-	/**
-	 * Gets the layout image.
-	 *
-	 * @return the layout image
-	 */
 	private Image getLayoutImage() {
 		if (layoutImage == null) {
 			layoutImage = resUtils.imageDescriptorFromURI(URI.createURI(LAYOUT_ICON_URI)).createImage();
@@ -1351,11 +1199,6 @@ public class TrimStack {
 		return layoutImage;
 	}
 
-	/**
-	 * Gets the restore image.
-	 *
-	 * @return the restore image
-	 */
 	private Image getRestoreImage() {
 		if (restoreImage == null) {
 			restoreImage = resUtils.imageDescriptorFromURI(URI.createURI(RESTORE_ICON_URI)).createImage();
@@ -1363,13 +1206,6 @@ public class TrimStack {
 		return restoreImage;
 	}
 
-	/**
-	 * Checks if is fixed.
-	 *
-	 * @param swtSide
-	 *            the swt side
-	 * @return true, if checks if is fixed
-	 */
 	private boolean isFixed(int swtSide) {
 		return (fixedSides & swtSide) != 0;
 	}

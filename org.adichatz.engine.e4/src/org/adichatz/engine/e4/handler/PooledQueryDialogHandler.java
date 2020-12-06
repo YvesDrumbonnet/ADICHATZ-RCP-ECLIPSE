@@ -141,7 +141,7 @@ public class PooledQueryDialogHandler {
 						AdichatzApplication.getInstance().getImage(EngineConstants.ENGINE_E4_BUNDLE, "IMG_QUERY_MANAGER.png"));
 				getShell().setText(getFromEngineE4Bundle("pooled.queries"));
 				initializeBounds();
-				AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+				AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 				if (null == toolkit)
 					toolkit = new AdiFormToolkit(Display.getCurrent());
 
@@ -181,7 +181,7 @@ public class PooledQueryDialogHandler {
 					}
 				});
 
-				Composite composite = AdichatzApplication.getInstance().getFormToolkit().createComposite(section, SWT.NONE);
+				Composite composite = toolkit.createComposite(section, SWT.NONE);
 				composite.setLayout(new MigLayout("", "grow, fill", "grow, fill"));
 				section.setClient(composite);
 

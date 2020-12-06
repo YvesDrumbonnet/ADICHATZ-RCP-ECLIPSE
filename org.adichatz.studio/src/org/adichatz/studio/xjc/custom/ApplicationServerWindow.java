@@ -154,7 +154,7 @@ public class ApplicationServerWindow extends AFormInputDialog {
 	 *            the parent shell
 	 */
 	public ApplicationServerWindow(String connectorApplicationServer, String connectorURI) {
-		super(Display.getCurrent().getActiveShell(), AdichatzApplication.getInstance().getFormToolkit(), title, image, null);
+		super(Display.getCurrent().getActiveShell(), title, image, null);
 		this.connectorApplicationServer = connectorApplicationServer;
 		this.connectorURI = connectorURI;
 	}
@@ -198,7 +198,7 @@ public class ApplicationServerWindow extends AFormInputDialog {
 			}
 			((AEntityManagerController) formInput.getPartCore().getController()).validateFields();
 		}
-		bindingService.addBindingListener(new ABindingListener(IEventType.POST_MESSAGE) {
+		bindingService.addBindingListener(new ABindingListener(null, IEventType.POST_MESSAGE) {
 			@Override
 			public void handleEvent(AdiEvent event) {
 				okButton.setEnabled(bindingService.getErrorMessageMap().isEmpty());

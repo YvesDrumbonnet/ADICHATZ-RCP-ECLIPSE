@@ -79,7 +79,7 @@ import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.e4.part.IntroPart;
 import org.adichatz.engine.e4.part.OutlinePart;
 import org.adichatz.engine.xjc.NavigatorType;
-import org.adichatz.engine.xjc.RcpConfigurationType;
+import org.adichatz.engine.xjc.NavigatorsType;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.ui.advanced.MAdvancedFactory;
 import org.eclipse.e4.ui.model.application.ui.advanced.MArea;
@@ -101,15 +101,22 @@ import org.eclipse.e4.ui.workbench.modeling.EPartService;
  */
 public class PlainPerspectiveManager implements IPerspectiveManager {
 
+	private static String OUTLINE_PARTSTACK = "adichatz.outline.partstack";
+
 	/** The editor part stack. */
 	protected static MPartStack editorPartStack;
 
 	/** The outline part stack. */
 	protected static MPartStack outlinePartStack;
 
+	protected static MArea navigatorArea;
+
 	protected static MArea editorArea;
 
 	protected static MArea outlineArea;
+
+	/** The navigator place area. */
+	protected static String NAVIGATOR_PLACE_HOLDER = "adichatz.navigator.holder";
 
 	/** The editor place area. */
 	protected static String EDITOR_PLACE_HOLDER = "adichatz.editor.holder";
@@ -132,7 +139,7 @@ public class PlainPerspectiveManager implements IPerspectiveManager {
 
 	/**
 	 * Instantiates a new plain perspective manager.<br>
-	 * Persperctive allready exists and was created from persistent state sored in workbench.xmi file.
+	 * Perspective already exists and was created from persistent state stored in workbench.xmi file.
 	 *
 	 * @param application
 	 *            the application
@@ -186,17 +193,26 @@ public class PlainPerspectiveManager implements IPerspectiveManager {
 		perspective.getChildren().add(globalPSC);
 		globalPSC.setHorizontal(true);
 
-		MPartStack navigatorPartStack = basicFactory.createPartStack();
-		navigatorPartStack.setElementId(PerspectiveProcessor.NAVIGATOR_STACK);
-		globalPSC.getChildren().add(navigatorPartStack);
-		navigatorPartStack.setContainerData("25");
-		// navigatorPartStack.getTags().add("NoAutoCollapse ");
+		MPlaceholder navigatorPH = advancedFactory.createPlaceholder();
+		globalPSC.getChildren().add(navigatorPH);
+		navigatorPH.setContainerData("25");
+		navigatorPH.setElementId(NAVIGATOR_PLACE_HOLDER);
 
-		AdichatzApplication adichatzApplication = AdichatzApplication.getInstance();
-		RcpConfigurationType rcpConfiguration = adichatzApplication.getConfigTree().getRcpConfiguration();
-		if (null != rcpConfiguration)
-			if (null != rcpConfiguration.getNavigators())
-				for (NavigatorType navigator : rcpConfiguration.getNavigators().getNavigator()) {
+		if (null == navigatorArea) {
+			navigatorArea = advancedFactory.createArea();
+			window.getSharedElements().add(navigatorArea);
+			MPartStack navigatorPartStack = basicFactory.createPartStack();
+			navigatorPartStack.setElementId(EngineE4Util.NAVIGATOR_STACK);
+			navigatorArea.getChildren().add(navigatorPartStack);
+			navigatorPartStack.setContainerData("25");
+
+			navigatorArea.getChildren().add(navigatorPartStack);
+			navigatorArea.setElementId(NAVIGATOR_PLACE_HOLDER);
+
+			AdichatzApplication adichatzApplication = AdichatzApplication.getInstance();
+			NavigatorsType navigators = adichatzApplication.getContextValue(NavigatorsType.class);
+			if (null != navigators)
+				for (NavigatorType navigator : navigators.getNavigator()) {
 					MPart navigatorPart = basicFactory.createPart();
 					navigatorPartStack.getChildren().add(navigatorPart);
 					navigatorPart.setElementId(navigator.getId());
@@ -209,6 +225,8 @@ public class PlainPerspectiveManager implements IPerspectiveManager {
 					navigatorPart.setIconURI(navigator.getIconURI());
 					navigatorPart.setContributionURI(navigator.getContributionURI());
 				}
+		}
+		navigatorPH.setRef(navigatorArea);
 
 		MPartSashContainer leftPSC = basicFactory.createPartSashContainer();
 		globalPSC.getChildren().add(leftPSC);
@@ -228,8 +246,7 @@ public class PlainPerspectiveManager implements IPerspectiveManager {
 			editorArea = advancedFactory.createArea();
 			window.getSharedElements().add(editorArea);
 			editorPartStack = basicFactory.createPartStack();
-			editorPartStack.setElementId(PerspectiveProcessor.EDITOR_PARTSTACK);
-			// editorPartStack.getTags().add("NoAutoCollapse ");
+			editorPartStack.setElementId(EngineE4Util.EDITOR_PARTSTACK);
 			editorArea.getChildren().add(editorPartStack);
 			editorArea.setElementId(EDITOR_PLACE_HOLDER);
 		}
@@ -245,7 +262,7 @@ public class PlainPerspectiveManager implements IPerspectiveManager {
 			window.getSharedElements().add(outlineArea);
 			outlineArea.setElementId(OUTLINE_PLACE_HOLDER);
 			outlinePartStack = basicFactory.createPartStack();
-			outlinePartStack.setElementId(PerspectiveProcessor.OUTLINE_PARTSTACK);
+			outlinePartStack.setElementId(OUTLINE_PARTSTACK);
 			outlineArea.getChildren().add(outlinePartStack);
 		}
 		outlinePH.setRef(outlineArea);
@@ -255,7 +272,7 @@ public class PlainPerspectiveManager implements IPerspectiveManager {
 	protected void postCreatePerspective() {
 		perspective.setIconURI(EngineE4Util.ICON_URI_PREFIX.concat("IMG_PERSPECTIVE_PLAIN.png"));
 		perspective.setLabel(getFromEngineE4Bundle("adichatz.perspective.plain"));
-		perspective.getPersistedState().put(PerspectiveProcessor.PERSPECTIVE_MANAGER,
+		perspective.getPersistedState().put(EngineE4Util.PERSPECTIVE_MANAGER,
 				"bundleclass://org.adichatz.engine.e4/".concat(getClass().getName()));
 	}
 
@@ -297,8 +314,7 @@ public class PlainPerspectiveManager implements IPerspectiveManager {
 
 		MPerspective oldPerspective = perspective;
 		createContents(application.getChildren().get(0));
-		MPerspectiveStack perspectiveStack = (MPerspectiveStack) modelService.find(PerspectiveProcessor.PERSPECTIVE_STACK,
-				application);
+		MPerspectiveStack perspectiveStack = (MPerspectiveStack) modelService.find(EngineE4Util.PERSPECTIVE_STACK, application);
 		perspectiveStack.getChildren().add(perspective);
 		application.getContext().get(EPartService.class).switchPerspective(perspective);
 		perspectiveStack.getChildren().remove(oldPerspective);

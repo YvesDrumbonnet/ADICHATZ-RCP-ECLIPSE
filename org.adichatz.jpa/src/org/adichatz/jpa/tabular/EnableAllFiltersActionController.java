@@ -56,11 +56,10 @@ package org.adichatz.jpa.tabular;
 import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
 
 import org.adichatz.engine.action.AAction;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.controller.action.ActionController;
-import org.adichatz.engine.controller.collection.MenuManagerController;
 import org.adichatz.engine.controller.collection.ATabularController;
+import org.adichatz.engine.controller.collection.MenuManagerController;
 import org.adichatz.engine.core.ControllerCore;
 import org.adichatz.engine.tabular.ColumnViewerFilter;
 import org.adichatz.jpa.xjc.FilterType;
@@ -105,9 +104,10 @@ public class EnableAllFiltersActionController<T> extends ActionController {
 				tabularController.getControl().setRedraw(true);
 			}
 		};
+		super.createControl();
 		action.setText(getFromEngineBundle("query.enable.all.filters"));
 		action.setToolTipText(getFromEngineBundle("query.enable.all.filters"));
-		action.setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_CHECKED"));
+		action.setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_CHECKED"));
 		action.setActionController(this);
 	}
 

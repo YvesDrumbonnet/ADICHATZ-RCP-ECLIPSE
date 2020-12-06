@@ -81,8 +81,7 @@ import javax.xml.bind.JAXBException;
 
 import org.adichatz.engine.common.EngineConstants;
 import org.adichatz.engine.common.FileUtility;
-import org.adichatz.engine.wrapper.AdichatzRcpConfigTreeWrapper;
-import org.adichatz.engine.wrapper.ITreeWrapper;
+import org.adichatz.engine.xjc.AdichatzRcpConfigTree;
 import org.adichatz.generator.common.Generator;
 import org.adichatz.generator.common.GeneratorConstants;
 import org.adichatz.generator.wrapper.ScenarioTreeWrapper;
@@ -191,7 +190,7 @@ public class AdiPropertyTester extends PropertyTester {
 				ManifestChanger manifestChanger = new ManifestChanger(project, null);
 				if (null != manifestChanger.getValue(IScenarioConstants.ADICHATZ_CONNECTOR_VERSION)) {
 					IFile configFile = project.getFile(EngineConstants.XML_FILES_PATH + "/" + GeneratorConstants.SCENARIO_FILE);
-					ITreeWrapper treeWrapper = getConfigTreeWrapper(configFile, IS_SCENARIO_FILE, false);
+					Object treeWrapper = getConfigTreeWrapper(configFile, IS_SCENARIO_FILE, false);
 					if (null != treeWrapper)
 						return null != ((ScenarioTree) treeWrapper).getGenerationScenario().getModelPart();
 				}
@@ -342,11 +341,11 @@ public class AdiPropertyTester extends PropertyTester {
 		return false;
 	}
 
-	private static ITreeWrapper getConfigTreeWrapper(Object receiver, String property, boolean refreshed) {
+	private static Object getConfigTreeWrapper(Object receiver, String property, boolean refreshed) {
 		IFile configFile = (IFile) receiver;
 		if (configFile.exists() && isAdichatzResource(receiver) && "xml".equals(configFile.getFileExtension())) {
 			try {
-				return (ITreeWrapper) FileUtility.getTreeFromXmlFile(Generator.getUnmarshaller(), ((IFile) receiver).getContents());
+				return FileUtility.getTreeFromXmlFile(Generator.getUnmarshaller(), ((IFile) receiver).getContents());
 			} catch (JAXBException e) {
 				logError(e);
 			} catch (CoreException e) {
@@ -375,13 +374,13 @@ public class AdiPropertyTester extends PropertyTester {
 	 */
 	public static boolean isConfigFile(Object receiver, String property) {
 		if (isAdichatzResource(receiver) && "xml".equals(((IFile) receiver).getFileExtension())) {
-			ITreeWrapper treeWrapper = getConfigTreeWrapper(receiver, property, false);
+			Object treeWrapper = getConfigTreeWrapper(receiver, property, false);
 			if (null == property)
-				return treeWrapper instanceof ScenarioTreeWrapper || treeWrapper instanceof AdichatzRcpConfigTreeWrapper;
+				return treeWrapper instanceof ScenarioTreeWrapper || treeWrapper instanceof AdichatzRcpConfigTree;
 			else if (IS_SCENARIO_FILE.equals(property))
 				return treeWrapper instanceof ScenarioTreeWrapper;
 			else if (IS_ADICHATZ_CONFIG_FILE.equals(property))
-				return treeWrapper instanceof AdichatzRcpConfigTreeWrapper;
+				return treeWrapper instanceof AdichatzRcpConfigTree;
 		}
 		return false;
 	}

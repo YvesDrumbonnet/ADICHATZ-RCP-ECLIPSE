@@ -176,7 +176,7 @@ public class XjcPluginEntityScenario extends PluginEntityScenario {
 		ScenarioTreeWrapper scenarioTree = scenarioResources.getScenarioTree();
 		GenerationScenarioWrapper generationScenario = getInitialGenerationScenario(scenarioTree.getGenerationScenario());
 		scenarioTree.setGenerationScenario(generationScenario);
-		ScenarioUtil.createXmlFile(scenarioTree.getXmlFile(), scenarioTree);
+		ScenarioUtil.createXmlFile(scenarioResources.getScenarioFile().getLocation().toFile(), scenarioTree);
 		GeneratorUnit generatorUnit = new GeneratorUnit(scenarioInput);
 		generatorUnit.initialize(false);
 		new XjcPluginEntityTreeGenerator(scenarioInput);

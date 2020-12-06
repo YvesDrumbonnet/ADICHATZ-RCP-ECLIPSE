@@ -84,6 +84,8 @@ public abstract class AListener {
 	/** The dispose listeners. */
 	private static Set<AListener> disposeListeners = new HashSet<AListener>();
 
+	private static int COUNT = 0;
+
 	/**
 	 * Adds the listener to dispose.
 	 * 
@@ -167,7 +169,9 @@ public abstract class AListener {
 	 */
 	public AListener(String id, int eventType) {
 		this.eventType = eventType;
-		this.id = id;
+		String count = String.valueOf(COUNT++);
+		// Id must be unique
+		this.id = null == id ? count : id.concat("$").concat(count);
 	}
 
 	/**

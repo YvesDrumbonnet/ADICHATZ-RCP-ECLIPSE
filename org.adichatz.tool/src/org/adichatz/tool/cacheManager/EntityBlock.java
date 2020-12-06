@@ -85,6 +85,7 @@ import org.adichatz.engine.common.AdiPluginResources;
 import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.Utilities;
 import org.adichatz.engine.controller.collection.ATabularController;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.generator.common.GeneratorConstants;
 import org.adichatz.jpa.data.JPAEntity;
 import org.adichatz.scenario.ScenarioResources;
@@ -374,8 +375,8 @@ public class EntityBlock extends MasterDetailsBlock implements ICacheEditorTable
 		};
 		// haction.setChecked(true);
 		haction.setToolTipText("Horizontal orientation");
-		haction.setImageDescriptor(
-				AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_HORIZONTAL"));
+		haction.setImageDescriptor(AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class)
+				.getRegisteredImageDescriptor("IMG_HORIZONTAL"));
 
 		Action vaction = new Action("ver", Action.AS_RADIO_BUTTON) {
 			@Override
@@ -386,7 +387,8 @@ public class EntityBlock extends MasterDetailsBlock implements ICacheEditorTable
 		};
 		// vaction.setChecked(false);
 		vaction.setToolTipText("Vertical orientation");
-		vaction.setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_VERTICAL"));
+		vaction.setImageDescriptor(AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class)
+				.getRegisteredImageDescriptor("IMG_VERTICAL"));
 
 		form.getToolBarManager().add(vaction);
 		form.getToolBarManager().add(haction);
@@ -445,7 +447,7 @@ public class EntityBlock extends MasterDetailsBlock implements ICacheEditorTable
 		 */
 		CacheFilterAction(ICacheEditorTable editorTable) {
 			setText(getFromToolBundle("cacheFilter"));
-			setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_FILTER"));
+			AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class).getRegisteredImageDescriptor("IMG_FILTER");
 			setToolTipText(getFromToolBundle("cacheFilter"));
 			setMenuCreator(this);
 			this.editorTable = editorTable;

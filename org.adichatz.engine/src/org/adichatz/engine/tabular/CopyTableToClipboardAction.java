@@ -74,7 +74,6 @@ package org.adichatz.engine.tabular;
 import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
 
 import org.adichatz.engine.action.AAction;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.collection.ATabularController;
 import org.adichatz.engine.controller.collection.ATabularController.METHOD_NAME;
 import org.adichatz.engine.plugin.ParamMap;
@@ -99,7 +98,7 @@ public class CopyTableToClipboardAction extends AAction {
 		String text = getFromEngineBundle("query.copyTableToClipboard");
 		this.setText(text);
 		this.setToolTipText(text);
-		this.setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_COPY"));
+		this.setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_COPY"));
 	}
 
 	/*

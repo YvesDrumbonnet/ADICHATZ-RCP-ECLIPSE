@@ -32,8 +32,8 @@ import org.eclipse.swt.widgets.Text;
 import net.miginfocom.swt.MigLayout;
 
 public class RecentPreferenceColumnViewerToolTipSupport extends ColumnViewerToolTipSupport {
-	private static ImageDescriptor PREFERENCE_IMAGE_DESCRIPTOR = AdichatzApplication.getInstance().getFormToolkit()
-			.getRegisteredImageDescriptor("IMG_PREFERENCE");
+	private static ImageDescriptor PREFERENCE_IMAGE_DESCRIPTOR = AdichatzApplication.getInstance()
+			.getContextValue(AdiFormToolkit.class).getRegisteredImageDescriptor("IMG_PREFERENCE");
 
 	/** The preference image. */
 	private static Image PREFERENCE_IMAGE = PREFERENCE_IMAGE_DESCRIPTOR.createImage();
@@ -57,7 +57,7 @@ public class RecentPreferenceColumnViewerToolTipSupport extends ColumnViewerTool
 	 */
 	@Override
 	protected Composite createViewerToolTipContentArea(Event event, ViewerCell cell, Composite parent) {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		Composite content = toolkit.createComposite(parent);
 		content.setLayout(new MigLayout("wrap 1", "grow,fill", "grow,fill"));
 
@@ -180,7 +180,7 @@ public class RecentPreferenceColumnViewerToolTipSupport extends ColumnViewerTool
 			if (element instanceof RecentPreferenceWrapper)
 				return PREFERENCE_IMAGE;
 			if (element instanceof RecentPreferenceWrapper || element instanceof RecentPreferenceSet)
-				return AdichatzApplication.getInstance().getFormToolkit().getRegisteredImage("IMG_QUERY");
+				return AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class).getRegisteredImage("IMG_QUERY");
 			return null;
 		}
 

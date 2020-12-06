@@ -132,6 +132,7 @@ public abstract class GridColumnController<T> extends AColumnController<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	public void createControl() {
+		super.createControl();
 		if (null != gridColumnGroupController)
 			gridColumn = new GridColumn(gridColumnGroupController.getControl(), style);
 		else

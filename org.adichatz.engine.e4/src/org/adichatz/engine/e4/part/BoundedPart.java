@@ -91,7 +91,6 @@ import org.adichatz.engine.listener.IEventType;
 import org.adichatz.engine.plugin.AdiContext;
 import org.adichatz.engine.plugin.ParamMap;
 import org.adichatz.engine.plugin.PluginEntity;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.validation.ABindingService;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.di.Persist;
@@ -643,7 +642,6 @@ public class BoundedPart extends AAdiBasicPart implements IRootController, IBoun
 	 */
 	public void addPage(PageManager pageManager) {
 		pageManager.setParent(parent);
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		ScrolledForm scrolledForm = toolkit.createScrolledForm(pageManager.getParent());
 		pageManager.setManagedForm(new ManagedForm(toolkit, scrolledForm));
 	}

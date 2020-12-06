@@ -74,7 +74,7 @@ package org.adichatz.engine.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.adichatz.engine.controller.collection.TreeController;
+import org.adichatz.engine.controller.collection.ATreeController;
 import org.adichatz.engine.plugin.AdiContext;
 
 // TODO: Auto-generated Javadoc
@@ -87,7 +87,7 @@ import org.adichatz.engine.plugin.AdiContext;
 public abstract class ATreeCore extends ControllerCore {
 
 	/** The tree controller. */
-	protected TreeController treeController;
+	protected ATreeController treeController;
 
 	/** The buffered lazy fetches. */
 	protected List<String> bufferedLazyFetches = new ArrayList<String>();
@@ -109,7 +109,7 @@ public abstract class ATreeCore extends ControllerCore {
 	 * 
 	 * @return the table controller
 	 */
-	public TreeController getTreeController() {
+	public ATreeController getTreeController() {
 		return treeController;
 	}
 }

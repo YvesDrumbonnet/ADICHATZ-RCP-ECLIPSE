@@ -1,7 +1,5 @@
 package org.adichatz.engine.e4.preference;
 
-import org.adichatz.engine.common.AdichatzApplication;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -18,7 +16,6 @@ public class TextFieldEditor extends AFieldEditor {
 			Composite parent) {
 		super(id);
 		this.defaultValue = defaultValue;
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		toolkit.createLabel(parent, labelText.concat(0 < labelText.indexOf(':') ? "" : ":"));
 		text = toolkit.createText(parent, "");
 		text.addModifyListener(new ModifyListener() {

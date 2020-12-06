@@ -74,7 +74,6 @@ package org.adichatz.jpa.query.action;
 import static org.adichatz.jpa.extra.JPAUtil.getFromJpaBundle;
 
 import org.adichatz.engine.action.AAction;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.controller.nebula.GridController;
 import org.adichatz.jpa.wrapper.RecentPreferenceWrapper;
@@ -90,7 +89,7 @@ public class CopyFileNameAction extends AAction {
 	 */
 	public CopyFileNameAction() {
 		setText(getFromJpaBundle("queryPreference.copyFileName"));
-		setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_COPY_TO_BUFFER"));
+		setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_COPY_TO_BUFFER"));
 	}
 
 	/*

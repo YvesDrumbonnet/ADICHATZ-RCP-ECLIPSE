@@ -78,7 +78,6 @@ import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.adichatz.engine.cache.IEntity;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.common.ReflectionTools;
 import org.adichatz.engine.common.Utilities;
@@ -149,7 +148,8 @@ public class ExtraTextController extends AFieldController {
 	 */
 	@Override
 	public void createControl() {
-		extraText = AdichatzApplication.getInstance().getFormToolkit().createExtraText(parentController.getComposite(), style);
+		super.createControl();
+		extraText = toolkit.createExtraText(parentController.getComposite(), style);
 		// Check if layoutData is correctly set. Nothing could be displayed if layoutData do not set height and width.
 		extraText.getStyledText().setLayoutData("h 0:n:n, w 0:n:n");
 
@@ -236,7 +236,7 @@ public class ExtraTextController extends AFieldController {
 	public void addRefreshItem() {
 		new ToolItem(extraText.getToolBar(), SWT.SEPARATOR);
 		refreshItem = new ToolItem(extraText.getToolBar(), SWT.CHECK);
-		refreshItem.setImage(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImage("IMG_REFRESH"));
+		refreshItem.setImage(toolkit.getRegisteredImage("IMG_REFRESH"));
 		refreshItem.setToolTipText(EngineTools.getFromEngineBundle("extraText.refresh"));
 		refreshItem.addSelectionListener(new SelectionAdapter() {
 			@Override

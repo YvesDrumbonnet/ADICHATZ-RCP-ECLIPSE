@@ -60,7 +60,6 @@ import java.util.Map;
 import org.adichatz.common.ejb.util.IEntityConstants;
 import org.adichatz.engine.cache.IEntity;
 import org.adichatz.engine.cache.RelationshipUpdate;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.contentProvider.QueryContentProvider;
 import org.adichatz.engine.data.ADataAccess;
 import org.adichatz.engine.model.EntitySet;
@@ -89,7 +88,7 @@ public class AddRelationshipAction<T> extends ATabularAction {
 	public void init() {
 		setText(getFromJpaBundle("table.addRelationship"));
 		setToolTipText(getFromJpaBundle("table.addRelationshipToolTip"));
-		setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_ADD_RELATIONSHIP"));
+		setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_ADD_RELATIONSHIP"));
 	}
 
 	/*

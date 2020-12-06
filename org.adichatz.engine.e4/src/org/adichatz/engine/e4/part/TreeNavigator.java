@@ -220,8 +220,10 @@ public class TreeNavigator extends ANavigator {
 	}
 
 	@Override
-	protected void refreshInput(NavigatorPath navigatorPath) {
-		treeViewer.setInput(navigatorPath.createMenu(context, this));
+	protected void refreshInput(String navigatorId) {
+		NavigatorPath navigatorPath = getNavigatorPath(navigatorId);
+		if (null != navigatorPath)
+			treeViewer.setInput(navigatorPath.createMenu(context, this));
 	}
 
 	@Override

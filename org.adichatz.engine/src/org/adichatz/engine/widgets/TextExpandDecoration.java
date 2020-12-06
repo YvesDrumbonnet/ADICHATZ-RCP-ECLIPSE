@@ -122,7 +122,7 @@ public class TextExpandDecoration extends AdiControlDecoration {
 					Rectangle clientArea = text.getDisplay().getClientArea();
 					final Shell dialog = new Shell(text.getShell(), SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL | SWT.MAX | SWT.RESIZE);
 					dialog.setLayout(new MigLayout("wrap 2", "[fill, grow][]"));
-					AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+					AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 					final Text expandText = toolkit.createText(dialog, text.getText());
 					expandText.setEnabled(text.isEnabled());
 					expandText.setEditable(text.getEditable());

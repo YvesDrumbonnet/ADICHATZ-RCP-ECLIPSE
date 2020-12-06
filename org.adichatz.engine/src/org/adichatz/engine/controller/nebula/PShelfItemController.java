@@ -124,8 +124,8 @@ public class PShelfItemController extends AEntityManagerController implements II
 	 */
 	@Override
 	public void createControl() {
-		item = AdichatzApplication.getInstance().getFormToolkit().createPShelfItem((PShelf) parentController.getControl(),
-				SWT.NONE);
+		super.createControl();
+		item = toolkit.createPShelfItem((PShelf) parentController.getControl(), SWT.NONE);
 		composite = item.getBody();
 		composite.setLayout(new MigLayout("ins 0", "grow,fill", "grow,fill"));
 	}

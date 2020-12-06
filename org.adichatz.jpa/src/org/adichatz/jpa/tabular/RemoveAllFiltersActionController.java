@@ -56,11 +56,10 @@ package org.adichatz.jpa.tabular;
 import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
 
 import org.adichatz.engine.action.AAction;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.controller.action.ActionController;
-import org.adichatz.engine.controller.collection.MenuManagerController;
 import org.adichatz.engine.controller.collection.ATabularController;
+import org.adichatz.engine.controller.collection.MenuManagerController;
 import org.adichatz.engine.core.ControllerCore;
 import org.adichatz.jpa.wrapper.ControllerPreferenceWrapper;
 
@@ -91,7 +90,8 @@ public class RemoveAllFiltersActionController<T> extends ActionController {
 			@Override
 			public void runAction() {
 				tabularController.getControl().setRedraw(false);
-				ControllerPreferenceWrapper<T> controllerPreference = ((JPAControllerPreferenceManager<T>) tabularController.getControllerPreferenceManager()).getControllerPreference();
+				ControllerPreferenceWrapper<T> controllerPreference = ((JPAControllerPreferenceManager<T>) tabularController
+						.getControllerPreferenceManager()).getControllerPreference();
 				controllerPreference.setFilters(null); // First step
 				controllerPreference.setFilters(null); // First step
 				// refeshInput which refresh filter table in QueryToolContainer
@@ -100,10 +100,10 @@ public class RemoveAllFiltersActionController<T> extends ActionController {
 				tabularController.getControl().setRedraw(true);
 			}
 		};
+		super.createControl();
 		action.setText(getFromEngineBundle("query.remove.all.filters"));
 		action.setToolTipText(getFromEngineBundle("query.remove.all.filters"));
-		action.setImageDescriptor(
-				AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_DELETE_FILTER"));
+		action.setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_DELETE_FILTER"));
 		action.setActionController(this);
 	}
 

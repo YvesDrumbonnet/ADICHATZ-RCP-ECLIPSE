@@ -104,8 +104,7 @@ public class GenerateModelRunnable implements Runnable {
 
 			ScenarioTreeWrapper customizationScenarioTree = null;
 			if (flagMap.get("mergeCustomization") && null != customizationScenarioFileName) {
-				customizationScenarioTree = ScenarioUtil.getCustomScenarioTree(scenarioResources,
-						customizationScenarioFileName);
+				customizationScenarioTree = ScenarioUtil.getCustomScenarioTree(scenarioResources, customizationScenarioFileName);
 				scenarioResources.getScenarioTree().mergeCustomization(scenarioResources, customizationScenarioTree,
 						IPluginEntityScenario.INIT);
 				if (null != customizationScenarioTree.getPathElements()
@@ -114,15 +113,14 @@ public class GenerateModelRunnable implements Runnable {
 			}
 
 			if (flagMap.get("generateRcpPluginEntities")) { // No model part only RCP part with plugin entities
-				ScenarioInput scenarioInput = new ScenarioInput(scenarioResources, EngineConstants.PLUGIN_ENTITY_TREE,
-						"", false, true, true, false);
+				ScenarioInput scenarioInput = new ScenarioInput(scenarioResources, EngineConstants.PLUGIN_ENTITY_TREE, "", false,
+						true, true, false);
 				new PluginEntityTreeGenerator(scenarioInput);
 				scenarioResources.loadScenarioParameters();
 				scenarioResources.incrementalBuildProject();
 			} else {
 				modelComponentGeneration = componentGeneration.getModelComponentGeneration();
-				GenerationScenarioWrapper generationScenario = (GenerationScenarioWrapper) scenarioTree
-						.getGenerationScenario();
+				GenerationScenarioWrapper generationScenario = (GenerationScenarioWrapper) scenarioTree.getGenerationScenario();
 				modelPart = generationScenario.getModelPart();
 
 				if (flagMap.get("addDriverModule"))
@@ -135,9 +133,8 @@ public class GenerateModelRunnable implements Runnable {
 						|| flagMap.get("addDatasourceInStandalone")) {
 					final Display display = Display.getDefault();
 					display.syncExec(() -> {
-						new StandaloneFileChangeDialog(display.getActiveShell(),
-								AdichatzApplication.getInstance().getFormToolkit(),
-								getJBossStandaloneReader(scenarioResources)).open();
+						new StandaloneFileChangeDialog(display.getActiveShell(), getJBossStandaloneReader(scenarioResources))
+								.open();
 					});
 				}
 
@@ -150,7 +147,6 @@ public class GenerateModelRunnable implements Runnable {
 					case FOLDER:
 						display.syncExec(() -> {
 							confirmFormDialog = new ConfirmFormDialog(display.getActiveShell(),
-									AdichatzApplication.getInstance().getFormToolkit(),
 									getFromStudioBundle("scenario.pojo.folder.choose"), null, getConfirmContent()) {
 								@Override
 								protected void createButtonsForButtonBar(Composite parent) {
@@ -168,8 +164,7 @@ public class GenerateModelRunnable implements Runnable {
 				if (scenarioResources.getModelFileNames().isEmpty())
 					Display.getDefault().asyncExec(() -> {
 						logWarning(getFromStudioBundle("scenario.no.model.file.warning"));
-						EngineTools.openDialog(MessageDialog.INFORMATION,
-								getFromStudioBundle("scenario.no.model.file.title"),
+						EngineTools.openDialog(MessageDialog.INFORMATION, getFromStudioBundle("scenario.no.model.file.title"),
 								getFromStudioBundle("scenario.no.model.file.message"));
 					});
 				else {
@@ -182,18 +177,16 @@ public class GenerateModelRunnable implements Runnable {
 							scenarioTree.mergeCustomization(scenarioResources, customizationScenarioTree,
 									IPluginEntityScenario.MODEL_PART);
 							((GenerationScenarioWrapper) scenarioTree.getGenerationScenario()).mergeCustomization(
-									customizationScenarioTree.getGenerationScenario(),
-									scenarioResources.getPluginName(), IPluginEntityScenario.ENTITY);
+									customizationScenarioTree.getGenerationScenario(), scenarioResources.getPluginName(),
+									IPluginEntityScenario.ENTITY);
 						}
 						generationScenario.addGenerationUnit(scenarioResources, GenerationEnum.ENTITY);
 						generationScenario.addGenerationUnit(scenarioResources, GenerationEnum.QUERY);
-						scenarioResources.rewritePojos(rewrited(workPluginEntities, customizationScenarioTree), true,
-								true);
+						scenarioResources.rewritePojos(rewrited(workPluginEntities, customizationScenarioTree), true, true);
 					}
 
 					if (flagMap.get("generateMetaModel")) {
-						modelComponentGeneration.generateMetaModel(scenarioTree, null,
-								flagMap.get("generateOnlyChange"));
+						modelComponentGeneration.generateMetaModel(scenarioTree, null, flagMap.get("generateOnlyChange"));
 					}
 
 					// If change on Pojo, meta model, Ejb or callback and pluginEntityTree exists
@@ -208,7 +201,7 @@ public class GenerateModelRunnable implements Runnable {
 				}
 			}
 			scenarioResources.setImpactModel(null);
-			ScenarioUtil.createXmlFile(scenarioTree.getXmlFile(), scenarioTree);
+			ScenarioUtil.createXmlFile(scenarioResources.getScenarioFile().getLocation().toFile(), scenarioTree);
 			IFile scenarioFile = scenarioResources.getXmlFolder().getFile(GeneratorConstants.SCENARIO_FILE);
 			ScenarioUtil.createXmlFile(scenarioFile, scenarioTree, generationScenario);
 			if (scenarioResources.hasPluginEnittyTree())
@@ -250,8 +243,7 @@ public class GenerateModelRunnable implements Runnable {
 			private TreeViewer treeViewer;
 
 			@Override
-			public void createConfirmContent(Composite parent, AdiFormToolkit toolkit,
-					List<Control> complementControls) {
+			public void createConfirmContent(Composite parent, AdiFormToolkit toolkit, List<Control> complementControls) {
 				parent.setLayout(new MigLayout("wrap 2, ins 0", "grow,fill", "[][grow,fill]"));
 				final List<IJavaProject> javaProjects = new ArrayList<IJavaProject>();
 				for (IProject project : ResourcesPlugin.getWorkspace().getRoot().getProjects()) {
@@ -280,13 +272,11 @@ public class GenerateModelRunnable implements Runnable {
 							return AdichatzApplication.getInstance().getImage(GeneratorConstants.STUDIO_BUNDLE,
 									"IMG_JAVA_PROJECT.png");
 						else if (element instanceof IPackageFragmentRoot)
-							return JavaPlugin.getImageDescriptorRegistry()
-									.get(JavaPluginImages.DESC_OBJS_PACKFRAG_ROOT);
+							return JavaPlugin.getImageDescriptorRegistry().get(JavaPluginImages.DESC_OBJS_PACKFRAG_ROOT);
 						else if (element instanceof IJavaElement)
 							return JavaPlugin.getImageDescriptorRegistry().get(JavaPluginImages.DESC_OBJS_PACKAGE);
 						else
-							return AdichatzApplication.getInstance().getImage(GeneratorConstants.STUDIO_BUNDLE,
-									"IMG_ERROR.png");
+							return AdichatzApplication.getInstance().getImage(GeneratorConstants.STUDIO_BUNDLE, "IMG_ERROR.png");
 					}
 				});
 				treeViewer.setContentProvider(new ITreeContentProvider() {
@@ -383,8 +373,7 @@ public class GenerateModelRunnable implements Runnable {
 						selectedObject = ((IStructuredSelection) treeViewer.getSelection()).getFirstElement();
 						if (!(selectedObject instanceof IPackageFragment))
 							selectedObject = null;
-						confirmFormDialog.getButton(IDialogConstants.OK_ID)
-								.setEnabled(selectedObject instanceof IPackageFragment);
+						confirmFormDialog.getButton(IDialogConstants.OK_ID).setEnabled(selectedObject instanceof IPackageFragment);
 					}
 					tableViewer.setInput(selectedObject);
 					tableViewer.refresh();
@@ -413,8 +402,8 @@ public class GenerateModelRunnable implements Runnable {
 			@Override
 			public void okPressed(List<Control> complementControls) {
 				modelComponentGeneration.beforePojoProcurement(false);
-				IPackageFragment srcPackageFragment = (IPackageFragment) ((IStructuredSelection) treeViewer
-						.getSelection()).getFirstElement();
+				IPackageFragment srcPackageFragment = (IPackageFragment) ((IStructuredSelection) treeViewer.getSelection())
+						.getFirstElement();
 				try {
 					IPackageFragmentRoot packageFragmentRoot = scenarioResources.getJavaProject()
 							.getPackageFragmentRoot(scenarioResources.getProject().getFolder("src"));

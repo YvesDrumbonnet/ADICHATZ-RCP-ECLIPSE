@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.adichatz.engine.common.AdiPluginResources;
 import org.adichatz.engine.common.AdichatzApplication;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.scenario.ScenarioResources;
 import org.adichatz.tool.ToolUtil;
 import org.eclipse.e4.core.contexts.IEclipseContext;
@@ -30,6 +31,8 @@ public class CacheManagerPart {
 
 	private CTabFolder tabFolder;
 
+	protected AdiFormToolkit toolkit;
+
 	@PostConstruct
 	public void createControl(IEclipseContext context, MPart part) {
 		//		AdiInputPart inputPart = context.get(AdiInputPart.class);
@@ -39,7 +42,8 @@ public class CacheManagerPart {
 		scenarioResources = ScenarioResources.getInstance(pluginResources.getPluginName(), null);
 
 		tabFolder = new CTabFolder(parent, SWT.BOTTOM | SWT.FLAT);
-		AdichatzApplication.getInstance().getFormToolkit().adapt(tabFolder);
+		toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
+		toolkit.adapt(tabFolder);
 
 		addPage(new EntityFormPage(this), "entityCacheManagerList");
 		addPage(new BoundTabularControllerFormPage(this), "boundTable");
@@ -61,12 +65,12 @@ public class CacheManagerPart {
 
 	private void addPage(ICachePage cachePage, String text) {
 		CTabItem tabItem = new CTabItem(tabFolder, SWT.NONE);
-		ScrolledForm scrolledForm = AdichatzApplication.getInstance().getFormToolkit().createScrolledForm(tabFolder);
+		ScrolledForm scrolledForm = toolkit.createScrolledForm(tabFolder);
 		Composite body = scrolledForm.getBody();
 		body.setLayout(new MigLayout("wrap, ins 0", "grow,fill", "grow,fill"));
 		tabItem.setControl(scrolledForm);
 		tabItem.setText(text);
 		String formText = getFromToolBundle(text);
-		cachePage.createContent(new ManagedForm(AdichatzApplication.getInstance().getFormToolkit(), scrolledForm), formText);
+		cachePage.createContent(new ManagedForm(toolkit, scrolledForm), formText);
 	}
 }

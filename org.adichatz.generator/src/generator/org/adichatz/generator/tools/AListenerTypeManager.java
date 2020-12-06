@@ -265,7 +265,12 @@ public abstract class AListenerTypeManager {
 				return element instanceof SetType;
 			}
 		});
-		LISTENER_MANAGER_MAP.put(ListenerTypeEnum.REFRESH, new AListenerTypeManager(CONTROL) {
+		LISTENER_MANAGER_MAP.put(ListenerTypeEnum.BEFORE_REFRESH, new AListenerTypeManager(CONTROL) {
+			public boolean isEligible(IElementWrapper element) {
+				return element instanceof SetType;
+			}
+		});
+		LISTENER_MANAGER_MAP.put(ListenerTypeEnum.AFTER_REFRESH, new AListenerTypeManager(CONTROL) {
 			public boolean isEligible(IElementWrapper element) {
 				return element instanceof SetType;
 			}
@@ -325,7 +330,7 @@ public abstract class AListenerTypeManager {
 		LISTENER_TYPE_MAP.put("POST_SELECTION_CHANGED", ListenerTypeEnum.POST_SELECTION_CHANGED);
 		LISTENER_TYPE_MAP.put("WIDGET_SELECTED", ListenerTypeEnum.WIDGET_SELECTED);
 		LISTENER_TYPE_MAP.put("DOUBLE_CLICK", ListenerTypeEnum.DOUBLE_CLICK);
-		LISTENER_TYPE_MAP.put("REFRESH", ListenerTypeEnum.REFRESH);
+		LISTENER_TYPE_MAP.put("REFRESH", ListenerTypeEnum.AFTER_REFRESH);
 	}
 
 	public static boolean isEligible(IElementWrapper element, int category) {

@@ -74,9 +74,8 @@ package org.adichatz.engine.e4.handler;
 import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.ApplicationEvent;
 import org.adichatz.engine.common.ReflectionTools;
-import org.adichatz.engine.e4.resource.E4AdichatzApplication;
+import org.adichatz.engine.e4.resource.EngineE4Util;
 import org.adichatz.engine.e4.resource.IPerspectiveManager;
-import org.adichatz.engine.e4.resource.PerspectiveProcessor;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
@@ -100,9 +99,9 @@ public class PerspectiveResetHandler {
 	 */
 	@Execute
 	public void execute(MApplication application) {
-		MPerspectiveStack perspectiveStack = E4AdichatzApplication.getInstance().getPerspectiveStack();
+		MPerspectiveStack perspectiveStack = AdichatzApplication.getInstance().getContextValue(MPerspectiveStack.class);
 		MPerspective selectedPerspective = perspectiveStack.getSelectedElement();
-		String perspectiveManagerURI = selectedPerspective.getPersistedState().get(PerspectiveProcessor.PERSPECTIVE_MANAGER);
+		String perspectiveManagerURI = selectedPerspective.getPersistedState().get(EngineE4Util.PERSPECTIVE_MANAGER);
 		IPerspectiveManager perspectiveManager = (IPerspectiveManager) ReflectionTools.instantiateURI(perspectiveManagerURI,
 				new Class[] { MApplication.class, MPerspectiveStack.class, String.class },
 				new Object[] { application, perspectiveStack, selectedPerspective.getElementId() });

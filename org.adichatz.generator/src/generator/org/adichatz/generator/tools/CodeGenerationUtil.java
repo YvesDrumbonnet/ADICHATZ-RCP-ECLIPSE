@@ -178,10 +178,26 @@ public class CodeGenerationUtil {
 		}
 	}
 
+	/**
+	 * Adds the listener code.
+	 *
+	 * listener.getListenerTypes() contains only when one type (see org.adichatz.generator.tools.TransformTreeTools#reprocessField)
+	 *  
+	 * @param buffer the buffer
+	 * @param wrapper the wrapper
+	 * @param listener the listener
+	 * @param prefix the prefix
+	 * @param listenerTypeManager the listener type manager
+	 * @param listenerTypeEnum the listener type enum
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private static void addListenerCode(BufferCode buffer, IWidgetWrapper wrapper, ListenerType listener, String prefix,
 			AListenerTypeManager listenerTypeManager, ListenerTypeEnum listenerTypeEnum) throws IOException {
 		KeyWordGenerator keyWordGenerator = buffer.getGenerator().getScenarioInput().getScenarioResources().getKeyWordGenerator();
-		String listenerId = keyWordGenerator.evalExpr2Str(buffer, listener.getId(), false);
+		String id = listener.getId();
+		if (isEmpty(id))
+			id = listener.getListenerTypes();
+		String listenerId = keyWordGenerator.evalExpr2Str(buffer, id, false);
 		ACodeGenerator generator = buffer.getGenerator();
 		StringBuffer listenerDeclaration = new StringBuffer();
 		String listenerName = generator.getVariableName(wrapper.getId().replace(":", "_") + "LSTN");
@@ -251,9 +267,9 @@ public class CodeGenerationUtil {
 					logError(getFromGeneratorBundle("generation.not.collection.entity.listener", wrapper.getId(),
 							listener.getListenerTypes()));
 
-				buffer.appendPlus(
-						listenerClassName + " " + listenerName + " = new " + listenerClassName + "(" + collectionControllerName
-								+ ", " + generator.getObjectName(IEventType.class) + "." + listener.getListenerTypes() + ") {");
+				buffer.appendPlus(listenerClassName + " " + listenerName + " = new " + listenerClassName + "(" + listenerId + ", "
+						+ collectionControllerName + ", " + generator.getObjectName(IEventType.class) + "."
+						+ listener.getListenerTypes() + ") {");
 				buffer.append("@Override");
 				buffer.appendPlus("public void handleEntityEvent(" + generator.getObjectName(AdiEntityEvent.class) + " event) {");
 				addCode(buffer, listener.getCode());
@@ -261,7 +277,7 @@ public class CodeGenerationUtil {
 				buffer.appendMinus("};");
 			} else if (0 != (listenerTypeManager.getListenerCategory() & AListenerTypeManager.DATABINDING)) {
 				listenerClassName = generator.getObjectName(ABindingListener.class);
-				buffer.appendPlus(listenerClassName + " " + listenerName + " = new " + listenerClassName + "("
+				buffer.appendPlus(listenerClassName + " " + listenerName + " = new " + listenerClassName + "(" + listenerId + ", "
 						+ generator.getObjectName(IEventType.class) + "." + listener.getListenerTypes() + ") {");
 				buffer.append("@Override");
 				buffer.appendPlus("public void handleEvent(" + generator.getObjectName(AdiEvent.class) + " event) {");
@@ -351,7 +367,8 @@ public class CodeGenerationUtil {
 							prefix + "getViewer().add" + (listenerTypeEnum == ListenerTypeEnum.SELECTION_CHANGED ? "" : "Post")
 									+ "SelectionChangedListener(" + listenerName + ");");
 					break;
-				case REFRESH:
+				case AFTER_REFRESH:
+				case BEFORE_REFRESH:
 					listenerClassName = generator.getObjectName(AControlListener.class);
 					buffer.appendPlus(listenerClassName + " " + listenerName + " = new " + listenerClassName + "(" + listenerId
 							+ ", " + generator.getObjectName(IEventType.class) + "." + listener.getListenerTypes() + ") {");

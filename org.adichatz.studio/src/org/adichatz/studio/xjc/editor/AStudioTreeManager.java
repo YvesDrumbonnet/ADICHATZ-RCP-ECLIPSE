@@ -63,7 +63,7 @@ import org.adichatz.common.ejb.util.IEntityConstants;
 import org.adichatz.engine.common.AdiPluginResources;
 import org.adichatz.engine.common.Utilities;
 import org.adichatz.engine.controller.AController;
-import org.adichatz.engine.controller.collection.TreeController;
+import org.adichatz.engine.controller.collection.ATreeController;
 import org.adichatz.engine.data.ADataAccess;
 import org.adichatz.engine.validation.ABindingService;
 import org.adichatz.generator.tree.ATreeChild;
@@ -87,7 +87,7 @@ public abstract class AStudioTreeManager extends AXjcTreeManager {
 	private ABindingService bindingService;
 
 	/** The tree controller. */
-	private TreeController treeController;
+	private ATreeController treeController;
 
 	/** The data access. */
 	protected ADataAccess dataAccess;
@@ -110,7 +110,7 @@ public abstract class AStudioTreeManager extends AXjcTreeManager {
 	 * 
 	 * @return the tree controller
 	 */
-	public TreeController getTreeController() {
+	public ATreeController getTreeController() {
 		return treeController;
 	}
 
@@ -120,7 +120,7 @@ public abstract class AStudioTreeManager extends AXjcTreeManager {
 	 * @param treeController
 	 *            the new tree controller
 	 */
-	public void setTreeController(TreeController treeController) {
+	public void setTreeController(ATreeController treeController) {
 		this.treeController = treeController;
 		dataAccess = treeController.getPluginResources().getDataAccess();
 	}

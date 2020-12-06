@@ -101,9 +101,6 @@ public abstract class ATreeFormEditor extends AStudioFormEditor implements IReso
 	/** The cache key. */
 	protected MultiKey cacheKey;
 
-	/** The file editor input. */
-	protected FileEditorInput fileEditorInput;
-
 	/** The xml text editor. */
 	protected XmlTextEditor xmlTextEditor;
 
@@ -170,7 +167,7 @@ public abstract class ATreeFormEditor extends AStudioFormEditor implements IReso
 	 */
 	@Override
 	public FileEditorInput getEditorInput() {
-		return fileEditorInput;
+		return (FileEditorInput) super.getEditorInput();
 	}
 
 	/**
@@ -207,11 +204,11 @@ public abstract class ATreeFormEditor extends AStudioFormEditor implements IReso
 	public void resourceChanged(IResourceChangeEvent event) {
 		IResourceDelta delta = event.getDelta();
 		if (null != delta) {// e.g. project is deleted
-			long currentLocalTimeStamp = fileEditorInput.getFile().getLocalTimeStamp();
+			long currentLocalTimeStamp = getEditorInput().getFile().getLocalTimeStamp();
 			if (currentLocalTimeStamp == localTimeStamp)
 				return;
 			localTimeStamp = currentLocalTimeStamp;
-			IResourceDelta fileDelta = delta.findMember(fileEditorInput.getFile().getFullPath());
+			IResourceDelta fileDelta = delta.findMember(getEditorInput().getFile().getFullPath());
 			if (null != fileDelta) {
 				IResourceDeltaVisitor visitor = new IResourceDeltaVisitor() {
 					public boolean visit(IResourceDelta delta) {
@@ -275,7 +272,7 @@ public abstract class ATreeFormEditor extends AStudioFormEditor implements IReso
 		// Launched when closing a dirty editor or by org.adichatz.studio.xjc.editor.action.SaveActionController
 		AdiBusyIndicator.showWhile(() -> {
 			insideFileChanged = true;
-			ScenarioUtil.createXmlFile(treeWrapper.getXmlFile(), treeWrapper);
+			ScenarioUtil.createXmlFile(getEditorInput().getFile().getLocation().toFile(), treeWrapper);
 			insideFileChanged = false;
 		});
 	}

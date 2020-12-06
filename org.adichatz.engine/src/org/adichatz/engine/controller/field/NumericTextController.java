@@ -59,7 +59,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.ParseException;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.Utilities;
 import org.adichatz.engine.controller.AFieldController;
 import org.adichatz.engine.controller.IContainerController;
@@ -155,7 +154,8 @@ public class NumericTextController extends AFieldController {
 	 */
 	@Override
 	public void createControl() {
-		numericText = AdichatzApplication.getInstance().getFormToolkit().createNumericText(parentController.getComposite(), style);
+		super.createControl();
+		numericText = toolkit.createNumericText(parentController.getComposite(), style);
 	}
 
 	/*

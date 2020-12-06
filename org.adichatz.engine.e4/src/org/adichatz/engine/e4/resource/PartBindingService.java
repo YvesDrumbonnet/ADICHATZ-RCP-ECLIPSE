@@ -83,10 +83,10 @@ import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.controller.IItemContainerController;
 import org.adichatz.engine.controller.IItemController;
 import org.adichatz.engine.controller.IValidableController;
+import org.adichatz.engine.controller.collection.ATabularController;
 import org.adichatz.engine.controller.collection.CTabItemController;
 import org.adichatz.engine.controller.collection.CompositeBagController;
 import org.adichatz.engine.controller.collection.FormPageController;
-import org.adichatz.engine.controller.collection.ATabularController;
 import org.adichatz.engine.e4.part.BoundedPart;
 import org.adichatz.engine.listener.AdiEvent;
 import org.adichatz.engine.listener.IEventType;
@@ -128,7 +128,7 @@ public class PartBindingService extends ABindingService {
 	public PartBindingService(BoundedPart boundedPart) {
 		super(boundedPart);
 		this.boundedPart = boundedPart;
-		addBindingListener(new ABindingListener(IEventType.DIRTY_VALIDATION) {
+		addBindingListener(new ABindingListener("BoundedPart#DIRTY_VALIDATION", IEventType.DIRTY_VALIDATION) {
 			@Override
 			public void handleEvent(AdiEvent event) {
 				// needed to fire method updateState() on Error, save and refresh actions

@@ -10,10 +10,10 @@ import org.adichatz.engine.controller.utils.AReskinManager;
 import org.adichatz.engine.e4.preference.APreferencePage;
 import org.adichatz.engine.e4.preference.AdiPreferenceManager;
 import org.adichatz.engine.e4.preference.CComboFieldEditor;
-import org.adichatz.engine.e4.resource.E4AdichatzApplication;
 import org.adichatz.engine.e4.resource.EngineE4Util;
 import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.css.swt.theme.ITheme;
 import org.eclipse.e4.ui.css.swt.theme.IThemeEngine;
 import org.eclipse.jface.resource.JFaceResources;
@@ -61,12 +61,12 @@ public class ThemePreferencePage extends APreferencePage {
 	 */
 	@Override
 	public void createPropertiesContent(Composite parent) {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		themeGroup = toolkit.createGroup(parent, getFromPublicBundle("theme.properties"), SWT.NONE);
 		themeGroup.setLayout(new MigLayout("wrap 2", "[][grow,fill]"));
 		themeGroup.setFont(JFaceResources.getBannerFont());
 
-		IThemeEngine themeEngine = E4AdichatzApplication.getInstance().getContext().get(IThemeEngine.class);
+		IThemeEngine themeEngine = AdichatzApplication.getInstance().getContextValue(IEclipseContext.class).get(IThemeEngine.class);
 		CComboFieldEditor themeFE = new CComboFieldEditor(EngineE4Util.THEME_ID, null, this, getFromPublicBundle("theme.title"),
 				themeGroup) {
 			@Override

@@ -76,6 +76,7 @@ import static org.adichatz.engine.common.LogBroker.logError;
 import org.adichatz.engine.common.EngineConstants;
 import org.adichatz.generator.common.GeneratorConstants;
 import org.adichatz.studio.util.StudioUtil;
+import org.adichatz.studio.xjc.editor.ScenarioEditorInput;
 import org.adichatz.studio.xjc.editor.ScenarioFormEditor;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -83,7 +84,6 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.part.FileEditorInput;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -105,7 +105,8 @@ public class EditScenarioFileHandler extends AAdiHandler {
 			IProject project = StudioUtil.getProjectFromExecution(event);
 			if (null != project)
 				try {
-					FileEditorInput fileEditorInput = new FileEditorInput(
+					ScenarioEditorInput fileEditorInput = new ScenarioEditorInput(
+							//					FileEditorInput fileEditorInput = new FileEditorInput(
 							project.getFile(EngineConstants.XML_FILES_PATH + "/" + GeneratorConstants.SCENARIO_FILE));
 					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().openEditor(fileEditorInput,
 							ScenarioFormEditor.ID);

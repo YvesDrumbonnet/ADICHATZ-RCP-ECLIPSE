@@ -58,6 +58,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.adichatz.common.ejb.Session;
 import org.adichatz.engine.common.AdiPluginResources;
 import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
@@ -201,7 +202,7 @@ public class PluginEntity<T> {
 		if (null == roles)
 			return true;
 		for (String role : roles)
-			if (AdichatzApplication.getInstance().getSession().getRoles().contains(role))
+			if (AdichatzApplication.getInstance().getContextValue(Session.class).getRoles().contains(role))
 				return true;
 		return false;
 	}

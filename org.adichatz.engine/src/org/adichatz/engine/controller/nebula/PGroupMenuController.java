@@ -117,6 +117,7 @@ public class PGroupMenuController extends ACollectionController implements IMenu
 	 */
 	@Override
 	public void createControl() {
+		super.createControl();
 		final PGroup pgroup = ((PGroupController) parentController).getControl();
 		menu = new Menu(pgroup);
 		pgroupToolItem = new PGroupToolItem(pgroup, style);

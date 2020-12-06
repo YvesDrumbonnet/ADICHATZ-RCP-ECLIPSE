@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.AdichatzErrorException;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
@@ -30,8 +29,8 @@ public class ConfirmFormDialog extends AFormDialog {
 
 	protected List<Control> complementControls = new ArrayList<Control>();
 
-	public ConfirmFormDialog(Shell shell, AdiFormToolkit toolkit, String title, Image image, IConfirmContent confirmContent) {
-		super(shell, toolkit);
+	public ConfirmFormDialog(Shell shell, String title, Image image, IConfirmContent confirmContent) {
+		super(shell);
 		this.title = title;
 		this.image = image;
 		this.confirmContent = confirmContent;
@@ -77,8 +76,7 @@ public class ConfirmFormDialog extends AFormDialog {
 			final IConfirmContent confirmContent) {
 		result = false;
 		display.syncExec(() -> {
-			ConfirmFormDialog confirmFormDialog = new ConfirmFormDialog(display.getActiveShell(),
-					AdichatzApplication.getInstance().getFormToolkit(), title, image, confirmContent);
+			ConfirmFormDialog confirmFormDialog = new ConfirmFormDialog(display.getActiveShell(), title, image, confirmContent);
 			if (Window.OK == confirmFormDialog.open())
 				result = true;
 		});

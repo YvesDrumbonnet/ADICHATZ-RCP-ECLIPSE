@@ -71,7 +71,6 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.field;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AFieldController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.core.ControllerCore;
@@ -134,7 +133,8 @@ public class CheckBoxController extends AFieldController {
 	 */
 	@Override
 	public void createControl() {
-		button = AdichatzApplication.getInstance().getFormToolkit().createButton(parentController.getComposite(), null, style);
+		super.createControl();
+		button = toolkit.createButton(parentController.getComposite(), null, style);
 	}
 
 	/*

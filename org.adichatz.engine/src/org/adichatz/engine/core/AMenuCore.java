@@ -75,6 +75,7 @@ import java.util.List;
 
 import org.adichatz.engine.common.AdiPluginResources;
 import org.adichatz.engine.common.AdichatzApplication;
+import org.adichatz.engine.common.InjectionInspector;
 import org.adichatz.engine.controller.menu.MenuController;
 import org.adichatz.engine.controller.utils.ElementaryAccessibility;
 import org.adichatz.engine.listener.AListener;
@@ -111,6 +112,7 @@ public abstract class AMenuCore {
 	protected AMenuCore(String pluginKey, AMenuCore parentMenuCore) {
 		pluginResources = AdichatzApplication.getPluginResources(pluginKey);
 		this.parentMenuCore = parentMenuCore;
+		InjectionInspector.inject(this);
 	}
 
 	/**

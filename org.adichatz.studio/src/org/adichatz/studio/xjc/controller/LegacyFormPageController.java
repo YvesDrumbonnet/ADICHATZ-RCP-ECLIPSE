@@ -72,7 +72,6 @@
 package org.adichatz.studio.xjc.controller;
 
 import org.adichatz.engine.cache.IEntity;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.APageController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.IDirtyableForm;
@@ -124,9 +123,10 @@ public class LegacyFormPageController extends APageController implements IToolBa
 	 * Creates the control.
 	 */
 	public void createControl() {
+		super.createControl();
 		composite = scrolledForm.getBody();
 		// gives head grandient color even when there is no FormMesageManager (validator)
-		AdichatzApplication.getInstance().getFormToolkit().decorateFormHeading(scrolledForm.getForm());
+		toolkit.decorateFormHeading(scrolledForm.getForm());
 	}
 
 	/*

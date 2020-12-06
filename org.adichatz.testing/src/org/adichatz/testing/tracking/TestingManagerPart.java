@@ -129,7 +129,7 @@ public class TestingManagerPart implements IOutlineContainerPart {
 
 	@PostConstruct
 	public void createControl() {
-		final AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		final AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		TestingTools.init();
 		ScrolledForm scrolledForm = toolkit.createScrolledForm(parent);
 		new ManagedForm(toolkit, scrolledForm);

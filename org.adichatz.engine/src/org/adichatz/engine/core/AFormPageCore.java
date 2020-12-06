@@ -97,11 +97,6 @@ public abstract class AFormPageCore extends EntityManagerCore {
 
 	protected IContainerController parentController;
 
-	@Override
-	public APageController getController() {
-		return (APageController) super.getController();
-	}
-
 	/**
 	 * Instantiates a new a form page core.
 	 * 
@@ -116,6 +111,11 @@ public abstract class AFormPageCore extends EntityManagerCore {
 	 * Creates the contents.
 	 */
 	public abstract void createContents();
+
+	@Override
+	public APageController getController() {
+		return (APageController) super.getController();
+	}
 
 	/**
 	 * Post create

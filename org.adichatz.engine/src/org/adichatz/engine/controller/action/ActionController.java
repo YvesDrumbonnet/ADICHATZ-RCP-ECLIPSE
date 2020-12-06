@@ -141,6 +141,7 @@ public class ActionController extends AWidgetController implements IActionContro
 	 */
 	@Override
 	public void createControl() {
+		super.createControl();
 		if (parentController instanceof ManagedToolBarController)
 			((ManagedToolBarController) parentController).getToolBarManager().add(getControl());
 		else if (parentController instanceof MenuActionController)

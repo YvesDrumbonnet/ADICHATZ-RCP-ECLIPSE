@@ -74,7 +74,6 @@ package org.adichatz.engine.controller.field;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AFieldController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.core.ControllerCore;
@@ -168,8 +167,8 @@ public class HyperlinkController extends AFieldController {
 	 */
 	@Override
 	public void createControl() {
-		hyperlink = AdichatzApplication.getInstance().getFormToolkit().createHyperlink(parentController.getComposite(), null,
-				style);
+		super.createControl();
+		hyperlink = toolkit.createHyperlink(parentController.getComposite(), null, style);
 		hyperlink.addHyperlinkListener(new HyperlinkAdapter() {
 			@Override
 			public void linkActivated(HyperlinkEvent e) {

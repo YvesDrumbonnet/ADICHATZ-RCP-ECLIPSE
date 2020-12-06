@@ -153,7 +153,7 @@ public class CustomizationFileTextController extends FileTextController {
 				return setLevel(IMessageProvider.NONE, null);
 			}
 		});
-		ABindingListener injectListener = new ABindingListener(IEventType.POST_MESSAGE) {
+		ABindingListener injectListener = new ABindingListener(null, IEventType.POST_MESSAGE) {
 			@Override
 			public void handleEvent(AdiEvent event) {
 				if (getBindingService().getErrorMessageMap().isEmpty()) {

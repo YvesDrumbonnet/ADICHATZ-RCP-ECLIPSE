@@ -60,12 +60,13 @@ public class QueryFulltextController extends TextController {
 						.getQueryPreferenceManager()).getQueryPreference().getFullTextClause();
 				if (null != fullTextClause)
 					getControl().setText(fullTextClause);
-				bindingService.addBindingListener(new ABindingListener(IEventType.POST_MESSAGE) {
-					@Override
-					public void handleEvent(AdiEvent event) {
-						setEnabled(bindingService.getErrorMessageMap().isEmpty());
-					}
-				});
+				bindingService
+						.addBindingListener(new ABindingListener("QueryFulltextController#POST_MESSAGE", IEventType.POST_MESSAGE) {
+							@Override
+							public void handleEvent(AdiEvent event) {
+								setEnabled(bindingService.getErrorMessageMap().isEmpty());
+							}
+						});
 			}
 		});
 		addListener(new AControlListener("fullTextACC", IEventType.AFTER_END_LIFE_CYCLE) {

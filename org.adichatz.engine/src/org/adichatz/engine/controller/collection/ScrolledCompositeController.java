@@ -71,12 +71,10 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.collection;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.ADirtyContainerController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.IControlController;
 import org.adichatz.engine.core.ControllerCore;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
@@ -123,6 +121,7 @@ public class ScrolledCompositeController extends ADirtyContainerController imple
 	 *            the style
 	 */
 	public void createControl() {
+		super.createControl();
 		/**
 		 * In order to manage Scroll bar appearance, follow these steps<br>
 		 * - Create a parent composite<br>
@@ -131,7 +130,6 @@ public class ScrolledCompositeController extends ADirtyContainerController imple
 		 * - Create a ControlListener on parent composite to limit size of SharedScrolledComposite.<br>
 		 * - Create a listener to compute min size (required size managed by scrolling)
 		 */
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		final Composite parent = toolkit.createComposite(parentController.getComposite());
 		parent.setLayout(new MigLayout("wrap 1, ins 0", "grow,fill", "grow,fill"));
 		scrolledComposite = new SharedScrolledComposite(parent, style) {

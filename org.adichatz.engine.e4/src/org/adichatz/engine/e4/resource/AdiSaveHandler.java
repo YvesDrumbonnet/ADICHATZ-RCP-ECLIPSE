@@ -101,7 +101,6 @@ import org.eclipse.jface.dialogs.IDialogConstants;
  * Propose default ISaveHandler implementation for other part.
  */
 public class AdiSaveHandler implements ISaveHandler {
-	// AVISATZ landmark A Supprimer
 
 	/** The eclipse context. */
 	private IEclipseContext eclipseContext;

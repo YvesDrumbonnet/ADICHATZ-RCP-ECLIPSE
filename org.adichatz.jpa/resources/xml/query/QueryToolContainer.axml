@@ -314,7 +314,7 @@ return null == columnController ? "" : columnController.getText();</columnText>
        					<code>import org.adichatz.engine.listener.AControlListener;
 import org.adichatz.engine.listener.IEventType;
 import org.adichatz.engine.listener.AdiEvent;
-#BEAN(queryTool).getTabularController().addListener(new AControlListener("#POST_REFRESH_TABULAR#", IEventType.REFRESH) {
+#BEAN(queryTool).getTabularController().addListener(new AControlListener("#POST_REFRESH_TABULAR#", IEventType.AFTER_REFRESH) {
     @Override
     public void handleEvent(AdiEvent event) {
 	    #CONTROLLER(jpqlOrder).getControl().setText(#BEAN(queryTool).getQueryFormText());

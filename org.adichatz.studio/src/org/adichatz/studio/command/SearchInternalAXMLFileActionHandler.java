@@ -121,8 +121,7 @@ public class SearchInternalAXMLFileActionHandler extends AAdiHandler {
 			final IConfirmContent confirmContent = getConfirmContent(getFromStudioBundle("search.internal.axml.files"),
 					getFromStudioBundle("search.internal.axml.files"));
 			final Shell shell = Display.getCurrent().getActiveShell();
-			confirmFormDialog = new ConfirmFormDialog(shell, AdichatzApplication.getInstance().getFormToolkit(),
-					getFromStudioBundle("search.internal.axml.files"),
+			confirmFormDialog = new ConfirmFormDialog(shell, getFromStudioBundle("search.internal.axml.files"),
 					imageManager.getImageDescriptor("IMG_AXML.png").createImage(), confirmContent) {
 				protected void buttonPressed(int buttonId) {
 					if (IDialogConstants.OK_ID == buttonId) {

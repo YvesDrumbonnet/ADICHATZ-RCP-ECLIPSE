@@ -79,7 +79,6 @@ import java.util.Map;
 import org.adichatz.generator.wrapper.internal.ICollectionWrapper;
 import org.adichatz.generator.wrapper.internal.IElementWrapper;
 import org.adichatz.generator.wrapper.internal.IEntityContainerWrapper;
-import org.adichatz.generator.wrapper.internal.IGeneratorEntry;
 import org.adichatz.generator.wrapper.internal.IRootWrapper;
 import org.adichatz.generator.xjc.AccessibilitiesType;
 import org.adichatz.generator.xjc.PartTree;
@@ -97,7 +96,7 @@ import org.adichatz.generator.xjc.ValidElementType;
  * 
  */
 public class PartTreeWrapper extends PartTree
-		implements ICollectionWrapper<ValidElementType>, IRootWrapper, IGeneratorEntry, IEntityContainerWrapper {
+		implements ICollectionWrapper<ValidElementType>, IRootWrapper, IEntityContainerWrapper {
 
 	/** The plugin name. */
 	String pluginName;

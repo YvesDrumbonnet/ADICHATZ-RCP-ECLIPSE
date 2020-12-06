@@ -231,8 +231,8 @@ public class AdiResourceUriTextController extends TextController {
 					event.doit = false;
 					final Shell shell = Display.getCurrent().getActiveShell();
 					IConfirmContent confirmContent = getConfirmContent(null, null);
-					confirmFormDialog = new ConfirmFormDialog(shell, AdichatzApplication.getInstance().getFormToolkit(),
-							getFromStudioBundle("studio.resource.uri.list"), uriImage, confirmContent) {
+					confirmFormDialog = new ConfirmFormDialog(shell, getFromStudioBundle("studio.resource.uri.list"), uriImage,
+							confirmContent) {
 						protected void buttonPressed(int buttonId) {
 							if (IDialogConstants.OK_ID == buttonId) {
 								selectURI();

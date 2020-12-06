@@ -71,7 +71,6 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.collection;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AEntityManagerController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.IDirtyableForm;
@@ -79,7 +78,6 @@ import org.adichatz.engine.controller.IToolBarContainerController;
 import org.adichatz.engine.controller.action.FormMenuController;
 import org.adichatz.engine.core.ControllerCore;
 import org.adichatz.engine.extra.FormMessageManager;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.validation.ABindingService;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.SWT;
@@ -148,7 +146,7 @@ public class ScrolledFormController extends AEntityManagerController implements 
 	 */
 	@Override
 	public void createControl() {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		super.createControl();
 		scrolledForm = new ScrolledForm(parentController.getComposite(), toolkit.getOrientation() | style);
 		managedForm = new ManagedForm(toolkit, scrolledForm);
 		scrolledForm.setExpandHorizontal(true);

@@ -127,9 +127,10 @@ public class CTabItemController extends AEntityManagerController implements IIte
 	 */
 	@Override
 	public void createControl() {
+		super.createControl();
 		CTabFolder cTabFolder = (CTabFolder) parentController.getControl();
 		item = new CTabItem(cTabFolder, SWT.NONE);
-		composite = AdichatzApplication.getInstance().getFormToolkit().createComposite(cTabFolder);
+		composite = toolkit.createComposite(cTabFolder);
 
 		item.setControl(composite);
 		composite.setLayout(new MigLayout("ins 0", "grow,fill", "grow,fill"));

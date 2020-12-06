@@ -76,12 +76,10 @@ import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.collection.ATabularController;
 import org.adichatz.engine.controller.field.AColumnController;
 import org.adichatz.engine.core.ControllerCore;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.widgets.LimitedComposite;
 import org.eclipse.nebula.jface.gridviewer.GridTableViewer;
 import org.eclipse.nebula.jface.gridviewer.GridViewerColumn;
@@ -196,9 +194,8 @@ public class GridController<T> extends ATabularController<T> {
 			grid.addSelectionListener((SelectionListener) params[0]);
 			return null;
 		case copyToClipBoard:
-			AdiFormToolkit tookit = AdichatzApplication.getInstance().getFormToolkit();
-			Image checkedImage = tookit.getRegisteredImage("IMG_CHECKED");
-			Image uncheckedImage = tookit.getRegisteredImage("IMG_UNCHECKED");
+			Image checkedImage = toolkit.getRegisteredImage("IMG_CHECKED");
+			Image uncheckedImage = toolkit.getRegisteredImage("IMG_UNCHECKED");
 
 			// Define a writer
 			StringWriter buf = new StringWriter();

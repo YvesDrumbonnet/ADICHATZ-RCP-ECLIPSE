@@ -13,19 +13,16 @@ package org.adichatz.css.theme;
 import static org.adichatz.css.theme.ThemeUtil.getFromPublicBundle;
 import static org.adichatz.engine.common.LogBroker.logError;
 
-import java.util.Iterator;
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.adichatz.css.resources.AdiRegistryCSSPropertyHandlerProvider;
 import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineConstants;
+import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.controller.utils.AReskinManager;
 import org.adichatz.engine.e4.preference.AdiPreferenceManager;
 import org.adichatz.engine.e4.resource.E4AdichatzApplication;
 import org.adichatz.engine.e4.resource.EngineE4Util;
-import org.adichatz.engine.xjc.ParamType;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.RegistryFactory;
@@ -94,18 +91,8 @@ public class ThemeProcessor {
 	@Execute
 	public void process(IExtensionRegistry registry) {
 		if (isApplication()) {
-			String postReskinClassName = AdiReskinManager.class.getName();
-			List<ParamType> params = AdichatzApplication.getInstance().getConfigTree().getRcpConfiguration().getParam();
-			Iterator<ParamType> paramIterator = params.iterator();
-			while (paramIterator.hasNext()) {
-				ParamType param = paramIterator.next();
-				if (param.getId().equals(EngineConstants.POST_RESKIN_CLASS_NAME)) {
-					paramIterator.remove();
-					postReskinClassName = param.getValue();
-					break;
-				}
-			}
-			if (AdiReskinManager.class.getName().equals(postReskinClassName))
+			String postReskinClassName = AdichatzApplication.getInstance().popContextValue(EngineConstants.POST_RESKIN_CLASS_NAME);
+			if (EngineTools.isEmpty(postReskinClassName))
 				new AdiReskinManager(display);
 			else
 				E4AdichatzApplication.getInstance().getApplicationPluginResources().getGencodePath()

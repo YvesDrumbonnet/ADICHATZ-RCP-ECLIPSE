@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<partTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" toolTipText="#PARAM(TOOL_TIP_TEXT)" title="#PARAM(TITLE)" image="#IMG(IMG_EDIT_SCENARIO.png)" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/partTree.xsd" bindingServiceClassName="org.adichatz.studio.xjc.data.XjcBindingService"  entityURI="adi://org.adichatz.studio/model/ScenarioTreeMM">
+<partTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" toolTipText="#PARAM(TOOL_TIP_TEXT)" title="#PARAM(TITLE)" image="#IMG(IMG_EDIT_SCENARIO.png)" xsi:noNamespaceSchemaLocation="https://yvesdrumbonnet.github.io/Adichatz-RCP-Update-Site/xsd/generator/partTree.xsd" bindingServiceClassName="org.adichatz.studio.xjc.data.XjcBindingService"  entityURI="adi://org.adichatz.studio/model/ScenarioTreeMM">
 	<config>
 		<customizations>
 			<action id="featuresTBM:generateScenarioAction" valid="false"/>
@@ -256,7 +256,7 @@ else
         	<composite>
 	        	<layout rowConstraints="[][grow,fill]" columnConstraints="[grow,fill]" layoutConstraints="wrap 1"/>
 				<pgroup id="fileGroup" text="#MSG(adichatzStudio, scenario.custom.choose.file)" font="#FONT(JFaceResources.BANNER_FONT)" clientBackground="#COLOR(IFormColors.H_GRADIENT_START)">
-		            <pgroupToolItem image="#IMG(IMG_EDIT_SCENARIO.png)" toolTipText="#MSG(adichatzStudio, scenario.custom.merge)" id="mergeScenario" controllerClassName="org.adichatz.studio.command.CustomScenarioMergeItem"/>
+		            <pgroupToolItem image="#IMG(IMG_EDIT_SCENARIO.png)" toolTipText="#MSG(adichatzStudio, scenario.custom.merge)" id="mergeScenario" controllerClassName="org.adichatz.studio.command.CustomScenarioMergeItemController"/>
 					<layout layoutConstraints="wrap 3" columnConstraints="[]15[grow,fill]10[]"/>
 					<label id="fileLBL" text="#MSG(adichatzStudio, scenario.custom.label)"  background="#COLOR(IFormColors.H_GRADIENT_START)"/>
 					<fileText id="scenarioFileName" filterExtension="*.xml" controllerClassName="org.adichatz.studio.xjc.controller.CustomFileTextController"/>

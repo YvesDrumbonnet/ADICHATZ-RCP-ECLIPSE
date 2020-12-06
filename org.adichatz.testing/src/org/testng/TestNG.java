@@ -25,10 +25,12 @@ import java.util.jar.JarFile;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.adichatz.engine.e4.resource.E4AdichatzApplication;
+import org.adichatz.engine.common.AdichatzApplication;
+import org.adichatz.engine.e4.resource.EngineE4Util;
 import org.adichatz.testing.TestingTools;
 import org.adichatz.testing.tracking.TestingManagerPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
+import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MStackElement;
 import org.testng.annotations.ITestAnnotation;
 import org.testng.collections.Lists;
@@ -1088,7 +1090,8 @@ public class TestNG {
 		}
 
 		TestingManagerPart.LAST_TEST = System.currentTimeMillis();
-		for (MStackElement part : E4AdichatzApplication.getInstance().getEditorPartStack().getChildren()) {
+		MPartStack editorPartStack = (MPartStack) AdichatzApplication.getInstance().getContextValue(EngineE4Util.EDITOR_PARTSTACK);
+		for (MStackElement part : editorPartStack.getChildren()) {
 			if (part instanceof MPart && part.isVisible()) {
 				if (TestingTools.TESTING_MANAGER_PART_ID.equals(part.getElementId()))
 					((TestingManagerPart) ((MPart) part).getObject()).refresh();

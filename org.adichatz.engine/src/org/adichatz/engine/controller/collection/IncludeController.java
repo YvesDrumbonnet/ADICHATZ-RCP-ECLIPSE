@@ -128,6 +128,7 @@ public abstract class IncludeController extends AEntityManagerController {
 	 * 
 	 */
 	public void createControl() {
+		super.createControl();
 		composite = parentController.getComposite();
 	}
 

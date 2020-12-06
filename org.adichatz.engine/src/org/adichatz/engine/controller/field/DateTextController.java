@@ -74,7 +74,6 @@ package org.adichatz.engine.controller.field;
 import java.text.DateFormat;
 import java.util.Date;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AFieldController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.utils.AdiSWT;
@@ -146,7 +145,8 @@ public class DateTextController extends AFieldController {
 	 */
 	@Override
 	public void createControl() {
-		dateText = AdichatzApplication.getInstance().getFormToolkit().createDateText(parentController.getComposite(), style);
+		super.createControl();
+		dateText = toolkit.createDateText(parentController.getComposite(), style);
 	}
 
 	/*

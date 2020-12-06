@@ -53,10 +53,8 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.nebula;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.core.ControllerCore;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
@@ -100,7 +98,8 @@ public class ScrolledPGroupController extends PGroupController {
 	 * @see org.adichatz.engine.controller.AController#createControl()
 	 */
 	public void createControl() {
-		pgroup = AdichatzApplication.getInstance().getFormToolkit().createPGroup(parentController.getComposite(), style);
+		super.createControl();
+		pgroup = toolkit.createPGroup(parentController.getComposite(), style);
 		pgroup.setLayout(new FillLayout());
 		pgroup.addExpandListener(new ExpandListener() {
 
@@ -114,7 +113,6 @@ public class ScrolledPGroupController extends PGroupController {
 			}
 		});
 		dirtyContainer = pgroup;
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		pgroup.setLayout(new MigLayout("wrap 1, ins 0", "grow,fill", "grow,fill"));
 		scrolledComposite = new SharedScrolledComposite(pgroup, SWT.WRAP | SWT.H_SCROLL | SWT.V_SCROLL) {
 		};

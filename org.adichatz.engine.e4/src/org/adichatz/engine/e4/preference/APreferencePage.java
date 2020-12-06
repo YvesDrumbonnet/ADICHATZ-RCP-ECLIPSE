@@ -54,12 +54,14 @@ public abstract class APreferencePage {
 
 	protected boolean hasMessage = true;
 
-	public APreferencePage(AdiPreferenceManager preferenceManager, IEclipsePreferences eclipsePreferences,
-			Composite parent, TreeViewer treeViewer) {
+	protected AdiFormToolkit toolkit;
+
+	public APreferencePage(AdiPreferenceManager preferenceManager, IEclipsePreferences eclipsePreferences, Composite parent,
+			TreeViewer treeViewer) {
 		this.preferenceManager = preferenceManager;
 		this.eclipsePreferences = eclipsePreferences;
 		this.treeViewer = treeViewer;
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 
 		pgroup = toolkit.createPGroup(parent, SWT.SMOOTH);
 		removeMessage();
@@ -80,8 +82,7 @@ public abstract class APreferencePage {
 				applyButton.setEnabled(false);
 			}
 		});
-		ScrolledComposite scrolledComposite = new SharedScrolledComposite(pgroup,
-				SWT.WRAP | SWT.H_SCROLL | SWT.V_SCROLL) {
+		ScrolledComposite scrolledComposite = new SharedScrolledComposite(pgroup, SWT.WRAP | SWT.H_SCROLL | SWT.V_SCROLL) {
 			@Override
 			public Point computeSize(int wHint, int hHint, boolean changed) {
 				return new Point(SWT.DEFAULT, SWT.DEFAULT);
@@ -100,8 +101,7 @@ public abstract class APreferencePage {
 		Composite bottomComposite = toolkit.createComposite(client);
 		bottomComposite.setLayout(new MigLayout("wrap 2, al right"));
 
-		Button restoreButton = toolkit.createButton(bottomComposite, getFromEngineE4Bundle("restore.default"),
-				SWT.PUSH);
+		Button restoreButton = toolkit.createButton(bottomComposite, getFromEngineE4Bundle("restore.default"), SWT.PUSH);
 		restoreButton.setLayoutData("sg button, gapx 20");
 		restoreButton.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -192,7 +192,7 @@ public abstract class APreferencePage {
 	protected void addMessage(String message) {
 		hasMessage = true;
 		pgroup.setText(message);
-		pgroup.setImage(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImage("IMG_CANCEL"));
+		pgroup.setImage(toolkit.getRegisteredImage("IMG_CANCEL"));
 	}
 
 	protected void removeMessage() {

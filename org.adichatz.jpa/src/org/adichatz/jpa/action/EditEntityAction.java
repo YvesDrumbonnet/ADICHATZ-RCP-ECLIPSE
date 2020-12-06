@@ -74,7 +74,6 @@ package org.adichatz.jpa.action;
 import static org.adichatz.jpa.extra.JPAUtil.getFromJpaBundle;
 
 import org.adichatz.engine.cache.IEntity;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.jpa.extra.JPAUtil;
 
 // TODO: Auto-generated Javadoc
@@ -93,7 +92,7 @@ public class EditEntityAction extends ATabularAction {
 		String text = getFromJpaBundle("table.editEntity");
 		this.setText(text);
 		this.setToolTipText(text);
-		setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_EDITOR"));
+		setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_EDITOR"));
 	}
 
 	/*

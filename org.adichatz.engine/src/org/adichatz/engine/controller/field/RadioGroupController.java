@@ -71,7 +71,6 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.field;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.ARefController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.core.ControllerCore;
@@ -152,8 +151,9 @@ public class RadioGroupController extends ARefController {
 	 */
 	@Override
 	public void createControl() {
+		super.createControl();
 		radioGroup = new RadioGroup(parentController.getComposite());
-		AdichatzApplication.getInstance().getFormToolkit().adapt(radioGroup);
+		toolkit.adapt(radioGroup);
 		radioGroup.setButtons(getInput(), labelProvider);
 		radioGroup.setComparer(new IElementComparer() {
 			@Override

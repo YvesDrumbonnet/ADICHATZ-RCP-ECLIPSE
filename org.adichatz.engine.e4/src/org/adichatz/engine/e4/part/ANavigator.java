@@ -82,6 +82,8 @@ import org.adichatz.engine.controller.menu.MenuController;
 import org.adichatz.engine.controller.menu.NavigatorPath;
 import org.adichatz.engine.controller.utils.INavigator;
 import org.adichatz.engine.core.ARootMenuCore;
+import org.adichatz.engine.xjc.NavigatorType;
+import org.adichatz.engine.xjc.NavigatorsType;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.services.log.Logger;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
@@ -126,13 +128,18 @@ public abstract class ANavigator implements INavigator {
 	 */
 	@Override
 	public void refreshNavigator() {
-		String navigatorId = ((MPart) context.get(MPartSashContainerElement.class)).getElementId() + "";
-		NavigatorPath navigatorPath = AdichatzApplication.getInstance().getNavigatorMap().get(navigatorId);
-		if (null == navigatorPath)
-			logError(getFromEngineE4Bundle("navigator.invalid.URI", navigatorId));
-		else {
-			refreshInput(navigatorPath);
+		String navigatorId = ((MPart) context.get(MPartSashContainerElement.class)).getElementId();
+		refreshInput(navigatorId);
+	}
+
+	protected NavigatorPath getNavigatorPath(String navigatorId) {
+		NavigatorsType navigators = AdichatzApplication.getInstance().getContextValue(NavigatorsType.class);
+		for (NavigatorType navigator : navigators.getNavigator()) {
+			if (navigatorId.equals(navigator.getId()))
+				return new NavigatorPath(navigator.getMenuPath());
 		}
+		logError(getFromEngineE4Bundle("navigator.invalid.URI", navigatorId));
+		return null;
 	}
 
 	public IEclipseContext getContext() {
@@ -153,7 +160,7 @@ public abstract class ANavigator implements INavigator {
 	 * @param navigatorPath
 	 *            the navigator path
 	 */
-	protected abstract void refreshInput(NavigatorPath navigatorPath);
+	protected abstract void refreshInput(String navigatorId);
 
 	/*
 	 * (non-Javadoc)

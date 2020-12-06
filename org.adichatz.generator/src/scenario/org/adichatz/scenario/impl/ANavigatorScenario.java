@@ -67,7 +67,6 @@ import org.adichatz.engine.common.EngineConstants;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.model.AEntityMetaModel;
 import org.adichatz.engine.plugin.ParamMap;
-import org.adichatz.engine.wrapper.AdichatzRcpConfigTreeWrapper;
 import org.adichatz.engine.xjc.AdichatzRcpConfigTree;
 import org.adichatz.engine.xjc.MenuPathType;
 import org.adichatz.engine.xjc.NavigatorType;
@@ -326,7 +325,7 @@ public abstract class ANavigatorScenario extends ABundleScenario implements INav
 		AdichatzRcpConfigTree configTree = (AdichatzRcpConfigTree) scenarioResources.getPluginResources()
 				.getConfigTree("AdichatzRcpConfig.xml", true);
 		if (null == configTree)
-			configTree = new AdichatzRcpConfigTreeWrapper();
+			configTree = new AdichatzRcpConfigTree();
 		RcpConfigurationType rcpConfiguration = configTree.getRcpConfiguration();
 		if (null == rcpConfiguration) {
 			rcpConfiguration = new RcpConfigurationType();

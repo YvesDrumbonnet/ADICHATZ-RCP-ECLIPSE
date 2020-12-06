@@ -5,12 +5,10 @@ import static org.adichatz.jpa.extra.JPAUtil.getFromJpaBundle;
 
 import java.util.function.BooleanSupplier;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.e4.preference.APreferencePage;
 import org.adichatz.engine.e4.preference.AdiPreferenceManager;
 import org.adichatz.engine.e4.preference.BooleanFieldEditor;
 import org.adichatz.engine.e4.preference.IntegerFieldEditor;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.jpa.extra.JPAUtil;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.jface.resource.JFaceResources;
@@ -33,7 +31,6 @@ public class RecentPreferencePage extends APreferencePage {
 
 	@Override
 	public void createPropertiesContent(Composite parent) {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		Group recentGroup = toolkit.createGroup(parent, JPAUtil.getFromJpaBundle("recent.preference.group"), SWT.NONE);
 		recentGroup.setLayout(new MigLayout("wrap 2", "[fill,al right][grow,fill]", "[][]"));
 		recentGroup.setFont(JFaceResources.getBannerFont());

@@ -93,7 +93,7 @@ import org.adichatz.engine.controller.collection.ATabularController;
 import org.adichatz.engine.controller.collection.CTabFolderController;
 import org.adichatz.engine.controller.collection.CTabItemController;
 import org.adichatz.engine.controller.collection.MenuManagerController;
-import org.adichatz.engine.controller.collection.TreeController;
+import org.adichatz.engine.controller.collection.ATreeController;
 import org.adichatz.engine.controller.field.AComboController;
 import org.adichatz.engine.controller.nebula.PGroupToolItemController;
 import org.adichatz.engine.controller.nebula.PShelfController;
@@ -346,7 +346,7 @@ public class SimulationTools {
 
 	public static void handleSelectRowInTreeViewer(RootCore rootCore, String registerId, int... ranges) {
 		checkNullArguments(rootCore, registerId, ranges);
-		TreeController treeController = getController(rootCore, registerId, TreeController.class);
+		ATreeController treeController = getController(rootCore, registerId, ATreeController.class);
 		if (null != treeController) {
 			boolean selectInNewThread = treeController.doesSelectInNewThread();
 			if (selectInNewThread)

@@ -74,11 +74,10 @@ package org.adichatz.engine.tabular;
 import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
 
 import org.adichatz.engine.action.AAction;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.controller.action.ActionController;
-import org.adichatz.engine.controller.collection.MenuManagerController;
 import org.adichatz.engine.controller.collection.ATabularController;
+import org.adichatz.engine.controller.collection.MenuManagerController;
 import org.adichatz.engine.controller.field.AColumnController;
 import org.adichatz.engine.core.ControllerCore;
 
@@ -115,10 +114,10 @@ public class HideColumnActionController<T> extends ActionController {
 				}
 			}
 		};
+		super.createControl();
 		action.setText(getFromEngineBundle("query.hide.column"));
 		action.setToolTipText(getFromEngineBundle("query.hide.column"));
-		action.setImageDescriptor(
-				AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_HIDE_COLUMN"));
+		action.setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_HIDE_COLUMN"));
 		action.setActionController(this);
 	}
 

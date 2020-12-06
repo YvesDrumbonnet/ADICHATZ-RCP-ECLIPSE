@@ -79,6 +79,7 @@ import org.adichatz.engine.common.AdiPluginResources;
 import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.ApplicationEvent;
 import org.adichatz.engine.common.EngineTools;
+import org.adichatz.engine.common.InjectionInspector;
 import org.adichatz.engine.controller.AWidgetController;
 import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.controller.IContainerController;
@@ -99,6 +100,10 @@ public class ControllerCore {
 
 	/** The parent controller. */
 	protected IContainerController coreController;
+
+	public ControllerCore() {
+		InjectionInspector.inject(this);
+	}
 
 	/**
 	 * Gets the context.

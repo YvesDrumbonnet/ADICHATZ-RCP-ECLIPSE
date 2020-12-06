@@ -104,7 +104,7 @@ public class LaunchManagedQueryAction<T> extends LaunchQueryAction<T> {
 		final ABindingService bindingService = actionController.getBindingService();
 		actionController.getParamMap().put(ParamMap.TABULAR_CONTROLLER,
 				((QueryToolInput) actionController.getRootCore().getController().getEntity().getBean()).getTabularController());
-		bindingService.addBindingListener(new ABindingListener(IEventType.POST_MESSAGE) {
+		bindingService.addBindingListener(new ABindingListener("LaunchManagedQueryAction#POST_MESSAGE", IEventType.POST_MESSAGE) {
 			@Override
 			public void handleEvent(AdiEvent event) {
 				boolean enabled = bindingService.getErrorMessageMap().isEmpty();

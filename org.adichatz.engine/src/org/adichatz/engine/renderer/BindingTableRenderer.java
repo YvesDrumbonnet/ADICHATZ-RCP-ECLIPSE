@@ -57,7 +57,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.adichatz.engine.cache.IEntity;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AController;
 import org.adichatz.engine.controller.collection.ATabularController;
 import org.adichatz.engine.controller.utils.AReskinManager;
@@ -111,8 +110,8 @@ public class BindingTableRenderer<T> extends StripeTableRenderer<T> {
 			evenForeground = AReskinManager.getInstance().getColor("#adichatz-table-stripe-even", "color", null, null);
 			oddForeground = AReskinManager.getInstance().getColor("#adichatz-table-stripe-odd", "color", null, null);
 		} else {
-			evenBackground = AdichatzApplication.getInstance().getFormToolkit().getColors().getColor(IFormColors.H_GRADIENT_END);
-			oddBackground = AdichatzApplication.getInstance().getFormToolkit().getColors().getColor(IFormColors.H_GRADIENT_START);
+			evenBackground = toolkit.getColors().getColor(IFormColors.H_GRADIENT_END);
+			oddBackground = toolkit.getColors().getColor(IFormColors.H_GRADIENT_START);
 		}
 	}
 

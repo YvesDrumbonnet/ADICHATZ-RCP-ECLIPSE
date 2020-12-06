@@ -101,14 +101,6 @@ public class AdiClassLoader extends ClassLoader {
 		Class<?> c = findLoadedClass(className);
 		if (c != null)
 			return c;
-		// if (!InternalPolicy.OSGI_AVAILABLE) {
-		// // When using AdiClassLoader in standalone (e.g. for test) super classLoader must be privileged
-		// try {
-		// return super.loadClass(className);
-		// } catch (ClassNotFoundException e) {
-		// // Continue trying to load with generated class loader
-		// }
-		// }
 		if (className.startsWith(gencodePath.getGencodePackage())) {
 			byte[] b = loadClassData(className);
 			if (b != null)

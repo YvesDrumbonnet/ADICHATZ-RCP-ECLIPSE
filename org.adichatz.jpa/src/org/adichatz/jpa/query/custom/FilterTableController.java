@@ -3,13 +3,11 @@ package org.adichatz.jpa.query.custom;
 import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
 import static org.adichatz.engine.common.LogBroker.logError;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.collection.ATabularController;
 import org.adichatz.engine.controller.collection.TableController;
 import org.adichatz.engine.controller.field.AColumnController;
 import org.adichatz.engine.core.ControllerCore;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.renderer.BasicTableRenderer;
 import org.adichatz.engine.tabular.ColumnViewerFilter;
 import org.adichatz.engine.viewer.NativeContentProvider;
@@ -42,7 +40,6 @@ public class FilterTableController<T> extends TableController<T> {
 
 	@Override
 	public void internalCreateControl() {
-		final AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		composite = new Composite(parentController.getComposite(), SWT.NONE);
 		composite.setLayout(new MigLayout("wrap, ins 0", "grow,fill", "[grow,fill]"));
 
@@ -63,7 +60,7 @@ public class FilterTableController<T> extends TableController<T> {
 							toolkit.getRegisteredImageDescriptor("IMG_EDITOR")) {
 						@Override
 						public void run() {
-							editFilter(toolkit, filter);
+							editFilter(filter);
 						}
 					});
 					menuManager.add(new Action(getFromEngineBundle("query.remove.filter", getColumnController(filter).getText()),
@@ -79,7 +76,7 @@ public class FilterTableController<T> extends TableController<T> {
 			}
 		});
 		checkboxTableViewer.addDoubleClickListener((e) -> {
-			editFilter(toolkit, (FilterType) ((IStructuredSelection) viewer.getSelection()).getFirstElement());
+			editFilter((FilterType) ((IStructuredSelection) viewer.getSelection()).getFirstElement());
 		});
 		checkboxTableViewer.addCheckStateListener(new ICheckStateListener() {
 			@Override
@@ -113,8 +110,8 @@ public class FilterTableController<T> extends TableController<T> {
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	private void editFilter(final AdiFormToolkit toolkit, final FilterType filter) {
-		new ColumnFilterFormDialog(toolkit, tabularController, getColumnController(filter),
+	private void editFilter(final FilterType filter) {
+		new ColumnFilterFormDialog(tabularController, getColumnController(filter),
 				getFromEngineBundle("query.edit.filter", getColumnController(filter).getText())).open();
 		if (!filter.isEnabled()) // Force refresh on EditorOutlinePage when filter is disabled
 			refresh();

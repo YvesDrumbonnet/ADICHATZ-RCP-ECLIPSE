@@ -92,6 +92,7 @@ import org.adichatz.engine.controller.collection.ATabularController;
 import org.adichatz.engine.controller.collection.SectionController;
 import org.adichatz.engine.controller.nebula.PGroupController;
 import org.adichatz.engine.data.ADataCache;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.widgets.LimitedComposite;
 import org.adichatz.generator.common.GeneratorConstants;
 import org.adichatz.jpa.data.JPAEntity;
@@ -303,8 +304,8 @@ public class EditorUtils {
 	 *            the cache editor tree
 	 */
 	public static void addRefreshAction(final ToolBarManager toolBarManager, final ICacheEditorTree cacheEditorTree) {
-		toolBarManager.add(new Action(getFromToolBundle("tool.refresh"),
-				AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_REFRESH_SET")) {
+		toolBarManager.add(new Action(getFromToolBundle("tool.refresh"), AdichatzApplication.getInstance()
+				.getContextValue(AdiFormToolkit.class).getRegisteredImageDescriptor("IMG_REFRESH_SET")) {
 			@Override
 			public void run() {
 				addElements(cacheEditorTree);
@@ -322,8 +323,8 @@ public class EditorUtils {
 	 *            the cache editor table
 	 */
 	public static Action addRefreshAction(final ToolBarManager toolBarManager, final ICacheEditorTable cacheEditorTable) {
-		Action action = new Action(getFromToolBundle("tool.refresh"),
-				AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_REFRESH_SET")) {
+		Action action = new Action(getFromToolBundle("tool.refresh"), AdichatzApplication.getInstance()
+				.getContextValue(AdiFormToolkit.class).getRegisteredImageDescriptor("IMG_REFRESH_SET")) {
 			@Override
 			public void run() {
 				addElements(cacheEditorTable);
@@ -394,8 +395,8 @@ public class EditorUtils {
 			}
 		};
 		refreshPagesAction.setToolTipText("refresh");
-		refreshPagesAction.setImageDescriptor(
-				AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_REFRESH_SET"));
+		refreshPagesAction.setImageDescriptor(AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class)
+				.getRegisteredImageDescriptor("IMG_REFRESH_SET"));
 		form.getToolBarManager().add(refreshPagesAction);
 
 		Action clearPagesAction = new Action("clear", Action.AS_PUSH_BUTTON) {

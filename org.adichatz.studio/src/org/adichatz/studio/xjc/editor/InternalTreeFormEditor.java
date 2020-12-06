@@ -273,7 +273,9 @@ public class InternalTreeFormEditor extends AStudioFormEditor {
 				throw new RuntimeException(message);
 			} else
 				try {
-					treeWrapper = (ITreeWrapper) FileUtility.getTreeFromXmlFile(Generator.getUnmarshaller(), fileURL.openStream());
+					ITreeWrapper treeWrapper = (ITreeWrapper) FileUtility.getTreeFromXmlFile(Generator.getUnmarshaller(),
+							fileURL.openStream());
+					this.treeWrapper = treeWrapper;
 					treeWrapper.setPluginName(instanceKeys[0]);
 					treeWrapper.setTreeId(instanceKeys[2]);
 					treeWrapper.setSubPackage(instanceKeys[1]);
@@ -284,7 +286,7 @@ public class InternalTreeFormEditor extends AStudioFormEditor {
 					logError(e);
 				}
 		}
-		return treeWrapper;
+		return (ITreeWrapper) treeWrapper;
 	}
 
 	/*

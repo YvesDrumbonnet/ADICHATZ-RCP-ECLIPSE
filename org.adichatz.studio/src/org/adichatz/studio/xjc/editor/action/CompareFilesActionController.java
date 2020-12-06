@@ -23,6 +23,7 @@ public class CompareFilesActionController extends ActionController {
 				new CompareCustomGeneratedVersionHandler().compare(editor.getEditorInput().getFile());
 			}
 		};
+		super.createControl();
 		((ManagedToolBarController) parentController).getToolBarManager().add(action);
 		action.setActionController(this);
 	}

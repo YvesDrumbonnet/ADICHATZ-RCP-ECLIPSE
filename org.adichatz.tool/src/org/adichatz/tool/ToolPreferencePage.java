@@ -75,13 +75,11 @@ import static org.adichatz.tool.ToolUtil.getFromToolBundle;
 
 import java.util.function.BooleanSupplier;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.FiltersMatcher;
 import org.adichatz.engine.e4.preference.APreferencePage;
 import org.adichatz.engine.e4.preference.AdiPreferenceManager;
 import org.adichatz.engine.e4.preference.BooleanFieldEditor;
 import org.adichatz.engine.e4.preference.TextFieldEditor;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.generator.common.GeneratorConstants;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
@@ -126,7 +124,6 @@ public class ToolPreferencePage extends APreferencePage {
 	 */
 	@Override
 	public void createPropertiesContent(Composite parent) {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		parent.setLayout(new MigLayout("wrap 1, ins 0", "grow,fill", "[grow,fill][]"));
 		Group toolGroup = toolkit.createGroup(parent, getFromToolBundle("tool.development.tools"), SWT.NONE);
 		toolGroup.setLayout(new MigLayout("wrap 1", "[grow, fill, al right]"));

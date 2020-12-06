@@ -76,7 +76,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AFieldController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.utils.AdiSWT;
@@ -198,7 +197,8 @@ public class DateTimeController extends AFieldController {
 	 */
 	@Override
 	public void createControl() {
-		dateTime = AdichatzApplication.getInstance().getFormToolkit().createDateTime(parentController.getComposite(), style);
+		super.createControl();
+		dateTime = toolkit.createDateTime(parentController.getComposite(), style);
 	}
 
 	/*

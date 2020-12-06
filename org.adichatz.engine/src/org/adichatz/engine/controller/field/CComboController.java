@@ -71,7 +71,6 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.field;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.core.ControllerCore;
 import org.eclipse.jface.viewers.ComboViewer;
@@ -130,7 +129,7 @@ public class CComboController extends AComboController {
 	 */
 	@Override
 	protected ComboViewer createComboViewer() {
-		ccombo = AdichatzApplication.getInstance().getFormToolkit().createCCombo(containerComposite, SWT.NONE);
+		ccombo = toolkit.createCCombo(containerComposite, SWT.NONE);
 		return new ComboViewer(ccombo);
 	}
 }

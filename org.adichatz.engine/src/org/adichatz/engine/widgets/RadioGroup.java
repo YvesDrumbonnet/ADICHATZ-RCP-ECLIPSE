@@ -79,6 +79,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.adichatz.engine.common.AdichatzApplication;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.jface.viewers.IElementComparer;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.SWT;
@@ -112,6 +113,8 @@ public class RadioGroup extends Composite {
 
 	private boolean doit = true;
 
+	private AdiFormToolkit toolkit;
+
 	/**
 	 * Constructs an instance of this widget given an array of Button objects to wrap. The Button objects must have been created
 	 * with the SWT.RADIO style bit set, and they must all be in the same Composite.
@@ -122,7 +125,8 @@ public class RadioGroup extends Composite {
 	public RadioGroup(Composite parent) {
 		super(parent, SWT.NONE);
 		setLayout(new MigLayout());
-		AdichatzApplication.getInstance().getFormToolkit().adapt(this);
+		toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
+		toolkit.adapt(this);
 	}
 
 	/**
@@ -214,7 +218,7 @@ public class RadioGroup extends Composite {
 	public void setButtons(@SuppressWarnings("rawtypes") Collection values, LabelProvider labelProvider) {
 		for (Object value : values) {
 			final Button radioButton = new Button(this, SWT.RADIO);
-			AdichatzApplication.getInstance().getFormToolkit().adapt(radioButton, false, false);
+			toolkit.adapt(radioButton, false, false);
 			radioButton.setText(labelProvider.getText(value));
 			radioButton.setData(value);
 			radioButton.addListener(SWT.Selection, new Listener() {

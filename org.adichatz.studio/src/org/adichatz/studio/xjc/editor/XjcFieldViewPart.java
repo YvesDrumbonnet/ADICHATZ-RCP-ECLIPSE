@@ -152,7 +152,7 @@ public class XjcFieldViewPart extends ViewPart {
 	 */
 	@Override
 	public void createPartControl(Composite parent) {
-		toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		pageBook = toolkit.createPageBook(parent, SWT.TOP | SWT.FLAT | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
 		pageBook.addDisposeListener((e) -> {
 			THIS = null;

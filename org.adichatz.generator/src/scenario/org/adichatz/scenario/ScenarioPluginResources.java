@@ -82,8 +82,8 @@ import javax.xml.bind.JAXBException;
 import org.adichatz.engine.common.AdiPluginResources;
 import org.adichatz.engine.common.EngineConstants;
 import org.adichatz.engine.common.EngineTools;
-import org.adichatz.engine.wrapper.AdichatzRcpConfigTreeWrapper;
 import org.adichatz.engine.xjc.AdichatzConnectorConfigTree;
+import org.adichatz.engine.xjc.AdichatzRcpConfigTree;
 import org.adichatz.generator.xjc.ModelPartType;
 import org.adichatz.generator.xjc.ParamType;
 import org.eclipse.core.resources.IFile;
@@ -144,7 +144,7 @@ public class ScenarioPluginResources extends AdiPluginResources {
 			logError(e);
 		}
 		if (configFileName.startsWith("AdichatzRcp"))
-			return new AdichatzRcpConfigTreeWrapper(); // return an empty RCP config tree
+			return new AdichatzRcpConfigTree(); // return an empty RCP config tree
 		else if (configFileName.startsWith("AdichatzConnector"))
 			return new AdichatzConnectorConfigTree(); // return an empty Connector config tree
 		return null;

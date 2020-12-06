@@ -86,6 +86,7 @@ import org.adichatz.engine.controller.nebula.PShelfController;
 import org.adichatz.engine.controller.nebula.PShelfItemController;
 import org.adichatz.engine.core.ControllerCore;
 import org.adichatz.engine.indigo.editor.IAdiOutlinePage;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.validation.EntityInjection;
 import org.adichatz.generator.common.GeneratorConstants;
 import org.adichatz.studio.xjc.controller.AdiResourceUriTextController;
@@ -118,7 +119,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.forms.ManagedForm;
-import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.part.Page;
@@ -150,7 +150,7 @@ public class StudioOutlinePage extends Page implements IAdiOutlinePage {
 	private ControllerCore detailGencode;
 
 	/** The toolkit. */
-	private FormToolkit toolkit;
+	private AdiFormToolkit toolkit;
 
 	/** The tool container (for XjcToolPage). */
 	private ContainerController toolContainer;
@@ -217,7 +217,7 @@ public class StudioOutlinePage extends Page implements IAdiOutlinePage {
 	 */
 	@Override
 	public void createControl(final Composite parent) {
-		toolkit = new FormToolkit(parent.getDisplay());
+		toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		pageComposite = toolkit.createComposite(parent);
 		pageComposite.setLayout(new FillLayout());
 
@@ -253,8 +253,7 @@ public class StudioOutlinePage extends Page implements IAdiOutlinePage {
 				}
 			}
 		};
-		refreshOutline
-				.setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_REFRESH"));
+		refreshOutline.setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_REFRESH"));
 		refreshOutline.setToolTipText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "adichatzStudio",
 				"studio.editor.refreshElement"));
 		refreshOutline.setEnabled(false);

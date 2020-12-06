@@ -77,7 +77,7 @@ import java.util.List;
 import org.adichatz.generator.ControlGenerator;
 import org.adichatz.generator.wrapper.internal.ICollectionWrapper;
 import org.adichatz.generator.wrapper.internal.IEntityContainerWrapper;
-import org.adichatz.generator.wrapper.internal.IGeneratorEntry;
+import org.adichatz.generator.wrapper.internal.ISetWrapper;
 import org.adichatz.generator.wrapper.internal.ILazyFetchesContainer;
 import org.adichatz.generator.wrapper.internal.IWidgetWrapper;
 import org.adichatz.generator.xjc.TableColumnType;
@@ -88,7 +88,7 @@ import org.adichatz.generator.xjc.TableType;
  * The Class TableWrapper.
  */
 public class TableWrapper extends TableType implements IWidgetWrapper, ICollectionWrapper<TableColumnType>, ILazyFetchesContainer,
-		IEntityContainerWrapper, IGeneratorEntry {
+		IEntityContainerWrapper, ISetWrapper {
 
 	/*
 	 * (non-Javadoc)

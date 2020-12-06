@@ -71,7 +71,6 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.field;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AFieldController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.utils.AdiSWT;
@@ -147,7 +146,8 @@ public class TextController extends AFieldController {
 	 */
 	@Override
 	public void createControl() {
-		control = AdichatzApplication.getInstance().getFormToolkit().createText(parentController.getComposite(), null, style);
+		super.createControl();
+		control = toolkit.createText(parentController.getComposite(), null, style);
 		if (0 != (style & AdiSWT.EXPANDABLE)) {
 			new TextExpandDecoration(control).setShowOnlyOnFocus(true);
 		}

@@ -74,18 +74,16 @@ package org.adichatz.engine.controller.collection;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.miginfocom.swt.MigLayout;
-
 import org.adichatz.engine.cache.IEntity;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.ACollectionController;
 import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.controller.action.ActionController;
 import org.adichatz.engine.core.ControllerCore;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+
+import net.miginfocom.swt.MigLayout;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -117,7 +115,7 @@ public class ButtonBarController extends ACollectionController {
 	 * Creates the tool bar manager (which is not a control for SWT).
 	 */
 	public void createControl() {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		super.createControl();
 		// new Shell() ==> parent composite is specified later
 		// @see org.adichatz.engine.controller.collection.ButtonBarController#setParent(org.eclipse.swt.widgets.Composite)
 		barComposite = toolkit.createComposite(parentController.getComposite());

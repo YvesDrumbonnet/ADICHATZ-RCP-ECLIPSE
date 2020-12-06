@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<partTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bindingServiceClassName="org.adichatz.studio.xjc.data.XjcBindingService" image="#IMG(IMG_XJC_EDITOR.png)" title="#PARAM(TITLE)" toolTipText="#PARAM(TOOL_TIP_TEXT)" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/partTree.xsd">
+<partTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bindingServiceClassName="org.adichatz.studio.xjc.data.XjcBindingService" image="#IMG(IMG_XJC_EDITOR.png)" title="#PARAM(TITLE)" toolTipText="#PARAM(TOOL_TIP_TEXT)" xsi:noNamespaceSchemaLocation="https://yvesdrumbonnet.github.io/Adichatz-RCP-Update-Site/xsd/generator/partTree.xsd">
     <formPage formText="#PARAM(TITLE)" title="#MSG(adichatzStudio,studio.editor.treeForm)" id="treeForm">
         <additionalCode>import org.adichatz.studio.xjc.editor.AStudioFormEditor;
 boolean isEditable() {

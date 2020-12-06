@@ -110,7 +110,7 @@ public class DeleteEntityAction extends ADetailAction {
 	public void init() {
 		setText(getFromJpaBundle("detail.deleteEntity"));
 		setToolTipText(getFromJpaBundle("detail.deleteEntityToolTip"));
-		setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_ENTITY_DELETE"));
+		setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_ENTITY_DELETE"));
 	}
 
 	/*

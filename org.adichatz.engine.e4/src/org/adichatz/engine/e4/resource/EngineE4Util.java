@@ -88,7 +88,7 @@ import org.adichatz.engine.controller.collection.IncludeController;
 import org.adichatz.engine.controller.menu.ANodeController;
 import org.adichatz.engine.controller.menu.ItemController;
 import org.adichatz.engine.controller.menu.MenuController;
-import org.adichatz.engine.controller.menu.NavigatorPath;
+import org.adichatz.engine.controller.utils.INavigator;
 import org.adichatz.engine.e4.part.BoundedPart;
 import org.adichatz.engine.e4.part.MultiBoundedPart;
 import org.adichatz.engine.extra.AdiResourceURI;
@@ -101,6 +101,13 @@ import org.adichatz.engine.extra.AdiResourceURI;
  * 
  */
 public class EngineE4Util {
+	public static String EDITOR_PARTSTACK = "adichatz.editor.partstack";
+
+	public static String NAVIGATOR_STACK = "adichatz.navigator.stack";
+
+	public static String PERSPECTIVE_STACK = "adichatz.perspective.stack";
+
+	public static String PERSPECTIVE_MANAGER = "adichatz.perspective.manager";
 
 	/** The Root contribution URI. */
 	public static String ROOT_CONTRIBUTION_URI = "bundleclass://".concat(EngineConstants.ENGINE_E4_BUNDLE).concat("/");
@@ -236,10 +243,10 @@ public class EngineE4Util {
 	}
 
 	public static void displayNavigatorTree(String navigatorId) {
-		NavigatorPath navigatorPath = AdichatzApplication.getInstance().getNavigatorMap().get(navigatorId);
-		if (null != navigatorPath) {
+		Object navigator = E4SimulationTools.findPart(navigatorId).getObject();
+		if (null != navigator && navigator instanceof INavigator) {
 			System.out.println(navigatorId);
-			for (ANodeController node : navigatorPath.getRootController().getChildren()) {
+			for (ANodeController node : ((INavigator) navigator).getMenuCore().getRootMenuController().getChildren()) {
 				printMenuPath(node, 1);
 			}
 		}

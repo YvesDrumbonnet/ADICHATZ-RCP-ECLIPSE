@@ -55,12 +55,10 @@ package org.adichatz.engine.controller.field;
 
 import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.Utilities;
 import org.adichatz.engine.controller.ARefController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.core.ControllerCore;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.widgets.supplement.ButtonItem;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ComboViewer;
@@ -113,7 +111,7 @@ public abstract class AComboController extends ARefController {
 	 */
 	@Override
 	public void createControl() {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		super.createControl();
 		boolean readOnly = 0 != (style & SWT.READ_ONLY);
 		containerComposite = new Composite(parentController.getComposite(), style) {
 			@Override

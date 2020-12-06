@@ -53,13 +53,11 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.collection;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.ADirtyContainerController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.IToolBarContainerController;
 import org.adichatz.engine.controller.utils.AReskinManager;
 import org.adichatz.engine.core.ControllerCore;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
@@ -116,7 +114,7 @@ public class SectionController extends ADirtyContainerController implements IToo
 	 * @see org.adichatz.engine.controller.AController#createControl()
 	 */
 	public void createControl() {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		super.createControl();
 		section = toolkit.createSection(parentController.getComposite(), style);
 		Color titleForeground = null;
 		AReskinManager reskinManager = AReskinManager.getInstance();
@@ -146,7 +144,6 @@ public class SectionController extends ADirtyContainerController implements IToo
 		});
 
 		composite = toolkit.createComposite(section, clientStyle);
-
 		composite.setLayoutData("wmin 100, hmin 100");
 
 		section.addControlListener(new ControlAdapter() {

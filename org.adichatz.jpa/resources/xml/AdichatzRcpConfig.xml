@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<adichatzRcpConfigTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/engine/adichatzRcpConfigTree.xsd">
+<adichatzRcpConfigTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://yvesdrumbonnet.github.io/Adichatz-RCP-Update-Site/xsd/engine/adichatzRcpConfigTree.xsd">
     <rcpConfiguration>
         <navigators>
             <navigator id="groupNavigator" iconURI="platform:/plugin/org.adichatz.engine.e4/resources/icons/IMG_NAVIGATOR.png" contributionURI="bundleclass://org.adichatz.engine.e4/org.adichatz.engine.e4.part.GroupNavigator" label="adichatz.group.navigator" messageBundleURI="adi://org.adichatz.jpa/./adichatzGroupNavigator">

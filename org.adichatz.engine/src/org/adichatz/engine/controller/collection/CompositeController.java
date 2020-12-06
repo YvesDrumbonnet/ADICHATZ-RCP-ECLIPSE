@@ -71,7 +71,6 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.collection;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AEntityManagerController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.IControlController;
@@ -110,7 +109,8 @@ public class CompositeController extends AEntityManagerController implements ICo
 	 *            the style
 	 */
 	public void createControl() {
-		composite = AdichatzApplication.getInstance().getFormToolkit().createComposite(parentController.getComposite(), style);
+		super.createControl();
+		composite = toolkit.createComposite(parentController.getComposite(), style);
 	}
 
 	/*

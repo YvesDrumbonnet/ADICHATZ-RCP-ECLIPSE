@@ -82,7 +82,7 @@ import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.common.FieldTools;
 import org.adichatz.engine.common.ReflectionTools;
 import org.adichatz.engine.controller.IContainerController;
-import org.adichatz.engine.controller.collection.TreeController;
+import org.adichatz.engine.controller.collection.ATreeController;
 import org.adichatz.engine.core.ControllerCore;
 import org.adichatz.engine.model.AEntityMetaModel;
 import org.adichatz.engine.model.EntitySet;
@@ -120,7 +120,7 @@ import org.eclipse.swt.events.KeyListener;
 /**
  * The Class XjcTreeController.
  */
-public class XjcTreeController extends TreeController {
+public class XjcTreeController extends ATreeController {
 
 	/** The elected ref method. */
 	private Method electedRefMethod;

@@ -81,12 +81,10 @@ import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.adichatz.common.ejb.util.IEntityConstants;
@@ -142,27 +140,6 @@ public class Utilities {
 			}
 		}
 		return null;
-	}
-
-	public static List<AWidgetController> getChildControllers(ICollectionController parentController, Class<?> childClass) {
-		List<AWidgetController> controllers = new ArrayList<>();
-		addChildControllers(controllers, parentController, childClass);
-		return controllers;
-	}
-
-	public static void addChildControllers(List<AWidgetController> controllers, ICollectionController parentController,
-			Class<?> childClass) {
-		for (AWidgetController controller : parentController.getChildControllers()) {
-			if (childClass.isInterface()) {
-				if (ReflectionTools.hasInterface(controller.getClass(), childClass))
-					controllers.add(controller);
-			} else if (ReflectionTools.hasSuperClass(controller.getClass(), childClass))
-				controllers.add(controller);
-
-			if (controller instanceof ICollectionController) {
-				addChildControllers(controllers, (ICollectionController) controller, childClass);
-			}
-		}
 	}
 
 	/**

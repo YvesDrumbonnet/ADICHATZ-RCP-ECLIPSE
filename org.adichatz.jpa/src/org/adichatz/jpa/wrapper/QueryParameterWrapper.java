@@ -253,7 +253,7 @@ public class QueryParameterWrapper extends QueryParameterType {
 	 */
 	public Image getValidImage() {
 		Image image;
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		if (isPermanent())
 			image = isValid() ? AdichatzApplication.getInstance().getImage(EngineConstants.JPA_BUNDLE, "IMG_PERMANENT.png")
 					: new Image(toolkit.getRegisteredImage("IMG_CANCEL").getDevice(), toolkit.getRegisteredImage("IMG_CANCEL"),

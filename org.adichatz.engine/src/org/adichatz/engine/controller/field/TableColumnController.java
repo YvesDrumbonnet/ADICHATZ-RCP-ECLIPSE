@@ -121,6 +121,7 @@ public abstract class TableColumnController<T> extends AColumnController<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	public void createControl() {
+		super.createControl();
 		tableViewerColumn = new TableViewerColumn((TableViewer) tabularController.getViewer(), getStyle());
 		tableColumn = tableViewerColumn.getColumn();
 		labelProvider = new ColumnLabelProvider() {

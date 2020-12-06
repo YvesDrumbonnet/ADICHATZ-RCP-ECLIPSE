@@ -238,7 +238,7 @@ public class DateText extends Composite {
 	 * Sets the images.
 	 */
 	protected void setImages() {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		GridData buttonLayout = new GridData();
 		if ("win32".equals(SWT.getPlatform())) {
 			ImageData id = toolkit.getRegisteredImage("IMG_DELETE").getImageData();
@@ -250,7 +250,7 @@ public class DateText extends Composite {
 			deleteButton.setImage(toolkit.getRegisteredImage("IMG_DELETE"));
 			deleteButton.setLayoutData(buttonLayout);
 		}
-		dateChoosertButton.setImage(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImage("IMG_DATECHOOSER"));
+		dateChoosertButton.setImage(toolkit.getRegisteredImage("IMG_DATECHOOSER"));
 		dateChoosertButton.setLayoutData(buttonLayout);
 	}
 

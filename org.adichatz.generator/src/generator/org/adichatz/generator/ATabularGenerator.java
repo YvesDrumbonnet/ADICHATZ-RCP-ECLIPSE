@@ -20,6 +20,9 @@ import org.adichatz.engine.common.ReflectionTools;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.extra.ColumnViewerSorter;
 import org.adichatz.engine.extra.CrossReference;
+import org.adichatz.engine.listener.AControlListener;
+import org.adichatz.engine.listener.AdiEvent;
+import org.adichatz.engine.listener.IEventType;
 import org.adichatz.engine.plugin.AdiContext;
 import org.adichatz.engine.widgets.supplement.AdiDecimalFormat;
 import org.adichatz.generator.common.GeneratorUnit;
@@ -46,21 +49,25 @@ public abstract class ATabularGenerator extends ASetGenerator {
 	private String tableColumnName;
 
 	/** The table bean class. */
-	protected Class<?> tableBeanClass;
+	protected Class<?> tabularBeanClass;
 
 	/** The entity tree. */
 	protected EntityTreeWrapper entityTree;
 
 	protected String tableBeanStr;
 
+	protected boolean checkedImage;
+
+	protected BufferCode columnsControllerBuffer;
+
 	public ATabularGenerator(final ScenarioInput scenarioInput, ACodeGenerator parentGenerator) {
 		super(scenarioInput, parentGenerator);
 	}
 
 	protected void buildClassHeader(final ScenarioInput scenarioInput, StringBuffer extendsSB) {
-		tableBeanClass = CodeGenerationUtil.getUIBeanClass(scenarioInput);
+		tabularBeanClass = CodeGenerationUtil.getUIBeanClass(scenarioInput);
 		if (null != scenarioInput.getPluginEntity()) {
-			extendsSB.append("<").append(getObjectName(tableBeanClass)).append(">");
+			extendsSB.append("<").append(getObjectName(tabularBeanClass)).append(">");
 			PluginEntityWrapper pluginEntityWrapper = scenarioInput.getPluginEntityWrapper();
 			if (null == pluginEntityWrapper) {
 				StringBuffer messageSB = new StringBuffer("Invalid configuration!");
@@ -97,7 +104,7 @@ public abstract class ATabularGenerator extends ASetGenerator {
 
 	protected void addBlocks(TabularType tabular) throws IOException {
 
-		tableBeanStr = tableBeanClass.getSimpleName();
+		tableBeanStr = tabularBeanClass.getSimpleName();
 		classBodyBuffer.appendPlus("public " + className + "(final " + getObjectName(AdiContext.class) + " context, "
 				+ getObjectName(IContainerController.class) + " parentController) {");
 		classBodyBuffer.append("super(context);");
@@ -114,7 +121,9 @@ public abstract class ATabularGenerator extends ASetGenerator {
 
 		classBodyBuffer.append("");
 
+		columnsControllerBuffer = new BufferCode(this, classBodyBuffer.getIdent(), "columnsControllerBuffer");
 		addColumns(tabular, "tabularController");
+		classBodyBuffer.append(columnsControllerBuffer.getStringBuffer());
 
 		if (null != tabular.getCrossReferences())
 			for (CrossReferenceType crossReference : tabular.getCrossReferences().getCrossReference()) {
@@ -136,7 +145,7 @@ public abstract class ATabularGenerator extends ASetGenerator {
 		if (null == getIdMethod)
 			classBodyBuffer.append("return null;");
 		else {
-			classBodyBuffer.append("return ((" + getObjectName(tableBeanClass) + ") element)." + getIdMethod.getName() + "();");
+			classBodyBuffer.append("return ((" + getObjectName(tabularBeanClass) + ") element)." + getIdMethod.getName() + "();");
 		}
 		classBodyBuffer.appendMinus("}");
 	}
@@ -157,10 +166,10 @@ public abstract class ATabularGenerator extends ASetGenerator {
 		String columnFormat = null;
 
 		if (null != columnWrapper.getProperty()) {
-			Method method = FieldTools.getGetMethod(tableBeanClass, columnWrapper.getProperty(), true);
+			Method method = FieldTools.getGetMethod(tabularBeanClass, columnWrapper.getProperty(), true);
 			if (null == method)
 				throw new RuntimeException(getFromGeneratorBundle("generation.no.column4class", columnWrapper.getProperty(),
-						tableBeanClass.getName()));
+						tabularBeanClass.getName()));
 			columnClass = method.getReturnType();
 		} else if (null != columnWrapper.getColumnValueType())
 			columnClass = GeneratorUtil.getClazzOrPrimitive(columnWrapper.getColumnValueType());
@@ -176,7 +185,7 @@ public abstract class ATabularGenerator extends ASetGenerator {
 		ControlBufferCode columnTextBuffer = controlGenerator.addBuffer("getColumnText",
 				"public String getColumnText(" + tableBeanStr + " row)", "columnText");
 		if (null != columnClass && null != columnWrapper.getProperty()) {
-			getMethod = FieldTools.getGetMethod(tableBeanClass, columnWrapper.getProperty(), true);
+			getMethod = FieldTools.getGetMethod(tabularBeanClass, columnWrapper.getProperty(), true);
 			element = "row." + getMethod.getName() + "()";
 		}
 		if (null != columnWrapper.getColumnValue()) {
@@ -249,8 +258,22 @@ public abstract class ATabularGenerator extends ASetGenerator {
 				columnImageBuffer.appendPlus("if (null == " + element + ")");
 				columnImageBuffer.append("return null;");
 			}
-			columnImageBuffer.appendMinus("return " + element + " ? " + getObjectName(EngineTools.class) + ".getCheckedImage() : "
-					+ getObjectName(EngineTools.class) + ".getUncheckedImage();");
+			if (!checkedImage) {
+				checkedImage = true;
+				declarationBuffer.append("private " + getObjectName(Image.class) + " checkedImage;");
+				declarationBuffer.append("private " + getObjectName(Image.class) + " uncheckedImage;");
+				classBodyBuffer.appendPlus("// Reinit images because toolkit could change when theme changes");
+				classBodyBuffer.appendPlus("// force addListener because control is not yet instantiated");
+				classBodyBuffer.appendPlus("tabularController.addListener(new " + getObjectName(AControlListener.class)
+						+ "(\"initCheckedImage\", " + getObjectName(IEventType.class) + ".BEFORE_REFRESH, tabularController) {");
+				classBodyBuffer.append("@" + getObjectName(Override.class));
+				classBodyBuffer.appendPlus("public void handleEvent(" + getObjectName(AdiEvent.class) + " event) {");
+				classBodyBuffer.append("checkedImage = " + getObjectName(EngineTools.class) + ".getCheckedImage();");
+				classBodyBuffer.append("uncheckedImage = " + getObjectName(EngineTools.class) + ".getUncheckedImage();");
+				classBodyBuffer.appendMinus("}");
+				classBodyBuffer.appendMinus("});");
+			}
+			columnImageBuffer.appendMinus("return " + element + " ? checkedImage : uncheckedImage;");
 		}
 
 		String returnType = "Object";

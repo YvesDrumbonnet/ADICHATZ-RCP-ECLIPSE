@@ -72,7 +72,7 @@
 package org.adichatz.engine.extra;
 
 import org.adichatz.engine.action.CopyClipboardAction;
-import org.adichatz.engine.common.AdichatzApplication;
+import org.adichatz.engine.common.InjectionInspector;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
@@ -82,12 +82,10 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.forms.IFormColors;
-import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
@@ -109,8 +107,6 @@ public abstract class AMessageDialog extends ADialog {
 
 	/** The kind. */
 	protected int kind;
-
-	protected FormToolkit toolkit;
 
 	protected String[] dialogButtonLabels;
 
@@ -136,11 +132,7 @@ public abstract class AMessageDialog extends ADialog {
 		this.labelImage = labelImage;
 		this.kind = kind;
 		this.dialogButtonLabels = dialogButtonLabels;
-		try {
-			toolkit = AdichatzApplication.getInstance().getFormToolkit();
-		} catch (Exception e) { // toolkit could be null when error occurs at startup
-			toolkit = new FormToolkit(Display.getCurrent());
-		}
+		InjectionInspector.inject(this);
 		create();
 	}
 

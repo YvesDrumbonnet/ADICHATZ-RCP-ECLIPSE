@@ -69,6 +69,7 @@ import org.adichatz.engine.common.AdichatzErrorException;
 import org.adichatz.engine.common.ApplicationEvent;
 import org.adichatz.engine.common.ApplicationEvent.EVENT_TYPE;
 import org.adichatz.engine.common.DelayedThread;
+import org.adichatz.engine.common.InjectionInspector;
 import org.adichatz.engine.common.Utilities;
 import org.adichatz.engine.controller.AEntityManagerController;
 import org.adichatz.engine.controller.ASetController;
@@ -129,8 +130,8 @@ public class CompositeBagController extends AEntityManagerController implements 
 	 * 
 	 */
 	public void createControl() {
-		compositeBag = AdichatzApplication.getInstance().getFormToolkit().createCompositeBag(parentController.getComposite(),
-				SWT.NONE);
+		super.createControl();
+		compositeBag = toolkit.createCompositeBag(parentController.getComposite(), SWT.NONE);
 	}
 
 	/*
@@ -297,6 +298,7 @@ public class CompositeBagController extends AEntityManagerController implements 
 	 *            the child controller
 	 */
 	protected void showChild(ICollectionController masterController, AEntityManagerController childController) {
+		InjectionInspector.inject(childController); // due to css theme possible changes
 		bagSelectionMap.put(masterController, childController);
 		IEntity<?> selectedEntity = getSelectedEntity(masterController);
 		if (!Utilities.equals(selectedEntity, childController.getEntity())) {

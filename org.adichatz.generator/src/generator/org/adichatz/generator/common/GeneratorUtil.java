@@ -61,11 +61,13 @@ import java.util.List;
 import java.util.Set;
 import java.util.StringTokenizer;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Id;
 
 import org.adichatz.engine.common.AdiResourceBundle;
 import org.adichatz.engine.common.AdichatzApplication;
+import org.adichatz.engine.common.FieldTools;
 import org.adichatz.engine.common.LogBroker;
 import org.adichatz.engine.common.ReflectionTools;
 import org.adichatz.generator.xjc.ParamType;
@@ -388,5 +390,15 @@ public class GeneratorUtil {
 		if (null == generatorClass)
 			throw new RuntimeException("Don't know how to find the right generator for " + element);
 		ReflectionTools.instantiateClass(generatorClass, classes, params);
+	}
+
+	public static boolean isNullable(Class<?> beanClass, String property) {
+		Method getMethod = FieldTools.getGetMethod(beanClass, property, false);
+		if (null != getMethod) {
+			Column columnAnnotation = getMethod.getAnnotation(Column.class);
+			if (null != columnAnnotation)
+				return columnAnnotation.nullable();
+		}
+		return true;
 	}
 }

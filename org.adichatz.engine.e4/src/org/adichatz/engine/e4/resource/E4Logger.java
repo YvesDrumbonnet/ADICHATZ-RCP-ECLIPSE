@@ -87,6 +87,7 @@ import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.common.IAdiLogger;
 import org.adichatz.engine.common.LogBroker;
 import org.adichatz.engine.common.Utilities;
+import org.adichatz.engine.e4.handler.PerspectiveSwitchHandler;
 import org.adichatz.engine.e4.part.AdiConsole;
 import org.adichatz.engine.e4.preference.AdiPreferenceManager;
 import org.adichatz.engine.e4.preference.LoggerPreferencePage;
@@ -96,9 +97,12 @@ import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.services.log.Logger;
 import org.eclipse.e4.core.services.statusreporter.StatusReporter;
 import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.workbench.IPresentationEngine;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
+import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
@@ -528,7 +532,19 @@ public class E4Logger extends Logger implements IAdiLogger {
 	private void activateConsolePartStack() {
 		if (AdichatzApplication.getInstance() instanceof E4AdichatzApplication)
 			try {
-				E4AdichatzApplication.getInstance().switchToConsolePerspective();
+				MPerspectiveStack perspectiveStack = AdichatzApplication.getInstance().getContextValue(MPerspectiveStack.class);
+				MPerspective currentPerspective = perspectiveStack.getSelectedElement();
+				MPerspective consolePerspective = null;
+				for (MPerspective perspective : perspectiveStack.getChildren())
+					if (EngineConstants.CONSOLE_PERSPECTIVE.equals(perspective.getElementId())) {
+						consolePerspective = perspective;
+						break;
+					}
+				if (null != consolePerspective && !consolePerspective.equals(currentPerspective)) {
+					EPartService partService = AdichatzApplication.getInstance().getContextValue(IEclipseContext.class)
+							.get(EPartService.class);
+					new PerspectiveSwitchHandler().switchPerspective(partService, consolePerspective);
+				}
 			} catch (IllegalStateException e) { // No active window
 			}
 		if (null != getConsole()) {

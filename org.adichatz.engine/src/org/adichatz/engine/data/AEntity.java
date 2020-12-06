@@ -651,22 +651,6 @@ public abstract class AEntity<T> implements IEntity<T> {
 	}
 
 	/**
-	 * Adds the entity listener.
-	 *
-	 * @param entityListener the entity listener
-	 */
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adichatz.engine.cache.IEntity#addEntityListener(org.adichatz.engine.listener.AEntityListener)
-	 */
-	@Override
-	public void addEntityListener(AEntityListener entityListener) {
-		listeners.add(entityListener);
-		entityListener.setEntity(this);
-	}
-
-	/**
 	 * Removes the entity listener.
 	 *
 	 * @param entityListener the entity listener

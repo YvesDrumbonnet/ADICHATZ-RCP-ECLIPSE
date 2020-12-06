@@ -9,10 +9,10 @@ import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.ApplicationEvent;
 import org.adichatz.engine.common.EngineConstants;
 import org.adichatz.engine.common.EngineTools;
-import org.adichatz.engine.e4.resource.E4AdichatzApplication;
 import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
 import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -56,12 +56,13 @@ public class PerspectiveSwitchHandler {
 			@Override
 			protected Control createDialogArea(Composite parent) {
 
-				currentPerspective = E4AdichatzApplication.getInstance().getCurrentPerspective();
+				MPerspectiveStack perspectiveStack = AdichatzApplication.getInstance().getContextValue(MPerspectiveStack.class);
+				currentPerspective = perspectiveStack.getSelectedElement();
 				getShell().setImage(
 						AdichatzApplication.getInstance().getImage(EngineConstants.ENGINE_E4_BUNDLE, "IMG_PERSPECTIVE.png"));
 				getShell().setText(getFromEngineE4Bundle("perspective.switcher"));
 				initializeBounds();
-				AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+				AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 				if (null == toolkit)
 					toolkit = new AdiFormToolkit(Display.getCurrent());
 				parent.setBackground(toolkit.getColors().getBackground());
@@ -70,7 +71,7 @@ public class PerspectiveSwitchHandler {
 				Composite body = scrolledForm.getBody();
 				body.setLayout(new MigLayout("wrap 1, ins 10", "[grow,fill]"));
 
-				for (final MPerspective perspective : E4AdichatzApplication.getInstance().getPerspectiveStack().getChildren()) {
+				for (final MPerspective perspective : perspectiveStack.getChildren()) {
 					ImageHyperlink hyperlink = toolkit.createImageHyperlink(body, SWT.NONE);
 					hyperlink.setText(perspective.getLabel());
 					hyperlink.setImage(EngineTools.getImage(perspective.getIconURI()));
@@ -105,7 +106,8 @@ public class PerspectiveSwitchHandler {
 	}
 
 	public void switchPerspective(EPartService partService, MPerspective newPerspective) {
-		for (MPerspective perspective : E4AdichatzApplication.getInstance().getPerspectiveStack().getChildren()) {
+		MPerspectiveStack perspectiveStack = AdichatzApplication.getInstance().getContextValue(MPerspectiveStack.class);
+		for (MPerspective perspective : perspectiveStack.getChildren()) {
 			if (perspective.getElementId().equals(newPerspective.getElementId())) {
 				partService.switchPerspective(perspective);
 				AdichatzApplication.fireListener(new ApplicationEvent(ApplicationEvent.EVENT_TYPE.PERSPECTIVE_CHANGE));

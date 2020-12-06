@@ -56,7 +56,6 @@ package org.adichatz.studio.xjc.editor;
 import javax.xml.bind.JAXBException;
 
 import org.adichatz.engine.indigo.editor.ADirtyFormEditor;
-import org.adichatz.engine.wrapper.ITreeWrapper;
 import org.adichatz.scenario.ScenarioResources;
 import org.adichatz.studio.util.AdichatzConsole;
 import org.eclipse.core.runtime.CoreException;
@@ -75,7 +74,7 @@ public abstract class AStudioFormEditor extends ADirtyFormEditor {
 	protected StudioOutlinePage outlinePage;
 
 	/** The tree wrapper. */
-	protected ITreeWrapper treeWrapper;
+	protected Object treeWrapper;
 
 	/** The scenario resources. */
 	protected ScenarioResources scenarioResources;
@@ -177,9 +176,9 @@ public abstract class AStudioFormEditor extends ADirtyFormEditor {
 	 * @throws JAXBException
 	 *             the jAXB exception
 	 */
-	public abstract ITreeWrapper getTreeWrapper(boolean reloadFile, boolean reinitTree) throws CoreException, JAXBException;
+	public abstract Object getTreeWrapper(boolean reloadFile, boolean reinitTree) throws CoreException, JAXBException;
 
-	public ITreeWrapper getTreeWrapper() {
+	public Object getTreeWrapper() {
 		return treeWrapper;
 	}
 

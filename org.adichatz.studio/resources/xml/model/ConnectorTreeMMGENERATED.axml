@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ConnectorTreeMM" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/entityTree.xsd">
+<entityTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityURI="adi://org.adichatz.studio/model/ConnectorTreeMM" xsi:noNamespaceSchemaLocation="https://yvesdrumbonnet.github.io/Adichatz-RCP-Update-Site/xsd/generator/entityTree.xsd">
     <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/ApplicationServersMM" id="applicationServers"/>
     <propertyField xsi:type="refFieldType" entityURI="adi://org.adichatz.studio/model/DatasourcesMM" id="datasources"/>
 </entityTree>

@@ -78,9 +78,10 @@ import org.adichatz.engine.listener.ARunnableListener;
 import org.adichatz.engine.validation.ABindingService;
 import org.adichatz.engine.validation.AValidator;
 import org.adichatz.engine.widgets.supplement.AHyperlinkRunnable;
+import org.adichatz.engine.wrapper.ITreeWrapper;
 import org.adichatz.generator.AClassGenerator;
 import org.adichatz.generator.tools.AListenerTypeManager;
-import org.adichatz.generator.wrapper.internal.IGeneratorEntry;
+import org.adichatz.generator.wrapper.internal.ISetWrapper;
 import org.adichatz.generator.xjc.ControllerType;
 import org.adichatz.generator.xjc.ElementType;
 import org.adichatz.generator.xjc.GenerationScenarioType;
@@ -130,7 +131,7 @@ public class ClassTextController extends ATextController implements IClassNameCo
 		superTypeNameMap.put("runnableClassName", AHyperlinkRunnable.class.getName());
 		superTypeNameMap.put("scenarioClassName", AScenario.class.getName());
 		superTypeNameMap.put("rewriterClassName", IPojoRewriter.class.getName());
-		superTypeNameMap.put("treeClassName", IGeneratorEntry.class.getName());
+		superTypeNameMap.put("treeClassName", ITreeWrapper.class.getName());
 		superTypeNameMap.put("validatorClassName", AValidator.class.getName());
 		superTypeNameMap.put("wrapperClassName", ElementType.class.getName());
 	}
@@ -199,7 +200,8 @@ public class ClassTextController extends ATextController implements IClassNameCo
 				case AFTER_SYNCHRONIZE:
 				case BEFORE_CREATE_CONTROL:
 				case BEFORE_DISPOSE:
-				case REFRESH:
+				case BEFORE_REFRESH:
+				case AFTER_REFRESH:
 				case BEFORE_SYNCHRONIZE:
 				case AFTER_FIELD_CHANGE:
 				case BEFORE_END_LIFE_CYCLE:
@@ -256,10 +258,14 @@ public class ClassTextController extends ATextController implements IClassNameCo
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public List getProposals() {
 		if (null == proposals) {
 			String superTypeName = getSuperTypeName(); // scenarioResources is initialized in the called method
 			proposals = StudioUtil.getHierarchy(scenarioResources, superTypeName);
+			if ("treeClassName".equals(getProperty())) {
+				proposals.addAll(StudioUtil.getHierarchy(scenarioResources, ISetWrapper.class.getName()));
+			}
 			Collections.sort(proposals);
 		}
 		return proposals;

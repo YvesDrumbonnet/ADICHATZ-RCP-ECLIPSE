@@ -109,6 +109,7 @@ public class GridColumnGroupController extends ACollectionController {
 	 * Creates the tool bar manager (which is not a control for SWT).
 	 */
 	public void createControl() {
+		super.createControl();
 		gridColumnGroup = new GridColumnGroup((Grid) parentController.getControl(), style);
 		style = SWT.TOGGLE;
 	}

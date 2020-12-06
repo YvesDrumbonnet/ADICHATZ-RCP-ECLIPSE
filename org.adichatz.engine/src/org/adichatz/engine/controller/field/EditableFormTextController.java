@@ -151,6 +151,7 @@ public class EditableFormTextController extends AFieldController {
 	 */
 	@Override
 	public void createControl() {
+		super.createControl();
 		formText = new EditableFormText(parentController.getComposite(), style);
 	}
 

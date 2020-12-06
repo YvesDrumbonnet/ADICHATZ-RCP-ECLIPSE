@@ -53,7 +53,6 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.nebula;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.ADirtyContainerController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.core.ControllerCore;
@@ -97,7 +96,8 @@ public class PGroupController extends ADirtyContainerController {
 	 * @see org.adichatz.engine.controller.AController#createControl()
 	 */
 	public void createControl() {
-		pgroup = AdichatzApplication.getInstance().getFormToolkit().createPGroup(parentController.getComposite(), style);
+		super.createControl();
+		pgroup = toolkit.createPGroup(parentController.getComposite(), style);
 		pgroup.setLayout(new FillLayout());
 		pgroup.addExpandListener(new ExpandListener() {
 
@@ -111,7 +111,7 @@ public class PGroupController extends ADirtyContainerController {
 				reflow();
 			}
 		});
-		composite = AdichatzApplication.getInstance().getFormToolkit().createComposite(pgroup);
+		composite = toolkit.createComposite(pgroup);
 		dirtyContainer = pgroup;
 	}
 

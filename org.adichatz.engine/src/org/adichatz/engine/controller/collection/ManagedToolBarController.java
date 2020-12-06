@@ -123,6 +123,7 @@ public class ManagedToolBarController extends ACollectionController {
 	 * Creates the tool bar manager (which is not a control for SWT).
 	 */
 	public void createControl() {
+		super.createControl();
 		ACollectionController toolBarContainer = (ACollectionController) getToolBarContainer(parentController);
 		if (toolBarContainer instanceof SectionController) {
 			toolBarManager = new ToolBarManager(SWT.FLAT);

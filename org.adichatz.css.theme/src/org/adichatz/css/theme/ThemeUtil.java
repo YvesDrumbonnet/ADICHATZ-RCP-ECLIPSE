@@ -15,7 +15,7 @@ public class ThemeUtil {
 
 	public static String THEME_PREFERENCE_PREFS = "org.adichatz.theme";
 
-	/** The engine rbm. */
+	/** The css theme rbm. */
 	private static PropertyResourceBundle cssThemeRB;
 
 	/**

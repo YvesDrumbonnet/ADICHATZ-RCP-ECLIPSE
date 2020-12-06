@@ -21,6 +21,7 @@ import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.extra.AdiMessageDialog;
 import org.adichatz.engine.model.AEntityMetaModel;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.jpa.data.AdiOneToOne;
 import org.adichatz.jpa.data.AdiOneToOnes;
 import org.adichatz.jpa.data.JPADataAccess;
@@ -82,9 +83,10 @@ public class CheckBeforeDelete {
 			}
 			if (!errorMessages.isEmpty()) {
 				String title = getFromJpaBundle("cannot.delete.entity");
-				new AdiMessageDialog(display, MessageDialog.INFORMATION,
-						AdichatzApplication.getInstance().getFormToolkit().getRegisteredImage("IMG_ENTITY_DELETE"), title, title,
-						getFromJpaBundle("cannot.delete.entity.dependencies")) {
+				new AdiMessageDialog(
+						display, MessageDialog.INFORMATION, AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class)
+								.getRegisteredImage("IMG_ENTITY_DELETE"),
+						title, title, getFromJpaBundle("cannot.delete.entity.dependencies")) {
 					@Override
 					public void createMessage(Composite parent) {
 						Composite composite = toolkit.createComposite(parent);

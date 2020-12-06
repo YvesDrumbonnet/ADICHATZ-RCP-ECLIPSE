@@ -259,7 +259,6 @@ public class FullProjectWizard extends EmptyProjectWizard {
 										datasource);
 								shell.getDisplay().syncExec(() -> {
 									ConfirmFormDialog confirmFormDialog = new ConfirmFormDialog(shell,
-											AdichatzApplication.getInstance().getFormToolkit(),
 											getFromStudioBundle("scenario.jboss.incomplete.installation", applicationServerName,
 													project.getName()),
 											AdichatzApplication.getInstance().getImage(GeneratorConstants.STUDIO_BUNDLE,
@@ -384,8 +383,7 @@ public class FullProjectWizard extends EmptyProjectWizard {
 						|| ((null != addDriverInStandalone && addDriverInStandalone.getSelection())
 								|| (null != addDatasourceInStandalone && addDatasourceInStandalone.getSelection()))) {
 					jbossStandaloneReader = ScenarioUtil.getJBossStandaloneReader(modelPart, scenarioResources);
-					new StandaloneFileChangeDialog(shell, AdichatzApplication.getInstance().getFormToolkit(), jbossStandaloneReader)
-							.open();
+					new StandaloneFileChangeDialog(shell, jbossStandaloneReader).open();
 				}
 				if (null != addDriverModule && addDriverModule.getSelection())
 					componentGeneration.getModelComponentGeneration().addDriverModule();

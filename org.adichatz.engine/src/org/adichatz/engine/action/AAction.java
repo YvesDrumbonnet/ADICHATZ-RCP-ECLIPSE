@@ -71,7 +71,11 @@
  *******************************************************************************/
 package org.adichatz.engine.action;
 
+import javax.inject.Inject;
+
+import org.adichatz.engine.common.InjectionInspector;
 import org.adichatz.engine.controller.IActionController;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.jface.action.Action;
 
 // TODO: Auto-generated Javadoc
@@ -87,7 +91,11 @@ public abstract class AAction extends Action {
 	/** The action controller. */
 	protected IActionController actionController;
 
+	@Inject
+	protected AdiFormToolkit toolkit;
+
 	protected AAction() {
+		InjectionInspector.inject(this);
 		init();
 	}
 

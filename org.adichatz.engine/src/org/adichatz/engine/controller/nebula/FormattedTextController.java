@@ -71,7 +71,6 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.nebula;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AFieldController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.core.ControllerCore;
@@ -179,8 +178,8 @@ public class FormattedTextController extends AFieldController {
 	 */
 	@Override
 	public void createControl() {
-		formattedText = AdichatzApplication.getInstance().getFormToolkit().createFormattedText(parentController.getComposite(),
-				style);
+		super.createControl();
+		formattedText = toolkit.createFormattedText(parentController.getComposite(), style);
 	}
 
 	/*

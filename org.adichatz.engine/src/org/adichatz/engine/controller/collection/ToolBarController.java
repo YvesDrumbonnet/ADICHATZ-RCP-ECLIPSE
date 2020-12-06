@@ -102,6 +102,7 @@ public class ToolBarController extends ACollectionController {
 
 	@Override
 	public void createControl() {
+		super.createControl();
 		toolBar = new ToolBar(parentController.getComposite(), style);
 	}
 

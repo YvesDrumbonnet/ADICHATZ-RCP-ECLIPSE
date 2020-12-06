@@ -10,6 +10,14 @@ import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.workbench.UIEvents;
 
 public class PartToBeRenderedAddOn {
+	// AVISATZ landmark A Tester
+	//	import org.eclipse.e4.ui.internal.workbench.addons.Event;
+	//	import org.eclipse.e4.ui.internal.workbench.addons.EventTopic;
+	//	@Inject
+	//	public void partToBeRendered(@Optional @EventTopic(UIEvents.UILifeCycle.BRINGTOTOP) Event event) {
+	//		
+	//	}
+
 	@PostConstruct
 	public void postConstruct(IEventBroker eventBroker) {
 		eventBroker.subscribe(UIEvents.UILifeCycle.BRINGTOTOP, (e) -> {

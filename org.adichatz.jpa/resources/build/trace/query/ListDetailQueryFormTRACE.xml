@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<partTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bindingServiceClassName="org.adichatz.engine.e4.resource.PartBindingService" image="#PARAM(IMAGE)" outlinePageClassName="org.adichatz.jpa.query.ListDetailOutlinePage" title="#PARAM(TITLE)" toolTipText="#PARAM(TOOL_TIP_TEXT)" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/partTree.xsd">
+<partTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bindingServiceClassName="org.adichatz.engine.e4.resource.PartBindingService" image="#PARAM(IMAGE)" outlinePageClassName="org.adichatz.jpa.query.ListDetailOutlinePage" title="#PARAM(TITLE)" toolTipText="#PARAM(TOOL_TIP_TEXT)" xsi:noNamespaceSchemaLocation="https://yvesdrumbonnet.github.io/Adichatz-RCP-Update-Site/xsd/generator/partTree.xsd">
     <config>
         <resourceBundles>
             <resourceBundle basename="#PARAM(MESSAGE_BUNDLE)" var="queryBundle"/>

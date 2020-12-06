@@ -71,7 +71,6 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.collection;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AEntityManagerController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.IControlController;
@@ -110,7 +109,8 @@ public class GroupController extends AEntityManagerController implements IContro
 	 */
 	@Override
 	public void createControl() {
-		composite = AdichatzApplication.getInstance().getFormToolkit().createGroup(parentController.getComposite(), getStyle());
+		super.createControl();
+		composite = toolkit.createGroup(parentController.getComposite(), getStyle());
 	}
 
 	/*

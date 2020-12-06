@@ -22,6 +22,7 @@
 	<!-- ***************************************** -->
 	<extension point="org.eclipse.ui.elementFactories">
 		<factory id="org.adichatz.studio.xjc.editor.ExternalResourceInputFactory" class="org.adichatz.studio.xjc.editor.ExternalResourceInputFactory"/>
+		<factory id="org.adichatz.studio.xjc.editor.ScenarioEditorInputFactory" class="org.adichatz.studio.xjc.editor.ScenarioEditorInputFactory"/>
 	</extension>
 
 	<!-- ******************* -->
@@ -31,7 +32,7 @@
 		<editor class="org.adichatz.studio.xjc.editor.XjcTreeFormEditor" icon="resources/icons/IMG_XJC_EDITOR.png" id="org.adichatz.studio.xjc.editor.XjcTreeFormEditor" name="%adichatzAXmlEditorAdichatz">
 			<contentTypeBinding contentTypeId="org.adichatz.axml.file" />
 		</editor>
-		<editor class="org.adichatz.studio.xjc.editor.ScenarioFormEditor" icon="resources/icons/IMG_EDIT_SCENARIO.png" id="org.adichatz.studio.xjc.editor.ScenarioFormEditor" name="%adichatzScenarioEditor">
+		<editor class="org.adichatz.studio.xjc.editor.ScenarioFormEditor" matchingStrategy="org.adichatz.studio.xjc.editor.ScenarioFormEditorMatchingStrategy" icon="resources/icons/IMG_EDIT_SCENARIO.png" id="org.adichatz.studio.xjc.editor.ScenarioFormEditor" name="%adichatzScenarioEditor">
 			<contentTypeBinding contentTypeId="org.adichatz.scenario.xml.file" />
 		</editor>
 		<editor class="org.adichatz.studio.xjc.editor.InternalTreeFormEditor" icon="resources/icons/IMG_XJC_EDITOR.png" id="org.adichatz.studio.xjc.editor.InternalTreeFormEditor" name="%adichatzAXmlEditorAdichatz"/>
@@ -58,6 +59,16 @@
  		<page id="org.adichatz.studio.StudioErrorWarningPreferences" name="%error_warning.preference" category="org.adichatz.studio.StudioPreferences" class="org.adichatz.studio.StudioErrorWarningPreferences"/>
  		<page id="org.adichatz.studio.StudioEditorPreferences" name="%editor.preference" category="org.adichatz.studio.StudioPreferences" class="org.adichatz.studio.StudioEditorPreferences"/>
  		<page id="org.adichatz.studio.IDECommunicationPreferences" name="%ideCommunication.preference" category="org.adichatz.studio.StudioPreferences" class="org.adichatz.studio.broadcast.BroadcastPreferences"/>
+	</extension>
+
+	<!-- ************************* -->
+	<!-- *   V A L I D A T O R   * -->
+	<!-- ************************* -->
+	<extension id="org.adichatz.xml.validation" name="org.adichatz.xml.validation" point="org.eclipse.wst.sse.ui.sourcevalidation">
+		<validator build="true" class="org.adichatz.studio.xjc.editor.AdiXmlFileValidator" manual="true" >
+					<contentTypeIdentifier id="org.adichatz.axml.file"/>
+  					<contentTypeIdentifier id="org.adichatz.scenario.xml.file"/>
+		</validator>
 	</extension>
 
 	<!-- *************** -->

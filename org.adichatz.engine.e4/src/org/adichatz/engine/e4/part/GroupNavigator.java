@@ -117,6 +117,8 @@ public class GroupNavigator extends ANavigator {
 
 	private Color defaulForeground;
 
+	protected AdiFormToolkit toolkit;
+
 	/**
 	 * Creates the control.
 	 *
@@ -127,7 +129,7 @@ public class GroupNavigator extends ANavigator {
 	 */
 	@PostConstruct
 	public void createControl(Composite parent, MApplication application) {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		scrolledForm = toolkit.createScrolledForm(parent);
 		scrolledForm.getBody().setLayout(new MigLayout("wrap 1, ins 0, hidemode 2", "grow,fill", "grow,fill"));
 
@@ -135,7 +137,7 @@ public class GroupNavigator extends ANavigator {
 		defaulForeground = toolkit.getColors().getColor(JFacePreferences.HYPERLINK_COLOR);
 		if (null != AReskinManager.getInstance())
 			AReskinManager.getInstance().addReskinListener(() -> {
-				AdiFormToolkit toolkit2 = AdichatzApplication.getInstance().getFormToolkit(); // toolkit from caller could be disposed (see AdiReskinManager)
+				AdiFormToolkit toolkit2 = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class); // toolkit from caller could be disposed (see AdiReskinManager)
 				defaulForeground = toolkit2.getColors().getColor(JFacePreferences.HYPERLINK_COLOR);
 				defaulBackground = toolkit2.getColors().getBackground();
 			}, scrolledForm);
@@ -148,19 +150,22 @@ public class GroupNavigator extends ANavigator {
 	 * @see org.adichatz.engine.e4.part.ANavigator#refreshInput(org.adichatz.engine.controller.menu.NavigatorPath)
 	 */
 	@Override
-	protected void refreshInput(NavigatorPath navigatorPath) {
-		if (null != content) {
-			content.setVisible(false);
-			content.dispose();
-			EngineTools.reinitMiglayout(scrolledForm.getBody());
+	protected void refreshInput(String navigatorId) {
+		NavigatorPath navigatorPath = getNavigatorPath(navigatorId);
+		if (null != navigatorPath) {
+			if (null != content) {
+				content.setVisible(false);
+				content.dispose();
+				EngineTools.reinitMiglayout(scrolledForm.getBody());
+			}
+
+			content = toolkit.createComposite(scrolledForm.getBody());
+			content.setLayout(new MigLayout("wrap 1, hidemode 2, ins 0", "grow,fill"));
+			content.setLayoutData("h 0:n:n, w 0:n:n");
+
+			createMenuGroup(navigatorPath.createMenu(context, this), content);
+			scrolledForm.reflow(true);
 		}
-
-		content = AdichatzApplication.getInstance().getFormToolkit().createComposite(scrolledForm.getBody());
-		content.setLayout(new MigLayout("wrap 1, hidemode 2, ins 0", "grow,fill"));
-		content.setLayoutData("h 0:n:n, w 0:n:n");
-
-		createMenuGroup(navigatorPath.createMenu(context, this), content);
-		scrolledForm.reflow(true);
 	}
 
 	/**
@@ -172,7 +177,6 @@ public class GroupNavigator extends ANavigator {
 	 *            the parent
 	 */
 	private void createMenuGroup(MenuController parentController, final Composite parent) {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		for (final ANodeController nodeController : parentController.getChildren()) {
 			if (!nodeController.isValid())
 				continue;
@@ -259,8 +263,7 @@ public class GroupNavigator extends ANavigator {
 								hyperlink.setToolTipText(""); // close ToolTipText window (useful in debug mode)
 							nodeController.getTransientData().put(IEclipseContext.class.getName(), context);
 							((ItemController) nodeController).handleActivate();
-							if (!EngineTools.isEmpty(tooltipText) && !hyperlink.isDisposed()) // previous action could change
-																								// navigator state
+							if (!EngineTools.isEmpty(tooltipText) && !hyperlink.isDisposed()) // previous action could change navigator state
 								hyperlink.setToolTipText(tooltipText);
 						}
 					});
@@ -319,8 +322,11 @@ public class GroupNavigator extends ANavigator {
 			}
 		} else if (nodeController instanceof ItemController) {
 			Hyperlink hyperlink = (Hyperlink) nodeController.getTransientData().get(this);
-			hyperlink.getParent().dispose();
-			EngineTools.reinitMiglayout(hyperlink.getParent().getParent());
+			if (!hyperlink.isDisposed()) {
+				Composite grandParent = hyperlink.getParent().getParent();
+				hyperlink.getParent().dispose();
+				EngineTools.reinitMiglayout(grandParent);
+			}
 		}
 		menuController.getChildren().remove(nodeController);
 	}

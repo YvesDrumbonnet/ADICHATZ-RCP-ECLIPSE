@@ -163,13 +163,13 @@ public class SelectRefValueDialog {
 		addParam(ParamMap.CONTEXT_MENU, "adi://org.adichatz.jpa/common.contextMenu/RefTextDialogCM");
 
 		String popupURI = getParamNvl(ParamMap.POPUP_URI,
-				(String) AdichatzApplication.getInstance().getParam(EngineConstants.DEFAULT_REF_TEXT_POPUP_URI));
+				(String) AdichatzApplication.getInstance().getContextValue(EngineConstants.DEFAULT_REF_TEXT_POPUP_URI));
 		String popupFormText = getParamNvl(ParamMap.POPUP_FORM_TEXT,
 				getFromJpaBundle("selection.dialog.formText", entityMM.getEntityId()));
 		final AdiFormInput formInput = new AdiFormInput(null, popupURI, paramMap);
 
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
-		AFormInputDialog formDialog = new AFormInputDialog(Display.getCurrent().getActiveShell(), toolkit, //
+		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
+		AFormInputDialog formDialog = new AFormInputDialog(Display.getCurrent().getActiveShell(), //
 				popupFormText, //
 				toolkit.getRegisteredImage("IMG_FIND"), formInput) {
 			@Override
@@ -194,8 +194,8 @@ public class SelectRefValueDialog {
 						okButton.setEnabled(null == selectedValue ? false : !isCurrentValue(currentSelectedValue, selectedValue));
 					}
 				});
-				tabularController
-						.addListener(new AControlListener("BasicTabularStatusBar#Refresh", IEventType.REFRESH, tabularController) {
+				tabularController.addListener(
+						new AControlListener("BasicTabularStatusBar#Refresh", IEventType.AFTER_REFRESH, tabularController) {
 							@Override
 							public void handleEvent(AdiEvent event) {
 								if (null != currentSelectedValue) {

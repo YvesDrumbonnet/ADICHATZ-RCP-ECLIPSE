@@ -127,13 +127,12 @@ public abstract class ADetailAction extends AAction {
 						actionController.setEnabled(false);
 					}
 				}
-				entityManagerController.getEntity()
-						.addEntityListener(new AEntityListener(entityManagerController, IEventType.CHANGE_STATUS) {
-							@Override
-							public void handleEntityEvent(AdiEntityEvent event) {
-								actionController.setEnabled(enable(entityManagerController.getEntity()));
-							}
-						});
+				new AEntityListener("#ADetailAction.postCreate#", entityManagerController, IEventType.CHANGE_STATUS) {
+					@Override
+					public void handleEntityEvent(AdiEntityEvent event) {
+						actionController.setEnabled(enable(entityManagerController.getEntity()));
+					}
+				};
 				actionController.setEnabled(enable(entityManagerController.getEntity()));
 			} else {
 				actionController.setEnabled(false);

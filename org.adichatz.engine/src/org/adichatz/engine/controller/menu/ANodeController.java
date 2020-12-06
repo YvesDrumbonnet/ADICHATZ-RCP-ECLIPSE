@@ -76,6 +76,7 @@ import java.util.Map;
 
 import org.adichatz.common.ejb.MultiKey;
 import org.adichatz.engine.common.AdiPluginResources;
+import org.adichatz.engine.common.InjectionInspector;
 import org.adichatz.engine.controller.AController;
 import org.adichatz.engine.core.AMenuCore;
 import org.adichatz.engine.listener.AListener;
@@ -133,6 +134,7 @@ public abstract class ANodeController extends AController {
 		this.label = label;
 		this.toolTipText = toolTipText;
 		this.menuCore = menuCore;
+		InjectionInspector.inject(this);
 	}
 
 	/**

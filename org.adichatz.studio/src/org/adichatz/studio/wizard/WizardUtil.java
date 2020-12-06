@@ -75,6 +75,7 @@ import static org.adichatz.studio.util.StudioUtil.getFromStudioBundle;
 
 import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -115,7 +116,7 @@ public class WizardUtil {
 	public static void createBruteHelp(final Composite parent, String label, final String specifyHelp, final String messageHelp) {
 		Button helpBtn;
 		helpBtn = new Button(parent, SWT.ICON);
-		helpBtn.setImage(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImage("IMG_HELP"));
+		helpBtn.setImage(AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class).getRegisteredImage("IMG_HELP"));
 		helpBtn.setToolTipText(label);
 		helpBtn.addSelectionListener(new SelectionAdapter() {
 			@Override

@@ -127,6 +127,7 @@ public class PGroupToolItemController extends AWidgetController implements IActi
 	 */
 	@Override
 	public void createControl() {
+		super.createControl();
 		pgroupToolItem = new AdiPGroupToolItem(((PGroupController) parentController).getControl(), style);
 		pgroupToolItem.addSelectionListener(new SelectionAdapter() {
 			@Override

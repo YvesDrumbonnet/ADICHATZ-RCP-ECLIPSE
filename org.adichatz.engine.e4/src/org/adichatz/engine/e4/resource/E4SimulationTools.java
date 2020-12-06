@@ -77,6 +77,7 @@ import static org.adichatz.engine.e4.resource.EngineE4Util.getFromEngineE4Bundle
 import java.util.ArrayList;
 import java.util.List;
 
+import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.common.Utilities;
 import org.adichatz.engine.controller.IContainerController;
@@ -196,7 +197,7 @@ public class E4SimulationTools {
 				if (nodeIds[i].equals(nodeController.getNodeId())) {
 					if (i == lastNodeIndex && nodeController instanceof ItemController) {
 						nodeController.getTransientData().put(IEclipseContext.class.getName(),
-								E4AdichatzApplication.getInstance().getContext());
+								AdichatzApplication.getInstance().getContextValue(IEclipseContext.class));
 						((ItemController) nodeController).handleActivate();
 						foundChild = true;
 					} else if (nodeController instanceof MenuController) {
@@ -240,7 +241,8 @@ public class E4SimulationTools {
 	 * @return the selected editor
 	 */
 	public static MStackElement getSelectedEditor() {
-		return E4AdichatzApplication.getInstance().getEditorPartStack().getSelectedElement();
+		MPartStack editorPartStack = (MPartStack) AdichatzApplication.getInstance().getContextValue(EngineE4Util.EDITOR_PARTSTACK);
+		return editorPartStack.getSelectedElement();
 	}
 
 	/**
@@ -252,12 +254,12 @@ public class E4SimulationTools {
 	 * @return the selected navigator
 	 */
 	public static MStackElement getSelectedNavigator() {
-		IEclipseContext context = E4AdichatzApplication.getInstance().getContext();
-		EModelService modelService = context.get(EModelService.class);
-		MPerspectiveStack perspectiveStack = (MPerspectiveStack) modelService.find(PerspectiveProcessor.PERSPECTIVE_STACK,
-				context.get(MApplication.class));
+		IEclipseContext eclipseContext = AdichatzApplication.getInstance().getContextValue(IEclipseContext.class);
+		EModelService modelService = eclipseContext.get(EModelService.class);
+		MPerspectiveStack perspectiveStack = (MPerspectiveStack) modelService.find(EngineE4Util.PERSPECTIVE_STACK,
+				eclipseContext.get(MApplication.class));
 		MPerspective perspective = perspectiveStack.getSelectedElement();
-		MPartStack navigatorPartStack = (MPartStack) modelService.find(PerspectiveProcessor.NAVIGATOR_STACK, perspective);
+		MPartStack navigatorPartStack = (MPartStack) modelService.find(EngineE4Util.NAVIGATOR_STACK, perspective);
 
 		return null == navigatorPartStack ? null : navigatorPartStack.getSelectedElement();
 	}
@@ -440,7 +442,8 @@ public class E4SimulationTools {
 	 */
 	public static void closeAll() {
 		List<RootCore> rootCores = new ArrayList<>();
-		for (MStackElement element : E4AdichatzApplication.getInstance().getEditorPartStack().getChildren()) {
+		MPartStack editorPartStack = (MPartStack) AdichatzApplication.getInstance().getContextValue(EngineE4Util.EDITOR_PARTSTACK);
+		for (MStackElement element : editorPartStack.getChildren()) {
 			if (element instanceof AdiInputPart && ((AdiInputPart) element).getObject() instanceof BoundedPart) {
 				rootCores.add(((BoundedPart) ((AdiInputPart) element).getObject()).getGenCode());
 			}
@@ -491,7 +494,7 @@ public class E4SimulationTools {
 	 * @return the editor part stack children
 	 */
 	private static List<MStackElement> getEditorPartStackChildren() {
-		MPartStack editorPartStack = E4AdichatzApplication.getInstance().getEditorPartStack();
+		MPartStack editorPartStack = (MPartStack) AdichatzApplication.getInstance().getContextValue(EngineE4Util.EDITOR_PARTSTACK);
 		return editorPartStack.getChildren();
 	}
 
@@ -502,10 +505,10 @@ public class E4SimulationTools {
 	 *            the part id
 	 * @return the m part
 	 */
-	private static MPart findPart(String partId) {
+	public static MPart findPart(String partId) {
 		SimulationTools.checkNullArguments(partId);
-		IEclipseContext context = E4AdichatzApplication.getInstance().getContext();
-		MPart part = context.get(EPartService.class).findPart(partId);
+		IEclipseContext eclipseContext = AdichatzApplication.getInstance().getContextValue(IEclipseContext.class);
+		MPart part = eclipseContext.get(EPartService.class).findPart(partId);
 		if (null == part)
 			logError(getFromEngineE4Bundle("simulation.invalid.part.id", partId));
 		return part;

@@ -73,12 +73,10 @@ package org.adichatz.studio.xjc.controller;
 
 import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.utils.AdiSWT;
 import org.adichatz.engine.core.ControllerCore;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -122,7 +120,7 @@ public abstract class AChooserController extends XjcTextController {
 
 	@Override
 	public void createControl() {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		super.createControl();
 		composite = toolkit.createComposite(parentController.getComposite(), SWT.BORDER);
 		composite.setLayout(new MigLayout("wrap 4, ins 0", "[grow,fill]0[]0[]0[]"));
 		composite.setLayoutData("w 10:10:n");

@@ -74,11 +74,10 @@ package org.adichatz.jpa.query.action;
 import static org.adichatz.jpa.extra.JPAUtil.getFromJpaBundle;
 
 import org.adichatz.engine.action.AAction;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.controller.ASetController;
 import org.adichatz.engine.controller.collection.ATabularController;
-import org.adichatz.engine.controller.collection.TreeController;
+import org.adichatz.engine.controller.collection.ATreeController;
 import org.adichatz.engine.controller.field.AColumnController;
 import org.adichatz.jpa.xjc.FilterType;
 
@@ -93,7 +92,7 @@ public class CopyTextAction extends AAction {
 	 */
 	public CopyTextAction() {
 		setText(getFromJpaBundle("queryPreference.copy.text"));
-		setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_COPY_TO_BUFFER"));
+		setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_COPY_TO_BUFFER"));
 	}
 
 	/*
@@ -106,8 +105,8 @@ public class CopyTextAction extends AAction {
 	public void runAction() {
 		ASetController setController = (ASetController) actionController.getParentController().getParentController();
 		String text;
-		if (setController instanceof TreeController)
-			text = ((TreeController) setController).getTreeManager().getText(setController.getSelectedObject());
+		if (setController instanceof ATreeController)
+			text = ((ATreeController) setController).getTreeManager().getText(setController.getSelectedObject());
 		else {
 			AColumnController<FilterType> tableColumnController = ((ATabularController<FilterType>) setController)
 					.getColumnControllers(true)[0];

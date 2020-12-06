@@ -65,9 +65,9 @@ import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.controller.IItemContainerController;
 import org.adichatz.engine.controller.IItemController;
 import org.adichatz.engine.controller.IValidableController;
+import org.adichatz.engine.controller.collection.ATabularController;
 import org.adichatz.engine.controller.collection.CTabItemController;
 import org.adichatz.engine.controller.collection.FormPageController;
-import org.adichatz.engine.controller.collection.ATabularController;
 import org.adichatz.engine.listener.AdiEvent;
 import org.adichatz.engine.listener.IEventType;
 import org.adichatz.engine.tabular.ATabularContentProvider;
@@ -111,7 +111,7 @@ public class EditorBindingService extends ABindingService {
 		this.editor = editor;
 		this.title = editor.getPartName();
 		this.image = editor.getTitleImage();
-		addBindingListener(new ABindingListener(IEventType.DIRTY_VALIDATION) {
+		addBindingListener(new ABindingListener("EditorBindingService#DIRTY_VALIDATION", IEventType.DIRTY_VALIDATION) {
 			@Override
 			public void handleEvent(AdiEvent event) {
 				editor.fireDirtyPropertyChange();

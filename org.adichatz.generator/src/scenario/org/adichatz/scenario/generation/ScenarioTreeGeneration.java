@@ -82,7 +82,7 @@ import org.adichatz.engine.controller.collection.ScrolledFormController;
 import org.adichatz.engine.controller.collection.SectionController;
 import org.adichatz.engine.controller.collection.TableController;
 import org.adichatz.engine.controller.collection.ToolBarController;
-import org.adichatz.engine.controller.collection.TreeController;
+import org.adichatz.engine.controller.collection.ATreeController;
 import org.adichatz.engine.controller.field.CComboController;
 import org.adichatz.engine.controller.field.CheckBoxController;
 import org.adichatz.engine.controller.field.ComboController;
@@ -361,7 +361,7 @@ public class ScenarioTreeGeneration {
 		addController(TextWrapper.class.getName(), TextController.class.getName());
 		addController(ToolBarWrapper.class.getName(), ToolBarController.class.getName());
 		addController(ToolItemWrapper.class.getName(), ToolItemController.class.getName());
-		addController(TreeWrapper.class.getName(), TreeController.class.getName());
+		addController(TreeWrapper.class.getName(), ATreeController.class.getName());
 		addController(MenuItemWrapper.class.getName(), MenuItemController.class.getName());
 		// Nebula
 		addController(PGroupWrapper.class.getName(), PGroupController.class.getName());

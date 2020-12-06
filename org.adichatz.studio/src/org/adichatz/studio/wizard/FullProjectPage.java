@@ -190,7 +190,7 @@ public class FullProjectPage extends EmptyProjectPage {
 		super.createContents(parent);
 		dataComposite.setLayout(new MigLayout("wrap 4, ins 5", "[][fill,grow][][][]"));
 
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 
 		title = modelPartRB.getString("connectorDataSource");
 
@@ -484,7 +484,7 @@ public class FullProjectPage extends EmptyProjectPage {
 	 * Open data source window.
 	 */
 	private void openDataSourceWindow(AdiFormToolkit toolkit) {
-		DatasourceWindow datasourceWindow = new DatasourceWindow(toolkit, datasourceId, null);
+		DatasourceWindow datasourceWindow = new DatasourceWindow(datasourceId, null);
 		if (Dialog.OK == datasourceWindow.open()) {
 			connectorTree = ScenarioUtil.getConnectorTree((String) null); // Reload connector tree
 			datasourceComboCV.setInput(connectorTree.getDatasources().getDatasource());

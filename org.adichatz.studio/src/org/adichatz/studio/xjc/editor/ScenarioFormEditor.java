@@ -82,7 +82,6 @@ import org.adichatz.engine.indigo.editor.FormPageHeader;
 import org.adichatz.engine.plugin.ParamMap;
 import org.adichatz.engine.tabular.ATabularContentProvider;
 import org.adichatz.engine.validation.EntityInjection;
-import org.adichatz.engine.wrapper.ITreeWrapper;
 import org.adichatz.generator.common.GeneratorConstants;
 import org.adichatz.generator.wrapper.GenerationScenarioWrapper;
 import org.adichatz.generator.wrapper.PluginEntityWrapper;
@@ -161,20 +160,10 @@ public class ScenarioFormEditor extends ATreeFormEditor {
 	@Override
 	public void init(IEditorSite site, IEditorInput input) throws PartInitException {
 		setSite(site);
-		if (input instanceof FileEditorInput) {
-			fileEditorInput = new FileEditorInput(((FileEditorInput) input).getFile()) {
-				// Change FileEditorInput#getName so that EditorReference#persist stores the new computed value in workbench.xmi
-				// file.
-				@Override
-				public String getName() {
-					return getFile().getProject().getName().concat(" - ").concat(getFile().getName());
-				}
-			};
-		} else
-			throw new RuntimeException("Don't know how to open " + this.getClass().getSimpleName() + " with input " + input + "?!");
-		setInput(fileEditorInput);
-
-		setPartName(fileEditorInput.getName());
+		if (!(input instanceof FileEditorInput))
+			throw new RuntimeException(getFromStudioBundle("studio.invalid.input", this.getClass().getSimpleName(), input));
+		setInput(new ScenarioEditorInput(((FileEditorInput) input).getFile()));
+		setPartName(input.getName());
 		setTitleImage(AdichatzApplication.getInstance().getImage(GeneratorConstants.STUDIO_BUNDLE, "IMG_EDIT_SCENARIO.png"));
 		ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
 		pluginResources = StudioRcpPlugin.getDefault().getPluginResources();
@@ -183,7 +172,6 @@ public class ScenarioFormEditor extends ATreeFormEditor {
 			@Override
 			public void pageChanged(PageChangedEvent event) {
 				IFormPage formPage = (IFormPage) event.getSelectedPage();
-				// if (null != getOutlinePage()) {
 				if (formPage instanceof XmlTextEditor) {
 					if (null != outlinePage) // when outline view is closed
 						outlinePage.setSelection(null);
@@ -203,7 +191,6 @@ public class ScenarioFormEditor extends ATreeFormEditor {
 					activePage(pageController);
 				}
 			}
-			// }
 		});
 	}
 
@@ -252,8 +239,8 @@ public class ScenarioFormEditor extends ATreeFormEditor {
 				getCacheKey());
 		// launch the form Editor
 		ParamMap paramMap = new ParamMap();
-		paramMap.put(ParamMap.TITLE, fileEditorInput.getToolTipText());
-		paramMap.put("pluginName", ((ScenarioTreeWrapper) entity.getBean()).getPluginName());
+		paramMap.put(ParamMap.TITLE, getEditorInput().getToolTipText());
+		paramMap.put("pluginName", pluginResources.getPluginName());
 		genCode = (FormEditorCore) pluginResources.getNewInstance(IStudioConstants.SCENARIO_EDITOR, "editor", this, paramMap);
 		genCode.createContents();
 		genCode.injectCustomizations();
@@ -332,28 +319,25 @@ public class ScenarioFormEditor extends ATreeFormEditor {
 	 * 
 	 * @see org.adichatz.studio.xjc.editor.AStudioFormEditor#getTreeWrapper(boolean)
 	 */
-	public ITreeWrapper getTreeWrapper(boolean reloadFile, boolean reinitTree) {
+	@Override
+	public Object getTreeWrapper(boolean reloadFile, boolean reinitTree) {
 		if (null == treeWrapper || reloadFile)
 			try {
-				if (!fileEditorInput.getFile().isSynchronized(IResource.DEPTH_ZERO))
-					fileEditorInput.getFile().refreshLocal(IResource.DEPTH_ZERO, null);
+				if (!getEditorInput().getFile().isSynchronized(IResource.DEPTH_ZERO))
+					getEditorInput().getFile().refreshLocal(IResource.DEPTH_ZERO, null);
 				if (null == cacheKey) {
-					scenarioResources = ScenarioResources.getInstance(fileEditorInput.getFile().getProject());
-					String fileName = fileEditorInput.getName();
-					fileName = fileName.substring(0, fileName.length() - fileEditorInput.getFile().getFileExtension().length() - 1);
+					scenarioResources = ScenarioResources.getInstance(getEditorInput().getFile().getProject());
+					String fileName = getEditorInput().getName();
+					fileName = fileName.substring(0,
+							fileName.length() - getEditorInput().getFile().getFileExtension().length() - 1);
 					cacheKey = new MultiKey(scenarioResources.getPluginName(), fileName,
-							ScenarioUtil.getSubPackage(fileEditorInput.getFile()));
+							ScenarioUtil.getSubPackage(getEditorInput().getFile()));
 					treeWrapper = scenarioResources.getScenarioTree();
 				}
 				if (reloadFile) {
-					scenarioResources.loadScenarioTree(fileEditorInput.getFile().getContents());
+					scenarioResources.loadScenarioTree(getEditorInput().getFile().getContents());
 					treeWrapper = scenarioResources.getScenarioTree();
 				}
-
-				treeWrapper.setPluginName(cacheKey.getString(0));
-				treeWrapper.setTreeId(cacheKey.getString(1));
-				treeWrapper.setSubPackage(cacheKey.getString(2));
-				treeWrapper.setXmlFile(fileEditorInput.getFile().getLocation().toFile());
 			} catch (CoreException | JAXBException e) {
 				logError(e);
 			}
@@ -511,7 +495,7 @@ public class ScenarioFormEditor extends ATreeFormEditor {
 			outlinePage.enable(true);
 		}
 		try {
-			fileEditorInput.getFile().refreshLocal(IResource.DEPTH_ZERO, null);
+			getEditorInput().getFile().refreshLocal(IResource.DEPTH_ZERO, null);
 		} catch (CoreException e) {
 			logError(e);
 		}

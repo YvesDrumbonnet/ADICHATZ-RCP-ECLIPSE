@@ -1,6 +1,5 @@
 package org.adichatz.engine.e4.part;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.e4.resource.PageManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
@@ -26,13 +25,13 @@ public class MultiBoundedPart extends BoundedPart {
 
 			CTabItem tabItem = new CTabItem(pagesTabFolder, SWT.NONE);
 			tabItem.setData("#pageManager#", pageManager);
-			scrolledForm = AdichatzApplication.getInstance().getFormToolkit().createScrolledForm(pagesTabFolder);
+			scrolledForm = toolkit.createScrolledForm(pagesTabFolder);
 			tabItem.setControl(scrolledForm);
 			tabItem.setText(pageManager.getTitle());
 			tabItem.setImage(pageManager.getImage());
 		} else
-			scrolledForm = AdichatzApplication.getInstance().getFormToolkit().createScrolledForm(parent);
-		pageManager.setManagedForm(new ManagedForm(AdichatzApplication.getInstance().getFormToolkit(), scrolledForm));
+			scrolledForm = toolkit.createScrolledForm(parent);
+		pageManager.setManagedForm(new ManagedForm(toolkit, scrolledForm));
 		Composite body = scrolledForm.getBody();
 		body.setLayout(new MigLayout("wrap, ins 0", "grow,fill", "grow,fill"));
 
@@ -44,7 +43,7 @@ public class MultiBoundedPart extends BoundedPart {
 		pagesTabFolder.setMaximizeVisible(true);
 		pagesTabFolder.setMaximized(false);
 		container = pagesTabFolder;
-		AdichatzApplication.getInstance().getFormToolkit().adapt(pagesTabFolder);
+		toolkit.adapt(pagesTabFolder);
 		pagesTabFolder.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {

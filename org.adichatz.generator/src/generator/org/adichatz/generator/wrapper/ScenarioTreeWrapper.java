@@ -70,11 +70,9 @@ import java.util.Set;
 import org.adichatz.engine.common.EngineConstants;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.common.Utilities;
-import org.adichatz.engine.wrapper.ITreeWrapper;
 import org.adichatz.generator.KeyWordGenerator;
 import org.adichatz.generator.common.FileUtil;
 import org.adichatz.generator.common.GeneratorConstants;
-import org.adichatz.generator.wrapper.internal.IGeneratorEntry;
 import org.adichatz.generator.xjc.ActionResourcesType;
 import org.adichatz.generator.xjc.ActionWhenTypeEnum;
 import org.adichatz.generator.xjc.AddWhenEnum;
@@ -121,24 +119,12 @@ import org.osgi.framework.Constants;
 /**
  * The Class ScenarioTreeWrapper.
  */
-public class ScenarioTreeWrapper extends ScenarioTree implements ITreeWrapper, IGeneratorEntry {
+public class ScenarioTreeWrapper extends ScenarioTree {
 	/** The config file names. */
 	public static String[] CONFIG_FILE_NAMES = new String[] { "Application.e4xmi", "plugin.properties", "plugin.xml" };
 
 	/** The application file names. */
 	public static String[] APPLICATION_FILE_NAMES = new String[] { "StartupLifeCycleHandler.java" };
-
-	/** The plugin name. */
-	private String pluginName;
-
-	/** The tree id. */
-	private String treeId;
-
-	/** The sub package. */
-	private String subPackage;
-
-	/** The xml file. */
-	private File xmlFile;
 
 	private Set<String> libClassPaths;
 
@@ -175,86 +161,6 @@ public class ScenarioTreeWrapper extends ScenarioTree implements ITreeWrapper, I
 		if (null == params)
 			params = new ParamsType();
 		return params;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adichatz.engine.wrapper.ITreeWrapper#getPluginName()
-	 */
-	@Override
-	public String getPluginName() {
-		return pluginName;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adichatz.engine.wrapper.ITreeWrapper#setPluginName(java.lang.String)
-	 */
-	@Override
-	public void setPluginName(String pluginName) {
-		this.pluginName = pluginName;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adichatz.engine.wrapper.ITreeWrapper#getTreeId()
-	 */
-	@Override
-	public String getTreeId() {
-		return treeId;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adichatz.engine.wrapper.ITreeWrapper#setTreeId(java.lang.String)
-	 */
-	@Override
-	public void setTreeId(String treeId) {
-		this.treeId = treeId;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adichatz.engine.wrapper.ITreeWrapper#getSubPackage()
-	 */
-	@Override
-	public String getSubPackage() {
-		return subPackage;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adichatz.engine.wrapper.ITreeWrapper#setSubPackage(java.lang.String)
-	 */
-	@Override
-	public void setSubPackage(String subPackage) {
-		this.subPackage = subPackage;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adichatz.generator.wrapper.tree.ITreeWrapper#getXmlFile()
-	 */
-	@Override
-	public File getXmlFile() {
-		return xmlFile;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adichatz.generator.wrapper.tree.ITreeWrapper#setXmlFile(java.io.File)
-	 */
-	@Override
-	public void setXmlFile(File xmlFile) {
-		this.xmlFile = xmlFile;
 	}
 
 	/*
@@ -472,7 +378,7 @@ public class ScenarioTreeWrapper extends ScenarioTree implements ITreeWrapper, I
 					&& null != customizationScenarioTree.getGenerationScenario().getRcpPart())
 				generationScenario.setRcpPart(customizationScenarioTree.getGenerationScenario().getRcpPart());
 			((GenerationScenarioWrapper) generationScenario).mergeCustomization(customizationScenarioTree.getGenerationScenario(),
-					pluginName, part);
+					scenarioResources.getPluginName(), part);
 		}
 	}
 

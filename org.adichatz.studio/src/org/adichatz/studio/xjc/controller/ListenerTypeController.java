@@ -84,7 +84,6 @@ import org.adichatz.engine.controller.field.HyperlinkController;
 import org.adichatz.engine.controller.utils.AdiSWT;
 import org.adichatz.engine.controller.utils.IPredicate;
 import org.adichatz.engine.core.ControllerCore;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.generator.common.GeneratorConstants;
 import org.adichatz.generator.tools.AListenerTypeManager;
 import org.adichatz.generator.wrapper.internal.IElementWrapper;
@@ -158,9 +157,9 @@ public class ListenerTypeController extends ARefController {
 
 	@Override
 	public void createControl() {
+		super.createControl();
 		bundle = AdichatzApplication.getPluginResources(GeneratorConstants.STUDIO_BUNDLE).getResourceBundleManager()
 				.getResourceBundle("listenerTypeChooser");
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		composite = toolkit.createComposite(parentController.getComposite(), SWT.BORDER);
 		composite.setLayout(new MigLayout("wrap 3, ins 0", "[grow,fill][][]"));
 		text = new Text(composite, SWT.READ_ONLY);

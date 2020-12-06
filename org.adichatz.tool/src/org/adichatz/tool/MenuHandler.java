@@ -79,17 +79,18 @@ import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.e4.part.ANavigator;
 import org.adichatz.engine.e4.part.AdiInputPart;
 import org.adichatz.engine.e4.part.BoundedPart;
-import org.adichatz.engine.e4.resource.E4AdichatzApplication;
 import org.adichatz.engine.e4.resource.E4SimulationTools;
+import org.adichatz.engine.e4.resource.EngineE4Util;
 import org.adichatz.engine.xjc.MenuPathType;
 import org.adichatz.engine.xjc.NavigatorType;
-import org.adichatz.engine.xjc.RcpConfigurationType;
+import org.adichatz.engine.xjc.NavigatorsType;
 import org.adichatz.generator.common.GeneratorConstants;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainerElement;
+import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MStackElement;
 import org.eclipse.e4.ui.model.application.ui.menu.MItem;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
@@ -135,8 +136,8 @@ public class MenuHandler {
 		boolean hideExternalResources = InstanceScope.INSTANCE.getNode(GeneratorConstants.TOOL_BUNDLE)
 				.getBoolean(ToolUtil.HIDE_EXTERNAL_RESOURCES, true);
 
-		RcpConfigurationType rcpConfiguration = AdichatzApplication.getInstance().getConfigTree().getRcpConfiguration();
-		if (null != rcpConfiguration && null != rcpConfiguration.getNavigators()) {
+		NavigatorsType navigators = AdichatzApplication.getInstance().getContextValue(NavigatorsType.class);
+		if (null != navigators) {
 			// Menu navigator
 			Menu navigatorMenu = new Menu(menu);
 			MenuItem navigatorMenuPlugin = new MenuItem(menu, SWT.CASCADE);
@@ -155,20 +156,22 @@ public class MenuHandler {
 				public void widgetSelected(SelectionEvent e) {
 					ANavigator navigator = (ANavigator) ((MPart) E4SimulationTools.getSelectedNavigator()).getObject();
 					ToolNavigatorContent toolNavigatorContent = ToolNavigatorContent.getInstance();
-					BoundedPart actualPart = toolNavigatorContent.getCurrentPart();
-					toolNavigatorContent.removeOpenMenuController(navigator);
-					toolNavigatorContent.removeNavigatorController(navigator);
-					navigator.refreshNavigator();
-					toolNavigatorContent.createNavigatorController(navigator);
-					if (null != actualPart) {
-						toolNavigatorContent.updateOpenMenuController(actualPart.getInputPart());
+					if (null != toolNavigatorContent) {
+						BoundedPart actualPart = toolNavigatorContent.getCurrentPart();
+						toolNavigatorContent.removeOpenMenuController(navigator);
+						toolNavigatorContent.removeNavigatorController(navigator);
+						navigator.refreshNavigator();
+						toolNavigatorContent.createNavigatorController(navigator);
+						if (null != actualPart) {
+							toolNavigatorContent.updateOpenMenuController(actualPart.getInputPart());
+						}
+						navigator.refreshMenuController(toolNavigatorContent.getToolMenuController());
 					}
-					navigator.refreshMenuController(toolNavigatorContent.getToolMenuController());
 				}
 			});
 			ANavigator navigator = (ANavigator) ((MPart) E4SimulationTools.getSelectedNavigator()).getObject();
 			String navigatorId = ((MPart) navigator.getContext().get(MPartSashContainerElement.class)).getElementId();
-			for (NavigatorType navigatorType : rcpConfiguration.getNavigators().getNavigator()) {
+			for (NavigatorType navigatorType : navigators.getNavigator()) {
 				if (navigatorId.equals(navigatorType.getId())) {
 					for (MenuPathType menuPath : navigatorType.getMenuPath()) {
 						if (menuPath.getAdiResourceURI().startsWith("adi://")) {
@@ -272,7 +275,8 @@ public class MenuHandler {
 			});
 		}
 
-		final MStackElement stackElement = E4AdichatzApplication.getInstance().getEditorPartStack().getSelectedElement();
+		MPartStack editorPartStack = (MPartStack) AdichatzApplication.getInstance().getContextValue(EngineE4Util.EDITOR_PARTSTACK);
+		final MStackElement stackElement = editorPartStack.getSelectedElement();
 		if (stackElement instanceof AdiInputPart) {
 			BoundedPart currentPart = ((AdiInputPart) stackElement).getObject();
 			Menu openPartMenu = new Menu(menu);

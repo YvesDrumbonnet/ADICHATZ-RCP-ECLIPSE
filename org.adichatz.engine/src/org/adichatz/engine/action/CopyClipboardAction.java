@@ -3,6 +3,7 @@ package org.adichatz.engine.action;
 import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
 
 import org.adichatz.engine.common.AdichatzApplication;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.jface.action.Action;
 import org.eclipse.swt.dnd.Clipboard;
 import org.eclipse.swt.dnd.TextTransfer;
@@ -20,7 +21,8 @@ public class CopyClipboardAction extends Action {
 		String text = getFromEngineBundle("copyTextToClipboard");
 		this.setText(text);
 		this.setToolTipText(text);
-		this.setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_COPY"));
+		this.setImageDescriptor(
+				AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class).getRegisteredImageDescriptor("IMG_COPY"));
 	}
 
 	@Override

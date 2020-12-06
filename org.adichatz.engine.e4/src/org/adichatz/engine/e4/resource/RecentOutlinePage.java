@@ -53,16 +53,13 @@
  *******************************************************************************/
 package org.adichatz.engine.e4.resource;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.e4.part.IntroPart;
 import org.adichatz.engine.e4.part.OutlinePart;
 import org.adichatz.engine.extra.AOutlineListener;
 import org.adichatz.engine.extra.ARecentOutlineItem;
 import org.adichatz.engine.extra.ARecentOutlinePage;
-import org.adichatz.engine.extra.IOutlinePage;
 import org.adichatz.engine.extra.OutlineEvent;
 import org.adichatz.engine.extra.OutlineEvent.EVENT_TYPE;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.nebula.widgets.pshelf.PShelf;
 import org.eclipse.nebula.widgets.pshelf.PShelfItem;
 import org.eclipse.swt.SWT;
@@ -81,10 +78,7 @@ import net.miginfocom.swt.MigLayout;
  * @author Yves Drumbonnet
  * 
  */
-public class RecentOutlinePage extends ARecentOutlinePage implements IOutlinePage {
-
-	/** The toolkit. */
-	private AdiFormToolkit toolkit;
+public class RecentOutlinePage extends ARecentOutlinePage {
 
 	/** The scrolled form. */
 	private ScrolledForm scrolledForm;
@@ -113,8 +107,7 @@ public class RecentOutlinePage extends ARecentOutlinePage implements IOutlinePag
 	public void createControl(final Composite parent) {
 		OutlinePart.getInstance().setDefaultPage(this);
 
-		toolkit = AdichatzApplication.getInstance().getFormToolkit();
-		scrolledForm = toolkit.createScrolledForm(parent);
+		scrolledForm = getToolkit().createScrolledForm(parent);
 		scrolledForm.getBody().setLayout(new MigLayout("wrap 1, ins 0", "grow,fill", "grow,fill"));
 
 		pshelf = toolkit.createPShelf(scrolledForm.getBody(), SWT.NONE);

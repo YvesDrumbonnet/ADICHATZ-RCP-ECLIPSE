@@ -692,7 +692,7 @@ public class ExtraText extends Composite {
 	 * @return the tool bar
 	 */
 	protected void createToolBar(final Composite parent) {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		toolBar = new ToolBar(parent, SWT.FLAT | SWT.BORDER);
 		boldItem = new ToolItem(toolBar, SWT.CHECK);
 		boldItem.setImage(toolkit.getRegisteredImage("IMG_BOLD"));
@@ -798,7 +798,7 @@ public class ExtraText extends Composite {
 					styleRange.start = selectionRange.x;
 					styleRange.length = selectionRange.y;
 				}
-				new HyperlinkDialog(parent.getShell(), toolkit, ExtraText.this, text, href, styleRange).open();
+				new HyperlinkDialog(parent.getShell(), ExtraText.this, text, href, styleRange).open();
 			}
 		});
 	}

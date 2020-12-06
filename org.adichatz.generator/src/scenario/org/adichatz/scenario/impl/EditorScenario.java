@@ -447,12 +447,10 @@ public class EditorScenario extends AScenario implements IEditorScenario {
 				otoPage.setEntityURI(oneToOne.getEntityURI());
 
 				StringBuffer additionalMethodSB = new StringBuffer();
-				additionalMethodSB.append("import static ").append(LogBroker.class.getName()).append(".logError;\n");
 				additionalMethodSB.append("import ").append(IEntity.class.getName()).append(";\n");
 				additionalMethodSB.append("import ").append(entityMM.getBeanClass().getName()).append(";\n");
 				// additionalMethodSB.append("import ").append(AdiPMException.class.getName()).append(";\n");
 				additionalMethodSB.append("import ").append(JPADataAccess.class.getName()).append(";\n");
-				additionalMethodSB.append("import ").append(otoPluginEntity.getBeanClass().getName()).append(";\n");
 				additionalMethodSB.append("private IEntity<?> " + entityMethodName + "() {\n");
 				additionalMethodSB.append("    IEntity<?> entity = coreController.getParentController().getEntity();\n");
 

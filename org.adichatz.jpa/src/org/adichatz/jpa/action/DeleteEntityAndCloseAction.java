@@ -121,7 +121,7 @@ public class DeleteEntityAndCloseAction extends AAction {
 	public void init() {
 		setText(getFromJpaBundle("detail.deleteEntityAndClose"));
 		setToolTipText(getFromJpaBundle("detail.deleteEntityAndCloseToolTip"));
-		setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_DELETE"));
+		setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_DELETE"));
 	}
 
 	/*
@@ -212,7 +212,6 @@ public class DeleteEntityAndCloseAction extends AAction {
 						actionController.setEnabled(enabled);
 					}
 				};
-				controller.getEntity().addEntityListener(changeStatusListener);
 				// Disposes status change listener when controller diposes.
 				((Control) controller.getControl()).addDisposeListener((e) -> {
 					actionController.getParentController().getEntity().disposeListener(changeStatusListener);

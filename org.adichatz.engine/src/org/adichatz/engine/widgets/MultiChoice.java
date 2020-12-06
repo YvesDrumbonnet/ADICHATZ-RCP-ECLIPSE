@@ -150,7 +150,7 @@ public class MultiChoice extends Composite {
 	public MultiChoice(final Composite parent, final int style, final List<String> elements) {
 		super(parent, style);
 
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		final AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		this.setLayout(new MigLayout("wrap 2, ins 0", "[grow,fill][]"));
 
 		this.label = toolkit.createLabel(this, null, SWT.SINGLE | SWT.READ_ONLY);
@@ -588,7 +588,8 @@ public class MultiChoice extends Composite {
 				@SuppressWarnings("serial")
 				@Override
 				protected void createFormContent() {
-					AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+					// Reload toolkit because it could disposed by reskin process
+					AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 					final Set<Integer> currentSelection = new HashSet<Integer>(selection) {
 						@Override
 						public void clear() {

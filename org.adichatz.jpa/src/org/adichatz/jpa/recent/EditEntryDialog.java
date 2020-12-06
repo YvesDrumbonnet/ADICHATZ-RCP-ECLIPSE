@@ -55,11 +55,9 @@ package org.adichatz.jpa.recent;
 
 import static org.adichatz.jpa.extra.JPAUtil.getFromJpaBundle;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.extra.AFormDialog;
 import org.adichatz.engine.plugin.ParamMap;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -87,8 +85,8 @@ public class EditEntryDialog extends AFormDialog {
 	 * @param recentElement
 	 *            the recent element
 	 */
-	public EditEntryDialog(Shell shell, AdiFormToolkit toolkit, Object recentElement) {
-		super(shell, toolkit);
+	public EditEntryDialog(Shell shell, Object recentElement) {
+		super(shell);
 		setShellStyle(SWT.APPLICATION_MODAL | SWT.MAX | SWT.RESIZE | getDefaultOrientation());
 		this.recentElement = recentElement;
 	}
@@ -102,7 +100,7 @@ public class EditEntryDialog extends AFormDialog {
 	protected void createFormContent() {
 		String title = getFromJpaBundle("recent.edit.entry");
 		getShell().setText(title);
-		getShell().setImage(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImage("IMG_EDITOR"));
+		getShell().setImage(toolkit.getRegisteredImage("IMG_EDITOR"));
 		scrolledForm.setText(title);
 		IRecentOpenEditor recentOpenEditor = (IRecentOpenEditor) recentElement;
 		scrolledForm.setImage(RecentUtil.getImage(recentOpenEditor));

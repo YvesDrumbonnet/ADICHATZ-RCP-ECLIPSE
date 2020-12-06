@@ -2,12 +2,12 @@ package org.adichatz.engine.e4.handler;
 
 import static org.adichatz.engine.common.LogBroker.logError;
 
+import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.ReflectionTools;
 import org.adichatz.engine.core.RootCore;
 import org.adichatz.engine.e4.part.AdiInputPart;
 import org.adichatz.engine.e4.part.BoundedPart;
 import org.adichatz.engine.e4.part.PartCore;
-import org.adichatz.engine.e4.resource.E4AdichatzApplication;
 import org.adichatz.engine.e4.resource.EngineE4Util;
 import org.adichatz.engine.plugin.ParamMap;
 import org.eclipse.e4.core.contexts.IEclipseContext;
@@ -28,7 +28,7 @@ public class OpenAdiEditor {
 	protected BoundedPart execute(MApplication application, IEclipseContext context, EModelService modelService,
 			EPartService partService) {
 		ParamMap paramMap = context.get(ParamMap.class);
-		MPartStack stack = E4AdichatzApplication.getInstance().getEditorPartStack();
+		MPartStack stack = (MPartStack) AdichatzApplication.getInstance().getContextValue(EngineE4Util.EDITOR_PARTSTACK);
 		AdiInputPart inputPart = new AdiInputPart(paramMap, stack);
 		inputPart.initializeLabel(paramMap.getString(ParamMap.TITLE));
 		inputPart.setDuplicateEditor(paramMap.containsKey(ParamMap.DUPLICATE_EDITOR));

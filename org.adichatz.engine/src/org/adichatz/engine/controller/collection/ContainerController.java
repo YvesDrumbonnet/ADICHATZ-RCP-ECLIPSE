@@ -346,6 +346,7 @@ public class ContainerController extends ADirtyContainerController implements IC
 	 */
 	@Override
 	public void createControl() {
+		super.createControl();
 	}
 
 	/**

@@ -109,7 +109,7 @@ public class PasteXjcElementAction extends AEditAction {
 		String text = getFromStudioBundle("studio.editor.paste");
 		setText(text);
 		setToolTipText(text);
-		setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_PASTE"));
+		setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_PASTE"));
 	}
 
 	/*

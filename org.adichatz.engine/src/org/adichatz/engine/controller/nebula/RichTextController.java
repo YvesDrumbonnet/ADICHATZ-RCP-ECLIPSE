@@ -73,12 +73,10 @@ package org.adichatz.engine.controller.nebula;
 
 import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AFieldController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.core.ControllerCore;
 import org.adichatz.engine.extra.AFormWindow;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.nebula.widgets.richtext.RichTextEditor;
 import org.eclipse.nebula.widgets.richtext.RichTextViewer;
@@ -114,8 +112,6 @@ public class RichTextController extends AFieldController {
 	private Composite container;
 
 	private Button expandButton;
-
-	private AdiFormToolkit toolkit;
 
 	/** The container style. */
 	protected int containerStyle = SWT.BORDER;
@@ -174,7 +170,7 @@ public class RichTextController extends AFieldController {
 	 */
 	@Override
 	public void createControl() {
-		toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		super.createControl();
 		container = toolkit.createComposite(parentController.getComposite(), containerStyle);
 
 		container.setLayout(new MigLayout("wrap 2, ins 0", "[grow,fill]0[]", "[grow,fill]"));

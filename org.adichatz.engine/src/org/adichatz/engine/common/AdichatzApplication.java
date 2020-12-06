@@ -80,15 +80,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.adichatz.common.ejb.Session;
 import org.adichatz.engine.controller.IContainerController;
-import org.adichatz.engine.controller.menu.NavigatorPath;
 import org.adichatz.engine.plugin.ParamMap;
 import org.adichatz.engine.plugin.PluginEntity;
 import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.widgets.AdiImageDescriptor;
 import org.adichatz.engine.widgets.DefaultImageDescriptor;
-import org.adichatz.engine.xjc.AdichatzRcpConfigTree;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Control;
@@ -144,32 +141,16 @@ public class AdichatzApplication {
 	 * end S T A T I C
 	 */
 
+	protected HashMap<String, Object> applContext = new HashMap<>();
+
 	/** The application plugin resources. */
 	protected AdiPluginResources applicationPluginResources;
-
-	/** The class loader. */
-	private ClassLoader classLoader;
 
 	/** The plugin map. */
 	protected Map<String, AdiPluginResources> pluginMap = new HashMap<String, AdiPluginResources>();
 
-	/** The SESSION. */
-	private Session session;
-
-	/** The application param map. */
-	protected Map<String, Object> applicationParamMap = new HashMap<String, Object>();
-
 	/** The early startup hooks. */
 	protected List<Runnable> earlyStartupHooks = new ArrayList<>();
-
-	/** The form toolkit. */
-	protected AdiFormToolkit formToolkit;
-
-	/** The config tree. */
-	protected AdichatzRcpConfigTree configTree;
-
-	/** The navigator map. */
-	protected Map<String, NavigatorPath> navigatorMap = new HashMap<String, NavigatorPath>();
 
 	/** The application listeners. */
 	protected List<AApplicationListener> applicationListeners = new ArrayList<AApplicationListener>();
@@ -213,42 +194,6 @@ public class AdichatzApplication {
 	 */
 	public Map<String, AdiPluginResources> getPluginMap() {
 		return pluginMap;
-	}
-
-	/**
-	 * Gets the session.
-	 * 
-	 * @return the session
-	 */
-	public Session getSession() {
-		return session;
-	}
-
-	/**
-	 * Sets the session.
-	 * 
-	 * @param session the new session
-	 */
-	public void setSession(Session session) {
-		this.session = session;
-	}
-
-	/**
-	 * Gets the config tree.
-	 *
-	 * @return the config tree
-	 */
-	public AdichatzRcpConfigTree getConfigTree() {
-		return configTree;
-	}
-
-	/**
-	 * Gets the navigator map.
-	 * 
-	 * @return the navigator map
-	 */
-	public Map<String, NavigatorPath> getNavigatorMap() {
-		return navigatorMap;
 	}
 
 	/**
@@ -370,15 +315,6 @@ public class AdichatzApplication {
 	}
 
 	/**
-	 * Gets the class loader.
-	 *
-	 * @return the class loader
-	 */
-	public ClassLoader getClassLoader() {
-		return classLoader;
-	}
-
-	/**
 	 * Prepare and instantiate class.
 	 *
 	 * @param pluginResources     the plugin resources
@@ -439,46 +375,37 @@ public class AdichatzApplication {
 		return pluginResources.getPluginEntity(entityURI);
 	}
 
-	/**
-	 * Gets the form toolkit.
-	 *
-	 * @return the form toolkit
-	 */
-	public AdiFormToolkit getFormToolkit() {
-		if (null == formToolkit) {
-			formToolkit = new AdiFormToolkit(Display.getCurrent());
-		}
-		return formToolkit;
+	public void reapplyStyles(Control control) {
 	}
 
-	/**
-	 * Sets the form toolkit.
-	 *
-	 * @param formToolkit the new form toolkit
-	 */
-	public void setFormToolkit(AdiFormToolkit formToolkit) {
-		this.formToolkit = formToolkit;
+	public HashMap<String, Object> getApplContext() {
+		return applContext;
 	}
 
-	/**
-	 * Gets the application param map.
-	 *
-	 * @return the application param map
-	 */
-	public Map<String, Object> getApplicationParamMap() {
-		return applicationParamMap;
+	public <T> T getContextValue(Class<T> clazz) {
+		return clazz.cast(getContextValue(clazz.getName()));
 	}
 
-	public Object getParam(String key) {
-		return applicationParamMap.get(key);
-	}
-
-	public Object popParam(String key) {
-		Object value = applicationParamMap.get(key);
-		applicationParamMap.remove(key);
+	public Object getContextValue(String key) {
+		Object value = applContext.get(key);
+		if (null == value)
+			return injectValue(key);
 		return value;
 	}
 
-	public void reapplyStyles(Control control) {
+	protected Object injectValue(String key) {
+		Object value = null;
+		if (AdiFormToolkit.class.getName().equals(key)) {
+			value = new AdiFormToolkit(Display.getCurrent());
+			applContext.put(key, value);
+		}
+		return value;
+	}
+
+	public String popContextValue(String key) {
+		Object value = applContext.get(key);
+		if (null != value)
+			applContext.remove(key);
+		return (String) value;
 	}
 }

@@ -74,7 +74,6 @@ package org.adichatz.jpa.query.action;
 import static org.adichatz.jpa.extra.JPAUtil.getFromJpaBundle;
 
 import org.adichatz.engine.action.AAction;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.jpa.query.QueryToolInput;
 
@@ -92,7 +91,7 @@ public class RefreshQueryAction extends AAction {
 		String text = getFromJpaBundle("query.refresh.managedQuery");
 		setText(text);
 		setToolTipText(text);
-		setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_REFRESH"));
+		setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_REFRESH"));
 	}
 
 	@Override

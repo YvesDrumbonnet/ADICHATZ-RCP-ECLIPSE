@@ -7,7 +7,8 @@ Bundle-Vendor: Adichatz
 Bundle-Activator: org.adichatz.studio.StudioRcpPlugin
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.adichatz.engine,
+Require-Bundle: javax.inject,
+ org.adichatz.engine,
  org.adichatz.engine.indigo,
  org.adichatz.common,
  org.adichatz.generator,
@@ -42,6 +43,7 @@ Require-Bundle: org.adichatz.engine,
  org.eclipse.ui.views,
  org.eclipse.ui.workbench.texteditor,
  org.eclipse.wst.sse.ui,
+ org.eclipse.wst.validation,
  org.w3c.css.sac
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.adichatz.studio,

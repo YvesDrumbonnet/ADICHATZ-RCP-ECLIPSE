@@ -234,7 +234,7 @@ public class PageManager {
 			if (!pageMustBeAdded) {
 				valid = false;
 				/* add status listener on entity */
-				statusChangeListener = new AEntityListener(null, IEventType.CHANGE_STATUS) {
+				statusChangeListener = new AEntityListener("ChangeStatus", IEventType.CHANGE_STATUS, entity) {
 					@Override
 					public void handleEntityEvent(AdiEntityEvent event) {
 						for (int status : validStatusTable) {
@@ -248,7 +248,6 @@ public class PageManager {
 						dispose();
 					}
 				};
-				entity.addEntityListener(statusChangeListener);
 			}
 		} else
 			pageMustBeAdded = true;

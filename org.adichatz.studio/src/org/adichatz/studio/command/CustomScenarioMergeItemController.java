@@ -61,11 +61,9 @@ import org.eclipse.swt.widgets.Control;
 
 import net.miginfocom.swt.MigLayout;
 
-public class CustomScenarioMergeItem extends PGroupToolItemController {
+public class CustomScenarioMergeItemController extends PGroupToolItemController {
 	private static Image GENERATION_UNIT_IMAGE = AdichatzApplication.getInstance().getImage("org.adichatz.studio",
 			"IMG_GENERATE_JAVA.png");
-
-	private AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 
 	private List<PluginEntityWrapper> workPluginEntities;
 
@@ -79,7 +77,7 @@ public class CustomScenarioMergeItem extends PGroupToolItemController {
 
 	private List<Button> buttons = new ArrayList<>();
 
-	public CustomScenarioMergeItem(String id, PGroupController parentController, ControllerCore genCode) {
+	public CustomScenarioMergeItemController(String id, PGroupController parentController, ControllerCore genCode) {
 		super(id, parentController, genCode);
 	}
 
@@ -92,7 +90,7 @@ public class CustomScenarioMergeItem extends PGroupToolItemController {
 		String fileName = scenarioFileNameController.getControl().getValue();
 		fileName = fileName.substring(fileName.lastIndexOf(File.separator) + 1);
 		String title = getFromStudioBundle("scenario.custom.generateScenario.file", fileName, scenarioResources.getPluginName());
-		new ConfirmFormDialog(null, toolkit, title,
+		new ConfirmFormDialog(null, title,
 				AdichatzApplication.getInstance().getImage(GeneratorConstants.STUDIO_BUNDLE, "IMG_GENERATE_SCENARIO.png"),
 				getConfirmContent()) {
 			protected void createButtonsForButtonBar(Composite parent) {

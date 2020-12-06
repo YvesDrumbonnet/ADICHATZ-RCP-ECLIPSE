@@ -225,7 +225,7 @@ public class FileText extends Composite {
 	 * Sets the images.
 	 */
 	protected void setImages() {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		if (null != deleteButton) {
 			deleteButton.setImage(toolkit.getRegisteredImage("IMG_DELETE"));
 			deleteButton.setLayoutData("h 16!, w 16!");

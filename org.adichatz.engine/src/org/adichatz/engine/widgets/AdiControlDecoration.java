@@ -73,6 +73,7 @@ package org.adichatz.engine.widgets;
 
 import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.LogBroker;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.jface.fieldassist.ControlDecoration;
 import org.eclipse.jface.fieldassist.FieldDecorationRegistry;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -145,20 +146,19 @@ public class AdiControlDecoration extends ControlDecoration {
 		switch (image) {
 		case REQUIRED_DECORATOR_IMAGE:
 			if (null == requiredDecImage)
-				requiredDecImage = ImageDescriptor
-						.createFromFile(FieldDecorationRegistry.class, "images/required_field_cue.png").createImage();
+				requiredDecImage = ImageDescriptor.createFromFile(FieldDecorationRegistry.class, "images/required_field_cue.png")
+						.createImage();
 			setImage(requiredDecImage);
 			break;
 		case CONTENT_PROPOSSAL_DECORATOR_IMAGE:
 			if (null == contentProposalDecImage)
-				contentProposalDecImage = ImageDescriptor
-						.createFromFile(FieldDecorationRegistry.class, "images/contassist_ovr.png").createImage();
+				contentProposalDecImage = ImageDescriptor.createFromFile(FieldDecorationRegistry.class, "images/contassist_ovr.png")
+						.createImage();
 			setImage(contentProposalDecImage);
 			break;
 		case INFO_DECORATOR_IMAGE:
 			if (null == infoDecImage)
-				infoDecImage = ImageDescriptor.createFromFile(FieldDecorationRegistry.class, "images/info_ovr.png")
-						.createImage();
+				infoDecImage = ImageDescriptor.createFromFile(FieldDecorationRegistry.class, "images/info_ovr.png").createImage();
 			setImage(infoDecImage);
 			break;
 		case WARNING_DECORATOR_IMAGE:
@@ -169,19 +169,18 @@ public class AdiControlDecoration extends ControlDecoration {
 			break;
 		case ERROR_DECORATOR_IMAGE:
 			if (null == errorDecImage)
-				errorDecImage = ImageDescriptor.createFromFile(FieldDecorationRegistry.class, "images/error_ovr.png")
-						.createImage();
+				errorDecImage = ImageDescriptor.createFromFile(FieldDecorationRegistry.class, "images/error_ovr.png").createImage();
 			setImage(errorDecImage);
 			break;
 		case ERRORQF_DECORATOR_IMAGE:
 			if (null == errorQfDecImage)
-				errorQfDecImage = ImageDescriptor
-						.createFromFile(FieldDecorationRegistry.class, "images/errorqf_ovr.png").createImage();
+				errorQfDecImage = ImageDescriptor.createFromFile(FieldDecorationRegistry.class, "images/errorqf_ovr.png")
+						.createImage();
 			setImage(errorQfDecImage);
 			break;
 		case WIDGET_WIDGET_OPEN:
 			if (null == widgetWidgetOpen)
-				widgetWidgetOpen = AdichatzApplication.getInstance().getFormToolkit()
+				widgetWidgetOpen = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class)
 						.getRegisteredImage("IMG_WIDGET_OPEN");
 			setImage(widgetWidgetOpen);
 			break;

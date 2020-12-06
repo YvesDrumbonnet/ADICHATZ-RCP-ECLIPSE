@@ -75,10 +75,9 @@ import java.io.File;
 
 import org.adichatz.engine.wrapper.ITreeWrapper;
 import org.adichatz.generator.wrapper.internal.IElementWrapper;
-import org.adichatz.generator.wrapper.internal.IGeneratorEntry;
 import org.adichatz.generator.xjc.NavigatorTree;
 
-public class NavigatorTreeWrapper extends NavigatorTree implements ITreeWrapper, IElementWrapper, IGeneratorEntry {
+public class NavigatorTreeWrapper extends NavigatorTree implements ITreeWrapper, IElementWrapper {
 
 	/** The plugin name. */
 	String pluginName;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<navigatorTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" label="#MSG(adichatzGroupNavigator,root.menu)" id="JpaMenu" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/navigatorTree.xsd">
+<navigatorTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" label="#MSG(adichatzGroupNavigator,root.menu)" id="JpaMenu" xsi:noNamespaceSchemaLocation="https://yvesdrumbonnet.github.io/Adichatz-RCP-Update-Site/xsd/generator/navigatorTree.xsd">
     <menu expanded="true" image="#IMG(adi://org.adichatz.jpa/./IMG_QUERIES.png)" label="#MSG(adi://org.adichatz.jpa/./adichatzJpa, query.queries)" id="queriesMenu">
         <item image="#IMG(IMG_QUERY)" label="#MSG(adichatzGroupNavigator,editorOutlineInputQUERY)" id="editorOutlineInputQUERY">
             <params>

@@ -74,7 +74,6 @@ import org.adichatz.engine.extra.AdiFormInput;
 import org.adichatz.engine.listener.AdiEvent;
 import org.adichatz.engine.listener.IEventType;
 import org.adichatz.engine.plugin.ParamMap;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.validation.ABindingListener;
 import org.adichatz.engine.validation.FormBindingService;
 import org.adichatz.generator.KeyWordGenerator;
@@ -168,8 +167,8 @@ public class DatasourceWindow extends AFormInputDialog {
 	 * @param parentShell
 	 *            the parent shell
 	 */
-	public DatasourceWindow(AdiFormToolkit toolkit, String connectorDataSource, String connectorURI) {
-		super(Display.getCurrent().getActiveShell(), toolkit, "", addDataSourceImage, null);
+	public DatasourceWindow(String connectorDataSource, String connectorURI) {
+		super(Display.getCurrent().getActiveShell(), "", addDataSourceImage, null);
 		this.connectorDataSource = connectorDataSource;
 		this.connectorURI = connectorURI;
 	}
@@ -241,7 +240,7 @@ public class DatasourceWindow extends AFormInputDialog {
 			}
 		});
 		idFLD.getControl().notifyListeners(SWT.Modify, null);
-		bindingService.addBindingListener(new ABindingListener(IEventType.POST_MESSAGE) {
+		bindingService.addBindingListener(new ABindingListener(null, IEventType.POST_MESSAGE) {
 			@Override
 			public void handleEvent(AdiEvent event) {
 				okButton.setEnabled(bindingService.getErrorMessageMap().isEmpty());

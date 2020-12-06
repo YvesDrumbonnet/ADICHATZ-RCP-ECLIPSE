@@ -5,7 +5,6 @@ import static org.adichatz.testing.TestingTools.getFromTestingBundle;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.common.LogBroker;
 import org.adichatz.engine.controller.AController;
@@ -58,11 +57,10 @@ public class TestOutlinePage extends ABindingOutlinePage {
 
 	@Override
 	public void createControl(Composite parent) {
-		toolkit = AdichatzApplication.getInstance().getFormToolkit();
-		scrolledForm = toolkit.createScrolledForm(parent);
+		scrolledForm = getToolkit().createScrolledForm(parent);
 		scrolledForm.getBody().setLayout(new MigLayout("wrap 1, ins 10", "grow,fill", "grow,fill"));
 
-		detailPgroup = AdichatzApplication.getInstance().getFormToolkit().createPGroup(scrolledForm.getBody(), SWT.BORDER);
+		detailPgroup = toolkit.createPGroup(scrolledForm.getBody(), SWT.BORDER);
 
 		detailPgroup.setLayout(new FillLayout());
 		detailPgroup.addExpandListener(new ExpandListener() {

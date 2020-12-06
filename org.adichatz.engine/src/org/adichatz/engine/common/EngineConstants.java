@@ -104,30 +104,32 @@ public class EngineConstants {
 	public static String RUNTIME = "RUNTIME";
 
 	/**
-	 * default table behavior
+	 * default param for runtime behavior
 	 */
-	public static String DEFAULT_QUERY_MAX_RESULT = "defaultQueryMaxResults";
+	public static String DEFAULT_QUERY_MAX_RESULT = "adichatz.defaultQueryMaxResults";
 
-	public static String DEFAULT_REF_TEXT_POPUP_URI = "defaultRefTextPopupURI";
+	public static String DEFAULT_REF_TEXT_POPUP_URI = "adichatz.defaultRefTextPopupURI";
 
-	public static String INTRO_PART_URI = "introPartURI";
+	public static String INTRO_PART_URI = "adichatz.introPartURI";
 
-	public static String INTRO_OUTLINE_URI = "introOutlineURI";
+	public static String INTRO_OUTLINE_URI = "adichatz.introOutlineURI";
 
-	public static String POST_RESKIN_CLASS_NAME = "postReskinClassName";
+	public static String POST_RESKIN_CLASS_NAME = "adichatz.postReskinClassName";
 
-	public static String APPLICATION_POST_OPEN_URI = "applicationPostOpenURI";
+	public static String APPLICATION_POST_OPEN_URI = "adichatz.applicationPostOpenURI";
 
-	public static String CHECK_BEFORE_OPEN_ENTITY_EDITOR = "checkBeanExistenceBeforeOpeningEditor";
+	public static String CHECK_BEFORE_OPEN_ENTITY_EDITOR = "adichatz.checkBeanExistenceBeforeOpeningEditor";
 
-	public static String INHIBIT_CONSOLE_ON_FATAL_ERROR = "inhibitConsoleOnfatalError";
+	public static String INHIBIT_CONSOLE_ON_FATAL_ERROR = "adichatz.inhibitConsoleOnfatalError";
 
-	public static String ADICHATZ_GMAP_API_KEY = "adichatzGMapAPIKey";
+	public static String ADICHATZ_GMAP_API_KEY = "adichatz.GMapAPIKey";
 
-	public static String ADICHATZ_AVOIDED_MESSAGES = "adichatzAvoidedMessages";
+	public static String ADICHATZ_AVOIDED_MESSAGES = "adichatz.avoidedMessages";
+
+	public static String ADICHATZ_LOGGER_CLASS_NAME = "adichatz.adiLoggerClassName";
 
 	/** The path for generated code (java and class). */
-	public static String GENCODE_PACKAGE = "gencodeSubPackage";
+	public static String GENCODE_PACKAGE = "adichatz.gencodeSubPackage";
 
 	/**
 	 * Adichatz Tool components
@@ -153,7 +155,9 @@ public class EngineConstants {
 	public static String EDITOR = "editor";
 
 	/** The Schema location. */
-	public static String SCHEMA_LOCATION = "http://www.adichatz.org/xsd/";
+	public static String SCHEMA_LOCATION = "https://yvesdrumbonnet.github.io/Adichatz-RCP-Update-Site/xsd/";
+
+	public static String CONSOLE_PERSPECTIVE = "adichatz.perspective.console";
 
 	// Include separator use in register
 	public static String INCLUDE_SEPARATOR = ":";

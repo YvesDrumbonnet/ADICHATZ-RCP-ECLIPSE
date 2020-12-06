@@ -132,7 +132,6 @@ public class AChangesActionDialog extends ATableFormDialog {
 	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		parent.setBackground(toolkit.getColors().getInactiveBackground());
 		scrolledForm = toolkit.createScrolledForm(parent);
 		skinnedParent = scrolledForm;

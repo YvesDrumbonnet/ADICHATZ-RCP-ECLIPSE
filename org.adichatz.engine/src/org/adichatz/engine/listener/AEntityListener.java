@@ -102,6 +102,8 @@ public abstract class AEntityListener extends AListener {
 
 	protected EntityInjection entityInjection;
 
+	// Normally listener is triggered only when bindingService is currentBindingService or listener do not recognize bindingService
+	// value true force listener to be triggered whatever is the bindingService value.
 	protected boolean forceHandle;
 
 	protected DisposeListener disposeListener;
@@ -118,12 +120,18 @@ public abstract class AEntityListener extends AListener {
 	 * @param eventType
 	 *            the event type
 	 */
-	public AEntityListener(int eventType) {
-		super(null, eventType);
+	public AEntityListener(String id, int eventType, IEntity<?> entity) {
+		super(id, eventType);
+		this.entity = entity;
+		entity.getListeners().add(this);
 	}
 
 	public AEntityListener(ICollectionController parentController, int eventType) {
-		this(eventType);
+		this(null, parentController, eventType);
+	}
+
+	public AEntityListener(String id, ICollectionController parentController, int eventType) {
+		super(id, eventType);
 		if (null != parentController && !(parentController.getControl() instanceof Control)
 				&& !(parentController instanceof IRootController)) {
 			logError("Listener (type=" + eventType + ") on controller '" + parentController.getClass().getName()
@@ -142,7 +150,8 @@ public abstract class AEntityListener extends AListener {
 					entityInjection.getTransientListeners().add(this);
 				}
 			}
-			parentController.getEntity().addEntityListener(this);
+			entity = parentController.getEntity();
+			entity.getListeners().add(this);
 			disposeListener = new DisposeListener() {
 				@Override
 				public void widgetDisposed(DisposeEvent e) {
@@ -220,7 +229,21 @@ public abstract class AEntityListener extends AListener {
 		this.entity = entity;
 	}
 
+	/**
+	 * Sets the force handle.
+	 *
+	 * @param forceHandle the new force handle
+	 */
 	public void setForceHandle(boolean forceHandle) {
 		this.forceHandle = forceHandle;
+	}
+
+	/**
+	 * Gets the parent controller.
+	 *
+	 * @return the parent controller
+	 */
+	public ICollectionController getParentController() {
+		return parentController;
 	}
 }

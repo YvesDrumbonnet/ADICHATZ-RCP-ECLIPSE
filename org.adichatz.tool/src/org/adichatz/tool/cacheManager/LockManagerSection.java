@@ -84,6 +84,7 @@ import org.adichatz.common.ejb.util.AdiLock;
 import org.adichatz.engine.common.AdiPluginResources;
 import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -180,10 +181,10 @@ public class LockManagerSection {
 			@Override
 			public void clear() {
 				try {
-					for (AdiLock lock : pluginResources.getDataAccess().getGatewayConnector().getLockManager()
-							.getLockMap().values())
-						pluginResources.getDataAccess().getGatewayConnector().getLockManager()
-								.unlock(lock.getBeanClass().getName(), lock.getId());
+					for (AdiLock lock : pluginResources.getDataAccess().getGatewayConnector().getLockManager().getLockMap()
+							.values())
+						pluginResources.getDataAccess().getGatewayConnector().getLockManager().unlock(lock.getBeanClass().getName(),
+								lock.getId());
 					EditorUtils.addElements(lockIE);
 				} catch (Exception e) {
 					logError(e);
@@ -206,8 +207,7 @@ public class LockManagerSection {
 		EditorUtils.addTableColumn(lockIE, getFromToolBundle("entityId"), new ColumnLabelProvider() {
 			@Override
 			public String getText(final Object element) {
-				return pluginResources.getPluginEntityTree().getEntityMM(((AdiLock) element).getBeanClass())
-						.getEntityId();
+				return pluginResources.getPluginEntityTree().getEntityMM(((AdiLock) element).getBeanClass()).getEntityId();
 			}
 		}, 0);
 
@@ -294,8 +294,8 @@ public class LockManagerSection {
 		 */
 		DeleteLockAction() {
 			setText(getFromToolBundle("tool.deleteLock"));
-			setImageDescriptor(
-					AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_DELETE"));
+			setImageDescriptor(AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class)
+					.getRegisteredImageDescriptor("IMG_DELETE"));
 			setToolTipText(getFromToolBundle("tool.deleteLock"));
 		}
 
@@ -308,11 +308,10 @@ public class LockManagerSection {
 		public void run() {
 			if (EngineTools.openDialog(MessageDialog.CONFIRM, getFromToolBundle("tool.deleteLock"),
 					getFromToolBundle("tool.deleteLock.confirm"))) {
-				AdiLock lock = (AdiLock) ((IStructuredSelection) lockIE.getTableViewer().getSelection())
-						.getFirstElement();
+				AdiLock lock = (AdiLock) ((IStructuredSelection) lockIE.getTableViewer().getSelection()).getFirstElement();
 				try {
-					pluginResources.getDataAccess().getGatewayConnector().getLockManager()
-							.unlock(lock.getBeanClass().getName(), lock.getId());
+					pluginResources.getDataAccess().getGatewayConnector().getLockManager().unlock(lock.getBeanClass().getName(),
+							lock.getId());
 					EditorUtils.addElements(lockIE);
 				} catch (Exception e) {
 					logError(e);

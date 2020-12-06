@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<scenarioTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/scenarioTree.xsd">
+<scenarioTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://yvesdrumbonnet.github.io/Adichatz-RCP-Update-Site/xsd/generator/scenarioTree.xsd">
     <params>
         <param id="runtime.resources.dir" value="#PLUGINHOME(org.adichatz.template)/template/resources" type="RUNTIME"/>
     </params>

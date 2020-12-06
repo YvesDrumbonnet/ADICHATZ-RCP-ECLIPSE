@@ -187,7 +187,7 @@ public class TreeManagerGenerator extends AClassGenerator {
 					if (0 != references.length())
 						references.append(", ");
 					references.append(keyWordGenerator.evalExpr2Str(classBodyBuffer, treeNode.getPropertyId(), false));
-				} else {
+				} else if (NodeTypeEnum.LIST == treeNode.getNodeType()) {
 					if (0 != collections.length())
 						collections.append(", ");
 					collections.append(keyWordGenerator.evalExpr2Str(classBodyBuffer, treeNode.getPropertyId(), false));

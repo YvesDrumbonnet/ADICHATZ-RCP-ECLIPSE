@@ -129,6 +129,7 @@ public abstract class ArgPShelfController extends AEntityManagerController imple
 	 */
 	@Override
 	public void createControl() {
+		super.createControl();
 		pshelf = new PShelf(parentController.getComposite(), SWT.FLAT | SWT.TOP);
 		createChildControllers();
 	}

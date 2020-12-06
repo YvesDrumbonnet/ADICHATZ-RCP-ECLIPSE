@@ -72,7 +72,6 @@ import org.adichatz.engine.common.ImageManager;
 import org.adichatz.engine.common.ReflectionTools;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.core.ControllerCore;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.validation.ErrorMessage;
 import org.adichatz.engine.viewer.RootElement;
 import org.adichatz.generator.PluginEntityTreeGenerator;
@@ -224,7 +223,6 @@ public class GenerationTreeController extends ScenarioTreeController {
 	 * Adds the editor menu.
 	 */
 	public void addEditorMenu() {
-		final AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		final MenuManager menuManager = new MenuManager();
 		Menu menu = menuManager.createContextMenu(((ContainerCheckedTreeViewer) viewer).getTree());
 		menuManager.setRemoveAllWhenShown(true);

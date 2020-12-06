@@ -276,6 +276,8 @@ public class ControlGenerator extends ACodeGenerator {
 	// widgetWrammer#getRef() is not empty
 	protected boolean isReferenced = false;
 
+	protected BufferCode parentDeclarationBuffer;
+
 	public ControlGenerator(IElementWrapper controlWrapper) {
 		this.controlWrapper = controlWrapper;
 	}
@@ -536,7 +538,7 @@ public class ControlGenerator extends ACodeGenerator {
 			classBodyBuffer.append("final String[] " + includeKeysId + " = " + getObjectName(EngineTools.class)
 					+ ".getInstanceKeys(" + instanceKeysName + ");");
 		} else if (parentGenerator instanceof ControlGenerator)
-			thisStr = getGeneratedClassName() + ".this";
+			thisStr = keyWordGenerator.getClassGenerator(this).getClassName() + ".this";
 		else if (controlWrapper instanceof ControlFieldType)
 			thisStr = "genCode";
 		else
@@ -621,7 +623,11 @@ public class ControlGenerator extends ACodeGenerator {
 				String callDynamic = functionName + "(" + condition + ");";
 				if (!emptyPostCode)
 					dynamicSwitch.append("if (");
-				dynamicSwitch.append(controllerName).append(".dynamicSwitchController(showDynamic, false)");
+				if ("coreController".equals(controllerName))
+					dynamicSwitch.append("((" + getObjectName(AEntityManagerController.class) + ") " + controllerName + ")");
+				else
+					dynamicSwitch.append(controllerName);
+				dynamicSwitch.append(".dynamicSwitchController(showDynamic, false)");
 				if (emptyPostCode)
 					dynamicBuffer.append(dynamicSwitch.append(';').toString());
 				else {
@@ -652,9 +658,10 @@ public class ControlGenerator extends ACodeGenerator {
 				}
 
 				beforeEndLifeCycleBuffer.append(callDynamic);
-				afterEndLifeCycleBuffer.appendPlus("final " + getObjectName(AEntityListener.class)
-						+ " propertyChangeListener = new " + getObjectName(AEntityListener.class) + "(parentController, "
-						+ getObjectName(IEventType.class) + ".AFTER_PROPERTY_CHANGE) {");
+				afterEndLifeCycleBuffer
+						.appendPlus("final " + getObjectName(AEntityListener.class) + " propertyChangeListener = new "
+								+ getObjectName(AEntityListener.class) + "(\"afterChangeDynClause\", parentController, "
+								+ getObjectName(IEventType.class) + ".AFTER_PROPERTY_CHANGE) {");
 				afterEndLifeCycleBuffer.append("@Override");
 				afterEndLifeCycleBuffer
 						.appendPlus("public void handleEntityEvent(" + getObjectName(AdiEntityEvent.class) + " event)  {");
@@ -683,18 +690,6 @@ public class ControlGenerator extends ACodeGenerator {
 
 				afterEndLifeCycleBuffer.append("propertyChangeListener.setForceHandle(true);");
 				afterEndLifeCycleBuffer.append("refreshChangeListener.setForceHandle(true);");
-				if (isEmpty(dynamicClause.getListenedContainerId()))
-					afterEndLifeCycleBuffer.append("getEntity().addEntityListener(propertyChangeListener);");
-				else {
-					String containerName = controllerName + "DynamicContainer";
-					afterEndLifeCycleBuffer
-							.append(getObjectName(AEntityManagerController.class) + " " + containerName + " = ("
-									+ getObjectName(AEntityManagerController.class) + ") getFromRegister(" + keyWordGenerator
-											.evalExpr2Str(afterEndLifeCycleBuffer, dynamicClause.getListenedContainerId(), false)
-									+ ");");
-					afterEndLifeCycleBuffer.append(containerName + ".getEntity().addEntityListener(propertyChangeListener);");
-				}
-				afterEndLifeCycleBuffer.append("getEntity().addEntityListener(refreshChangeListener);");
 			}
 		}
 		if (controlWrapper instanceof IItemCompositeWrapper) {
@@ -1719,18 +1714,6 @@ public class ControlGenerator extends ACodeGenerator {
 	 */
 	public Class<?> getControllerClass() {
 		return controllerClass;
-	}
-
-	/**
-	 * Gets the generated class name.
-	 * 
-	 * @return the generated class name
-	 */
-	private String getGeneratedClassName() {
-		ACodeGenerator classGenerator = this;
-		while (!(classGenerator instanceof AClassGenerator))
-			classGenerator = ((ControlGenerator) classGenerator).getParentGenerator();
-		return ((AClassGenerator) classGenerator).getClassName();
 	}
 
 	/**

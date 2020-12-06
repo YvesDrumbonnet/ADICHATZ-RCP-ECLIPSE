@@ -3,6 +3,7 @@ package org.adichatz.tool;
 import static org.adichatz.tool.ToolUtil.getFromToolBundle;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -41,16 +42,21 @@ public class ApplicationParamManagerPart {
 		pluginResources = (AdiPluginResources) part.getTransientData().get(ToolUtil.PLUGIN_RESOURCES);
 		scenarioResources = ScenarioResources.getInstance(pluginResources.getPluginName(), null);
 
-		toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		ScrolledForm scrolledForm = toolkit.createScrolledForm(parent);
 		scrolledForm.setText(getFromToolBundle("tool.applicationParamManager"));
 		Composite body = scrolledForm.getBody();
 		body.setLayout(new MigLayout("wrap, ins 0", "grow,fill", "grow,fill"));
 
+		Map<String, String> applicationParamMap = new HashMap<>();
+		for (Map.Entry<String, Object> entry : AdichatzApplication.getInstance().getApplContext().entrySet())
+			if (entry.getValue() instanceof String)
+				applicationParamMap.put(entry.getKey(), (String) entry.getValue());
+
 		saveAction = new Action(getFromToolBundle("tool.save.params"), toolkit.getRegisteredImageDescriptor("IMG_SAVE")) {
 			@Override
 			public void run() {
-				Map<String, Object> params = AdichatzApplication.getInstance().getApplicationParamMap();
+				Map<String, Object> params = AdichatzApplication.getInstance().getApplContext();
 				for (Text text : texts)
 					if (null != text.getData("#MODIFIED#"))
 						params.put((String) text.getData("#KEY#"), text.getText());
@@ -62,13 +68,9 @@ public class ApplicationParamManagerPart {
 		scrolledForm.getToolBarManager().update(true);
 
 		body.setLayout(new MigLayout("wrap 2", "[][fill,grow]"));
-		for (Map.Entry<String, Object> entry : AdichatzApplication.getInstance().getApplicationParamMap().entrySet()) {
+		for (Map.Entry<String, String> entry : applicationParamMap.entrySet()) {
 			createLabel(body, entry.getKey());
-			Object value = entry.getValue();
-			if (value instanceof String)
-				texts.add(createText(body, entry.getKey(), (String) value));
-			else
-				createLabel(body, (null == entry.getValue() ? " ???" : entry.getValue().getClass().getName()));
+			texts.add(createText(body, entry.getKey(), entry.getValue()));
 		}
 	}
 

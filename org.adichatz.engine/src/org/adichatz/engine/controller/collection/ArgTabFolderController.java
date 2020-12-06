@@ -75,7 +75,6 @@ import java.util.List;
 
 import org.adichatz.engine.cache.IEntity;
 import org.adichatz.engine.common.AdiPluginResources;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.controller.AEntityManagerController;
 import org.adichatz.engine.controller.AWidgetController;
@@ -83,7 +82,6 @@ import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.core.ControllerCore;
 import org.adichatz.engine.core.EntityManagerCore;
 import org.adichatz.engine.data.ADataAccess;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.validation.EntityInjection;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.SWT;
@@ -137,7 +135,7 @@ public abstract class ArgTabFolderController extends AEntityManagerController im
 	 */
 	@Override
 	public void createControl() {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		super.createControl();
 		cTabFolder = new CTabFolder(parentController.getComposite(), SWT.FLAT | SWT.TOP);
 		toolkit.paintBordersFor(cTabFolder);
 		toolkit.adapt(cTabFolder, true, true);

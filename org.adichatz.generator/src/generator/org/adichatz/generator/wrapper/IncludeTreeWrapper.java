@@ -78,7 +78,6 @@ import java.util.Map;
 
 import org.adichatz.generator.wrapper.internal.ICollectionWrapper;
 import org.adichatz.generator.wrapper.internal.IElementWrapper;
-import org.adichatz.generator.wrapper.internal.IGeneratorEntry;
 import org.adichatz.generator.wrapper.internal.IRootWrapper;
 import org.adichatz.generator.xjc.AccessibilitiesType;
 import org.adichatz.generator.xjc.IncludeTree;
@@ -91,7 +90,7 @@ import org.adichatz.generator.xjc.ValidElementType;
  * The controller of this wrapper is the parent controller. Effectively, there is no display phases for this wrapper. Only children
  * wrapper (FormPageWrapper) will involve a display phases.
  */
-public class IncludeTreeWrapper extends IncludeTree implements ICollectionWrapper<ValidElementType>, IRootWrapper, IGeneratorEntry {
+public class IncludeTreeWrapper extends IncludeTree implements ICollectionWrapper<ValidElementType>, IRootWrapper {
 
 	/** The plugin name. */
 	String pluginName;

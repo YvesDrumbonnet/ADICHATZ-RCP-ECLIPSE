@@ -210,7 +210,7 @@ public class GMap extends Composite {
 	 * 
 	 */
 	public void createContents() {
-		final AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		final AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		AReskinManager reskinManager = AReskinManager.getInstance();
 		if (0 == (toolBarStyle & AdiSWT.NO_TOOL_BAR)) {
 			setLayout(new MigLayout("wrap 1, gap 0, ins 0", "[grow, fill]", "[][grow, fill]"));
@@ -249,8 +249,9 @@ public class GMap extends Composite {
 
 							@Override
 							protected void createFormContent() {
-								// Reload toolkit because it coulb disposed by reskin process
-								final AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+								// Reload toolkit because it could disposed by reskin process
+								final AdiFormToolkit toolkit = AdichatzApplication.getInstance()
+										.getContextValue(AdiFormToolkit.class);
 								Composite parent = managedForm.getForm().getBody();
 								parent.setLayout(new MigLayout("wrap, ins 0", "grow,fill", "[grow,fill][]10"));
 								int style = toolBarStyle ^ AdiSWT.EXPANDABLE;

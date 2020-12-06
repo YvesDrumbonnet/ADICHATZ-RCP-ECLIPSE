@@ -130,7 +130,7 @@ public class TableGenerator extends ATabularGenerator {
 		 * ColumnFieldWrapper had been replaced by TableColumnWrapper in Transform process
 		 */
 		for (TableColumnType tableColumn : ((TableWrapper) tabular).getElements()) {
-			newControlGenerator((ITableColumnWrapper) tableColumn, true, parentName).buildControl(classBodyBuffer);
+			newControlGenerator((ITableColumnWrapper) tableColumn, true, parentName).buildControl(columnsControllerBuffer);
 		}
 	}
 

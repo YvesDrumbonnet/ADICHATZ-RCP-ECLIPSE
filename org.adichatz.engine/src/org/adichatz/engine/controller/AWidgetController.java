@@ -56,16 +56,22 @@ package org.adichatz.engine.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.adichatz.common.ejb.MultiKey;
 import org.adichatz.engine.cache.IEntity;
+import org.adichatz.engine.common.InjectionInspector;
 import org.adichatz.engine.core.ControllerCore;
+import org.adichatz.engine.core.RootCore;
 import org.adichatz.engine.data.ADataAccess;
 import org.adichatz.engine.listener.AControlListener;
 import org.adichatz.engine.listener.AListener;
 import org.adichatz.engine.listener.ControllerEvent;
 import org.adichatz.engine.listener.IEventType;
 import org.adichatz.engine.plugin.RegisterEntry;
+import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.validation.ABindingService;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Widget;
 
@@ -77,7 +83,7 @@ import org.eclipse.swt.widgets.Widget;
  * 
  * @author Yves Drumbonnet
  */
-public abstract class AWidgetController extends AComponentController {
+public abstract class AWidgetController extends AController {
 
 	/** The parent controller. */
 	protected ICollectionController parentController;
@@ -92,6 +98,15 @@ public abstract class AWidgetController extends AComponentController {
 	private String registerId;
 
 	protected boolean delegateAfterEndLifeCycleListener;
+
+	@Inject
+	protected AdiFormToolkit toolkit;
+
+	/** The style for the control. */
+	protected int style = SWT.None;
+
+	/** the generated class linked to this instantiated controller. */
+	protected ControllerCore genCode;
 
 	/**
 	 * Instantiates a new widget controller.
@@ -109,12 +124,56 @@ public abstract class AWidgetController extends AComponentController {
 	}
 
 	/**
+	 * Creates the control.
+	 */
+	public void createControl() {
+		InjectionInspector.inject(this);
+	}
+
+	/**
 	 * Gets the register id.
 	 * 
 	 * @return the register id
 	 */
 	public String getRegisterId() {
 		return registerId;
+	}
+
+	/**
+	 * Gets the style.
+	 * 
+	 * @return the style
+	 */
+	public int getStyle() {
+		return style;
+	}
+
+	/**
+	 * Sets the style.
+	 * 
+	 * @param style
+	 *            the new style
+	 */
+	public void setStyle(int style) {
+		this.style = style;
+	}
+
+	/**
+	 * Gets the generated code.
+	 * 
+	 * @return the generated code
+	 */
+	public ControllerCore getGenCode() {
+		return genCode;
+	}
+
+	/**
+	 * Gets the root core.
+	 *
+	 * @return the root core
+	 */
+	public RootCore getRootCore() {
+		return genCode.getContext().getRootCore();
 	}
 
 	/**
@@ -135,13 +194,14 @@ public abstract class AWidgetController extends AComponentController {
 		/*
 		 * Initializes register
 		 */
+		List<AListener> configListeners = null;
 		if (null != id && null != genCode) {
 			registerId = genCode.getContext().getXmlTreeGenCode().getRootRegister().concat(id);
 			getRootCore().getRegister().put(registerId, new RegisterEntry(this, this.getClass()));
+			configListeners = getRootCore().getCustomizationListeners(registerId);
 		}
 		if (null != parentController)
 			parentController.addChildController(this);
-		List<AListener> configListeners = getRootCore().getCustomizationListeners(registerId);
 		if (null != configListeners && !configListeners.isEmpty()) {
 			if (null == listenerMap)
 				listenerMap = new HashMap<MultiKey, AListener>();
@@ -152,14 +212,15 @@ public abstract class AWidgetController extends AComponentController {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Initializes the controller.
 	 * 
-	 * @see org.adichatz.engine.controller.AComponentController#initialize()
+	 * Customization and specific processes following to xml description file or kind of controller.
+	 * 
+	 * This method could be overriden in the generated class.
 	 */
-	@Override
 	public void initialize() {
-		super.initialize();
+		AListener.fireListener(listenerMap, IEventType.AFTER_INITIALIZE);
 		if (null != getEntity() && !getEntity().isLocked() && !enabled) // means reinitialization and dynamic clause
 			enabled = true;
 	}
@@ -334,4 +395,12 @@ public abstract class AWidgetController extends AComponentController {
 	public void afterInstantiateController() {
 		AListener.fireListener(listenerMap, IEventType.AFTER_INSTANTIATE_CONTROLLER);
 	}
+
+	/**
+	 * Gets the control.
+	 * 
+	 * @return the control
+	 */
+	public abstract Object getControl();
+
 }

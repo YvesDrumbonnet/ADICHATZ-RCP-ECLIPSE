@@ -3,7 +3,6 @@ package org.adichatz.jpa.query.custom;
 import java.io.Serializable;
 
 import org.adichatz.engine.cache.IEntity;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.common.ReflectionTools;
 import org.adichatz.engine.controller.AFieldController;
@@ -26,7 +25,6 @@ import org.adichatz.engine.listener.AdiEvent;
 import org.adichatz.engine.listener.IEventType;
 import org.adichatz.engine.model.AEntityMetaModel;
 import org.adichatz.engine.query.NativeQueryManager;
-import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.validation.EntityInjection;
 import org.adichatz.jpa.controller.RefTextController;
 import org.adichatz.jpa.data.JPADataAccess;
@@ -62,8 +60,7 @@ public class OpenClauseParameterTableController<T> extends TableController<T> {
 
 	private CTabItemController ctabItemController;
 
-	public OpenClauseParameterTableController(String id, IContainerController parentController,
-			ControllerCore genCode) {
+	public OpenClauseParameterTableController(String id, IContainerController parentController, ControllerCore genCode) {
 		super(id, parentController, genCode);
 		supplementDataAccess = this.pluginResources.getPluginEntity("adi://org.adichatz.jpa/query.model/ParameterMM")
 				.getEntityMetaModel().getDataAccess();
@@ -75,15 +72,15 @@ public class OpenClauseParameterTableController<T> extends TableController<T> {
 		openParameterGroup = (PGroupController) parentController;
 		// Use JPAUtil.getChild rather than getFromRegister: several controllers may
 		// have same id possible (one per openClause)
-		CompositeController compositeController = (CompositeController) JPAUtil
-				.getChild(openParameterGroup.getChildControllers(), CompositeController.class);
+		CompositeController compositeController = (CompositeController) JPAUtil.getChild(openParameterGroup.getChildControllers(),
+				CompositeController.class);
 		openParameterDetailCMP = (CompositeController) compositeController.getChildControllers().get(0);
 		ctabItemController = (CTabItemController) parentController.getParentController();
 
 		editorQueryManager = ((QueryToolInput) getRootCore().getController().getEntity().getBean()).getQueryManager();
 		jpaDataAccess = (JPADataAccess) editorQueryManager.getEntityMM().getDataAccess();
 		super.startLifeCycle();
-		addListener(new AControlListener("OpenClauseParameterTable#Refresh", IEventType.REFRESH) {
+		addListener(new AControlListener("OpenClauseParameterTable#Refresh", IEventType.AFTER_REFRESH) {
 			@Override
 			public void handleEvent(AdiEvent event) {
 				if (null != openParameter) {
@@ -148,8 +145,8 @@ public class OpenClauseParameterTableController<T> extends TableController<T> {
 		} else
 			expressionClass = ReflectionTools.getClazz(className);
 		if (null != openParameter.getIdValue() && null == openParameter.getValue()) {
-			openParameter.setValue((Serializable) jpaDataAccess
-					.findProxyEntity(expressionClass, openParameter.getIdValue()).getBean());
+			openParameter
+					.setValue((Serializable) jpaDataAccess.findProxyEntity(expressionClass, openParameter.getIdValue()).getBean());
 		}
 		if (null == expressionFC || expressionFC.getControl().isDisposed()) {
 			openParameterDetailCMP.setImmutableValid(true);
@@ -167,7 +164,7 @@ public class OpenClauseParameterTableController<T> extends TableController<T> {
 				.fetchEntity((QueryParameterWrapper) openParameter);
 		openParameterDetailCMP.getEntityInjection().initialize(parameterEntity);
 		if (parameterEntity.getListeners().isEmpty()) {
-			parameterEntity.addEntityListener(new AEntityListener(openParameterGroup, IEventType.WHEN_PROPERTY_CHANGE) {
+			new AEntityListener(openParameterGroup, IEventType.WHEN_PROPERTY_CHANGE) {
 				@Override
 				public void handleEntityEvent(AdiEntityEvent event) {
 					ParameterFieldManager parameterFieldManager = openParameter.getParameterFieldManager(null, null);
@@ -176,46 +173,42 @@ public class OpenClauseParameterTableController<T> extends TableController<T> {
 					openParameter.setBinaryExpression(null);
 
 					if ("value".equals(event.getPropertyName())) {
-						openParameter.setColumnText(String
-								.valueOf(parameterFieldManager.getValueFldCtlr().toString(openParameter.getValue())));
+						openParameter.setColumnText(
+								String.valueOf(parameterFieldManager.getValueFldCtlr().toString(openParameter.getValue())));
 						try {
 							AEntityMetaModel<?> refMM = jpaDataAccess.getPluginResources().getPluginEntityTree()
 									.getEntityMM(expressionClass);
-							openParameter.setIdValue(
-									null == openParameter.getValue() ? null : refMM.getId(openParameter.getValue()));
+							openParameter
+									.setIdValue(null == openParameter.getValue() ? null : refMM.getId(openParameter.getValue()));
 						} catch (RuntimeException e) {
 						}
 					}
 				}
-			});
-			parameterEntity
-					.addEntityListener(new AEntityListener(openParameterGroup, IEventType.AFTER_PROPERTY_CHANGE) {
-						@Override
-						public void handleEntityEvent(AdiEntityEvent event) {
-							ParameterFieldManager parameterFieldManager = openParameter.getParameterFieldManager(null,
-									null);
-							if ("value".equals(event.getPropertyName())) {
-								openParameter.setColumnText(String.valueOf(
-										parameterFieldManager.getValueFldCtlr().toString(openParameter.getValue())));
-								if (parameterFieldManager.getValueFldCtlr() instanceof ARefController) {
-									try {
-										AEntityMetaModel<?> refMM = editorQueryManager.getEntityMM().getDataAccess()
-												.getPluginResources().getPluginEntityTree()
-												.getEntityMM(openParameter.getValue().getClass());
-										openParameter.setEntityURI(refMM.getPluginEntity().getEntityURI());
-										openParameter.setIdValue(null == openParameter.getValue() ? null
-												: refMM.getId(openParameter.getValue()));
-									} catch (RuntimeException e) {
-									}
-								}
+			};
+			new AEntityListener(openParameterGroup, IEventType.AFTER_PROPERTY_CHANGE) {
+				@Override
+				public void handleEntityEvent(AdiEntityEvent event) {
+					ParameterFieldManager parameterFieldManager = openParameter.getParameterFieldManager(null, null);
+					if ("value".equals(event.getPropertyName())) {
+						openParameter.setColumnText(
+								String.valueOf(parameterFieldManager.getValueFldCtlr().toString(openParameter.getValue())));
+						if (parameterFieldManager.getValueFldCtlr() instanceof ARefController) {
+							try {
+								AEntityMetaModel<?> refMM = editorQueryManager.getEntityMM().getDataAccess().getPluginResources()
+										.getPluginEntityTree().getEntityMM(openParameter.getValue().getClass());
+								openParameter.setEntityURI(refMM.getPluginEntity().getEntityURI());
+								openParameter.setIdValue(
+										null == openParameter.getValue() ? null : refMM.getId(openParameter.getValue()));
+							} catch (RuntimeException e) {
 							}
-							validateOpenClause(openClause);
 						}
-					});
+					}
+					validateOpenClause(openClause);
+				}
+			};
 		}
 
-		expressionFC = openParameter.getParameterFieldManager(editorQueryManager, openParameterDetailCMP)
-				.newFieldController();
+		expressionFC = openParameter.getParameterFieldManager(editorQueryManager, openParameterDetailCMP).newFieldController();
 		if (expressionFC instanceof RefTextController)
 			((RefTextController) expressionFC).setPluginResources(
 					editorQueryManager.getEntityMM().getPluginEntity().getPluginEntityTree().getPluginResources());
@@ -225,8 +218,8 @@ public class OpenClauseParameterTableController<T> extends TableController<T> {
 		 * columnDynamicExpressionsCMP (e.g. for looking for pooled query manager in
 		 * referenced controller).
 		 */
-		openParameterDetailCMP.setPluginResources(
-				editorQueryManager.getEntityMM().getPluginEntity().getPluginEntityTree().getPluginResources());
+		openParameterDetailCMP
+				.setPluginResources(editorQueryManager.getEntityMM().getPluginEntity().getPluginEntityTree().getPluginResources());
 		if (null == expressionFC.getControl()) // after refreshing, openParameterDetailCMP.dynamicCreateControl is
 												// launched
 			expressionFC.startLifeCycle();
@@ -252,8 +245,7 @@ public class OpenClauseParameterTableController<T> extends TableController<T> {
 		openParameterDetailCMP.getControl().layout();
 		openParameterDetailCMP.getControl().getParent().layout();
 		openParameterGroup.reflow();
-		Composite columnParameterCmp = ((CompositeController) genCode.getFromRegister("columnParameterCmp"))
-				.getControl();
+		Composite columnParameterCmp = ((CompositeController) genCode.getFromRegister("columnParameterCmp")).getControl();
 		if (null != columnParameterCmp)
 			EngineTools.reinitMiglayout(columnParameterCmp);
 		openParameterGroup.getControl().getParent().layout();
@@ -271,13 +263,10 @@ public class OpenClauseParameterTableController<T> extends TableController<T> {
 		ValidateOpenClauseItemController validateItem = getValidateItem();
 		validateItem.setEnabled(computedValid);
 		Image image;
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
 		if (openClause.isPermanent())
-			image = openClause.isValid() ? toolkit.getRegisteredImage("IMG_CANCEL")
-					: toolkit.getRegisteredImage("IMG_ACCEPT");
+			image = openClause.isValid() ? toolkit.getRegisteredImage("IMG_CANCEL") : toolkit.getRegisteredImage("IMG_ACCEPT");
 		else
-			image = openClause.isValid() ? toolkit.getRegisteredImage("IMG_CANCEL")
-					: toolkit.getRegisteredImage("IMG_ACCEPT");
+			image = openClause.isValid() ? toolkit.getRegisteredImage("IMG_CANCEL") : toolkit.getRegisteredImage("IMG_ACCEPT");
 		validateItem.getControl().setImage(image);
 		ctabItemController.getItem().setImage(openClause.getImage());
 	}

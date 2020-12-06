@@ -542,7 +542,7 @@ class CleanProjectFormDialog extends TrayDialog {
 		getShell().setImage(AdichatzApplication.getInstance().getImage(GeneratorConstants.STUDIO_BUNDLE, "IMG_CLEAN.png"));
 
 		initializeBounds();
-		toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 
 		parent.setBackground(toolkit.getColors().getBackground());
 
@@ -554,7 +554,7 @@ class CleanProjectFormDialog extends TrayDialog {
 		scrolledForm.setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 		scrolledForm.setFont(JFaceResources.getHeaderFont());
 
-		AdichatzApplication.getInstance().getFormToolkit().decorateFormHeading(scrolledForm.getForm());
+		toolkit.decorateFormHeading(scrolledForm.getForm());
 
 		Composite body = scrolledForm.getBody();
 		body.setLayout(new MigLayout("wrap 1, ins 0", "grow,fill", "grow,fill"));

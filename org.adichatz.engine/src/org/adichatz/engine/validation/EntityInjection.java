@@ -152,7 +152,8 @@ public class EntityInjection {
 			AListener.fireListener(bindingService.getListeners(), new AdiEntityEvent(IEventType.REMOVE_ENTITY, entity));
 			boundedControllers.clear();
 			bindingDispatcher.getEntityInjections().remove(this);
-			entityController.setPluginEntity(entity.getEntityMM().getPluginEntity());
+			if (null != entity)
+				entityController.setPluginEntity(entity.getEntityMM().getPluginEntity());
 		}
 
 		this.entity = entity;

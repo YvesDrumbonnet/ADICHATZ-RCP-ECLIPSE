@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 import org.adichatz.engine.common.AdiResourceBundle;
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.extra.ConfirmFormDialog;
 import org.adichatz.engine.extra.IConfirmContent;
@@ -60,7 +59,7 @@ public class ListenerTypeDialog extends ConfirmFormDialog {
 
 	public ListenerTypeDialog(Shell shell, String title, Image image, AdiResourceBundle bundle,
 			ListenerTypeController listenerTypeController) {
-		super(shell, AdichatzApplication.getInstance().getFormToolkit(), title, image, null);
+		super(shell, title, image, null);
 		confirmContent = getConfirmContent();
 		this.bundle = bundle;
 		this.listenerTypeController = listenerTypeController;

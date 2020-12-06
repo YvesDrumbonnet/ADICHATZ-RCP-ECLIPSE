@@ -138,8 +138,6 @@ public class ExternalResourcesFormEditor extends EditorPart {
 
 	private Composite parent;
 
-	private AdiFormToolkit toolkit;
-
 	private File preferenceDir;
 
 	private ImageManager imageManager;
@@ -152,11 +150,14 @@ public class ExternalResourcesFormEditor extends EditorPart {
 
 	private Image xmlImage;
 
+	private AdiFormToolkit toolkit;
+
 	/**
 	 * @see EditorPart#init
 	 */
 	@Override
 	public void init(IEditorSite site, IEditorInput input) throws PartInitException {
+		toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		setSite(site);
 		setInput(input);
 		project = ((ExternalResourcesEditorInput) input).getProject();
@@ -175,7 +176,6 @@ public class ExternalResourcesFormEditor extends EditorPart {
 		scrolledForm.getBody().setLayout(new MigLayout("hidemode 3, ins 0, wrap 1", "grow, fill", "[][grow,fill]"));
 
 		application = AdichatzApplication.getInstance();
-		toolkit = application.getFormToolkit();
 		xmlImage = application.getImage(GeneratorConstants.STUDIO_BUNDLE, "IMG_XML_EDIT.gif");
 
 		Action refreshAction = new Action(resourceBundle.getString("refresh.content"),
@@ -238,7 +238,7 @@ public class ExternalResourcesFormEditor extends EditorPart {
 			configPGroup.setToolTipText(resourceBundle.getString("config.files.toolTip"));
 			configPGroup.setImage(application.getImage(GeneratorConstants.STUDIO_BUNDLE, "IMG_CONFIG.png"));
 			configPGroup.setLayout(new FillLayout());
-			Composite composite = AdichatzApplication.getInstance().getFormToolkit().createComposite(configPGroup);
+			Composite composite = toolkit.createComposite(configPGroup);
 			composite.setLayout(new MigLayout("wrap 1, ins 5 5 20 5", null, null));
 			if (AdiPropertyTester.isApplication(project) || AdiPropertyTester.hasModelAspect(project)) {
 				if (AdiPropertyTester.isApplication(project)) {
@@ -264,7 +264,7 @@ public class ExternalResourcesFormEditor extends EditorPart {
 				recentPGroup.setToolTipText(resourceBundle.getString("recent.editors.file.toolTip"));
 				recentPGroup.setImage(imageManager.getImageDescriptor("IMG_RECENT_EDITOR.png").createImage());
 				recentPGroup.setLayout(new FillLayout());
-				Composite container = AdichatzApplication.getInstance().getFormToolkit().createComposite(recentPGroup);
+				Composite container = toolkit.createComposite(recentPGroup);
 				container.setLayout(new MigLayout("wrap 1, ins 0 5 20 5", null, "20"));
 
 				addConfigFile(container, recentFile, recentPGroup.getImage(), resourceBundle.getString("open.file"), true, false);
@@ -335,7 +335,7 @@ public class ExternalResourcesFormEditor extends EditorPart {
 			return;
 		}
 		ImageHyperlink[] hyperlinks = new ImageHyperlink[3];
-		Composite composite = AdichatzApplication.getInstance().getFormToolkit().createComposite(parent);
+		Composite composite = toolkit.createComposite(parent);
 		CLabel label = toolkit.createCLabel(composite, resourceBundle.getValueFromBundle("file", fileName));
 		label.setImage(image);
 		hyperlinks[0] = toolkit.createImageHyperlink(composite, SWT.None);

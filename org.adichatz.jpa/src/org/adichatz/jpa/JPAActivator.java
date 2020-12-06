@@ -65,7 +65,7 @@ public class JPAActivator implements BundleActivator {
 				for (String message : errorMessages)
 					messages[i++] = message;
 				Display display = new Shell().getDisplay();
-				AdichatzApplication.getInstance().setFormToolkit(new AdiFormToolkit(display));
+				AdichatzApplication.getInstance().getApplContext().put(AdiFormToolkit.class.getName(), new AdiFormToolkit(display));
 				EngineTools.openDialog(display, MessageDialog.ERROR, messages);
 			}
 			File recentOpenEditorFile = RecentUtil.getRecentOpenEditorFile();

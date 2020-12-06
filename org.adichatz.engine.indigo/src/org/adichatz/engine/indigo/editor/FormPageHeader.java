@@ -225,7 +225,6 @@ public class FormPageHeader {
 
 						}
 					};
-					entity.addEntityListener(statusChangeListener);
 				}
 			} else
 				pageMustBeAdded = true;

@@ -228,7 +228,7 @@ public class FontDataText extends Composite {
 	 * Sets the images.
 	 */
 	protected void setFont() {
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 		GridData buttonLayout = new GridData();
 		if ("win32".equals(SWT.getPlatform())) {
 			ImageData id = toolkit.getRegisteredImage("IMG_DELETE").getImageData();
@@ -244,7 +244,7 @@ public class FontDataText extends Composite {
 		Display display = getDisplay();
 		text.setText((null == value) ? "" : getStringValue());
 		if (null == value)
-			fontChooserButton.setImage(AdichatzApplication.getInstance().getFormToolkit().getRegisteredImage("IMG_FONT"));
+			fontChooserButton.setImage(toolkit.getRegisteredImage("IMG_FONT"));
 		else {
 			text.setFont(new Font(display, value));
 		}

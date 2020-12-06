@@ -79,7 +79,6 @@ import java.util.Map;
 import org.adichatz.engine.plugin.PluginEntity;
 import org.adichatz.generator.wrapper.internal.ICollectionWrapper;
 import org.adichatz.generator.wrapper.internal.IElementWrapper;
-import org.adichatz.generator.wrapper.internal.IGeneratorEntry;
 import org.adichatz.generator.wrapper.internal.IRootWrapper;
 import org.adichatz.generator.xjc.AccessibilitiesType;
 import org.adichatz.generator.xjc.ExtendTree;
@@ -94,7 +93,7 @@ import org.adichatz.generator.xjc.ValidElementType;
  * 
  * @author Yves Drumbonnet
  */
-public class ExtendTreeWrapper extends ExtendTree implements ICollectionWrapper<ValidElementType>, IRootWrapper, IGeneratorEntry {
+public class ExtendTreeWrapper extends ExtendTree implements ICollectionWrapper<ValidElementType>, IRootWrapper {
 
 	/** The plugin name. */
 	String pluginName;

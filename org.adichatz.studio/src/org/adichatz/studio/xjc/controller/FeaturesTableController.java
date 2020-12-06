@@ -193,9 +193,9 @@ public class FeaturesTableController<T> extends TableController<T> {
 										((RemoveResourceType) bean).setTargetURI(resourceNameExample);
 									}
 								};
-								new ConfirmFormDialog(getControl().getShell(), AdichatzApplication.getInstance().getFormToolkit(),
-										getFromStudioBundle("choose.resource.action.type"), AdichatzApplication.getInstance()
-												.getImage(GeneratorConstants.STUDIO_BUNDLE, "IMG_ACTION_RESOURCES.png"),
+								new ConfirmFormDialog(getControl().getShell(), getFromStudioBundle("choose.resource.action.type"),
+										AdichatzApplication.getInstance().getImage(GeneratorConstants.STUDIO_BUNDLE,
+												"IMG_ACTION_RESOURCES.png"),
 										confirmContent).open();
 							} else {
 								if (beanClass.getName().equals(PathElementType.class.getName()))
@@ -216,7 +216,7 @@ public class FeaturesTableController<T> extends TableController<T> {
 					}
 				});
 				menuManager.add(new Action(getFromStudioBundle("scenario.features.delete"),
-						AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_DELETE")) {
+						toolkit.getRegisteredImageDescriptor("IMG_DELETE")) {
 
 					@Override
 					@SuppressWarnings("unchecked")

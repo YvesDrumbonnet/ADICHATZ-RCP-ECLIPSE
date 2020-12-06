@@ -166,7 +166,8 @@ public class AdiConsole {
 		composite.setFont(EngineTools.getModifiedFont(composite.getFont(), SWT.BOLD));
 		composite.setLayout(new MigLayout("wrap 1, ins 0", "grow,fill", "grow,fill"));
 		consoleStyledText = new StyledText(composite, SWT.H_SCROLL | SWT.V_SCROLL);
-		consoleStyledText.setBackground(AdichatzApplication.getInstance().getFormToolkit().getColors().getBackground());
+		consoleStyledText
+				.setBackground(AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class).getColors().getBackground());
 		consoleStyledText.setLayoutData("wmin 50, hmin 50");
 		consoleStyledText.setText("");
 		consoleStyledText.addDisposeListener((e) -> {

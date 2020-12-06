@@ -77,13 +77,15 @@ import java.lang.reflect.InvocationTargetException;
 
 import javax.inject.Named;
 
+import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.e4.part.AdiInputPart;
-import org.adichatz.engine.e4.resource.E4AdichatzApplication;
+import org.adichatz.engine.e4.resource.EngineE4Util;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.CanExecute;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MStackElement;
 import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.e4.ui.workbench.IWorkbench;
@@ -96,7 +98,7 @@ import org.eclipse.swt.widgets.Shell;
  */
 @SuppressWarnings("restriction")
 public class ExitApplicationHandler {
-	
+
 	/**
 	 * Can excecute.
 	 *
@@ -106,7 +108,8 @@ public class ExitApplicationHandler {
 	 */
 	@CanExecute
 	public boolean canExcecute(MApplication application, EModelService modelService) {
-		for (MStackElement element : E4AdichatzApplication.getInstance().getEditorPartStack().getChildren())
+		MPartStack editorPartStack = (MPartStack) AdichatzApplication.getInstance().getContextValue(EngineE4Util.EDITOR_PARTSTACK);
+		for (MStackElement element : editorPartStack.getChildren())
 			if (element instanceof AdiInputPart && ((AdiInputPart) element).isDirty())
 				return false;
 		return true;

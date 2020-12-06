@@ -172,14 +172,13 @@ public class AddOTOEntityAction<T> extends AOneToOneAction {
 						refreshNewOTO(entity);
 					}
 				};
-				childEntity.addEntityListener(postRefreshListener);
-				childEntity.addEntityListener(new AEntityListener(entityManagerController, IEventType.POST_SAVE) {
+				new AEntityListener(entityManagerController, IEventType.POST_SAVE) {
 					@Override
 					public void handleEntityEvent(AdiEntityEvent event) {
 						postRefreshListener.dispose();
 						dispose();
 					}
-				});
+				};
 			}
 
 			entityManagerController.endLifeCycleAndSync();

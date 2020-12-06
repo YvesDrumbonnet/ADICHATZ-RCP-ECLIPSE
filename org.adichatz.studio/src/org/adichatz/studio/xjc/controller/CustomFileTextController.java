@@ -2,10 +2,11 @@ package org.adichatz.studio.xjc.controller;
 
 import static org.adichatz.studio.util.StudioUtil.getFromStudioBundle;
 
+import java.util.function.BooleanSupplier;
+
 import org.adichatz.engine.action.AAction;
 import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
-import java.util.function.BooleanSupplier;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.action.ActionController;
 import org.adichatz.engine.controller.collection.MenuManagerController;
@@ -96,7 +97,7 @@ public class CustomFileTextController extends FileTextController {
 				ActionController openFileACT = new ActionController("openFile", contextMenu, genCode) {
 					@Override
 					public void initialize() {
-						BooleanSupplier  evaluatorENABLED;
+						BooleanSupplier evaluatorENABLED;
 						evaluatorENABLED = new BooleanSupplier() {
 							public boolean getAsBoolean() {
 								return null != fileText.getValue();
@@ -120,8 +121,7 @@ public class CustomFileTextController extends FileTextController {
 						}
 						super.createControl();
 						if (isValid()) {
-							getControl().setImageDescriptor(AdichatzApplication.getInstance().getFormToolkit()
-									.getRegisteredImageDescriptor("IMG_OPEN_FILE"));
+							getControl().setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_OPEN_FILE"));
 							getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio",
 									"adichatzStudio", "scenario.custom.openFile"));
 						}
@@ -136,7 +136,7 @@ public class CustomFileTextController extends FileTextController {
 				ActionController copyFileNameACT = new ActionController("copyFileName", contextMenu, genCode) {
 					@Override
 					public void initialize() {
-						BooleanSupplier  evaluatorENABLED;
+						BooleanSupplier evaluatorENABLED;
 						evaluatorENABLED = new BooleanSupplier() {
 							public boolean getAsBoolean() {
 								return null != fileText.getValue();
@@ -160,8 +160,7 @@ public class CustomFileTextController extends FileTextController {
 						}
 						super.createControl();
 						if (isValid()) {
-							getControl().setImageDescriptor(
-									AdichatzApplication.getInstance().getFormToolkit().getRegisteredImageDescriptor("IMG_COPY"));
+							getControl().setImageDescriptor(toolkit.getRegisteredImageDescriptor("IMG_COPY"));
 							getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio",
 									"adichatzStudio", "scenario.custom.copyFileName"));
 						}

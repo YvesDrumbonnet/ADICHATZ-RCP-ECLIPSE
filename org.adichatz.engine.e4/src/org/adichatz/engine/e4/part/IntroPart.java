@@ -125,8 +125,8 @@ public class IntroPart implements IOutlineContainerPart {
 	@PostConstruct
 	public void createControl() {
 		THIS = this;
-		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
-		String introPartURI = (String) AdichatzApplication.getInstance().getParam(EngineConstants.INTRO_PART_URI);
+		AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
+		String introPartURI = (String) AdichatzApplication.getInstance().popContextValue(EngineConstants.INTRO_PART_URI);
 		if (null != introPartURI) {
 			((IIntroPanel) ReflectionTools.instantiateURI(introPartURI, null, null)).displayIntro(toolkit, parent);
 		} else

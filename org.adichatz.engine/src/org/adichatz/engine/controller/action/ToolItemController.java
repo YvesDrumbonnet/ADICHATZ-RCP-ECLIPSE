@@ -116,6 +116,7 @@ public class ToolItemController extends AActionContainerCtler {
 	 */
 	@Override
 	public void createControl() {
+		super.createControl();
 		toolItem = new ToolItem(((ToolBarController) parentController).getControl(), style);
 		toolItem.addSelectionListener(new SelectionAdapter() {
 			@Override

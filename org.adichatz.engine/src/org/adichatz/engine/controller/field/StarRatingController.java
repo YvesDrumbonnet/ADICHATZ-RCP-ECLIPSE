@@ -75,7 +75,6 @@ import static org.adichatz.engine.common.EngineTools.getFromEngineBundle;
 
 import java.math.BigDecimal;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.controller.AFieldController;
 import org.adichatz.engine.controller.IContainerController;
@@ -233,8 +232,8 @@ public class StarRatingController extends AFieldController {
 	 */
 	@Override
 	public void createControl() {
-		starRating = AdichatzApplication.getInstance().getFormToolkit().createStarRating(parentController.getComposite(), style,
-				numericPattern);
+		super.createControl();
+		starRating = toolkit.createStarRating(parentController.getComposite(), style, numericPattern);
 	}
 
 	/*

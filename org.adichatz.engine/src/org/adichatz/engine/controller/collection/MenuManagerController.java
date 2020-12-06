@@ -143,6 +143,7 @@ public class MenuManagerController extends ACollectionController implements IRan
 	 * Creates the tool bar manager (which is not a control for SWT).
 	 */
 	public void createControl() {
+		super.createControl();
 		if (menuContainer instanceof MenuManagerController) {
 			menuManager = new MenuManager(text, imageDescriptor, null);
 			// Menu manager is a sub menu of a menu manager

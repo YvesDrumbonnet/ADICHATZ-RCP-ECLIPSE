@@ -53,7 +53,6 @@
  *******************************************************************************/
 package org.adichatz.engine.controller.field;
 
-import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.AFieldController;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.utils.AdiSWT;
@@ -125,7 +124,8 @@ public class FileTextController extends AFieldController {
 	 */
 	@Override
 	public void createControl() {
-		fileText = AdichatzApplication.getInstance().getFormToolkit().createFileText(parentController.getComposite(), style);
+		super.createControl();
+		fileText = toolkit.createFileText(parentController.getComposite(), style);
 	}
 
 	/*

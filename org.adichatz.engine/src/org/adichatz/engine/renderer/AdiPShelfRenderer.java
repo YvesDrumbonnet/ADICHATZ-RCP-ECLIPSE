@@ -183,7 +183,7 @@ public class AdiPShelfRenderer extends AbstractRenderer {
 	public void initializeColors() {
 		AReskinManager reskinManager = AReskinManager.getInstance();
 		if (null == reskinManager) {
-			AdiFormToolkit toolkit = AdichatzApplication.getInstance().getFormToolkit();
+			AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
 			gradient1 = toolkit.getColors().getColor(IFormColors.H_GRADIENT_START);
 			gradient2 = toolkit.getColors().getColor(IFormColors.H_GRADIENT_END);
 			selectedGradient1 = toolkit.getColors().getColor(IFormColors.H_BOTTOM_KEYLINE2);

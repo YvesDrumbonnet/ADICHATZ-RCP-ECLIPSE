@@ -79,6 +79,7 @@ import org.adichatz.generator.ControlGenerator;
 import org.adichatz.generator.wrapper.internal.ICollectionWrapper;
 import org.adichatz.generator.wrapper.internal.IEntityContainerWrapper;
 import org.adichatz.generator.wrapper.internal.ILazyFetchesContainer;
+import org.adichatz.generator.wrapper.internal.ISetWrapper;
 import org.adichatz.generator.wrapper.internal.IWidgetWrapper;
 import org.adichatz.generator.xjc.ElementType;
 import org.adichatz.generator.xjc.TreeType;
@@ -87,8 +88,8 @@ import org.adichatz.generator.xjc.TreeType;
 /**
  * The Class TreeWrapper.
  */
-public class TreeWrapper extends TreeType implements IWidgetWrapper, ICollectionWrapper<ElementType>, ILazyFetchesContainer,
-		IEntityContainerWrapper {
+public class TreeWrapper extends TreeType
+		implements IWidgetWrapper, ICollectionWrapper<ElementType>, ILazyFetchesContainer, IEntityContainerWrapper, ISetWrapper {
 
 	private List<ElementType> elements = new ArrayList<ElementType>();
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<includeTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="includeTreeWrapper$$0" xsi:noNamespaceSchemaLocation="http://www.adichatz.org/xsd/generator/includeTree.xsd">
+<includeTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="includeTreeWrapper$$0" xsi:noNamespaceSchemaLocation="https://yvesdrumbonnet.github.io/Adichatz-RCP-Update-Site/xsd/generator/includeTree.xsd">
     <composite id="fullTextComposite">
         <layout layoutConstraints="wrap 4, ins 5" columnConstraints="[][grow,fill]2[]0[]"/>
         <label text="#MSG(adichatzJpa, query.fulltext.label)" id="fulltextLabel"/>
