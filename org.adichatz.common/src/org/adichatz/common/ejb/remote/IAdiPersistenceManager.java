@@ -71,14 +71,14 @@
  *******************************************************************************/
 package org.adichatz.common.ejb.remote;
 
-import javax.persistence.EntityManager;
-
 import org.adichatz.common.ejb.AdiPMException;
 import org.adichatz.common.ejb.AdiQuery;
 import org.adichatz.common.ejb.ProxyEntity;
 import org.adichatz.common.ejb.ProxyTransaction;
 import org.adichatz.common.ejb.QueryResult;
 import org.adichatz.common.ejb.Session;
+
+import jakarta.persistence.EntityManager;
 
 // TODO: Auto-generated Javadoc
 /**

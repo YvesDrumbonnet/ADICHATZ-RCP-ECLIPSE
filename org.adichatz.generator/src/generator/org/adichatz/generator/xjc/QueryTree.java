@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -19,31 +19,31 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour anonymous complex type.
+ * &lt;p&gt;Classe Java pour anonymous complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;extension base="{}queryPartType">
- *       &lt;choice>
- *         &lt;element name="jointure" type="{}jointureType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="whereClause" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="sqlClause" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="jointureAliases" type="{}jointureAliasesType"/>
- *         &lt;element name="queryPreference" type="{}queryPreferenceType"/>
- *         &lt;element name="customizedPreferences" type="{}customizedPreferenceType"/>
- *         &lt;element name="queryBuilder" type="{}queryBuilderType"/>
- *       &lt;/choice>
- *       &lt;attribute name="parentQueryManagerURI" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="lazyFetches" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="queryType" type="{}queryTypeEnum" />
- *       &lt;attribute name="valid" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}queryPartType"&amp;gt;
+ *       &amp;lt;choice&amp;gt;
+ *         &amp;lt;element name="jointure" type="{}jointureType" maxOccurs="unbounded" minOccurs="0"/&amp;gt;
+ *         &amp;lt;element name="whereClause" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *         &amp;lt;element name="sqlClause" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *         &amp;lt;element name="jointureAliases" type="{}jointureAliasesType"/&amp;gt;
+ *         &amp;lt;element name="queryPreference" type="{}queryPreferenceType"/&amp;gt;
+ *         &amp;lt;element name="customizedPreferences" type="{}customizedPreferenceType"/&amp;gt;
+ *         &amp;lt;element name="queryBuilder" type="{}queryBuilderType"/&amp;gt;
+ *       &amp;lt;/choice&amp;gt;
+ *       &amp;lt;attribute name="parentQueryManagerURI" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="lazyFetches" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="queryType" type="{}queryTypeEnum" /&amp;gt;
+ *       &amp;lt;attribute name="valid" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -83,20 +83,20 @@ public class QueryTree
     /**
      * Gets the value of the jointure property.
      * 
-     * <p>
+     * &lt;p&gt;
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the jointure property.
+     * This is why there is not a &lt;CODE&gt;set&lt;/CODE&gt; method for the jointure property.
      * 
-     * <p>
+     * &lt;p&gt;
      * For example, to add a new item, do as follows:
-     * <pre>
+     * &lt;pre&gt;
      *    getJointure().add(newItem);
-     * </pre>
+     * &lt;/pre&gt;
      * 
      * 
-     * <p>
+     * &lt;p&gt;
      * Objects of the following type(s) are allowed in the list
      * {@link JointureType }
      * 
@@ -110,7 +110,7 @@ public class QueryTree
     }
 
     /**
-     * Obtient la valeur de la propriété whereClause.
+     * Obtient la valeur de la propriÃ©tÃ© whereClause.
      * 
      * @return
      *     possible object is
@@ -122,7 +122,7 @@ public class QueryTree
     }
 
     /**
-     * Définit la valeur de la propriété whereClause.
+     * DÃ©finit la valeur de la propriÃ©tÃ© whereClause.
      * 
      * @param value
      *     allowed object is
@@ -134,7 +134,7 @@ public class QueryTree
     }
 
     /**
-     * Obtient la valeur de la propriété sqlClause.
+     * Obtient la valeur de la propriÃ©tÃ© sqlClause.
      * 
      * @return
      *     possible object is
@@ -146,7 +146,7 @@ public class QueryTree
     }
 
     /**
-     * Définit la valeur de la propriété sqlClause.
+     * DÃ©finit la valeur de la propriÃ©tÃ© sqlClause.
      * 
      * @param value
      *     allowed object is
@@ -158,7 +158,7 @@ public class QueryTree
     }
 
     /**
-     * Obtient la valeur de la propriété jointureAliases.
+     * Obtient la valeur de la propriÃ©tÃ© jointureAliases.
      * 
      * @return
      *     possible object is
@@ -170,7 +170,7 @@ public class QueryTree
     }
 
     /**
-     * Définit la valeur de la propriété jointureAliases.
+     * DÃ©finit la valeur de la propriÃ©tÃ© jointureAliases.
      * 
      * @param value
      *     allowed object is
@@ -182,7 +182,7 @@ public class QueryTree
     }
 
     /**
-     * Obtient la valeur de la propriété queryPreference.
+     * Obtient la valeur de la propriÃ©tÃ© queryPreference.
      * 
      * @return
      *     possible object is
@@ -194,7 +194,7 @@ public class QueryTree
     }
 
     /**
-     * Définit la valeur de la propriété queryPreference.
+     * DÃ©finit la valeur de la propriÃ©tÃ© queryPreference.
      * 
      * @param value
      *     allowed object is
@@ -206,7 +206,7 @@ public class QueryTree
     }
 
     /**
-     * Obtient la valeur de la propriété customizedPreferences.
+     * Obtient la valeur de la propriÃ©tÃ© customizedPreferences.
      * 
      * @return
      *     possible object is
@@ -218,7 +218,7 @@ public class QueryTree
     }
 
     /**
-     * Définit la valeur de la propriété customizedPreferences.
+     * DÃ©finit la valeur de la propriÃ©tÃ© customizedPreferences.
      * 
      * @param value
      *     allowed object is
@@ -230,7 +230,7 @@ public class QueryTree
     }
 
     /**
-     * Obtient la valeur de la propriété queryBuilder.
+     * Obtient la valeur de la propriÃ©tÃ© queryBuilder.
      * 
      * @return
      *     possible object is
@@ -242,7 +242,7 @@ public class QueryTree
     }
 
     /**
-     * Définit la valeur de la propriété queryBuilder.
+     * DÃ©finit la valeur de la propriÃ©tÃ© queryBuilder.
      * 
      * @param value
      *     allowed object is
@@ -254,7 +254,7 @@ public class QueryTree
     }
 
     /**
-     * Obtient la valeur de la propriété parentQueryManagerURI.
+     * Obtient la valeur de la propriÃ©tÃ© parentQueryManagerURI.
      * 
      * @return
      *     possible object is
@@ -266,7 +266,7 @@ public class QueryTree
     }
 
     /**
-     * Définit la valeur de la propriété parentQueryManagerURI.
+     * DÃ©finit la valeur de la propriÃ©tÃ© parentQueryManagerURI.
      * 
      * @param value
      *     allowed object is
@@ -278,7 +278,7 @@ public class QueryTree
     }
 
     /**
-     * Obtient la valeur de la propriété lazyFetches.
+     * Obtient la valeur de la propriÃ©tÃ© lazyFetches.
      * 
      * @return
      *     possible object is
@@ -290,7 +290,7 @@ public class QueryTree
     }
 
     /**
-     * Définit la valeur de la propriété lazyFetches.
+     * DÃ©finit la valeur de la propriÃ©tÃ© lazyFetches.
      * 
      * @param value
      *     allowed object is
@@ -302,7 +302,7 @@ public class QueryTree
     }
 
     /**
-     * Obtient la valeur de la propriété queryType.
+     * Obtient la valeur de la propriÃ©tÃ© queryType.
      * 
      * @return
      *     possible object is
@@ -314,7 +314,7 @@ public class QueryTree
     }
 
     /**
-     * Définit la valeur de la propriété queryType.
+     * DÃ©finit la valeur de la propriÃ©tÃ© queryType.
      * 
      * @param value
      *     allowed object is
@@ -326,7 +326,7 @@ public class QueryTree
     }
 
     /**
-     * Obtient la valeur de la propriété valid.
+     * Obtient la valeur de la propriÃ©tÃ© valid.
      * 
      * @return
      *     possible object is
@@ -338,7 +338,7 @@ public class QueryTree
     }
 
     /**
-     * Définit la valeur de la propriété valid.
+     * DÃ©finit la valeur de la propriÃ©tÃ© valid.
      * 
      * @param value
      *     allowed object is

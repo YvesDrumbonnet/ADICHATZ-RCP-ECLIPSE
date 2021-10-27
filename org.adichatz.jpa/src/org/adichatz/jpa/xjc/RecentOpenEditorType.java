@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:22 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:33 PM CEST 
 //
 
 
@@ -20,25 +20,25 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Classe Java pour recentOpenEditorType complex type.
+ * &lt;p&gt;Classe Java pour recentOpenEditorType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="recentOpenEditorType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="params" type="{}paramsType"/>
- *       &lt;/sequence>
- *       &lt;attribute name="recentId" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="label" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="lastOpen" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
- *       &lt;attribute name="lastClose" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="recentOpenEditorType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&amp;gt;
+ *       &amp;lt;sequence&amp;gt;
+ *         &amp;lt;element name="params" type="{}paramsType"/&amp;gt;
+ *       &amp;lt;/sequence&amp;gt;
+ *       &amp;lt;attribute name="recentId" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="label" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="lastOpen" type="{http://www.w3.org/2001/XMLSchema}dateTime" /&amp;gt;
+ *       &amp;lt;attribute name="lastClose" type="{http://www.w3.org/2001/XMLSchema}dateTime" /&amp;gt;
+ *     &amp;lt;/restriction&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -68,7 +68,7 @@ public class RecentOpenEditorType
     protected XMLGregorianCalendar lastClose;
 
     /**
-     * Obtient la valeur de la propriété params.
+     * Obtient la valeur de la propriÃ©tÃ© params.
      * 
      * @return
      *     possible object is
@@ -80,7 +80,7 @@ public class RecentOpenEditorType
     }
 
     /**
-     * Définit la valeur de la propriété params.
+     * DÃ©finit la valeur de la propriÃ©tÃ© params.
      * 
      * @param value
      *     allowed object is
@@ -92,7 +92,7 @@ public class RecentOpenEditorType
     }
 
     /**
-     * Obtient la valeur de la propriété recentId.
+     * Obtient la valeur de la propriÃ©tÃ© recentId.
      * 
      * @return
      *     possible object is
@@ -104,7 +104,7 @@ public class RecentOpenEditorType
     }
 
     /**
-     * Définit la valeur de la propriété recentId.
+     * DÃ©finit la valeur de la propriÃ©tÃ© recentId.
      * 
      * @param value
      *     allowed object is
@@ -116,7 +116,7 @@ public class RecentOpenEditorType
     }
 
     /**
-     * Obtient la valeur de la propriété label.
+     * Obtient la valeur de la propriÃ©tÃ© label.
      * 
      * @return
      *     possible object is
@@ -128,7 +128,7 @@ public class RecentOpenEditorType
     }
 
     /**
-     * Définit la valeur de la propriété label.
+     * DÃ©finit la valeur de la propriÃ©tÃ© label.
      * 
      * @param value
      *     allowed object is
@@ -140,7 +140,7 @@ public class RecentOpenEditorType
     }
 
     /**
-     * Obtient la valeur de la propriété lastOpen.
+     * Obtient la valeur de la propriÃ©tÃ© lastOpen.
      * 
      * @return
      *     possible object is
@@ -152,7 +152,7 @@ public class RecentOpenEditorType
     }
 
     /**
-     * Définit la valeur de la propriété lastOpen.
+     * DÃ©finit la valeur de la propriÃ©tÃ© lastOpen.
      * 
      * @param value
      *     allowed object is
@@ -164,7 +164,7 @@ public class RecentOpenEditorType
     }
 
     /**
-     * Obtient la valeur de la propriété lastClose.
+     * Obtient la valeur de la propriÃ©tÃ© lastClose.
      * 
      * @return
      *     possible object is
@@ -176,7 +176,7 @@ public class RecentOpenEditorType
     }
 
     /**
-     * Définit la valeur de la propriété lastClose.
+     * DÃ©finit la valeur de la propriÃ©tÃ© lastClose.
      * 
      * @param value
      *     allowed object is

@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Build-Id: 3.0.0
+Build-Version: JAXB RI 3.0.0
+Git-Revision: 697e104
+Git-Url: scm:git:ssh://git@github.com/eclipse-ee4j/jaxb-ri/jaxb-bundles/
+ jaxb-osgi/jaxb-osgi
+Implementation-Title: Jakarta XML Binding Implementation
+Implementation-Vendor: Eclipse Foundation
+Implementation-Vendor-Id: org.eclipse
+Implementation-Version: 3.0.0
+Major-Version: 3.0.0
+Multi-Release: true
+Specification-Title: Jakarta XML Binding
+Specification-Version: 3.0
+

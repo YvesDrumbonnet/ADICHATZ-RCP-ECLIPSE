@@ -88,7 +88,6 @@ import java.util.jar.JarOutputStream;
 import java.util.jar.Manifest;
 import java.util.zip.ZipFile;
 
-import javax.persistence.Entity;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -147,6 +146,8 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.Constants;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
+import jakarta.persistence.Entity;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -273,6 +274,7 @@ public class ModelComponentGeneration {
 		if (!IScenarioConstants.JSE.equals(connectorVersion)) {
 			addLibToBuildPath(project, entries, "javax/ejb/EJB.class");
 			addLibToBuildPath(project, entries, "org/jboss/ejb/client/EJBClient.class");
+			addLibToBuildPath(project, entries, "jakarta/ejb/EJB.class");
 		}
 		if (!entries.isEmpty()) {
 			componentGeneration.getJavaProject().setRawClasspath(entries.toArray(new IClasspathEntry[entries.size()]), monitor);
@@ -867,6 +869,7 @@ public class ModelComponentGeneration {
 					copy71Libraries(libFolder, jbossInstallation, "org.jboss.remote-naming");
 					copy71Libraries(libFolder, jbossInstallation, "org.javassist");
 				} else if (connectorVersion.startsWith(IScenarioConstants.WILDFLY)) {
+					boolean hasJakartaVersion = null != Platform.getBundle("jakarta.xml.bind"); // Java version >= 9 and use jakarta plugin for JEE JAXB. 
 					copy71Libraries(libFolder, jbossInstallation, "org.antlr");
 					copy71Libraries(libFolder, jbossInstallation, "org.hibernate");
 					copy71Libraries(libFolder, jbossInstallation, "javax.ejb.api");
@@ -909,6 +912,9 @@ public class ModelComponentGeneration {
 					} else {
 						copy71Libraries(libFolder, jbossInstallation, "org.jboss.remoting");
 						copy71Libraries(libFolder, jbossInstallation, "org.jboss.sasl");
+					}
+					if (hasJakartaVersion) {
+						copy71Libraries(libFolder, jbossInstallation, "jakarta.ejb.api"); // jakarta.ejb-api is present un ./ejb/api
 					}
 				}
 			}

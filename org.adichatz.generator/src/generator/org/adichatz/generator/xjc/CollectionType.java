@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -20,32 +20,32 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Classe Java pour collectionType complex type.
+ * &lt;p&gt;Classe Java pour collectionType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="collectionType">
- *   &lt;complexContent>
- *     &lt;extension base="{}validElementType">
- *       &lt;choice>
- *         &lt;element name="accessibilities" type="{}accessibilitiesType"/>
- *         &lt;element name="listeners" type="{}listenersType"/>
- *         &lt;element name="additionalCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *       &lt;/choice>
- *       &lt;attribute name="controllerClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="background" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="enabled" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="foreground" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="style" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="visible" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="enableRoles" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="validRoles" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="visibleRoles" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="collectionType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}validElementType"&amp;gt;
+ *       &amp;lt;choice&amp;gt;
+ *         &amp;lt;element name="accessibilities" type="{}accessibilitiesType"/&amp;gt;
+ *         &amp;lt;element name="listeners" type="{}listenersType"/&amp;gt;
+ *         &amp;lt;element name="additionalCode" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *       &amp;lt;/choice&amp;gt;
+ *       &amp;lt;attribute name="controllerClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="background" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="enabled" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="foreground" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="style" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="visible" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="enableRoles" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="validRoles" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="visibleRoles" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -63,9 +63,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     ManagedToolBarType.class,
     ToolBarType.class,
     ButtonBarType.class,
-    GridColumnGroupType.class,
     PGroupMenuType.class,
-    LazyFetchContainerType.class
+    LazyFetchContainerType.class,
+    GridColumnGroupType.class
 })
 public class CollectionType
     extends ValidElementType
@@ -98,7 +98,7 @@ public class CollectionType
     protected String visibleRoles;
 
     /**
-     * Obtient la valeur de la propriété accessibilities.
+     * Obtient la valeur de la propriÃ©tÃ© accessibilities.
      * 
      * @return
      *     possible object is
@@ -110,7 +110,7 @@ public class CollectionType
     }
 
     /**
-     * Définit la valeur de la propriété accessibilities.
+     * DÃ©finit la valeur de la propriÃ©tÃ© accessibilities.
      * 
      * @param value
      *     allowed object is
@@ -122,7 +122,7 @@ public class CollectionType
     }
 
     /**
-     * Obtient la valeur de la propriété listeners.
+     * Obtient la valeur de la propriÃ©tÃ© listeners.
      * 
      * @return
      *     possible object is
@@ -134,7 +134,7 @@ public class CollectionType
     }
 
     /**
-     * Définit la valeur de la propriété listeners.
+     * DÃ©finit la valeur de la propriÃ©tÃ© listeners.
      * 
      * @param value
      *     allowed object is
@@ -146,7 +146,7 @@ public class CollectionType
     }
 
     /**
-     * Obtient la valeur de la propriété additionalCode.
+     * Obtient la valeur de la propriÃ©tÃ© additionalCode.
      * 
      * @return
      *     possible object is
@@ -158,7 +158,7 @@ public class CollectionType
     }
 
     /**
-     * Définit la valeur de la propriété additionalCode.
+     * DÃ©finit la valeur de la propriÃ©tÃ© additionalCode.
      * 
      * @param value
      *     allowed object is
@@ -170,7 +170,7 @@ public class CollectionType
     }
 
     /**
-     * Obtient la valeur de la propriété controllerClassName.
+     * Obtient la valeur de la propriÃ©tÃ© controllerClassName.
      * 
      * @return
      *     possible object is
@@ -182,7 +182,7 @@ public class CollectionType
     }
 
     /**
-     * Définit la valeur de la propriété controllerClassName.
+     * DÃ©finit la valeur de la propriÃ©tÃ© controllerClassName.
      * 
      * @param value
      *     allowed object is
@@ -194,7 +194,7 @@ public class CollectionType
     }
 
     /**
-     * Obtient la valeur de la propriété background.
+     * Obtient la valeur de la propriÃ©tÃ© background.
      * 
      * @return
      *     possible object is
@@ -206,7 +206,7 @@ public class CollectionType
     }
 
     /**
-     * Définit la valeur de la propriété background.
+     * DÃ©finit la valeur de la propriÃ©tÃ© background.
      * 
      * @param value
      *     allowed object is
@@ -218,7 +218,7 @@ public class CollectionType
     }
 
     /**
-     * Obtient la valeur de la propriété enabled.
+     * Obtient la valeur de la propriÃ©tÃ© enabled.
      * 
      * @return
      *     possible object is
@@ -230,7 +230,7 @@ public class CollectionType
     }
 
     /**
-     * Définit la valeur de la propriété enabled.
+     * DÃ©finit la valeur de la propriÃ©tÃ© enabled.
      * 
      * @param value
      *     allowed object is
@@ -242,7 +242,7 @@ public class CollectionType
     }
 
     /**
-     * Obtient la valeur de la propriété foreground.
+     * Obtient la valeur de la propriÃ©tÃ© foreground.
      * 
      * @return
      *     possible object is
@@ -254,7 +254,7 @@ public class CollectionType
     }
 
     /**
-     * Définit la valeur de la propriété foreground.
+     * DÃ©finit la valeur de la propriÃ©tÃ© foreground.
      * 
      * @param value
      *     allowed object is
@@ -266,7 +266,7 @@ public class CollectionType
     }
 
     /**
-     * Obtient la valeur de la propriété style.
+     * Obtient la valeur de la propriÃ©tÃ© style.
      * 
      * @return
      *     possible object is
@@ -278,7 +278,7 @@ public class CollectionType
     }
 
     /**
-     * Définit la valeur de la propriété style.
+     * DÃ©finit la valeur de la propriÃ©tÃ© style.
      * 
      * @param value
      *     allowed object is
@@ -290,7 +290,7 @@ public class CollectionType
     }
 
     /**
-     * Obtient la valeur de la propriété visible.
+     * Obtient la valeur de la propriÃ©tÃ© visible.
      * 
      * @return
      *     possible object is
@@ -302,7 +302,7 @@ public class CollectionType
     }
 
     /**
-     * Définit la valeur de la propriété visible.
+     * DÃ©finit la valeur de la propriÃ©tÃ© visible.
      * 
      * @param value
      *     allowed object is
@@ -314,7 +314,7 @@ public class CollectionType
     }
 
     /**
-     * Obtient la valeur de la propriété enableRoles.
+     * Obtient la valeur de la propriÃ©tÃ© enableRoles.
      * 
      * @return
      *     possible object is
@@ -326,7 +326,7 @@ public class CollectionType
     }
 
     /**
-     * Définit la valeur de la propriété enableRoles.
+     * DÃ©finit la valeur de la propriÃ©tÃ© enableRoles.
      * 
      * @param value
      *     allowed object is
@@ -338,7 +338,7 @@ public class CollectionType
     }
 
     /**
-     * Obtient la valeur de la propriété validRoles.
+     * Obtient la valeur de la propriÃ©tÃ© validRoles.
      * 
      * @return
      *     possible object is
@@ -350,7 +350,7 @@ public class CollectionType
     }
 
     /**
-     * Définit la valeur de la propriété validRoles.
+     * DÃ©finit la valeur de la propriÃ©tÃ© validRoles.
      * 
      * @param value
      *     allowed object is
@@ -362,7 +362,7 @@ public class CollectionType
     }
 
     /**
-     * Obtient la valeur de la propriété visibleRoles.
+     * Obtient la valeur de la propriÃ©tÃ© visibleRoles.
      * 
      * @return
      *     possible object is
@@ -374,7 +374,7 @@ public class CollectionType
     }
 
     /**
-     * Définit la valeur de la propriété visibleRoles.
+     * DÃ©finit la valeur de la propriÃ©tÃ© visibleRoles.
      * 
      * @param value
      *     allowed object is

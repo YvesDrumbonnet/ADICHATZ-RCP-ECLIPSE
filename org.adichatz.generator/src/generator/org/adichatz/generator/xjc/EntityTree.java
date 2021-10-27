@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -22,30 +22,30 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Classe Java pour anonymous complex type.
+ * &lt;p&gt;Classe Java pour anonymous complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;extension base="{}basicType">
- *       &lt;sequence>
- *         &lt;element name="propertyField" type="{}propertyFieldType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="oneToMany" type="{}oneToManyType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="manyToMany" type="{}manyToManyType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="oneToOne" type="{}oneToOneType" maxOccurs="unbounded" minOccurs="0"/>
- *       &lt;/sequence>
- *       &lt;attribute name="entityURI" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="superEntityURI" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="idFieldName" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="callbackClassNames" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="callforeClassNames" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="compositeKeyStrategyFactoryClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}basicType"&amp;gt;
+ *       &amp;lt;sequence&amp;gt;
+ *         &amp;lt;element name="propertyField" type="{}propertyFieldType" maxOccurs="unbounded" minOccurs="0"/&amp;gt;
+ *         &amp;lt;element name="oneToMany" type="{}oneToManyType" maxOccurs="unbounded" minOccurs="0"/&amp;gt;
+ *         &amp;lt;element name="manyToMany" type="{}manyToManyType" maxOccurs="unbounded" minOccurs="0"/&amp;gt;
+ *         &amp;lt;element name="oneToOne" type="{}oneToOneType" maxOccurs="unbounded" minOccurs="0"/&amp;gt;
+ *       &amp;lt;/sequence&amp;gt;
+ *       &amp;lt;attribute name="entityURI" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="superEntityURI" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="idFieldName" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="callbackClassNames" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="callforeClassNames" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="compositeKeyStrategyFactoryClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -95,20 +95,20 @@ public class EntityTree
     /**
      * Gets the value of the propertyField property.
      * 
-     * <p>
+     * &lt;p&gt;
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the propertyField property.
+     * This is why there is not a &lt;CODE&gt;set&lt;/CODE&gt; method for the propertyField property.
      * 
-     * <p>
+     * &lt;p&gt;
      * For example, to add a new item, do as follows:
-     * <pre>
+     * &lt;pre&gt;
      *    getPropertyField().add(newItem);
-     * </pre>
+     * &lt;/pre&gt;
      * 
      * 
-     * <p>
+     * &lt;p&gt;
      * Objects of the following type(s) are allowed in the list
      * {@link PropertyFieldType }
      * 
@@ -124,20 +124,20 @@ public class EntityTree
     /**
      * Gets the value of the oneToMany property.
      * 
-     * <p>
+     * &lt;p&gt;
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the oneToMany property.
+     * This is why there is not a &lt;CODE&gt;set&lt;/CODE&gt; method for the oneToMany property.
      * 
-     * <p>
+     * &lt;p&gt;
      * For example, to add a new item, do as follows:
-     * <pre>
+     * &lt;pre&gt;
      *    getOneToMany().add(newItem);
-     * </pre>
+     * &lt;/pre&gt;
      * 
      * 
-     * <p>
+     * &lt;p&gt;
      * Objects of the following type(s) are allowed in the list
      * {@link OneToManyType }
      * 
@@ -153,20 +153,20 @@ public class EntityTree
     /**
      * Gets the value of the manyToMany property.
      * 
-     * <p>
+     * &lt;p&gt;
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the manyToMany property.
+     * This is why there is not a &lt;CODE&gt;set&lt;/CODE&gt; method for the manyToMany property.
      * 
-     * <p>
+     * &lt;p&gt;
      * For example, to add a new item, do as follows:
-     * <pre>
+     * &lt;pre&gt;
      *    getManyToMany().add(newItem);
-     * </pre>
+     * &lt;/pre&gt;
      * 
      * 
-     * <p>
+     * &lt;p&gt;
      * Objects of the following type(s) are allowed in the list
      * {@link ManyToManyType }
      * 
@@ -182,20 +182,20 @@ public class EntityTree
     /**
      * Gets the value of the oneToOne property.
      * 
-     * <p>
+     * &lt;p&gt;
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the oneToOne property.
+     * This is why there is not a &lt;CODE&gt;set&lt;/CODE&gt; method for the oneToOne property.
      * 
-     * <p>
+     * &lt;p&gt;
      * For example, to add a new item, do as follows:
-     * <pre>
+     * &lt;pre&gt;
      *    getOneToOne().add(newItem);
-     * </pre>
+     * &lt;/pre&gt;
      * 
      * 
-     * <p>
+     * &lt;p&gt;
      * Objects of the following type(s) are allowed in the list
      * {@link OneToOneType }
      * 
@@ -209,7 +209,7 @@ public class EntityTree
     }
 
     /**
-     * Obtient la valeur de la propriété entityURI.
+     * Obtient la valeur de la propriÃ©tÃ© entityURI.
      * 
      * @return
      *     possible object is
@@ -221,7 +221,7 @@ public class EntityTree
     }
 
     /**
-     * Définit la valeur de la propriété entityURI.
+     * DÃ©finit la valeur de la propriÃ©tÃ© entityURI.
      * 
      * @param value
      *     allowed object is
@@ -233,7 +233,7 @@ public class EntityTree
     }
 
     /**
-     * Obtient la valeur de la propriété superEntityURI.
+     * Obtient la valeur de la propriÃ©tÃ© superEntityURI.
      * 
      * @return
      *     possible object is
@@ -245,7 +245,7 @@ public class EntityTree
     }
 
     /**
-     * Définit la valeur de la propriété superEntityURI.
+     * DÃ©finit la valeur de la propriÃ©tÃ© superEntityURI.
      * 
      * @param value
      *     allowed object is
@@ -257,7 +257,7 @@ public class EntityTree
     }
 
     /**
-     * Obtient la valeur de la propriété idFieldName.
+     * Obtient la valeur de la propriÃ©tÃ© idFieldName.
      * 
      * @return
      *     possible object is
@@ -269,7 +269,7 @@ public class EntityTree
     }
 
     /**
-     * Définit la valeur de la propriété idFieldName.
+     * DÃ©finit la valeur de la propriÃ©tÃ© idFieldName.
      * 
      * @param value
      *     allowed object is
@@ -281,7 +281,7 @@ public class EntityTree
     }
 
     /**
-     * Obtient la valeur de la propriété callbackClassNames.
+     * Obtient la valeur de la propriÃ©tÃ© callbackClassNames.
      * 
      * @return
      *     possible object is
@@ -293,7 +293,7 @@ public class EntityTree
     }
 
     /**
-     * Définit la valeur de la propriété callbackClassNames.
+     * DÃ©finit la valeur de la propriÃ©tÃ© callbackClassNames.
      * 
      * @param value
      *     allowed object is
@@ -305,7 +305,7 @@ public class EntityTree
     }
 
     /**
-     * Obtient la valeur de la propriété callforeClassNames.
+     * Obtient la valeur de la propriÃ©tÃ© callforeClassNames.
      * 
      * @return
      *     possible object is
@@ -317,7 +317,7 @@ public class EntityTree
     }
 
     /**
-     * Définit la valeur de la propriété callforeClassNames.
+     * DÃ©finit la valeur de la propriÃ©tÃ© callforeClassNames.
      * 
      * @param value
      *     allowed object is
@@ -329,7 +329,7 @@ public class EntityTree
     }
 
     /**
-     * Obtient la valeur de la propriété compositeKeyStrategyFactoryClassName.
+     * Obtient la valeur de la propriÃ©tÃ© compositeKeyStrategyFactoryClassName.
      * 
      * @return
      *     possible object is
@@ -341,7 +341,7 @@ public class EntityTree
     }
 
     /**
-     * Définit la valeur de la propriété compositeKeyStrategyFactoryClassName.
+     * DÃ©finit la valeur de la propriÃ©tÃ© compositeKeyStrategyFactoryClassName.
      * 
      * @param value
      *     allowed object is

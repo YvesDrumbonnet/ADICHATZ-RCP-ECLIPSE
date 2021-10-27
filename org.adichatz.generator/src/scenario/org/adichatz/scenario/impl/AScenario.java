@@ -61,7 +61,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
 
-import javax.persistence.Id;
+import jakarta.persistence.Id;
 
 import org.adichatz.engine.common.EngineConstants;
 import org.adichatz.engine.common.EngineTools;

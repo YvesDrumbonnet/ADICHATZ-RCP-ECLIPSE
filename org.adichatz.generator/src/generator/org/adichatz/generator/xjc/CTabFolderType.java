@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -18,27 +18,27 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour cTabFolderType complex type.
+ * &lt;p&gt;Classe Java pour cTabFolderType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="cTabFolderType">
- *   &lt;complexContent>
- *     &lt;extension base="{}collectionType">
- *       &lt;choice>
- *         &lt;choice>
- *           &lt;element name="cTabItem" type="{}cTabItemType" maxOccurs="unbounded"/>
- *           &lt;element name="include" type="{}includeType" maxOccurs="unbounded"/>
- *         &lt;/choice>
- *       &lt;/choice>
- *       &lt;attribute name="delayed" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="layoutData" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="selection" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="cTabFolderType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}collectionType"&amp;gt;
+ *       &amp;lt;choice&amp;gt;
+ *         &amp;lt;choice&amp;gt;
+ *           &amp;lt;element name="cTabItem" type="{}cTabItemType" maxOccurs="unbounded"/&amp;gt;
+ *           &amp;lt;element name="include" type="{}includeType" maxOccurs="unbounded"/&amp;gt;
+ *         &amp;lt;/choice&amp;gt;
+ *       &amp;lt;/choice&amp;gt;
+ *       &amp;lt;attribute name="delayed" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="layoutData" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="selection" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -65,20 +65,20 @@ public class CTabFolderType
     /**
      * Gets the value of the cTabItem property.
      * 
-     * <p>
+     * &lt;p&gt;
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the cTabItem property.
+     * This is why there is not a &lt;CODE&gt;set&lt;/CODE&gt; method for the cTabItem property.
      * 
-     * <p>
+     * &lt;p&gt;
      * For example, to add a new item, do as follows:
-     * <pre>
+     * &lt;pre&gt;
      *    getCTabItem().add(newItem);
-     * </pre>
+     * &lt;/pre&gt;
      * 
      * 
-     * <p>
+     * &lt;p&gt;
      * Objects of the following type(s) are allowed in the list
      * {@link CTabItemType }
      * 
@@ -94,20 +94,20 @@ public class CTabFolderType
     /**
      * Gets the value of the include property.
      * 
-     * <p>
+     * &lt;p&gt;
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the include property.
+     * This is why there is not a &lt;CODE&gt;set&lt;/CODE&gt; method for the include property.
      * 
-     * <p>
+     * &lt;p&gt;
      * For example, to add a new item, do as follows:
-     * <pre>
+     * &lt;pre&gt;
      *    getInclude().add(newItem);
-     * </pre>
+     * &lt;/pre&gt;
      * 
      * 
-     * <p>
+     * &lt;p&gt;
      * Objects of the following type(s) are allowed in the list
      * {@link IncludeType }
      * 
@@ -121,7 +121,7 @@ public class CTabFolderType
     }
 
     /**
-     * Obtient la valeur de la propriété delayed.
+     * Obtient la valeur de la propriÃ©tÃ© delayed.
      * 
      * @return
      *     possible object is
@@ -133,7 +133,7 @@ public class CTabFolderType
     }
 
     /**
-     * Définit la valeur de la propriété delayed.
+     * DÃ©finit la valeur de la propriÃ©tÃ© delayed.
      * 
      * @param value
      *     allowed object is
@@ -145,7 +145,7 @@ public class CTabFolderType
     }
 
     /**
-     * Obtient la valeur de la propriété layoutData.
+     * Obtient la valeur de la propriÃ©tÃ© layoutData.
      * 
      * @return
      *     possible object is
@@ -157,7 +157,7 @@ public class CTabFolderType
     }
 
     /**
-     * Définit la valeur de la propriété layoutData.
+     * DÃ©finit la valeur de la propriÃ©tÃ© layoutData.
      * 
      * @param value
      *     allowed object is
@@ -169,7 +169,7 @@ public class CTabFolderType
     }
 
     /**
-     * Obtient la valeur de la propriété selection.
+     * Obtient la valeur de la propriÃ©tÃ© selection.
      * 
      * @return
      *     possible object is
@@ -181,7 +181,7 @@ public class CTabFolderType
     }
 
     /**
-     * Définit la valeur de la propriété selection.
+     * DÃ©finit la valeur de la propriÃ©tÃ© selection.
      * 
      * @param value
      *     allowed object is

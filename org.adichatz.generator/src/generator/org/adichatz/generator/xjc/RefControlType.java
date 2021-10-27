@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -18,28 +18,28 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour refControlType complex type.
+ * &lt;p&gt;Classe Java pour refControlType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="refControlType">
- *   &lt;complexContent>
- *     &lt;extension base="{}controlFieldType">
- *       &lt;sequence>
- *         &lt;element name="labelProvider" type="{}labelProviderType"/>
- *         &lt;element name="initValues" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="queryReference" type="{}queryReferenceType"/>
- *       &lt;/sequence>
- *       &lt;attribute name="poolQueryResult" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="values" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="displayedValues" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="labelProviderClassName" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="preferenceURI" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="refControlType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}controlFieldType"&amp;gt;
+ *       &amp;lt;sequence&amp;gt;
+ *         &amp;lt;element name="labelProvider" type="{}labelProviderType"/&amp;gt;
+ *         &amp;lt;element name="initValues" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *         &amp;lt;element name="queryReference" type="{}queryReferenceType"/&amp;gt;
+ *       &amp;lt;/sequence&amp;gt;
+ *       &amp;lt;attribute name="poolQueryResult" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="values" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="displayedValues" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="labelProviderClassName" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="preferenceURI" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -80,7 +80,7 @@ public class RefControlType
     protected String preferenceURI;
 
     /**
-     * Obtient la valeur de la propriété labelProvider.
+     * Obtient la valeur de la propriÃ©tÃ© labelProvider.
      * 
      * @return
      *     possible object is
@@ -92,7 +92,7 @@ public class RefControlType
     }
 
     /**
-     * Définit la valeur de la propriété labelProvider.
+     * DÃ©finit la valeur de la propriÃ©tÃ© labelProvider.
      * 
      * @param value
      *     allowed object is
@@ -104,7 +104,7 @@ public class RefControlType
     }
 
     /**
-     * Obtient la valeur de la propriété initValues.
+     * Obtient la valeur de la propriÃ©tÃ© initValues.
      * 
      * @return
      *     possible object is
@@ -116,7 +116,7 @@ public class RefControlType
     }
 
     /**
-     * Définit la valeur de la propriété initValues.
+     * DÃ©finit la valeur de la propriÃ©tÃ© initValues.
      * 
      * @param value
      *     allowed object is
@@ -128,7 +128,7 @@ public class RefControlType
     }
 
     /**
-     * Obtient la valeur de la propriété queryReference.
+     * Obtient la valeur de la propriÃ©tÃ© queryReference.
      * 
      * @return
      *     possible object is
@@ -140,7 +140,7 @@ public class RefControlType
     }
 
     /**
-     * Définit la valeur de la propriété queryReference.
+     * DÃ©finit la valeur de la propriÃ©tÃ© queryReference.
      * 
      * @param value
      *     allowed object is
@@ -152,7 +152,7 @@ public class RefControlType
     }
 
     /**
-     * Obtient la valeur de la propriété poolQueryResult.
+     * Obtient la valeur de la propriÃ©tÃ© poolQueryResult.
      * 
      * @return
      *     possible object is
@@ -164,7 +164,7 @@ public class RefControlType
     }
 
     /**
-     * Définit la valeur de la propriété poolQueryResult.
+     * DÃ©finit la valeur de la propriÃ©tÃ© poolQueryResult.
      * 
      * @param value
      *     allowed object is
@@ -176,7 +176,7 @@ public class RefControlType
     }
 
     /**
-     * Obtient la valeur de la propriété values.
+     * Obtient la valeur de la propriÃ©tÃ© values.
      * 
      * @return
      *     possible object is
@@ -188,7 +188,7 @@ public class RefControlType
     }
 
     /**
-     * Définit la valeur de la propriété values.
+     * DÃ©finit la valeur de la propriÃ©tÃ© values.
      * 
      * @param value
      *     allowed object is
@@ -200,7 +200,7 @@ public class RefControlType
     }
 
     /**
-     * Obtient la valeur de la propriété displayedValues.
+     * Obtient la valeur de la propriÃ©tÃ© displayedValues.
      * 
      * @return
      *     possible object is
@@ -212,7 +212,7 @@ public class RefControlType
     }
 
     /**
-     * Définit la valeur de la propriété displayedValues.
+     * DÃ©finit la valeur de la propriÃ©tÃ© displayedValues.
      * 
      * @param value
      *     allowed object is
@@ -224,7 +224,7 @@ public class RefControlType
     }
 
     /**
-     * Obtient la valeur de la propriété labelProviderClassName.
+     * Obtient la valeur de la propriÃ©tÃ© labelProviderClassName.
      * 
      * @return
      *     possible object is
@@ -236,7 +236,7 @@ public class RefControlType
     }
 
     /**
-     * Définit la valeur de la propriété labelProviderClassName.
+     * DÃ©finit la valeur de la propriÃ©tÃ© labelProviderClassName.
      * 
      * @param value
      *     allowed object is
@@ -248,7 +248,7 @@ public class RefControlType
     }
 
     /**
-     * Obtient la valeur de la propriété preferenceURI.
+     * Obtient la valeur de la propriÃ©tÃ© preferenceURI.
      * 
      * @return
      *     possible object is
@@ -260,7 +260,7 @@ public class RefControlType
     }
 
     /**
-     * Définit la valeur de la propriété preferenceURI.
+     * DÃ©finit la valeur de la propriÃ©tÃ© preferenceURI.
      * 
      * @param value
      *     allowed object is

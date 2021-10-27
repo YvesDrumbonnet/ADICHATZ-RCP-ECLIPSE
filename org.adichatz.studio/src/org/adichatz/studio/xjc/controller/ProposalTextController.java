@@ -76,6 +76,9 @@ import java.util.List;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.field.TextController;
 import org.adichatz.engine.core.ControllerCore;
+import org.adichatz.engine.listener.AControlListener;
+import org.adichatz.engine.listener.AdiEvent;
+import org.adichatz.engine.listener.IEventType;
 import org.adichatz.engine.widgets.AdiControlDecoration;
 import org.adichatz.engine.widgets.supplement.AdiContentProposalAdapter;
 import org.adichatz.engine.widgets.supplement.ITextControllerProposal;
@@ -126,7 +129,8 @@ public abstract class ProposalTextController extends TextController {
 	@Override
 	public void createControl() {
 		super.createControl();
-		createProposals();
+		if (addControl)
+			createProposals();
 	}
 
 	protected void createProposals() {
@@ -198,7 +202,13 @@ public abstract class ProposalTextController extends TextController {
 			else
 				this.labelProvider = labelProvider;
 
-			currentValue = textController.getControl().getText();
+			textController.getParentController()
+					.addListener(new AControlListener("AFTER_SYNCHRONIZE", IEventType.AFTER_SYNCHRONIZE) {
+						@Override
+						public void handleEvent(AdiEvent event) {
+							currentValue = textController.getControl().getText();
+						}
+					});
 
 			viewerContentProposalProvider = new TextViewerContentProposalProvider(this, false);
 			proposalAdapter = new AdiContentProposalAdapter(textController.getControl(), new TextContentAdapter(),

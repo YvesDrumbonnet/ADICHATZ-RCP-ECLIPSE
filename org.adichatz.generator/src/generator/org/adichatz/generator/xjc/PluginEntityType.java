@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -22,35 +22,35 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Classe Java pour pluginEntityType complex type.
+ * &lt;p&gt;Classe Java pour pluginEntityType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="pluginEntityType">
- *   &lt;complexContent>
- *     &lt;extension base="{}basicType">
- *       &lt;sequence>
- *         &lt;element name="icons" type="{}iconsType"/>
- *         &lt;element name="messages" type="{}messagesType"/>
- *         &lt;element name="params" type="{}paramsType"/>
- *         &lt;element name="generationUnit" type="{}generationUnitType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="propertyField" type="{}propertyFieldType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="pojoRewriters" type="{}pojoRewritersType"/>
- *         &lt;element name="queryBuilder" type="{}queryBuilderType"/>
- *       &lt;/sequence>
- *       &lt;attribute name="beanClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="uiBeanClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="entityURI" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="protectPojo" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="retrieveRoles" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="mergeRoles" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="persistRoles" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="removeRoles" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="pluginEntityType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}basicType"&amp;gt;
+ *       &amp;lt;sequence&amp;gt;
+ *         &amp;lt;element name="icons" type="{}iconsType"/&amp;gt;
+ *         &amp;lt;element name="messages" type="{}messagesType"/&amp;gt;
+ *         &amp;lt;element name="params" type="{}paramsType"/&amp;gt;
+ *         &amp;lt;element name="generationUnit" type="{}generationUnitType" maxOccurs="unbounded" minOccurs="0"/&amp;gt;
+ *         &amp;lt;element name="propertyField" type="{}propertyFieldType" maxOccurs="unbounded" minOccurs="0"/&amp;gt;
+ *         &amp;lt;element name="pojoRewriters" type="{}pojoRewritersType"/&amp;gt;
+ *         &amp;lt;element name="queryBuilder" type="{}queryBuilderType"/&amp;gt;
+ *       &amp;lt;/sequence&amp;gt;
+ *       &amp;lt;attribute name="beanClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="uiBeanClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="entityURI" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="protectPojo" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&amp;gt;
+ *       &amp;lt;attribute name="retrieveRoles" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="mergeRoles" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="persistRoles" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="removeRoles" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -104,7 +104,7 @@ public class PluginEntityType
     protected String removeRoles;
 
     /**
-     * Obtient la valeur de la propriété icons.
+     * Obtient la valeur de la propriÃ©tÃ© icons.
      * 
      * @return
      *     possible object is
@@ -116,7 +116,7 @@ public class PluginEntityType
     }
 
     /**
-     * Définit la valeur de la propriété icons.
+     * DÃ©finit la valeur de la propriÃ©tÃ© icons.
      * 
      * @param value
      *     allowed object is
@@ -128,7 +128,7 @@ public class PluginEntityType
     }
 
     /**
-     * Obtient la valeur de la propriété messages.
+     * Obtient la valeur de la propriÃ©tÃ© messages.
      * 
      * @return
      *     possible object is
@@ -140,7 +140,7 @@ public class PluginEntityType
     }
 
     /**
-     * Définit la valeur de la propriété messages.
+     * DÃ©finit la valeur de la propriÃ©tÃ© messages.
      * 
      * @param value
      *     allowed object is
@@ -152,7 +152,7 @@ public class PluginEntityType
     }
 
     /**
-     * Obtient la valeur de la propriété params.
+     * Obtient la valeur de la propriÃ©tÃ© params.
      * 
      * @return
      *     possible object is
@@ -164,7 +164,7 @@ public class PluginEntityType
     }
 
     /**
-     * Définit la valeur de la propriété params.
+     * DÃ©finit la valeur de la propriÃ©tÃ© params.
      * 
      * @param value
      *     allowed object is
@@ -178,20 +178,20 @@ public class PluginEntityType
     /**
      * Gets the value of the generationUnit property.
      * 
-     * <p>
+     * &lt;p&gt;
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the generationUnit property.
+     * This is why there is not a &lt;CODE&gt;set&lt;/CODE&gt; method for the generationUnit property.
      * 
-     * <p>
+     * &lt;p&gt;
      * For example, to add a new item, do as follows:
-     * <pre>
+     * &lt;pre&gt;
      *    getGenerationUnit().add(newItem);
-     * </pre>
+     * &lt;/pre&gt;
      * 
      * 
-     * <p>
+     * &lt;p&gt;
      * Objects of the following type(s) are allowed in the list
      * {@link GenerationUnitType }
      * 
@@ -207,20 +207,20 @@ public class PluginEntityType
     /**
      * Gets the value of the propertyField property.
      * 
-     * <p>
+     * &lt;p&gt;
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the propertyField property.
+     * This is why there is not a &lt;CODE&gt;set&lt;/CODE&gt; method for the propertyField property.
      * 
-     * <p>
+     * &lt;p&gt;
      * For example, to add a new item, do as follows:
-     * <pre>
+     * &lt;pre&gt;
      *    getPropertyField().add(newItem);
-     * </pre>
+     * &lt;/pre&gt;
      * 
      * 
-     * <p>
+     * &lt;p&gt;
      * Objects of the following type(s) are allowed in the list
      * {@link PropertyFieldType }
      * 
@@ -234,7 +234,7 @@ public class PluginEntityType
     }
 
     /**
-     * Obtient la valeur de la propriété pojoRewriters.
+     * Obtient la valeur de la propriÃ©tÃ© pojoRewriters.
      * 
      * @return
      *     possible object is
@@ -246,7 +246,7 @@ public class PluginEntityType
     }
 
     /**
-     * Définit la valeur de la propriété pojoRewriters.
+     * DÃ©finit la valeur de la propriÃ©tÃ© pojoRewriters.
      * 
      * @param value
      *     allowed object is
@@ -258,7 +258,7 @@ public class PluginEntityType
     }
 
     /**
-     * Obtient la valeur de la propriété queryBuilder.
+     * Obtient la valeur de la propriÃ©tÃ© queryBuilder.
      * 
      * @return
      *     possible object is
@@ -270,7 +270,7 @@ public class PluginEntityType
     }
 
     /**
-     * Définit la valeur de la propriété queryBuilder.
+     * DÃ©finit la valeur de la propriÃ©tÃ© queryBuilder.
      * 
      * @param value
      *     allowed object is
@@ -282,7 +282,7 @@ public class PluginEntityType
     }
 
     /**
-     * Obtient la valeur de la propriété beanClassName.
+     * Obtient la valeur de la propriÃ©tÃ© beanClassName.
      * 
      * @return
      *     possible object is
@@ -294,7 +294,7 @@ public class PluginEntityType
     }
 
     /**
-     * Définit la valeur de la propriété beanClassName.
+     * DÃ©finit la valeur de la propriÃ©tÃ© beanClassName.
      * 
      * @param value
      *     allowed object is
@@ -306,7 +306,7 @@ public class PluginEntityType
     }
 
     /**
-     * Obtient la valeur de la propriété uiBeanClassName.
+     * Obtient la valeur de la propriÃ©tÃ© uiBeanClassName.
      * 
      * @return
      *     possible object is
@@ -318,7 +318,7 @@ public class PluginEntityType
     }
 
     /**
-     * Définit la valeur de la propriété uiBeanClassName.
+     * DÃ©finit la valeur de la propriÃ©tÃ© uiBeanClassName.
      * 
      * @param value
      *     allowed object is
@@ -330,7 +330,7 @@ public class PluginEntityType
     }
 
     /**
-     * Obtient la valeur de la propriété entityURI.
+     * Obtient la valeur de la propriÃ©tÃ© entityURI.
      * 
      * @return
      *     possible object is
@@ -342,7 +342,7 @@ public class PluginEntityType
     }
 
     /**
-     * Définit la valeur de la propriété entityURI.
+     * DÃ©finit la valeur de la propriÃ©tÃ© entityURI.
      * 
      * @param value
      *     allowed object is
@@ -354,7 +354,7 @@ public class PluginEntityType
     }
 
     /**
-     * Obtient la valeur de la propriété protectPojo.
+     * Obtient la valeur de la propriÃ©tÃ© protectPojo.
      * 
      * @return
      *     possible object is
@@ -370,7 +370,7 @@ public class PluginEntityType
     }
 
     /**
-     * Définit la valeur de la propriété protectPojo.
+     * DÃ©finit la valeur de la propriÃ©tÃ© protectPojo.
      * 
      * @param value
      *     allowed object is
@@ -382,7 +382,7 @@ public class PluginEntityType
     }
 
     /**
-     * Obtient la valeur de la propriété retrieveRoles.
+     * Obtient la valeur de la propriÃ©tÃ© retrieveRoles.
      * 
      * @return
      *     possible object is
@@ -394,7 +394,7 @@ public class PluginEntityType
     }
 
     /**
-     * Définit la valeur de la propriété retrieveRoles.
+     * DÃ©finit la valeur de la propriÃ©tÃ© retrieveRoles.
      * 
      * @param value
      *     allowed object is
@@ -406,7 +406,7 @@ public class PluginEntityType
     }
 
     /**
-     * Obtient la valeur de la propriété mergeRoles.
+     * Obtient la valeur de la propriÃ©tÃ© mergeRoles.
      * 
      * @return
      *     possible object is
@@ -418,7 +418,7 @@ public class PluginEntityType
     }
 
     /**
-     * Définit la valeur de la propriété mergeRoles.
+     * DÃ©finit la valeur de la propriÃ©tÃ© mergeRoles.
      * 
      * @param value
      *     allowed object is
@@ -430,7 +430,7 @@ public class PluginEntityType
     }
 
     /**
-     * Obtient la valeur de la propriété persistRoles.
+     * Obtient la valeur de la propriÃ©tÃ© persistRoles.
      * 
      * @return
      *     possible object is
@@ -442,7 +442,7 @@ public class PluginEntityType
     }
 
     /**
-     * Définit la valeur de la propriété persistRoles.
+     * DÃ©finit la valeur de la propriÃ©tÃ© persistRoles.
      * 
      * @param value
      *     allowed object is
@@ -454,7 +454,7 @@ public class PluginEntityType
     }
 
     /**
-     * Obtient la valeur de la propriété removeRoles.
+     * Obtient la valeur de la propriÃ©tÃ© removeRoles.
      * 
      * @return
      *     possible object is
@@ -466,7 +466,7 @@ public class PluginEntityType
     }
 
     /**
-     * Définit la valeur de la propriété removeRoles.
+     * DÃ©finit la valeur de la propriÃ©tÃ© removeRoles.
      * 
      * @param value
      *     allowed object is

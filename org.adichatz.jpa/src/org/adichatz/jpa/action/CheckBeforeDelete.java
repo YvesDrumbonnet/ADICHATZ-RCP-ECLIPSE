@@ -9,8 +9,8 @@ import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToMany;
 
 import org.adichatz.common.ejb.AdiPMException;
 import org.adichatz.common.ejb.AdiQuery;

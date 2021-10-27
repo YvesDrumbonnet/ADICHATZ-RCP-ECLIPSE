@@ -71,8 +71,6 @@
 *******************************************************************************/
 package org.adichatz.studio.xjc.editor.action;
 
-import static org.adichatz.engine.common.Utilities.adiPrintTrace;
-
 import org.adichatz.engine.action.AAction;
 import org.adichatz.engine.controller.ICollectionController;
 import org.adichatz.engine.controller.action.ActionController;
@@ -105,7 +103,6 @@ public class SwitchToActiveFileActionController extends ActionController {
 	 */
 	@Override
 	public void createControl() {
-		adiPrintTrace("AVISATZ: Switch");
 		action = new AAction() {
 			@Override
 			public void runAction() {

@@ -91,6 +91,8 @@ public class TextController extends AFieldController {
 	/** The control. */
 	protected Text control;
 
+	protected boolean addControl = true; // Control could be created in extension of the controller
+
 	/**
 	 * Instantiates a new text controller.
 	 * 
@@ -147,9 +149,11 @@ public class TextController extends AFieldController {
 	@Override
 	public void createControl() {
 		super.createControl();
-		control = toolkit.createText(parentController.getComposite(), null, style);
-		if (0 != (style & AdiSWT.EXPANDABLE)) {
-			new TextExpandDecoration(control).setShowOnlyOnFocus(true);
+		if (addControl) {
+			control = toolkit.createText(parentController.getComposite(), null, style);
+			if (0 != (style & AdiSWT.EXPANDABLE)) {
+				new TextExpandDecoration(control).setShowOnlyOnFocus(true);
+			}
 		}
 	}
 

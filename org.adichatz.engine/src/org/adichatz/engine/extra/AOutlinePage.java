@@ -71,7 +71,7 @@ public abstract class AOutlinePage implements IOutlinePage {
 	/** The outline page listeners. */
 	private List<AOutlineListener> outlinePageListeners = new ArrayList<>();
 
-	protected AdiFormToolkit toolkit = AdichatzApplication.getInstance().getContextValue(AdiFormToolkit.class);
+	private AdiFormToolkit toolkit;
 
 	/**
 	 * Gets the post open part listeners.

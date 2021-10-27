@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -16,36 +16,36 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour richTextType complex type.
+ * &lt;p&gt;Classe Java pour richTextType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="richTextType">
- *   &lt;complexContent>
- *     &lt;extension base="{}controlFieldType">
- *       &lt;attribute name="editable" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="orientation" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="tabs" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="text" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="textLimit" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="containerBackground" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="containerBackgroundImage" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="containerBounds" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="containerCapture" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="containerFocus" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="containerFont" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="containerForeground" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="containerLayoutData" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="containerLocation" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="containerMenu" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="containerRedraw" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="containerSize" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="containerStyle" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="richTextType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}controlFieldType"&amp;gt;
+ *       &amp;lt;attribute name="editable" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="orientation" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="tabs" type="{http://www.w3.org/2001/XMLSchema}int" /&amp;gt;
+ *       &amp;lt;attribute name="text" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="textLimit" type="{http://www.w3.org/2001/XMLSchema}int" /&amp;gt;
+ *       &amp;lt;attribute name="containerBackground" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="containerBackgroundImage" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="containerBounds" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="containerCapture" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="containerFocus" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="containerFont" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="containerForeground" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="containerLayoutData" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="containerLocation" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="containerMenu" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="containerRedraw" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="containerSize" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="containerStyle" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -95,7 +95,7 @@ public class RichTextType
     protected String containerStyle;
 
     /**
-     * Obtient la valeur de la propriété editable.
+     * Obtient la valeur de la propriÃ©tÃ© editable.
      * 
      * @return
      *     possible object is
@@ -107,7 +107,7 @@ public class RichTextType
     }
 
     /**
-     * Définit la valeur de la propriété editable.
+     * DÃ©finit la valeur de la propriÃ©tÃ© editable.
      * 
      * @param value
      *     allowed object is
@@ -119,7 +119,7 @@ public class RichTextType
     }
 
     /**
-     * Obtient la valeur de la propriété orientation.
+     * Obtient la valeur de la propriÃ©tÃ© orientation.
      * 
      * @return
      *     possible object is
@@ -131,7 +131,7 @@ public class RichTextType
     }
 
     /**
-     * Définit la valeur de la propriété orientation.
+     * DÃ©finit la valeur de la propriÃ©tÃ© orientation.
      * 
      * @param value
      *     allowed object is
@@ -143,7 +143,7 @@ public class RichTextType
     }
 
     /**
-     * Obtient la valeur de la propriété tabs.
+     * Obtient la valeur de la propriÃ©tÃ© tabs.
      * 
      * @return
      *     possible object is
@@ -155,7 +155,7 @@ public class RichTextType
     }
 
     /**
-     * Définit la valeur de la propriété tabs.
+     * DÃ©finit la valeur de la propriÃ©tÃ© tabs.
      * 
      * @param value
      *     allowed object is
@@ -167,7 +167,7 @@ public class RichTextType
     }
 
     /**
-     * Obtient la valeur de la propriété text.
+     * Obtient la valeur de la propriÃ©tÃ© text.
      * 
      * @return
      *     possible object is
@@ -179,7 +179,7 @@ public class RichTextType
     }
 
     /**
-     * Définit la valeur de la propriété text.
+     * DÃ©finit la valeur de la propriÃ©tÃ© text.
      * 
      * @param value
      *     allowed object is
@@ -191,7 +191,7 @@ public class RichTextType
     }
 
     /**
-     * Obtient la valeur de la propriété textLimit.
+     * Obtient la valeur de la propriÃ©tÃ© textLimit.
      * 
      * @return
      *     possible object is
@@ -203,7 +203,7 @@ public class RichTextType
     }
 
     /**
-     * Définit la valeur de la propriété textLimit.
+     * DÃ©finit la valeur de la propriÃ©tÃ© textLimit.
      * 
      * @param value
      *     allowed object is
@@ -215,7 +215,7 @@ public class RichTextType
     }
 
     /**
-     * Obtient la valeur de la propriété containerBackground.
+     * Obtient la valeur de la propriÃ©tÃ© containerBackground.
      * 
      * @return
      *     possible object is
@@ -227,7 +227,7 @@ public class RichTextType
     }
 
     /**
-     * Définit la valeur de la propriété containerBackground.
+     * DÃ©finit la valeur de la propriÃ©tÃ© containerBackground.
      * 
      * @param value
      *     allowed object is
@@ -239,7 +239,7 @@ public class RichTextType
     }
 
     /**
-     * Obtient la valeur de la propriété containerBackgroundImage.
+     * Obtient la valeur de la propriÃ©tÃ© containerBackgroundImage.
      * 
      * @return
      *     possible object is
@@ -251,7 +251,7 @@ public class RichTextType
     }
 
     /**
-     * Définit la valeur de la propriété containerBackgroundImage.
+     * DÃ©finit la valeur de la propriÃ©tÃ© containerBackgroundImage.
      * 
      * @param value
      *     allowed object is
@@ -263,7 +263,7 @@ public class RichTextType
     }
 
     /**
-     * Obtient la valeur de la propriété containerBounds.
+     * Obtient la valeur de la propriÃ©tÃ© containerBounds.
      * 
      * @return
      *     possible object is
@@ -275,7 +275,7 @@ public class RichTextType
     }
 
     /**
-     * Définit la valeur de la propriété containerBounds.
+     * DÃ©finit la valeur de la propriÃ©tÃ© containerBounds.
      * 
      * @param value
      *     allowed object is
@@ -287,7 +287,7 @@ public class RichTextType
     }
 
     /**
-     * Obtient la valeur de la propriété containerCapture.
+     * Obtient la valeur de la propriÃ©tÃ© containerCapture.
      * 
      * @return
      *     possible object is
@@ -299,7 +299,7 @@ public class RichTextType
     }
 
     /**
-     * Définit la valeur de la propriété containerCapture.
+     * DÃ©finit la valeur de la propriÃ©tÃ© containerCapture.
      * 
      * @param value
      *     allowed object is
@@ -311,7 +311,7 @@ public class RichTextType
     }
 
     /**
-     * Obtient la valeur de la propriété containerFocus.
+     * Obtient la valeur de la propriÃ©tÃ© containerFocus.
      * 
      * @return
      *     possible object is
@@ -323,7 +323,7 @@ public class RichTextType
     }
 
     /**
-     * Définit la valeur de la propriété containerFocus.
+     * DÃ©finit la valeur de la propriÃ©tÃ© containerFocus.
      * 
      * @param value
      *     allowed object is
@@ -335,7 +335,7 @@ public class RichTextType
     }
 
     /**
-     * Obtient la valeur de la propriété containerFont.
+     * Obtient la valeur de la propriÃ©tÃ© containerFont.
      * 
      * @return
      *     possible object is
@@ -347,7 +347,7 @@ public class RichTextType
     }
 
     /**
-     * Définit la valeur de la propriété containerFont.
+     * DÃ©finit la valeur de la propriÃ©tÃ© containerFont.
      * 
      * @param value
      *     allowed object is
@@ -359,7 +359,7 @@ public class RichTextType
     }
 
     /**
-     * Obtient la valeur de la propriété containerForeground.
+     * Obtient la valeur de la propriÃ©tÃ© containerForeground.
      * 
      * @return
      *     possible object is
@@ -371,7 +371,7 @@ public class RichTextType
     }
 
     /**
-     * Définit la valeur de la propriété containerForeground.
+     * DÃ©finit la valeur de la propriÃ©tÃ© containerForeground.
      * 
      * @param value
      *     allowed object is
@@ -383,7 +383,7 @@ public class RichTextType
     }
 
     /**
-     * Obtient la valeur de la propriété containerLayoutData.
+     * Obtient la valeur de la propriÃ©tÃ© containerLayoutData.
      * 
      * @return
      *     possible object is
@@ -395,7 +395,7 @@ public class RichTextType
     }
 
     /**
-     * Définit la valeur de la propriété containerLayoutData.
+     * DÃ©finit la valeur de la propriÃ©tÃ© containerLayoutData.
      * 
      * @param value
      *     allowed object is
@@ -407,7 +407,7 @@ public class RichTextType
     }
 
     /**
-     * Obtient la valeur de la propriété containerLocation.
+     * Obtient la valeur de la propriÃ©tÃ© containerLocation.
      * 
      * @return
      *     possible object is
@@ -419,7 +419,7 @@ public class RichTextType
     }
 
     /**
-     * Définit la valeur de la propriété containerLocation.
+     * DÃ©finit la valeur de la propriÃ©tÃ© containerLocation.
      * 
      * @param value
      *     allowed object is
@@ -431,7 +431,7 @@ public class RichTextType
     }
 
     /**
-     * Obtient la valeur de la propriété containerMenu.
+     * Obtient la valeur de la propriÃ©tÃ© containerMenu.
      * 
      * @return
      *     possible object is
@@ -443,7 +443,7 @@ public class RichTextType
     }
 
     /**
-     * Définit la valeur de la propriété containerMenu.
+     * DÃ©finit la valeur de la propriÃ©tÃ© containerMenu.
      * 
      * @param value
      *     allowed object is
@@ -455,7 +455,7 @@ public class RichTextType
     }
 
     /**
-     * Obtient la valeur de la propriété containerRedraw.
+     * Obtient la valeur de la propriÃ©tÃ© containerRedraw.
      * 
      * @return
      *     possible object is
@@ -467,7 +467,7 @@ public class RichTextType
     }
 
     /**
-     * Définit la valeur de la propriété containerRedraw.
+     * DÃ©finit la valeur de la propriÃ©tÃ© containerRedraw.
      * 
      * @param value
      *     allowed object is
@@ -479,7 +479,7 @@ public class RichTextType
     }
 
     /**
-     * Obtient la valeur de la propriété containerSize.
+     * Obtient la valeur de la propriÃ©tÃ© containerSize.
      * 
      * @return
      *     possible object is
@@ -491,7 +491,7 @@ public class RichTextType
     }
 
     /**
-     * Définit la valeur de la propriété containerSize.
+     * DÃ©finit la valeur de la propriÃ©tÃ© containerSize.
      * 
      * @param value
      *     allowed object is
@@ -503,7 +503,7 @@ public class RichTextType
     }
 
     /**
-     * Obtient la valeur de la propriété containerStyle.
+     * Obtient la valeur de la propriÃ©tÃ© containerStyle.
      * 
      * @return
      *     possible object is
@@ -515,7 +515,7 @@ public class RichTextType
     }
 
     /**
-     * Définit la valeur de la propriété containerStyle.
+     * DÃ©finit la valeur de la propriÃ©tÃ© containerStyle.
      * 
      * @param value
      *     allowed object is

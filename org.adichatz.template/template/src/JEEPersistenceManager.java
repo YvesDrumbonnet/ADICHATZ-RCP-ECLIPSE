@@ -71,10 +71,10 @@
  *******************************************************************************/
 package #{adichatz.package.name}.ejb;
 
-import javax.ejb.Remote;
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import jakarta.ejb.Remote;
+import jakarta.ejb.Stateless;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 import org.adichatz.common.ejb.remote.IAdiLockManager;
 import org.adichatz.common.ejb.remote.IAdiPersistenceManager;

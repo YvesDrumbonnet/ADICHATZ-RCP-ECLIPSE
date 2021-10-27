@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -13,19 +13,18 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour sortEnum.
+ * &lt;p&gt;Classe Java pour sortEnum.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
- * <p>
- * <pre>
- * &lt;simpleType name="sortEnum">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}token">
- *     &lt;enumeration value="ASC"/>
- *     &lt;enumeration value="NONE"/>
- *     &lt;enumeration value="DESC"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;pre&gt;
+ * &amp;lt;simpleType name="sortEnum"&amp;gt;
+ *   &amp;lt;restriction base="{http://www.w3.org/2001/XMLSchema}token"&amp;gt;
+ *     &amp;lt;enumeration value="ASC"/&amp;gt;
+ *     &amp;lt;enumeration value="NONE"/&amp;gt;
+ *     &amp;lt;enumeration value="DESC"/&amp;gt;
+ *   &amp;lt;/restriction&amp;gt;
+ * &amp;lt;/simpleType&amp;gt;
+ * &lt;/pre&gt;
  * 
  */
 @XmlType(name = "sortEnum")

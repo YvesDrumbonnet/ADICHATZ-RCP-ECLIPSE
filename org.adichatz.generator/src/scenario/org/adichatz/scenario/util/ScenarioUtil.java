@@ -78,8 +78,8 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinColumns;
 import javax.xml.bind.JAXBException;
 
 import org.adichatz.engine.cache.BeanUtils;

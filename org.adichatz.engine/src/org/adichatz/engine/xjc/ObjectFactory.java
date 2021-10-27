@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:21 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:33 PM CEST 
 //
 
 
@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlRegistry;
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
  * generated in the org.adichatz.engine.xjc package. 
- * <p>An ObjectFactory allows you to programatically 
+ * &lt;p&gt;An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
  * content can consist of schema derived interfaces 
@@ -34,6 +34,22 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link AdichatzConnectorConfigTree }
+     * 
+     */
+    public AdichatzConnectorConfigTree createAdichatzConnectorConfigTree() {
+        return new AdichatzConnectorConfigTree();
+    }
+
+    /**
+     * Create an instance of {@link ParamsType }
+     * 
+     */
+    public ParamsType createParamsType() {
+        return new ParamsType();
     }
 
     /**
@@ -61,43 +77,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AdichatzConnectorConfigTree }
+     * Create an instance of {@link BasicType }
      * 
      */
-    public AdichatzConnectorConfigTree createAdichatzConnectorConfigTree() {
-        return new AdichatzConnectorConfigTree();
+    public BasicType createBasicType() {
+        return new BasicType();
     }
 
     /**
-     * Create an instance of {@link ParamsType }
+     * Create an instance of {@link ElementType }
      * 
      */
-    public ParamsType createParamsType() {
-        return new ParamsType();
-    }
-
-    /**
-     * Create an instance of {@link TableStatusBarsType }
-     * 
-     */
-    public TableStatusBarsType createTableStatusBarsType() {
-        return new TableStatusBarsType();
-    }
-
-    /**
-     * Create an instance of {@link NavigatorsType }
-     * 
-     */
-    public NavigatorsType createNavigatorsType() {
-        return new NavigatorsType();
-    }
-
-    /**
-     * Create an instance of {@link ContentProviderType }
-     * 
-     */
-    public ContentProviderType createContentProviderType() {
-        return new ContentProviderType();
+    public ElementType createElementType() {
+        return new ElementType();
     }
 
     /**
@@ -109,35 +101,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link BasicType }
+     * Create an instance of {@link ContentProviderType }
      * 
      */
-    public BasicType createBasicType() {
-        return new BasicType();
+    public ContentProviderType createContentProviderType() {
+        return new ContentProviderType();
     }
 
     /**
-     * Create an instance of {@link TableStatusBar }
+     * Create an instance of {@link NavigatorsType }
      * 
      */
-    public TableStatusBar createTableStatusBar() {
-        return new TableStatusBar();
-    }
-
-    /**
-     * Create an instance of {@link TableComponentType }
-     * 
-     */
-    public TableComponentType createTableComponentType() {
-        return new TableComponentType();
-    }
-
-    /**
-     * Create an instance of {@link ElementType }
-     * 
-     */
-    public ElementType createElementType() {
-        return new ElementType();
+    public NavigatorsType createNavigatorsType() {
+        return new NavigatorsType();
     }
 
     /**
@@ -162,6 +138,30 @@ public class ObjectFactory {
      */
     public TableRenderersType createTableRenderersType() {
         return new TableRenderersType();
+    }
+
+    /**
+     * Create an instance of {@link TableStatusBarsType }
+     * 
+     */
+    public TableStatusBarsType createTableStatusBarsType() {
+        return new TableStatusBarsType();
+    }
+
+    /**
+     * Create an instance of {@link TableComponentType }
+     * 
+     */
+    public TableComponentType createTableComponentType() {
+        return new TableComponentType();
+    }
+
+    /**
+     * Create an instance of {@link TableStatusBar }
+     * 
+     */
+    public TableStatusBar createTableStatusBar() {
+        return new TableStatusBar();
     }
 
 }

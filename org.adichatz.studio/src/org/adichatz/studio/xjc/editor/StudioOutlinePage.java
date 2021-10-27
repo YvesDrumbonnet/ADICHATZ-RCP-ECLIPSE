@@ -111,12 +111,10 @@ import org.eclipse.nebula.widgets.pshelf.PShelfItem;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.forms.ManagedForm;
 import org.eclipse.ui.forms.widgets.Hyperlink;
@@ -377,10 +375,10 @@ public class StudioOutlinePage extends Page implements IAdiOutlinePage {
 								disableColumnControllers(rootController, false);
 							}
 							parentController = (AEntityManagerController) pshelfItemController.getChildControllers().get(0);
-							Event event = new Event();
-							event.gc = new GC(parentController.getControl());
-							parentController.getControl().notifyListeners(SWT.Paint, event);
-							pshelfItemController.getControl().layout();
+							//							Event event = new Event();
+							//							event.gc = new GC(parentController.getControl());
+							//							parentController.getControl().notifyListeners(SWT.Paint, event);
+							//							pshelfItemController.getControl().layout();
 						}
 					}
 				});

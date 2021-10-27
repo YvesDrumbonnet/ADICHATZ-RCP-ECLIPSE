@@ -28,6 +28,8 @@ public class AdiImageDescriptor extends ImageDescriptor {
 
 	private ImageData maskData;
 
+	private Image image;
+
 	public AdiImageDescriptor(Bundle bundle, String imageName) {
 		this.bundle = bundle;
 		this.imageName = imageName;
@@ -39,6 +41,8 @@ public class AdiImageDescriptor extends ImageDescriptor {
 	}
 
 	public Image createImage(boolean returnMissingImageOnError, Device device) {
+		if (null != image && !image.isDisposed())
+			return image;
 		if (null == imageData) {
 			imageData = getImageData();
 			/*
@@ -51,16 +55,17 @@ public class AdiImageDescriptor extends ImageDescriptor {
 		Display display = Display.getCurrent();
 		try {
 			if (null != maskData)
-				return new Image(display, imageData, maskData);
-			return new Image(display, imageData);
+				image = new Image(display, imageData, maskData);
+			else
+				image = new Image(display, imageData);
 		} catch (SWTException exception) {
 			try {
-				return new Image(display, DEFAULT_IMAGE_DATA);
+				image = new Image(display, DEFAULT_IMAGE_DATA);
 			} catch (SWTException nextException) {
 				LogBroker.logError(nextException);
-				return null;
 			}
 		}
+		return image;
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package org.adichatz.hibernate.ejb.crypto;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 import org.adichatz.common.ejb.AdiPMException;
 import org.adichatz.common.ejb.AdiQuery;

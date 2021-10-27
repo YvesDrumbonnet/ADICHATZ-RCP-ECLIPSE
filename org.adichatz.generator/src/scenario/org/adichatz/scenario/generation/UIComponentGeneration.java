@@ -311,15 +311,37 @@ public class UIComponentGeneration {
 				if (4 != version.getMajor())
 					logError(getFromGeneratorBundle("generation.build.product.invalid.version"));
 				int minor = version.getMinor();
+				boolean hasJakartaVersion = null != Platform.getBundle("jakarta.xml.bind"); // Java version >= 9 and use jakarta plugin for JEE JAXB. 
 				Element applicationPlugin = doc.createElement("plugin");
 				ScenarioUtil.addAttrribute(doc, applicationPlugin, "id", pluginName);
 				plugins.appendChild(applicationPlugin);
+				/*
+				 * Create a map: Key=plginName, Value=True if add fragment="True" to plusng declaration
+				 */
 				Map<String, Boolean> pluginMap = new HashMap<>();
 				pluginMap.put("com.ibm.icu", false);
+				if (hasJakartaVersion) {
+					pluginMap.put("com.sun.jna", false);
+					pluginMap.put("com.sun.jna.transform", false);
+					pluginMap.put("com.sun.xml.bind", false);
+					pluginMap.put("jakarta.xml.bind", false);
+					pluginMap.put("javax.activation", false);
+				}
 				pluginMap.put("javax.annotation", false);
 				pluginMap.put("javax.inject", false);
 				if (minor < 16)
 					pluginMap.put("javax.xml", false);
+				if (hasJakartaVersion) {
+					pluginMap.put("javax.xml", false);
+					pluginMap.put("javax.xml.datatype", false);
+					pluginMap.put("javax.xml.namespace", false);
+					pluginMap.put("javax.xml.parsers", false);
+					pluginMap.put("javax.xml.transform", false);
+					pluginMap.put("javax.xml.transform.dom", false);
+					pluginMap.put("javax.xml.transform.sax", false);
+					pluginMap.put("javax.xml.transform.stream", false);
+					pluginMap.put("javax.xml.validation", false);
+				}
 				pluginMap.put("org.adichatz.common", false);
 				pluginMap.put("org.adichatz.css.theme", false);
 				pluginMap.put("org.adichatz.engine", false);
@@ -414,6 +436,8 @@ public class UIComponentGeneration {
 				pluginMap.put("org.eclipse.jdt.core", false);
 				pluginMap.put("org.eclipse.jface", false);
 				pluginMap.put("org.eclipse.jface.databinding", false);
+				if (hasJakartaVersion)
+					pluginMap.put("org.eclipse.jface.notifications", false);
 				pluginMap.put("org.eclipse.jface.text", false);
 				pluginMap.put("org.eclipse.osgi", false);
 				pluginMap.put("org.eclipse.osgi.compatibility.state", true);
@@ -432,7 +456,6 @@ public class UIComponentGeneration {
 					pluginMap.put("org.eclipse.ui.workbench.texteditor", false);
 				else
 					pluginMap.put("org.eclipse.urischeme", false);
-
 				pluginMap.put("org.w3c.css.sac", false);
 				pluginMap.put("org.w3c.dom.events", false);
 				pluginMap.put("org.w3c.dom.smil", false);

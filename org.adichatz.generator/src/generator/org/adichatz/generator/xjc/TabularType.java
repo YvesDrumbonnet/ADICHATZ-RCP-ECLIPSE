@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -18,30 +18,30 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour tabularType complex type.
+ * &lt;p&gt;Classe Java pour tabularType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="tabularType">
- *   &lt;complexContent>
- *     &lt;extension base="{}setType">
- *       &lt;sequence>
- *         &lt;element name="layout" type="{}layoutType"/>
- *         &lt;element name="contentProvider" type="{}contentProviderType" minOccurs="0"/>
- *         &lt;element name="labelProvider" type="{}labelProviderType" minOccurs="0"/>
- *         &lt;element name="crossReferences" type="{}crossReferencesType"/>
- *         &lt;element name="columnPreferences" type="{}columnPreferencesType"/>
- *         &lt;element name="filters" type="{}filtersType"/>
- *       &lt;/sequence>
- *       &lt;attribute name="sortedColumn" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="columnOrder" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="statusBarKey" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="tableRendererKey" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="tabularType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}setType"&amp;gt;
+ *       &amp;lt;sequence&amp;gt;
+ *         &amp;lt;element name="layout" type="{}layoutType"/&amp;gt;
+ *         &amp;lt;element name="contentProvider" type="{}contentProviderType" minOccurs="0"/&amp;gt;
+ *         &amp;lt;element name="labelProvider" type="{}labelProviderType" minOccurs="0"/&amp;gt;
+ *         &amp;lt;element name="crossReferences" type="{}crossReferencesType"/&amp;gt;
+ *         &amp;lt;element name="columnPreferences" type="{}columnPreferencesType"/&amp;gt;
+ *         &amp;lt;element name="filters" type="{}filtersType"/&amp;gt;
+ *       &amp;lt;/sequence&amp;gt;
+ *       &amp;lt;attribute name="sortedColumn" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="columnOrder" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="statusBarKey" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="tableRendererKey" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -84,7 +84,7 @@ public class TabularType
     protected String tableRendererKey;
 
     /**
-     * Obtient la valeur de la propriété layout.
+     * Obtient la valeur de la propriÃ©tÃ© layout.
      * 
      * @return
      *     possible object is
@@ -96,7 +96,7 @@ public class TabularType
     }
 
     /**
-     * Définit la valeur de la propriété layout.
+     * DÃ©finit la valeur de la propriÃ©tÃ© layout.
      * 
      * @param value
      *     allowed object is
@@ -108,7 +108,7 @@ public class TabularType
     }
 
     /**
-     * Obtient la valeur de la propriété contentProvider.
+     * Obtient la valeur de la propriÃ©tÃ© contentProvider.
      * 
      * @return
      *     possible object is
@@ -120,7 +120,7 @@ public class TabularType
     }
 
     /**
-     * Définit la valeur de la propriété contentProvider.
+     * DÃ©finit la valeur de la propriÃ©tÃ© contentProvider.
      * 
      * @param value
      *     allowed object is
@@ -132,7 +132,7 @@ public class TabularType
     }
 
     /**
-     * Obtient la valeur de la propriété labelProvider.
+     * Obtient la valeur de la propriÃ©tÃ© labelProvider.
      * 
      * @return
      *     possible object is
@@ -144,7 +144,7 @@ public class TabularType
     }
 
     /**
-     * Définit la valeur de la propriété labelProvider.
+     * DÃ©finit la valeur de la propriÃ©tÃ© labelProvider.
      * 
      * @param value
      *     allowed object is
@@ -156,7 +156,7 @@ public class TabularType
     }
 
     /**
-     * Obtient la valeur de la propriété crossReferences.
+     * Obtient la valeur de la propriÃ©tÃ© crossReferences.
      * 
      * @return
      *     possible object is
@@ -168,7 +168,7 @@ public class TabularType
     }
 
     /**
-     * Définit la valeur de la propriété crossReferences.
+     * DÃ©finit la valeur de la propriÃ©tÃ© crossReferences.
      * 
      * @param value
      *     allowed object is
@@ -180,7 +180,7 @@ public class TabularType
     }
 
     /**
-     * Obtient la valeur de la propriété columnPreferences.
+     * Obtient la valeur de la propriÃ©tÃ© columnPreferences.
      * 
      * @return
      *     possible object is
@@ -192,7 +192,7 @@ public class TabularType
     }
 
     /**
-     * Définit la valeur de la propriété columnPreferences.
+     * DÃ©finit la valeur de la propriÃ©tÃ© columnPreferences.
      * 
      * @param value
      *     allowed object is
@@ -204,7 +204,7 @@ public class TabularType
     }
 
     /**
-     * Obtient la valeur de la propriété filters.
+     * Obtient la valeur de la propriÃ©tÃ© filters.
      * 
      * @return
      *     possible object is
@@ -216,7 +216,7 @@ public class TabularType
     }
 
     /**
-     * Définit la valeur de la propriété filters.
+     * DÃ©finit la valeur de la propriÃ©tÃ© filters.
      * 
      * @param value
      *     allowed object is
@@ -228,7 +228,7 @@ public class TabularType
     }
 
     /**
-     * Obtient la valeur de la propriété sortedColumn.
+     * Obtient la valeur de la propriÃ©tÃ© sortedColumn.
      * 
      * @return
      *     possible object is
@@ -240,7 +240,7 @@ public class TabularType
     }
 
     /**
-     * Définit la valeur de la propriété sortedColumn.
+     * DÃ©finit la valeur de la propriÃ©tÃ© sortedColumn.
      * 
      * @param value
      *     allowed object is
@@ -252,7 +252,7 @@ public class TabularType
     }
 
     /**
-     * Obtient la valeur de la propriété columnOrder.
+     * Obtient la valeur de la propriÃ©tÃ© columnOrder.
      * 
      * @return
      *     possible object is
@@ -264,7 +264,7 @@ public class TabularType
     }
 
     /**
-     * Définit la valeur de la propriété columnOrder.
+     * DÃ©finit la valeur de la propriÃ©tÃ© columnOrder.
      * 
      * @param value
      *     allowed object is
@@ -276,7 +276,7 @@ public class TabularType
     }
 
     /**
-     * Obtient la valeur de la propriété statusBarKey.
+     * Obtient la valeur de la propriÃ©tÃ© statusBarKey.
      * 
      * @return
      *     possible object is
@@ -288,7 +288,7 @@ public class TabularType
     }
 
     /**
-     * Définit la valeur de la propriété statusBarKey.
+     * DÃ©finit la valeur de la propriÃ©tÃ© statusBarKey.
      * 
      * @param value
      *     allowed object is
@@ -300,7 +300,7 @@ public class TabularType
     }
 
     /**
-     * Obtient la valeur de la propriété tableRendererKey.
+     * Obtient la valeur de la propriÃ©tÃ© tableRendererKey.
      * 
      * @return
      *     possible object is
@@ -312,7 +312,7 @@ public class TabularType
     }
 
     /**
-     * Définit la valeur de la propriété tableRendererKey.
+     * DÃ©finit la valeur de la propriÃ©tÃ© tableRendererKey.
      * 
      * @param value
      *     allowed object is

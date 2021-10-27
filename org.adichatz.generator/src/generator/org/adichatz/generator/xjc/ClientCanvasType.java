@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -17,33 +17,33 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour clientCanvasType complex type.
+ * &lt;p&gt;Classe Java pour clientCanvasType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="clientCanvasType">
- *   &lt;complexContent>
- *     &lt;extension base="{}dirtyContainerType">
- *       &lt;attribute name="expanded" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="text" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="clientBackground" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="clientBackgroundImage" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="clientBounds" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="clientCapture" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="clientFocus" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="clientFont" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="clientForeground" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="clientLayoutData" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="clientLocation" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="clientMenu" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="clientRedraw" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="clientSize" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="clientStyle" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="clientCanvasType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}dirtyContainerType"&amp;gt;
+ *       &amp;lt;attribute name="expanded" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="text" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="clientBackground" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="clientBackgroundImage" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="clientBounds" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="clientCapture" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="clientFocus" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="clientFont" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="clientForeground" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="clientLayoutData" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="clientLocation" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="clientMenu" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="clientRedraw" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="clientSize" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="clientStyle" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -92,7 +92,7 @@ public class ClientCanvasType
     protected String clientStyle;
 
     /**
-     * Obtient la valeur de la propriété expanded.
+     * Obtient la valeur de la propriÃ©tÃ© expanded.
      * 
      * @return
      *     possible object is
@@ -104,7 +104,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Définit la valeur de la propriété expanded.
+     * DÃ©finit la valeur de la propriÃ©tÃ© expanded.
      * 
      * @param value
      *     allowed object is
@@ -116,7 +116,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Obtient la valeur de la propriété text.
+     * Obtient la valeur de la propriÃ©tÃ© text.
      * 
      * @return
      *     possible object is
@@ -128,7 +128,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Définit la valeur de la propriété text.
+     * DÃ©finit la valeur de la propriÃ©tÃ© text.
      * 
      * @param value
      *     allowed object is
@@ -140,7 +140,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Obtient la valeur de la propriété clientBackground.
+     * Obtient la valeur de la propriÃ©tÃ© clientBackground.
      * 
      * @return
      *     possible object is
@@ -152,7 +152,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Définit la valeur de la propriété clientBackground.
+     * DÃ©finit la valeur de la propriÃ©tÃ© clientBackground.
      * 
      * @param value
      *     allowed object is
@@ -164,7 +164,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Obtient la valeur de la propriété clientBackgroundImage.
+     * Obtient la valeur de la propriÃ©tÃ© clientBackgroundImage.
      * 
      * @return
      *     possible object is
@@ -176,7 +176,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Définit la valeur de la propriété clientBackgroundImage.
+     * DÃ©finit la valeur de la propriÃ©tÃ© clientBackgroundImage.
      * 
      * @param value
      *     allowed object is
@@ -188,7 +188,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Obtient la valeur de la propriété clientBounds.
+     * Obtient la valeur de la propriÃ©tÃ© clientBounds.
      * 
      * @return
      *     possible object is
@@ -200,7 +200,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Définit la valeur de la propriété clientBounds.
+     * DÃ©finit la valeur de la propriÃ©tÃ© clientBounds.
      * 
      * @param value
      *     allowed object is
@@ -212,7 +212,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Obtient la valeur de la propriété clientCapture.
+     * Obtient la valeur de la propriÃ©tÃ© clientCapture.
      * 
      * @return
      *     possible object is
@@ -224,7 +224,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Définit la valeur de la propriété clientCapture.
+     * DÃ©finit la valeur de la propriÃ©tÃ© clientCapture.
      * 
      * @param value
      *     allowed object is
@@ -236,7 +236,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Obtient la valeur de la propriété clientFocus.
+     * Obtient la valeur de la propriÃ©tÃ© clientFocus.
      * 
      * @return
      *     possible object is
@@ -248,7 +248,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Définit la valeur de la propriété clientFocus.
+     * DÃ©finit la valeur de la propriÃ©tÃ© clientFocus.
      * 
      * @param value
      *     allowed object is
@@ -260,7 +260,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Obtient la valeur de la propriété clientFont.
+     * Obtient la valeur de la propriÃ©tÃ© clientFont.
      * 
      * @return
      *     possible object is
@@ -272,7 +272,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Définit la valeur de la propriété clientFont.
+     * DÃ©finit la valeur de la propriÃ©tÃ© clientFont.
      * 
      * @param value
      *     allowed object is
@@ -284,7 +284,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Obtient la valeur de la propriété clientForeground.
+     * Obtient la valeur de la propriÃ©tÃ© clientForeground.
      * 
      * @return
      *     possible object is
@@ -296,7 +296,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Définit la valeur de la propriété clientForeground.
+     * DÃ©finit la valeur de la propriÃ©tÃ© clientForeground.
      * 
      * @param value
      *     allowed object is
@@ -308,7 +308,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Obtient la valeur de la propriété clientLayoutData.
+     * Obtient la valeur de la propriÃ©tÃ© clientLayoutData.
      * 
      * @return
      *     possible object is
@@ -320,7 +320,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Définit la valeur de la propriété clientLayoutData.
+     * DÃ©finit la valeur de la propriÃ©tÃ© clientLayoutData.
      * 
      * @param value
      *     allowed object is
@@ -332,7 +332,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Obtient la valeur de la propriété clientLocation.
+     * Obtient la valeur de la propriÃ©tÃ© clientLocation.
      * 
      * @return
      *     possible object is
@@ -344,7 +344,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Définit la valeur de la propriété clientLocation.
+     * DÃ©finit la valeur de la propriÃ©tÃ© clientLocation.
      * 
      * @param value
      *     allowed object is
@@ -356,7 +356,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Obtient la valeur de la propriété clientMenu.
+     * Obtient la valeur de la propriÃ©tÃ© clientMenu.
      * 
      * @return
      *     possible object is
@@ -368,7 +368,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Définit la valeur de la propriété clientMenu.
+     * DÃ©finit la valeur de la propriÃ©tÃ© clientMenu.
      * 
      * @param value
      *     allowed object is
@@ -380,7 +380,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Obtient la valeur de la propriété clientRedraw.
+     * Obtient la valeur de la propriÃ©tÃ© clientRedraw.
      * 
      * @return
      *     possible object is
@@ -392,7 +392,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Définit la valeur de la propriété clientRedraw.
+     * DÃ©finit la valeur de la propriÃ©tÃ© clientRedraw.
      * 
      * @param value
      *     allowed object is
@@ -404,7 +404,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Obtient la valeur de la propriété clientSize.
+     * Obtient la valeur de la propriÃ©tÃ© clientSize.
      * 
      * @return
      *     possible object is
@@ -416,7 +416,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Définit la valeur de la propriété clientSize.
+     * DÃ©finit la valeur de la propriÃ©tÃ© clientSize.
      * 
      * @param value
      *     allowed object is
@@ -428,7 +428,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Obtient la valeur de la propriété clientStyle.
+     * Obtient la valeur de la propriÃ©tÃ© clientStyle.
      * 
      * @return
      *     possible object is
@@ -440,7 +440,7 @@ public class ClientCanvasType
     }
 
     /**
-     * Définit la valeur de la propriété clientStyle.
+     * DÃ©finit la valeur de la propriÃ©tÃ© clientStyle.
      * 
      * @param value
      *     allowed object is

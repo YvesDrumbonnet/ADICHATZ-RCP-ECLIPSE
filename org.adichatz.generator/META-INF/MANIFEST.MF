@@ -6,7 +6,9 @@ Bundle-Version: 0.9.1.qualifier
 Bundle-Vendor: Adichatz
 Bundle-Activator: org.adichatz.generator.GeneratorPlugin
 Bundle-ActivationPolicy: lazy
-Require-Bundle: javax.inject,
+Require-Bundle: jakarta.xml.bind,
+ javax.activation,
+ javax.inject,
  org.adichatz.common,
  org.adichatz.engine,
  org.adichatz.engine.e4,

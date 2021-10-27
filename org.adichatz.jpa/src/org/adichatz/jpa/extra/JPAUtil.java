@@ -59,7 +59,6 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
@@ -297,7 +296,7 @@ public class JPAUtil {
 
 		if (preferenceFile.exists()) {
 			try {
-				return ((PreferenceTree) FileUtility.getTreeFromXmlFile(JPAUtil.getUnmarshaller(), preferenceFile));
+				return ((PreferenceTree) FileUtility.getTreeFromXmlFile(getUnmarshaller(), preferenceFile));
 			} catch (JAXBException e) {
 				logError(getFromJpaBundle("preference.cannot.unmarshal", fileName), e);
 			}
@@ -330,15 +329,8 @@ public class JPAUtil {
 	 * @return the unmarshaller
 	 */
 	public static Unmarshaller getUnmarshaller() {
-		if (null == UNMARSHALLER) {
-			JAXBContext jc = null;
-			try {
-				jc = JAXBContext.newInstance(ObjectFactory.class);
-				UNMARSHALLER = jc.createUnmarshaller();
-			} catch (JAXBException e) {
-				logError(e);
-			}
-		}
+		if (null == UNMARSHALLER)
+			UNMARSHALLER = EngineTools.getUnmarshaller(ObjectFactory.class);
 		return UNMARSHALLER;
 	}
 }

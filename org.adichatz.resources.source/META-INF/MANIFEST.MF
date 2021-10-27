@@ -4,13 +4,10 @@ Bundle-Name: Adichatz Resources (source)
 Bundle-SymbolicName: org.adichatz.resources.source;singleton:=true
 Bundle-Version: 0.9.1.qualifier
 Bundle-Vendor: Adichatz
-Export-Package: javax.persistence,
- javax.persistence.criteria,
- javax.persistence.metamodel,
- javax.persistence.spi,
- javax.xml.bind,
- javax.xml.bind.annotation,
- javax.xml.bind.annotation.adapters,
+Export-Package: jakarta.persistence,
+ jakarta.persistence.criteria,
+ jakarta.persistence.metamodel,
+ jakarta.persistence.spi,
  net.miginfocom.layout,
  net.miginfocom.swt,
  net.sf.cglib.core,

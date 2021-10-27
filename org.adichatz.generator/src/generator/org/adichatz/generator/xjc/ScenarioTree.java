@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -17,29 +17,29 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour anonymous complex type.
+ * &lt;p&gt;Classe Java pour anonymous complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="params" type="{}paramsType"/>
- *         &lt;element name="actionResources" type="{}actionResourcesType"/>
- *         &lt;element name="generators" type="{}generatorsType"/>
- *         &lt;element name="pathElements" type="{}pathElementsType"/>
- *         &lt;element name="scenarios" type="{}scenariosType"/>
- *         &lt;element name="controllers" type="{}controllersType"/>
- *         &lt;element name="generationScenario" type="{}generationScenarioType"/>
- *         &lt;element name="customizedScenarios" type="{}customizedScenariosType"/>
- *         &lt;element name="customPostAction" type="{}customPostActionType"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&amp;gt;
+ *       &amp;lt;sequence&amp;gt;
+ *         &amp;lt;element name="params" type="{}paramsType"/&amp;gt;
+ *         &amp;lt;element name="actionResources" type="{}actionResourcesType"/&amp;gt;
+ *         &amp;lt;element name="generators" type="{}generatorsType"/&amp;gt;
+ *         &amp;lt;element name="pathElements" type="{}pathElementsType"/&amp;gt;
+ *         &amp;lt;element name="scenarios" type="{}scenariosType"/&amp;gt;
+ *         &amp;lt;element name="controllers" type="{}controllersType"/&amp;gt;
+ *         &amp;lt;element name="generationScenario" type="{}generationScenarioType"/&amp;gt;
+ *         &amp;lt;element name="customizedScenarios" type="{}customizedScenariosType"/&amp;gt;
+ *         &amp;lt;element name="customPostAction" type="{}customPostActionType"/&amp;gt;
+ *       &amp;lt;/sequence&amp;gt;
+ *     &amp;lt;/restriction&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -81,7 +81,7 @@ public class ScenarioTree
     protected CustomPostActionType customPostAction;
 
     /**
-     * Obtient la valeur de la propriété params.
+     * Obtient la valeur de la propriÃ©tÃ© params.
      * 
      * @return
      *     possible object is
@@ -93,7 +93,7 @@ public class ScenarioTree
     }
 
     /**
-     * Définit la valeur de la propriété params.
+     * DÃ©finit la valeur de la propriÃ©tÃ© params.
      * 
      * @param value
      *     allowed object is
@@ -105,7 +105,7 @@ public class ScenarioTree
     }
 
     /**
-     * Obtient la valeur de la propriété actionResources.
+     * Obtient la valeur de la propriÃ©tÃ© actionResources.
      * 
      * @return
      *     possible object is
@@ -117,7 +117,7 @@ public class ScenarioTree
     }
 
     /**
-     * Définit la valeur de la propriété actionResources.
+     * DÃ©finit la valeur de la propriÃ©tÃ© actionResources.
      * 
      * @param value
      *     allowed object is
@@ -129,7 +129,7 @@ public class ScenarioTree
     }
 
     /**
-     * Obtient la valeur de la propriété generators.
+     * Obtient la valeur de la propriÃ©tÃ© generators.
      * 
      * @return
      *     possible object is
@@ -141,7 +141,7 @@ public class ScenarioTree
     }
 
     /**
-     * Définit la valeur de la propriété generators.
+     * DÃ©finit la valeur de la propriÃ©tÃ© generators.
      * 
      * @param value
      *     allowed object is
@@ -153,7 +153,7 @@ public class ScenarioTree
     }
 
     /**
-     * Obtient la valeur de la propriété pathElements.
+     * Obtient la valeur de la propriÃ©tÃ© pathElements.
      * 
      * @return
      *     possible object is
@@ -165,7 +165,7 @@ public class ScenarioTree
     }
 
     /**
-     * Définit la valeur de la propriété pathElements.
+     * DÃ©finit la valeur de la propriÃ©tÃ© pathElements.
      * 
      * @param value
      *     allowed object is
@@ -177,7 +177,7 @@ public class ScenarioTree
     }
 
     /**
-     * Obtient la valeur de la propriété scenarios.
+     * Obtient la valeur de la propriÃ©tÃ© scenarios.
      * 
      * @return
      *     possible object is
@@ -189,7 +189,7 @@ public class ScenarioTree
     }
 
     /**
-     * Définit la valeur de la propriété scenarios.
+     * DÃ©finit la valeur de la propriÃ©tÃ© scenarios.
      * 
      * @param value
      *     allowed object is
@@ -201,7 +201,7 @@ public class ScenarioTree
     }
 
     /**
-     * Obtient la valeur de la propriété controllers.
+     * Obtient la valeur de la propriÃ©tÃ© controllers.
      * 
      * @return
      *     possible object is
@@ -213,7 +213,7 @@ public class ScenarioTree
     }
 
     /**
-     * Définit la valeur de la propriété controllers.
+     * DÃ©finit la valeur de la propriÃ©tÃ© controllers.
      * 
      * @param value
      *     allowed object is
@@ -225,7 +225,7 @@ public class ScenarioTree
     }
 
     /**
-     * Obtient la valeur de la propriété generationScenario.
+     * Obtient la valeur de la propriÃ©tÃ© generationScenario.
      * 
      * @return
      *     possible object is
@@ -237,7 +237,7 @@ public class ScenarioTree
     }
 
     /**
-     * Définit la valeur de la propriété generationScenario.
+     * DÃ©finit la valeur de la propriÃ©tÃ© generationScenario.
      * 
      * @param value
      *     allowed object is
@@ -249,7 +249,7 @@ public class ScenarioTree
     }
 
     /**
-     * Obtient la valeur de la propriété customizedScenarios.
+     * Obtient la valeur de la propriÃ©tÃ© customizedScenarios.
      * 
      * @return
      *     possible object is
@@ -261,7 +261,7 @@ public class ScenarioTree
     }
 
     /**
-     * Définit la valeur de la propriété customizedScenarios.
+     * DÃ©finit la valeur de la propriÃ©tÃ© customizedScenarios.
      * 
      * @param value
      *     allowed object is
@@ -273,7 +273,7 @@ public class ScenarioTree
     }
 
     /**
-     * Obtient la valeur de la propriété customPostAction.
+     * Obtient la valeur de la propriÃ©tÃ© customPostAction.
      * 
      * @return
      *     possible object is
@@ -285,7 +285,7 @@ public class ScenarioTree
     }
 
     /**
-     * Définit la valeur de la propriété customPostAction.
+     * DÃ©finit la valeur de la propriÃ©tÃ© customPostAction.
      * 
      * @param value
      *     allowed object is

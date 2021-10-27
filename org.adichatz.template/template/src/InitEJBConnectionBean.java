@@ -71,7 +71,7 @@
  *******************************************************************************/
 package #{adichatz.package.name}.ejb;
 
-import javax.ejb.Stateless;
+import jakarta.ejb.Stateless;
 
 // TODO: Auto-generated Javadoc
 /**

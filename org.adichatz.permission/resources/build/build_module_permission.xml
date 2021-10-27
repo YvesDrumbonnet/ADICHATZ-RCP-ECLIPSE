@@ -1,0 +1,32 @@
+
+<project name="MyProject" default="init" basedir="../..">
+	<description>simple example build file</description>
+	<!-- set global properties for this build -->
+	<property name="bin" location="bin" />
+	<property name="resources.build.dir" location="resources/build" />
+	<property name="jar.file">org.adichatz.permission.module.jar</property>
+	<property name="module.dir" location="C:/ADICHATZ/applicationServers/wildfly-preview-24.0.1.Final/modules/system/layers/base/org/adichatz/permission/module/main/"/>
+
+	<target name="deployModule">		
+		<jar destfile="${resources.build.dir}/${jar.file}">
+			<fileset dir="${bin}">
+				<include name="org/adichatz/permission/*.class" />
+			</fileset>
+		</jar>
+		<copy todir="${module.dir}">
+			<file file="${resources.build.dir}/module.xml"/>
+			<file file="${resources.build.dir}/${jar.file}"/>
+		</copy>
+	</target>
+	
+	<target name="init">
+		<mkdir dir="${module.dir}"/>
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<echo>Time ${DSTAMP} ${TSTAMP}</echo>
+		<echo>${resources.build.dir}  - ${jar.file}</echo>
+		<antcall target="deployModule"/>
+	</target>
+
+</project>

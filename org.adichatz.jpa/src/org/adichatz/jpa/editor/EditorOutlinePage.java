@@ -227,7 +227,7 @@ public class EditorOutlinePage extends ABindingOutlinePage implements IControlle
 		boundedPart = (BoundedPart) editorOutlineInput.getBoundedPart();
 
 		scrolledForm = getToolkit().createScrolledForm(parent);
-		ManagedForm managedForm = new ManagedForm(toolkit, scrolledForm);
+		ManagedForm managedForm = new ManagedForm(getToolkit(), scrolledForm);
 		scrolledForm.getBody().setLayout(new MigLayout("wrap 1, ins 0", "grow,fill", "grow,fill"));
 
 		AdiPluginResources jpaPluginResources = AdichatzApplication.getPluginResources(EngineConstants.JPA_BUNDLE);
@@ -251,7 +251,8 @@ public class EditorOutlinePage extends ABindingOutlinePage implements IControlle
 		List<APartNavigation> navigations = boundedPart.getGenCode().getNavigations();
 		if (null != navigations) {
 			for (final APartNavigation navigation : navigations) {
-				final Hyperlink hyperlink = toolkit.createHyperlink(navigationCmp.getControl(), navigation.getName(), SWT.WRAP);
+				final Hyperlink hyperlink = getToolkit().createHyperlink(navigationCmp.getControl(), navigation.getName(),
+						SWT.WRAP);
 				hyperlink.setFont(JFaceResources.getBannerFont());
 				hyperlink.addHyperlinkListener(new HyperlinkAdapter() {
 					@Override

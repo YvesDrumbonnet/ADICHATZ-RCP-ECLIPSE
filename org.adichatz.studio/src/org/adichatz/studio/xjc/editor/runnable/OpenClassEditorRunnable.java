@@ -59,7 +59,7 @@ import static org.adichatz.studio.util.StudioUtil.getFromStudioBundle;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 import org.adichatz.common.ejb.AEntityCallback;
 import org.adichatz.common.ejb.AEntityCallfore;

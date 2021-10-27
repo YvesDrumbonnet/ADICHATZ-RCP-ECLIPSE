@@ -190,6 +190,10 @@ public class EngineConstants {
 
 	public static String ADICHATZ_THEME_POINT = "org.adichatz.css.theme";
 
+	public static String ENCRYPTION_CLASS_NAME = "adichatz.encryptionClassName";
+
+	public static String ENCRYPTED_KEY = "org.adichatz.encrypted.key";
+
 	public static String DEFAULT_STYLE_SHEET_URI = "platform:/plugin/".concat(EngineConstants.CSS_THEME_BUNDLE)
 			.concat("/resources/css/blue-win.css");
 }

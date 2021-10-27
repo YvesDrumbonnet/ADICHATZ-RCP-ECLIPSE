@@ -81,7 +81,7 @@ import java.util.StringTokenizer;
 import java.util.function.BooleanSupplier;
 import java.util.jar.Attributes;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 import javax.xml.bind.JAXBException;
 
 import org.adichatz.engine.common.AdiPluginResources;
@@ -127,6 +127,7 @@ import org.adichatz.jpa.data.JPADataAccess;
 import org.adichatz.scenario.generation.ARewriter;
 import org.adichatz.scenario.generation.ActivatorGenerator;
 import org.adichatz.scenario.generation.ComponentGeneration;
+import org.adichatz.scenario.generation.JakartaPersistenceRewriter;
 import org.adichatz.scenario.generation.ManifestChanger;
 import org.adichatz.scenario.generation.PojoTypeRewriter;
 import org.adichatz.scenario.impl.PluginEntityScenario;
@@ -388,11 +389,10 @@ public class ScenarioResources {
 					initFromProject(getScenarioFile(), false);
 				} else {
 					bundle = Platform.getBundle(bundleName);
-					if (null != bundle) {
+					if (null != bundle)
 						initFromBundle(bundle);
-					} else {
+					else
 						LogBroker.displayError("Invalid bundle name", "Bundle or project " + bundleName + " does not exist!");
-					}
 				}
 			} catch (java.lang.IllegalStateException e) {
 				initFromDir(bundleName);
@@ -1694,6 +1694,9 @@ public class ScenarioResources {
 				if (reinit) {
 					IType beanType = getJavaProject().findType(beanClassName);
 					String entityId = pluginEntity.getEntityId();
+					if (null != Platform.getBundle("jakarta.xml.bind")) // Java version >= 9 and use jakarta plugin for JEE JAXB.
+						addPojoRewriter(entityId, pojoRewriters, JakartaPersistenceRewriter.class.getName());
+
 					if (null == beanType)
 						logError("No type find for following bean class: " + beanClassName + "!?");
 					else {

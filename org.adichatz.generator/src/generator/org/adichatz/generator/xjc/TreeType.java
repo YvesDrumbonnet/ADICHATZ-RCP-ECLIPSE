@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -16,22 +16,22 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour treeType complex type.
+ * &lt;p&gt;Classe Java pour treeType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="treeType">
- *   &lt;complexContent>
- *     &lt;extension base="{}setType">
- *       &lt;attribute name="showRoot" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="treeManager" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="expand" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="rootElement" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="treeType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}setType"&amp;gt;
+ *       &amp;lt;attribute name="showRoot" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="treeManager" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="expand" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="rootElement" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -53,7 +53,7 @@ public class TreeType
     protected String rootElement;
 
     /**
-     * Obtient la valeur de la propriété showRoot.
+     * Obtient la valeur de la propriÃ©tÃ© showRoot.
      * 
      * @return
      *     possible object is
@@ -65,7 +65,7 @@ public class TreeType
     }
 
     /**
-     * Définit la valeur de la propriété showRoot.
+     * DÃ©finit la valeur de la propriÃ©tÃ© showRoot.
      * 
      * @param value
      *     allowed object is
@@ -77,7 +77,7 @@ public class TreeType
     }
 
     /**
-     * Obtient la valeur de la propriété treeManager.
+     * Obtient la valeur de la propriÃ©tÃ© treeManager.
      * 
      * @return
      *     possible object is
@@ -89,7 +89,7 @@ public class TreeType
     }
 
     /**
-     * Définit la valeur de la propriété treeManager.
+     * DÃ©finit la valeur de la propriÃ©tÃ© treeManager.
      * 
      * @param value
      *     allowed object is
@@ -101,7 +101,7 @@ public class TreeType
     }
 
     /**
-     * Obtient la valeur de la propriété expand.
+     * Obtient la valeur de la propriÃ©tÃ© expand.
      * 
      * @return
      *     possible object is
@@ -113,7 +113,7 @@ public class TreeType
     }
 
     /**
-     * Définit la valeur de la propriété expand.
+     * DÃ©finit la valeur de la propriÃ©tÃ© expand.
      * 
      * @param value
      *     allowed object is
@@ -125,7 +125,7 @@ public class TreeType
     }
 
     /**
-     * Obtient la valeur de la propriété rootElement.
+     * Obtient la valeur de la propriÃ©tÃ© rootElement.
      * 
      * @return
      *     possible object is
@@ -137,7 +137,7 @@ public class TreeType
     }
 
     /**
-     * Définit la valeur de la propriété rootElement.
+     * DÃ©finit la valeur de la propriÃ©tÃ© rootElement.
      * 
      * @param value
      *     allowed object is

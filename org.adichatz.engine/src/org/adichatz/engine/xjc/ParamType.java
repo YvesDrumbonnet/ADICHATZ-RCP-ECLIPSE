@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:21 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:33 PM CEST 
 //
 
 
@@ -20,21 +20,21 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Classe Java pour paramType complex type.
+ * &lt;p&gt;Classe Java pour paramType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="paramType">
- *   &lt;complexContent>
- *     &lt;extension base="{}elementType">
- *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="optional" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *       &lt;attribute name="value" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="paramType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}elementType"&amp;gt;
+ *       &amp;lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="optional" type="{http://www.w3.org/2001/XMLSchema}boolean" /&amp;gt;
+ *       &amp;lt;attribute name="value" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -59,7 +59,7 @@ public class ParamType
     protected String value;
 
     /**
-     * Obtient la valeur de la propriété type.
+     * Obtient la valeur de la propriÃ©tÃ© type.
      * 
      * @return
      *     possible object is
@@ -71,7 +71,7 @@ public class ParamType
     }
 
     /**
-     * Définit la valeur de la propriété type.
+     * DÃ©finit la valeur de la propriÃ©tÃ© type.
      * 
      * @param value
      *     allowed object is
@@ -83,7 +83,7 @@ public class ParamType
     }
 
     /**
-     * Obtient la valeur de la propriété optional.
+     * Obtient la valeur de la propriÃ©tÃ© optional.
      * 
      * @return
      *     possible object is
@@ -95,7 +95,7 @@ public class ParamType
     }
 
     /**
-     * Définit la valeur de la propriété optional.
+     * DÃ©finit la valeur de la propriÃ©tÃ© optional.
      * 
      * @param value
      *     allowed object is
@@ -107,7 +107,7 @@ public class ParamType
     }
 
     /**
-     * Obtient la valeur de la propriété value.
+     * Obtient la valeur de la propriÃ©tÃ© value.
      * 
      * @return
      *     possible object is
@@ -119,7 +119,7 @@ public class ParamType
     }
 
     /**
-     * Définit la valeur de la propriété value.
+     * DÃ©finit la valeur de la propriÃ©tÃ© value.
      * 
      * @param value
      *     allowed object is

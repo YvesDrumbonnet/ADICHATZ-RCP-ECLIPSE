@@ -110,7 +110,7 @@ public class GeneratorConstants {
 	/**
 	 * Hibernate constants
 	 */
-	public static String HIBERNATE_CORE_JAR = "hibernate-core-5.3.13.Final.jar";
+	public static String HIBERNATE_CORE_JAR = "hibernate-core-5.3.20.Final-ee9.jar";
 
 	/**
 	 * The plugins directory.

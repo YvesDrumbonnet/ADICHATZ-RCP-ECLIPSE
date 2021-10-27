@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <connectorTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://yvesdrumbonnet.github.io/Adichatz-RCP-Update-Site/xsd/generator/connectorTree.xsd">
     <applicationServers>
+        <applicationServer name="wildfly-24.x">
+            <params>
+                <param id="adichatz.connector" type="SERVER" value="org.adichatz.hibernate4.jboss.connector.jar"/>
+                <param id="application.server.home" type="SERVER" value="C:\ADICHATZ\applicationServers\wildfly-preview-24.0.1.Final"/>
+                <param id="ejb.deployment.dir" type="SERVER" value="standalone/deployments"/>
+                <param id="as.modules.directory" type="SERVER" value="modules/system/layers/base"/>
+           		<param id="java.naming.factory.initial" type="CONTEXT" value="org.wildfly.naming.client.WildFlyInitialContextFactory"/>
+           		<param id="java.naming.provider.url" type="CONTEXT" value="http-remoting://localhost:8080"/>
+           		<param id="jboss.naming.client.ejb.context" type="CONTEXT" value="true"/>
+            </params>
+        </applicationServer>
         <applicationServer name="wildfly-19.x">
             <params>
                 <param id="adichatz.connector" type="SERVER" value="org.adichatz.hibernate4.jboss.connector.jar"/>
@@ -15,7 +26,7 @@
         <applicationServer name="wildfly-18.x">
             <params>
                 <param id="adichatz.connector" type="SERVER" value="org.adichatz.hibernate4.jboss.connector.jar"/>
-                <param id="application.server.home" type="SERVER" value="D:\ADICHATZ\applicationServers\wildfly-18.0.1.Final"/>
+                <param id="application.server.home" type="SERVER" value="C:\ADICHATZ\applicationServers\wildfly-18.0.1.Final"/>
                 <param id="ejb.deployment.dir" type="SERVER" value="standalone/deployments"/>
                 <param id="as.modules.directory" type="SERVER" value="modules/system/layers/base"/>
            		<param id="java.naming.factory.initial" type="CONTEXT" value="org.wildfly.naming.client.WildFlyInitialContextFactory"/>

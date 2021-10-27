@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -20,45 +20,45 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Classe Java pour columnFieldType complex type.
+ * &lt;p&gt;Classe Java pour columnFieldType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="columnFieldType">
- *   &lt;complexContent>
- *     &lt;extension base="{}validElementType">
- *       &lt;choice>
- *         &lt;element name="columnImage" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="columnText" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="columnValue" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="columnBackground" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="columnForeground" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="columnFont" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="accessibilities" type="{}accessibilitiesType"/>
- *         &lt;element name="listeners" type="{}listenersType"/>
- *         &lt;element name="additionalCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *       &lt;/choice>
- *       &lt;attribute name="property" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="image" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="lazyFetches" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="locale" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="pack" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *       &lt;attribute name="pattern" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="sorted" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="columnValueType" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="alignment" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="moveable" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="resizeable" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="sortDirection" type="{}sortEnum" default="ASC" />
- *       &lt;attribute name="style" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="text" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="toolTipText" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="width" type="{http://www.w3.org/2001/XMLSchema}int" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="columnFieldType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}validElementType"&amp;gt;
+ *       &amp;lt;choice&amp;gt;
+ *         &amp;lt;element name="columnImage" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *         &amp;lt;element name="columnText" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *         &amp;lt;element name="columnValue" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *         &amp;lt;element name="columnBackground" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *         &amp;lt;element name="columnForeground" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *         &amp;lt;element name="columnFont" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *         &amp;lt;element name="accessibilities" type="{}accessibilitiesType"/&amp;gt;
+ *         &amp;lt;element name="listeners" type="{}listenersType"/&amp;gt;
+ *         &amp;lt;element name="additionalCode" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *       &amp;lt;/choice&amp;gt;
+ *       &amp;lt;attribute name="property" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="image" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="lazyFetches" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="locale" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="pack" type="{http://www.w3.org/2001/XMLSchema}boolean" /&amp;gt;
+ *       &amp;lt;attribute name="pattern" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="sorted" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&amp;gt;
+ *       &amp;lt;attribute name="columnValueType" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="alignment" type="{http://www.w3.org/2001/XMLSchema}int" /&amp;gt;
+ *       &amp;lt;attribute name="moveable" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="resizeable" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="sortDirection" type="{}sortEnum" default="ASC" /&amp;gt;
+ *       &amp;lt;attribute name="style" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="text" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="toolTipText" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="width" type="{http://www.w3.org/2001/XMLSchema}int" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -131,7 +131,7 @@ public class ColumnFieldType
     protected Integer width;
 
     /**
-     * Obtient la valeur de la propriété columnImage.
+     * Obtient la valeur de la propriÃ©tÃ© columnImage.
      * 
      * @return
      *     possible object is
@@ -143,7 +143,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété columnImage.
+     * DÃ©finit la valeur de la propriÃ©tÃ© columnImage.
      * 
      * @param value
      *     allowed object is
@@ -155,7 +155,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété columnText.
+     * Obtient la valeur de la propriÃ©tÃ© columnText.
      * 
      * @return
      *     possible object is
@@ -167,7 +167,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété columnText.
+     * DÃ©finit la valeur de la propriÃ©tÃ© columnText.
      * 
      * @param value
      *     allowed object is
@@ -179,7 +179,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété columnValue.
+     * Obtient la valeur de la propriÃ©tÃ© columnValue.
      * 
      * @return
      *     possible object is
@@ -191,7 +191,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété columnValue.
+     * DÃ©finit la valeur de la propriÃ©tÃ© columnValue.
      * 
      * @param value
      *     allowed object is
@@ -203,7 +203,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété columnBackground.
+     * Obtient la valeur de la propriÃ©tÃ© columnBackground.
      * 
      * @return
      *     possible object is
@@ -215,7 +215,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété columnBackground.
+     * DÃ©finit la valeur de la propriÃ©tÃ© columnBackground.
      * 
      * @param value
      *     allowed object is
@@ -227,7 +227,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété columnForeground.
+     * Obtient la valeur de la propriÃ©tÃ© columnForeground.
      * 
      * @return
      *     possible object is
@@ -239,7 +239,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété columnForeground.
+     * DÃ©finit la valeur de la propriÃ©tÃ© columnForeground.
      * 
      * @param value
      *     allowed object is
@@ -251,7 +251,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété columnFont.
+     * Obtient la valeur de la propriÃ©tÃ© columnFont.
      * 
      * @return
      *     possible object is
@@ -263,7 +263,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété columnFont.
+     * DÃ©finit la valeur de la propriÃ©tÃ© columnFont.
      * 
      * @param value
      *     allowed object is
@@ -275,7 +275,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété accessibilities.
+     * Obtient la valeur de la propriÃ©tÃ© accessibilities.
      * 
      * @return
      *     possible object is
@@ -287,7 +287,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété accessibilities.
+     * DÃ©finit la valeur de la propriÃ©tÃ© accessibilities.
      * 
      * @param value
      *     allowed object is
@@ -299,7 +299,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété listeners.
+     * Obtient la valeur de la propriÃ©tÃ© listeners.
      * 
      * @return
      *     possible object is
@@ -311,7 +311,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété listeners.
+     * DÃ©finit la valeur de la propriÃ©tÃ© listeners.
      * 
      * @param value
      *     allowed object is
@@ -323,7 +323,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété additionalCode.
+     * Obtient la valeur de la propriÃ©tÃ© additionalCode.
      * 
      * @return
      *     possible object is
@@ -335,7 +335,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété additionalCode.
+     * DÃ©finit la valeur de la propriÃ©tÃ© additionalCode.
      * 
      * @param value
      *     allowed object is
@@ -347,7 +347,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété property.
+     * Obtient la valeur de la propriÃ©tÃ© property.
      * 
      * @return
      *     possible object is
@@ -359,7 +359,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété property.
+     * DÃ©finit la valeur de la propriÃ©tÃ© property.
      * 
      * @param value
      *     allowed object is
@@ -371,7 +371,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété image.
+     * Obtient la valeur de la propriÃ©tÃ© image.
      * 
      * @return
      *     possible object is
@@ -383,7 +383,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété image.
+     * DÃ©finit la valeur de la propriÃ©tÃ© image.
      * 
      * @param value
      *     allowed object is
@@ -395,7 +395,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété lazyFetches.
+     * Obtient la valeur de la propriÃ©tÃ© lazyFetches.
      * 
      * @return
      *     possible object is
@@ -407,7 +407,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété lazyFetches.
+     * DÃ©finit la valeur de la propriÃ©tÃ© lazyFetches.
      * 
      * @param value
      *     allowed object is
@@ -419,7 +419,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété locale.
+     * Obtient la valeur de la propriÃ©tÃ© locale.
      * 
      * @return
      *     possible object is
@@ -431,7 +431,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété locale.
+     * DÃ©finit la valeur de la propriÃ©tÃ© locale.
      * 
      * @param value
      *     allowed object is
@@ -443,7 +443,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété pack.
+     * Obtient la valeur de la propriÃ©tÃ© pack.
      * 
      * @return
      *     possible object is
@@ -455,7 +455,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété pack.
+     * DÃ©finit la valeur de la propriÃ©tÃ© pack.
      * 
      * @param value
      *     allowed object is
@@ -467,7 +467,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété pattern.
+     * Obtient la valeur de la propriÃ©tÃ© pattern.
      * 
      * @return
      *     possible object is
@@ -479,7 +479,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété pattern.
+     * DÃ©finit la valeur de la propriÃ©tÃ© pattern.
      * 
      * @param value
      *     allowed object is
@@ -491,7 +491,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété sorted.
+     * Obtient la valeur de la propriÃ©tÃ© sorted.
      * 
      * @return
      *     possible object is
@@ -507,7 +507,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété sorted.
+     * DÃ©finit la valeur de la propriÃ©tÃ© sorted.
      * 
      * @param value
      *     allowed object is
@@ -519,7 +519,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété columnValueType.
+     * Obtient la valeur de la propriÃ©tÃ© columnValueType.
      * 
      * @return
      *     possible object is
@@ -531,7 +531,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété columnValueType.
+     * DÃ©finit la valeur de la propriÃ©tÃ© columnValueType.
      * 
      * @param value
      *     allowed object is
@@ -543,7 +543,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété alignment.
+     * Obtient la valeur de la propriÃ©tÃ© alignment.
      * 
      * @return
      *     possible object is
@@ -555,7 +555,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété alignment.
+     * DÃ©finit la valeur de la propriÃ©tÃ© alignment.
      * 
      * @param value
      *     allowed object is
@@ -567,7 +567,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété moveable.
+     * Obtient la valeur de la propriÃ©tÃ© moveable.
      * 
      * @return
      *     possible object is
@@ -579,7 +579,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété moveable.
+     * DÃ©finit la valeur de la propriÃ©tÃ© moveable.
      * 
      * @param value
      *     allowed object is
@@ -591,7 +591,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété resizeable.
+     * Obtient la valeur de la propriÃ©tÃ© resizeable.
      * 
      * @return
      *     possible object is
@@ -603,7 +603,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété resizeable.
+     * DÃ©finit la valeur de la propriÃ©tÃ© resizeable.
      * 
      * @param value
      *     allowed object is
@@ -615,7 +615,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété sortDirection.
+     * Obtient la valeur de la propriÃ©tÃ© sortDirection.
      * 
      * @return
      *     possible object is
@@ -631,7 +631,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété sortDirection.
+     * DÃ©finit la valeur de la propriÃ©tÃ© sortDirection.
      * 
      * @param value
      *     allowed object is
@@ -643,7 +643,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété style.
+     * Obtient la valeur de la propriÃ©tÃ© style.
      * 
      * @return
      *     possible object is
@@ -655,7 +655,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété style.
+     * DÃ©finit la valeur de la propriÃ©tÃ© style.
      * 
      * @param value
      *     allowed object is
@@ -667,7 +667,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété text.
+     * Obtient la valeur de la propriÃ©tÃ© text.
      * 
      * @return
      *     possible object is
@@ -679,7 +679,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété text.
+     * DÃ©finit la valeur de la propriÃ©tÃ© text.
      * 
      * @param value
      *     allowed object is
@@ -691,7 +691,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété toolTipText.
+     * Obtient la valeur de la propriÃ©tÃ© toolTipText.
      * 
      * @return
      *     possible object is
@@ -703,7 +703,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété toolTipText.
+     * DÃ©finit la valeur de la propriÃ©tÃ© toolTipText.
      * 
      * @param value
      *     allowed object is
@@ -715,7 +715,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété width.
+     * Obtient la valeur de la propriÃ©tÃ© width.
      * 
      * @return
      *     possible object is
@@ -727,7 +727,7 @@ public class ColumnFieldType
     }
 
     /**
-     * Définit la valeur de la propriété width.
+     * DÃ©finit la valeur de la propriÃ©tÃ© width.
      * 
      * @param value
      *     allowed object is

@@ -6,7 +6,9 @@ Bundle-Activator: org.adichatz.engine.common.EngineActivator
 Bundle-Version: 0.9.1.qualifier
 Bundle-Vendor: Adichatz
 Bundle-ActivationPolicy: lazy
-Require-Bundle: javax.inject,
+Require-Bundle:  com.sun.xml.bind,
+ jakarta.xml.bind,
+ javax.inject,
  org.adichatz.resources,
  org.adichatz.common,
  org.eclipse.core.runtime,

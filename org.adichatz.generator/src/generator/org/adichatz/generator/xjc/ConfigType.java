@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -16,24 +16,24 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour configType complex type.
+ * &lt;p&gt;Classe Java pour configType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="configType">
- *   &lt;complexContent>
- *     &lt;extension base="{}basicType">
- *       &lt;sequence>
- *         &lt;element name="resourceBundles" type="{}resourceBundlesType"/>
- *         &lt;element name="customizations" type="{}customizationsType"/>
- *         &lt;element name="navigationPaths" type="{}navigationPathsType"/>
- *         &lt;element name="params" type="{}paramsType"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="configType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}basicType"&amp;gt;
+ *       &amp;lt;sequence&amp;gt;
+ *         &amp;lt;element name="resourceBundles" type="{}resourceBundlesType"/&amp;gt;
+ *         &amp;lt;element name="customizations" type="{}customizationsType"/&amp;gt;
+ *         &amp;lt;element name="navigationPaths" type="{}navigationPathsType"/&amp;gt;
+ *         &amp;lt;element name="params" type="{}paramsType"/&amp;gt;
+ *       &amp;lt;/sequence&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -60,7 +60,7 @@ public class ConfigType
     protected ParamsType params;
 
     /**
-     * Obtient la valeur de la propriété resourceBundles.
+     * Obtient la valeur de la propriÃ©tÃ© resourceBundles.
      * 
      * @return
      *     possible object is
@@ -72,7 +72,7 @@ public class ConfigType
     }
 
     /**
-     * Définit la valeur de la propriété resourceBundles.
+     * DÃ©finit la valeur de la propriÃ©tÃ© resourceBundles.
      * 
      * @param value
      *     allowed object is
@@ -84,7 +84,7 @@ public class ConfigType
     }
 
     /**
-     * Obtient la valeur de la propriété customizations.
+     * Obtient la valeur de la propriÃ©tÃ© customizations.
      * 
      * @return
      *     possible object is
@@ -96,7 +96,7 @@ public class ConfigType
     }
 
     /**
-     * Définit la valeur de la propriété customizations.
+     * DÃ©finit la valeur de la propriÃ©tÃ© customizations.
      * 
      * @param value
      *     allowed object is
@@ -108,7 +108,7 @@ public class ConfigType
     }
 
     /**
-     * Obtient la valeur de la propriété navigationPaths.
+     * Obtient la valeur de la propriÃ©tÃ© navigationPaths.
      * 
      * @return
      *     possible object is
@@ -120,7 +120,7 @@ public class ConfigType
     }
 
     /**
-     * Définit la valeur de la propriété navigationPaths.
+     * DÃ©finit la valeur de la propriÃ©tÃ© navigationPaths.
      * 
      * @param value
      *     allowed object is
@@ -132,7 +132,7 @@ public class ConfigType
     }
 
     /**
-     * Obtient la valeur de la propriété params.
+     * Obtient la valeur de la propriÃ©tÃ© params.
      * 
      * @return
      *     possible object is
@@ -144,7 +144,7 @@ public class ConfigType
     }
 
     /**
-     * Définit la valeur de la propriété params.
+     * DÃ©finit la valeur de la propriÃ©tÃ© params.
      * 
      * @param value
      *     allowed object is

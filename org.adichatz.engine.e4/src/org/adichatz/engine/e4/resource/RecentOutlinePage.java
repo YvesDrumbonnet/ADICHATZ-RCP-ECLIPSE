@@ -110,7 +110,7 @@ public class RecentOutlinePage extends ARecentOutlinePage {
 		scrolledForm = getToolkit().createScrolledForm(parent);
 		scrolledForm.getBody().setLayout(new MigLayout("wrap 1, ins 0", "grow,fill", "grow,fill"));
 
-		pshelf = toolkit.createPShelf(scrolledForm.getBody(), SWT.NONE);
+		pshelf = getToolkit().createPShelf(scrolledForm.getBody(), SWT.NONE);
 		initializeItems();
 		if (0 < pshelf.getItems().length) {
 			PShelfItem item = pshelf.getItems()[0];
@@ -123,7 +123,7 @@ public class RecentOutlinePage extends ARecentOutlinePage {
 	}
 
 	public void addPShelfItem(ARecentOutlineItem recentOutlineItem) {
-		PShelfItem pshelfItem = toolkit.createPShelfItem(pshelf, SWT.NONE);
+		PShelfItem pshelfItem = getToolkit().createPShelfItem(pshelf, SWT.NONE);
 		pshelfItem.setData("#RECENT_ITEM#", recentOutlineItem);
 		pshelfItem.setText(recentOutlineItem.getText());
 		pshelfItem.setImage(recentOutlineItem.getImage());

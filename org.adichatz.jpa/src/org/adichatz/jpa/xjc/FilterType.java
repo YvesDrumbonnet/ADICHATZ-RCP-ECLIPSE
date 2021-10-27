@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:22 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:33 PM CEST 
 //
 
 
@@ -19,25 +19,25 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Classe Java pour filterType complex type.
+ * &lt;p&gt;Classe Java pour filterType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="filterType">
- *   &lt;complexContent>
- *     &lt;extension base="{}basicType">
- *       &lt;attribute name="enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" default="true" />
- *       &lt;attribute name="text" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="column" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="searchString" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="columnType" type="{}columnTypeEnum" default="String" />
- *       &lt;attribute name="exactString" type="{http://www.w3.org/2001/XMLSchema}boolean" default="true" />
- *       &lt;attribute name="caseInsensitive" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="filterType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}basicType"&amp;gt;
+ *       &amp;lt;attribute name="enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" default="true" /&amp;gt;
+ *       &amp;lt;attribute name="text" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="column" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="searchString" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="columnType" type="{}columnTypeEnum" default="String" /&amp;gt;
+ *       &amp;lt;attribute name="exactString" type="{http://www.w3.org/2001/XMLSchema}boolean" default="true" /&amp;gt;
+ *       &amp;lt;attribute name="caseInsensitive" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -67,7 +67,7 @@ public class FilterType
     protected Boolean caseInsensitive;
 
     /**
-     * Obtient la valeur de la propriété enabled.
+     * Obtient la valeur de la propriÃ©tÃ© enabled.
      * 
      * @return
      *     possible object is
@@ -83,7 +83,7 @@ public class FilterType
     }
 
     /**
-     * Définit la valeur de la propriété enabled.
+     * DÃ©finit la valeur de la propriÃ©tÃ© enabled.
      * 
      * @param value
      *     allowed object is
@@ -95,7 +95,7 @@ public class FilterType
     }
 
     /**
-     * Obtient la valeur de la propriété text.
+     * Obtient la valeur de la propriÃ©tÃ© text.
      * 
      * @return
      *     possible object is
@@ -107,7 +107,7 @@ public class FilterType
     }
 
     /**
-     * Définit la valeur de la propriété text.
+     * DÃ©finit la valeur de la propriÃ©tÃ© text.
      * 
      * @param value
      *     allowed object is
@@ -119,7 +119,7 @@ public class FilterType
     }
 
     /**
-     * Obtient la valeur de la propriété column.
+     * Obtient la valeur de la propriÃ©tÃ© column.
      * 
      * @return
      *     possible object is
@@ -131,7 +131,7 @@ public class FilterType
     }
 
     /**
-     * Définit la valeur de la propriété column.
+     * DÃ©finit la valeur de la propriÃ©tÃ© column.
      * 
      * @param value
      *     allowed object is
@@ -143,7 +143,7 @@ public class FilterType
     }
 
     /**
-     * Obtient la valeur de la propriété searchString.
+     * Obtient la valeur de la propriÃ©tÃ© searchString.
      * 
      * @return
      *     possible object is
@@ -155,7 +155,7 @@ public class FilterType
     }
 
     /**
-     * Définit la valeur de la propriété searchString.
+     * DÃ©finit la valeur de la propriÃ©tÃ© searchString.
      * 
      * @param value
      *     allowed object is
@@ -167,7 +167,7 @@ public class FilterType
     }
 
     /**
-     * Obtient la valeur de la propriété columnType.
+     * Obtient la valeur de la propriÃ©tÃ© columnType.
      * 
      * @return
      *     possible object is
@@ -183,7 +183,7 @@ public class FilterType
     }
 
     /**
-     * Définit la valeur de la propriété columnType.
+     * DÃ©finit la valeur de la propriÃ©tÃ© columnType.
      * 
      * @param value
      *     allowed object is
@@ -195,7 +195,7 @@ public class FilterType
     }
 
     /**
-     * Obtient la valeur de la propriété exactString.
+     * Obtient la valeur de la propriÃ©tÃ© exactString.
      * 
      * @return
      *     possible object is
@@ -211,7 +211,7 @@ public class FilterType
     }
 
     /**
-     * Définit la valeur de la propriété exactString.
+     * DÃ©finit la valeur de la propriÃ©tÃ© exactString.
      * 
      * @param value
      *     allowed object is
@@ -223,7 +223,7 @@ public class FilterType
     }
 
     /**
-     * Obtient la valeur de la propriété caseInsensitive.
+     * Obtient la valeur de la propriÃ©tÃ© caseInsensitive.
      * 
      * @return
      *     possible object is
@@ -239,7 +239,7 @@ public class FilterType
     }
 
     /**
-     * Définit la valeur de la propriété caseInsensitive.
+     * DÃ©finit la valeur de la propriÃ©tÃ© caseInsensitive.
      * 
      * @param value
      *     allowed object is

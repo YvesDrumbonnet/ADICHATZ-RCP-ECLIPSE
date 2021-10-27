@@ -190,7 +190,7 @@ public class RecentEditorOutlineItem extends ARecentOutlineItem {
 	private void addApplicationListeners(PShelfItem pshelfItem) {
 		// Add refresh recent open editor list listener
 		final AApplicationListener openPartListener = new AApplicationListener(ApplicationEvent.EVENT_TYPE.POST_OPEN_PART) {
-			@SuppressWarnings({ "rawtypes", "restriction" })
+			@SuppressWarnings("rawtypes")
 			@Override
 			public void handleEvent(ApplicationEvent event) {
 				final AdiInputPart inputPart = (AdiInputPart) event.part;

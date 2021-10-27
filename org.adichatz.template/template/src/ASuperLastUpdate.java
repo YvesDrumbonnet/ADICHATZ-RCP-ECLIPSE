@@ -2,9 +2,9 @@ package #{adichatz.package.name};
 
 import java.util.Date;
 
-import javax.persistence.MappedSuperclass;
-import javax.persistence.PreUpdate;
-import javax.persistence.PrePersist;
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.PreUpdate;
+import jakarta.persistence.PrePersist;
 
 @MappedSuperclass
 public abstract class ASuperLastUpdate {

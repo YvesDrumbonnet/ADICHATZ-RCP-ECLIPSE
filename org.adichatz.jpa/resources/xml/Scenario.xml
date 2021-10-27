@@ -6,7 +6,7 @@
 		<param id="plugin.package" value="org.adichatz.jpa"/>
 		<!-- Development parameters -->
 		<param id="devl.eclipse.directory" value="E:/ADICHATZ/ECLIPSE/eclipse.mars"/>
-		<param id="devl.workspace.directory" value="C:/ADICHATZ/ECLIPSE/workspaces/4.9/workspace/adichatz"/>
+		<param id="devl.workspace.directory" value="C:/ADICHATZ/ECLIPSE/workspaces/prod/workspace/Adichatz-RCP-Eclipse"/>
 		<param id="devl.create.xml.trace" value="true"/>
 		<param id="devl.default.integer.pattern" value="######"/>
 		<param id="devl.default.integer.scale" value="2"/>

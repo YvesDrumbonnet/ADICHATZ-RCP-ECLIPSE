@@ -653,7 +653,7 @@ public class ScenarioInput {
 				marker.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_HIGH);
 				marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
 			} catch (ResourceException e) {
-				logError(e.getLocalizedMessage());
+				logError(e);
 			} catch (CoreException e) {
 				logError(e);
 			}

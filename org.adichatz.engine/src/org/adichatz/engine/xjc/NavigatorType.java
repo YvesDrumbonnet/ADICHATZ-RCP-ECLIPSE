@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:21 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:33 PM CEST 
 //
 
 
@@ -22,26 +22,26 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Classe Java pour navigatorType complex type.
+ * &lt;p&gt;Classe Java pour navigatorType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="navigatorType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="menuPath" type="{}menuPathType" maxOccurs="unbounded"/>
- *       &lt;/sequence>
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="iconURI" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="contributionURI" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="label" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="messageBundleURI" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="navigatorType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&amp;gt;
+ *       &amp;lt;sequence&amp;gt;
+ *         &amp;lt;element name="menuPath" type="{}menuPathType" maxOccurs="unbounded"/&amp;gt;
+ *       &amp;lt;/sequence&amp;gt;
+ *       &amp;lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="iconURI" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="contributionURI" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="label" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="messageBundleURI" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/restriction&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -72,20 +72,20 @@ public class NavigatorType
     /**
      * Gets the value of the menuPath property.
      * 
-     * <p>
+     * &lt;p&gt;
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the menuPath property.
+     * This is why there is not a &lt;CODE&gt;set&lt;/CODE&gt; method for the menuPath property.
      * 
-     * <p>
+     * &lt;p&gt;
      * For example, to add a new item, do as follows:
-     * <pre>
+     * &lt;pre&gt;
      *    getMenuPath().add(newItem);
-     * </pre>
+     * &lt;/pre&gt;
      * 
      * 
-     * <p>
+     * &lt;p&gt;
      * Objects of the following type(s) are allowed in the list
      * {@link MenuPathType }
      * 
@@ -99,7 +99,7 @@ public class NavigatorType
     }
 
     /**
-     * Obtient la valeur de la propriété id.
+     * Obtient la valeur de la propriÃ©tÃ© id.
      * 
      * @return
      *     possible object is
@@ -111,7 +111,7 @@ public class NavigatorType
     }
 
     /**
-     * Définit la valeur de la propriété id.
+     * DÃ©finit la valeur de la propriÃ©tÃ© id.
      * 
      * @param value
      *     allowed object is
@@ -123,7 +123,7 @@ public class NavigatorType
     }
 
     /**
-     * Obtient la valeur de la propriété iconURI.
+     * Obtient la valeur de la propriÃ©tÃ© iconURI.
      * 
      * @return
      *     possible object is
@@ -135,7 +135,7 @@ public class NavigatorType
     }
 
     /**
-     * Définit la valeur de la propriété iconURI.
+     * DÃ©finit la valeur de la propriÃ©tÃ© iconURI.
      * 
      * @param value
      *     allowed object is
@@ -147,7 +147,7 @@ public class NavigatorType
     }
 
     /**
-     * Obtient la valeur de la propriété contributionURI.
+     * Obtient la valeur de la propriÃ©tÃ© contributionURI.
      * 
      * @return
      *     possible object is
@@ -159,7 +159,7 @@ public class NavigatorType
     }
 
     /**
-     * Définit la valeur de la propriété contributionURI.
+     * DÃ©finit la valeur de la propriÃ©tÃ© contributionURI.
      * 
      * @param value
      *     allowed object is
@@ -171,7 +171,7 @@ public class NavigatorType
     }
 
     /**
-     * Obtient la valeur de la propriété label.
+     * Obtient la valeur de la propriÃ©tÃ© label.
      * 
      * @return
      *     possible object is
@@ -183,7 +183,7 @@ public class NavigatorType
     }
 
     /**
-     * Définit la valeur de la propriété label.
+     * DÃ©finit la valeur de la propriÃ©tÃ© label.
      * 
      * @param value
      *     allowed object is
@@ -195,7 +195,7 @@ public class NavigatorType
     }
 
     /**
-     * Obtient la valeur de la propriété messageBundleURI.
+     * Obtient la valeur de la propriÃ©tÃ© messageBundleURI.
      * 
      * @return
      *     possible object is
@@ -207,7 +207,7 @@ public class NavigatorType
     }
 
     /**
-     * Définit la valeur de la propriété messageBundleURI.
+     * DÃ©finit la valeur de la propriÃ©tÃ© messageBundleURI.
      * 
      * @param value
      *     allowed object is

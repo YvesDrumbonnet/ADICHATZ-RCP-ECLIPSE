@@ -10,7 +10,7 @@
 package org.adichatz.studio.gencode.detail;
 
 import javax.inject.Inject;
-import net.miginfocom.swt.MigLayout;
+
 import org.adichatz.engine.common.AdichatzApplication;
 import org.adichatz.engine.controller.IContainerController;
 import org.adichatz.engine.controller.collection.ScrolledCompositeController;
@@ -30,88 +30,130 @@ import org.adichatz.studio.xjc.controller.XjcTextController;
 import org.adichatz.studio.xjc.data.XjcFieldBindingManager;
 import org.eclipse.ui.forms.IFormColors;
 
-@AdiResourceURI(URI="adi://org.adichatz.studio/detail/DateTextPart")
+import net.miginfocom.swt.MigLayout;
+
+@AdiResourceURI(URI = "adi://org.adichatz.studio/detail/DateTextPart")
 public class DateTextPartControlItem extends EntityManagerCore {
 	// the ScrolledCompositeController controlItemSCSCLC.
 	protected ScrolledCompositeController controlItemSCSCLC;
+
 	// the LabelController background$1LBL.
 	private LabelController background$1LBL;
+
 	// the ColorController backgroundTXT.
 	private ColorController backgroundTXT;
+
 	// the LabelController backgroundImage$1LBL.
 	private LabelController backgroundImage$1LBL;
+
 	// the TextController backgroundImageTXT.
 	private TextController backgroundImageTXT;
+
 	// the LabelController bounds$1LBL.
 	private LabelController bounds$1LBL;
+
 	// the TextController boundsTXT.
 	private TextController boundsTXT;
+
 	// the LabelController capture$1LBL.
 	private LabelController capture$1LBL;
+
 	// the TextController captureTXT.
 	private TextController captureTXT;
+
 	// the LabelController enabled$1LBL.
 	private LabelController enabled$1LBL;
+
 	// the XjcTextController enabledTXT.
 	private XjcTextController enabledTXT;
+
 	// the LabelController focus$1LBL.
 	private LabelController focus$1LBL;
+
 	// the TextController focusTXT.
 	private TextController focusTXT;
+
 	// the LabelController font$1LBL.
 	private LabelController font$1LBL;
+
 	// the FontController fontTXT.
 	private FontController fontTXT;
+
 	// the LabelController foreground$1LBL.
 	private LabelController foreground$1LBL;
+
 	// the ColorController foregroundTXT.
 	private ColorController foregroundTXT;
+
 	// the LabelController labelBackground$1LBL.
 	private LabelController labelBackground$1LBL;
+
 	// the ColorController labelBackgroundTXT.
 	private ColorController labelBackgroundTXT;
+
 	// the LabelController labelForeground$1LBL.
 	private LabelController labelForeground$1LBL;
+
 	// the ColorController labelForegroundTXT.
 	private ColorController labelForegroundTXT;
+
 	// the LabelController labelLayoutData$1LBL.
 	private LabelController labelLayoutData$1LBL;
+
 	// the TextController labelLayoutDataTXT.
 	private TextController labelLayoutDataTXT;
+
 	// the LabelController layoutData$1LBL.
 	private LabelController layoutData$1LBL;
+
 	// the XjcTextController layoutDataTXT.
 	private XjcTextController layoutDataTXT;
+
 	// the LabelController location$1LBL.
 	private LabelController location$1LBL;
+
 	// the TextController locationTXT.
 	private TextController locationTXT;
+
 	// the LabelController menu$1LBL.
 	private LabelController menu$1LBL;
+
 	// the TextController menuTXT.
 	private TextController menuTXT;
+
 	// the LabelController redraw$1LBL.
 	private LabelController redraw$1LBL;
+
 	// the TextController redrawTXT.
 	private TextController redrawTXT;
+
 	// the LabelController size$1LBL.
 	private LabelController size$1LBL;
+
 	// the TextController sizeTXT.
 	private TextController sizeTXT;
+
 	// the LabelController style$1LBL.
 	private LabelController style$1LBL;
+
 	// the XjcTextController styleTXT.
 	private XjcTextController styleTXT;
+
 	// the LabelController toolTipText$1LBL.
 	private LabelController toolTipText$1LBL;
+
 	// the TextController toolTipTextTXT.
 	private TextController toolTipTextTXT;
+
 	// the LabelController visible$1LBL.
 	private LabelController visible$1LBL;
+
 	// the XjcTextController visibleTXT.
 	private XjcTextController visibleTXT;
+
 	@Inject
 	protected AdiFormToolkit toolkit;
+
 	/**
 	 * Creates DateTextPartControlItem.
 	 *
@@ -129,7 +171,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				public void createControl() {
 					super.createControl();
 					if (isValid()) {
-						getItem().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "adichatzStudio", "studio.xjcEditor.controlItem"));
+						getItem().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "adichatzStudio",
+								"studio.xjcEditor.controlItem"));
 					}
 				}
 			};
@@ -142,7 +185,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 	/**
 	 * creates contents for controller
 	 */
-	public void createContents(){
+	public void createContents() {
 		// Creates control for ScrolledCompositeController controlItemSCSCLC
 		controlItemSCSCLC = new ScrolledCompositeController("controlItemSC", coreController, this) {
 			@Override
@@ -150,7 +193,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				super.createControl();
 				if (isValid()) {
 					setDirtyManagement(false);
-					getComposite().setLayout(new MigLayout("wrap 2","[align right]10[fill,grow]","[]"));
+					getComposite().setLayout(new MigLayout("wrap 2", "[align right]10[fill,grow]", "[]"));
 				}
 			}
 		};
@@ -160,7 +203,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "background").concat(":"));
+					getControl().setText(AdichatzApplication.getInstance()
+							.getMessage("org.adichatz.studio", "control", "background").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
@@ -172,7 +216,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "backgroundImage").concat(":"));
+					getControl().setText(AdichatzApplication.getInstance()
+							.getMessage("org.adichatz.studio", "control", "backgroundImage").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
@@ -184,7 +229,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "bounds").concat(":"));
+					getControl().setText(
+							AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "bounds").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
@@ -196,7 +242,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "capture").concat(":"));
+					getControl().setText(
+							AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "capture").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
@@ -208,7 +255,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "widget", "enabled").concat(":"));
+					getControl().setText(
+							AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "widget", "enabled").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
@@ -220,7 +268,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "focus").concat(":"));
+					getControl().setText(
+							AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "focus").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
@@ -232,7 +281,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "font").concat(":"));
+					getControl().setText(
+							AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "font").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
@@ -244,7 +294,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "foreground").concat(":"));
+					getControl().setText(AdichatzApplication.getInstance()
+							.getMessage("org.adichatz.studio", "control", "foreground").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
@@ -256,7 +307,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "controlField", "labelBackground").concat(":"));
+					getControl().setText(AdichatzApplication.getInstance()
+							.getMessage("org.adichatz.studio", "controlField", "labelBackground").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
@@ -268,7 +320,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "controlField", "labelForeground").concat(":"));
+					getControl().setText(AdichatzApplication.getInstance()
+							.getMessage("org.adichatz.studio", "controlField", "labelForeground").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
@@ -280,7 +333,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "controlField", "labelLayoutData").concat(":"));
+					getControl().setText(AdichatzApplication.getInstance()
+							.getMessage("org.adichatz.studio", "controlField", "labelLayoutData").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
@@ -292,7 +346,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "layoutData").concat(":"));
+					getControl().setText(AdichatzApplication.getInstance()
+							.getMessage("org.adichatz.studio", "control", "layoutData").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
@@ -304,7 +359,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "location").concat(":"));
+					getControl().setText(
+							AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "location").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
@@ -316,7 +372,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "menu").concat(":"));
+					getControl().setText(
+							AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "menu").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
@@ -328,7 +385,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "redraw").concat(":"));
+					getControl().setText(
+							AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "redraw").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
@@ -340,7 +398,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "size").concat(":"));
+					getControl().setText(
+							AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "size").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
@@ -352,7 +411,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "widget", "style").concat(":"));
+					getControl().setText(
+							AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "widget", "style").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
@@ -364,7 +424,8 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "widget", "toolTipText").concat(":"));
+					getControl().setText(AdichatzApplication.getInstance()
+							.getMessage("org.adichatz.studio", "widget", "toolTipText").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
@@ -376,13 +437,15 @@ public class DateTextPartControlItem extends EntityManagerCore {
 			public void createControl() {
 				super.createControl();
 				if (isValid()) {
-					getControl().setText(AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "visible").concat(":"));
+					getControl().setText(
+							AdichatzApplication.getInstance().getMessage("org.adichatz.studio", "control", "visible").concat(":"));
 					setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 				}
 			}
 		};
 		createVisible(this);
 	}
+
 	public ColorController createBackground(ControllerCore genCode) {
 		// Creates control for ColorController backgroundTXT
 		backgroundTXT = new ColorController("background", getParentController(controlItemSCSCLC), genCode) {
@@ -392,6 +455,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("background");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();
@@ -404,6 +468,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 		};
 		return backgroundTXT;
 	}
+
 	public TextController createBackgroundImage(ControllerCore genCode) {
 		// Creates control for TextController backgroundImageTXT
 		backgroundImageTXT = new TextController("backgroundImage", getParentController(controlItemSCSCLC), genCode) {
@@ -413,6 +478,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("backgroundImage");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();
@@ -425,6 +491,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 		};
 		return backgroundImageTXT;
 	}
+
 	public TextController createBounds(ControllerCore genCode) {
 		// Creates control for TextController boundsTXT
 		boundsTXT = new TextController("bounds", getParentController(controlItemSCSCLC), genCode) {
@@ -434,6 +501,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("bounds");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();
@@ -446,6 +514,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 		};
 		return boundsTXT;
 	}
+
 	public TextController createCapture(ControllerCore genCode) {
 		// Creates control for TextController captureTXT
 		captureTXT = new TextController("capture", getParentController(controlItemSCSCLC), genCode) {
@@ -455,6 +524,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("capture");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();
@@ -467,6 +537,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 		};
 		return captureTXT;
 	}
+
 	public XjcTextController createEnabled(ControllerCore genCode) {
 		// Creates control for XjcTextController enabledTXT
 		enabledTXT = new XjcTextController("enabled", getParentController(controlItemSCSCLC), genCode) {
@@ -476,6 +547,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("enabled");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();
@@ -488,6 +560,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 		};
 		return enabledTXT;
 	}
+
 	public TextController createFocus(ControllerCore genCode) {
 		// Creates control for TextController focusTXT
 		focusTXT = new TextController("focus", getParentController(controlItemSCSCLC), genCode) {
@@ -497,6 +570,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("focus");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();
@@ -509,6 +583,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 		};
 		return focusTXT;
 	}
+
 	public FontController createFont(ControllerCore genCode) {
 		// Creates control for FontController fontTXT
 		fontTXT = new FontController("font", getParentController(controlItemSCSCLC), genCode) {
@@ -518,6 +593,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("font");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();
@@ -530,6 +606,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 		};
 		return fontTXT;
 	}
+
 	public ColorController createForeground(ControllerCore genCode) {
 		// Creates control for ColorController foregroundTXT
 		foregroundTXT = new ColorController("foreground", getParentController(controlItemSCSCLC), genCode) {
@@ -539,6 +616,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("foreground");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();
@@ -551,6 +629,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 		};
 		return foregroundTXT;
 	}
+
 	public ColorController createLabelBackground(ControllerCore genCode) {
 		// Creates control for ColorController labelBackgroundTXT
 		labelBackgroundTXT = new ColorController("labelBackground", getParentController(controlItemSCSCLC), genCode) {
@@ -560,6 +639,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("labelBackground");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();
@@ -572,6 +652,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 		};
 		return labelBackgroundTXT;
 	}
+
 	public ColorController createLabelForeground(ControllerCore genCode) {
 		// Creates control for ColorController labelForegroundTXT
 		labelForegroundTXT = new ColorController("labelForeground", getParentController(controlItemSCSCLC), genCode) {
@@ -581,6 +662,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("labelForeground");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();
@@ -593,6 +675,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 		};
 		return labelForegroundTXT;
 	}
+
 	public TextController createLabelLayoutData(ControllerCore genCode) {
 		// Creates control for TextController labelLayoutDataTXT
 		labelLayoutDataTXT = new TextController("labelLayoutData", getParentController(controlItemSCSCLC), genCode) {
@@ -602,6 +685,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("labelLayoutData");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();
@@ -614,6 +698,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 		};
 		return labelLayoutDataTXT;
 	}
+
 	public XjcTextController createLayoutData(ControllerCore genCode) {
 		// Creates control for XjcTextController layoutDataTXT
 		layoutDataTXT = new XjcTextController("layoutData", getParentController(controlItemSCSCLC), genCode) {
@@ -623,6 +708,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("layoutData");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();
@@ -635,6 +721,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 		};
 		return layoutDataTXT;
 	}
+
 	public TextController createLocation(ControllerCore genCode) {
 		// Creates control for TextController locationTXT
 		locationTXT = new TextController("location", getParentController(controlItemSCSCLC), genCode) {
@@ -644,6 +731,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("location");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();
@@ -656,6 +744,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 		};
 		return locationTXT;
 	}
+
 	public TextController createMenu(ControllerCore genCode) {
 		// Creates control for TextController menuTXT
 		menuTXT = new TextController("menu", getParentController(controlItemSCSCLC), genCode) {
@@ -665,6 +754,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("menu");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();
@@ -677,6 +767,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 		};
 		return menuTXT;
 	}
+
 	public TextController createRedraw(ControllerCore genCode) {
 		// Creates control for TextController redrawTXT
 		redrawTXT = new TextController("redraw", getParentController(controlItemSCSCLC), genCode) {
@@ -686,6 +777,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("redraw");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();
@@ -698,6 +790,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 		};
 		return redrawTXT;
 	}
+
 	public TextController createSize(ControllerCore genCode) {
 		// Creates control for TextController sizeTXT
 		sizeTXT = new TextController("size", getParentController(controlItemSCSCLC), genCode) {
@@ -707,6 +800,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("size");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();
@@ -719,6 +813,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 		};
 		return sizeTXT;
 	}
+
 	public XjcTextController createStyle(ControllerCore genCode) {
 		// Creates control for XjcTextController styleTXT
 		styleTXT = new XjcTextController("style", getParentController(controlItemSCSCLC), genCode) {
@@ -728,6 +823,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("style");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();
@@ -740,6 +836,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 		};
 		return styleTXT;
 	}
+
 	public TextController createToolTipText(ControllerCore genCode) {
 		// Creates control for TextController toolTipTextTXT
 		toolTipTextTXT = new TextController("toolTipText", getParentController(controlItemSCSCLC), genCode) {
@@ -749,6 +846,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("toolTipText");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();
@@ -761,6 +859,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 		};
 		return toolTipTextTXT;
 	}
+
 	public XjcTextController createVisible(ControllerCore genCode) {
 		// Creates control for XjcTextController visibleTXT
 		visibleTXT = new XjcTextController("visible", getParentController(controlItemSCSCLC), genCode) {
@@ -770,6 +869,7 @@ public class DateTextPartControlItem extends EntityManagerCore {
 				setProperty("visible");
 				super.initialize();
 			}
+
 			@Override
 			public void createControl() {
 				super.createControl();

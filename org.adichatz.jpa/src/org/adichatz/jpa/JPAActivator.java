@@ -13,6 +13,7 @@ import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.jpa.extra.JPAUtil;
 import org.adichatz.jpa.recent.IRecentOpenEditor;
 import org.adichatz.jpa.recent.RecentEditorOutlineItem;
+import org.adichatz.jpa.recent.RecentOpenEditorMap;
 import org.adichatz.jpa.recent.RecentUtil;
 import org.adichatz.jpa.wrapper.RecentOpenEditorTreeWrapper;
 import org.adichatz.jpa.xjc.RecentOpenEditorType;
@@ -50,13 +51,15 @@ public class JPAActivator implements BundleActivator {
 
 			List<String> errorMessages = new ArrayList<String>();
 			recentOpenEditorTree.getRecentOpenEditor().clear();
-			for (IRecentOpenEditor recentOpenEditor : RecentEditorOutlineItem.getInstance().getRecentOpenEditorMap().values()) {
-				if (null != recentOpenEditor) {
-					errorMessages.addAll(recentOpenEditorTree.setParamTypes(recentOpenEditor, recentOpenEditor.getLabel(),
-							ParamMap.POST_OPEN_EDITOR_INSTANCE));
-					recentOpenEditorTree.getRecentOpenEditor().add((RecentOpenEditorType) recentOpenEditor);
+			RecentOpenEditorMap recentOpenEditorMap = RecentEditorOutlineItem.getInstance().getRecentOpenEditorMap();
+			if (null != recentOpenEditorMap)
+				for (IRecentOpenEditor recentOpenEditor : recentOpenEditorMap.values()) {
+					if (null != recentOpenEditor) {
+						errorMessages.addAll(recentOpenEditorTree.setParamTypes(recentOpenEditor, recentOpenEditor.getLabel(),
+								ParamMap.POST_OPEN_EDITOR_INSTANCE));
+						recentOpenEditorTree.getRecentOpenEditor().add((RecentOpenEditorType) recentOpenEditor);
+					}
 				}
-			}
 			if (!errorMessages.isEmpty()) {
 				String[] messages = new String[errorMessages.size() + 2];
 				messages[0] = JPAUtil.getFromJpaBundle("recent.invalid.param.marshalling");

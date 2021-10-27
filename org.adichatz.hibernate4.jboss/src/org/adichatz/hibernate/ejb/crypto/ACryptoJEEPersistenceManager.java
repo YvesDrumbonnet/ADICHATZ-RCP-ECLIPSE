@@ -1,7 +1,5 @@
 package org.adichatz.hibernate.ejb.crypto;
 
-import javax.persistence.EntityManager;
-
 import org.adichatz.common.ejb.AdiPMException;
 import org.adichatz.common.ejb.AdiQuery;
 import org.adichatz.common.ejb.ProxyEntity;
@@ -10,6 +8,8 @@ import org.adichatz.common.ejb.QueryResult;
 import org.adichatz.common.ejb.Session;
 import org.adichatz.common.encoding.AEncoding;
 import org.adichatz.hibernate.ejb.AJEEPersistenceManager;
+
+import jakarta.persistence.EntityManager;
 
 public class ACryptoJEEPersistenceManager extends AJEEPersistenceManager {
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:jboss:module:1.0" name="org.adichatz.permission.module">  
+     <resources>  
+        <resource-root path="org.adichatz.permission.module.jar"/>  
+    </resources>
+
+    <dependencies>
+        <module name="org.slf4j"/>
+        <module name="org.apache.logging.log4j.api"/>
+	</dependencies>
+</module>

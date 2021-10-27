@@ -74,7 +74,7 @@ package org.adichatz.common.ejb.extra;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 import org.adichatz.common.ejb.AdiPMException;
 import org.adichatz.common.ejb.ICompositeKeyStrategy;

@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -21,44 +21,44 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour anonymous complex type.
+ * &lt;p&gt;Classe Java pour anonymous complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;choice>
- *         &lt;element name="config" type="{}configType"/>
- *         &lt;element name="additionalCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;choice maxOccurs="unbounded" minOccurs="0">
- *           &lt;element name="formPage" type="{}formPageType"/>
- *           &lt;element name="scrolledForm" type="{}scrolledFormType"/>
- *           &lt;element name="section" type="{}sectionType"/>
- *           &lt;element name="composite" type="{}compositeType"/>
- *           &lt;element name="compositeBag" type="{}compositeBagType"/>
- *           &lt;element name="group" type="{}groupType"/>
- *           &lt;element name="pgroup" type="{}pGroupType"/>
- *           &lt;element name="sashForm" type="{}sashFormType"/>
- *           &lt;element name="scrolledComposite" type="{}scrolledCompositeType"/>
- *           &lt;element name="table" type="{}tableType"/>
- *           &lt;element name="grid" type="{}gridType"/>
- *           &lt;element name="cTabFolder" type="{}cTabFolderType"/>
- *           &lt;element name="argTabFolder" type="{}argTabFolderType"/>
- *           &lt;element name="pshelf" type="{}pShelfType"/>
- *           &lt;element name="argPShelf" type="{}argPShelfType"/>
- *           &lt;element name="include" type="{}includeType"/>
- *           &lt;element name="headerMenuManager" type="{}headerMenuManagerType"/>
- *           &lt;element name="menuManager" type="{}menuManagerType"/>
- *           &lt;element name="managedToolBar" type="{}managedToolBarType"/>
- *         &lt;/choice>
- *       &lt;/choice>
- *       &lt;attribute name="adiResourceURI" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&amp;gt;
+ *       &amp;lt;choice&amp;gt;
+ *         &amp;lt;element name="config" type="{}configType"/&amp;gt;
+ *         &amp;lt;element name="additionalCode" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *         &amp;lt;choice maxOccurs="unbounded" minOccurs="0"&amp;gt;
+ *           &amp;lt;element name="formPage" type="{}formPageType"/&amp;gt;
+ *           &amp;lt;element name="scrolledForm" type="{}scrolledFormType"/&amp;gt;
+ *           &amp;lt;element name="section" type="{}sectionType"/&amp;gt;
+ *           &amp;lt;element name="composite" type="{}compositeType"/&amp;gt;
+ *           &amp;lt;element name="compositeBag" type="{}compositeBagType"/&amp;gt;
+ *           &amp;lt;element name="group" type="{}groupType"/&amp;gt;
+ *           &amp;lt;element name="pgroup" type="{}pGroupType"/&amp;gt;
+ *           &amp;lt;element name="sashForm" type="{}sashFormType"/&amp;gt;
+ *           &amp;lt;element name="scrolledComposite" type="{}scrolledCompositeType"/&amp;gt;
+ *           &amp;lt;element name="table" type="{}tableType"/&amp;gt;
+ *           &amp;lt;element name="grid" type="{}gridType"/&amp;gt;
+ *           &amp;lt;element name="cTabFolder" type="{}cTabFolderType"/&amp;gt;
+ *           &amp;lt;element name="argTabFolder" type="{}argTabFolderType"/&amp;gt;
+ *           &amp;lt;element name="pshelf" type="{}pShelfType"/&amp;gt;
+ *           &amp;lt;element name="argPShelf" type="{}argPShelfType"/&amp;gt;
+ *           &amp;lt;element name="include" type="{}includeType"/&amp;gt;
+ *           &amp;lt;element name="headerMenuManager" type="{}headerMenuManagerType"/&amp;gt;
+ *           &amp;lt;element name="menuManager" type="{}menuManagerType"/&amp;gt;
+ *           &amp;lt;element name="managedToolBar" type="{}managedToolBarType"/&amp;gt;
+ *         &amp;lt;/choice&amp;gt;
+ *       &amp;lt;/choice&amp;gt;
+ *       &amp;lt;attribute name="adiResourceURI" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/restriction&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -102,7 +102,7 @@ public class ExtendTree
     protected String adiResourceURI;
 
     /**
-     * Obtient la valeur de la propriété config.
+     * Obtient la valeur de la propriÃ©tÃ© config.
      * 
      * @return
      *     possible object is
@@ -114,7 +114,7 @@ public class ExtendTree
     }
 
     /**
-     * Définit la valeur de la propriété config.
+     * DÃ©finit la valeur de la propriÃ©tÃ© config.
      * 
      * @param value
      *     allowed object is
@@ -126,7 +126,7 @@ public class ExtendTree
     }
 
     /**
-     * Obtient la valeur de la propriété additionalCode.
+     * Obtient la valeur de la propriÃ©tÃ© additionalCode.
      * 
      * @return
      *     possible object is
@@ -138,7 +138,7 @@ public class ExtendTree
     }
 
     /**
-     * Définit la valeur de la propriété additionalCode.
+     * DÃ©finit la valeur de la propriÃ©tÃ© additionalCode.
      * 
      * @param value
      *     allowed object is
@@ -152,20 +152,20 @@ public class ExtendTree
     /**
      * Gets the value of the formPageOrScrolledFormOrSection property.
      * 
-     * <p>
+     * &lt;p&gt;
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the formPageOrScrolledFormOrSection property.
+     * This is why there is not a &lt;CODE&gt;set&lt;/CODE&gt; method for the formPageOrScrolledFormOrSection property.
      * 
-     * <p>
+     * &lt;p&gt;
      * For example, to add a new item, do as follows:
-     * <pre>
+     * &lt;pre&gt;
      *    getFormPageOrScrolledFormOrSection().add(newItem);
-     * </pre>
+     * &lt;/pre&gt;
      * 
      * 
-     * <p>
+     * &lt;p&gt;
      * Objects of the following type(s) are allowed in the list
      * {@link FormPageType }
      * {@link ScrolledFormType }
@@ -197,7 +197,7 @@ public class ExtendTree
     }
 
     /**
-     * Obtient la valeur de la propriété adiResourceURI.
+     * Obtient la valeur de la propriÃ©tÃ© adiResourceURI.
      * 
      * @return
      *     possible object is
@@ -209,7 +209,7 @@ public class ExtendTree
     }
 
     /**
-     * Définit la valeur de la propriété adiResourceURI.
+     * DÃ©finit la valeur de la propriÃ©tÃ© adiResourceURI.
      * 
      * @param value
      *     allowed object is

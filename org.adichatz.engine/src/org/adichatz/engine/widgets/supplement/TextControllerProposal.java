@@ -75,6 +75,9 @@ import java.util.List;
 
 import org.adichatz.engine.controller.field.TextController;
 import org.adichatz.engine.controller.utils.AdiSWT;
+import org.adichatz.engine.listener.AControlListener;
+import org.adichatz.engine.listener.AdiEvent;
+import org.adichatz.engine.listener.IEventType;
 import org.adichatz.engine.widgets.AdiControlDecoration;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.fieldassist.IContentProposal;
@@ -156,7 +159,12 @@ public class TextControllerProposal implements ITextControllerProposal {
 			};
 		else
 			this.labelProvider = labelProvider;
-		currentValue = textController.getControl().getText();
+		textController.getParentController().addListener(new AControlListener("AFTER_SYNCHRONIZE", IEventType.AFTER_SYNCHRONIZE) {
+			@Override
+			public void handleEvent(AdiEvent event) {
+				currentValue = textController.getControl().getText();
+			}
+		});
 
 		int style = 0 != (textController.getControl().getStyle() & AdiSWT.EXPANDABLE) ? SWT.CENTER | SWT.LEFT : SWT.TOP | SWT.LEFT;
 		controlDecoration = new AdiControlDecoration(textController.getControl(), style,

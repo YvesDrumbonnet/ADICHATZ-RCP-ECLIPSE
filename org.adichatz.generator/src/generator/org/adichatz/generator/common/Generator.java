@@ -71,21 +71,12 @@
  *******************************************************************************/
 package org.adichatz.generator.common;
 
-//
-// <h1><center> ************************* *** C A U T I O N *** ************************* </center>
-//</br> </h1> this class is dynamically loaded in the application No reference will be found in the application
-//
-// Such way is used to allowed to turn down generator package for final product
-
-import static org.adichatz.engine.common.LogBroker.logError;
-
 import java.io.File;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import org.adichatz.engine.common.AdiPluginResources;
+import org.adichatz.engine.common.EngineTools;
 import org.adichatz.engine.extra.IGenerator;
 import org.adichatz.generator.xjc.ObjectFactory;
 import org.adichatz.scenario.ScenarioInput;
@@ -139,15 +130,8 @@ public class Generator implements IGenerator {
 	 * @return the unmarshaller
 	 */
 	public static Unmarshaller getUnmarshaller() {
-		if (null == unmarshaller) {
-			JAXBContext jc = null;
-			try {
-				jc = JAXBContext.newInstance(ObjectFactory.class);
-				unmarshaller = jc.createUnmarshaller();
-			} catch (JAXBException e) {
-				logError(e);
-			}
-		}
+		if (null == unmarshaller)
+			unmarshaller = EngineTools.getUnmarshaller(ObjectFactory.class);
 		return unmarshaller;
 	}
 

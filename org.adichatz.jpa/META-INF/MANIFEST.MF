@@ -7,7 +7,8 @@ Bundle-Vendor: Adichatz
 Bundle-Activator: org.adichatz.jpa.JPAActivator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Require-Bundle: javax.inject,
+Require-Bundle: jakarta.xml.bind,
+ javax.inject,
  org.adichatz.common,
  org.adichatz.engine,
  org.adichatz.engine.e4,

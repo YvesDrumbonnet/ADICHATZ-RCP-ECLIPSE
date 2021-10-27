@@ -7,7 +7,8 @@ Bundle-Vendor: Adichatz
 Bundle-Activator: org.adichatz.studio.StudioRcpPlugin
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
-Require-Bundle: javax.inject,
+Require-Bundle: jakarta.xml.bind,
+ javax.inject,
  org.adichatz.engine,
  org.adichatz.engine.indigo,
  org.adichatz.common,

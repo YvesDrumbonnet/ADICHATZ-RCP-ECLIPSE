@@ -62,7 +62,7 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.Properties;
 
-import javax.persistence.GeneratedValue;
+import jakarta.persistence.GeneratedValue;
 
 import org.adichatz.generator.wrapper.ConnectorTreeWrapper;
 import org.adichatz.generator.wrapper.GenerationScenarioWrapper;

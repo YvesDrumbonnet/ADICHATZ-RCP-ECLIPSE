@@ -1,6 +1,6 @@
 package #{adichatz.package.name}.ejb;
 
-import javax.ejb.Remote;
+import jakarta.ejb.Remote;
 
 // TODO: Auto-generated Javadoc
 /**

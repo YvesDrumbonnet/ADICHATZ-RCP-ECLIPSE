@@ -53,7 +53,7 @@
  *******************************************************************************/
 package org.adichatz.common.ejb;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 // TODO: Auto-generated Javadoc
 /**

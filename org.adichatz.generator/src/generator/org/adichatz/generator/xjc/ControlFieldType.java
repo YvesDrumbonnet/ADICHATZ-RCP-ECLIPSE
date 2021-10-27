@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -20,38 +20,38 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Classe Java pour controlFieldType complex type.
+ * &lt;p&gt;Classe Java pour controlFieldType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="controlFieldType">
- *   &lt;complexContent>
- *     &lt;extension base="{}controlType">
- *       &lt;choice>
- *         &lt;element name="validators" type="{}validatorsType"/>
- *         &lt;element name="initialValue" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="convertModelToTarget" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="convertTargetToModel" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="menuManager" type="{}menuManagerType"/>
- *       &lt;/choice>
- *       &lt;attribute name="property" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="controlValueType" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="forceBinding" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="labelBackground" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="labelFont" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="labelForeground" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="labelLayoutData" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="labelText" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="lazyFetches" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="linkedControl" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="mandatory" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *       &lt;attribute name="noLabel" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *       &lt;attribute name="fieldBindManagerClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="controlFieldType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}controlType"&amp;gt;
+ *       &amp;lt;choice&amp;gt;
+ *         &amp;lt;element name="validators" type="{}validatorsType"/&amp;gt;
+ *         &amp;lt;element name="initialValue" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *         &amp;lt;element name="convertModelToTarget" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *         &amp;lt;element name="convertTargetToModel" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *         &amp;lt;element name="menuManager" type="{}menuManagerType"/&amp;gt;
+ *       &amp;lt;/choice&amp;gt;
+ *       &amp;lt;attribute name="property" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="controlValueType" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="forceBinding" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="labelBackground" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="labelFont" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="labelForeground" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="labelLayoutData" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="labelText" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="lazyFetches" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="linkedControl" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="mandatory" type="{http://www.w3.org/2001/XMLSchema}boolean" /&amp;gt;
+ *       &amp;lt;attribute name="noLabel" type="{http://www.w3.org/2001/XMLSchema}boolean" /&amp;gt;
+ *       &amp;lt;attribute name="fieldBindManagerClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -130,7 +130,7 @@ public class ControlFieldType
     protected String fieldBindManagerClassName;
 
     /**
-     * Obtient la valeur de la propriété validators.
+     * Obtient la valeur de la propriÃ©tÃ© validators.
      * 
      * @return
      *     possible object is
@@ -142,7 +142,7 @@ public class ControlFieldType
     }
 
     /**
-     * Définit la valeur de la propriété validators.
+     * DÃ©finit la valeur de la propriÃ©tÃ© validators.
      * 
      * @param value
      *     allowed object is
@@ -154,7 +154,7 @@ public class ControlFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété initialValue.
+     * Obtient la valeur de la propriÃ©tÃ© initialValue.
      * 
      * @return
      *     possible object is
@@ -166,7 +166,7 @@ public class ControlFieldType
     }
 
     /**
-     * Définit la valeur de la propriété initialValue.
+     * DÃ©finit la valeur de la propriÃ©tÃ© initialValue.
      * 
      * @param value
      *     allowed object is
@@ -178,7 +178,7 @@ public class ControlFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété convertModelToTarget.
+     * Obtient la valeur de la propriÃ©tÃ© convertModelToTarget.
      * 
      * @return
      *     possible object is
@@ -190,7 +190,7 @@ public class ControlFieldType
     }
 
     /**
-     * Définit la valeur de la propriété convertModelToTarget.
+     * DÃ©finit la valeur de la propriÃ©tÃ© convertModelToTarget.
      * 
      * @param value
      *     allowed object is
@@ -202,7 +202,7 @@ public class ControlFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété convertTargetToModel.
+     * Obtient la valeur de la propriÃ©tÃ© convertTargetToModel.
      * 
      * @return
      *     possible object is
@@ -214,7 +214,7 @@ public class ControlFieldType
     }
 
     /**
-     * Définit la valeur de la propriété convertTargetToModel.
+     * DÃ©finit la valeur de la propriÃ©tÃ© convertTargetToModel.
      * 
      * @param value
      *     allowed object is
@@ -226,7 +226,7 @@ public class ControlFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété menuManager.
+     * Obtient la valeur de la propriÃ©tÃ© menuManager.
      * 
      * @return
      *     possible object is
@@ -238,7 +238,7 @@ public class ControlFieldType
     }
 
     /**
-     * Définit la valeur de la propriété menuManager.
+     * DÃ©finit la valeur de la propriÃ©tÃ© menuManager.
      * 
      * @param value
      *     allowed object is
@@ -250,7 +250,7 @@ public class ControlFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété property.
+     * Obtient la valeur de la propriÃ©tÃ© property.
      * 
      * @return
      *     possible object is
@@ -262,7 +262,7 @@ public class ControlFieldType
     }
 
     /**
-     * Définit la valeur de la propriété property.
+     * DÃ©finit la valeur de la propriÃ©tÃ© property.
      * 
      * @param value
      *     allowed object is
@@ -274,7 +274,7 @@ public class ControlFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété controlValueType.
+     * Obtient la valeur de la propriÃ©tÃ© controlValueType.
      * 
      * @return
      *     possible object is
@@ -286,7 +286,7 @@ public class ControlFieldType
     }
 
     /**
-     * Définit la valeur de la propriété controlValueType.
+     * DÃ©finit la valeur de la propriÃ©tÃ© controlValueType.
      * 
      * @param value
      *     allowed object is
@@ -298,7 +298,7 @@ public class ControlFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété forceBinding.
+     * Obtient la valeur de la propriÃ©tÃ© forceBinding.
      * 
      * @return
      *     possible object is
@@ -310,7 +310,7 @@ public class ControlFieldType
     }
 
     /**
-     * Définit la valeur de la propriété forceBinding.
+     * DÃ©finit la valeur de la propriÃ©tÃ© forceBinding.
      * 
      * @param value
      *     allowed object is
@@ -322,7 +322,7 @@ public class ControlFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété labelBackground.
+     * Obtient la valeur de la propriÃ©tÃ© labelBackground.
      * 
      * @return
      *     possible object is
@@ -334,7 +334,7 @@ public class ControlFieldType
     }
 
     /**
-     * Définit la valeur de la propriété labelBackground.
+     * DÃ©finit la valeur de la propriÃ©tÃ© labelBackground.
      * 
      * @param value
      *     allowed object is
@@ -346,7 +346,7 @@ public class ControlFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété labelFont.
+     * Obtient la valeur de la propriÃ©tÃ© labelFont.
      * 
      * @return
      *     possible object is
@@ -358,7 +358,7 @@ public class ControlFieldType
     }
 
     /**
-     * Définit la valeur de la propriété labelFont.
+     * DÃ©finit la valeur de la propriÃ©tÃ© labelFont.
      * 
      * @param value
      *     allowed object is
@@ -370,7 +370,7 @@ public class ControlFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété labelForeground.
+     * Obtient la valeur de la propriÃ©tÃ© labelForeground.
      * 
      * @return
      *     possible object is
@@ -382,7 +382,7 @@ public class ControlFieldType
     }
 
     /**
-     * Définit la valeur de la propriété labelForeground.
+     * DÃ©finit la valeur de la propriÃ©tÃ© labelForeground.
      * 
      * @param value
      *     allowed object is
@@ -394,7 +394,7 @@ public class ControlFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété labelLayoutData.
+     * Obtient la valeur de la propriÃ©tÃ© labelLayoutData.
      * 
      * @return
      *     possible object is
@@ -406,7 +406,7 @@ public class ControlFieldType
     }
 
     /**
-     * Définit la valeur de la propriété labelLayoutData.
+     * DÃ©finit la valeur de la propriÃ©tÃ© labelLayoutData.
      * 
      * @param value
      *     allowed object is
@@ -418,7 +418,7 @@ public class ControlFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété labelText.
+     * Obtient la valeur de la propriÃ©tÃ© labelText.
      * 
      * @return
      *     possible object is
@@ -430,7 +430,7 @@ public class ControlFieldType
     }
 
     /**
-     * Définit la valeur de la propriété labelText.
+     * DÃ©finit la valeur de la propriÃ©tÃ© labelText.
      * 
      * @param value
      *     allowed object is
@@ -442,7 +442,7 @@ public class ControlFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété lazyFetches.
+     * Obtient la valeur de la propriÃ©tÃ© lazyFetches.
      * 
      * @return
      *     possible object is
@@ -454,7 +454,7 @@ public class ControlFieldType
     }
 
     /**
-     * Définit la valeur de la propriété lazyFetches.
+     * DÃ©finit la valeur de la propriÃ©tÃ© lazyFetches.
      * 
      * @param value
      *     allowed object is
@@ -466,7 +466,7 @@ public class ControlFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété linkedControl.
+     * Obtient la valeur de la propriÃ©tÃ© linkedControl.
      * 
      * @return
      *     possible object is
@@ -478,7 +478,7 @@ public class ControlFieldType
     }
 
     /**
-     * Définit la valeur de la propriété linkedControl.
+     * DÃ©finit la valeur de la propriÃ©tÃ© linkedControl.
      * 
      * @param value
      *     allowed object is
@@ -490,7 +490,7 @@ public class ControlFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété mandatory.
+     * Obtient la valeur de la propriÃ©tÃ© mandatory.
      * 
      * @return
      *     possible object is
@@ -502,7 +502,7 @@ public class ControlFieldType
     }
 
     /**
-     * Définit la valeur de la propriété mandatory.
+     * DÃ©finit la valeur de la propriÃ©tÃ© mandatory.
      * 
      * @param value
      *     allowed object is
@@ -514,7 +514,7 @@ public class ControlFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété noLabel.
+     * Obtient la valeur de la propriÃ©tÃ© noLabel.
      * 
      * @return
      *     possible object is
@@ -526,7 +526,7 @@ public class ControlFieldType
     }
 
     /**
-     * Définit la valeur de la propriété noLabel.
+     * DÃ©finit la valeur de la propriÃ©tÃ© noLabel.
      * 
      * @param value
      *     allowed object is
@@ -538,7 +538,7 @@ public class ControlFieldType
     }
 
     /**
-     * Obtient la valeur de la propriété fieldBindManagerClassName.
+     * Obtient la valeur de la propriÃ©tÃ© fieldBindManagerClassName.
      * 
      * @return
      *     possible object is
@@ -550,7 +550,7 @@ public class ControlFieldType
     }
 
     /**
-     * Définit la valeur de la propriété fieldBindManagerClassName.
+     * DÃ©finit la valeur de la propriÃ©tÃ© fieldBindManagerClassName.
      * 
      * @param value
      *     allowed object is

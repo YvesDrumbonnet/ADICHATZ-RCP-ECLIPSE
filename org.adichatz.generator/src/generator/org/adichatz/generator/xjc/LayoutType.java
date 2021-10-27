@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -16,21 +16,21 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour layoutType complex type.
+ * &lt;p&gt;Classe Java pour layoutType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="layoutType">
- *   &lt;complexContent>
- *     &lt;extension base="{}basicType">
- *       &lt;attribute name="layoutConstraints" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="columnConstraints" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="rowConstraints" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="layoutType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}basicType"&amp;gt;
+ *       &amp;lt;attribute name="layoutConstraints" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="columnConstraints" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="rowConstraints" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -50,7 +50,7 @@ public class LayoutType
     protected String rowConstraints;
 
     /**
-     * Obtient la valeur de la propriété layoutConstraints.
+     * Obtient la valeur de la propriÃ©tÃ© layoutConstraints.
      * 
      * @return
      *     possible object is
@@ -62,7 +62,7 @@ public class LayoutType
     }
 
     /**
-     * Définit la valeur de la propriété layoutConstraints.
+     * DÃ©finit la valeur de la propriÃ©tÃ© layoutConstraints.
      * 
      * @param value
      *     allowed object is
@@ -74,7 +74,7 @@ public class LayoutType
     }
 
     /**
-     * Obtient la valeur de la propriété columnConstraints.
+     * Obtient la valeur de la propriÃ©tÃ© columnConstraints.
      * 
      * @return
      *     possible object is
@@ -86,7 +86,7 @@ public class LayoutType
     }
 
     /**
-     * Définit la valeur de la propriété columnConstraints.
+     * DÃ©finit la valeur de la propriÃ©tÃ© columnConstraints.
      * 
      * @param value
      *     allowed object is
@@ -98,7 +98,7 @@ public class LayoutType
     }
 
     /**
-     * Obtient la valeur de la propriété rowConstraints.
+     * Obtient la valeur de la propriÃ©tÃ© rowConstraints.
      * 
      * @return
      *     possible object is
@@ -110,7 +110,7 @@ public class LayoutType
     }
 
     /**
-     * Définit la valeur de la propriété rowConstraints.
+     * DÃ©finit la valeur de la propriÃ©tÃ© rowConstraints.
      * 
      * @param value
      *     allowed object is

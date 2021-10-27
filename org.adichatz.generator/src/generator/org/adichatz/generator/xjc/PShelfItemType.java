@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -16,21 +16,21 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour pShelfItemType complex type.
+ * &lt;p&gt;Classe Java pour pShelfItemType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="pShelfItemType">
- *   &lt;complexContent>
- *     &lt;extension base="{}fieldContainerType">
- *       &lt;attribute name="image" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="text" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="toolTipText" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="pShelfItemType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}fieldContainerType"&amp;gt;
+ *       &amp;lt;attribute name="image" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="text" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="toolTipText" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -50,7 +50,7 @@ public class PShelfItemType
     protected String toolTipText;
 
     /**
-     * Obtient la valeur de la propriété image.
+     * Obtient la valeur de la propriÃ©tÃ© image.
      * 
      * @return
      *     possible object is
@@ -62,7 +62,7 @@ public class PShelfItemType
     }
 
     /**
-     * Définit la valeur de la propriété image.
+     * DÃ©finit la valeur de la propriÃ©tÃ© image.
      * 
      * @param value
      *     allowed object is
@@ -74,7 +74,7 @@ public class PShelfItemType
     }
 
     /**
-     * Obtient la valeur de la propriété text.
+     * Obtient la valeur de la propriÃ©tÃ© text.
      * 
      * @return
      *     possible object is
@@ -86,7 +86,7 @@ public class PShelfItemType
     }
 
     /**
-     * Définit la valeur de la propriété text.
+     * DÃ©finit la valeur de la propriÃ©tÃ© text.
      * 
      * @param value
      *     allowed object is
@@ -98,7 +98,7 @@ public class PShelfItemType
     }
 
     /**
-     * Obtient la valeur de la propriété toolTipText.
+     * Obtient la valeur de la propriÃ©tÃ© toolTipText.
      * 
      * @return
      *     possible object is
@@ -110,7 +110,7 @@ public class PShelfItemType
     }
 
     /**
-     * Définit la valeur de la propriété toolTipText.
+     * DÃ©finit la valeur de la propriÃ©tÃ© toolTipText.
      * 
      * @param value
      *     allowed object is

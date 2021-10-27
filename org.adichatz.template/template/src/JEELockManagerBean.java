@@ -71,8 +71,8 @@
  *******************************************************************************/
 package #{adichatz.package.name}.ejb;
 
-import javax.ejb.Remote;
-import javax.ejb.Stateless;
+import jakarta.ejb.Remote;
+import jakarta.ejb.Stateless;
 
 import org.adichatz.common.ejb.remote.IAdiLockManager;
 import org.adichatz.hibernate.ejb.AAdiLockManagerBean;

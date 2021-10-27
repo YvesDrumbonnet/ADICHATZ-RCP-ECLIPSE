@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:22 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:33 PM CEST 
 //
 
 
@@ -19,26 +19,26 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour anonymous complex type.
+ * &lt;p&gt;Classe Java pour anonymous complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence minOccurs="0">
- *         &lt;choice>
- *           &lt;element name="queryPreference" type="{}queryPreferenceType"/>
- *           &lt;element name="controllerPreference" type="{}controllerPreferenceType"/>
- *         &lt;/choice>
- *         &lt;element name="recentOpenEditorId" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
- *       &lt;/sequence>
- *       &lt;attribute name="title" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&amp;gt;
+ *       &amp;lt;sequence minOccurs="0"&amp;gt;
+ *         &amp;lt;choice&amp;gt;
+ *           &amp;lt;element name="queryPreference" type="{}queryPreferenceType"/&amp;gt;
+ *           &amp;lt;element name="controllerPreference" type="{}controllerPreferenceType"/&amp;gt;
+ *         &amp;lt;/choice&amp;gt;
+ *         &amp;lt;element name="recentOpenEditorId" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&amp;gt;
+ *       &amp;lt;/sequence&amp;gt;
+ *       &amp;lt;attribute name="title" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/restriction&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -61,7 +61,7 @@ public class PreferenceTree
     protected String title;
 
     /**
-     * Obtient la valeur de la propriété queryPreference.
+     * Obtient la valeur de la propriÃ©tÃ© queryPreference.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class PreferenceTree
     }
 
     /**
-     * Définit la valeur de la propriété queryPreference.
+     * DÃ©finit la valeur de la propriÃ©tÃ© queryPreference.
      * 
      * @param value
      *     allowed object is
@@ -85,7 +85,7 @@ public class PreferenceTree
     }
 
     /**
-     * Obtient la valeur de la propriété controllerPreference.
+     * Obtient la valeur de la propriÃ©tÃ© controllerPreference.
      * 
      * @return
      *     possible object is
@@ -97,7 +97,7 @@ public class PreferenceTree
     }
 
     /**
-     * Définit la valeur de la propriété controllerPreference.
+     * DÃ©finit la valeur de la propriÃ©tÃ© controllerPreference.
      * 
      * @param value
      *     allowed object is
@@ -111,20 +111,20 @@ public class PreferenceTree
     /**
      * Gets the value of the recentOpenEditorId property.
      * 
-     * <p>
+     * &lt;p&gt;
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the recentOpenEditorId property.
+     * This is why there is not a &lt;CODE&gt;set&lt;/CODE&gt; method for the recentOpenEditorId property.
      * 
-     * <p>
+     * &lt;p&gt;
      * For example, to add a new item, do as follows:
-     * <pre>
+     * &lt;pre&gt;
      *    getRecentOpenEditorId().add(newItem);
-     * </pre>
+     * &lt;/pre&gt;
      * 
      * 
-     * <p>
+     * &lt;p&gt;
      * Objects of the following type(s) are allowed in the list
      * {@link String }
      * 
@@ -138,7 +138,7 @@ public class PreferenceTree
     }
 
     /**
-     * Obtient la valeur de la propriété title.
+     * Obtient la valeur de la propriÃ©tÃ© title.
      * 
      * @return
      *     possible object is
@@ -150,7 +150,7 @@ public class PreferenceTree
     }
 
     /**
-     * Définit la valeur de la propriété title.
+     * DÃ©finit la valeur de la propriÃ©tÃ© title.
      * 
      * @param value
      *     allowed object is

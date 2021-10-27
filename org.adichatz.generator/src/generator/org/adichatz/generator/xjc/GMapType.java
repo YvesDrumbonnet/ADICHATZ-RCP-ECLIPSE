@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -16,29 +16,29 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour gMapType complex type.
+ * &lt;p&gt;Classe Java pour gMapType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="gMapType">
- *   &lt;complexContent>
- *     &lt;extension base="{}controlFieldType">
- *       &lt;attribute name="addMarker" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="changeCoordinates" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="delayMillisLoading" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="editable" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="coordPattern" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="locale" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="mapTypeControl" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="mapDataType" use="required" type="{}mapDataTypeEnum" />
- *       &lt;attribute name="mapTypeId" type="{}mapTypeIdEnum" />
- *       &lt;attribute name="toolBarStyle" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="zoom" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="gMapType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}controlFieldType"&amp;gt;
+ *       &amp;lt;attribute name="addMarker" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="changeCoordinates" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="delayMillisLoading" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="editable" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="coordPattern" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="locale" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="mapTypeControl" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="mapDataType" use="required" type="{}mapDataTypeEnum" /&amp;gt;
+ *       &amp;lt;attribute name="mapTypeId" type="{}mapTypeIdEnum" /&amp;gt;
+ *       &amp;lt;attribute name="toolBarStyle" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="zoom" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -74,7 +74,7 @@ public class GMapType
     protected String zoom;
 
     /**
-     * Obtient la valeur de la propriété addMarker.
+     * Obtient la valeur de la propriÃ©tÃ© addMarker.
      * 
      * @return
      *     possible object is
@@ -86,7 +86,7 @@ public class GMapType
     }
 
     /**
-     * Définit la valeur de la propriété addMarker.
+     * DÃ©finit la valeur de la propriÃ©tÃ© addMarker.
      * 
      * @param value
      *     allowed object is
@@ -98,7 +98,7 @@ public class GMapType
     }
 
     /**
-     * Obtient la valeur de la propriété changeCoordinates.
+     * Obtient la valeur de la propriÃ©tÃ© changeCoordinates.
      * 
      * @return
      *     possible object is
@@ -110,7 +110,7 @@ public class GMapType
     }
 
     /**
-     * Définit la valeur de la propriété changeCoordinates.
+     * DÃ©finit la valeur de la propriÃ©tÃ© changeCoordinates.
      * 
      * @param value
      *     allowed object is
@@ -122,7 +122,7 @@ public class GMapType
     }
 
     /**
-     * Obtient la valeur de la propriété delayMillisLoading.
+     * Obtient la valeur de la propriÃ©tÃ© delayMillisLoading.
      * 
      * @return
      *     possible object is
@@ -134,7 +134,7 @@ public class GMapType
     }
 
     /**
-     * Définit la valeur de la propriété delayMillisLoading.
+     * DÃ©finit la valeur de la propriÃ©tÃ© delayMillisLoading.
      * 
      * @param value
      *     allowed object is
@@ -146,7 +146,7 @@ public class GMapType
     }
 
     /**
-     * Obtient la valeur de la propriété editable.
+     * Obtient la valeur de la propriÃ©tÃ© editable.
      * 
      * @return
      *     possible object is
@@ -158,7 +158,7 @@ public class GMapType
     }
 
     /**
-     * Définit la valeur de la propriété editable.
+     * DÃ©finit la valeur de la propriÃ©tÃ© editable.
      * 
      * @param value
      *     allowed object is
@@ -170,7 +170,7 @@ public class GMapType
     }
 
     /**
-     * Obtient la valeur de la propriété coordPattern.
+     * Obtient la valeur de la propriÃ©tÃ© coordPattern.
      * 
      * @return
      *     possible object is
@@ -182,7 +182,7 @@ public class GMapType
     }
 
     /**
-     * Définit la valeur de la propriété coordPattern.
+     * DÃ©finit la valeur de la propriÃ©tÃ© coordPattern.
      * 
      * @param value
      *     allowed object is
@@ -194,7 +194,7 @@ public class GMapType
     }
 
     /**
-     * Obtient la valeur de la propriété locale.
+     * Obtient la valeur de la propriÃ©tÃ© locale.
      * 
      * @return
      *     possible object is
@@ -206,7 +206,7 @@ public class GMapType
     }
 
     /**
-     * Définit la valeur de la propriété locale.
+     * DÃ©finit la valeur de la propriÃ©tÃ© locale.
      * 
      * @param value
      *     allowed object is
@@ -218,7 +218,7 @@ public class GMapType
     }
 
     /**
-     * Obtient la valeur de la propriété mapTypeControl.
+     * Obtient la valeur de la propriÃ©tÃ© mapTypeControl.
      * 
      * @return
      *     possible object is
@@ -230,7 +230,7 @@ public class GMapType
     }
 
     /**
-     * Définit la valeur de la propriété mapTypeControl.
+     * DÃ©finit la valeur de la propriÃ©tÃ© mapTypeControl.
      * 
      * @param value
      *     allowed object is
@@ -242,7 +242,7 @@ public class GMapType
     }
 
     /**
-     * Obtient la valeur de la propriété mapDataType.
+     * Obtient la valeur de la propriÃ©tÃ© mapDataType.
      * 
      * @return
      *     possible object is
@@ -254,7 +254,7 @@ public class GMapType
     }
 
     /**
-     * Définit la valeur de la propriété mapDataType.
+     * DÃ©finit la valeur de la propriÃ©tÃ© mapDataType.
      * 
      * @param value
      *     allowed object is
@@ -266,7 +266,7 @@ public class GMapType
     }
 
     /**
-     * Obtient la valeur de la propriété mapTypeId.
+     * Obtient la valeur de la propriÃ©tÃ© mapTypeId.
      * 
      * @return
      *     possible object is
@@ -278,7 +278,7 @@ public class GMapType
     }
 
     /**
-     * Définit la valeur de la propriété mapTypeId.
+     * DÃ©finit la valeur de la propriÃ©tÃ© mapTypeId.
      * 
      * @param value
      *     allowed object is
@@ -290,7 +290,7 @@ public class GMapType
     }
 
     /**
-     * Obtient la valeur de la propriété toolBarStyle.
+     * Obtient la valeur de la propriÃ©tÃ© toolBarStyle.
      * 
      * @return
      *     possible object is
@@ -302,7 +302,7 @@ public class GMapType
     }
 
     /**
-     * Définit la valeur de la propriété toolBarStyle.
+     * DÃ©finit la valeur de la propriÃ©tÃ© toolBarStyle.
      * 
      * @param value
      *     allowed object is
@@ -314,7 +314,7 @@ public class GMapType
     }
 
     /**
-     * Obtient la valeur de la propriété zoom.
+     * Obtient la valeur de la propriÃ©tÃ© zoom.
      * 
      * @return
      *     possible object is
@@ -326,7 +326,7 @@ public class GMapType
     }
 
     /**
-     * Définit la valeur de la propriété zoom.
+     * DÃ©finit la valeur de la propriÃ©tÃ© zoom.
      * 
      * @param value
      *     allowed object is

@@ -5,6 +5,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="/org.adichatz.hibernate4.jboss/bin" sourcepath="/org.adichatz.hibernate4.jboss"/>
 	<classpathentry kind="lib" path="/org.adichatz.resources" sourcepath="/org.adichatz.resources"/>
-	<classpathentry kind="lib" path="/org.adichatz.template/template/lib/lib-jse/hibernate-core-5.3.13.Final.jar"/>
+	<classpathentry kind="lib" path="/org.adichatz.template/template/lib/lib-jse/hibernate-core-5.3.20.Final-ee9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -19,25 +19,25 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Classe Java pour gridColumnType complex type.
+ * &lt;p&gt;Classe Java pour gridColumnType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="gridColumnType">
- *   &lt;complexContent>
- *     &lt;extension base="{}columnFieldType">
- *       &lt;attribute name="controllerClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="minimumWidth" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="cellSelectionEnabled" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="summary" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="wordWrap" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="headerFont" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="headerWordWrap" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="gridColumnType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}columnFieldType"&amp;gt;
+ *       &amp;lt;attribute name="controllerClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="minimumWidth" type="{http://www.w3.org/2001/XMLSchema}int" /&amp;gt;
+ *       &amp;lt;attribute name="cellSelectionEnabled" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="summary" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="wordWrap" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="headerFont" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="headerWordWrap" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -67,7 +67,7 @@ public class GridColumnType
     protected String headerWordWrap;
 
     /**
-     * Obtient la valeur de la propriété controllerClassName.
+     * Obtient la valeur de la propriÃ©tÃ© controllerClassName.
      * 
      * @return
      *     possible object is
@@ -79,7 +79,7 @@ public class GridColumnType
     }
 
     /**
-     * Définit la valeur de la propriété controllerClassName.
+     * DÃ©finit la valeur de la propriÃ©tÃ© controllerClassName.
      * 
      * @param value
      *     allowed object is
@@ -91,7 +91,7 @@ public class GridColumnType
     }
 
     /**
-     * Obtient la valeur de la propriété minimumWidth.
+     * Obtient la valeur de la propriÃ©tÃ© minimumWidth.
      * 
      * @return
      *     possible object is
@@ -103,7 +103,7 @@ public class GridColumnType
     }
 
     /**
-     * Définit la valeur de la propriété minimumWidth.
+     * DÃ©finit la valeur de la propriÃ©tÃ© minimumWidth.
      * 
      * @param value
      *     allowed object is
@@ -115,7 +115,7 @@ public class GridColumnType
     }
 
     /**
-     * Obtient la valeur de la propriété cellSelectionEnabled.
+     * Obtient la valeur de la propriÃ©tÃ© cellSelectionEnabled.
      * 
      * @return
      *     possible object is
@@ -127,7 +127,7 @@ public class GridColumnType
     }
 
     /**
-     * Définit la valeur de la propriété cellSelectionEnabled.
+     * DÃ©finit la valeur de la propriÃ©tÃ© cellSelectionEnabled.
      * 
      * @param value
      *     allowed object is
@@ -139,7 +139,7 @@ public class GridColumnType
     }
 
     /**
-     * Obtient la valeur de la propriété summary.
+     * Obtient la valeur de la propriÃ©tÃ© summary.
      * 
      * @return
      *     possible object is
@@ -151,7 +151,7 @@ public class GridColumnType
     }
 
     /**
-     * Définit la valeur de la propriété summary.
+     * DÃ©finit la valeur de la propriÃ©tÃ© summary.
      * 
      * @param value
      *     allowed object is
@@ -163,7 +163,7 @@ public class GridColumnType
     }
 
     /**
-     * Obtient la valeur de la propriété wordWrap.
+     * Obtient la valeur de la propriÃ©tÃ© wordWrap.
      * 
      * @return
      *     possible object is
@@ -175,7 +175,7 @@ public class GridColumnType
     }
 
     /**
-     * Définit la valeur de la propriété wordWrap.
+     * DÃ©finit la valeur de la propriÃ©tÃ© wordWrap.
      * 
      * @param value
      *     allowed object is
@@ -187,7 +187,7 @@ public class GridColumnType
     }
 
     /**
-     * Obtient la valeur de la propriété headerFont.
+     * Obtient la valeur de la propriÃ©tÃ© headerFont.
      * 
      * @return
      *     possible object is
@@ -199,7 +199,7 @@ public class GridColumnType
     }
 
     /**
-     * Définit la valeur de la propriété headerFont.
+     * DÃ©finit la valeur de la propriÃ©tÃ© headerFont.
      * 
      * @param value
      *     allowed object is
@@ -211,7 +211,7 @@ public class GridColumnType
     }
 
     /**
-     * Obtient la valeur de la propriété headerWordWrap.
+     * Obtient la valeur de la propriÃ©tÃ© headerWordWrap.
      * 
      * @return
      *     possible object is
@@ -223,7 +223,7 @@ public class GridColumnType
     }
 
     /**
-     * Définit la valeur de la propriété headerWordWrap.
+     * DÃ©finit la valeur de la propriÃ©tÃ© headerWordWrap.
      * 
      * @param value
      *     allowed object is

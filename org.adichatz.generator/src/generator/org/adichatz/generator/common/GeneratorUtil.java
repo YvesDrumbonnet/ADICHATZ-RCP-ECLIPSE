@@ -61,9 +61,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Id;
 
 import org.adichatz.engine.common.AdiResourceBundle;
 import org.adichatz.engine.common.AdichatzApplication;

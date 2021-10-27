@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:21 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:33 PM CEST 
 //
 
 
@@ -19,22 +19,22 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Classe Java pour tableStatusBar complex type.
+ * &lt;p&gt;Classe Java pour tableStatusBar complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="tableStatusBar">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="text" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="bundleFile" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="className" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="tableStatusBar"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&amp;gt;
+ *       &amp;lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="text" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="bundleFile" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="className" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/restriction&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -57,7 +57,7 @@ public class TableStatusBar
     protected String className;
 
     /**
-     * Obtient la valeur de la propriété id.
+     * Obtient la valeur de la propriÃ©tÃ© id.
      * 
      * @return
      *     possible object is
@@ -69,7 +69,7 @@ public class TableStatusBar
     }
 
     /**
-     * Définit la valeur de la propriété id.
+     * DÃ©finit la valeur de la propriÃ©tÃ© id.
      * 
      * @param value
      *     allowed object is
@@ -81,7 +81,7 @@ public class TableStatusBar
     }
 
     /**
-     * Obtient la valeur de la propriété text.
+     * Obtient la valeur de la propriÃ©tÃ© text.
      * 
      * @return
      *     possible object is
@@ -93,7 +93,7 @@ public class TableStatusBar
     }
 
     /**
-     * Définit la valeur de la propriété text.
+     * DÃ©finit la valeur de la propriÃ©tÃ© text.
      * 
      * @param value
      *     allowed object is
@@ -105,7 +105,7 @@ public class TableStatusBar
     }
 
     /**
-     * Obtient la valeur de la propriété bundleFile.
+     * Obtient la valeur de la propriÃ©tÃ© bundleFile.
      * 
      * @return
      *     possible object is
@@ -117,7 +117,7 @@ public class TableStatusBar
     }
 
     /**
-     * Définit la valeur de la propriété bundleFile.
+     * DÃ©finit la valeur de la propriÃ©tÃ© bundleFile.
      * 
      * @param value
      *     allowed object is
@@ -129,7 +129,7 @@ public class TableStatusBar
     }
 
     /**
-     * Obtient la valeur de la propriété className.
+     * Obtient la valeur de la propriÃ©tÃ© className.
      * 
      * @return
      *     possible object is
@@ -141,7 +141,7 @@ public class TableStatusBar
     }
 
     /**
-     * Définit la valeur de la propriété className.
+     * DÃ©finit la valeur de la propriÃ©tÃ© className.
      * 
      * @param value
      *     allowed object is

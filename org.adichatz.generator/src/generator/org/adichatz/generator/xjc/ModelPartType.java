@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -20,33 +20,33 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Classe Java pour modelPartType complex type.
+ * &lt;p&gt;Classe Java pour modelPartType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="modelPartType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="params" type="{}paramsType"/>
- *         &lt;element name="pojoRewriters" type="{}pojoRewritersType"/>
- *       &lt;/sequence>
- *       &lt;attribute name="connectorDataSource" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="connectorASVersion" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="modelPackageName" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="modelProcurement" type="{}modelProcurementEnum" />
- *       &lt;attribute name="modelProcurementFolder" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="dataSourceUnit" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="persistenceManagerClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="lockManagerClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="ejbFileName" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="dataSourceFileName" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="jndi" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="modelPartType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&amp;gt;
+ *       &amp;lt;sequence&amp;gt;
+ *         &amp;lt;element name="params" type="{}paramsType"/&amp;gt;
+ *         &amp;lt;element name="pojoRewriters" type="{}pojoRewritersType"/&amp;gt;
+ *       &amp;lt;/sequence&amp;gt;
+ *       &amp;lt;attribute name="connectorDataSource" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="connectorASVersion" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="modelPackageName" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="modelProcurement" type="{}modelProcurementEnum" /&amp;gt;
+ *       &amp;lt;attribute name="modelProcurementFolder" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="dataSourceUnit" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="persistenceManagerClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="lockManagerClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="ejbFileName" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="dataSourceFileName" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="jndi" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *     &amp;lt;/restriction&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -104,7 +104,7 @@ public class ModelPartType
     protected String jndi;
 
     /**
-     * Obtient la valeur de la propriété params.
+     * Obtient la valeur de la propriÃ©tÃ© params.
      * 
      * @return
      *     possible object is
@@ -116,7 +116,7 @@ public class ModelPartType
     }
 
     /**
-     * Définit la valeur de la propriété params.
+     * DÃ©finit la valeur de la propriÃ©tÃ© params.
      * 
      * @param value
      *     allowed object is
@@ -128,7 +128,7 @@ public class ModelPartType
     }
 
     /**
-     * Obtient la valeur de la propriété pojoRewriters.
+     * Obtient la valeur de la propriÃ©tÃ© pojoRewriters.
      * 
      * @return
      *     possible object is
@@ -140,7 +140,7 @@ public class ModelPartType
     }
 
     /**
-     * Définit la valeur de la propriété pojoRewriters.
+     * DÃ©finit la valeur de la propriÃ©tÃ© pojoRewriters.
      * 
      * @param value
      *     allowed object is
@@ -152,7 +152,7 @@ public class ModelPartType
     }
 
     /**
-     * Obtient la valeur de la propriété connectorDataSource.
+     * Obtient la valeur de la propriÃ©tÃ© connectorDataSource.
      * 
      * @return
      *     possible object is
@@ -164,7 +164,7 @@ public class ModelPartType
     }
 
     /**
-     * Définit la valeur de la propriété connectorDataSource.
+     * DÃ©finit la valeur de la propriÃ©tÃ© connectorDataSource.
      * 
      * @param value
      *     allowed object is
@@ -176,7 +176,7 @@ public class ModelPartType
     }
 
     /**
-     * Obtient la valeur de la propriété connectorASVersion.
+     * Obtient la valeur de la propriÃ©tÃ© connectorASVersion.
      * 
      * @return
      *     possible object is
@@ -188,7 +188,7 @@ public class ModelPartType
     }
 
     /**
-     * Définit la valeur de la propriété connectorASVersion.
+     * DÃ©finit la valeur de la propriÃ©tÃ© connectorASVersion.
      * 
      * @param value
      *     allowed object is
@@ -200,7 +200,7 @@ public class ModelPartType
     }
 
     /**
-     * Obtient la valeur de la propriété modelPackageName.
+     * Obtient la valeur de la propriÃ©tÃ© modelPackageName.
      * 
      * @return
      *     possible object is
@@ -212,7 +212,7 @@ public class ModelPartType
     }
 
     /**
-     * Définit la valeur de la propriété modelPackageName.
+     * DÃ©finit la valeur de la propriÃ©tÃ© modelPackageName.
      * 
      * @param value
      *     allowed object is
@@ -224,7 +224,7 @@ public class ModelPartType
     }
 
     /**
-     * Obtient la valeur de la propriété modelProcurement.
+     * Obtient la valeur de la propriÃ©tÃ© modelProcurement.
      * 
      * @return
      *     possible object is
@@ -236,7 +236,7 @@ public class ModelPartType
     }
 
     /**
-     * Définit la valeur de la propriété modelProcurement.
+     * DÃ©finit la valeur de la propriÃ©tÃ© modelProcurement.
      * 
      * @param value
      *     allowed object is
@@ -248,7 +248,7 @@ public class ModelPartType
     }
 
     /**
-     * Obtient la valeur de la propriété modelProcurementFolder.
+     * Obtient la valeur de la propriÃ©tÃ© modelProcurementFolder.
      * 
      * @return
      *     possible object is
@@ -260,7 +260,7 @@ public class ModelPartType
     }
 
     /**
-     * Définit la valeur de la propriété modelProcurementFolder.
+     * DÃ©finit la valeur de la propriÃ©tÃ© modelProcurementFolder.
      * 
      * @param value
      *     allowed object is
@@ -272,7 +272,7 @@ public class ModelPartType
     }
 
     /**
-     * Obtient la valeur de la propriété dataSourceUnit.
+     * Obtient la valeur de la propriÃ©tÃ© dataSourceUnit.
      * 
      * @return
      *     possible object is
@@ -284,7 +284,7 @@ public class ModelPartType
     }
 
     /**
-     * Définit la valeur de la propriété dataSourceUnit.
+     * DÃ©finit la valeur de la propriÃ©tÃ© dataSourceUnit.
      * 
      * @param value
      *     allowed object is
@@ -296,7 +296,7 @@ public class ModelPartType
     }
 
     /**
-     * Obtient la valeur de la propriété persistenceManagerClassName.
+     * Obtient la valeur de la propriÃ©tÃ© persistenceManagerClassName.
      * 
      * @return
      *     possible object is
@@ -308,7 +308,7 @@ public class ModelPartType
     }
 
     /**
-     * Définit la valeur de la propriété persistenceManagerClassName.
+     * DÃ©finit la valeur de la propriÃ©tÃ© persistenceManagerClassName.
      * 
      * @param value
      *     allowed object is
@@ -320,7 +320,7 @@ public class ModelPartType
     }
 
     /**
-     * Obtient la valeur de la propriété lockManagerClassName.
+     * Obtient la valeur de la propriÃ©tÃ© lockManagerClassName.
      * 
      * @return
      *     possible object is
@@ -332,7 +332,7 @@ public class ModelPartType
     }
 
     /**
-     * Définit la valeur de la propriété lockManagerClassName.
+     * DÃ©finit la valeur de la propriÃ©tÃ© lockManagerClassName.
      * 
      * @param value
      *     allowed object is
@@ -344,7 +344,7 @@ public class ModelPartType
     }
 
     /**
-     * Obtient la valeur de la propriété ejbFileName.
+     * Obtient la valeur de la propriÃ©tÃ© ejbFileName.
      * 
      * @return
      *     possible object is
@@ -356,7 +356,7 @@ public class ModelPartType
     }
 
     /**
-     * Définit la valeur de la propriété ejbFileName.
+     * DÃ©finit la valeur de la propriÃ©tÃ© ejbFileName.
      * 
      * @param value
      *     allowed object is
@@ -368,7 +368,7 @@ public class ModelPartType
     }
 
     /**
-     * Obtient la valeur de la propriété dataSourceFileName.
+     * Obtient la valeur de la propriÃ©tÃ© dataSourceFileName.
      * 
      * @return
      *     possible object is
@@ -380,7 +380,7 @@ public class ModelPartType
     }
 
     /**
-     * Définit la valeur de la propriété dataSourceFileName.
+     * DÃ©finit la valeur de la propriÃ©tÃ© dataSourceFileName.
      * 
      * @param value
      *     allowed object is
@@ -392,7 +392,7 @@ public class ModelPartType
     }
 
     /**
-     * Obtient la valeur de la propriété jndi.
+     * Obtient la valeur de la propriÃ©tÃ© jndi.
      * 
      * @return
      *     possible object is
@@ -404,7 +404,7 @@ public class ModelPartType
     }
 
     /**
-     * Définit la valeur de la propriété jndi.
+     * DÃ©finit la valeur de la propriÃ©tÃ© jndi.
      * 
      * @param value
      *     allowed object is

@@ -85,6 +85,7 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBContextFactory;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
@@ -102,7 +103,9 @@ import org.adichatz.engine.controller.IRankedController;
 import org.adichatz.engine.extra.AdiMessageDialog;
 import org.adichatz.engine.renderer.AdiFormToolkit;
 import org.adichatz.engine.xjc.ObjectFactory;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.internal.InternalPolicy;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.Clipboard;
@@ -118,6 +121,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.forms.widgets.SharedScrolledComposite;
+import org.osgi.framework.Bundle;
 
 import net.miginfocom.layout.LayoutCallback;
 import net.miginfocom.swt.MigLayout;
@@ -132,6 +136,9 @@ import net.miginfocom.swt.MigLayout;
  * 
  */
 public class EngineTools {
+
+	/** The JAXBContextFactory. */
+	private static JAXBContextFactory contextFactory;
 
 	/** The unmarshaller. */
 	private static Unmarshaller unmarshaller;
@@ -295,15 +302,40 @@ public class EngineTools {
 	 * @return the unmarshaller
 	 */
 	public static Unmarshaller getUnmarshaller() {
-		if (null == unmarshaller) {
+		if (null == unmarshaller)
+			unmarshaller = getUnmarshaller(ObjectFactory.class);
+		return unmarshaller;
+	}
+
+	public static JAXBContextFactory getContextFactory() {
+		if (null == contextFactory) {
+			Bundle xmlBundle = Platform.getBundle("com.sun.xml.bind");
 			try {
-				// new jaxb context for ENGINE object factory:
-				// org.adichatz.engine.xjc.ObjectFactory
-				JAXBContext jc = JAXBContext.newInstance(ObjectFactory.class);
-				unmarshaller = jc.createUnmarshaller();
-			} catch (JAXBException e) {
+				Class<?> factoryClass = xmlBundle.loadClass("com.sun.xml.bind.v2.JAXBContextFactory");
+				contextFactory = (JAXBContextFactory) factoryClass.getDeclaredConstructor().newInstance();
+			} catch (Exception e) {
 				logError(e);
 			}
+		}
+		return contextFactory;
+	}
+
+	/**
+	 * Gets the unmarshaller.
+	 * 
+	 * @return the unmarshaller
+	 */
+	public static Unmarshaller getUnmarshaller(Class<?> factoryClazz) {
+		Unmarshaller unmarshaller = null;
+		try {
+			JAXBContext jc = null;
+			if (InternalPolicy.OSGI_AVAILABLE)
+				jc = getContextFactory().createContext(new Class<?>[] { factoryClazz }, Collections.EMPTY_MAP);
+			if (null == jc)
+				jc = JAXBContext.newInstance(factoryClazz);
+			unmarshaller = jc.createUnmarshaller();
+		} catch (JAXBException e) {
+			logError(e);
 		}
 		return unmarshaller;
 	}
@@ -477,9 +509,14 @@ public class EngineTools {
 	public static void createXmlFile(OutputStream outputStream, Object treeWrapper, String schemaLocation) {
 
 		try {
-			JAXBContext context = JAXBContext.newInstance(EngineTools.getChildXjcClass(treeWrapper));
+			JAXBContext jc = null;
+			Class<?> factoryClazz = EngineTools.getChildXjcClass(treeWrapper);
+			if (InternalPolicy.OSGI_AVAILABLE)
+				jc = getContextFactory().createContext(new Class<?>[] { factoryClazz }, Collections.EMPTY_MAP);
+			if (null == jc)
+				jc = JAXBContext.newInstance(factoryClazz);
 
-			Marshaller m = context.createMarshaller();
+			Marshaller m = jc.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			if (null != schemaLocation)
 				m.setProperty(Marshaller.JAXB_NO_NAMESPACE_SCHEMA_LOCATION, schemaLocation);

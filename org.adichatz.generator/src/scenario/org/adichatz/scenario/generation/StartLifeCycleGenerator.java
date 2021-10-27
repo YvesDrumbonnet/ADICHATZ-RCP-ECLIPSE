@@ -96,7 +96,11 @@ import org.eclipse.text.edits.TextEdit;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AdichatzPluginGenerator.
+ * The Class StartLifeCycleGenerator.
+ * 
+ * Generate StartLifeCycleHanler.java file
+ *
+ * @author Yves Drumbonnet
  */
 @SuppressWarnings({ "unchecked" })
 public class StartLifeCycleGenerator extends ACompilationUnitGenerator {

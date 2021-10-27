@@ -83,7 +83,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import javax.persistence.EntityNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 
 import org.adichatz.common.ejb.AEntityCallfore;
 import org.adichatz.common.ejb.AdiPMException;

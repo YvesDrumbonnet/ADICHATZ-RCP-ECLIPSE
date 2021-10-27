@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -21,33 +21,33 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Classe Java pour treeElementType complex type.
+ * &lt;p&gt;Classe Java pour treeElementType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="treeElementType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;choice>
- *         &lt;element name="treeNode" type="{}treeNodeType" maxOccurs="unbounded"/>
- *         &lt;element name="backgroundCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="foregroundlCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="fontCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="labelCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="imageCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *       &lt;/choice>
- *       &lt;attribute name="entityURI" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="background" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="foreground" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="font" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="image" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="label" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="treeChildClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="treeElementType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&amp;gt;
+ *       &amp;lt;choice&amp;gt;
+ *         &amp;lt;element name="treeNode" type="{}treeNodeType" maxOccurs="unbounded"/&amp;gt;
+ *         &amp;lt;element name="backgroundCode" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *         &amp;lt;element name="foregroundlCode" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *         &amp;lt;element name="fontCode" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *         &amp;lt;element name="labelCode" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *         &amp;lt;element name="imageCode" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *       &amp;lt;/choice&amp;gt;
+ *       &amp;lt;attribute name="entityURI" use="required" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="background" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="foreground" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="font" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="image" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="label" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="treeChildClassName" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *     &amp;lt;/restriction&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -91,20 +91,20 @@ public class TreeElementType
     /**
      * Gets the value of the treeNode property.
      * 
-     * <p>
+     * &lt;p&gt;
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the treeNode property.
+     * This is why there is not a &lt;CODE&gt;set&lt;/CODE&gt; method for the treeNode property.
      * 
-     * <p>
+     * &lt;p&gt;
      * For example, to add a new item, do as follows:
-     * <pre>
+     * &lt;pre&gt;
      *    getTreeNode().add(newItem);
-     * </pre>
+     * &lt;/pre&gt;
      * 
      * 
-     * <p>
+     * &lt;p&gt;
      * Objects of the following type(s) are allowed in the list
      * {@link TreeNodeType }
      * 
@@ -118,7 +118,7 @@ public class TreeElementType
     }
 
     /**
-     * Obtient la valeur de la propriété backgroundCode.
+     * Obtient la valeur de la propriÃ©tÃ© backgroundCode.
      * 
      * @return
      *     possible object is
@@ -130,7 +130,7 @@ public class TreeElementType
     }
 
     /**
-     * Définit la valeur de la propriété backgroundCode.
+     * DÃ©finit la valeur de la propriÃ©tÃ© backgroundCode.
      * 
      * @param value
      *     allowed object is
@@ -142,7 +142,7 @@ public class TreeElementType
     }
 
     /**
-     * Obtient la valeur de la propriété foregroundlCode.
+     * Obtient la valeur de la propriÃ©tÃ© foregroundlCode.
      * 
      * @return
      *     possible object is
@@ -154,7 +154,7 @@ public class TreeElementType
     }
 
     /**
-     * Définit la valeur de la propriété foregroundlCode.
+     * DÃ©finit la valeur de la propriÃ©tÃ© foregroundlCode.
      * 
      * @param value
      *     allowed object is
@@ -166,7 +166,7 @@ public class TreeElementType
     }
 
     /**
-     * Obtient la valeur de la propriété fontCode.
+     * Obtient la valeur de la propriÃ©tÃ© fontCode.
      * 
      * @return
      *     possible object is
@@ -178,7 +178,7 @@ public class TreeElementType
     }
 
     /**
-     * Définit la valeur de la propriété fontCode.
+     * DÃ©finit la valeur de la propriÃ©tÃ© fontCode.
      * 
      * @param value
      *     allowed object is
@@ -190,7 +190,7 @@ public class TreeElementType
     }
 
     /**
-     * Obtient la valeur de la propriété labelCode.
+     * Obtient la valeur de la propriÃ©tÃ© labelCode.
      * 
      * @return
      *     possible object is
@@ -202,7 +202,7 @@ public class TreeElementType
     }
 
     /**
-     * Définit la valeur de la propriété labelCode.
+     * DÃ©finit la valeur de la propriÃ©tÃ© labelCode.
      * 
      * @param value
      *     allowed object is
@@ -214,7 +214,7 @@ public class TreeElementType
     }
 
     /**
-     * Obtient la valeur de la propriété imageCode.
+     * Obtient la valeur de la propriÃ©tÃ© imageCode.
      * 
      * @return
      *     possible object is
@@ -226,7 +226,7 @@ public class TreeElementType
     }
 
     /**
-     * Définit la valeur de la propriété imageCode.
+     * DÃ©finit la valeur de la propriÃ©tÃ© imageCode.
      * 
      * @param value
      *     allowed object is
@@ -238,7 +238,7 @@ public class TreeElementType
     }
 
     /**
-     * Obtient la valeur de la propriété entityURI.
+     * Obtient la valeur de la propriÃ©tÃ© entityURI.
      * 
      * @return
      *     possible object is
@@ -250,7 +250,7 @@ public class TreeElementType
     }
 
     /**
-     * Définit la valeur de la propriété entityURI.
+     * DÃ©finit la valeur de la propriÃ©tÃ© entityURI.
      * 
      * @param value
      *     allowed object is
@@ -262,7 +262,7 @@ public class TreeElementType
     }
 
     /**
-     * Obtient la valeur de la propriété background.
+     * Obtient la valeur de la propriÃ©tÃ© background.
      * 
      * @return
      *     possible object is
@@ -274,7 +274,7 @@ public class TreeElementType
     }
 
     /**
-     * Définit la valeur de la propriété background.
+     * DÃ©finit la valeur de la propriÃ©tÃ© background.
      * 
      * @param value
      *     allowed object is
@@ -286,7 +286,7 @@ public class TreeElementType
     }
 
     /**
-     * Obtient la valeur de la propriété foreground.
+     * Obtient la valeur de la propriÃ©tÃ© foreground.
      * 
      * @return
      *     possible object is
@@ -298,7 +298,7 @@ public class TreeElementType
     }
 
     /**
-     * Définit la valeur de la propriété foreground.
+     * DÃ©finit la valeur de la propriÃ©tÃ© foreground.
      * 
      * @param value
      *     allowed object is
@@ -310,7 +310,7 @@ public class TreeElementType
     }
 
     /**
-     * Obtient la valeur de la propriété font.
+     * Obtient la valeur de la propriÃ©tÃ© font.
      * 
      * @return
      *     possible object is
@@ -322,7 +322,7 @@ public class TreeElementType
     }
 
     /**
-     * Définit la valeur de la propriété font.
+     * DÃ©finit la valeur de la propriÃ©tÃ© font.
      * 
      * @param value
      *     allowed object is
@@ -334,7 +334,7 @@ public class TreeElementType
     }
 
     /**
-     * Obtient la valeur de la propriété image.
+     * Obtient la valeur de la propriÃ©tÃ© image.
      * 
      * @return
      *     possible object is
@@ -346,7 +346,7 @@ public class TreeElementType
     }
 
     /**
-     * Définit la valeur de la propriété image.
+     * DÃ©finit la valeur de la propriÃ©tÃ© image.
      * 
      * @param value
      *     allowed object is
@@ -358,7 +358,7 @@ public class TreeElementType
     }
 
     /**
-     * Obtient la valeur de la propriété label.
+     * Obtient la valeur de la propriÃ©tÃ© label.
      * 
      * @return
      *     possible object is
@@ -370,7 +370,7 @@ public class TreeElementType
     }
 
     /**
-     * Définit la valeur de la propriété label.
+     * DÃ©finit la valeur de la propriÃ©tÃ© label.
      * 
      * @param value
      *     allowed object is
@@ -382,7 +382,7 @@ public class TreeElementType
     }
 
     /**
-     * Obtient la valeur de la propriété treeChildClassName.
+     * Obtient la valeur de la propriÃ©tÃ© treeChildClassName.
      * 
      * @return
      *     possible object is
@@ -394,7 +394,7 @@ public class TreeElementType
     }
 
     /**
-     * Définit la valeur de la propriété treeChildClassName.
+     * DÃ©finit la valeur de la propriÃ©tÃ© treeChildClassName.
      * 
      * @param value
      *     allowed object is

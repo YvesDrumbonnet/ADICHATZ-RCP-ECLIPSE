@@ -22,7 +22,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/org.adichatz.template/template/lib/lib-jse/hibernate-core-5.3.13.Final.jar"/>
+	<classpathentry kind="lib" path="/org.adichatz.template/template/lib/lib-jse/hibernate-core-5.3.20.Final-ee9.jar"/>
 	<classpathentry kind="lib" path="/org.adichatz.template/template/lib/tool/javax.annotation_1.2.0.jar"/>
 	<classpathentry kind="lib" path="/org.adichatz.template/template/lib/tool/javax.inject_1.0.0.jar"/>
 	<classpathentry kind="output" path="bin"/>

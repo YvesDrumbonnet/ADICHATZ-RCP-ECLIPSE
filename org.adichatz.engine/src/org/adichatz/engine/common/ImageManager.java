@@ -77,12 +77,16 @@ import java.util.Map;
 import org.adichatz.engine.widgets.AdiImageDescriptor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.internal.InternalPolicy;
+import org.eclipse.swt.graphics.Image;
 import org.osgi.framework.Bundle;
 
 @SuppressWarnings("restriction")
 public class ImageManager {
 
-	private Map<String, AdiImageDescriptor> imageDescriptorMap = new HashMap<String, AdiImageDescriptor>();
+	private Map<String, AdiImageDescriptor> imageDescriptorMap = new HashMap<>();
+
+	// AVISATZ landmark A Supprimer ?!?
+	private Map<String, Image> imageMap = new HashMap<>();
 
 	private Bundle bundle;
 
@@ -104,7 +108,8 @@ public class ImageManager {
 
 	public AdiImageDescriptor getImageDescriptor(String imageName) {
 		AdiImageDescriptor imageDescriptor = imageDescriptorMap.get(imageName);
-		if (null == imageDescriptor) {
+		Image image = imageMap.get(imageName);
+		if (null == imageDescriptor && (null == image || image.isDisposed())) {
 			if (null != bundle)
 				imageDescriptor = new AdiImageDescriptor(bundle, imageName);
 			else

@@ -60,10 +60,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.Query;
-
 import org.adichatz.common.ejb.AEntityCallback;
 import org.adichatz.common.ejb.AdiPMException;
 import org.adichatz.common.ejb.AdiQuery;
@@ -77,9 +73,13 @@ import org.adichatz.common.ejb.Session;
 import org.adichatz.common.ejb.extra.NextValueGenerator;
 import org.adichatz.common.ejb.remote.IAdiPersistenceManager;
 import org.adichatz.common.ejb.util.IEntityConstants;
-import org.hibernate.SQLQuery;
 import org.hibernate.collection.internal.PersistentSet;
 import org.hibernate.proxy.HibernateProxy;
+import org.hibernate.query.NativeQuery;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.Query;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -170,7 +170,7 @@ public abstract class APersistenceManager implements IAdiPersistenceManager {
 	 */
 	private QueryResult getInternalSQLSingleResult(AdiQuery adiQuery) throws AdiPMException {
 		org.hibernate.Session hibernateSession = (org.hibernate.Session) getEntityManager().getDelegate();
-		SQLQuery sqlQuery = hibernateSession.createSQLQuery(adiQuery.getQueryString());
+		NativeQuery<?> sqlQuery = hibernateSession.createSQLQuery(adiQuery.getQueryString());
 		sqlQuery.setReadOnly(true);
 		int i = 0;
 		if (null != adiQuery.getParameters())
@@ -227,12 +227,10 @@ public abstract class APersistenceManager implements IAdiPersistenceManager {
 		Long queryCount = null;
 		@SuppressWarnings("rawtypes")
 		List list = query.getResultList();
-		if (null == adiQuery.getMaxResults()
-				|| (0 == adiQuery.getFirstResult() && list.size() < adiQuery.getMaxResults()))
+		if (null == adiQuery.getMaxResults() || (0 == adiQuery.getFirstResult() && list.size() < adiQuery.getMaxResults()))
 			queryCount = Long.valueOf(list.size());
 		else if (adiQuery.isPaginated()) {
-			String querString = getCountQuery(
-					"select count(*) ".concat(adiQuery.getQueryString().replace("JOIN FETCH", "JOIN")));
+			String querString = getCountQuery("select count(*) ".concat(adiQuery.getQueryString().replace("JOIN FETCH", "JOIN")));
 			AdiQuery countQuery = new AdiQuery(AdiQuery.QUERY_TYPE.SingleJQL, querString, adiQuery.getParameters());
 			queryCount = (Long) getInternalSingleResult(countQuery).getSingleResult();
 		}
@@ -249,7 +247,7 @@ public abstract class APersistenceManager implements IAdiPersistenceManager {
 	 */
 	private QueryResult getSQLQueryResult(AdiQuery adiQuery) throws AdiPMException {
 		org.hibernate.Session hibernateSession = (org.hibernate.Session) getEntityManager().getDelegate();
-		SQLQuery sqlQuery = hibernateSession.createSQLQuery(adiQuery.getQueryString());
+		NativeQuery sqlQuery = hibernateSession.createSQLQuery(adiQuery.getQueryString());
 		sqlQuery.setReadOnly(true);
 		sqlQuery.addEntity(adiQuery.getBeanAlias(), adiQuery.getBeanClass());
 
@@ -273,12 +271,11 @@ public abstract class APersistenceManager implements IAdiPersistenceManager {
 		@SuppressWarnings("rawtypes")
 		List list = sqlQuery.list();
 		Long queryCount = null;
-		if (null == adiQuery.getMaxResults()
-				|| (0 == adiQuery.getFirstResult() && list.size() < adiQuery.getMaxResults()))
+		if (null == adiQuery.getMaxResults() || (0 == adiQuery.getFirstResult() && list.size() < adiQuery.getMaxResults()))
 			queryCount = Long.valueOf(list.size());
 		else if (adiQuery.isPaginated()) {
-			String querString = getCountQuery("select count(*) "
-					.concat(adiQuery.getQueryString().substring(adiQuery.getQueryString().indexOf("from "))));
+			String querString = getCountQuery(
+					"select count(*) ".concat(adiQuery.getQueryString().substring(adiQuery.getQueryString().indexOf("from "))));
 			AdiQuery countQuery = new AdiQuery(AdiQuery.QUERY_TYPE.SingleSQL, querString, adiQuery.getParameters());
 			queryCount = ((BigInteger) getInternalSingleResult(countQuery).getSingleResult()).longValue();
 		}
@@ -317,8 +314,8 @@ public abstract class APersistenceManager implements IAdiPersistenceManager {
 				break;
 			case IEntityConstants.PERSIST:
 				if (null != proxyEntity.getCompositeKeyStrategy()) {
-					Object nextValue = NextValueGenerator.getInstance().getNextValue(getEntityManager(),
-							proxyEntity.getBeanClass(), proxyEntity.getCompositeKeyStrategy());
+					Object nextValue = NextValueGenerator.getInstance().getNextValue(getEntityManager(), proxyEntity.getBeanClass(),
+							proxyEntity.getCompositeKeyStrategy());
 					proxyEntity.getCompositeKeyStrategy().computeCompositeKey(proxyEntity, nextValue);
 				}
 				persist(proxyTransaction.getSession(), proxyEntity);
@@ -351,8 +348,8 @@ public abstract class APersistenceManager implements IAdiPersistenceManager {
 		if (null == bean) {
 			if (proxyEntity.isNullwhenNotFound())
 				return proxyEntity; // return proxyEntity with no bean.
-			throw new EntityNotFoundException("No bean found for class:<" + proxyEntity.getBeanClass() + "> and id:<"
-					+ proxyEntity.getBeanId() + ">.");
+			throw new EntityNotFoundException(
+					"No bean found for class:<" + proxyEntity.getBeanClass() + "> and id:<" + proxyEntity.getBeanId() + ">.");
 		}
 		if (bean instanceof HibernateProxy)
 			bean = ((HibernateProxy) bean).getHibernateLazyInitializer().getImplementation();

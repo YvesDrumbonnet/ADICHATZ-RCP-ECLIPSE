@@ -80,7 +80,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.StringTokenizer;
 
-import javax.persistence.Column;
+import jakarta.persistence.Column;
 
 import org.eclipse.swt.graphics.Point;
 

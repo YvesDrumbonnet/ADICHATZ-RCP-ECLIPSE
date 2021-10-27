@@ -61,7 +61,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.List;
 
-import javax.persistence.EmbeddedId;
+import jakarta.persistence.EmbeddedId;
 
 import org.adichatz.engine.common.EngineConstants;
 import org.adichatz.engine.common.EngineTools;

@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:22 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:33 PM CEST 
 //
 
 
@@ -19,35 +19,35 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Classe Java pour queryParameterType complex type.
+ * &lt;p&gt;Classe Java pour queryParameterType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="queryParameterType">
- *   &lt;complexContent>
- *     &lt;extension base="{}elementType">
- *       &lt;attribute name="prompt" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="property" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="entityURI" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="suffix" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="valid" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *       &lt;attribute name="style" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="permanent" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
- *       &lt;attribute name="visible" type="{http://www.w3.org/2001/XMLSchema}boolean" default="true" />
- *       &lt;attribute name="columnText" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="binaryExpression" type="{http://www.w3.org/2001/XMLSchema}base64Binary" />
- *       &lt;attribute name="expression" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="operator" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="secondColumnText" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="binarySecondExpression" type="{http://www.w3.org/2001/XMLSchema}base64Binary" />
- *       &lt;attribute name="secondExpression" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="expressionMethodURI" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *       &lt;attribute name="expressionClassName" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="queryParameterType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}elementType"&amp;gt;
+ *       &amp;lt;attribute name="prompt" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="property" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="entityURI" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="suffix" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="valid" type="{http://www.w3.org/2001/XMLSchema}boolean" /&amp;gt;
+ *       &amp;lt;attribute name="style" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="permanent" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&amp;gt;
+ *       &amp;lt;attribute name="visible" type="{http://www.w3.org/2001/XMLSchema}boolean" default="true" /&amp;gt;
+ *       &amp;lt;attribute name="columnText" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="binaryExpression" type="{http://www.w3.org/2001/XMLSchema}base64Binary" /&amp;gt;
+ *       &amp;lt;attribute name="expression" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="operator" type="{http://www.w3.org/2001/XMLSchema}NCName" /&amp;gt;
+ *       &amp;lt;attribute name="secondColumnText" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="binarySecondExpression" type="{http://www.w3.org/2001/XMLSchema}base64Binary" /&amp;gt;
+ *       &amp;lt;attribute name="secondExpression" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="expressionMethodURI" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" /&amp;gt;
+ *       &amp;lt;attribute name="expressionClassName" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -102,7 +102,7 @@ public class QueryParameterType
     protected String expressionClassName;
 
     /**
-     * Obtient la valeur de la propriété prompt.
+     * Obtient la valeur de la propriÃ©tÃ© prompt.
      * 
      * @return
      *     possible object is
@@ -114,7 +114,7 @@ public class QueryParameterType
     }
 
     /**
-     * Définit la valeur de la propriété prompt.
+     * DÃ©finit la valeur de la propriÃ©tÃ© prompt.
      * 
      * @param value
      *     allowed object is
@@ -126,7 +126,7 @@ public class QueryParameterType
     }
 
     /**
-     * Obtient la valeur de la propriété property.
+     * Obtient la valeur de la propriÃ©tÃ© property.
      * 
      * @return
      *     possible object is
@@ -138,7 +138,7 @@ public class QueryParameterType
     }
 
     /**
-     * Définit la valeur de la propriété property.
+     * DÃ©finit la valeur de la propriÃ©tÃ© property.
      * 
      * @param value
      *     allowed object is
@@ -150,7 +150,7 @@ public class QueryParameterType
     }
 
     /**
-     * Obtient la valeur de la propriété entityURI.
+     * Obtient la valeur de la propriÃ©tÃ© entityURI.
      * 
      * @return
      *     possible object is
@@ -162,7 +162,7 @@ public class QueryParameterType
     }
 
     /**
-     * Définit la valeur de la propriété entityURI.
+     * DÃ©finit la valeur de la propriÃ©tÃ© entityURI.
      * 
      * @param value
      *     allowed object is
@@ -174,7 +174,7 @@ public class QueryParameterType
     }
 
     /**
-     * Obtient la valeur de la propriété suffix.
+     * Obtient la valeur de la propriÃ©tÃ© suffix.
      * 
      * @return
      *     possible object is
@@ -186,7 +186,7 @@ public class QueryParameterType
     }
 
     /**
-     * Définit la valeur de la propriété suffix.
+     * DÃ©finit la valeur de la propriÃ©tÃ© suffix.
      * 
      * @param value
      *     allowed object is
@@ -198,7 +198,7 @@ public class QueryParameterType
     }
 
     /**
-     * Obtient la valeur de la propriété valid.
+     * Obtient la valeur de la propriÃ©tÃ© valid.
      * 
      * @return
      *     possible object is
@@ -210,7 +210,7 @@ public class QueryParameterType
     }
 
     /**
-     * Définit la valeur de la propriété valid.
+     * DÃ©finit la valeur de la propriÃ©tÃ© valid.
      * 
      * @param value
      *     allowed object is
@@ -222,7 +222,7 @@ public class QueryParameterType
     }
 
     /**
-     * Obtient la valeur de la propriété style.
+     * Obtient la valeur de la propriÃ©tÃ© style.
      * 
      * @return
      *     possible object is
@@ -234,7 +234,7 @@ public class QueryParameterType
     }
 
     /**
-     * Définit la valeur de la propriété style.
+     * DÃ©finit la valeur de la propriÃ©tÃ© style.
      * 
      * @param value
      *     allowed object is
@@ -246,7 +246,7 @@ public class QueryParameterType
     }
 
     /**
-     * Obtient la valeur de la propriété permanent.
+     * Obtient la valeur de la propriÃ©tÃ© permanent.
      * 
      * @return
      *     possible object is
@@ -262,7 +262,7 @@ public class QueryParameterType
     }
 
     /**
-     * Définit la valeur de la propriété permanent.
+     * DÃ©finit la valeur de la propriÃ©tÃ© permanent.
      * 
      * @param value
      *     allowed object is
@@ -274,7 +274,7 @@ public class QueryParameterType
     }
 
     /**
-     * Obtient la valeur de la propriété visible.
+     * Obtient la valeur de la propriÃ©tÃ© visible.
      * 
      * @return
      *     possible object is
@@ -290,7 +290,7 @@ public class QueryParameterType
     }
 
     /**
-     * Définit la valeur de la propriété visible.
+     * DÃ©finit la valeur de la propriÃ©tÃ© visible.
      * 
      * @param value
      *     allowed object is
@@ -302,7 +302,7 @@ public class QueryParameterType
     }
 
     /**
-     * Obtient la valeur de la propriété columnText.
+     * Obtient la valeur de la propriÃ©tÃ© columnText.
      * 
      * @return
      *     possible object is
@@ -314,7 +314,7 @@ public class QueryParameterType
     }
 
     /**
-     * Définit la valeur de la propriété columnText.
+     * DÃ©finit la valeur de la propriÃ©tÃ© columnText.
      * 
      * @param value
      *     allowed object is
@@ -326,7 +326,7 @@ public class QueryParameterType
     }
 
     /**
-     * Obtient la valeur de la propriété binaryExpression.
+     * Obtient la valeur de la propriÃ©tÃ© binaryExpression.
      * 
      * @return
      *     possible object is
@@ -337,7 +337,7 @@ public class QueryParameterType
     }
 
     /**
-     * Définit la valeur de la propriété binaryExpression.
+     * DÃ©finit la valeur de la propriÃ©tÃ© binaryExpression.
      * 
      * @param value
      *     allowed object is
@@ -348,7 +348,7 @@ public class QueryParameterType
     }
 
     /**
-     * Obtient la valeur de la propriété expression.
+     * Obtient la valeur de la propriÃ©tÃ© expression.
      * 
      * @return
      *     possible object is
@@ -360,7 +360,7 @@ public class QueryParameterType
     }
 
     /**
-     * Définit la valeur de la propriété expression.
+     * DÃ©finit la valeur de la propriÃ©tÃ© expression.
      * 
      * @param value
      *     allowed object is
@@ -372,7 +372,7 @@ public class QueryParameterType
     }
 
     /**
-     * Obtient la valeur de la propriété operator.
+     * Obtient la valeur de la propriÃ©tÃ© operator.
      * 
      * @return
      *     possible object is
@@ -384,7 +384,7 @@ public class QueryParameterType
     }
 
     /**
-     * Définit la valeur de la propriété operator.
+     * DÃ©finit la valeur de la propriÃ©tÃ© operator.
      * 
      * @param value
      *     allowed object is
@@ -396,7 +396,7 @@ public class QueryParameterType
     }
 
     /**
-     * Obtient la valeur de la propriété secondColumnText.
+     * Obtient la valeur de la propriÃ©tÃ© secondColumnText.
      * 
      * @return
      *     possible object is
@@ -408,7 +408,7 @@ public class QueryParameterType
     }
 
     /**
-     * Définit la valeur de la propriété secondColumnText.
+     * DÃ©finit la valeur de la propriÃ©tÃ© secondColumnText.
      * 
      * @param value
      *     allowed object is
@@ -420,7 +420,7 @@ public class QueryParameterType
     }
 
     /**
-     * Obtient la valeur de la propriété binarySecondExpression.
+     * Obtient la valeur de la propriÃ©tÃ© binarySecondExpression.
      * 
      * @return
      *     possible object is
@@ -431,7 +431,7 @@ public class QueryParameterType
     }
 
     /**
-     * Définit la valeur de la propriété binarySecondExpression.
+     * DÃ©finit la valeur de la propriÃ©tÃ© binarySecondExpression.
      * 
      * @param value
      *     allowed object is
@@ -442,7 +442,7 @@ public class QueryParameterType
     }
 
     /**
-     * Obtient la valeur de la propriété secondExpression.
+     * Obtient la valeur de la propriÃ©tÃ© secondExpression.
      * 
      * @return
      *     possible object is
@@ -454,7 +454,7 @@ public class QueryParameterType
     }
 
     /**
-     * Définit la valeur de la propriété secondExpression.
+     * DÃ©finit la valeur de la propriÃ©tÃ© secondExpression.
      * 
      * @param value
      *     allowed object is
@@ -466,7 +466,7 @@ public class QueryParameterType
     }
 
     /**
-     * Obtient la valeur de la propriété expressionMethodURI.
+     * Obtient la valeur de la propriÃ©tÃ© expressionMethodURI.
      * 
      * @return
      *     possible object is
@@ -478,7 +478,7 @@ public class QueryParameterType
     }
 
     /**
-     * Définit la valeur de la propriété expressionMethodURI.
+     * DÃ©finit la valeur de la propriÃ©tÃ© expressionMethodURI.
      * 
      * @param value
      *     allowed object is
@@ -490,7 +490,7 @@ public class QueryParameterType
     }
 
     /**
-     * Obtient la valeur de la propriété expressionClassName.
+     * Obtient la valeur de la propriÃ©tÃ© expressionClassName.
      * 
      * @return
      *     possible object is
@@ -502,7 +502,7 @@ public class QueryParameterType
     }
 
     /**
-     * Définit la valeur de la propriété expressionClassName.
+     * DÃ©finit la valeur de la propriÃ©tÃ© expressionClassName.
      * 
      * @param value
      *     allowed object is

@@ -334,7 +334,7 @@ public class AdiFormToolkit extends FormToolkit {
 
 	public Image getRegisteredImage(String imageKey) {
 		Image image = registeredImages.get(imageKey);
-		if (null == image) {
+		if (null == image || image.isDisposed()) {
 			image = getRegisteredImageDescriptor(imageKey).createImage();
 			registeredImages.put(imageKey, image);
 		}
@@ -381,6 +381,5 @@ public class AdiFormToolkit extends FormToolkit {
 
 	public boolean isDisposed() {
 		return disposed;
-
 	}
 }

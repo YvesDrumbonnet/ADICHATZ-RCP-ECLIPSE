@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -20,28 +20,28 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour pGroupType complex type.
+ * &lt;p&gt;Classe Java pour pGroupType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="pGroupType">
- *   &lt;complexContent>
- *     &lt;extension base="{}clientCanvasType">
- *       &lt;choice maxOccurs="unbounded" minOccurs="0">
- *         &lt;element name="pgroupToolItem" type="{}pGroupToolItemType"/>
- *         &lt;element name="pgroupMenu" type="{}pGroupMenuType"/>
- *       &lt;/choice>
- *       &lt;attribute name="toggleRenderer" type="{}toggleRendererEnum" />
- *       &lt;attribute name="toolItemRenderer" type="{}toolItemRendererEnum" />
- *       &lt;attribute name="image" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="togglePosition" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="imagePosition" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="linePosition" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="pGroupType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}clientCanvasType"&amp;gt;
+ *       &amp;lt;choice maxOccurs="unbounded" minOccurs="0"&amp;gt;
+ *         &amp;lt;element name="pgroupToolItem" type="{}pGroupToolItemType"/&amp;gt;
+ *         &amp;lt;element name="pgroupMenu" type="{}pGroupMenuType"/&amp;gt;
+ *       &amp;lt;/choice&amp;gt;
+ *       &amp;lt;attribute name="toggleRenderer" type="{}toggleRendererEnum" /&amp;gt;
+ *       &amp;lt;attribute name="toolItemRenderer" type="{}toolItemRendererEnum" /&amp;gt;
+ *       &amp;lt;attribute name="image" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="togglePosition" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="imagePosition" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="linePosition" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -76,20 +76,20 @@ public class PGroupType
     /**
      * Gets the value of the pgroupToolItemOrPgroupMenu property.
      * 
-     * <p>
+     * &lt;p&gt;
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the pgroupToolItemOrPgroupMenu property.
+     * This is why there is not a &lt;CODE&gt;set&lt;/CODE&gt; method for the pgroupToolItemOrPgroupMenu property.
      * 
-     * <p>
+     * &lt;p&gt;
      * For example, to add a new item, do as follows:
-     * <pre>
+     * &lt;pre&gt;
      *    getPgroupToolItemOrPgroupMenu().add(newItem);
-     * </pre>
+     * &lt;/pre&gt;
      * 
      * 
-     * <p>
+     * &lt;p&gt;
      * Objects of the following type(s) are allowed in the list
      * {@link PGroupToolItemType }
      * {@link PGroupMenuType }
@@ -104,7 +104,7 @@ public class PGroupType
     }
 
     /**
-     * Obtient la valeur de la propriété toggleRenderer.
+     * Obtient la valeur de la propriÃ©tÃ© toggleRenderer.
      * 
      * @return
      *     possible object is
@@ -116,7 +116,7 @@ public class PGroupType
     }
 
     /**
-     * Définit la valeur de la propriété toggleRenderer.
+     * DÃ©finit la valeur de la propriÃ©tÃ© toggleRenderer.
      * 
      * @param value
      *     allowed object is
@@ -128,7 +128,7 @@ public class PGroupType
     }
 
     /**
-     * Obtient la valeur de la propriété toolItemRenderer.
+     * Obtient la valeur de la propriÃ©tÃ© toolItemRenderer.
      * 
      * @return
      *     possible object is
@@ -140,7 +140,7 @@ public class PGroupType
     }
 
     /**
-     * Définit la valeur de la propriété toolItemRenderer.
+     * DÃ©finit la valeur de la propriÃ©tÃ© toolItemRenderer.
      * 
      * @param value
      *     allowed object is
@@ -152,7 +152,7 @@ public class PGroupType
     }
 
     /**
-     * Obtient la valeur de la propriété image.
+     * Obtient la valeur de la propriÃ©tÃ© image.
      * 
      * @return
      *     possible object is
@@ -164,7 +164,7 @@ public class PGroupType
     }
 
     /**
-     * Définit la valeur de la propriété image.
+     * DÃ©finit la valeur de la propriÃ©tÃ© image.
      * 
      * @param value
      *     allowed object is
@@ -176,7 +176,7 @@ public class PGroupType
     }
 
     /**
-     * Obtient la valeur de la propriété togglePosition.
+     * Obtient la valeur de la propriÃ©tÃ© togglePosition.
      * 
      * @return
      *     possible object is
@@ -188,7 +188,7 @@ public class PGroupType
     }
 
     /**
-     * Définit la valeur de la propriété togglePosition.
+     * DÃ©finit la valeur de la propriÃ©tÃ© togglePosition.
      * 
      * @param value
      *     allowed object is
@@ -200,7 +200,7 @@ public class PGroupType
     }
 
     /**
-     * Obtient la valeur de la propriété imagePosition.
+     * Obtient la valeur de la propriÃ©tÃ© imagePosition.
      * 
      * @return
      *     possible object is
@@ -212,7 +212,7 @@ public class PGroupType
     }
 
     /**
-     * Définit la valeur de la propriété imagePosition.
+     * DÃ©finit la valeur de la propriÃ©tÃ© imagePosition.
      * 
      * @param value
      *     allowed object is
@@ -224,7 +224,7 @@ public class PGroupType
     }
 
     /**
-     * Obtient la valeur de la propriété linePosition.
+     * Obtient la valeur de la propriÃ©tÃ© linePosition.
      * 
      * @return
      *     possible object is
@@ -236,7 +236,7 @@ public class PGroupType
     }
 
     /**
-     * Définit la valeur de la propriété linePosition.
+     * DÃ©finit la valeur de la propriÃ©tÃ© linePosition.
      * 
      * @param value
      *     allowed object is

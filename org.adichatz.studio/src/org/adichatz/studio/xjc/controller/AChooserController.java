@@ -116,6 +116,7 @@ public abstract class AChooserController extends XjcTextController {
 	public AChooserController(String id, final IContainerController parentController, ControllerCore genCode) {
 		super(id, parentController, genCode);
 		style = SWT.BORDER | AdiSWT.FIND_BUTTON | AdiSWT.DELETE_BUTTON;
+		addControl = false;
 	}
 
 	@Override

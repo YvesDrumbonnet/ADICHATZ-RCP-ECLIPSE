@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -18,25 +18,25 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour generationScenarioType complex type.
+ * &lt;p&gt;Classe Java pour generationScenarioType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="generationScenarioType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="pluginEntity" type="{}pluginEntityType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="modelPart" type="{}modelPartType"/>
- *         &lt;element name="rcpPart" type="{}rcpPartType"/>
- *         &lt;element name="generationUnit" type="{}generationUnitType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="propertyField" type="{}propertyFieldType" maxOccurs="unbounded" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="generationScenarioType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&amp;gt;
+ *       &amp;lt;sequence&amp;gt;
+ *         &amp;lt;element name="pluginEntity" type="{}pluginEntityType" maxOccurs="unbounded" minOccurs="0"/&amp;gt;
+ *         &amp;lt;element name="modelPart" type="{}modelPartType"/&amp;gt;
+ *         &amp;lt;element name="rcpPart" type="{}rcpPartType"/&amp;gt;
+ *         &amp;lt;element name="generationUnit" type="{}generationUnitType" maxOccurs="unbounded" minOccurs="0"/&amp;gt;
+ *         &amp;lt;element name="propertyField" type="{}propertyFieldType" maxOccurs="unbounded" minOccurs="0"/&amp;gt;
+ *       &amp;lt;/sequence&amp;gt;
+ *     &amp;lt;/restriction&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -64,20 +64,20 @@ public class GenerationScenarioType
     /**
      * Gets the value of the pluginEntity property.
      * 
-     * <p>
+     * &lt;p&gt;
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the pluginEntity property.
+     * This is why there is not a &lt;CODE&gt;set&lt;/CODE&gt; method for the pluginEntity property.
      * 
-     * <p>
+     * &lt;p&gt;
      * For example, to add a new item, do as follows:
-     * <pre>
+     * &lt;pre&gt;
      *    getPluginEntity().add(newItem);
-     * </pre>
+     * &lt;/pre&gt;
      * 
      * 
-     * <p>
+     * &lt;p&gt;
      * Objects of the following type(s) are allowed in the list
      * {@link PluginEntityType }
      * 
@@ -91,7 +91,7 @@ public class GenerationScenarioType
     }
 
     /**
-     * Obtient la valeur de la propriété modelPart.
+     * Obtient la valeur de la propriÃ©tÃ© modelPart.
      * 
      * @return
      *     possible object is
@@ -103,7 +103,7 @@ public class GenerationScenarioType
     }
 
     /**
-     * Définit la valeur de la propriété modelPart.
+     * DÃ©finit la valeur de la propriÃ©tÃ© modelPart.
      * 
      * @param value
      *     allowed object is
@@ -115,7 +115,7 @@ public class GenerationScenarioType
     }
 
     /**
-     * Obtient la valeur de la propriété rcpPart.
+     * Obtient la valeur de la propriÃ©tÃ© rcpPart.
      * 
      * @return
      *     possible object is
@@ -127,7 +127,7 @@ public class GenerationScenarioType
     }
 
     /**
-     * Définit la valeur de la propriété rcpPart.
+     * DÃ©finit la valeur de la propriÃ©tÃ© rcpPart.
      * 
      * @param value
      *     allowed object is
@@ -141,20 +141,20 @@ public class GenerationScenarioType
     /**
      * Gets the value of the generationUnit property.
      * 
-     * <p>
+     * &lt;p&gt;
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the generationUnit property.
+     * This is why there is not a &lt;CODE&gt;set&lt;/CODE&gt; method for the generationUnit property.
      * 
-     * <p>
+     * &lt;p&gt;
      * For example, to add a new item, do as follows:
-     * <pre>
+     * &lt;pre&gt;
      *    getGenerationUnit().add(newItem);
-     * </pre>
+     * &lt;/pre&gt;
      * 
      * 
-     * <p>
+     * &lt;p&gt;
      * Objects of the following type(s) are allowed in the list
      * {@link GenerationUnitType }
      * 
@@ -170,20 +170,20 @@ public class GenerationScenarioType
     /**
      * Gets the value of the propertyField property.
      * 
-     * <p>
+     * &lt;p&gt;
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the propertyField property.
+     * This is why there is not a &lt;CODE&gt;set&lt;/CODE&gt; method for the propertyField property.
      * 
-     * <p>
+     * &lt;p&gt;
      * For example, to add a new item, do as follows:
-     * <pre>
+     * &lt;pre&gt;
      *    getPropertyField().add(newItem);
-     * </pre>
+     * &lt;/pre&gt;
      * 
      * 
-     * <p>
+     * &lt;p&gt;
      * Objects of the following type(s) are allowed in the list
      * {@link PropertyFieldType }
      * 

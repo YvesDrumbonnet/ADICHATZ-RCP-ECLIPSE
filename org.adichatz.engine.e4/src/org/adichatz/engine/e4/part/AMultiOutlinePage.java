@@ -121,7 +121,7 @@ public abstract class AMultiOutlinePage extends AOutlinePage {
 		scrolledForm = getToolkit().createScrolledForm(parent);
 		scrolledForm.getBody().setLayout(new MigLayout("wrap 1, ins 0", "grow,fill", "grow,fill"));
 		pageTabFolder = new CTabFolder(scrolledForm.getBody(), SWT.BOTTOM | SWT.FLAT);
-		toolkit.adapt(pageTabFolder);
+		getToolkit().adapt(pageTabFolder);
 		createTabItems();
 		pageTabFolder.setSelection(0);
 		pageTabFolder.notifyListeners(SWT.Selection, null);

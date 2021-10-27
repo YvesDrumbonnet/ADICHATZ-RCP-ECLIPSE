@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -17,24 +17,24 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour listenerType complex type.
+ * &lt;p&gt;Classe Java pour listenerType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
- * <pre>
- * &lt;complexType name="listenerType">
- *   &lt;complexContent>
- *     &lt;extension base="{}basicType">
- *       &lt;sequence>
- *         &lt;element name="code" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *       &lt;/sequence>
- *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="listenerTypes" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="listenerClassName" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
+ * &lt;pre&gt;
+ * &amp;lt;complexType name="listenerType"&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;extension base="{}basicType"&amp;gt;
+ *       &amp;lt;sequence&amp;gt;
+ *         &amp;lt;element name="code" type="{http://www.w3.org/2001/XMLSchema}string"/&amp;gt;
+ *       &amp;lt;/sequence&amp;gt;
+ *       &amp;lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="listenerTypes" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *       &amp;lt;attribute name="listenerClassName" type="{http://www.w3.org/2001/XMLSchema}string" /&amp;gt;
+ *     &amp;lt;/extension&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
  * 
  * 
  */
@@ -58,7 +58,7 @@ public class ListenerType
     protected String listenerClassName;
 
     /**
-     * Obtient la valeur de la propriété code.
+     * Obtient la valeur de la propriÃ©tÃ© code.
      * 
      * @return
      *     possible object is
@@ -70,7 +70,7 @@ public class ListenerType
     }
 
     /**
-     * Définit la valeur de la propriété code.
+     * DÃ©finit la valeur de la propriÃ©tÃ© code.
      * 
      * @param value
      *     allowed object is
@@ -82,7 +82,7 @@ public class ListenerType
     }
 
     /**
-     * Obtient la valeur de la propriété id.
+     * Obtient la valeur de la propriÃ©tÃ© id.
      * 
      * @return
      *     possible object is
@@ -94,7 +94,7 @@ public class ListenerType
     }
 
     /**
-     * Définit la valeur de la propriété id.
+     * DÃ©finit la valeur de la propriÃ©tÃ© id.
      * 
      * @param value
      *     allowed object is
@@ -106,7 +106,7 @@ public class ListenerType
     }
 
     /**
-     * Obtient la valeur de la propriété listenerTypes.
+     * Obtient la valeur de la propriÃ©tÃ© listenerTypes.
      * 
      * @return
      *     possible object is
@@ -118,7 +118,7 @@ public class ListenerType
     }
 
     /**
-     * Définit la valeur de la propriété listenerTypes.
+     * DÃ©finit la valeur de la propriÃ©tÃ© listenerTypes.
      * 
      * @param value
      *     allowed object is
@@ -130,7 +130,7 @@ public class ListenerType
     }
 
     /**
-     * Obtient la valeur de la propriété listenerClassName.
+     * Obtient la valeur de la propriÃ©tÃ© listenerClassName.
      * 
      * @return
      *     possible object is
@@ -142,7 +142,7 @@ public class ListenerType
     }
 
     /**
-     * Définit la valeur de la propriété listenerClassName.
+     * DÃ©finit la valeur de la propriÃ©tÃ© listenerClassName.
      * 
      * @param value
      *     allowed object is

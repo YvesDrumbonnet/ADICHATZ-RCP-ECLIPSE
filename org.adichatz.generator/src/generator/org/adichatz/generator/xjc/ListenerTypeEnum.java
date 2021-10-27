@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -13,56 +13,55 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour listenerTypeEnum.
+ * &lt;p&gt;Classe Java pour listenerTypeEnum.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
- * <p>
- * <pre>
- * &lt;simpleType name="listenerTypeEnum">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}token">
- *     &lt;enumeration value="CHANGE_STATUS"/>
- *     &lt;enumeration value="LOCK_ENTITY"/>
- *     &lt;enumeration value="BEFORE_PROPERTY_CHANGE"/>
- *     &lt;enumeration value="WHEN_PROPERTY_CHANGE"/>
- *     &lt;enumeration value="AFTER_PROPERTY_CHANGE"/>
- *     &lt;enumeration value="PRE_SAVE"/>
- *     &lt;enumeration value="POST_SAVE"/>
- *     &lt;enumeration value="PRE_REFRESH"/>
- *     &lt;enumeration value="POST_REFRESH"/>
- *     &lt;enumeration value="PRE_SAVE_ENTITIES"/>
- *     &lt;enumeration value="POST_SAVE_ENTITIES"/>
- *     &lt;enumeration value="PRE_REFRESH_ENTITIES"/>
- *     &lt;enumeration value="POST_REFRESH_ENTITIES"/>
- *     &lt;enumeration value="ADD_ENTITY"/>
- *     &lt;enumeration value="REMOVE_ENTITY"/>
- *     &lt;enumeration value="POST_MESSAGE"/>
- *     &lt;enumeration value="BEFORE_ENTITY_INJECTION"/>
- *     &lt;enumeration value="AFTER_ENTITY_INJECTION"/>
- *     &lt;enumeration value="AFTER_INITIALIZE"/>
- *     &lt;enumeration value="BEFORE_CREATE_CONTROL"/>
- *     &lt;enumeration value="AFTER_CREATE_CONTROL"/>
- *     &lt;enumeration value="BEFORE_SYNCHRONIZE"/>
- *     &lt;enumeration value="AFTER_SYNCHRONIZE"/>
- *     &lt;enumeration value="BEFORE_END_LIFE_CYCLE"/>
- *     &lt;enumeration value="AFTER_END_LIFE_CYCLE"/>
- *     &lt;enumeration value="BEFORE_DISPOSE"/>
- *     &lt;enumeration value="AFTER_DISPOSE"/>
- *     &lt;enumeration value="POST_CREATE_PART"/>
- *     &lt;enumeration value="BEFORE_FIELD_CHANGE"/>
- *     &lt;enumeration value="AFTER_FIELD_CHANGE"/>
- *     &lt;enumeration value="PRE_RUN"/>
- *     &lt;enumeration value="POST_RUN"/>
- *     &lt;enumeration value="MODIFY_TEXT"/>
- *     &lt;enumeration value="CHECK_STATE"/>
- *     &lt;enumeration value="SELECTION_CHANGED"/>
- *     &lt;enumeration value="POST_SELECTION_CHANGED"/>
- *     &lt;enumeration value="WIDGET_SELECTED"/>
- *     &lt;enumeration value="DOUBLE_CLICK"/>
- *     &lt;enumeration value="BEFORE_REFRESH"/>
- *     &lt;enumeration value="AFTER_REFRESH"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
- * </pre>
+ * &lt;p&gt;Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
+ * &lt;pre&gt;
+ * &amp;lt;simpleType name="listenerTypeEnum"&amp;gt;
+ *   &amp;lt;restriction base="{http://www.w3.org/2001/XMLSchema}token"&amp;gt;
+ *     &amp;lt;enumeration value="CHANGE_STATUS"/&amp;gt;
+ *     &amp;lt;enumeration value="LOCK_ENTITY"/&amp;gt;
+ *     &amp;lt;enumeration value="BEFORE_PROPERTY_CHANGE"/&amp;gt;
+ *     &amp;lt;enumeration value="WHEN_PROPERTY_CHANGE"/&amp;gt;
+ *     &amp;lt;enumeration value="AFTER_PROPERTY_CHANGE"/&amp;gt;
+ *     &amp;lt;enumeration value="PRE_SAVE"/&amp;gt;
+ *     &amp;lt;enumeration value="POST_SAVE"/&amp;gt;
+ *     &amp;lt;enumeration value="PRE_REFRESH"/&amp;gt;
+ *     &amp;lt;enumeration value="POST_REFRESH"/&amp;gt;
+ *     &amp;lt;enumeration value="PRE_SAVE_ENTITIES"/&amp;gt;
+ *     &amp;lt;enumeration value="POST_SAVE_ENTITIES"/&amp;gt;
+ *     &amp;lt;enumeration value="PRE_REFRESH_ENTITIES"/&amp;gt;
+ *     &amp;lt;enumeration value="POST_REFRESH_ENTITIES"/&amp;gt;
+ *     &amp;lt;enumeration value="ADD_ENTITY"/&amp;gt;
+ *     &amp;lt;enumeration value="REMOVE_ENTITY"/&amp;gt;
+ *     &amp;lt;enumeration value="POST_MESSAGE"/&amp;gt;
+ *     &amp;lt;enumeration value="BEFORE_ENTITY_INJECTION"/&amp;gt;
+ *     &amp;lt;enumeration value="AFTER_ENTITY_INJECTION"/&amp;gt;
+ *     &amp;lt;enumeration value="AFTER_INITIALIZE"/&amp;gt;
+ *     &amp;lt;enumeration value="BEFORE_CREATE_CONTROL"/&amp;gt;
+ *     &amp;lt;enumeration value="AFTER_CREATE_CONTROL"/&amp;gt;
+ *     &amp;lt;enumeration value="BEFORE_SYNCHRONIZE"/&amp;gt;
+ *     &amp;lt;enumeration value="AFTER_SYNCHRONIZE"/&amp;gt;
+ *     &amp;lt;enumeration value="BEFORE_END_LIFE_CYCLE"/&amp;gt;
+ *     &amp;lt;enumeration value="AFTER_END_LIFE_CYCLE"/&amp;gt;
+ *     &amp;lt;enumeration value="BEFORE_DISPOSE"/&amp;gt;
+ *     &amp;lt;enumeration value="AFTER_DISPOSE"/&amp;gt;
+ *     &amp;lt;enumeration value="POST_CREATE_PART"/&amp;gt;
+ *     &amp;lt;enumeration value="BEFORE_FIELD_CHANGE"/&amp;gt;
+ *     &amp;lt;enumeration value="AFTER_FIELD_CHANGE"/&amp;gt;
+ *     &amp;lt;enumeration value="PRE_RUN"/&amp;gt;
+ *     &amp;lt;enumeration value="POST_RUN"/&amp;gt;
+ *     &amp;lt;enumeration value="MODIFY_TEXT"/&amp;gt;
+ *     &amp;lt;enumeration value="CHECK_STATE"/&amp;gt;
+ *     &amp;lt;enumeration value="SELECTION_CHANGED"/&amp;gt;
+ *     &amp;lt;enumeration value="POST_SELECTION_CHANGED"/&amp;gt;
+ *     &amp;lt;enumeration value="WIDGET_SELECTED"/&amp;gt;
+ *     &amp;lt;enumeration value="DOUBLE_CLICK"/&amp;gt;
+ *     &amp;lt;enumeration value="BEFORE_REFRESH"/&amp;gt;
+ *     &amp;lt;enumeration value="AFTER_REFRESH"/&amp;gt;
+ *   &amp;lt;/restriction&amp;gt;
+ * &amp;lt;/simpleType&amp;gt;
+ * &lt;/pre&gt;
  * 
  */
 @XmlType(name = "listenerTypeEnum")

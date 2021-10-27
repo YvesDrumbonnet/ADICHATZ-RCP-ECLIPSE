@@ -5,7 +5,8 @@ Bundle-SymbolicName: org.adichatz.testing;singleton:=true
 Bundle-Version: 0.9.1.qualifier
 Bundle-Activator: org.adichatz.testing.TestingActivator
 Bundle-Vendor: Adichatz
-Require-Bundle: javax.annotation,
+Require-Bundle: jakarta.xml.bind,
+ javax.annotation,
  javax.inject,
  org.adichatz.common,
  org.adichatz.css.theme,

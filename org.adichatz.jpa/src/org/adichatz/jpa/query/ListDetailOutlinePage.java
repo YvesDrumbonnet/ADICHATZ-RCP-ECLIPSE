@@ -40,13 +40,13 @@ public class ListDetailOutlinePage extends AMultiOutlinePage implements IQueryOu
 				if (null == tabItem.getControl()) {
 					switch (pageTabFolder.getSelectionIndex()) {
 					case 0:
-						Composite queryOutlineComposite = toolkit.createComposite(pageTabFolder);
+						Composite queryOutlineComposite = getToolkit().createComposite(pageTabFolder);
 						queryOutlineComposite.setLayout(new MigLayout("wrap, ins 0", "grow,fill", "grow,fill"));
 						tabItem.setControl(queryOutlineComposite);
 						queryOutlinePage.createControl(queryOutlineComposite);
 						break;
 					case 1:
-						Composite editorOutlineComposite = toolkit.createComposite(pageTabFolder);
+						Composite editorOutlineComposite = getToolkit().createComposite(pageTabFolder);
 						editorOutlineComposite.setLayout(new MigLayout("wrap, ins 0", "grow,fill", "grow,fill"));
 						tabItem.setControl(editorOutlineComposite);
 						editorOutlinePage.createControl(editorOutlineComposite);

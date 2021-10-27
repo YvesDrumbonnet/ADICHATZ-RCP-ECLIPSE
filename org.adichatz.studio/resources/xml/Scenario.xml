@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <scenarioTree xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://yvesdrumbonnet.github.io/Adichatz-RCP-Update-Site/xsd/generator/scenarioTree.xsd">
     <params>
-        <param value="C:/ADICHATZ/ECLIPSE/workspaces/4.9/workspace/adichatz/org.adichatz.studio" id="plugin.home"/>
+        <param value="C:/ADICHATZ/ECLIPSE/workspaces/prod/workspace/Adichatz-RCP-Eclipse/org.adichatz.studio" id="plugin.home"/>
         <param value="org.adichatz.studio" id="plugin.name"/>
         <param value="org.adichatz.studio" id="plugin.package"/>
         <param value="org.adichatz.generator.xjc" id="model.package.name"/>
         <param value="org.adichatz.studio.xjc.data.XjcPluginResources" id="plugin.resources.className"/>
-        <param value="E:/ADICHATZ/ECLIPSE/eclipse.4.9" id="devl.eclipse.directory"/>
-        <param value="C:/ADICHATZ/ECLIPSE/workspaces/4.9/workspace/adichatz" id="devl.workspace.directory"/>
+        <param value="E:/ADICHATZ/ECLIPSE/eclipse.prod" id="devl.eclipse.directory"/>
+        <param value="C:/ADICHATZ/ECLIPSE/workspaces/prod/workspace/Adichatz-RCP-Eclipse" id="devl.workspace.directory"/>
         <param value="true" id="devl.create.xml.trace"/>
         <param value="######" id="devl.default.integer.pattern"/>
         <param value="2" id="devl.default.integer.scale"/>

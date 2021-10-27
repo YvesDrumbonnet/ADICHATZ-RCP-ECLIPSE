@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.07.08 à 04:48:18 PM CEST 
+// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par Eclipse Implementation of JAXB, v2.3.3 
+// Voir https://eclipse-ee4j.github.io/jaxb-ri 
+// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
+// GÃ©nÃ©rÃ© le : 2021.09.25 Ã  05:19:29 PM CEST 
 //
 
 
@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlRegistry;
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
  * generated in the org.adichatz.generator.xjc package. 
- * <p>An ObjectFactory allows you to programatically 
+ * &lt;p&gt;An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
  * content can consist of schema derived interfaces 
@@ -37,11 +37,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IncludeTree }
+     * Create an instance of {@link ConnectorTree }
      * 
      */
-    public IncludeTree createIncludeTree() {
-        return new IncludeTree();
+    public ConnectorTree createConnectorTree() {
+        return new ConnectorTree();
+    }
+
+    /**
+     * Create an instance of {@link ApplicationServersType }
+     * 
+     */
+    public ApplicationServersType createApplicationServersType() {
+        return new ApplicationServersType();
+    }
+
+    /**
+     * Create an instance of {@link DatasourcesType }
+     * 
+     */
+    public DatasourcesType createDatasourcesType() {
+        return new DatasourcesType();
+    }
+
+    /**
+     * Create an instance of {@link ContainerTree }
+     * 
+     */
+    public ContainerTree createContainerTree() {
+        return new ContainerTree();
     }
 
     /**
@@ -461,6 +485,54 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link LayoutType }
+     * 
+     */
+    public LayoutType createLayoutType() {
+        return new LayoutType();
+    }
+
+    /**
+     * Create an instance of {@link EntityTree }
+     * 
+     */
+    public EntityTree createEntityTree() {
+        return new EntityTree();
+    }
+
+    /**
+     * Create an instance of {@link PropertyFieldType }
+     * 
+     */
+    public PropertyFieldType createPropertyFieldType() {
+        return new PropertyFieldType();
+    }
+
+    /**
+     * Create an instance of {@link OneToManyType }
+     * 
+     */
+    public OneToManyType createOneToManyType() {
+        return new OneToManyType();
+    }
+
+    /**
+     * Create an instance of {@link ManyToManyType }
+     * 
+     */
+    public ManyToManyType createManyToManyType() {
+        return new ManyToManyType();
+    }
+
+    /**
+     * Create an instance of {@link OneToOneType }
+     * 
+     */
+    public OneToOneType createOneToOneType() {
+        return new OneToOneType();
+    }
+
+    /**
      * Create an instance of {@link ExtendTree }
      * 
      */
@@ -469,19 +541,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ContainerTree }
+     * Create an instance of {@link IncludeTree }
      * 
      */
-    public ContainerTree createContainerTree() {
-        return new ContainerTree();
+    public IncludeTree createIncludeTree() {
+        return new IncludeTree();
     }
 
     /**
-     * Create an instance of {@link LayoutType }
+     * Create an instance of {@link NavigatorTree }
      * 
      */
-    public LayoutType createLayoutType() {
-        return new LayoutType();
+    public NavigatorTree createNavigatorTree() {
+        return new NavigatorTree();
+    }
+
+    /**
+     * Create an instance of {@link MenuType }
+     * 
+     */
+    public MenuType createMenuType() {
+        return new MenuType();
+    }
+
+    /**
+     * Create an instance of {@link NodeType }
+     * 
+     */
+    public NodeType createNodeType() {
+        return new NodeType();
+    }
+
+    /**
+     * Create an instance of {@link AccessibilitiesType }
+     * 
+     */
+    public AccessibilitiesType createAccessibilitiesType() {
+        return new AccessibilitiesType();
+    }
+
+    /**
+     * Create an instance of {@link ItemType }
+     * 
+     */
+    public ItemType createItemType() {
+        return new ItemType();
     }
 
     /**
@@ -493,19 +597,59 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TreeManagerTree }
+     * Create an instance of {@link QueryTree }
      * 
      */
-    public TreeManagerTree createTreeManagerTree() {
-        return new TreeManagerTree();
+    public QueryTree createQueryTree() {
+        return new QueryTree();
     }
 
     /**
-     * Create an instance of {@link TreeElementType }
+     * Create an instance of {@link QueryPartType }
      * 
      */
-    public TreeElementType createTreeElementType() {
-        return new TreeElementType();
+    public QueryPartType createQueryPartType() {
+        return new QueryPartType();
+    }
+
+    /**
+     * Create an instance of {@link JointureType }
+     * 
+     */
+    public JointureType createJointureType() {
+        return new JointureType();
+    }
+
+    /**
+     * Create an instance of {@link JointureAliasesType }
+     * 
+     */
+    public JointureAliasesType createJointureAliasesType() {
+        return new JointureAliasesType();
+    }
+
+    /**
+     * Create an instance of {@link QueryPreferenceType }
+     * 
+     */
+    public QueryPreferenceType createQueryPreferenceType() {
+        return new QueryPreferenceType();
+    }
+
+    /**
+     * Create an instance of {@link CustomizedPreferenceType }
+     * 
+     */
+    public CustomizedPreferenceType createCustomizedPreferenceType() {
+        return new CustomizedPreferenceType();
+    }
+
+    /**
+     * Create an instance of {@link QueryBuilderType }
+     * 
+     */
+    public QueryBuilderType createQueryBuilderType() {
+        return new QueryBuilderType();
     }
 
     /**
@@ -589,579 +733,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link NavigatorTree }
+     * Create an instance of {@link TreeManagerTree }
      * 
      */
-    public NavigatorTree createNavigatorTree() {
-        return new NavigatorTree();
+    public TreeManagerTree createTreeManagerTree() {
+        return new TreeManagerTree();
     }
 
     /**
-     * Create an instance of {@link MenuType }
+     * Create an instance of {@link TreeElementType }
      * 
      */
-    public MenuType createMenuType() {
-        return new MenuType();
-    }
-
-    /**
-     * Create an instance of {@link NodeType }
-     * 
-     */
-    public NodeType createNodeType() {
-        return new NodeType();
-    }
-
-    /**
-     * Create an instance of {@link AccessibilitiesType }
-     * 
-     */
-    public AccessibilitiesType createAccessibilitiesType() {
-        return new AccessibilitiesType();
-    }
-
-    /**
-     * Create an instance of {@link ItemType }
-     * 
-     */
-    public ItemType createItemType() {
-        return new ItemType();
-    }
-
-    /**
-     * Create an instance of {@link EntityTree }
-     * 
-     */
-    public EntityTree createEntityTree() {
-        return new EntityTree();
-    }
-
-    /**
-     * Create an instance of {@link PropertyFieldType }
-     * 
-     */
-    public PropertyFieldType createPropertyFieldType() {
-        return new PropertyFieldType();
-    }
-
-    /**
-     * Create an instance of {@link OneToManyType }
-     * 
-     */
-    public OneToManyType createOneToManyType() {
-        return new OneToManyType();
-    }
-
-    /**
-     * Create an instance of {@link ManyToManyType }
-     * 
-     */
-    public ManyToManyType createManyToManyType() {
-        return new ManyToManyType();
-    }
-
-    /**
-     * Create an instance of {@link OneToOneType }
-     * 
-     */
-    public OneToOneType createOneToOneType() {
-        return new OneToOneType();
-    }
-
-    /**
-     * Create an instance of {@link QueryTree }
-     * 
-     */
-    public QueryTree createQueryTree() {
-        return new QueryTree();
-    }
-
-    /**
-     * Create an instance of {@link QueryPartType }
-     * 
-     */
-    public QueryPartType createQueryPartType() {
-        return new QueryPartType();
-    }
-
-    /**
-     * Create an instance of {@link JointureType }
-     * 
-     */
-    public JointureType createJointureType() {
-        return new JointureType();
-    }
-
-    /**
-     * Create an instance of {@link JointureAliasesType }
-     * 
-     */
-    public JointureAliasesType createJointureAliasesType() {
-        return new JointureAliasesType();
-    }
-
-    /**
-     * Create an instance of {@link QueryPreferenceType }
-     * 
-     */
-    public QueryPreferenceType createQueryPreferenceType() {
-        return new QueryPreferenceType();
-    }
-
-    /**
-     * Create an instance of {@link CustomizedPreferenceType }
-     * 
-     */
-    public CustomizedPreferenceType createCustomizedPreferenceType() {
-        return new CustomizedPreferenceType();
-    }
-
-    /**
-     * Create an instance of {@link QueryBuilderType }
-     * 
-     */
-    public QueryBuilderType createQueryBuilderType() {
-        return new QueryBuilderType();
-    }
-
-    /**
-     * Create an instance of {@link ConnectorTree }
-     * 
-     */
-    public ConnectorTree createConnectorTree() {
-        return new ConnectorTree();
-    }
-
-    /**
-     * Create an instance of {@link ApplicationServersType }
-     * 
-     */
-    public ApplicationServersType createApplicationServersType() {
-        return new ApplicationServersType();
-    }
-
-    /**
-     * Create an instance of {@link DatasourcesType }
-     * 
-     */
-    public DatasourcesType createDatasourcesType() {
-        return new DatasourcesType();
-    }
-
-    /**
-     * Create an instance of {@link CustomizationClassParamType }
-     * 
-     */
-    public CustomizationClassParamType createCustomizationClassParamType() {
-        return new CustomizationClassParamType();
-    }
-
-    /**
-     * Create an instance of {@link ReplacementType }
-     * 
-     */
-    public ReplacementType createReplacementType() {
-        return new ReplacementType();
-    }
-
-    /**
-     * Create an instance of {@link CustomGenerationUnitType }
-     * 
-     */
-    public CustomGenerationUnitType createCustomGenerationUnitType() {
-        return new CustomGenerationUnitType();
-    }
-
-    /**
-     * Create an instance of {@link QueryReferenceType }
-     * 
-     */
-    public QueryReferenceType createQueryReferenceType() {
-        return new QueryReferenceType();
-    }
-
-    /**
-     * Create an instance of {@link MessageType }
-     * 
-     */
-    public MessageType createMessageType() {
-        return new MessageType();
-    }
-
-    /**
-     * Create an instance of {@link PojoRewritersType }
-     * 
-     */
-    public PojoRewritersType createPojoRewritersType() {
-        return new PojoRewritersType();
-    }
-
-    /**
-     * Create an instance of {@link ApplicationServerType }
-     * 
-     */
-    public ApplicationServerType createApplicationServerType() {
-        return new ApplicationServerType();
-    }
-
-    /**
-     * Create an instance of {@link ColumnPreferencesType }
-     * 
-     */
-    public ColumnPreferencesType createColumnPreferencesType() {
-        return new ColumnPreferencesType();
-    }
-
-    /**
-     * Create an instance of {@link ValidatorsType }
-     * 
-     */
-    public ValidatorsType createValidatorsType() {
-        return new ValidatorsType();
-    }
-
-    /**
-     * Create an instance of {@link ControllerType }
-     * 
-     */
-    public ControllerType createControllerType() {
-        return new ControllerType();
-    }
-
-    /**
-     * Create an instance of {@link EntitySetContentProviderType }
-     * 
-     */
-    public EntitySetContentProviderType createEntitySetContentProviderType() {
-        return new EntitySetContentProviderType();
-    }
-
-    /**
-     * Create an instance of {@link WidgetType }
-     * 
-     */
-    public WidgetType createWidgetType() {
-        return new WidgetType();
-    }
-
-    /**
-     * Create an instance of {@link DatasourceType }
-     * 
-     */
-    public DatasourceType createDatasourceType() {
-        return new DatasourceType();
-    }
-
-    /**
-     * Create an instance of {@link FieldType }
-     * 
-     */
-    public FieldType createFieldType() {
-        return new FieldType();
-    }
-
-    /**
-     * Create an instance of {@link GenerationUnitType }
-     * 
-     */
-    public GenerationUnitType createGenerationUnitType() {
-        return new GenerationUnitType();
-    }
-
-    /**
-     * Create an instance of {@link ListenerType }
-     * 
-     */
-    public ListenerType createListenerType() {
-        return new ListenerType();
-    }
-
-    /**
-     * Create an instance of {@link ToolBarType }
-     * 
-     */
-    public ToolBarType createToolBarType() {
-        return new ToolBarType();
-    }
-
-    /**
-     * Create an instance of {@link NavigationPathsType }
-     * 
-     */
-    public NavigationPathsType createNavigationPathsType() {
-        return new NavigationPathsType();
-    }
-
-    /**
-     * Create an instance of {@link TabularType }
-     * 
-     */
-    public TabularType createTabularType() {
-        return new TabularType();
-    }
-
-    /**
-     * Create an instance of {@link AccessibilityType }
-     * 
-     */
-    public AccessibilityType createAccessibilityType() {
-        return new AccessibilityType();
-    }
-
-    /**
-     * Create an instance of {@link CustomizationsType }
-     * 
-     */
-    public CustomizationsType createCustomizationsType() {
-        return new CustomizationsType();
-    }
-
-    /**
-     * Create an instance of {@link MenuActionType }
-     * 
-     */
-    public MenuActionType createMenuActionType() {
-        return new MenuActionType();
-    }
-
-    /**
-     * Create an instance of {@link PojoSuperClassType }
-     * 
-     */
-    public PojoSuperClassType createPojoSuperClassType() {
-        return new PojoSuperClassType();
-    }
-
-    /**
-     * Create an instance of {@link ColumnPreferenceType }
-     * 
-     */
-    public ColumnPreferenceType createColumnPreferenceType() {
-        return new ColumnPreferenceType();
-    }
-
-    /**
-     * Create an instance of {@link CollectionType }
-     * 
-     */
-    public CollectionType createCollectionType() {
-        return new CollectionType();
-    }
-
-    /**
-     * Create an instance of {@link ValidableContainerType }
-     * 
-     */
-    public ValidableContainerType createValidableContainerType() {
-        return new ValidableContainerType();
-    }
-
-    /**
-     * Create an instance of {@link TextImageType }
-     * 
-     */
-    public TextImageType createTextImageType() {
-        return new TextImageType();
-    }
-
-    /**
-     * Create an instance of {@link QueryPaginationType }
-     * 
-     */
-    public QueryPaginationType createQueryPaginationType() {
-        return new QueryPaginationType();
-    }
-
-    /**
-     * Create an instance of {@link GridColumnType }
-     * 
-     */
-    public GridColumnType createGridColumnType() {
-        return new GridColumnType();
-    }
-
-    /**
-     * Create an instance of {@link PShelfItemType }
-     * 
-     */
-    public PShelfItemType createPShelfItemType() {
-        return new PShelfItemType();
-    }
-
-    /**
-     * Create an instance of {@link EntitySetType }
-     * 
-     */
-    public EntitySetType createEntitySetType() {
-        return new EntitySetType();
-    }
-
-    /**
-     * Create an instance of {@link EntityParamType }
-     * 
-     */
-    public EntityParamType createEntityParamType() {
-        return new EntityParamType();
-    }
-
-    /**
-     * Create an instance of {@link ButtonBarType }
-     * 
-     */
-    public ButtonBarType createButtonBarType() {
-        return new ButtonBarType();
-    }
-
-    /**
-     * Create an instance of {@link PojoRewriterType }
-     * 
-     */
-    public PojoRewriterType createPojoRewriterType() {
-        return new PojoRewriterType();
-    }
-
-    /**
-     * Create an instance of {@link GeneratorType }
-     * 
-     */
-    public GeneratorType createGeneratorType() {
-        return new GeneratorType();
-    }
-
-    /**
-     * Create an instance of {@link JointureAliasType }
-     * 
-     */
-    public JointureAliasType createJointureAliasType() {
-        return new JointureAliasType();
-    }
-
-    /**
-     * Create an instance of {@link PreferenceType }
-     * 
-     */
-    public PreferenceType createPreferenceType() {
-        return new PreferenceType();
-    }
-
-    /**
-     * Create an instance of {@link MessagesType }
-     * 
-     */
-    public MessagesType createMessagesType() {
-        return new MessagesType();
-    }
-
-    /**
-     * Create an instance of {@link ToolItemType }
-     * 
-     */
-    public ToolItemType createToolItemType() {
-        return new ToolItemType();
-    }
-
-    /**
-     * Create an instance of {@link MenuItemType }
-     * 
-     */
-    public MenuItemType createMenuItemType() {
-        return new MenuItemType();
-    }
-
-    /**
-     * Create an instance of {@link PathElementType }
-     * 
-     */
-    public PathElementType createPathElementType() {
-        return new PathElementType();
-    }
-
-    /**
-     * Create an instance of {@link ColumnFieldType }
-     * 
-     */
-    public ColumnFieldType createColumnFieldType() {
-        return new ColumnFieldType();
-    }
-
-    /**
-     * Create an instance of {@link ListenersType }
-     * 
-     */
-    public ListenersType createListenersType() {
-        return new ListenersType();
-    }
-
-    /**
-     * Create an instance of {@link TextColorType }
-     * 
-     */
-    public TextColorType createTextColorType() {
-        return new TextColorType();
-    }
-
-    /**
-     * Create an instance of {@link EntityElementsType }
-     * 
-     */
-    public EntityElementsType createEntityElementsType() {
-        return new EntityElementsType();
-    }
-
-    /**
-     * Create an instance of {@link CustomizedScenarioType }
-     * 
-     */
-    public CustomizedScenarioType createCustomizedScenarioType() {
-        return new CustomizedScenarioType();
-    }
-
-    /**
-     * Create an instance of {@link FieldContainerType }
-     * 
-     */
-    public FieldContainerType createFieldContainerType() {
-        return new FieldContainerType();
-    }
-
-    /**
-     * Create an instance of {@link SetType }
-     * 
-     */
-    public SetType createSetType() {
-        return new SetType();
-    }
-
-    /**
-     * Create an instance of {@link ActionType }
-     * 
-     */
-    public ActionType createActionType() {
-        return new ActionType();
-    }
-
-    /**
-     * Create an instance of {@link TreeNodeType }
-     * 
-     */
-    public TreeNodeType createTreeNodeType() {
-        return new TreeNodeType();
-    }
-
-    /**
-     * Create an instance of {@link ScenarioType }
-     * 
-     */
-    public ScenarioType createScenarioType() {
-        return new ScenarioType();
-    }
-
-    /**
-     * Create an instance of {@link RemoveResourceType }
-     * 
-     */
-    public RemoveResourceType createRemoveResourceType() {
-        return new RemoveResourceType();
+    public TreeElementType createTreeElementType() {
+        return new TreeElementType();
     }
 
     /**
@@ -1173,35 +757,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DirtyContainerType }
+     * Create an instance of {@link ContentProviderType }
      * 
      */
-    public DirtyContainerType createDirtyContainerType() {
-        return new DirtyContainerType();
-    }
-
-    /**
-     * Create an instance of {@link NavigationPathType }
-     * 
-     */
-    public NavigationPathType createNavigationPathType() {
-        return new NavigationPathType();
-    }
-
-    /**
-     * Create an instance of {@link EmbeddedFieldType }
-     * 
-     */
-    public EmbeddedFieldType createEmbeddedFieldType() {
-        return new EmbeddedFieldType();
-    }
-
-    /**
-     * Create an instance of {@link CopyResourceType }
-     * 
-     */
-    public CopyResourceType createCopyResourceType() {
-        return new CopyResourceType();
+    public ContentProviderType createContentProviderType() {
+        return new ContentProviderType();
     }
 
     /**
@@ -1213,6 +773,38 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AccessibilityType }
+     * 
+     */
+    public AccessibilityType createAccessibilityType() {
+        return new AccessibilityType();
+    }
+
+    /**
+     * Create an instance of {@link ListenersType }
+     * 
+     */
+    public ListenersType createListenersType() {
+        return new ListenersType();
+    }
+
+    /**
+     * Create an instance of {@link ListenerType }
+     * 
+     */
+    public ListenerType createListenerType() {
+        return new ListenerType();
+    }
+
+    /**
+     * Create an instance of {@link ValidatorsType }
+     * 
+     */
+    public ValidatorsType createValidatorsType() {
+        return new ValidatorsType();
+    }
+
+    /**
      * Create an instance of {@link ValidatorType }
      * 
      */
@@ -1221,43 +813,59 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ListDetailContentProviderType }
+     * Create an instance of {@link ResourceBundlesType }
      * 
      */
-    public ListDetailContentProviderType createListDetailContentProviderType() {
-        return new ListDetailContentProviderType();
+    public ResourceBundlesType createResourceBundlesType() {
+        return new ResourceBundlesType();
     }
 
     /**
-     * Create an instance of {@link GridColumnGroupType }
+     * Create an instance of {@link ResourceBundleType }
      * 
      */
-    public GridColumnGroupType createGridColumnGroupType() {
-        return new GridColumnGroupType();
+    public ResourceBundleType createResourceBundleType() {
+        return new ResourceBundleType();
     }
 
     /**
-     * Create an instance of {@link CrossReferenceType }
+     * Create an instance of {@link ColumnPreferencesType }
      * 
      */
-    public CrossReferenceType createCrossReferenceType() {
-        return new CrossReferenceType();
+    public ColumnPreferencesType createColumnPreferencesType() {
+        return new ColumnPreferencesType();
     }
 
     /**
-     * Create an instance of {@link QueryContentProviderType }
+     * Create an instance of {@link ColumnPreferenceType }
      * 
      */
-    public QueryContentProviderType createQueryContentProviderType() {
-        return new QueryContentProviderType();
+    public ColumnPreferenceType createColumnPreferenceType() {
+        return new ColumnPreferenceType();
     }
 
     /**
-     * Create an instance of {@link PGroupMenuType }
+     * Create an instance of {@link FiltersType }
      * 
      */
-    public PGroupMenuType createPGroupMenuType() {
-        return new PGroupMenuType();
+    public FiltersType createFiltersType() {
+        return new FiltersType();
+    }
+
+    /**
+     * Create an instance of {@link FilterType }
+     * 
+     */
+    public FilterType createFilterType() {
+        return new FilterType();
+    }
+
+    /**
+     * Create an instance of {@link QueryReferenceType }
+     * 
+     */
+    public QueryReferenceType createQueryReferenceType() {
+        return new QueryReferenceType();
     }
 
     /**
@@ -1269,19 +877,99 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PluginEntityType }
+     * Create an instance of {@link WidgetType }
      * 
      */
-    public PluginEntityType createPluginEntityType() {
-        return new PluginEntityType();
+    public WidgetType createWidgetType() {
+        return new WidgetType();
     }
 
     /**
-     * Create an instance of {@link IconType }
+     * Create an instance of {@link ControlType }
      * 
      */
-    public IconType createIconType() {
-        return new IconType();
+    public ControlType createControlType() {
+        return new ControlType();
+    }
+
+    /**
+     * Create an instance of {@link ToolBarType }
+     * 
+     */
+    public ToolBarType createToolBarType() {
+        return new ToolBarType();
+    }
+
+    /**
+     * Create an instance of {@link ButtonBarType }
+     * 
+     */
+    public ButtonBarType createButtonBarType() {
+        return new ButtonBarType();
+    }
+
+    /**
+     * Create an instance of {@link ActionType }
+     * 
+     */
+    public ActionType createActionType() {
+        return new ActionType();
+    }
+
+    /**
+     * Create an instance of {@link MenuActionType }
+     * 
+     */
+    public MenuActionType createMenuActionType() {
+        return new MenuActionType();
+    }
+
+    /**
+     * Create an instance of {@link SeparatorType }
+     * 
+     */
+    public SeparatorType createSeparatorType() {
+        return new SeparatorType();
+    }
+
+    /**
+     * Create an instance of {@link ContributionItemType }
+     * 
+     */
+    public ContributionItemType createContributionItemType() {
+        return new ContributionItemType();
+    }
+
+    /**
+     * Create an instance of {@link TextFontType }
+     * 
+     */
+    public TextFontType createTextFontType() {
+        return new TextFontType();
+    }
+
+    /**
+     * Create an instance of {@link TextColorType }
+     * 
+     */
+    public TextColorType createTextColorType() {
+        return new TextColorType();
+    }
+
+    /**
+     * Create an instance of {@link TextImageType }
+     * 
+     */
+    public TextImageType createTextImageType() {
+        return new TextImageType();
+    }
+
+    /**
+     * Create an instance of {@link RefControlType }
+     * 
+     */
+    public RefControlType createRefControlType() {
+        return new RefControlType();
     }
 
     /**
@@ -1293,19 +981,107 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link QueryOpenClauseType }
+     * Create an instance of {@link ToolItemType }
      * 
      */
-    public QueryOpenClauseType createQueryOpenClauseType() {
-        return new QueryOpenClauseType();
+    public ToolItemType createToolItemType() {
+        return new ToolItemType();
     }
 
     /**
-     * Create an instance of {@link IconsType }
+     * Create an instance of {@link ColumnFieldType }
      * 
      */
-    public IconsType createIconsType() {
-        return new IconsType();
+    public ColumnFieldType createColumnFieldType() {
+        return new ColumnFieldType();
+    }
+
+    /**
+     * Create an instance of {@link CollectionType }
+     * 
+     */
+    public CollectionType createCollectionType() {
+        return new CollectionType();
+    }
+
+    /**
+     * Create an instance of {@link LazyFetchContainerType }
+     * 
+     */
+    public LazyFetchContainerType createLazyFetchContainerType() {
+        return new LazyFetchContainerType();
+    }
+
+    /**
+     * Create an instance of {@link FieldContainerType }
+     * 
+     */
+    public FieldContainerType createFieldContainerType() {
+        return new FieldContainerType();
+    }
+
+    /**
+     * Create an instance of {@link ValidableContainerType }
+     * 
+     */
+    public ValidableContainerType createValidableContainerType() {
+        return new ValidableContainerType();
+    }
+
+    /**
+     * Create an instance of {@link DynamicClauseType }
+     * 
+     */
+    public DynamicClauseType createDynamicClauseType() {
+        return new DynamicClauseType();
+    }
+
+    /**
+     * Create an instance of {@link DirtyContainerType }
+     * 
+     */
+    public DirtyContainerType createDirtyContainerType() {
+        return new DirtyContainerType();
+    }
+
+    /**
+     * Create an instance of {@link ClientCanvasType }
+     * 
+     */
+    public ClientCanvasType createClientCanvasType() {
+        return new ClientCanvasType();
+    }
+
+    /**
+     * Create an instance of {@link SetType }
+     * 
+     */
+    public SetType createSetType() {
+        return new SetType();
+    }
+
+    /**
+     * Create an instance of {@link TabularType }
+     * 
+     */
+    public TabularType createTabularType() {
+        return new TabularType();
+    }
+
+    /**
+     * Create an instance of {@link CrossReferencesType }
+     * 
+     */
+    public CrossReferencesType createCrossReferencesType() {
+        return new CrossReferencesType();
+    }
+
+    /**
+     * Create an instance of {@link CrossReferenceType }
+     * 
+     */
+    public CrossReferenceType createCrossReferenceType() {
+        return new CrossReferenceType();
     }
 
     /**
@@ -1317,11 +1093,147 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ContributionItemType }
+     * Create an instance of {@link CTabItemType }
      * 
      */
-    public ContributionItemType createContributionItemType() {
-        return new ContributionItemType();
+    public CTabItemType createCTabItemType() {
+        return new CTabItemType();
+    }
+
+    /**
+     * Create an instance of {@link CustomizationsType }
+     * 
+     */
+    public CustomizationsType createCustomizationsType() {
+        return new CustomizationsType();
+    }
+
+    /**
+     * Create an instance of {@link NavigationPathsType }
+     * 
+     */
+    public NavigationPathsType createNavigationPathsType() {
+        return new NavigationPathsType();
+    }
+
+    /**
+     * Create an instance of {@link NavigationPathType }
+     * 
+     */
+    public NavigationPathType createNavigationPathType() {
+        return new NavigationPathType();
+    }
+
+    /**
+     * Create an instance of {@link MenuItemType }
+     * 
+     */
+    public MenuItemType createMenuItemType() {
+        return new MenuItemType();
+    }
+
+    /**
+     * Create an instance of {@link PGroupMenuType }
+     * 
+     */
+    public PGroupMenuType createPGroupMenuType() {
+        return new PGroupMenuType();
+    }
+
+    /**
+     * Create an instance of {@link PGroupToolItemType }
+     * 
+     */
+    public PGroupToolItemType createPGroupToolItemType() {
+        return new PGroupToolItemType();
+    }
+
+    /**
+     * Create an instance of {@link PShelfItemType }
+     * 
+     */
+    public PShelfItemType createPShelfItemType() {
+        return new PShelfItemType();
+    }
+
+    /**
+     * Create an instance of {@link GridColumnGroupType }
+     * 
+     */
+    public GridColumnGroupType createGridColumnGroupType() {
+        return new GridColumnGroupType();
+    }
+
+    /**
+     * Create an instance of {@link GridColumnType }
+     * 
+     */
+    public GridColumnType createGridColumnType() {
+        return new GridColumnType();
+    }
+
+    /**
+     * Create an instance of {@link FieldType }
+     * 
+     */
+    public FieldType createFieldType() {
+        return new FieldType();
+    }
+
+    /**
+     * Create an instance of {@link RefFieldType }
+     * 
+     */
+    public RefFieldType createRefFieldType() {
+        return new RefFieldType();
+    }
+
+    /**
+     * Create an instance of {@link ApplicationServerType }
+     * 
+     */
+    public ApplicationServerType createApplicationServerType() {
+        return new ApplicationServerType();
+    }
+
+    /**
+     * Create an instance of {@link DatasourceType }
+     * 
+     */
+    public DatasourceType createDatasourceType() {
+        return new DatasourceType();
+    }
+
+    /**
+     * Create an instance of {@link EmbeddedFieldType }
+     * 
+     */
+    public EmbeddedFieldType createEmbeddedFieldType() {
+        return new EmbeddedFieldType();
+    }
+
+    /**
+     * Create an instance of {@link EmbeddedIdFieldType }
+     * 
+     */
+    public EmbeddedIdFieldType createEmbeddedIdFieldType() {
+        return new EmbeddedIdFieldType();
+    }
+
+    /**
+     * Create an instance of {@link EntitySetType }
+     * 
+     */
+    public EntitySetType createEntitySetType() {
+        return new EntitySetType();
+    }
+
+    /**
+     * Create an instance of {@link EntityElementsType }
+     * 
+     */
+    public EntityElementsType createEntityElementsType() {
+        return new EntityElementsType();
     }
 
     /**
@@ -1341,27 +1253,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SeparatorType }
+     * Create an instance of {@link QueryPaginationType }
      * 
      */
-    public SeparatorType createSeparatorType() {
-        return new SeparatorType();
-    }
-
-    /**
-     * Create an instance of {@link RefFieldType }
-     * 
-     */
-    public RefFieldType createRefFieldType() {
-        return new RefFieldType();
-    }
-
-    /**
-     * Create an instance of {@link ClientCanvasType }
-     * 
-     */
-    public ClientCanvasType createClientCanvasType() {
-        return new ClientCanvasType();
+    public QueryPaginationType createQueryPaginationType() {
+        return new QueryPaginationType();
     }
 
     /**
@@ -1373,51 +1269,99 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LazyFetchContainerType }
+     * Create an instance of {@link QueryOpenClauseType }
      * 
      */
-    public LazyFetchContainerType createLazyFetchContainerType() {
-        return new LazyFetchContainerType();
+    public QueryOpenClauseType createQueryOpenClauseType() {
+        return new QueryOpenClauseType();
     }
 
     /**
-     * Create an instance of {@link RcpPartType }
+     * Create an instance of {@link JointureAliasType }
      * 
      */
-    public RcpPartType createRcpPartType() {
-        return new RcpPartType();
+    public JointureAliasType createJointureAliasType() {
+        return new JointureAliasType();
     }
 
     /**
-     * Create an instance of {@link EmbeddedIdFieldType }
+     * Create an instance of {@link EntityParamType }
      * 
      */
-    public EmbeddedIdFieldType createEmbeddedIdFieldType() {
-        return new EmbeddedIdFieldType();
+    public EntityParamType createEntityParamType() {
+        return new EntityParamType();
     }
 
     /**
-     * Create an instance of {@link DynamicClauseType }
+     * Create an instance of {@link QueryContentProviderType }
      * 
      */
-    public DynamicClauseType createDynamicClauseType() {
-        return new DynamicClauseType();
+    public QueryContentProviderType createQueryContentProviderType() {
+        return new QueryContentProviderType();
     }
 
     /**
-     * Create an instance of {@link ContentProviderType }
+     * Create an instance of {@link ListDetailContentProviderType }
      * 
      */
-    public ContentProviderType createContentProviderType() {
-        return new ContentProviderType();
+    public ListDetailContentProviderType createListDetailContentProviderType() {
+        return new ListDetailContentProviderType();
     }
 
     /**
-     * Create an instance of {@link TextFontType }
+     * Create an instance of {@link EntitySetContentProviderType }
      * 
      */
-    public TextFontType createTextFontType() {
-        return new TextFontType();
+    public EntitySetContentProviderType createEntitySetContentProviderType() {
+        return new EntitySetContentProviderType();
+    }
+
+    /**
+     * Create an instance of {@link CustomizationClassParamType }
+     * 
+     */
+    public CustomizationClassParamType createCustomizationClassParamType() {
+        return new CustomizationClassParamType();
+    }
+
+    /**
+     * Create an instance of {@link PreferenceType }
+     * 
+     */
+    public PreferenceType createPreferenceType() {
+        return new PreferenceType();
+    }
+
+    /**
+     * Create an instance of {@link PathElementType }
+     * 
+     */
+    public PathElementType createPathElementType() {
+        return new PathElementType();
+    }
+
+    /**
+     * Create an instance of {@link GeneratorType }
+     * 
+     */
+    public GeneratorType createGeneratorType() {
+        return new GeneratorType();
+    }
+
+    /**
+     * Create an instance of {@link ControllerType }
+     * 
+     */
+    public ControllerType createControllerType() {
+        return new ControllerType();
+    }
+
+    /**
+     * Create an instance of {@link PluginEntityType }
+     * 
+     */
+    public PluginEntityType createPluginEntityType() {
+        return new PluginEntityType();
     }
 
     /**
@@ -1429,75 +1373,131 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ResourceBundleType }
+     * Create an instance of {@link PojoRewritersType }
      * 
      */
-    public ResourceBundleType createResourceBundleType() {
-        return new ResourceBundleType();
+    public PojoRewritersType createPojoRewritersType() {
+        return new PojoRewritersType();
     }
 
     /**
-     * Create an instance of {@link FilterType }
+     * Create an instance of {@link PojoRewriterType }
      * 
      */
-    public FilterType createFilterType() {
-        return new FilterType();
+    public PojoRewriterType createPojoRewriterType() {
+        return new PojoRewriterType();
     }
 
     /**
-     * Create an instance of {@link ResourceBundlesType }
+     * Create an instance of {@link PojoSuperClassType }
      * 
      */
-    public ResourceBundlesType createResourceBundlesType() {
-        return new ResourceBundlesType();
+    public PojoSuperClassType createPojoSuperClassType() {
+        return new PojoSuperClassType();
     }
 
     /**
-     * Create an instance of {@link RefControlType }
+     * Create an instance of {@link RcpPartType }
      * 
      */
-    public RefControlType createRefControlType() {
-        return new RefControlType();
+    public RcpPartType createRcpPartType() {
+        return new RcpPartType();
     }
 
     /**
-     * Create an instance of {@link FiltersType }
+     * Create an instance of {@link IconsType }
      * 
      */
-    public FiltersType createFiltersType() {
-        return new FiltersType();
+    public IconsType createIconsType() {
+        return new IconsType();
     }
 
     /**
-     * Create an instance of {@link PGroupToolItemType }
+     * Create an instance of {@link IconType }
      * 
      */
-    public PGroupToolItemType createPGroupToolItemType() {
-        return new PGroupToolItemType();
+    public IconType createIconType() {
+        return new IconType();
     }
 
     /**
-     * Create an instance of {@link CrossReferencesType }
+     * Create an instance of {@link MessagesType }
      * 
      */
-    public CrossReferencesType createCrossReferencesType() {
-        return new CrossReferencesType();
+    public MessagesType createMessagesType() {
+        return new MessagesType();
     }
 
     /**
-     * Create an instance of {@link CTabItemType }
+     * Create an instance of {@link MessageType }
      * 
      */
-    public CTabItemType createCTabItemType() {
-        return new CTabItemType();
+    public MessageType createMessageType() {
+        return new MessageType();
     }
 
     /**
-     * Create an instance of {@link ControlType }
+     * Create an instance of {@link ScenarioType }
      * 
      */
-    public ControlType createControlType() {
-        return new ControlType();
+    public ScenarioType createScenarioType() {
+        return new ScenarioType();
+    }
+
+    /**
+     * Create an instance of {@link GenerationUnitType }
+     * 
+     */
+    public GenerationUnitType createGenerationUnitType() {
+        return new GenerationUnitType();
+    }
+
+    /**
+     * Create an instance of {@link RemoveResourceType }
+     * 
+     */
+    public RemoveResourceType createRemoveResourceType() {
+        return new RemoveResourceType();
+    }
+
+    /**
+     * Create an instance of {@link CopyResourceType }
+     * 
+     */
+    public CopyResourceType createCopyResourceType() {
+        return new CopyResourceType();
+    }
+
+    /**
+     * Create an instance of {@link ReplacementType }
+     * 
+     */
+    public ReplacementType createReplacementType() {
+        return new ReplacementType();
+    }
+
+    /**
+     * Create an instance of {@link CustomGenerationUnitType }
+     * 
+     */
+    public CustomGenerationUnitType createCustomGenerationUnitType() {
+        return new CustomGenerationUnitType();
+    }
+
+    /**
+     * Create an instance of {@link CustomizedScenarioType }
+     * 
+     */
+    public CustomizedScenarioType createCustomizedScenarioType() {
+        return new CustomizedScenarioType();
+    }
+
+    /**
+     * Create an instance of {@link TreeNodeType }
+     * 
+     */
+    public TreeNodeType createTreeNodeType() {
+        return new TreeNodeType();
     }
 
 }

@@ -145,7 +145,7 @@ public class QueryOutlinePage extends AOutlinePage implements IQueryOutlinePage 
 	@Override
 	public void createControl(Composite parent) {
 		scrolledForm = getToolkit().createScrolledForm(parent);
-		ManagedForm managedForm = new ManagedForm(toolkit, scrolledForm);
+		ManagedForm managedForm = new ManagedForm(getToolkit(), scrolledForm);
 		scrolledForm.getBody().setLayout(new MigLayout("wrap 1, ins 0", "grow,fill", "grow,fill"));
 
 		ContainerController containerController = new ContainerController(queryToolInput.getJPAPluginResources(), managedForm,

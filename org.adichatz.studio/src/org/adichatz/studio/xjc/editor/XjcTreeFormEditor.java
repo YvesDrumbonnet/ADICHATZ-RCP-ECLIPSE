@@ -73,6 +73,7 @@ package org.adichatz.studio.xjc.editor;
 
 import static org.adichatz.engine.common.LogBroker.displayError;
 import static org.adichatz.engine.common.LogBroker.logError;
+import static org.adichatz.engine.common.Utilities.adiPrintTrace;
 import static org.adichatz.studio.util.StudioUtil.getFromStudioBundle;
 
 import java.io.InputStream;
@@ -122,11 +123,11 @@ import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.dialogs.IPageChangedListener;
 import org.eclipse.jface.dialogs.PageChangedEvent;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.DecorationOverlayIcon;
 import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeSelection;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
@@ -141,6 +142,10 @@ import org.eclipse.ui.part.FileEditorInput;
 public class XjcTreeFormEditor extends ATreeFormEditor {
 	/** The Constant ID. */
 	static final public String ID = XjcTreeFormEditor.class.getName();
+
+	private static Image warningImage;
+
+	private static Image errorImage;
 
 	/** The error form page action. */
 	private ActionController errorFormPageAC;
@@ -187,6 +192,7 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 				ScenarioUtil.getSubPackage(getEditorInput().getFile()));
 		setPartName(fileName);
 
+		System.out.println("AVISATZ: ");
 		setTitleImage(AdichatzApplication.getInstance().getImage(GeneratorConstants.STUDIO_BUNDLE, "IMG_XJC_EDITOR.png"));
 		ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
 
@@ -326,7 +332,8 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 				refreshPageAC = (ActionController) genCode.getFromRegister("refreshFromXmlFileAction");
 				openJavaFileMAC = (MenuActionController) genCode.getFromRegister("openJavaFileMenuAction");
 				toolBarManager = ((ManagedToolBarController) genCode.getFromRegister("pageToolBar")).getToolBarManager();
-				for (IContributionItem contributionItem : toolBarManager.getItems()) {
+				IContributionItem[] items = toolBarManager.getItems();
+				for (IContributionItem contributionItem : items) {
 					if (contributionItem instanceof ActionContributionItem) {
 						Action action = (Action) ((ActionContributionItem) contributionItem).getAction();
 						if (action instanceof AAction) {
@@ -358,7 +365,11 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 				boolean compareVisibleOld = compareFilesActionCI.isVisible();
 				boolean compareVisible = AdiPropertyTester.isComparable(getEditorInput().getFile());
 				if (compareVisible != compareVisibleOld) {
+					adiPrintTrace("AVISATZ compareFilesActionCI: " + compareFilesActionCI.getClass() + ", " + compareVisible);
 					compareFilesActionCI.setVisible(compareVisible);
+					((ActionContributionItem) compareFilesActionCI).setId("toto");
+					IContributionItem[] items = toolBarManager.getItems();
+					adiPrintTrace(" items:" + items.length);
 					updateToolBar = true;
 				}
 				if (updateToolBar)
@@ -468,9 +479,8 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 				scenarioResources.getPluginResources().loadPluginEntities();
 			generatorUnit.generateCodeFromXMLTree(true);
 			new ErroneousFilesFormDialog(this, Display.getCurrent(), scenarioResources);
-			if (0 != getEditorInput().getFile().findMarkers(IMarker.PROBLEM, false, IResource.DEPTH_ZERO).length) {
-				addErrorDecorator("DCR_ERROR.png");
-			}
+			if (0 != getEditorInput().getFile().findMarkers(IMarker.PROBLEM, false, IResource.DEPTH_ZERO).length)
+				setTitleImage(getImageWithErrorDecorator());
 		}
 	}
 
@@ -480,6 +490,7 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 		try {
 			file.deleteMarkers(null, false, IResource.DEPTH_ZERO);
 		} catch (@SuppressWarnings("restriction") ResourceException e) {
+			logError(e);
 		} catch (CoreException e) {
 			logError(e);
 		}
@@ -495,7 +506,7 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 						|| IMarker.SEVERITY_ERROR == resource.findMaxProblemSeverity(IMarker.PROBLEM, true, IResource.DEPTH_ZERO) //
 						|| resource.getLocalTimeStamp() < fileTime //
 				) {
-					addErrorDecorator("DCR_WARNING.png");
+					setTitleImage(getImageWithWarningDecorator());
 					break;
 				}
 			}
@@ -510,14 +521,24 @@ public class XjcTreeFormEditor extends ATreeFormEditor {
 	}
 
 	/**
-	 * Adds the error decorator.
+	 * get the TitleImage with warning decorator.
 	 */
-	private void addErrorDecorator(String dcrName) {
-		ImageDescriptor imageDescriptor = new DecorationOverlayIcon(getTitleImage(),
-				AdichatzApplication.getInstance().getImageDescriptor(GeneratorConstants.STUDIO_BUNDLE, dcrName),
-				IDecoration.BOTTOM_LEFT);
-		treeController.getControl().getDisplay().syncExec(() -> { // Could be called from a job (ErroneousFilesFormDialog)
-			setTitleImage(imageDescriptor.createImage());
-		});
+	private Image getImageWithWarningDecorator() {
+		if (null == warningImage)
+			warningImage = new DecorationOverlayIcon(getTitleImage(),
+					AdichatzApplication.getInstance().getImageDescriptor(GeneratorConstants.STUDIO_BUNDLE, "DCR_WARNING.png"),
+					IDecoration.BOTTOM_LEFT).createImage();
+		return warningImage;
+	}
+
+	/**
+	 * get the TitleImage with error decorator.
+	 */
+	private Image getImageWithErrorDecorator() {
+		if (null == errorImage)
+			errorImage = new DecorationOverlayIcon(getTitleImage(),
+					AdichatzApplication.getInstance().getImageDescriptor(GeneratorConstants.STUDIO_BUNDLE, "DCR_ERROR.png"),
+					IDecoration.BOTTOM_LEFT).createImage();
+		return errorImage;
 	}
 }
